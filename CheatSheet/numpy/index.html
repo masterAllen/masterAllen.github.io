@@ -250,6 +250,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Numpy 常用操作记录
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -259,6 +270,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 广播机制
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -673,6 +712,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 广播机制
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -691,7 +747,24 @@
 
 <h1 id="numpy">Numpy 常用操作记录</h1>
 <p>本文原始格式为 ipynb，原文链接：<a href="TODO">TODO</a></p>
-<pre><code class="language-python">
+<h2 id="1">1. 广播机制</h2>
+<p>问题场景，我要算 k*x，其中 x 是向量，即横坐标 [x1, x2, x3, ...]，而 k 也是向量，它表示<strong>不同的直线下的斜率</strong>。假设 x 的大小是 n，同时 k 的大小是 m，那么最后算出的 y=k*x 大小为 n*m，如何用广播机制方便的求出来？</p>
+<p><strong>解答</strong>: 其实只要牢牢记住：判断广播机制能成功是从后往前比较的，如 (2, 3) 和 (1, 4, 2, 3) 是可以的；而且有特例是 1 可以匹配任何数，即 (2, 1) 和 (1, 4, 2, 3) 也是可以通过广播机制的，结果会是 (1, 4, 2, 3)。</p>
+<p><em>那么我们现在有 (n) 和 (m)，肯定不行，所以随便给任意一个 ndarray 升一个维度就行，如 (n, 1) 和 (m)，就可以了。</em></p>
+<pre><code class="language-python">import numpy as np
+x = np.array([1, 2, 3])
+k = np.array([1, 2])
+
+# print(k * x) --&gt; 错误
+
+# 只要其中升一个维度即可
+print( k[:, np.newaxis] * x )
+print( x * k[:, np.newaxis] )
+</code></pre>
+<pre><code>[[1 2 3]
+ [2 4 6]]
+[[1 2 3]
+ [2 4 6]]
 </code></pre>
 
 
