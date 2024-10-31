@@ -998,7 +998,7 @@
         
   
   <span class="md-ellipsis">
-    Key plugin
+    key_plugin
   </span>
   
 
@@ -1255,17 +1255,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    未归类
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1275,61 +1264,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      使用宏命令时，中间有几行不是一般的格式
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normal" class="md-nav__link">
-    <span class="md-ellipsis">
-      命令行模式的 normal 命令
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normal_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      normal 命令后面的感叹号
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      格式化代码
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -1520,50 +1454,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      使用宏命令时，中间有几行不是一般的格式
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normal" class="md-nav__link">
-    <span class="md-ellipsis">
-      命令行模式的 normal 命令
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normal_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      normal 命令后面的感叹号
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      格式化代码
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1581,21 +1471,20 @@
 
 
 <h1 id="_1">未归类</h1>
-<h2 id="_2">使用宏命令时，中间有几行不是一般的格式</h2>
-<p>用可视模式，并行执行宏，即:'&lt;,'&gt; normal @a</p>
-<h2 id="normal">命令行模式的 normal 命令</h2>
-<ol>
-<li>
-<p>vim 命令行下执行normal，只能执行一次insert操作(即，如果输入i，则无法使用esc返回)</p>
-</li>
-<li>
-<p>替代方法，exec命令，(g//exec "normal 0i/<em>\<Esc> A</em>/") (esc前面要加上)</p>
-</li>
-</ol>
-<h2 id="normal_1">normal 命令后面的感叹号</h2>
-<p>表示后面的按键都是原始的按键，不去涉及用户设定的规则</p>
-<h2 id="_3">格式化代码</h2>
-<p>不喜欢再绑命令了，我格式化都是在终端下执行对应工具：(C/C++, astyle),(Python, autopep8),(HTML/CSS, tidy),(JSON, jq)</p>
+<pre><code>## 使用宏命令时，中间有几行不是一般的格式
+用可视模式，并行执行宏，即:'&lt;,'&gt; normal @a
+
+## 命令行模式的 normal 命令
+1. vim 命令行下执行normal，只能执行一次insert操作(即，如果输入i，则无法使用esc返回)
+2. 替代方法，exec命令，(g//exec &quot;normal 0i/*\&lt;Esc&gt; A*/&quot;) (esc前面要加上\)
+
+## normal 命令后面的感叹号
+表示后面的按键都是原始的按键，不去涉及用户设定的规则
+
+## 格式化代码
+不喜欢再绑命令了，我格式化都是在终端下执行对应工具：(C/C++, astyle),(Python, autopep8),(HTML/CSS, tidy),(JSON, jq)
+
+</code></pre>
 
 
 

@@ -1008,7 +1008,7 @@
         
   
   <span class="md-ellipsis">
-    Key plugin
+    key_plugin
   </span>
   
 
@@ -1471,36 +1471,32 @@
 
 
 <h1 id="network_nmcli_8021x">network_nmcli_802.1x</h1>
-<p>连接 802.1X 安全认证的网络. 例子说明: SSID 为 Tsinghua-Secure, 接口为 wlan0</p>
-<p>注意: 请一定要检查内核版本有没有对应上(uname -r 和 /lib/modules 是否匹配)!!</p>
-<p>血的教训, 开机更新后忘记重启, 导致连接网络一直连不上..</p>
-<ol>
-<li>删除已有的存储信息, 防止干扰</li>
-</ol>
-<p>nmcli con delete id <CONNECTION_NAME></p>
-<ol>
-<li>新加入网络</li>
-</ol>
-<p>nmcli connection edit type wifi con-name Tsinghua-Secure</p>
-<blockquote>
-<p>set 802-11-wireless.ssid Tsinghua-Secure</p>
-<p>set 802-11-wireless-security.key-mgmt wpa-eap</p>
-<p>set 802-1x.eap peap</p>
-<p>set 802-1x.identiy <USERNAME></p>
-<p>set 802-1x.password <PASSWORD></p>
-<p>set 802-1x.phase2-auth mschapv2</p>
-<p>set ipv4.method auto</p>
-<p>set ipv6.method auto</p>
-<p>save</p>
-</blockquote>
-<ol>
-<li>查看已经存在的网络</li>
-</ol>
-<p>nmcli con show</p>
-<ol>
-<li>连接</li>
-</ol>
-<p>nmcli con up Tsinghua-Secure</p>
+<pre><code>连接 802.1X 安全认证的网络. 例子说明: SSID 为 Tsinghua-Secure, 接口为 wlan0
+
+注意: 请一定要检查内核版本有没有对应上(uname -r 和 /lib/modules 是否匹配)!!
+血的教训, 开机更新后忘记重启, 导致连接网络一直连不上..
+
+1. 删除已有的存储信息, 防止干扰
+nmcli con delete id &lt;CONNECTION_NAME&gt;
+
+2. 新加入网络
+nmcli connection edit type wifi con-name Tsinghua-Secure
+&gt; set 802-11-wireless.ssid Tsinghua-Secure
+&gt; set 802-11-wireless-security.key-mgmt wpa-eap
+&gt; set 802-1x.eap peap
+&gt; set 802-1x.identiy &lt;USERNAME&gt;
+&gt; set 802-1x.password &lt;PASSWORD&gt;
+&gt; set 802-1x.phase2-auth mschapv2
+&gt; set ipv4.method auto
+&gt; set ipv6.method auto
+&gt; save
+
+3. 查看已经存在的网络
+nmcli con show
+
+4. 连接
+nmcli con up Tsinghua-Secure
+</code></pre>
 
 
 

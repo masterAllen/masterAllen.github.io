@@ -1008,7 +1008,7 @@
         
   
   <span class="md-ellipsis">
-    Key plugin
+    key_plugin
   </span>
   
 
@@ -1471,35 +1471,41 @@
 
 
 <h1 id="network_ufw">network_ufw</h1>
-<p>引自: https://blog.csdn.net/BigData_Mining/article/details/80699180</p>
-<ol>
-<li>启用</li>
-</ol>
-<p>sudo ufw enable</p>
-<p>sudo ufw default deny</p>
-<ol>
-<li>开启/禁用</li>
-</ol>
-<p>sudo ufw allow|deny [ service ] </p>
-<p>打开或关闭某个端口，例如:</p>
-<p>sudo ufw allow smtp　允许所有的外部IP访问本机的25/tcp （smtp）端口</p>
-<p>sudo ufw allow 22/tcp 允许所有的外部IP访问本机的22/tcp （ssh）端口</p>
-<p>sudo ufw deny 53 禁止外部访问53端口（tcp/udp）</p>
-<p>sudo ufw allow from 192.168.1.100 允许此IP访问所有的本机端口</p>
-<p>sudo ufw allow proto udp 192.168.0.1 port 53 to 192.168.0.2 port 53</p>
-<p>sudo ufw deny smtp 禁止外部访问smtp服务</p>
-<p>sudo ufw delete allow from 192.168.1.100 删除上面建立的某条规则</p>
-<p>sudo ufw delete allow smtp 删除上面建立的某条规则</p>
-<ol>
-<li>查看防火墙状态</li>
-</ol>
-<p>sudo ufw status</p>
-<p>Linux 2.4内核以后提供了一个非常优秀的防火墙工具：netfilter/iptables，他免费且功能强大，可以对流入、流出的信息进行细化控制，它可以 实现防火墙、NAT（网络地址翻译）和数据包的分割等功能。netfilter工作在内核内部，而iptables则是让用户定义规则集的表结构。</p>
-<p>但是iptables的规则稍微有些“复杂”，因此ubuntu提供了ufw这个设定工具，以简化iptables的某些设定，其后台仍然是 iptables。ufw 即uncomplicated firewall的简称，一些复杂的设定还是要去iptables。</p>
-<p>ufw相关的文件和文件夹有：</p>
-<p>/etc /ufw/：里面是一些ufw的环境设定文件，如 before.rules、after.rules、sysctl.conf、ufw.conf，及 for ip6 的 before6.rule 及 after6.rules。这些文件一般按照默认的设置进行就ok。</p>
-<p>若开启ufw之 后，/etc/ufw/sysctl.conf会覆盖默认的/etc/sysctl.conf文件，若你原来的/etc/sysctl.conf做了修 改，启动ufw后，若/etc/ufw/sysctl.conf中有新赋值，则会覆盖/etc/sysctl.conf的，否则还以/etc /sysctl.conf为准。当然你可以通过修改/etc/default/ufw中的“IPT_SYSCTL=”条目来设置使用哪个 sysctrl.conf.</p>
-<p>/var/lib/ufw/user.rules 这个文件中是我们设置的一些防火墙规则，打开大概就能看明白，有时我们可以直接修改这个文件，不用使用命令来设定。修改后记得ufw reload重启ufw使得新规则生效。</p>
+<pre><code>引自: https://blog.csdn.net/BigData_Mining/article/details/80699180
+
+1. 启用
+sudo ufw enable
+sudo ufw default deny
+
+2. 开启/禁用
+sudo ufw allow|deny [ service ] 
+打开或关闭某个端口，例如:
+
+sudo ufw allow smtp　允许所有的外部IP访问本机的25/tcp （smtp）端口
+sudo ufw allow 22/tcp 允许所有的外部IP访问本机的22/tcp （ssh）端口
+sudo ufw deny 53 禁止外部访问53端口（tcp/udp）
+sudo ufw allow from 192.168.1.100 允许此IP访问所有的本机端口
+sudo ufw allow proto udp 192.168.0.1 port 53 to 192.168.0.2 port 53
+sudo ufw deny smtp 禁止外部访问smtp服务
+sudo ufw delete allow from 192.168.1.100 删除上面建立的某条规则
+sudo ufw delete allow smtp 删除上面建立的某条规则
+
+3. 查看防火墙状态
+sudo ufw status
+
+
+Linux 2.4内核以后提供了一个非常优秀的防火墙工具：netfilter/iptables，他免费且功能强大，可以对流入、流出的信息进行细化控制，它可以 实现防火墙、NAT（网络地址翻译）和数据包的分割等功能。netfilter工作在内核内部，而iptables则是让用户定义规则集的表结构。
+
+但是iptables的规则稍微有些“复杂”，因此ubuntu提供了ufw这个设定工具，以简化iptables的某些设定，其后台仍然是 iptables。ufw 即uncomplicated firewall的简称，一些复杂的设定还是要去iptables。
+
+　　ufw相关的文件和文件夹有：
+
+　　/etc /ufw/：里面是一些ufw的环境设定文件，如 before.rules、after.rules、sysctl.conf、ufw.conf，及 for ip6 的 before6.rule 及 after6.rules。这些文件一般按照默认的设置进行就ok。
+
+　　若开启ufw之 后，/etc/ufw/sysctl.conf会覆盖默认的/etc/sysctl.conf文件，若你原来的/etc/sysctl.conf做了修 改，启动ufw后，若/etc/ufw/sysctl.conf中有新赋值，则会覆盖/etc/sysctl.conf的，否则还以/etc /sysctl.conf为准。当然你可以通过修改/etc/default/ufw中的“IPT_SYSCTL=”条目来设置使用哪个 sysctrl.conf.
+
+　　/var/lib/ufw/user.rules 这个文件中是我们设置的一些防火墙规则，打开大概就能看明白，有时我们可以直接修改这个文件，不用使用命令来设定。修改后记得ufw reload重启ufw使得新规则生效。
+</code></pre>
 
 
 
