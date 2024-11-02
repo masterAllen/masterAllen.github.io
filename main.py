@@ -2,6 +2,7 @@
 import os
 os.chdir(os.path.dirname(__file__))
 
+import pickle
 import transform_file
 import collections
 
@@ -9,6 +10,17 @@ import collections
 if __name__ == '__main__':
     srcdir = os.path.abspath('../done')
     dstdir = os.path.abspath(os.path.join('.', 'docs'))
+
+    # 文件绝对路径：时间信息
+    oldtimes = dict() 
+    if os.path.exists('./oldtimes.bin'):
+        oldtimes = pickle.load(open('./oldtimes.bin', 'rb'))
+    newtimes = dict()
+    # 文件绝对路径：产生的文件路径
+    oldfiles = dict() 
+    if os.path.exists('./oldfiles.bin'):
+        oldfiles = pickle.load(open('./oldfiles.bin', 'rb'))
+    newfiles = dict()
 
     assetdir = os.path.join(dstdir, 'asset')
     os.makedirs(assetdir, exist_ok=True)
@@ -30,7 +42,13 @@ if __name__ == '__main__':
             if os.path.isdir(nowpth):
                 now_subdirs.append(nowname)
             else:
-                now_subfiles.append(nowname)
+                # 是文件，根据时间，判断要不要更改
+                newtime = os.stat(nowpth).st_mtime
+                newtimes[nowpth] = newtime
+                if nowpth in oldtimes and oldtimes[nowpth] == newtime:
+                    newfiles[nowpth] = oldfiles[nowpth]
+                else:
+                    now_subfiles.append(nowname)
 
         # 处理文件夹的内容
         for nowname in now_subdirs:
@@ -54,26 +72,41 @@ if __name__ == '__main__':
                 # TODO: 如果是 .pages，那么就要解析
                 if nowname[0:5] == '.page':
                     continue
+
+                print(nowname)
+                newfile = None
                 if nowname.endswith('md'):
-                    transform_file.do_md(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_md(nowsrc, nowdst, assetdir, nowname)
                 if nowname.endswith('html') or nowname.endswith('htm'):
-                    transform_file.do_html(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_html(nowsrc, nowdst, assetdir, nowname)
                 if nowname.endswith('ipynb'):
-                    transform_file.do_ipynb(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_ipynb(nowsrc, nowdst, assetdir, nowname)
                 if nowname.endswith('PNG') or nowname.endswith('png'):
-                    transform_file.do_png(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_png(nowsrc, nowdst, assetdir, nowname)
                 if nowname.endswith('pdf'):
-                    transform_file.do_pdf(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_pdf(nowsrc, nowdst, assetdir, nowname)
                 if nowname.endswith('docx'):
-                    transform_file.do_word(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_word(nowsrc, nowdst, assetdir, nowname)
                 if nowname.endswith('pptx'):
-                    transform_file.do_ppt(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_ppt(nowsrc, nowdst, assetdir, nowname)
                 if nowname.endswith('txt'):
-                    transform_file.do_txt(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_txt(nowsrc, nowdst, assetdir, nowname)
+
+                newfiles[os.path.join(nowsrc, nowname)] = newfile
             except Exception as e:
                 print('nowsrc:', nowsrc)
                 print('nowdst:', nowdst)
                 print('subname:', nowname)
                 print(e)
                 print('-----------------------------')
-                pass
+
+    # 保存好各个文件的时间记录、对应生成的文件记录
+    pickle.dump(newtimes, open('./oldtimes.bin', 'wb'))
+    pickle.dump(newfiles, open('./oldfiles.bin', 'wb'))
+
+    # 删除掉那些源文件不见的文件（也就是 oldtimes 有，但 newtimes 没有）
+    print('删除文件................')
+    removed_pths = set(oldtimes.keys()).difference(set(newtimes.keys()))
+    for onepth in removed_pths:
+        print(onepth, oldfiles[onepth])
+        os.remove(oldfiles[onepth])
