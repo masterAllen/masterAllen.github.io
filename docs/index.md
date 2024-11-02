@@ -1,17 +1,28 @@
-# Welcome to MkDocs
+# 欢迎
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+欢迎访问！本网站记录了我的一部分个人笔记，由 mkdocs 搭建，使用的主题是 mkdocs-material
 
-## Commands
+## 创建方式
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+通常静态博客都是由一堆 markdown 组成。markdown 很简洁，但明显不够用。学习笔记有各种各样的格式，除了 markdown，有时会直接用 word 或者 ppt 来写，有时看到好的内容会保存为照片、网页或者 pdf 等，甚至经常会有视频文件（尤其是一些系统性的课程）。
 
-## Project layout
+曾经尝试过使用 markdown 组织博客，我觉得受限太多，失去了意义。因此本仓库是由另一个文件夹转换而来，其中原始文件夹里面包含了各种各样的笔记，通过 python 脚本将其转换为 markdown 以此来在网页中显示。比如 pdf 文件，我会将其转为图片，然后将这些图片写入到 markdown 中，这样在网页上就能够将其显示出来了。
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+目前各个格式的文件转换还在开发中。我觉得肯定很多地方尚不完善，比如 word 我是用 docx2pdf 转为 pdf 后再转为图片，期间经常会报错。如果您有任何格式转换的方法和建议，烦请帮忙告知我一下，谢谢。
+
+## 各种格式转换方式
+
+| 格式     | 方式                                                                                                           |
+| -------- | -------------------------------------------------------------------------------------------------------------- |
+| markdown | 直接转换，会检查其中的引用链接，找到引用的文件（通常是图片），将其移动到资源仓库中，然后修改原始文件的链接内容 |
+| ipynb    | 使用 jupyter nbconvert 进行转换                                                                                |
+| pdf      | 使用 pdfium 转为图片，将图片合成到一个 markdown 中                                                             |
+| word     | 使用 docx2pdf 转为 pdf，再转为图片，将图片合成到一个 markdown 中                                               |
+| ppt      | 使用 pptx2pdf 转为 pdf，再转为图片，将图片合成到一个 markdown 中                                               |
+| txt      | 直接使用 ``` 包起来                                                                                            |
+
+## 更新说明
+
+- 2024年10月20日：添加 txt 文件的支持
+- 2024年10月13日：添加 markdown、ipynb、pdf、word、ppt 文件的支持
+- 2024年10月12日：初始创建
