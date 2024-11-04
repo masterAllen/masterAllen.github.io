@@ -8,9 +8,9 @@ import pypdfium2 as pdfium
 import numpy as np
 from PIL import Image
 
-def do_md(srcdir, dstdir, assetdir, nowname):
+def do_md(srcdir, dstdir, assetdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
-    dstpth = os.path.join(dstdir, nowname)
+    dstpth = os.path.join(dstdir, f'{newname}.md')
     shutil.copyfile(srcpth, dstpth)
 
     # 找到 md 文档中的图片链接，即 ![]()
@@ -42,7 +42,7 @@ def do_md(srcdir, dstdir, assetdir, nowname):
     return dstpth
 
 
-def do_html(srcdir, dstdir, assetdir, nowname):
+def do_html(srcdir, dstdir, assetdir, nowname, newname):
     # 获取原文的地址
     srcpth = os.path.join(srcdir, nowname)
     srcurl = ''
@@ -55,29 +55,24 @@ def do_html(srcdir, dstdir, assetdir, nowname):
     bakpth = os.path.join(assetdir, 'html', nowname)
     shutil.copyfile(srcpth, bakpth)
 
-    # 先截断名称，按照  - 分割，第一个就是最终的名字
-    dstname = nowname.split(' - ')[0].strip()
-    dstname = dstname.split('.')[0]
-    dstpth = os.path.join(dstdir, f'{dstname}.md')
+    dstpth = os.path.join(dstdir, f'{newname}.md')
 
     # bakpth = os.path.join('..', os.path.relpath(bakpth, dstpth)) # 相对现在文件的路径，这样才能正确导入
     # bakpth = bakpth.replace('\\', '/') # Windows 下的处理
     # bakpth = bakpth.replace(' ', '%20')
 
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.writelines(f'# {dstname}\n')
+        f.writelines(f'# {newname}\n')
         f.writelines(f'转载文章，文章链接：[{srcurl}]({srcurl})，本地备份：[链接](/asset/html/{nowname})\n')
     return dstpth
 
 
-def do_ipynb(srcdir, dstdir, assetdir, nowname):
+def do_ipynb(srcdir, dstdir, assetdir, nowname, newname):
     # 原文转成 markdown
     srcpth = os.path.join(srcdir, nowname)
     os.system(f'python -m jupyter nbconvert --to markdown {srcpth}')
 
-    dstname = nowname.strip()
-    dstname = dstname[:dstname.find('.')]
-    dstpth  = os.path.join(dstdir, f'{dstname}.md')
+    dstpth  = os.path.join(dstdir, f'{newname}.md')
     with open(dstpth, 'w', encoding='utf-8') as f:
         # 把原文转的 md 内容追加到这里，然后开头部分添加一个说明
         with open(srcpth, 'r', encoding='utf-8') as srcf:
@@ -91,27 +86,23 @@ def do_ipynb(srcdir, dstdir, assetdir, nowname):
     return dstpth
 
 
-def do_png(srcdir, dstdir, assetdir, nowname):
+def do_png(srcdir, dstdir, assetdir, nowname, newname):
     # 获取原文的地址
     srcpth = os.path.join(srcdir, nowname)
     bakpth = os.path.join(assetdir, 'image', nowname)
 
     shutil.copyfile(srcpth, bakpth)
 
-    dstname = nowname[:nowname.rfind('.')]
-    dstpth  = os.path.join(dstdir, f'{dstname}.md')
+    dstpth  = os.path.join(dstdir, f'{newname}.md')
 
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.writelines(f'# {dstname}\n')
+        f.writelines(f'# {newname}\n')
         f.writelines(f'原始文件格式为 PNG，以下是该图片：\n\n')
-        f.writelines(f'![{dstname}](/asset/image/{nowname})\n')
+        f.writelines(f'![{newname}](/asset/image/{nowname})\n')
     return dstpth
 
 
-def do_pdf(srcdir, dstdir, assetdir, nowname):
-    # dstname = nowname.strip()
-    # dstname = dstname[:dstname.find('.')]
-
+def do_pdf(srcdir, dstdir, assetdir, nowname, newname):
     # # 原文转成 markdown
     # srcpth = os.path.join(srcdir, nowname)
     # dstpth = os.path.join(dstdir, f'{dstname}.md')
@@ -119,10 +110,7 @@ def do_pdf(srcdir, dstdir, assetdir, nowname):
 
     pass
 
-def do_word(srcdir, dstdir, assetdir, nowname):
-    dstname = nowname.strip()
-    dstname = dstname[:dstname.find('.')]
-
+def do_word(srcdir, dstdir, assetdir, nowname, newname):
     # # 原文转成 markdown
     # srcpth = os.path.join(srcdir, nowname)
     # dstpth = os.path.join(dstdir, f'{dstname}.md')
@@ -131,7 +119,7 @@ def do_word(srcdir, dstdir, assetdir, nowname):
 
     # 原文转成 pdf
     srcpth = os.path.join(srcdir, nowname)
-    pdfpth = os.path.join(assetdir, 'pdf', f'{dstname}.pdf')
+    pdfpth = os.path.join(assetdir, 'pdf', f'{newname}.pdf')
     for tidx in range(3):
         time.sleep(tidx)
         try:
@@ -142,13 +130,13 @@ def do_word(srcdir, dstdir, assetdir, nowname):
 
     # PDF 再转为图片
     pdf = pdfium.PdfDocument(pdfpth)
-    imgdir = os.path.join(assetdir, 'image', dstname)
+    imgdir = os.path.join(assetdir, 'image', newname)
     os.makedirs(imgdir, exist_ok=True)
 
-    mdpth = os.path.join(dstdir, f'{dstname}.md')
+    mdpth = os.path.join(dstdir, f'{newname}.md')
     with open(mdpth, 'w', encoding='utf-8') as f:
-        f.writelines(f'# {dstname}\n')
-        f.writelines(f'**原文格式为 word，本文为转换后的图片。原文也转换了 [PDF 格式](/asset/pdf/{dstname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
+        f.writelines(f'# {newname}\n')
+        f.writelines(f'**原文格式为 word，本文为转换后的图片。原文也转换了 [PDF 格式](/asset/pdf/{newname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
         for count, page in enumerate(pdf):
             imgpth = os.path.join(imgdir, f'out{count}.jpg')
             nowimg = page.render(scale=4).to_pil()
@@ -158,47 +146,54 @@ def do_word(srcdir, dstdir, assetdir, nowname):
 
             nowimg = Image.fromarray(nowimg)
             nowimg.save(imgpth)
-            f.writelines(f'![out{count}](/asset/image/{dstname}/out{count}.jpg)\n')
+            f.writelines(f'![out{count}](/asset/image/{newname}/out{count}.jpg)\n')
     return mdpth
 
 
-def do_ppt(srcdir, dstdir, assetdir, nowname):
-    dstname = nowname.strip()
-    dstname = dstname[:dstname.find('.')]
+def do_ppt(srcdir, dstdir, assetdir, nowname, newname):
 
     # 原文转成 pdf
     srcpth = os.path.join(srcdir, nowname)
-    pdfpth = os.path.join(assetdir, 'pdf', f'{dstname}.pdf')
+    pdfpth = os.path.join(assetdir, 'pdf', f'{newname}.pdf')
     if os.path.exists(pdfpth):
         os.remove(pdfpth)
     pptxtopdf.convert(srcpth, os.path.join(assetdir, 'pdf'))
     # PDF 再转为图片
     pdf = pdfium.PdfDocument(pdfpth)
-    imgdir = os.path.join(assetdir, 'image', dstname)
+    imgdir = os.path.join(assetdir, 'image', newname)
     os.makedirs(imgdir, exist_ok=True)
 
-    mdpth = os.path.join(dstdir, f'{dstname}.md')
+    mdpth = os.path.join(dstdir, f'{newname}.md')
     with open(mdpth, 'w', encoding='utf-8') as f:
-        f.writelines(f'# {dstname}\n')
-        f.writelines(f'**原文格式为 PPTX，本文为转换后的图片。原文也转换了 [PDF 格式](/asset/pdf/{dstname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
+        f.writelines(f'# {newname}\n')
+        f.writelines(f'**原文格式为 PPTX，本文为转换后的图片。原文也转换了 [PDF 格式](/asset/pdf/{newname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
         for count, page in enumerate(pdf):
             imgpth = os.path.join(imgdir, f'out{count}.jpg')
             nowimg = page.render(scale=4).to_pil()
             nowimg.save(imgpth)
-            f.writelines(f'![out{count}](/asset/image/{dstname}/out{count}.jpg)\n')
+            f.writelines(f'![out{count}](/asset/image/{newname}/out{count}.jpg)\n')
     return mdpth
 
 
-def do_txt(srcdir, dstdir, assetdir, nowname):
+def do_txt(srcdir, dstdir, assetdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
 
-    dstname = nowname[:nowname.rfind('.')]
-    dstpth  = os.path.join(dstdir, f'{dstname}.md')
+    dstpth  = os.path.join(dstdir, f'{newname}.md')
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.writelines(f'# {dstname}\n')
-        f.writelines('```\n')
+        f.writelines(f'# {newname}\n')
         with open(srcpth, 'r', encoding='utf-8') as srcf:
-            for oneline in srcf:
-                f.writelines(oneline)
-        f.writelines('```\n')
+            content = srcf.readlines()
+
+        flag = False
+        for oneline in content:
+            if oneline[0] == '#':
+                flag = True
+                break
+
+        if flag:
+            f.writelines(content)
+        else:
+            f.writelines('```\n')
+            f.writelines(content)
+            f.writelines('\n```')
     return dstpth

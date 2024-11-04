@@ -2,8 +2,11 @@
 import os
 os.chdir(os.path.dirname(__file__))
 
+import re
 import pickle
+import transform_name
 import transform_file
+import parse_navbar
 import collections
 
 
@@ -32,10 +35,15 @@ if __name__ == '__main__':
     while len(dirnames):
         nowsrc, nowdst = dirnames.popleft()
 
+        # 本目录生成的新文件
+        nowdir_finalfiles = dict()
+
         # 先获取当前文件夹的子文件夹和子文件
         now_subdirs, now_subfiles = [], []
         for nowname in os.listdir(nowsrc):
             if nowname.startswith('~'):
+                continue
+            if nowname == '.pages':
                 continue
 
             nowpth = os.path.join(nowsrc, nowname)
@@ -46,7 +54,7 @@ if __name__ == '__main__':
                 newtime = os.stat(nowpth).st_mtime
                 newtimes[nowpth] = newtime
                 if nowpth in oldtimes and oldtimes[nowpth] == newtime:
-                    newfiles[nowpth] = oldfiles[nowpth]
+                    nowdir_finalfiles[nowpth] = oldfiles[nowpth]
                 else:
                     now_subfiles.append(nowname)
 
@@ -69,36 +77,64 @@ if __name__ == '__main__':
         # 处理文件的内容
         for nowname in now_subfiles:
             try:
-                # TODO: 如果是 .pages，那么就要解析
-                if nowname[0:5] == '.page':
-                    continue
-
                 print(nowname)
+                newname = transform_name.remove_suffix(nowname)
+                newname = transform_name.beautify_name(newname)
+                if 'README' in newname:
+                    print(newname)
+                #     newname = newname.replace('_', ':')
+
                 newfile = None
                 if nowname.endswith('md'):
-                    newfile = transform_file.do_md(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_md(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('html') or nowname.endswith('htm'):
-                    newfile = transform_file.do_html(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_html(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('ipynb'):
-                    newfile = transform_file.do_ipynb(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_ipynb(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('PNG') or nowname.endswith('png'):
-                    newfile = transform_file.do_png(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_png(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('pdf'):
-                    newfile = transform_file.do_pdf(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_pdf(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('docx'):
-                    newfile = transform_file.do_word(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_word(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('pptx'):
-                    newfile = transform_file.do_ppt(nowsrc, nowdst, assetdir, nowname)
+                    newfile = transform_file.do_ppt(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('txt'):
-                    newfile = transform_file.do_txt(nowsrc, nowdst, assetdir, nowname)
+                    print('txt', nowname)
+                    newfile = transform_file.do_txt(nowsrc, nowdst, assetdir, nowname, newname)
 
-                newfiles[os.path.join(nowsrc, nowname)] = newfile
+                nowdir_finalfiles[os.path.join(nowsrc, nowname)] = newfile
             except Exception as e:
                 print('nowsrc:', nowsrc)
                 print('nowdst:', nowdst)
                 print('subname:', nowname)
                 print(e)
                 print('-----------------------------')
+
+        # 检查文件夹里面有没有 .pages 文件，如果有则进行解析
+        # 遍历 nowdir_finalfiles，即生成的新文件，看看是否可以
+        if '.pages' in os.listdir(nowsrc):
+            pages_pth = os.path.join(nowsrc, '.pages')
+            rules = parse_navbar.parse_rules(pages_pth)
+
+            rules_file = open(os.path.join(nowdst, '.pages'), 'w', encoding='utf8')
+            rules_file.writelines('nav: \n')
+            rules_file.writelines('  - ...\n')
+            for srcpth, dstpth in nowdir_finalfiles.items():
+                src_basename = os.path.basename(srcpth)
+                dst_basename = os.path.basename(dstpth)
+                for rule_type, re_str in rules:
+                    if re_str == '*' or re.match(re_str, src_basename) is not None:
+                        src_basename = transform_name.remove_suffix(src_basename)
+                        src_basename = transform_name.beautify_name(src_basename)
+                        rules_file.writelines(f'  - {src_basename}: {dst_basename}\n')
+            rules_file.writelines('order_by: title\n')
+        
+        # 本次目标目录的文件也要放在总体的记录表中
+        for srcpth, dstpth in nowdir_finalfiles.items():
+            newfiles[srcpth] = dstpth
+
+
 
     # 保存好各个文件的时间记录、对应生成的文件记录
     pickle.dump(newtimes, open('./oldtimes.bin', 'wb'))
