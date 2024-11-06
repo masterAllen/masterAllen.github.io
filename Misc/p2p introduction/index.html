@@ -1,0 +1,3891 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Blog. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://localhost:8000/Misc/p2p%20introduction/">
+      
+      
+        <link rel="prev" href="../nas%20pt/">
+      
+      
+        <link rel="next" href="../screen%20sharing/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+    
+    
+      
+        <title>P2P 技术科普 - Allen Hong's Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#p2p" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Allen Hong&#39;s Blog" class="md-header__button md-logo" aria-label="Allen Hong's Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              P2P 技术科普
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/masterAllen/masterAllen.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    masterAllen/masterAllen.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Allen Hong&#39;s Blog" class="md-nav__button md-logo" aria-label="Allen Hong's Blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Allen Hong's Blog
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/masterAllen/masterAllen.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    masterAllen/masterAllen.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CheatSheet
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            CheatSheet
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GDB
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            GDB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/GDB/gdb%20gef%20expand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDB 利用 Python 扩展 GEF 插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/GDB/gdb%20trick/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDB 的一些小技巧
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/GDB/gdb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GDB 显示 ptrace: Operation not permitted
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MIPS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            MIPS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/MIPS/MIPS%20%E6%8C%87%E4%BB%A4%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MIPS 指令分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/MIPS/mips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mysql
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mysql
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/mysql/mysql%20errorcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MYSQL 中文乱码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/mysql/mysql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 总览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20command/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network command
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20debug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network debug
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20gateway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20nmcli%20802.1x/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network nmcli 802.1x
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Network/network%20ufw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    network ufw
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Nginx
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/nginx/nginx%20403%20forbidden/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx 解决 403 forbidden
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/nginx/nginx%20https/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx 配置 https
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/nginx/nginx%20location/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx 多台路由器
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/nginx/nginx%20vue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx 部署 Vue 项目
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/nginx/nginx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx 反向代理就是不成功
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pywinauto
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Pywinauto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/pywinauto/note1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Note1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    QT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            QT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QLayerout%20%E6%8A%A5%E9%94%99/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QLayerout 报错
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QT%20%E5%85%A5%E9%97%A8%E7%9A%84%E8%B5%84%E6%96%99/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QT 入门的资料
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QT%20%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QT 问题记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QT4%20%E5%88%B0%20QT5%20%E7%9A%84%E4%B8%8D%E5%90%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QT4 到 QT5 的不同
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QTDesigner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QTDesigner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QTableWidget%20%E5%A2%9E%E5%88%A0%E9%A1%B9%E7%9B%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QTableWidget 增删项目
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QTableWidget%20%E8%B0%83%E6%95%B4%E5%AE%BD%E5%BA%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QTableWidget 调整宽度
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QTextBrowser%20%E8%AE%BE%E7%BD%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QTextBrowser 设置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QTextEdit%20%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QTextEdit 添加内容
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/QTextEdit%20%E8%AE%BE%E7%BD%AE%E6%9C%80%E5%A4%A7%E8%A1%8C%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QTextEdit 设置最大行数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/%E6%9F%A5%E7%9C%8B%20QT%20%E7%89%88%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查看 QT 版本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/QT/%E8%81%94%E5%8A%A8%E4%B8%8B%E6%8B%89%E6%A1%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    联动下拉框
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Shell
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Shell
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20ack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command ack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20awk%20sed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command awk sed
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20chsh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command chsh
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20cp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command cp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20curl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command curl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20du/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command du
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20ps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command ps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20rm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command rm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20rsync/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command rsync
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20sort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command sort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20tar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command tar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20touch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command touch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/command%20useradd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    command useradd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/info%20env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    info env
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/info%20network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    info network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/info%20system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    info system
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/info%20zip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    info zip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Shell/something%20else/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    something else
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    VM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            VM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/VM/install%20in%20virtualbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    虚拟机二：Virtualbox 安装 Arch 遇到的一些问题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/VM/install%20in%20vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    虚拟机一：VMware 安装 Arch 遇到的一些问题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/VM/migrate%20from%20vm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    虚拟机三：虚拟机迁移到物理机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/VM/virtualbox%20centos%20addition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CentOS 安装 Virtualbox 增强功能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/VM/virtualbox%20install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArchLinux 安装 VirtualBox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/VM/virtualbox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    virtualbox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vim
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Vim
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20variable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim variable
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20tabkey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 中命令行更改 Tab 不起作用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20copy%20paste/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 中复制和粘贴的问题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20errorcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 乱码问题
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20export/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 导出文件为其他格式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 映射键位的一些注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20tab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 标签就是何方神圣
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20format/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vim 格式化代码
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20debug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vimrc not working
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vimscript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vimscript 简单实例
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/vim%20normal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    normal 命令后面的感叹号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/%E6%9C%AA%E5%BD%92%E7%B1%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    未归类
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/key%20ctrl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    key ctrl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/key%20leader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    key leader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/key%20other/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    key other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/key%20plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    key plugin
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/Vim/key%20search/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    key search
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    WSL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            WSL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/WSL/WSL2%20%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WSL2 配置代理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/WSL/Win%20%E4%B8%8E%20WSL%20%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Win 与 WSL 互相访问文件系统
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/apache/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/chrome/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    chrome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/clash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    clash
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/edge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    edge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/firefox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    firefox
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    git
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/gnome%20terminal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gnome terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/i3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    i3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/ida/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ida
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/latex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    latex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/makefile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    makefile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/mongod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mongod
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/nas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/nodejs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nodejs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/okular/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    okular
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/pacman/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pacman
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/pdf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pdf
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/pip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/polybar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    polybar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/radare2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    radare2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/ranger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ranger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/rdp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rdp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/redis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    redis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/ssh/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ssh
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/texlive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    texlive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/tmux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tmux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CheatSheet/vue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../weechat.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    weechat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Misc
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    README
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build%20hexo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hexo 博客搭建
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cat%20hugefile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何在命令行中输出大文件中的一小段
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../change%20font/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 下修改(系统)字体
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../check%20websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    命令行测试 WebSocket
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../font/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    折腾字体的总结
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux%20remount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 重新挂载目录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nas%20pt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过 NAS 实现 BYPT 的做种
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    P2P 技术科普
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    P2P 技术科普
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#p2p_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、P2P 基本原理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p2p_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、P2P 的发展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、P2P 的发展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#napster" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一代、Napster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2p-p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二代、非结构化 P2P 和 结构化 P2P
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bt" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、BT 工作原理简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、BT 的缺陷和改进
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../screen%20sharing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    宿主机和虚拟机共享屏幕
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supervisor%20in%20virtual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在虚拟环境中使用 supervisor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemctl%20tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systemd 入门教程：实战篇
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thinkpad%20x1c%20problem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Thinkpad X1 Carbon 2018 款的问题汇总
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows%20key/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows 调整键盘映射
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows%20udisk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Win10 电脑无法识别 U 盘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zsh%20slow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ZSH 速度太慢原因排查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    VPN
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            VPN
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VPN/debug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VPN 问题记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VPN/polipo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    利用 polipo 实现全局代理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VPN/vpn%20study/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vpn study
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    V2ray
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            V2ray
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VPN/V2ray/readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Readme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#p2p_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、P2P 基本原理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p2p_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、P2P 的发展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、P2P 的发展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#napster" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一代、Napster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2p-p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二代、非结构化 P2P 和 结构化 P2P
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bt" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、BT 工作原理简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、BT 的缺陷和改进
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="p2p">P2P 技术科普</h1>
+<p>基本都是照抄这下面两个链接，进行稍微改动，非常感谢！转载请务必转这两个地址！</p>
+<ul>
+<li>
+<p><a href="http://blog.kakarott.net/archives/category/p2p">p2p科普 – kakarott of Might And Magic</a></p>
+</li>
+<li>
+<p><a href="https://www.aneasystone.com/archives/2015/05/how-does-magnet-link-work.html">磁力链接是如何实现下载的？ - aneasystone's blog</a></p>
+</li>
+</ul>
+<h2 id="p2p_1">一、P2P 基本原理</h2>
+<p>在 P2P 技术之前，网络中的所有人大多都是通过一种叫做 “<strong>客户端 / 服务器</strong>” 的模式被组织在一起。<strong>一个服务器向很多客户提供服务</strong>。</p>
+<p>举个例子吧： kaka 有一台机子，里面存有全套的央视春晚，他想把他的挚爱分享给所有人。于是不论是通过广告还是别的什么方式，很多人知道了 kaka 有这个资源的消息。通过网络，他们就可以向 kaka 建立连接并从他的机子上下载。这样就形成了一个以 kaka 为中心的小型网络。这当中，kaka 是服务器，其他人都是客户端。</p>
+<p>我们来看看这种模式天生的一些弱点：</p>
+<ol>
+<li>服务器扮演的角色太重了，网络的一切都指着他。假如 kaka 不小心把电脑从 6 楼扔下去，<strong>整个网络就都瘫痪了</strong>。请注意，想要把一个服务器弄失灵的方法太多了，所以使用这中模式的风险是比较大的。</li>
+<li><strong>网络的资源利用率低下</strong>。所有客户都只能从服务器那获得资源，因为他们之间不认识，甚至不知道相互的存在。然而，现实中，可能每个人都有自己独门的资源，比如日天有无数游戏，威哥有无数动漫电影……. 总之，整个网络的资源可能是服务器的无数倍。但是苦无客户端之间没有交流的渠道，所以<strong>资源无法互通</strong>。</li>
+<li>关于完美服务器的假设，基本不成立。</li>
+</ol>
+<p>P2P 技术就是要解决上述的问题已达到如下的效果： 所有人的资源都可以被别人找到并使用。没有哪个人特别重要，<strong>人人平等（peer-to-peer 就是这个意思）</strong>，任何一个人失灵都不会导致网络的死亡。</p>
+<p>这里以 Gnutella 为例，对 P2P 基本原理进行介绍。 Gnutella 是一种典型的 P2P 网络，很具代表性，以其为基础的软件有 Limewire。这种网络里，没有服务器。用户之间任意连接，如图二左所示：</p>
+<p><a href="https://tding.top/archives/be439524/1-2.jpg"><img alt="图1-2" src="https://tding.top/archives/be439524/1-2.jpg" />图 1-2</a></p>
+<p>Kaka 认识 ‘日天’‘curt’‘威’， 日天认识‘小胖’，威认识‘候泡’，Curt 认识 ‘路’。当然真正的网络有至少有成百上千个用户，这里只是展示一个小的局部。</p>
+<p>这个网络如何工作呢？比如 kaka 想要找一首叫‘走进新时代’的歌。一个基本交易要经过如下几步：</p>
+<ol>
+<li>kaka 给他的邻居们每人发一个请求消息，‘你们丫谁有走进新时代？’</li>
+<li>日天，威，curt 吐血，‘谁 tm 听这歌啊，我没有’。于是把 kaka 的消息转发给他们的邻居：日天发给小胖，威发给候泡，curt 发给路总。</li>
+<li>当 kaka 邻居的邻居们收到这个消息后，同样，先看看自己有没有。比如，候泡有这个歌，他就可以给 kaka 发个消息：‘爷这有，来下吧’</li>
+<li>卡卡于是可以直接去候泡那下载。</li>
+</ol>
+<p>很多人说在 p2p 里面，<strong>所有人即是服务器又是客户端</strong>。应该这样理解，比如，kaka 在上例中就是个客户端。 但当有人要想要春晚的时候，只要那人的请求消息能被转到 kaka 这，kaka 就可以成为一个服务器。</p>
+<p>最后要说的是 P2P 的现状以及应用。目前 P2P 与传统的‘客户端 / 服务器’模式可以说分庭抗礼，互为补充。那么为什么没能取而代之呢？因为，P2P 也有自身的弱点，其中包括：</p>
+<ol>
+<li>占带宽（50% 以上的网络带宽都是 P2P 占用的，搜索方法不灵）</li>
+<li>安全（不具体解释了，太专业了，总之和加密那些东西有关）</li>
+<li>诚信（没有中央控制，你传个毛片也可以告诉你是新闻联播）</li>
+<li>自私（我什么都不付出，有也说没有）</li>
+<li>知识产权保护（在中国相当于盗版的集散地）等等。 至于这些问题的对策以及其不足，以后会做专题介绍。</li>
+</ol>
+<h2 id="p2p_2">二、P2P 的发展</h2>
+<p>下面，简要介绍一下 P2P 技术的发展。</p>
+<h3 id="napster">第一代、Napster</h3>
+<p>这一代的 p2p 只是<strong>把资源从服务器上拿掉了</strong>。中央服务器上只有一个目录。这个目录记录着哪个用户有哪些资源。要建立这样的一个目录，要求网络中的每个人都要告诉这个服务器：他有什么资源。</p>
+<ol>
+<li>Kaka 发一个资源请求向中央服务器。</li>
+<li>这个服务器然后检索目录，并告诉 Kaka，日天有他要的东西。</li>
+<li>Kaka 直接去找日天下东西。</li>
+</ol>
+<p>这样做，解决了高带宽需求（服务器只需要转发一些消息，而不用真格的提供资源），低资源利用率的问题（网络里谁都可以发挥作用了）。但是，他仍然面临严重的【单一故障点】风险。同时，napster 的出现严重挑战了知识产权法，并最终导致其在 2001 年被勒令关闭。</p>
+<h3 id="p2p-p2p">第二代、非结构化 P2P 和 结构化 P2P</h3>
+<p>Napster 帝国的坍塌，导致了江湖上群雄并起，老的规矩也就法不责众了，其中 Gnutella 等非结构的 P2P 脱颖而出。非结构化说白了就是，用户之间瞎连，没有规定谁必须和谁有连接，基本随机。其基本搜索方法是地毯式的，如果这样的搜索能够遍及整个网络。那么，只要资源存在就一定能一网打尽。</p>
+<p>但是上天要求每一个用户都要给自己资源请求加一个限制，于是每个资源请求都只能走几步就必须停了，即使什么都还没找到。因为地毯式的搜索要消耗大量的网络资源，比如，平均一个人有 4 个邻居，如果资源请求的限制为 5. 那么一共需要 4+42+43+44+45=<strong>1364</strong> 个信息，每个信息多大呢？大概几 k 到几十 k，也就是说一个信息就<strong>至少几 m</strong>。一个人一个信息就这么大了，想想一个大网络，每人十几个邻居，限制提高到 7 或 8. 这就是为什么中国很多地方，尤其是网吧限制 p2p. 因为他们可怜的带宽都被 p2p 的请求信息占用了。</p>
+<p>当然，p2p 的设计者们都看到了问题，于是提出了很多<strong>新的搜索方法</strong>。这些方法可以分成两种：</p>
+<ol>
+<li><strong>根据以前的搜索信息对以后的搜索进行预测</strong>；根据经验的搜索准确率可能会高一点，但是这种方法要求每个用户都要建一些表来记录以前的数据，而且每次发送或接到请求都要经过一系列的计算才能决定发给哪个邻居。而且程序上难以实现，更重要的是平均准确率并不比瞎找好很多。这里就不多做介绍了。</li>
+<li><strong>瞎找，碰运气</strong>。介绍两种最常见的：</li>
+<li><strong>K-walkers</strong>: 第一个人先把消息发给 k 个邻居，具体多少都自己定。 然后从第一轮邻居开始都只把消息转发给他们的一个邻居。</li>
+<li><strong>水纹式（涟漪式）</strong>：先定一个限制。第一个人先发给第一层的邻居。如果第一层不灵，他们再发给他们的邻居。一旦找到资源就不再继续了。这样的话最坏的情况就是原始的地毯式。好点的情况就是，消息没到限制就找到了相应的资源，就停了。</li>
+</ol>
+<p>这种非结构的 p2p 的优点在于，操作简单，完全不需要中央控制，所以又称为【存（纯）p2p】。其缺点同样明显，要么牺牲搜索成功率，要么牺牲带宽占有量。</p>
+<p>于是又有人提出了<strong>结构化的 P2P</strong>。数学的东西我就不说了，基本的思想就是：</p>
+<ol>
+<li>每个用户，资源都得有个名字。</li>
+<li>有一种数学加密方法，对这些名字加密。且保证如果名字不同，那么得到的结果就不同。</li>
+<li>如一资源和一用户加密后结果接近，就把该资源的地址放到相应的用户身上。</li>
+</ol>
+<blockquote>
+<p>举个例子：</p>
+<p>有三个人，日天，kaka，威哥。三个资源：“一剪梅.mp3”,“八荣八耻歌歌词.txt”,“xxx.avi”，对这六个东西加密后分别得到： 100，200，3000， 3002， 233，98，‘xxx.avi’的下载地址就会被分配到‘日天’的机子上，于是当你想搜索 “xxx.avi”，你的消息就会通过某种方法被传到到日天那。</p>
+</blockquote>
+<p>这样，结构化的 P2P 就可以保证，只要网络里有相应的资源，就一定能找到。但是由于其程序实现的难度，加之维护网络所需的投入太大，并不被经常使用。尽管他有很漂亮的数据。</p>
+<p>当然还有第三代的，以后再做专题。</p>
+<h2 id="bt">三、BT 工作原理简介</h2>
+<p>2002 年左右，程小胖告诉我有一种软件可以下片，人越多越快。很神奇。请注意，并不是所有的 P2P 技术都能做到这点，其他的 P2P 基本上只是<strong>提高网络资源的利用率，但是，网络中的每一单买卖都仍然采用，1 对 1 的客户端服务器模式</strong>。回顾一下之前讲过的 P2P，去掉技术细节，做一单买卖可以这样描述：</p>
+<ol>
+<li>有人向网络发一个资源请求（请求者）。有很多种搜索方法可供选择。</li>
+<li>当一个有该的资源的人（提供者）收到这个的请求，他会设法通知请求者：他那有其想要的东西。</li>
+<li>于是请求者去找提供者下载。</li>
+</ol>
+<p>这样做的一个<strong>缺点</strong>就是，比如，我选择了一个比较矬的提供者，而那人的带宽只有 30k，然而网络中还有很多潜在提供者，可能有的人能达到 30m。但是由于我在选择时只无法对对方的带宽做出判断而无福消受。</p>
+<p>这样做还有一个致命的漏洞！比如，我收到一个关于 “海贼王” 的请求，而且我有全套。按理说我应该通知请求者，让他来我这下。但是，让他来我这里下东西，对我来说，除了占我带宽，增加我中毒的风险，没有任何的好处。那我凭什么主动邀请他来？？我何不装 ytd，对该请求视而不见？非常不幸的是，跟我有相同想法的孙子在一般 p2p 网络里面占了大多数，甚至绝大多数。这就是搭便车问题（free riding）。所幸还是有一些大侠的，无偿的提供着大量资源，他们的存在使得那些一般的 P2P 得以侥幸存活。</p>
+<p>其实，如果仅仅依赖活雷锋们，P2P 就失去了其人人平等的意义。大侠们回复了网络中绝大多数的请求，于是人人都愿意与这些人建立连接，因为这样能更快的找到资源。于是这些大侠们就成了变得越来越红，网络的拓扑结构将会发生变化。</p>
+<p><strong>这样的变化很不好，因为 P2P 又逐渐变成了客户端 / 服务器模式了。</strong></p>
+<p>于是，不论是学术界还是产业界都意识到，如果没有一种<strong>鼓励机制</strong>来刺激提供者，P2P 将失去其天生的魅力。在众多解决方案中 BT 脱颖而出，迅速发展了起来。BT 是简称，在国外可能会产生歧义，如 British Telecommunications 等等。所以大家尽量还是用全称，尤其是和外国人说的时候 Bit-Torrent。有人说 BT 是第三代的 P2P，我认为这是因为他把 P2P 的理念更加深入的实现了。</p>
+<p>在 BitTorrent 当中，所有的资源都被切成很小的等份（碎片）。这里，你不需要知道怎么切，只需要知道有一种技术可以把一个文件切成很多小等份，还能把这些等份再重新的组装。在这个技术的支持下，bittorrent 中所有有相同请求的用户可以相互传资源的碎片。而且谁传的多，谁就将获得更多。具体技术如下：</p>
+<ul>
+<li>首先，有同样资源请求的人怎么能相互认识呢？bittorrent 中每一个资源都对应有一个叫 <strong>tracker</strong> 的服务器。只要你对一个资源有意思，你就必须先联系这个资源相应的 tracker。或者你想要共享一个资源你也必须联系 tracker。这样的话，tracker 就掌握着整个网络中<strong>谁想要这个资源</strong>以及<strong>谁有这个资源</strong>。当然，为了节约，一个 tracker 可以负责多种资源。</li>
+<li>那么，怎么找到 tracker 呢？大家可能听说过做种子，每个有完整资源的人都可以做种子，其实就是生成一个后缀是.torrent 的文件。每一款 bittorrent 应用软件都会自动帮你生成，所以不用担心。你只要知道这个文件中包括两部分内容：<code>1，tracker的地址。2，相关资源的一些属性，比如大小，名字等等。</code>这个 torrent 文件一般都可以发布在网上，比如某某人的博客，或者论坛上。</li>
+<li>于是，大家可以从网上找到 torrent 文件，并从中知道 tracker 在哪。再通过联系 tracker 得到一个<strong>名单</strong>，其中包括一部分正在下载或有完整资源的用户。这时候，你就可以与这些人建立链接，并分别从他们身上要不同的碎片。当然要相同资源的人越多，你可以建立连接的人就越多，也就更可能早日得到所有碎片。</li>
+<li>还有一点很重要就是，bittorrent 有自己的<strong>鼓励机制</strong>，就是说，你做的贡献大就会被鼓励，你不做贡献就会被惩罚。具体的操作是，<strong>每个人在下载的同时也上传，比如说我正在下载完分片一之后，同时也可以把分片一传给其他正在下载的用户</strong>。传给谁呢？谁给我给的多，我就传给谁。而且我只传个前 4 名的（视具体软件具体分析，也可能是前 8 名或其他）。</li>
+</ul>
+<h2 id="bt_1">四、BT 的缺陷和改进</h2>
+<p>Bittorrent 大概的工作原理就是这样了，还有些细节这里不多说了。我个人认为 Bittorrent 的设计还是很不错的，但是其只适用于文件共享，或视频共享。然而网络中的资源又何止电影音乐？？绝大多数的资源是不可分的，bittorrent 的局限性还是相当大！ 另一点可悲的是，大多数宽带用户是 ADSL，也就是说他们的下载上传的带宽上限差别很大，比如，下载最大 2m/s，上传却只有 100k/s。这也限制了 bittorrent 的发挥。</p>
+<p>此外可以看出 Tracker 服务器在 BT 网络中充当着非常重要的作用，和传统的客户端/服务器模式一样，Tracker 服务器同样会存在单点故障问题。所以在 BT 技术的基础上，后来又衍生出 DHT 网络和磁力链接技术，DHT 全称为分布式哈希表（Distributed Hash Table），是一种分布式存储方法。</p>
+<p>DHT网络是 Tracker-less 的，不依赖于其他的 Tracker 服务器。在这种情况下，每个客户端负责一个小范围的路由，并负责存储一小部分数据，从而实现整个 DHT 网络的寻址和存储。使用支持该技术的 BT 下载软件，用户无需连上 Tracker 就可以下载，因为软件会在 DHT 网络中寻找下载同一文件的其他用户并与之通讯，开始下载任务。</p>
+<p>在网络中定位资源最简单的方法是 URL（统一资源定位符），它是通过资源的位置来进行定位。而在 DHT 网络中，则是使用 URN（统一资源名称）来进行定位，磁力链接就是基于文件内容的散列函数值来链接到特定文件，生成一个唯一的文件识别符，从而在DHT网络中定位并下载文件。 一个最简单的磁力链接格式如下：<code>magnet:?xt=urn:btih:51df6808c739174c8f264701ba94460c5238d6ce</code>，其中  <code>urn</code> 为统一资源名称，<code>btih</code> 是 BitTorrent Info Hash 的缩写，是 BitTorrent 使用的 Hash 函数。除了 <code>btih</code> 还可以是其他类型的 Hash函数，但不如 <code>btih</code> 用的多。这一串长度为 40 的字符串正是文件内容的 Hash，BT 下载工具就根据这个 Hash 在 DHT 网络中定位下载文件。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen)
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="/js/open_in_new_tab.js"></script>
+      
+    
+  </body>
+</html>
