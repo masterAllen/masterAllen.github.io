@@ -52,6 +52,8 @@
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
+
 
     
     
@@ -115,6 +117,43 @@
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     
     
       <div class="md-header__source">
@@ -975,11 +1014,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../QT/QLayerout%20%E6%8A%A5%E9%94%99/" class="md-nav__link">
+      <a href="../../QT/QLayout%20%E6%8A%A5%E9%94%99/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    QLayerout 报错
+    QLayout 报错
   </span>
   
 
@@ -3104,7 +3143,7 @@
             
   
   <span class="md-ellipsis">
-    Misc
+    Linux
   </span>
   
 
@@ -3113,6 +3152,111 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/cat%20hugefile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 如何在命令行中输出大文件中的一小段
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/change%20font/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 下修改(系统)字体
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/linux%20remount/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 重新挂载目录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Misc
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Misc
           </label>
@@ -3167,48 +3311,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Misc/cat%20hugefile/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    如何在命令行中输出大文件中的一小段
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Misc/change%20font/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Linux 下修改(系统)字体
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../Misc/check%20websocket/" class="md-nav__link">
         
   
@@ -3235,27 +3337,6 @@
   
   <span class="md-ellipsis">
     折腾字体的总结
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Misc/linux%20remount/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Linux 重新挂载目录
   </span>
   
 
@@ -3356,74 +3437,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Misc/systemctl%20tutorial/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Systemd 入门教程：实战篇
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../Misc/thinkpad%20x1c%20problem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Thinkpad X1 Carbon 2018 款的问题汇总
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Misc/windows%20key/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Windows 调整键盘映射
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Misc/windows%20udisk/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Win10 电脑无法识别 U 盘
   </span>
   
 
@@ -3475,10 +3493,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3489,8 +3507,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             VPN
           </label>
@@ -3573,10 +3591,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
         
           
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3587,8 +3605,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             V2ray
           </label>
@@ -3618,6 +3636,90 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Windows/windows%20key/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows 调整键盘映射
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Windows/windows%20udisk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Win10 电脑无法识别 U 盘
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3738,26 +3840,18 @@
   <h1>虚拟机二：Virtualbox 安装 Arch 遇到的一些问题</h1>
 
 <p>Virtualbox 似乎对我而言比 VMWare 更好一点，来看看吧~</p>
-<!--more-->
-
 <h2 id="virtualbox-vmware">Virtualbox 比 VMware 的好处</h2>
-<ol>
-<li>
-<p>Thinkpad 中键和 windows 宿主机行为一样。
+<p>1. Thinkpad 中键和 windows 宿主机行为一样。<br />
 windows 里面如果安装 tpmiddle，这样会让 thinkpad 的中键和鼠标中键效果一样，但是发现这招在 VMware 里面就失效了，但是在 Virtualbox 中竟然是 OK 的！</p>
-</li>
-<li>
-<p>Virtualbox 支持自定义热键。
+<p>2. Virtualbox 支持自定义热键。<br />
 这样有什么好处呢。主要方便切换虚拟桌面，我一般定义热键为 <code>Ctrl+Alt</code>，然后<a href="https://github.com/sdias/win-10-virtual-desktop-enhancer">改变 Windows 虚拟桌面快捷键</a>，改变为 <code>Ctrl+Alt+h/l</code>。此时我就可以在虚拟机中按一次 <code>Ctrl+Alt</code>，紧接着按一次 <code>Ctrl+Alt+h/l</code> 就可以切换到下一个虚拟桌面了~</p>
-</li>
-</ol>
 <h2 id="ovf">导入 ovf</h2>
-<p>导入 ovf 之后，如果立刻启动，会发现有错误: no bootable ...，需要对虚拟机设置做如下调整(参考1)
-1. General &gt; Basic: Set Type to Linux
-2. General &gt; Basic: Set Version to Arch Linux (64-bit)
-3. System &gt; Motherboard: Check Enable I/O APIC
-4. System &gt; Motherboard: Check Enable EFI (special OSes only)
-5. Storage &gt; Controller: SCSI: Set Type to AHCI
+<p>导入 ovf 之后，如果立刻启动，会发现有错误: no bootable ...，需要对虚拟机设置做如下调整(参考1)<br />
+1. General &gt; Basic: Set Type to Linux<br />
+2. General &gt; Basic: Set Version to Arch Linux (64-bit)<br />
+3. System &gt; Motherboard: Check Enable I/O APIC<br />
+4. System &gt; Motherboard: Check Enable EFI (special OSes only)<br />
+5. Storage &gt; Controller: SCSI: Set Type to AHCI<br />
 6. Storage &gt; Controller: SCSI: Set Name to SATA</p>
 <p>其中最后两步可能会不知道怎么弄，最终结果如下图所示。首先通过红圈所标注地方添加 SATA 硬盘，然后把我们原来的硬盘移到那里就可以了。</p>
 <p><img alt="change_storage" src="/asset/image/20210306001.png" /></p>
@@ -3773,20 +3867,20 @@ systemctl start  vboxservice.service
 # 把下面这条命令添加到自启动中，比如我使用 i3wm 就在 i3 配置文件中加入这条语句
 VBoxClient-all
 </code></pre>
-<p><strong>2021/05/17 更新</strong>
+<p><strong>2021/05/17 更新</strong><br />
 安装 Centos 发现运行增强功能那个安装脚本不太行，详情看 《CentOS 安装 Virtualbox 增强功能》 这篇文章。</p>
 <h2 id="_3">全屏和无缝</h2>
-<p>全屏功能在 i3wm 这个图形环境中会发现显示是透明的，解决方法为: Settings -&gt; User Interface -&gt; Disable (show in full-screen/semaless)
+<p>全屏功能在 i3wm 这个图形环境中会发现显示是透明的，解决方法为: Settings -&gt; User Interface -&gt; Disable (show in full-screen/semaless)<br />
 无缝功能在 i3wm 下也是有问题的，设置方法同上。</p>
 <h2 id="_4">剪切板，文件夹</h2>
-<p>剪切板没什么说的，设备-&gt;共享剪切板-&gt;双向。
+<p>剪切板没什么说的，设备-&gt;共享剪切板-&gt;双向。<br />
 文件夹没什么说的，设备-&gt;共享文件夹，设定一个文件夹，固定分配、自动挂载。</p>
-<p><strong>2021/09/07 更新</strong>
-剪切板出了问题。如果从 Chromium 类的浏览器地址栏复制 URL，那么就会使得共享剪切板 Crash，换个浏览器吧..
+<p><strong>2021/09/07 更新</strong><br />
+剪切板出了问题。如果从 Chromium 类的浏览器地址栏复制 URL，那么就会使得共享剪切板 Crash，换个浏览器吧..<br />
 参考: https://forums.virtualbox.org/viewtopic.php?f=7&amp;t=91093#p438689</p>
 <h2 id="_5">参考链接</h2>
-<p>[1] https://blog.amanshortly.com/importing-ovf-templates-of-vms-that-use-uefi-boot-mode/
-[2] https://parrotsec-cn.org/t/topic/1397
+<p>[1] https://blog.amanshortly.com/importing-ovf-templates-of-vms-that-use-uefi-boot-mode/<br />
+[2] https://parrotsec-cn.org/t/topic/1397<br />
 [3] https://www.virtualbox.org/ticket/15092</p>
 
 
@@ -3800,7 +3894,49 @@ VBoxClient-all
 
 
 
+  
 
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback! Help us improve this page by using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
 
 
                 
