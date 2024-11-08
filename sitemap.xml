@@ -433,6 +433,10 @@
          <lastmod>2024-11-08</lastmod>
     </url>
     <url>
+         <loc>https://localhost:8000/Linux/caps%20to%20ctrl/</loc>
+         <lastmod>2024-11-08</lastmod>
+    </url>
+    <url>
          <loc>https://localhost:8000/Linux/cat%20hugefile/</loc>
          <lastmod>2024-11-08</lastmod>
     </url>
@@ -441,7 +445,19 @@
          <lastmod>2024-11-08</lastmod>
     </url>
     <url>
+         <loc>https://localhost:8000/Linux/hidip%20setting/</loc>
+         <lastmod>2024-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/Linux/libinput%20setting/</loc>
+         <lastmod>2024-11-08</lastmod>
+    </url>
+    <url>
          <loc>https://localhost:8000/Linux/linux%20remount/</loc>
+         <lastmod>2024-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/Linux/urxvt%20setting/</loc>
          <lastmod>2024-11-08</lastmod>
     </url>
     <url>
