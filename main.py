@@ -63,8 +63,10 @@ if __name__ == '__main__':
             if nowname == '材料' or nowname == 'references':
                 # TODO: 如果是材料目录，那么就单独写一个 README，把这些文件都放进去
                 pass
-            elif nowname == 'src' or nowname == 'code':
+            elif nowname in ['src', 'code', 'asset']:
                 # TODO: 如果是 src 目录，同样单独写一个 README，把这些文件都放进去
+
+                # 1. 只会把文件放进去，如果是 markdown 那么就转为 html
                 pass
             elif nowname.startswith('image'):
                 continue
@@ -133,7 +135,6 @@ if __name__ == '__main__':
         # 本次目标目录的文件也要放在总体的记录表中
         for srcpth, dstpth in nowdir_finalfiles.items():
             newfiles[srcpth] = dstpth
-
 
 
     # 保存好各个文件的时间记录、对应生成的文件记录

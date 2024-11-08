@@ -105,10 +105,9 @@ def do_png(srcdir, dstdir, assetdir, nowname, newname):
 def do_pdf(srcdir, dstdir, assetdir, nowname, newname):
     # # 原文转成 markdown
     # srcpth = os.path.join(srcdir, nowname)
-    # dstpth = os.path.join(dstdir, f'{dstname}.md')
+    dstpth = os.path.join(dstdir, f'{newname}.md')
     # os.system(f'pandoc -f docx -t markdown {srcpth} -o {dstpth}')
-
-    pass
+    return dstpth
 
 def do_word(srcdir, dstdir, assetdir, nowname, newname):
     # # 原文转成 markdown
@@ -185,12 +184,15 @@ def do_txt(srcdir, dstdir, assetdir, nowname, newname):
             content = srcf.readlines()
 
         flag = False
-        for oneline in content:
-            if oneline[0] == '#':
+        for idx in range(len(content)):
+            if content[idx][0] == '#':
                 flag = True
                 break
 
         if flag:
+            for idx in range(len(content)):
+                if content[idx].startswith('# '):
+                    content[idx] = '## ' + content[idx][2:]
             f.writelines(content)
         else:
             f.writelines('```\n')
