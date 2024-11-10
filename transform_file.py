@@ -9,33 +9,64 @@ import numpy as np
 from PIL import Image
 
 def do_md(srcdir, dstdir, assetdir, nowname, newname):
+    # 添加反斜杠，用于有序列表，即 1. 变为 1\.
+    def add_slash(m):
+        matched_txt = m.group()
+        return matched_txt[:-2] + '\\' + matched_txt[-2:]
+
+    # 存储图片链接，并且把文档中的图片链接转为存储路径
+    def change_pth(m):
+        link_name, link_pth = m.group(1), m.group(2)
+        # 如果里面的链接是 base64 编码，那么可以不处理
+        if link_pth.startswith('data:image'):
+            return link_pth
+
+        # 把图片放到资料库中，然后把源文件修改
+
+        # 如果一开始就发现存在文件，则是绝对路径；否则就根据当前文件路径加上这个相对链接，就得出图片绝对路径
+        if not os.path.exists(link_pth):
+            link_pth = os.path.join(srcdir, link_pth)
+        
+        if os.path.exists(link_pth):
+            if link_pth.endswith('html'):
+                pass
+            else:
+                imgname = os.path.basename(link_pth)
+                dstimg = os.path.join(assetdir, 'image', imgname)
+                shutil.copyfile(link_pth, dstimg)
+
+                return f'![{link_name}](/asset/image/{imgname})'
+        else:
+            print('没见过的链接', '链接：', link_pth, '原文', srcdir, nowname)
+            return ''
+
+
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
     shutil.copyfile(srcpth, dstpth)
 
+    text = open(dstpth, 'r', encoding='utf-8').read()
+
     # 找到 md 文档中的图片链接，即 ![]()
     pattern = r'!\[(.*?)\]\((.*?)\)'
-    text = open(dstpth, 'r', encoding='utf-8').read()
-    matches = re.findall(pattern, text)
-    for match in matches:
-        # 如果里面的链接是 base64 编码，那么可以不处理
-        if match[1].startswith('data:image'):
-            continue
+    text = re.sub(pattern, change_pth, text)
 
-        # 把图片放到资料库中，然后把源文件修改
-        srcimg = match[1]
-        # 如果一开始就发现存在文件，则是绝对路径；否则就根据当前文件路径加上这个相对链接，就得出图片绝对路径
-        if not os.path.exists(srcimg):
-            srcimg = os.path.join(srcdir, match[1])
-        
-        if os.path.exists(srcimg):
-            imgname = os.path.basename(srcimg)
-            dstimg = os.path.join(assetdir, 'image', imgname)
+    # 找到 md 文档中的有序列表，即 1.
+    pattern = r'( *[\d+]\. )'
 
-            shutil.copyfile(srcimg, dstimg)
-            text = text.replace(match[1], f'/asset/image/{imgname}')
-        else:
-            print('没见过的链接', '链接：', match[1], '原文', srcdir, nowname)
+    # 如果有序列表下一行是 - 开头，那么要加个换行
+    newlines = []
+    for idx, m in enumerate(re.finditer(pattern, text)):
+        lo, hi = m.span()
+        pos1 = text.find('\n', hi)
+        pos2 = text.find('\n', pos1+1)
+        if text[pos1+1:pos2].strip().startswith('-'):
+            newlines.append(pos1)
+    for idx, pos in enumerate(newlines):
+        text = text[:pos+idx] + '\n' + text[pos+idx:]
+
+    # 把有序列表替换为 1\.
+    text = re.sub(pattern, add_slash, text)
 
     with open(dstpth, 'w', encoding='utf-8') as f:
         f.write(text)
@@ -195,7 +226,9 @@ def do_txt(srcdir, dstdir, assetdir, nowname, newname):
                     content[idx] = '## ' + content[idx][2:]
             f.writelines(content)
         else:
-            f.writelines('```\n')
+            f.writelines('`````\n')
             f.writelines(content)
-            f.writelines('\n```')
+            if content[-1][-1] != '\n':
+                f.writelines('\n')
+            f.writelines('`````')
     return dstpth

@@ -122,7 +122,9 @@ if __name__ == '__main__':
             rules_file = open(os.path.join(nowdst, '.pages'), 'w', encoding='utf8')
             rules_file.writelines('nav: \n')
             rules_file.writelines('  - ...\n')
-            for srcpth, dstpth in nowdir_finalfiles.items():
+            srcpths = sorted(nowdir_finalfiles.keys())
+            for srcpth in srcpths:
+                dstpth = nowdir_finalfiles[srcpth]
                 src_basename = os.path.basename(srcpth)
                 dst_basename = os.path.basename(dstpth)
                 for rule_type, re_str in rules:
