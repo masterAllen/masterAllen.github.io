@@ -93,7 +93,7 @@ if __name__ == '__main__':
                     newfile = transform_file.do_html(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('ipynb'):
                     newfile = transform_file.do_ipynb(nowsrc, nowdst, assetdir, nowname, newname)
-                if nowname.endswith('PNG') or nowname.endswith('png'):
+                if nowname.endswith('PNG') or nowname.endswith('png') or nowname.endswith('jpg'):
                     newfile = transform_file.do_png(nowsrc, nowdst, assetdir, nowname, newname)
                 if nowname.endswith('pdf'):
                     newfile = transform_file.do_pdf(nowsrc, nowdst, assetdir, nowname, newname)
