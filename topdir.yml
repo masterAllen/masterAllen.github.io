@@ -1,0 +1,15 @@
+main_dir: Main
+
+other_dir:
+    课程和书籍:
+        - Books
+        - Courses
+        - 数学知识
+
+    CheatSheet: 
+        - CheatSheet
+
+    CV:
+        - 成像基础：光、颜色和相机
+        - ISP
+        - 图像处理
