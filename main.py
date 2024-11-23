@@ -9,10 +9,58 @@ import transform_file
 import parse_navbar
 import collections
 import shutil
+import json
+import yaml
 
 if __name__ == '__main__':
     srcdir = os.path.abspath('../done')
     dstdir = os.path.abspath(os.path.join('.', 'docs'))
+
+    # dirnames 表示待处理的文件夹
+    dirnames = collections.deque([])
+
+    # 设置导航栏
+    # 加载 topdir.yml 文件
+    topdir_info = yaml.load(open('./topdir.yml', 'r', encoding='utf8'), Loader=yaml.FullLoader)
+    topdir_main = topdir_info['main_dir']
+    topdir_tabnames = {}
+    for k, vs in topdir_info['other_dir'].items():
+        # 这里是因为：如果发现某个文件夹专享一个标签栏，那标签栏里面就是其中子文件夹，而不是这个文件夹本身（否则要多点一步）
+        if len(vs) == 1:
+            topdir_tabnames[vs[0]] = '.'
+        else:
+            for v in vs:
+                topdir_tabnames[v] = k
+
+    # 遍历 src，通过 topdir 将里面的文件夹转换为 dst 中新的名字
+    for nowsrc in os.listdir(srcdir):
+        if not os.path.isdir(os.path.join(srcdir, nowsrc)):
+            continue
+
+        if nowsrc in topdir_tabnames:
+            nowdst = os.path.join(dstdir, topdir_tabnames[nowsrc], nowsrc)
+            os.makedirs(nowdst, exist_ok=True)
+            dirnames.append((os.path.join(srcdir, nowsrc), nowdst))
+        else:
+            # 如果不在 topdir_tabnames 中，说明是主标签
+            nowdst = os.path.join(dstdir, topdir_main, nowsrc)
+            os.makedirs(nowdst, exist_ok=True)
+            dirnames.append((os.path.join(srcdir, nowsrc), nowdst))
+
+    # 再次遍历 src，只对里面的文件处理，把文件统一放在主导航栏所在的目录
+    for nowsrc in os.listdir(srcdir):
+        if not os.path.isdir(os.path.join(srcdir, nowsrc)):
+            shutil.copy(os.path.join(srcdir, nowsrc), os.path.join(dstdir, topdir_main))
+            continue
+
+
+    # 最后还要在里面写一个 .pages 文件，用于指定导航栏顺序
+    with open(os.path.join(dstdir, '.pages'), 'w', encoding='utf8') as f:
+        f.writelines('nav: \n')
+        f.writelines(f'  - {topdir_main}\n')
+        for k in topdir_info['other_dir']:
+            f.writelines(f'  - {k}\n')
+
 
     # 文件绝对路径：时间信息
     oldtimes = dict() 
@@ -29,8 +77,6 @@ if __name__ == '__main__':
     os.makedirs(assetdir, exist_ok=True)
     for ftype in ['html', 'pdf', 'image']:
         os.makedirs(os.path.join(assetdir, ftype), exist_ok=True)
-
-    dirnames = collections.deque([(srcdir, dstdir)])
 
     # 用于解析 windows 的文件
     import win32com.client 
@@ -132,6 +178,7 @@ if __name__ == '__main__':
             # 遍历原始文件夹，如果该文件在目标文件夹有生成的文件，那么就处理一下
             srcpths = sorted(os.listdir(nowsrc))
             for srcpth in srcpths:
+                srcpth = os.path.join(nowsrc, srcpth)
                 if srcpth in newfiles:
                     dstpth = newfiles[srcpth]
                     src_basename = os.path.basename(srcpth)
@@ -142,7 +189,6 @@ if __name__ == '__main__':
                             src_basename = transform_name.beautify_name(src_basename)
                             rules_file.writelines(f'  - {src_basename}: {dst_basename}\n')
             rules_file.writelines('order_by: title\n')
-        
 
     # 处理 link 文件
     for nowsrc, nowdst, srcname in link_files:
@@ -191,3 +237,9 @@ if __name__ == '__main__':
     for onepth in removed_pths:
         print(onepth, oldfiles[onepth])
         os.remove(oldfiles[onepth])
+
+    # 遍历目标目录，删除空目录
+    for root, dirs, files in os.walk(dstdir):
+        for dir in dirs:
+            if len(os.listdir(os.path.join(root, dir))) == 0:
+                os.rmdir(os.path.join(root, dir))

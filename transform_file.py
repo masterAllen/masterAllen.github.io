@@ -167,6 +167,7 @@ def do_word(srcdir, dstdir, assetdir, nowname, newname):
     with open(mdpth, 'w', encoding='utf-8') as f:
         f.writelines(f'# {newname}\n')
         f.writelines(f'**原文格式为 word，本文为转换后的图片。原文也转换了 [PDF 格式](/asset/pdf/{newname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
+        f.writelines('\n')
         for count, page in enumerate(pdf):
             imgpth = os.path.join(imgdir, f'out{count}.jpg')
             nowimg = page.render(scale=4).to_pil()
