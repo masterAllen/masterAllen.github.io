@@ -12,13 +12,13 @@
         <meta name="author" content="Allen Hong">
       
       
-        <link rel="canonical" href="https://localhost:8000/CV/ISP/BLC/BLC-1/">
+        <link rel="canonical" href="https://localhost:8000/CV/ISP/CCM/Readme/">
       
       
-        <link rel="prev" href="../../AWB/AWB-%20%E8%A7%86%E9%A2%91/">
+        <link rel="prev" href="../CCM-3/">
       
       
-        <link rel="next" href="../../BNR/BNR/">
+        <link rel="next" href="../../DPC/Readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>ISP——BLC(Black Level Correction) - Allen Hong's Blog</title>
+        <title>Readme - Allen Hong's Blog</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ispblcblack-level-correction" class="md-skip">
+        <a href="#readme" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ISP——BLC(Black Level Correction)
+              Readme
             
           </span>
         </div>
@@ -7061,8 +7061,6 @@
                 
   
   
-    
-  
   
   
     
@@ -7072,11 +7070,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
         
           
           <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
@@ -7090,7 +7088,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1_2">
             <span class="md-nav__icon md-icon"></span>
             BLC
@@ -7101,184 +7099,39 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    ISP——BLC(Black Level Correction)
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../BLC/BLC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    ISP——BLC(Black Level Correction)
+    BLC
   </span>
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
-    
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#bl" class="md-nav__link">
-    <span class="md-ellipsis">
-      BL产生的原因
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BL产生的原因">
-      <ul class="md-nav__list">
+    <li class="md-nav__item">
+      <a href="../../BLC/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      暗电流
-    </span>
-  </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ad" class="md-nav__link">
-    <span class="md-ellipsis">
-      AD前添加一个固定值
-    </span>
-  </a>
+  <span class="md-ellipsis">
+    说明
+  </span>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bl_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      BL校正
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BL校正">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sensor" class="md-nav__link">
-    <span class="md-ellipsis">
-      SENSOR端
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#isp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ISP端
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ISP端">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      扣除固定值法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iso" class="md-nav__link">
-    <span class="md-ellipsis">
-      ISO联动法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      曲线拟合法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      校正总结
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      具体实现
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      提示：
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -7342,6 +7195,454 @@
   
   <span class="md-ellipsis">
     BNR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../BNR/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CAC
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CAC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CAC/Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Readme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_5" id="__nav_4_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CCM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            CCM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CCM-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CCM-1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CCM-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CCM-2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CCM-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CCM-3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Readme
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_6" id="__nav_4_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DPC
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            DPC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DPC/Readme/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Readme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DPC/dpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ISP——DPC(Defective Pixel Correction)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_7" id="__nav_4_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    整体流程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            整体流程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-%20%E6%95%88%E6%9E%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    整体流程 - 效果
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    整体流程 -1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    整体流程 -2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    整体流程 -3
   </span>
   
 
@@ -7860,27 +8161,6 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/%E4%BA%AE%E5%BA%A6%20%E3%80%81%20%E8%89%B2%E8%B0%83%20%E3%80%81%20%E9%A5%B1%E5%92%8C%E5%BA%A6%E8%B0%83%E6%95%B4%E6%B5%81%E7%A8%8B/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    亮度 、 色调 、 饱和度调整流程
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
     
     
     
@@ -7892,10 +8172,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_5_4" id="__nav_4_2_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_5_3" id="__nav_4_2_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -7906,8 +8186,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_5_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_5_4">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_5_3">
             <span class="md-nav__icon md-icon"></span>
             HSV和HSL
           </label>
@@ -8006,140 +8286,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#bl" class="md-nav__link">
-    <span class="md-ellipsis">
-      BL产生的原因
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BL产生的原因">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      暗电流
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ad" class="md-nav__link">
-    <span class="md-ellipsis">
-      AD前添加一个固定值
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bl_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      BL校正
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="BL校正">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sensor" class="md-nav__link">
-    <span class="md-ellipsis">
-      SENSOR端
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#isp" class="md-nav__link">
-    <span class="md-ellipsis">
-      ISP端
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ISP端">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      扣除固定值法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iso" class="md-nav__link">
-    <span class="md-ellipsis">
-      ISO联动法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      曲线拟合法
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      校正总结
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      具体实现
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      提示：
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -8153,191 +8299,13 @@
                   
 
 
-<h1 id="ispblcblack-level-correction">ISP——BLC(Black Level Correction)</h1>
-<h2 id="bl">BL产生的原因</h2>
-<h3 id="_1">暗电流</h3>
-<p>暗电流（dark current），也称无照电流，指在没有光照射的状态下,在太阳电池、光敏二极管、光导电元件、光电管等的受光元件中流动的电流，一般由于载流子的扩散或者器件内部缺陷造成。目前常用的CMOS就是光电器件，所以也会有暗电流，导致光照为0的时候也有电压输出。</p>
-<p><img alt="" src="/asset/image/反向漏电流.jpg" /></p>
-<p>如图是二极管的伏安特性曲线，从图中可以看出在反向截止区域电流并不是完全为0，而我们的COMS内部其实也是PN结构成的，所以符合该特性，并且光电二极管是工作在反向电压下，所以无光照是的这个微小电流就是暗电流。</p>
-<h3 id="ad">AD前添加一个固定值</h3>
-<p>1. sensor到ISP会有一个AD转换的过程，而AD芯片都会有一个灵敏度，当电压低于这个阈值的时候无法进行AD转换，所以就人为添加一个常量使得原本低于阈值的这部分值也能被AD转换；</p>
-<p>2. 因为人眼对暗部细节更加敏感，而对高亮区没那么敏感，所以就增加一个常量牺牲人眼不敏感的亮区来保留更大暗区细节。</p>
-<p><img alt="" src="/asset/image/1.png" /></p>
-<p>以上两点的意思就是将AB提升到A'B',使得这个区间的值都能完成AD转换，而且这段区域能更好的保留暗区，也就是人眼敏感的部分，牺牲BC部分，因为这部分信息是人眼不敏感的，这样就更符合人眼的需求。</p>
-<h2 id="bl_1">BL校正</h2>
-<p>BL的校正现在一般会分为sensor端和ISP端两部分，但是我们专栏重点讨论ISP PIPELINE里的算法，所以sensor中的算法不重点讨论。</p>
-<h3 id="sensor">SENSOR端</h3>
-<p><img alt="" src="/asset/image/sensorPixelBlock.png" /></p>
-<p>如图这个是某一sensor像素阵列的分布，这个sensor最大出图分辨率为3280*2464，也就有效像素区。然后下面灰色部分还有个有效OPB区，这个区域就是sensor就行OB区域。这两个部分最大的区别在于，有效像素区是可以正常曝光的，而OB区在工艺上让它不能接受光子，最简单的想法就是在感光表明涂一层黑色的不感光物质，这样就能通过OB区无光照是的值来校正有效像素去的值。最简单的操作就是对OB去的像素值去平均，然后每个像素值减去这个值完成校正。当然现在sensor也会有些些高端的校正算法。</p>
-<p><img alt="" src="/asset/image/比亚迪.png" /></p>
-<p><img alt="斯特维" src="/asset/image/斯特维.png" /></p>
-<p>如图中思特威和比亚迪就提出了两种更加高级的算法，正如刚才所说，sensor端的处理不是本专栏的重点，所以不进行重点说明，有兴趣的可以自行研究，需要资料的可以留言。</p>
-<h3 id="isp">ISP端</h3>
-<p>ISP端的算法都是通过一副黑帧RAW图，然后对RAW图进行操作。下面都是以8位的进行说明。</p>
-<h4 id="_2">扣除固定值法</h4>
-<p><img alt="" src="/asset/image/1.png" /></p>
-<p>扣除固定值法就是每个通道扣除一个固定值，就如上图，将A'b'平移到AB就行。</p>
-<p>具体的做法如下：</p>
-<p><img alt="" src="/asset/image/bayer.png" /></p>
-<p>1. 采集黑帧RAW图，将其分为Gr,Gb,R,B四个通道；</p>
-<p>2. 对四个通道求平均值（有的算法也用中位值或者别的方式）；</p>
-<p>3. 后续图像每个通道都减去2中计算出的各个通道的校正值；</p>
-<p>4. 对Gr和Gb通道进行归一化，就是A'b'平移到AB后最大值就是B点的纵坐标，但是我们需要把这个值恢复到255使得恢复后的像素值范围依旧是0-255；<br />
-   $$<br />
-   \operatorname{Gin} \times \frac{255}{255-B L}<br />
-   $$<br />
-   通过上述公式就可以完成校正。然后需要注意的是RB通道不用归一化到0-255区间，因为后续的AWB中会通过gain将其范围提升到0-255，这个后续再AWB算法中再讨论。</p>
-<p>目前这种方式用的比较多，比如我接触的海思和Sonix都是用这种简单粗暴的方法，因为上面也说过Sensor端自己会有一个BL处理，所以后端通过这种简单的方式也能完成校正。</p>
-<h4 id="iso">ISO联动法</h4>
-<p>因为暗电流这些会和gain值还有温度等相关，所以通过联动的方式确定每个条件下的校正值。然后后面先通过参数查得相应的校正值进行校正。</p>
-<p>具体做法如下：</p>
-<p>1. 初始化一个ISO值（其实就是AG和DG的组合），然后重复固定值中的做法，采集黑帧，标定出各个通道的校正值；<br />
-2. 在初始化ISO的基础通过等差或者等比数列的方式增长ISO，然后重复1步骤求取各个通道的校正值；<br />
-3. 将这个二维数据做成一个LUT，后续图像通过ISO值查找相应的校正值进行校正。不在LUT中的ISO值的参数可以通过插值的方式求得。</p>
-<h4 id="_3">曲线拟合法</h4>
-<p>上面两个方法校正出来的每个通道的校正值是个固定值，但是我们知道，实际在像素不同位置黑帧的数据是不一样的，所以更准确的方式就是每个点都求出一个校正值对该点进行校正。但是现在一般像素值都很高，不可能把每个点的值都存下来，这样内存需求太大，所以就同过采样的方式。就是在黑帧中选择一些像素点求出该点的校正值，然后把坐标和校正值存在一个LUT中，后续其他的像素点的校正值就可一个通过坐标和这个LUT进性插值求得校正值，从而实现每个点的精准校正。</p>
-<p><img alt="" src="/asset/image/多方法融合.png" /></p>
-<p>如图这篇专利中就是建立了AG的LUT，曝光时间的LUT，然后坐标的LUT，相当于在ISO联动方式的基础加上了坐标位置信息，实现了每个点的精准校正。</p>
-<h3 id="_4">校正总结</h3>
-<p><img alt="" src="/asset/image/block diagram.png" /></p>
-<p>如图是数据流程图，可以看出sensor端可以进行模拟处理和数字处理，而ISP端智能进行数字处理，因为ISP接受的信号是经过AD转换后的数字信号，所以在sensor端处理就可以有更加精细，如上面比亚迪的专利中提到的，sensor端粗条可以通过模拟信号来处理，然后细调再通过数字处理的方式来处理。所以综上分析一般ISP端可以通过比较简单的校正来完成，这样可以节省硬件资源。这也就是大多是ISP芯片用的处理方式都很简单的原因。</p>
-<h2 id="_5">具体实现</h2>
-<div class="highlight"><pre><span></span><code><span class="c">%% --------------------------------</span>
-<span class="c">%% author:wtzhu</span>
-<span class="c">%% date: 20210629</span>
-<span class="c">%% fuction: main file of BLC</span>
-<span class="c">%% --------------------------------</span>
-<span class="nb">clc</span><span class="p">;</span><span class="nb">clear</span><span class="p">;</span><span class="nb">close</span><span class="w"> </span><span class="nb">all</span><span class="p">;</span>
+<h1 id="readme">Readme</h1>
+<div class="highlight"><pre><span></span><code>为什么要CCM？
+其实就是为了好看一点，其实就是调试饱和度。不同光源下的CCM矩阵也有所会不同。
+从它的本质就可以看出一个很重要的点：CCM对图片的基调是没有太大贡献的，AWB才是对图片整体的基调有最大贡献（即晴天雨天等等场景）。
 
-<span class="c">% ------------Raw Format----------------</span>
-<span class="n">filePath</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;images/HisiRAW_4208x3120_8bits_RGGB.raw&#39;</span><span class="p">;</span>
-<span class="n">bayerFormat</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;RGGB&#39;</span><span class="p">;</span>
-<span class="n">row</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4208</span><span class="p">;</span>
-<span class="n">col</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3120</span><span class="p">;</span>
-<span class="n">bits</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
-<span class="c">% --------------------------------------</span>
-
-<span class="c">%  I(1:2:end, 1:2:end) = R(1:1:end, 1:1:end);</span>
-
-<span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">readRaw</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span><span class="w"> </span><span class="n">bits</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">);</span>
-<span class="c">% get the four channels by bayerFormat</span>
-<span class="k">switch</span><span class="w"> </span><span class="n">bayerFormat</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;RGGB&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: RGGB&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;GRBG&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: GRBG&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;GBRG&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: GBRG&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;BGGR&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: BGGR&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Gr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">R</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="k">end</span>
-<span class="c">% calculate the Correction coefficient of every channel</span>
-<span class="n">R_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="n">R</span><span class="p">)));</span>
-<span class="n">Gr_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="n">Gr</span><span class="p">)));</span>
-<span class="n">Gb_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="n">Gb</span><span class="p">)));</span>
-<span class="n">B_mean</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="nb">mean</span><span class="p">(</span><span class="n">B</span><span class="p">)));</span>
-
-<span class="c">% Correct each channel separately</span>
-<span class="n">cR</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">R</span><span class="o">-</span><span class="n">R_mean</span><span class="p">;</span>
-<span class="n">cGr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Gr</span><span class="o">-</span><span class="n">Gr_mean</span><span class="p">;</span>
-<span class="n">cGb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Gb</span><span class="o">-</span><span class="n">Gb_mean</span><span class="p">;</span>
-<span class="n">cB</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">B</span><span class="o">-</span><span class="n">B_mean</span><span class="p">;</span>
-<span class="nb">fprintf</span><span class="p">(</span><span class="s">&#39;R:%d Gr:%d Gb:%d B:%d\n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">R_mean</span><span class="p">,</span><span class="w"> </span><span class="n">Gr_mean</span><span class="p">,</span><span class="w"> </span><span class="n">Gb_mean</span><span class="p">,</span><span class="w"> </span><span class="n">B_mean</span><span class="p">);</span>
-
-<span class="n">cData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">data</span><span class="p">));</span>
-<span class="c">% Restore the image with four channels</span>
-<span class="k">switch</span><span class="w"> </span><span class="n">bayerFormat</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;RGGB&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: RGGB&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cR</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGr</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGb</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cB</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;GRBG&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: GRBG&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGr</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">datacData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cR</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cB</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">data</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGb</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;GBRG&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: GBRG&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGb</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cB</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cR</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGr</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">&#39;BGGR&#39;</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bayerFormat: BGGR&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cB</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGb</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cGr</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="w">        </span><span class="n">cData</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">cR</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
-<span class="k">end</span>
-<span class="n">show</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">cData</span><span class="p">,</span><span class="w"> </span><span class="n">bits</span><span class="p">,</span><span class="w"> </span><span class="n">Gr_mean</span><span class="p">);</span>
+真正测试的时候，直接拿 Imatest 来做就可以了，如前两个文档所写的一样。原理看 CCM-3，配合存储的代码来看更好。
 </code></pre></div>
-<p>readRaw.m:</p>
-<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span>rawData<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">readRaw</span><span class="p">(</span>fileName, bitsNum, row, col<span class="p">)</span>
-<span class="c">% readRaw.m    get rawData from HiRawImage</span>
-<span class="c">%   Input:</span>
-<span class="c">%       fileName    the path of HiRawImage </span>
-<span class="c">%       bitsNum      the number of bits of raw image</span>
-<span class="c">%       row         the row of the raw image</span>
-<span class="c">%       col         the column of the raw image</span>
-<span class="c">%   Output:</span>
-<span class="c">%       rawData     the matrix of raw image data</span>
-<span class="c">%   Instructions:</span>
-<span class="c">%       author:     wtzhu</span>
-<span class="c">%       e-mail:     wtzhu_13@163.com</span>
-<span class="c">% Last Modified by wtzhu v1.0 2021-06-29</span>
-<span class="c">% Note: </span>
-
-<span class="c">% get fileID</span>
-<span class="n">fin</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fopen</span><span class="p">(</span><span class="nb">fileName</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r&#39;</span><span class="p">);</span>
-<span class="c">% format precision</span>
-<span class="k">switch</span><span class="w"> </span><span class="n">bitsNum</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">8</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bits: 8&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;uint8=&gt;uint8&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">10</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bits: 10&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;uint16=&gt;uint16&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">12</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bits: 12&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;uint16=&gt;uint16&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="mi">16</span>
-<span class="w">        </span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;bits: 16&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="nb">format</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">&#39;uint16=&gt;uint16&#39;</span><span class="p">);</span>
-<span class="k">end</span>
-<span class="n">I</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">fread</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="o">*</span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="nb">format</span><span class="p">);</span>
-<span class="c">% plot(I, &#39;.&#39;);</span>
-<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">reshape</span><span class="p">(</span><span class="n">I</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">);</span>
-<span class="n">z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="o">&#39;</span><span class="p">;</span>
-<span class="n">rawData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
-<span class="c">% imshow(z);</span>
-<span class="k">end</span>
-</code></pre></div>
-<p>校正效果</p>
-<p><img alt="" src="/asset/image/BLC.jpg" /></p>
-<h2 id="_6">提示：</h2>
-<p>1. 为了方便下载，本项目没有更新到github，用的gitee，可以在<a href="https://gitee.com/wtzhu13/ISPAlgorithmStudy">ISPAlgorithmStudy: ISP算法学习汇总，主要是论文总结 (gitee.com)</a>仓库中获取相关的资料代码等。<br />
-2. 本期B站有视频同步讲解，<a href="https://www.bilibili.com/video/BV1AL411W7kT">ISP算法精讲——BLC_哔哩哔哩_bilibili</a>，可以关注B站，后续会有更多算法的视频讲解同步；<br />
-3. 知乎专栏<a href="https://www.zhihu.com/column/c_1389227246742335488">ISP图像处理 - 知乎 (zhihu.com)</a>也会有算法简介同步；<br />
-4. CSDN专栏<a href="https://blog.csdn.net/wtzhu_13/category_11144092.html?spm=1001.2014.3001.5482">ISP图像处理_wtzhu_13的博客-CSDN博客</a></p>
 
 
 
@@ -8409,7 +8377,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../AWB/AWB-%20%E8%A7%86%E9%A2%91/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AWB- 视频">
+          <a href="../CCM-3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CCM-3">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -8419,20 +8387,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                AWB- 视频
+                CCM-3
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../BNR/BNR/" class="md-footer__link md-footer__link--next" aria-label="Next: BNR">
+          <a href="../../DPC/Readme/" class="md-footer__link md-footer__link--next" aria-label="Next: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                BNR
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -8474,6 +8442,10 @@
     
     
       <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
       
