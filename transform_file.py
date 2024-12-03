@@ -83,8 +83,11 @@ def do_html(srcdir, dstdir, assetdir, nowname, newname):
                 srcurl = oneline.strip()[4:].strip()
                 break
 
-    bakpth = os.path.join(assetdir, 'html', nowname)
-    shutil.copyfile(srcpth, bakpth)
+    fsize = os.path.getsize(srcpth)
+    # 如果小于 10M 才会保存
+    if fsize < 10 * 1024 * 1024:
+        bakpth = os.path.join(assetdir, 'html', nowname)
+        shutil.copyfile(srcpth, bakpth)
 
     dstpth = os.path.join(dstdir, f'{newname}.md')
 
@@ -94,7 +97,9 @@ def do_html(srcdir, dstdir, assetdir, nowname, newname):
 
     with open(dstpth, 'w', encoding='utf-8') as f:
         f.writelines(f'# {newname}\n')
-        f.writelines(f'转载文章，文章链接：[{srcurl}]({srcurl})，本地备份：[链接](/asset/html/{nowname})\n')
+        f.writelines(f'转载文章，文章链接：[{srcurl}]({srcurl})\n')
+        if fsize < 10 * 1024 * 1024:
+            f.writelines(f'本地备份：[链接](/asset/html/{nowname})\n')
     return dstpth
 
 

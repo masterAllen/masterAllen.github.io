@@ -104,7 +104,8 @@ if __name__ == '__main__':
 
         # 处理文件夹的内容
         for nowname in now_subdirs:
-            if nowname == '材料' or nowname == 'references':
+            if nowname == '材料' or nowname.startswith('reference') \
+                or nowname.startswith('papers'):
                 # TODO: 如果是材料目录，那么就单独写一个 README，把这些文件都放进去
                 pass
             elif nowname in ['src', 'code', 'asset']:
