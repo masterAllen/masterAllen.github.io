@@ -6,6 +6,7 @@ import docx2pdf
 import pptxtopdf
 import pypdfium2 as pdfium
 import numpy as np
+import utils
 from PIL import Image
 
 def do_md(srcdir, dstdir, assetdir, nowname, newname):
@@ -69,6 +70,7 @@ def do_md(srcdir, dstdir, assetdir, nowname, newname):
     text = re.sub(pattern, add_slash, text)
 
     with open(dstpth, 'w', encoding='utf-8') as f:
+        utils.add_topinfo(f)
         f.write(text)
     return dstpth
 
@@ -96,6 +98,7 @@ def do_html(srcdir, dstdir, assetdir, nowname, newname):
     # bakpth = bakpth.replace(' ', '%20')
 
     with open(dstpth, 'w', encoding='utf-8') as f:
+        utils.add_topinfo(f)
         f.writelines(f'# {newname}\n')
         f.writelines(f'转载文章，文章链接：[{srcurl}]({srcurl})\n')
         if fsize < 10 * 1024 * 1024:
@@ -112,6 +115,7 @@ def do_ipynb(srcdir, dstdir, assetdir, nowname, newname):
     with open(dstpth, 'w', encoding='utf-8') as f:
         # 把原文转的 md 内容追加到这里，然后开头部分添加一个说明
         with open(srcpth, 'r', encoding='utf-8') as srcf:
+            utils.add_topinfo(f)
             # 开头的标题
             f.writelines(srcf.readline())
             # 开头添加说明
@@ -132,8 +136,9 @@ def do_png(srcdir, dstdir, assetdir, nowname, newname):
     dstpth  = os.path.join(dstdir, f'{newname}.md')
 
     with open(dstpth, 'w', encoding='utf-8') as f:
+        utils.add_topinfo(f)
         f.writelines(f'# {newname}\n')
-        f.writelines(f'原始文件格式为 PNG，以下是该图片：\n\n')
+        # f.writelines(f'原始文件格式为 PNG，以下是该图片：\n\n')
         f.writelines(f'![{newname}](/asset/image/{nowname})\n')
     return dstpth
 
@@ -170,6 +175,7 @@ def do_word(srcdir, dstdir, assetdir, nowname, newname):
 
     mdpth = os.path.join(dstdir, f'{newname}.md')
     with open(mdpth, 'w', encoding='utf-8') as f:
+        utils.add_topinfo(f, hide=['toc'])
         f.writelines(f'# {newname}\n')
         f.writelines(f'**原文格式为 word，本文为转换后的图片。原文也转换了 [PDF 格式](/asset/pdf/{newname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
         f.writelines('\n')
@@ -178,7 +184,7 @@ def do_word(srcdir, dstdir, assetdir, nowname, newname):
             nowimg = page.render(scale=4).to_pil()
             nowimg = np.array(nowimg)
             rows, cols = nowimg.shape[0:2]
-            nowimg = nowimg[rows//12:-rows//12, cols//15:-cols//15]
+            nowimg = nowimg[rows//12:-rows//12, cols//12:-cols//12]
 
             nowimg = Image.fromarray(nowimg)
             nowimg.save(imgpth)
@@ -201,6 +207,7 @@ def do_ppt(srcdir, dstdir, assetdir, nowname, newname):
 
     mdpth = os.path.join(dstdir, f'{newname}.md')
     with open(mdpth, 'w', encoding='utf-8') as f:
+        utils.add_topinfo(f)
         f.writelines(f'# {newname}\n')
         f.writelines(f'**原文格式为 PPTX，本文为转换后的图片。原文也转换了 [PDF 格式](/asset/pdf/{newname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
         for count, page in enumerate(pdf):
@@ -216,6 +223,7 @@ def do_txt(srcdir, dstdir, assetdir, nowname, newname):
 
     dstpth  = os.path.join(dstdir, f'{newname}.md')
     with open(dstpth, 'w', encoding='utf-8') as f:
+        utils.add_topinfo(f)
         f.writelines(f'# {newname}\n')
         with open(srcpth, 'r', encoding='utf-8') as srcf:
             content = srcf.readlines()

@@ -16,50 +16,22 @@ if __name__ == '__main__':
     srcdir = os.path.abspath('../done')
     dstdir = os.path.abspath(os.path.join('.', 'docs'))
 
+    url_set = set()
+
     # dirnames 表示待处理的文件夹
     dirnames = collections.deque([])
 
     # 设置导航栏
     # 加载 topdir.yml 文件
     topdir_info = yaml.load(open('./topdir.yml', 'r', encoding='utf8'), Loader=yaml.FullLoader)
-    topdir_main = topdir_info['main_dir']
-    topdir_tabnames = {}
-    for k, vs in topdir_info['other_dir'].items():
-        # 这里是因为：如果发现某个文件夹专享一个标签栏，那标签栏里面就是其中子文件夹，而不是这个文件夹本身（否则要多点一步）
-        if len(vs) == 1:
-            topdir_tabnames[vs[0]] = '.'
-        else:
-            for v in vs:
-                topdir_tabnames[v] = k
-
-    # 遍历 src，通过 topdir 将里面的文件夹转换为 dst 中新的名字
-    for nowsrc in os.listdir(srcdir):
-        if not os.path.isdir(os.path.join(srcdir, nowsrc)):
-            continue
-
-        if nowsrc in topdir_tabnames:
-            nowdst = os.path.join(dstdir, topdir_tabnames[nowsrc], nowsrc)
-            os.makedirs(nowdst, exist_ok=True)
-            dirnames.append((os.path.join(srcdir, nowsrc), nowdst))
-        else:
-            # 如果不在 topdir_tabnames 中，说明是主标签
-            nowdst = os.path.join(dstdir, topdir_main, nowsrc)
-            os.makedirs(nowdst, exist_ok=True)
-            dirnames.append((os.path.join(srcdir, nowsrc), nowdst))
-
-    # 再次遍历 src，只对里面的文件处理，把文件统一放在主导航栏所在的目录
-    for nowsrc in os.listdir(srcdir):
-        if not os.path.isdir(os.path.join(srcdir, nowsrc)):
-            shutil.copy(os.path.join(srcdir, nowsrc), os.path.join(dstdir, topdir_main))
-            continue
-
+    topdir_dirs = topdir_info['dirs']
 
     # 最后还要在里面写一个 .pages 文件，用于指定导航栏顺序
     with open(os.path.join(dstdir, '.pages'), 'w', encoding='utf8') as f:
         f.writelines('nav: \n')
-        f.writelines(f'  - {topdir_main}\n')
-        for k in topdir_info['other_dir']:
-            f.writelines(f'  - {k}\n')
+        for dirname in topdir_dirs:
+            f.writelines(f'  - {dirname}\n')
+            dirnames.append((os.path.join(srcdir, dirname), os.path.join(dstdir, dirname)))
 
 
     # 文件绝对路径：时间信息
@@ -130,9 +102,26 @@ if __name__ == '__main__':
             if 'README' in newname:
                 print(newname)
 
-            # 如果是链接文件，那就什么都不做，直接返回一个文件名字，最后统一处理链接文件
-            if nowname.endswith('.link') or nowname.endswith('.lnk'):
-                link_files.append((nowsrc, nowdst, nowname))
+            # # 如果是链接文件，那就什么都不做，直接返回一个文件名字，最后统一处理链接文件
+            # if nowname.endswith('.link') or nowname.endswith('.lnk'):
+            #     link_files.append((nowsrc, nowdst, nowname))
+
+            # 抽取文件中的 URL
+            url_pattern = r'(https?://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|])'
+            if nowname.endswith(('md', 'ipynb', 'txt')):
+                nowpth = os.path.join(nowsrc, nowname)
+                content = open(nowpth, 'r', encoding='utf8').read()
+                url_list = re.findall(url_pattern, content)
+                for url in url_list:
+                    url_set.add(url)
+
+            import mammoth
+            if nowname.endswith('docx'):
+                nowpth = os.path.join(nowsrc, nowname)
+                content = mammoth.extract_raw_text(nowpth).value
+                url_list = re.findall(url_pattern, content)
+                for url in url_list:
+                    url_set.add(url)
 
             # 先根据时间，判断要不要更改
             nowpth = os.path.join(nowsrc, nowname)
@@ -165,7 +154,6 @@ if __name__ == '__main__':
                 newfile = os.path.join(dstdir, f'{newname}.md')
 
             newfiles[os.path.join(nowsrc, nowname)] = newfile
-
 
         # 检查文件夹里面有没有 .pages 文件，如果有则进行解析
         if '.pages' in os.listdir(nowsrc):
@@ -244,3 +232,12 @@ if __name__ == '__main__':
         for dir in dirs:
             if len(os.listdir(os.path.join(root, dir))) == 0:
                 os.rmdir(os.path.join(root, dir))
+
+    urlfiles = open('./urlfiles.txt', 'w', encoding='utf8')
+    for url in url_set:
+        if 'aur' in url or '127.0.0.1' in url or 'docs.opencv.org' in url:
+            continue
+        if 'masterAllen' in url or 'tuna.tsinghua.edu.cn' in url:
+            continue
+        urlfiles.write(f'{url}\n')
+    urlfiles.close()
