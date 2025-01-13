@@ -12,13 +12,13 @@
         <meta name="author" content="Allen Hong">
       
       
-        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/07.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E7%9B%B4%E7%BA%BF%E7%89%B9%E5%BE%81/">
+        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/02.%20%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/">
       
       
-        <link rel="prev" href="../06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/">
+        <link rel="prev" href="../01.%20%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%20%EF%BC%9A%20%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/">
       
       
-        <link rel="next" href="../08.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81/">
+        <link rel="next" href="../03.HOG%20%E7%89%B9%E5%BE%81/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>07. 特别的特征 ： 直线特征 - Allen Hong's Blog</title>
+        <title>02. 更详细的角点函数 - Allen Hong's Blog</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              07. 特别的特征 ： 直线特征
+              02. 更详细的角点函数
             
           </span>
         </div>
@@ -9673,7 +9673,7 @@
             
   
   <span class="md-ellipsis">
-    同态滤波
+    各向异性滤波
   </span>
   
 
@@ -9682,6 +9682,73 @@
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            各向异性滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    各向异性滤波记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_8" id="__nav_4_2_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    同态滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_8">
             <span class="md-nav__icon md-icon"></span>
             同态滤波
           </label>
@@ -9733,10 +9800,77 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_9" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_2_8" id="__nav_4_2_2_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_2_9" id="__nav_4_2_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    最小值滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            最小值滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E6%9C%80%E5%B0%8F%E5%80%BC%E6%BB%A4%E6%B3%A2/%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加速方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_10" id="__nav_4_2_2_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -9747,8 +9881,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2_8">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_10">
             <span class="md-nav__icon md-icon"></span>
             维纳滤波
           </label>
@@ -9800,10 +9934,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_11" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_2_9" id="__nav_4_2_2_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_2_11" id="__nav_4_2_2_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -9814,8 +9948,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2_9">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_11">
             <span class="md-nav__icon md-icon"></span>
             高斯滤波
           </label>
@@ -9884,7 +10018,7 @@
             
   
   <span class="md-ellipsis">
-    02.特征提取
+    02.特征提取和边缘检测
   </span>
   
 
@@ -9894,7 +10028,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2_3">
             <span class="md-nav__icon md-icon"></span>
-            02.特征提取
+            02.特征提取和边缘检测
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -9923,10 +10057,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../02.%20%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    02. 更详细的角点函数
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -9935,6 +10089,128 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本原理说明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基本原理说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题一
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题二
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题三
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具体函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cornerharris" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerHarris
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goodfeaturestotrack" class="md-nav__link">
+    <span class="md-ellipsis">
+      goodFeaturesToTrack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cornereigenvalsandvecs" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerEigenValsAndVecs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cornermineigenval" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerMinEigenVal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cornersubpix" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerSubPix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -10028,30 +10304,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    07. 特别的特征 ： 直线特征
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../07.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E7%9B%B4%E7%BA%BF%E7%89%B9%E5%BE%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10060,113 +10316,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      直线检测
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="直线检测">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      霍尔变换找直线
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lsd" class="md-nav__link">
-    <span class="md-ellipsis">
-      LSD 直线检测
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#edline" class="md-nav__link">
-    <span class="md-ellipsis">
-      EDLine 直线检测
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fast-line-detector" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fast line Detector
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edgedrawing" class="md-nav__link">
-    <span class="md-ellipsis">
-      EdgeDrawing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      直线描述
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      直线匹配
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      代码实现
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -10184,6 +10333,69 @@
   
   <span class="md-ellipsis">
     08. 特别的特征 ： 人脸特征
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9ALSD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09. 直线检测方法 ：LSD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEdgeDrawing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. 边缘检测方法 ：EdgeDrawing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEDLines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. 直线检测方法 ：EDLines
   </span>
   
 
@@ -11050,35 +11262,35 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      直线检测
+      基本原理说明
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="直线检测">
+    <nav class="md-nav" aria-label="基本原理说明">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      霍尔变换找直线
+      问题一
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#lsd" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      LSD 直线检测
+      问题二
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#edline" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      EDLine 直线检测
+      问题三
     </span>
   </a>
   
@@ -11090,47 +11302,62 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fast-line-detector" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fast line Detector
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edgedrawing" class="md-nav__link">
-    <span class="md-ellipsis">
-      EdgeDrawing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      直线描述
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      直线匹配
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      代码实现
+      具体函数
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="具体函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cornerharris" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerHarris
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goodfeaturestotrack" class="md-nav__link">
+    <span class="md-ellipsis">
+      goodFeaturesToTrack
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cornereigenvalsandvecs" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerEigenValsAndVecs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cornermineigenval" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerMinEigenVal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cornersubpix" class="md-nav__link">
+    <span class="md-ellipsis">
+      cornerSubPix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -11149,89 +11376,112 @@
                   
 
 
-<h1 id="_1">特别的特征：直线特征</h1>
+<h1 id="_1">更详细的角点函数</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/特别的特征：直线特征</p>
+<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/更详细的角点函数</p>
 </blockquote>
-<p>对于直线这个特征，和普通的特征检测一样，分为三个部分：检测、描述、匹配。</p>
-<h3 id="_2">直线检测</h3>
-<p>直线检测，相当于输入一副图片，输出是一个包含各个线段的数组。</p>
-<p>OpenCV 直线检测分为三种方法，这三种方法的代码在 <a href="../code/test_line.ipynb">test_line.ipynb</a> 中：</p>
-<h4 id="_3">霍尔变换找直线</h4>
-<p>这个写在了<a href="./3.1.md">另一篇文章</a>中；返回的是一个 ndarray，大小是 (n, 1, 4)，即各个线段的起始和终止点。</p>
-<h4 id="lsd">LSD 直线检测</h4>
-<p>来自文章 LSD：a Line Segment Detector，这个方法不需要调参，非常舒服。OpenCV 中 line_descritpor 模块的 LSDDetector 类来完成此方法。创建这个类的对象，然后使用 <code>detect</code> 即可完成。</p>
-<p>虽然说 LSD 不需要调参，但其实也涉及到金字塔选几层等这个简单的参数，在创建对象时，不传参数就是使用默认参数，否则传入是一个 <a href="https://docs.opencv.org/4.x/d6/d03/structcv_1_1line__descriptor_1_1LSDParam.html">LSDParam</a> 对象，其本质也就是包含几个参数的数组。detect 同理，如果不传参数就使用对象的参数。</p>
-<p>最后得到包含了一堆 KeyLines 对象的数组，每个 KeyLines 就是线段，遍历即可。其实也很直观，<code>getStartPoint</code> 和 <code>getEndPoint</code> 分别返回起始点。KeyLines 中 <code>octave</code> 表示在哪一层金字塔可以找到这条线段，所以遍历的时候通常会判断当前的 <code>octave</code> 是否为 0，以此确保这条线段在原图上可以找到。可以在 <a href="../code/test_line.ipynb">test_line.ipynb</a> 查看具体用法。</p>
-<h4 id="edline">EDLine 直线检测</h4>
-<p>方法来自 2011 年的文章 EDLines: A real-time line segment detector with a false detection control，和 LSD 一样，不需要调参。这个方法本质上是从 LSD 方法发展而来的，速度更快。</p>
-<p>OpenCV 中 line_descritpor 模块的 BinaryDescritpor 类来完成此方法。创建这个类的对象，然后使用 <code>detect</code> 即可完成。</p>
-<p>最后结果和 LSD 类似，也是包了一堆 KeyLines 对象的数组。KeyLines 用法如上面 LSD 检测所述。</p>
-<h3 id="fast-line-detector">Fast line Detector</h3>
-<p><a href="https://docs.opencv.org/4.x/df/ded/group__ximgproc__fast__line__detector.html">ximgproc 的方法</a>，传入参数建立对象，然后调用方法就行。代码在 <a href="../code/test_line.ipynb">test_line.ipynb 第二个 block</a> 中。</p>
-<p>原始论文：<br />
-<div class="highlight"><pre><span></span><code>Jin Han Lee, Sehyung Lee, Guoxuan Zhang, Jongwoo Lim, Wan Kyun Chung, and Il Hong Suh. Outdoor place recognition in urban environments using straight lines. In 2014 IEEE International Conference on Robotics and Automation (ICRA), pages 5550–5557\. IEEE, 2014.
-</code></pre></div></p>
-<h3 id="edgedrawing">EdgeDrawing</h3>
-<p><a href="https://docs.opencv.org/4.x/d4/d8b/group__ximgproc__edge__drawing.html">ximgproc 的方法</a>，不仅可以检测直线，也可以检测边缘。同样也是传入参数建立对象，然后调用方法。代码在 <a href="../code/test_line.ipynb">test_line.ipynb 第二个 block</a> 中。</p>
-<p>原始论文：<br />
-<div class="highlight"><pre><span></span><code>Cihan Topal and Cuneyt Akinlar. Edge drawing: a combined real-time edge and segment detector. Journal of Visual Communication and Image Representation, 23(6):862–872, 2012.
-</code></pre></div></p>
-<h3 id="_4">直线描述</h3>
-<p>直线描述是用到叫做 LBD 方法，这个就是 line_descriptor <a href="https://docs.opencv.org/4.x/dc/ddd/group__line__descriptor.html">介绍页</a>中大段介绍的内容，具体原理这里不谈。</p>
-<p>OpenCV 中 line_descritpor 模块的 BinaryDescritpor 类来完成此方法。前面提到这个类可以用 <code>detect</code> 进行 EDLine 直线检测；而用 <code>compute</code> 则可以进行这里所说的直线描述。</p>
-<h3 id="_5">直线匹配</h3>
-<p>直线匹配和特征匹配类似，不过特征匹配是特征点，直线匹配是线段。OpenCV 中 line_descritpor 模块的 BinaryDescriptorMatcher 类来完成此方法。创建这个类的对象，然后使用 <code>match</code> 即可完成。和特征点匹配的 BruteForceMatcher 和 FlannBasedMatcher 一样，有三种 <code>match</code> 方法：<code>match</code>、<code>knnMatch</code>、<code>radiusMatch</code>，用法和特征点匹配一样。</p>
-<h3 id="_6">代码实现</h3>
-<p>具体能跑的代码在 <a href="../code/test_line.ipynb">test_line.ipynb</a> 中，这里进行选择性摘抄：</p>
-<div class="highlight"><pre><span></span><code><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">完整的 检测直线 -&gt; 描述直线 -&gt; 匹配直线 流程</span>
-<span class="sd">&#39;&#39;&#39;</span>
-
-<span class="c1"># 只保留 octave 为 0 的直线</span>
-<span class="k">def</span> <span class="nf">get_octave_0</span><span class="p">(</span><span class="n">kls</span><span class="p">,</span> <span class="n">dss</span><span class="p">):</span>
-    <span class="n">nkls</span><span class="p">,</span> <span class="n">ndss</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kl</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kls</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">kl</span><span class="o">.</span><span class="n">octave</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">nkls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kls</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-            <span class="n">ndss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dss</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">nkls</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ndss</span><span class="p">)</span>
-
-<span class="n">detector</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line_descriptor</span><span class="o">.</span><span class="n">BinaryDescriptor</span><span class="o">.</span><span class="n">createBinaryDescriptor</span><span class="p">()</span>
-
-<span class="n">keylines1</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
-<span class="n">keylines1</span><span class="p">,</span> <span class="n">descriptors1</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">keylines1</span><span class="p">)</span>
-<span class="n">keylines1</span><span class="p">,</span> <span class="n">descriptors1</span> <span class="o">=</span> <span class="n">get_octave_0</span><span class="p">(</span><span class="n">keylines1</span><span class="p">,</span> <span class="n">descriptors1</span><span class="p">)</span>
-
-<span class="c1"># 不想找其他图片了，就重复对一张图片进行匹配吧...</span>
-<span class="n">src2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
-<span class="n">keylines2</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">src2</span><span class="p">)</span>
-<span class="n">keylines2</span><span class="p">,</span> <span class="n">descriptors2</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">src2</span><span class="p">,</span> <span class="n">keylines2</span><span class="p">)</span>
-<span class="n">keylines2</span><span class="p">,</span> <span class="n">descriptors2</span> <span class="o">=</span> <span class="n">get_octave_0</span><span class="p">(</span><span class="n">keylines2</span><span class="p">,</span> <span class="n">descriptors2</span><span class="p">)</span>
-
-<span class="c1"># 匹配，有三种方法，但很遗憾 radiusMatch 没有 python 版本..</span>
-<span class="c1"># BinaryDescriptorMacher，有些方法没有 python 版本，如 add 等，这个类本身继承自 DescriptorMatcher，和之前点的匹配基本差不多</span>
-<span class="n">MATCHES_DIST_THRESHOLD</span> <span class="o">=</span> <span class="mi">25</span>
-<span class="n">matcher</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line_descriptor</span><span class="o">.</span><span class="n">BinaryDescriptorMatcher</span><span class="p">()</span>
-<span class="n">matches</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">descriptors1</span><span class="p">,</span> <span class="n">descriptors2</span><span class="p">)</span>
-<span class="c1"># matches = matcher.knnMatch(descriptors1, descriptors2, k=2)</span>
-<span class="c1"># matches = matcher.radiusMatch(descriptors1, descriptors2, maxDistance=25)</span>
-<span class="n">matches</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">distance</span> <span class="o">&lt;</span> <span class="n">MATCHES_DIST_THRESHOLD</span><span class="p">]</span>
-
-<span class="c1"># 返回的时 DMatch，自行查阅相关方法</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">matches</span><span class="p">))</span> 
-
-<span class="c1"># 画图</span>
-<span class="n">matchimg1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">line_descriptor</span><span class="o">.</span><span class="n">drawLineMatches</span><span class="p">(</span>
-                <span class="n">img1</span><span class="o">=</span><span class="n">src</span><span class="p">,</span> <span class="n">keylines1</span><span class="o">=</span><span class="n">keylines1</span><span class="p">,</span>
-                <span class="n">img2</span><span class="o">=</span><span class="n">src2</span><span class="p">,</span> <span class="n">keylines2</span><span class="o">=</span><span class="n">keylines2</span><span class="p">,</span>
-                <span class="n">matches1to2</span><span class="o">=</span><span class="n">matches</span><span class="p">,</span>
-                <span class="c1"># opencv python 版本的 bug，必须要添加 matchesMask(which matches must be drawn)，否则报 Unkown C++ error</span>
-                <span class="n">matchesMask</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-            <span class="p">)</span>
-
-<span class="n">show_images</span><span class="p">([(</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">matchimg1</span><span class="p">)])</span>
+<p>建议看这个博主的<a href="http://shichaoxin.com/2022/05/30/OpenCV%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E8%AF%BE-Harris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">博客</a>，慢下来从原理开始看，收获太大了！！</p>
+<h3 id="_2">基本原理说明</h3>
+<p>知道这章的几个函数，需要了解一些角点的原理。主要是:</p>
+<p>1. 角点检测和矩阵的特征值 <span class="arithmatex">\(\lambda\)</span> 怎么扯起来的？<br />
+2. 矩阵的特征值大小和角点检测准确度的联系<br />
+3. 函数中有一个参数 k 代表什么含义</p>
+<p>这个博主的<a href="http://shichaoxin.com/2022/05/30/OpenCV%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E8%AF%BE-Harris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">博客</a> 讲的相当好，接下来相当于是复制粘贴了。</p>
+<h4 id="_3">问题一</h4>
+<p><img alt="1721355176071" src="/asset/image/1721355176071.png" /></p>
+<p>什么是角点：如果在任何方向上滑动窗口，窗口内的灰度都会发生变化，则这是一个角点。窗口滑动的灰度变化可以表示为：</p>
+<p><img alt="1721355340441" src="/asset/image/1721355340441.png" /></p>
+<p>这样角点检测就和某个矩阵的特征值相关联起来了。</p>
+<h4 id="_4">问题二</h4>
+<p><img alt="1721355438000" src="/asset/image/1721355438000.png" /></p>
+<h4 id="_5">问题三</h4>
+<p><img alt="1721355674037" src="/asset/image/1721355674037.png" /></p>
+<h3 id="_6">具体函数</h3>
+<p>理解上面的原理就清楚了，下面主要分成两类，一个是 Harris，一个 Shi-Tomasi；后者其实主要区别就是直接用较小的特征值，这样不用调整上面 k 值。</p>
+<h4 id="cornerharris">cornerHarris</h4>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">cornerHarris</span><span class="p">(</span><span class="w"> </span>
+<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ksize</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">borderType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BORDER_DEFAULT</span><span class="w"> </span>
+<span class="p">);</span>
 </code></pre></div>
+<p>blockSize 是滑动窗口大小；ksize 是计算梯度的Sobel算子尺寸；k 就是上面问题三的那个值</p>
+<p>注意这个函数是放回图像各个位置的 R 值，所以之后还是要通过类似 <code>R[R &gt; 0.01*R.max()]</code> 挑选出符合条件的点。</p>
+<h4 id="goodfeaturestotrack">goodFeaturesToTrack</h4>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">goodFeaturesToTrack</span><span class="p">(</span><span class="w"> </span>
+<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">image</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">corners</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxCorners</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">qualityLevel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">minDistance</span><span class="p">,</span>
+<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">noArray</span><span class="p">(),</span><span class="w"> </span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">useHarrisDetector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span><span class="w"> </span>
+<span class="p">);</span>
+<span class="c1">// 官方文档中的示例</span>
+<span class="n">goodFeaturesToTrack</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>maxCorners: 最多返回角点个数。会挑选前 maxCorners 个最优的角点返回。为 0 表示没有返回数量限制</li>
+<li>qualityLevel: 举例而言，最优（即 R 值最大）角点的 R 值为 1500，如果qualityLevel=0.01，则R值小于1500×0.01=15 的角点都会被抛弃。</li>
+<li>minDistance: 返回的角点中，之间最小的欧氏距离</li>
+<li>blocksize, k: 同 Harris</li>
+<li>userHarrisDetector: True 使用 Harris 方法；False 使用 Shi-Tomasi 方法</li>
+</ul>
+<h4 id="cornereigenvalsandvecs">cornerEigenValsAndVecs</h4>
+<p>这个函数是输入图片，然后计算基本原理所说的两个特征值。这就是为什么要理解原理，不然不知道这函数干什么。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">cornerEigenValsAndVecs</span><span class="p">(</span><span class="w"> </span>
+<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ksize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">borderType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BORDER_DEFAULT</span><span class="w"> </span>
+<span class="p">);</span>
+</code></pre></div>
+<p>参数同上面的函数，下面是一个示例：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imread</span><span class="p">(</span><span class="s">&quot;xxx&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 参数</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ksize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 计算特征值</span>
+<span class="w">    </span><span class="n">img_lambdas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mat</span><span class="o">::</span><span class="n">zeros</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">CV_32FC</span><span class="p">(</span><span class="mi">6</span><span class="p">));</span>
+<span class="w">    </span><span class="n">cornerEigenValsAndVecs</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">,</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="n">ksize</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 计算响应，img_lambdas 就是算出的两个特征值</span>
+<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mat</span><span class="o">::</span><span class="n">zeros</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">CV_32FC1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">rows</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">cols</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">lambda1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">Vec6f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">lambda2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">Vec6f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">            </span><span class="n">R</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda1</span><span class="o">*</span><span class="n">lambda2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="o">*</span><span class="n">pow</span><span class="p">((</span><span class="n">lambda1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lambda2</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 挑选出合适的点，模仿 goodFeaturesToTrack 的条件</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxCorners</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">qualityLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">minDisatnce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">minR</span><span class="p">,</span><span class="w"> </span><span class="n">maxR</span><span class="p">;</span>
+<span class="w">    </span><span class="n">minMaxLoc</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">minR</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">maxR</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Mat</span><span class="p">());</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">minR</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">qualityLevel</span><span class="o">*</span><span class="p">(</span><span class="n">maxR</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">minR</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">src</span><span class="p">.</span><span class="n">rows</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">src</span><span class="p">.</span><span class="n">cols</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">harrisRspImg</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// OK!</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">maxCorners</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">                </span><span class="n">maxCorners</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="cornermineigenval">cornerMinEigenVal</h4>
+<p>同上面的函数，不过计算的是较小特征值（因为只求较小值可能求解速度会快一点），即给 Shi-Tomasi 这种方法用的，参数也同上面的函数。</p>
+<h4 id="cornersubpix">cornerSubPix</h4>
+<p>亚像素级别的检测，具体参考上面博主的<a href="http://shichaoxin.com/2022/11/07/OpenCV%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%94%E8%AF%BE-%E4%BA%9A%E5%83%8F%E7%B4%A0%E7%BA%A7%E5%88%AB%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">文章</a>，非常详细。</p>
 
 
 
@@ -11361,7 +11611,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 06. 特别的特征 ：Ridgets">
+          <a href="../01.%20%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%20%EF%BC%9A%20%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 01. 特征点三部曲 ： 提取 ； 描述 ； 匹配">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -11371,20 +11621,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                06. 特别的特征 ：Ridgets
+                01. 特征点三部曲 ： 提取 ； 描述 ； 匹配
               </div>
             </div>
           </a>
         
         
           
-          <a href="../08.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81/" class="md-footer__link md-footer__link--next" aria-label="Next: 08. 特别的特征 ： 人脸特征">
+          <a href="../03.HOG%20%E7%89%B9%E5%BE%81/" class="md-footer__link md-footer__link--next" aria-label="Next: 03.HOG 特征">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                08. 特别的特征 ： 人脸特征
+                03.HOG 特征
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -11432,6 +11682,8 @@
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
+      
+        <script src="../../../../assets/javascripts/toggle-sidebar.js" async></script>
       
     
   </body>

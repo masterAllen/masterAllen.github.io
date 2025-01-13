@@ -12,25 +12,25 @@
         <meta name="author" content="Allen Hong">
       
       
-        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/02.%20%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/">
+        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/">
       
       
-        <link rel="prev" href="../01.%20%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%20%EF%BC%9A%20%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/">
+        <link rel="prev" href="../../%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%AE%B0%E5%BD%95/">
       
       
-        <link rel="next" href="../03.HOG%20%E7%89%B9%E5%BE%81/">
+        <link rel="next" href="../../%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>02. 更详细的角点函数 - Allen Hong's Blog</title>
+        <title>各向异性滤波记录 - Allen Hong's Blog</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
       
 
@@ -49,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -92,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Allen Hong&#39;s Blog" class="md-header__button md-logo" aria-label="Allen Hong's Blog" data-md-component="logo">
+    <a href="../../../../.." title="Allen Hong&#39;s Blog" class="md-header__button md-logo" aria-label="Allen Hong's Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              02. 更详细的角点函数
+              各向异性滤波记录
             
           </span>
         </div>
@@ -189,7 +189,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../Main/Debug/debug%20001/" class="md-tabs__link">
+        <a href="../../../../../Main/Debug/debug%20001/" class="md-tabs__link">
           
   
   Main
@@ -222,7 +222,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter01/" class="md-tabs__link">
+        <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter01/" class="md-tabs__link">
           
   
   课程和书籍
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../CheatSheet/AxMath/AxMath%20%E4%BF%AE%E6%94%B9%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-tabs__link">
+        <a href="../../../../../CheatSheet/AxMath/AxMath%20%E4%BF%AE%E6%94%B9%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-tabs__link">
           
   
   CheatSheet
@@ -291,7 +291,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../ISP/AWB/AWB-1/" class="md-tabs__link">
+        <a href="../../../../ISP/AWB/AWB-1/" class="md-tabs__link">
           
   
   Vision
@@ -330,7 +330,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Allen Hong&#39;s Blog" class="md-nav__button md-logo" aria-label="Allen Hong's Blog" data-md-component="logo">
+    <a href="../../../../.." title="Allen Hong&#39;s Blog" class="md-nav__button md-logo" aria-label="Allen Hong's Blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -424,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20001/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -445,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20002/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20002/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -466,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20003/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20003/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -487,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20004/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20004/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -508,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20005/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20005/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -529,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20006/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20006/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -550,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20007/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20007/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -571,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20008/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20008/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -592,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20009/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20009/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -613,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20010/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20010/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -634,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Debug/debug%20011/" class="md-nav__link">
+      <a href="../../../../../Main/Debug/debug%20011/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -777,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E4%BD%BF%E7%94%A8%20DLL%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E4%BD%BF%E7%94%A8%20DLL%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -798,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E5%AE%89%E8%A3%85%20Opencv%20%E4%BB%A5%E5%8F%8A%20VS%20%E4%B8%8B%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E5%AE%89%E8%A3%85%20Opencv%20%E4%BB%A5%E5%8F%8A%20VS%20%E4%B8%8B%E9%85%8D%E7%BD%AE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -819,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E7%94%9F%E6%88%90%E4%BD%BF%E7%94%A8%20OpenCV%20%E5%87%BD%E6%95%B0%E7%9A%84%20DLL%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E7%94%9F%E6%88%90%E4%BD%BF%E7%94%A8%20OpenCV%20%E5%87%BD%E6%95%B0%E7%9A%84%20DLL%20%E6%96%87%E4%BB%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -840,7 +840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E7%BC%96%E8%AF%91%20Opencv%20X86/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E7%BC%96%E8%AF%91%20Opencv%20X86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -869,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -890,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20atoi/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20atoi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -911,7 +911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20constexpr/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20constexpr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20double%20pointer/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20double%20pointer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -953,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20friend/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20friend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -974,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20initalize/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20initalize/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -995,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20mmap/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20mmap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1016,7 +1016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20mutable/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20mutable/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1037,7 +1037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20register/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20register/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1058,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20socket/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20socket/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1079,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/cpp%20template/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/cpp%20template/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1100,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Language/CPP/questions/" class="md-nav__link">
+      <a href="../../../../../Main/Language/CPP/questions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1175,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/bashrc%20vs%20profile/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/bashrc%20vs%20profile/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1196,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/caps%20to%20ctrl/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/caps%20to%20ctrl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1217,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/cat%20hugefile/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/cat%20hugefile/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1238,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/change%20font/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/change%20font/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1259,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/coredump/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/coredump/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1280,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/hidip%20setting/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/hidip%20setting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1301,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/libinput%20setting/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/libinput%20setting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1322,7 +1322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/lightdm/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/lightdm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1343,7 +1343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/linux%20remount/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/linux%20remount/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1364,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/run%20level/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/run%20level/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1385,7 +1385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/update%20kernel/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/update%20kernel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1406,7 +1406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/urxvt%20setting/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/urxvt%20setting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1427,7 +1427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Linux/x%20window/" class="md-nav__link">
+      <a href="../../../../../Main/Linux/x%20window/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1494,7 +1494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/build%20hexo/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/build%20hexo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1536,7 +1536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/check%20websocket/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/check%20websocket/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1557,7 +1557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/debtap/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/debtap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1578,7 +1578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/fakeroot/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/fakeroot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1599,7 +1599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/font/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/font/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1620,7 +1620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/library%20path/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/library%20path/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1641,7 +1641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/library%20version/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/library%20version/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1662,7 +1662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/nas%20pt/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/nas%20pt/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1683,7 +1683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/p2p%20introduction/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/p2p%20introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1704,7 +1704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/screen%20sharing/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/screen%20sharing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1725,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/source%20bashrc/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/source%20bashrc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1746,7 +1746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/supervisor%20in%20virtual/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/supervisor%20in%20virtual/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1767,7 +1767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/thinkpad%20x1c%20problem/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/thinkpad%20x1c%20problem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1788,7 +1788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/zsh%20slow/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/zsh%20slow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1809,7 +1809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/%E7%BA%BF%E6%80%A7%E7%9B%B8%E6%9C%BA%E5%92%8C%20TDI%20%E7%9B%B8%E6%9C%BA%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/%E7%BA%BF%E6%80%A7%E7%9B%B8%E6%9C%BA%E5%92%8C%20TDI%20%E7%9B%B8%E6%9C%BA%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1830,7 +1830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/%E7%BD%91%E9%A1%B5%E4%BF%AE%E6%94%B9%20Trick/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/%E7%BD%91%E9%A1%B5%E4%BF%AE%E6%94%B9%20Trick/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1851,7 +1851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Misc/%E8%93%9D%E7%89%99%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../../../Main/Misc/%E8%93%9D%E7%89%99%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1918,7 +1918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/VPN/debug/" class="md-nav__link">
+      <a href="../../../../../Main/VPN/debug/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1939,7 +1939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/VPN/polipo/" class="md-nav__link">
+      <a href="../../../../../Main/VPN/polipo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1960,7 +1960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/VPN/vpn%20study/" class="md-nav__link">
+      <a href="../../../../../Main/VPN/vpn%20study/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2019,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/VPN/V2ray/readme/" class="md-nav__link">
+      <a href="../../../../../Main/VPN/V2ray/readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2094,7 +2094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Windows/windows%20key/" class="md-nav__link">
+      <a href="../../../../../Main/Windows/windows%20key/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2115,7 +2115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/Windows/windows%20udisk/" class="md-nav__link">
+      <a href="../../../../../Main/Windows/windows%20udisk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2182,7 +2182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer01/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2203,7 +2203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer02/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2224,7 +2224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer03/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer03/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2245,7 +2245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer04/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer04/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2266,7 +2266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20icinga2/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20icinga2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2287,7 +2287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20virtualbox/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20virtualbox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2308,7 +2308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20vmware/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20vmware/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2329,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20wsl/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20wsl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2350,7 +2350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20mysql/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20mysql/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2371,7 +2371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20yum/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20yum/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2392,7 +2392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20glibc/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20glibc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2413,7 +2413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20library01/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20library01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2434,7 +2434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20library02/" class="md-nav__link">
+      <a href="../../../../../Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20library02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2584,7 +2584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter01/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter01/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2605,7 +2605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter02/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter02/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2672,7 +2672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/Debug-Hacker/question/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/Debug-Hacker/question/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2739,7 +2739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2001/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2760,7 +2760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2002/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2002/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2781,7 +2781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2003/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2003/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2802,7 +2802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2004/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2004/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2823,7 +2823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2005/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2005/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2844,7 +2844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2006/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2006/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2865,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2007/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2007/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2886,7 +2886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2008/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2008/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2907,7 +2907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2009/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2009/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2974,7 +2974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/FAQ/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/FAQ/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2995,7 +2995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2002/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2002/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3016,7 +3016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%200304/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%200304/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3037,7 +3037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2006/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2006/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3058,7 +3058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2007/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2007/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3125,7 +3125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3184,7 +3184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06%2001/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06%2001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3205,7 +3205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06%2003/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06%2003/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3272,7 +3272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2001/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3293,7 +3293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2004/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2004/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3314,7 +3314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2005/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2005/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3381,7 +3381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16%2001/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16%2001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3402,7 +3402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16%2002/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16%2002/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3469,7 +3469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter17/chapter17%2001/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter17/chapter17%2001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3536,7 +3536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter18/chapter18%2001/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter18/chapter18%2001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3603,7 +3603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19%2001/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19%2001/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3624,7 +3624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19%2002/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19%2002/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3707,7 +3707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/1%20%E6%8F%92%E5%80%BC%E5%92%8C%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/1%20%E6%8F%92%E5%80%BC%E5%92%8C%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3728,7 +3728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/2%20%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%92%8C%E5%85%B1%E8%BD%AD%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/2%20%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%92%8C%E5%85%B1%E8%BD%AD%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3749,7 +3749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/3%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/3%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3770,7 +3770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/4%20R2/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/4%20R2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3791,7 +3791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/5%20LMMSE/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/5%20LMMSE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3812,7 +3812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/Readme/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/Readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3924,7 +3924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/AxMath/AxMath%20%E4%BF%AE%E6%94%B9%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/AxMath/AxMath%20%E4%BF%AE%E6%94%B9%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3945,7 +3945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/AxMath/AxMath%20%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/AxMath/AxMath%20%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4012,7 +4012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Foxit/Foxit%20%E6%89%93%E5%BC%80%E6%A0%BC%E5%BC%8F/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Foxit/Foxit%20%E6%89%93%E5%BC%80%E6%A0%BC%E5%BC%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4079,7 +4079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/GDB/gdb%20gef%20expand/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/GDB/gdb%20gef%20expand/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4100,7 +4100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/GDB/gdb%20trick/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/GDB/gdb%20trick/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4121,7 +4121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/GDB/gdb/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/GDB/gdb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4188,7 +4188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/MIPS/MIPS%20%E6%8C%87%E4%BB%A4%E5%88%86%E6%9E%90/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/MIPS/MIPS%20%E6%8C%87%E4%BB%A4%E5%88%86%E6%9E%90/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4209,7 +4209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/MIPS/mips/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/MIPS/mips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4276,7 +4276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/mysql/mysql%20errorcode/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/mysql/mysql%20errorcode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4297,7 +4297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/mysql/mysql/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/mysql/mysql/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4364,7 +4364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20command/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20command/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4385,7 +4385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20debug/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20debug/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4406,7 +4406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20gateway/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20gateway/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4427,7 +4427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20iptables/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20iptables/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4448,7 +4448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20manager/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4469,7 +4469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20nmcli%20802.1x/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20nmcli%20802.1x/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4490,7 +4490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20tool/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20tool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4511,7 +4511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Network/network%20ufw/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Network/network%20ufw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4578,7 +4578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/nginx/nginx%20403%20forbidden/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/nginx/nginx%20403%20forbidden/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4599,7 +4599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/nginx/nginx%20https/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/nginx/nginx%20https/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4620,7 +4620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/nginx/nginx%20location/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/nginx/nginx%20location/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4641,7 +4641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/nginx/nginx%20vue/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/nginx/nginx%20vue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4662,7 +4662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/nginx/nginx/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/nginx/nginx/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4729,7 +4729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QLayout%20%E6%8A%A5%E9%94%99/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QLayout%20%E6%8A%A5%E9%94%99/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4750,7 +4750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QT%20%E5%85%A5%E9%97%A8%E7%9A%84%E8%B5%84%E6%96%99/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QT%20%E5%85%A5%E9%97%A8%E7%9A%84%E8%B5%84%E6%96%99/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4771,7 +4771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QT%20%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QT%20%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4792,7 +4792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QT4%20%E5%88%B0%20QT5%20%E7%9A%84%E4%B8%8D%E5%90%8C/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QT4%20%E5%88%B0%20QT5%20%E7%9A%84%E4%B8%8D%E5%90%8C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4813,7 +4813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QTDesigner/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QTDesigner/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4834,7 +4834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QTableWidget%20%E5%A2%9E%E5%88%A0%E9%A1%B9%E7%9B%AE/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QTableWidget%20%E5%A2%9E%E5%88%A0%E9%A1%B9%E7%9B%AE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4855,7 +4855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QTableWidget%20%E8%B0%83%E6%95%B4%E5%AE%BD%E5%BA%A6/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QTableWidget%20%E8%B0%83%E6%95%B4%E5%AE%BD%E5%BA%A6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4876,7 +4876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QTextBrowser%20%E8%AE%BE%E7%BD%AE/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QTextBrowser%20%E8%AE%BE%E7%BD%AE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4897,7 +4897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QTextEdit%20%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QTextEdit%20%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4918,7 +4918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QTextEdit%20%E8%AE%BE%E7%BD%AE%E6%9C%80%E5%A4%A7%E8%A1%8C%E6%95%B0/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QTextEdit%20%E8%AE%BE%E7%BD%AE%E6%9C%80%E5%A4%A7%E8%A1%8C%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4939,7 +4939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/QThread%20%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E9%80%80%E5%87%BA/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/QThread%20%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E9%80%80%E5%87%BA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4960,7 +4960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/%E6%9F%A5%E7%9C%8B%20QT%20%E7%89%88%E6%9C%AC/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/%E6%9F%A5%E7%9C%8B%20QT%20%E7%89%88%E6%9C%AC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4981,7 +4981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/QT/%E8%81%94%E5%8A%A8%E4%B8%8B%E6%8B%89%E6%A1%86/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/QT/%E8%81%94%E5%8A%A8%E4%B8%8B%E6%8B%89%E6%A1%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5048,7 +5048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20ack/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20ack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5069,7 +5069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20awk%20sed/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20awk%20sed/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5090,7 +5090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20chsh/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20chsh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5111,7 +5111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20cp/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20cp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5132,7 +5132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20curl/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20curl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5153,7 +5153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20du/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20du/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5174,7 +5174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20jobs/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20jobs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5195,7 +5195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20ps/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20ps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5216,7 +5216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20rm/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20rm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5237,7 +5237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20rsync/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20rsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5258,7 +5258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20sort/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20sort/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5279,7 +5279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20tar/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20tar/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5300,7 +5300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20touch/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20touch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5321,7 +5321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/command%20useradd/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/command%20useradd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5342,7 +5342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/info%20env/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/info%20env/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5363,7 +5363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/info%20network/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/info%20network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5384,7 +5384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/info%20system/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/info%20system/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5405,7 +5405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/info%20zip/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/info%20zip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5426,7 +5426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Shell/something%20else/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Shell/something%20else/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5493,7 +5493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/VM/install%20in%20virtualbox/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/VM/install%20in%20virtualbox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5514,7 +5514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/VM/install%20in%20vmware/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/VM/install%20in%20vmware/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5535,7 +5535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/VM/migrate%20from%20vm/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/VM/migrate%20from%20vm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5556,7 +5556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/VM/virtualbox%20centos%20addition/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/VM/virtualbox%20centos%20addition/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5577,7 +5577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/VM/virtualbox%20install/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/VM/virtualbox%20install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5598,7 +5598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/VM/virtualbox/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/VM/virtualbox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5665,7 +5665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20variable/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20variable/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5686,7 +5686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20tabkey/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20tabkey/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5707,7 +5707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20copy%20paste/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20copy%20paste/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5728,7 +5728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20errorcode/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20errorcode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5749,7 +5749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20export/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20export/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5770,7 +5770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20map/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20map/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5791,7 +5791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20tab/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20tab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5812,7 +5812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20format/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20format/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5833,7 +5833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20debug/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20debug/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5854,7 +5854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vimscript/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vimscript/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5875,7 +5875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/vim%20normal/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/vim%20normal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5896,7 +5896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/%E6%9C%AA%E5%BD%92%E7%B1%BB/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/%E6%9C%AA%E5%BD%92%E7%B1%BB/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5917,7 +5917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/key%20ctrl/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/key%20ctrl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5938,7 +5938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/key%20leader/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/key%20leader/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5959,7 +5959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/key%20other/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/key%20other/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5980,7 +5980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/key%20plugin/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/key%20plugin/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6001,7 +6001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/Vim/key%20search/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/Vim/key%20search/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6068,7 +6068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/WSL/WSL2%20%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/WSL/WSL2%20%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6089,7 +6089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/WSL/Win%20%E4%B8%8E%20WSL%20%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/WSL/Win%20%E4%B8%8E%20WSL%20%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6118,7 +6118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/apache/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/apache/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6139,7 +6139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/chrome/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/chrome/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6160,7 +6160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/clash/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/clash/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6181,7 +6181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/docker/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/docker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6202,7 +6202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/edge/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/edge/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6223,7 +6223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/firefox/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/firefox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6244,7 +6244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/git/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/git/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6265,7 +6265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/gnome%20terminal/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/gnome%20terminal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6286,7 +6286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/i3/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/i3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6307,7 +6307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/ida/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/ida/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6328,7 +6328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/java/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/java/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6349,7 +6349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/latex/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/latex/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6370,7 +6370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/makefile/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/makefile/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6391,7 +6391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/mongod/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/mongod/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6412,7 +6412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/nas/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/nas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6433,7 +6433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/nodejs/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/nodejs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6454,7 +6454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/numpy/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/numpy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6475,7 +6475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/okular/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/okular/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6496,7 +6496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/pacman/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/pacman/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6517,7 +6517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/pdf/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/pdf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6538,7 +6538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/pip/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/pip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6559,7 +6559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/polybar/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/polybar/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6580,7 +6580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/radare2/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/radare2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6601,7 +6601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/ranger/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/ranger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6622,7 +6622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/rdp/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/rdp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6643,7 +6643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/readme/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6664,7 +6664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/redis/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/redis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6685,7 +6685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/ssh/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/ssh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6706,7 +6706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/texlive/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/texlive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6727,7 +6727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/tmux/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/tmux/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6748,7 +6748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CheatSheet/vue/" class="md-nav__link">
+      <a href="../../../../../CheatSheet/vue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6769,7 +6769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../weechat.md" class="md-nav__link">
+      <a href="../../../../../weechat.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6916,7 +6916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-1/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6937,7 +6937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-2/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6958,7 +6958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-3/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6979,7 +6979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-4/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7000,7 +7000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-5/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7021,7 +7021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-6/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7042,7 +7042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-OpenCV/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-OpenCV/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7063,7 +7063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/AWB/AWB-%20%E8%A7%86%E9%A2%91/" class="md-nav__link">
+      <a href="../../../../ISP/AWB/AWB-%20%E8%A7%86%E9%A2%91/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7130,7 +7130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/BLC/BLC/" class="md-nav__link">
+      <a href="../../../../ISP/BLC/BLC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7151,7 +7151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/BLC/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      <a href="../../../../ISP/BLC/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7218,7 +7218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/BNR/BNR/" class="md-nav__link">
+      <a href="../../../../ISP/BNR/BNR/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7239,7 +7239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/BNR/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
+      <a href="../../../../ISP/BNR/%E8%AF%B4%E6%98%8E/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7306,7 +7306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/CAC/Readme/" class="md-nav__link">
+      <a href="../../../../ISP/CAC/Readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7373,7 +7373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/CCM/CCM-1/" class="md-nav__link">
+      <a href="../../../../ISP/CCM/CCM-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7394,7 +7394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/CCM/CCM-2/" class="md-nav__link">
+      <a href="../../../../ISP/CCM/CCM-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7415,7 +7415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/CCM/CCM-3/" class="md-nav__link">
+      <a href="../../../../ISP/CCM/CCM-3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7436,7 +7436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/CCM/CCM-OpenCV/" class="md-nav__link">
+      <a href="../../../../ISP/CCM/CCM-OpenCV/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7457,7 +7457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/CCM/Readme/" class="md-nav__link">
+      <a href="../../../../ISP/CCM/Readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7524,7 +7524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/DPC/Readme/" class="md-nav__link">
+      <a href="../../../../ISP/DPC/Readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7545,7 +7545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/DPC/dpc/" class="md-nav__link">
+      <a href="../../../../ISP/DPC/dpc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7612,7 +7612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%B8%80/" class="md-nav__link">
+      <a href="../../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%B8%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7633,7 +7633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%B8%89/" class="md-nav__link">
+      <a href="../../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%B8%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7654,7 +7654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%BA%8C/" class="md-nav__link">
+      <a href="../../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%BA%8C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7675,7 +7675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%BA%94/" class="md-nav__link">
+      <a href="../../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%BA%94/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7696,7 +7696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E5%9B%9B/" class="md-nav__link">
+      <a href="../../../../ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E5%9B%9B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7717,7 +7717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Demosaic/Readme/" class="md-nav__link">
+      <a href="../../../../ISP/Demosaic/Readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7784,7 +7784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Flicker/Flicker%20%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../../../ISP/Flicker/Flicker%20%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7851,7 +7851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Gamma/Gamma/" class="md-nav__link">
+      <a href="../../../../ISP/Gamma/Gamma/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7918,7 +7918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/Readme/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/Readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7977,7 +7977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/CAC/Python%20%E5%9B%BE%E5%83%8F%E5%90%8E%E5%A4%84%E7%90%86%E4%B8%8E%E4%BC%98%E5%8C%96%2014-%20%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E4%B9%8B%E6%B6%88%E9%99%A4%E8%89%B2%E5%B7%AE/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/CAC/Python%20%E5%9B%BE%E5%83%8F%E5%90%8E%E5%A4%84%E7%90%86%E4%B8%8E%E4%BC%98%E5%8C%96%2014-%20%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E4%B9%8B%E6%B6%88%E9%99%A4%E8%89%B2%E5%B7%AE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7998,7 +7998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/CAC/%E6%B5%B7%E5%BA%B7%E7%BA%BF%E6%89%AB%E7%9B%B8%E6%9C%BA%E5%83%8F%E7%B4%A0%E6%A0%A1%E6%AD%A3%E5%8E%9F%E7%90%86%E6%8E%A8%E6%B5%8B/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/CAC/%E6%B5%B7%E5%BA%B7%E7%BA%BF%E6%89%AB%E7%9B%B8%E6%9C%BA%E5%83%8F%E7%B4%A0%E6%A0%A1%E6%AD%A3%E5%8E%9F%E7%90%86%E6%8E%A8%E6%B5%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8019,7 +8019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/CAC/%E8%89%B2%E5%B7%AE%E6%B6%88%E9%99%A4%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/CAC/%E8%89%B2%E5%B7%AE%E6%B6%88%E9%99%A4%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8086,7 +8086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/Distortion/Camera%20Calibration%20using%20OpenCV/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/Distortion/Camera%20Calibration%20using%20OpenCV/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8107,7 +8107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/Distortion/%E7%9B%B8%E6%9C%BA%E7%95%B8%E5%8F%98%E7%9F%AB%E6%AD%A3%E7%9A%84%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/Distortion/%E7%9B%B8%E6%9C%BA%E7%95%B8%E5%8F%98%E7%9F%AB%E6%AD%A3%E7%9A%84%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8128,7 +8128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/Distortion/%E7%9B%B8%E6%9C%BA%E7%9A%84%E7%95%B8%E5%8F%98/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/Distortion/%E7%9B%B8%E6%9C%BA%E7%9A%84%E7%95%B8%E5%8F%98/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8149,7 +8149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/Distortion/%E9%95%9C%E5%A4%B4%E7%95%B8%E5%8F%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/Distortion/%E9%95%9C%E5%A4%B4%E7%95%B8%E5%8F%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8216,7 +8216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/LSC/LSC/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/LSC/LSC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8237,7 +8237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/LSC/Python%20%E5%9B%BE%E5%83%8F%E5%90%8E%E5%A4%84%E7%90%86%E4%B8%8E%E4%BC%98%E5%8C%96%2012-%20%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E4%B9%8B%E6%99%95%E5%BD%B1%E5%8E%BB%E9%99%A4/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/LSC/Python%20%E5%9B%BE%E5%83%8F%E5%90%8E%E5%A4%84%E7%90%86%E4%B8%8E%E4%BC%98%E5%8C%96%2012-%20%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E4%B9%8B%E6%99%95%E5%BD%B1%E5%8E%BB%E9%99%A4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8258,7 +8258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/LSC/readme/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/LSC/readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8325,7 +8325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/%E5%8E%BB%E7%B4%AB%E8%BE%B9/Readme/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/%E5%8E%BB%E7%B4%AB%E8%BE%B9/Readme/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8346,7 +8346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/Lens/%E5%8E%BB%E7%B4%AB%E8%BE%B9/%E5%8E%BB%E7%B4%AB%E8%BE%B9%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../../ISP/Lens/%E5%8E%BB%E7%B4%AB%E8%BE%B9/%E5%8E%BB%E7%B4%AB%E8%BE%B9%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8421,7 +8421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-%20%E6%95%88%E6%9E%9C/" class="md-nav__link">
+      <a href="../../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-%20%E6%95%88%E6%9E%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8442,7 +8442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-1/" class="md-nav__link">
+      <a href="../../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8463,7 +8463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-2/" class="md-nav__link">
+      <a href="../../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8484,7 +8484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-3/" class="md-nav__link">
+      <a href="../../../../ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8599,7 +8599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/01.resize%20%E5%92%8C%20resample/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/01.resize%20%E5%92%8C%20resample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8620,7 +8620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/02.%20%E5%9F%BA%E7%A1%80%E6%BB%A4%E6%B3%A2%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/02.%20%E5%9F%BA%E7%A1%80%E6%BB%A4%E6%B3%A2%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8641,7 +8641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/03.%20%E9%87%91%E5%AD%97%E5%A1%94%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/03.%20%E9%87%91%E5%AD%97%E5%A1%94%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8662,7 +8662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/04.%20%E5%BD%A2%E6%80%81%E5%AD%A6/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/04.%20%E5%BD%A2%E6%80%81%E5%AD%A6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8683,7 +8683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/05.%20%E5%BD%A2%E6%80%81%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/05.%20%E5%BD%A2%E6%80%81%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8704,7 +8704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/06.%20%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/06.%20%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8725,7 +8725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/07.%20%E9%98%88%E5%80%BC%E5%A4%84%E7%90%86/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/07.%20%E9%98%88%E5%80%BC%E5%A4%84%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8746,7 +8746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/08.%20%E7%9B%B4%E6%96%B9%E5%9B%BE/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/08.%20%E7%9B%B4%E6%96%B9%E5%9B%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8767,7 +8767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/09.%20%E4%BA%8C%E7%BB%B4%E5%87%A0%E4%BD%95%E5%92%8C%E8%BD%AE%E5%BB%93/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/09.%20%E4%BA%8C%E7%BB%B4%E5%87%A0%E4%BD%95%E5%92%8C%E8%BD%AE%E5%BB%93/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8788,7 +8788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/10.%20%E8%BD%AE%E5%BB%93%E5%8C%B9%E9%85%8D/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/10.%20%E8%BD%AE%E5%BB%93%E5%8C%B9%E9%85%8D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8809,7 +8809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/11.%20%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/11.%20%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8830,7 +8830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/12.%20%E5%9B%BE%E7%89%87%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/12.%20%E5%9B%BE%E7%89%87%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8851,7 +8851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/13.%20%E6%9D%82%E9%A1%B9/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/13.%20%E6%9D%82%E9%A1%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8872,7 +8872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/14.%20%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/" class="md-nav__link">
+      <a href="../../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/14.%20%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -8898,6 +8898,8 @@
                 
   
   
+    
+  
   
   
     
@@ -8907,11 +8909,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
@@ -8925,7 +8927,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2_2">
             <span class="md-nav__icon md-icon"></span>
             01.各种滤波
@@ -8977,7 +8979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Gabor%20%E6%BB%A4%E6%B3%A2/Gabor%20%E6%BB%A4%E6%B3%A2%E4%BD%9C%E7%94%A8/" class="md-nav__link">
+      <a href="../../Gabor%20%E6%BB%A4%E6%B3%A2/Gabor%20%E6%BB%A4%E6%B3%A2%E4%BD%9C%E7%94%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9044,7 +9046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Guided_Filter/Guided%20Filter-%20%E4%B8%BB%E8%A6%81%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" class="md-nav__link">
+      <a href="../../Guided_Filter/Guided%20Filter-%20%E4%B8%BB%E8%A6%81%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9065,7 +9067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Guided_Filter/Guilded%20Filter-%20%E6%9C%80%E7%BB%88%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+      <a href="../../Guided_Filter/Guilded%20Filter-%20%E6%9C%80%E7%BB%88%E6%B5%81%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9132,7 +9134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/WeightedMedian%20Filter-%20%E5%8E%9F%E7%90%86%E5%92%8C%E5%8A%A0%E9%80%9F/" class="md-nav__link">
+      <a href="../../Median_Filter/WeightedMedian%20Filter-%20%E5%8E%9F%E7%90%86%E5%92%8C%E5%8A%A0%E9%80%9F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9153,7 +9155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%AE%B6%E6%97%8F/" class="md-nav__link">
+      <a href="../../Median_Filter/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%AE%B6%E6%97%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9174,7 +9176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+      <a href="../../Median_Filter/%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9241,7 +9243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/WLS_Filter/WLS%20%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+      <a href="../../WLS_Filter/WLS%20%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9308,7 +9310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9329,7 +9331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%80/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9350,7 +9352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%80%E8%A1%A5%E5%85%85%E6%9D%90%E6%96%99/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%80%E8%A1%A5%E5%85%85%E6%9D%90%E6%96%99/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9371,7 +9373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%89/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9392,7 +9394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%BA%8C/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%BA%8C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9413,7 +9415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%A4%96%E6%8F%92%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%A4%96%E6%8F%92%E6%96%B9%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9434,7 +9436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E5%8D%8F%E6%96%B9%E5%B7%AE%E6%9B%B4%E6%96%B0%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E5%8D%8F%E6%96%B9%E5%B7%AE%E6%9B%B4%E6%96%B0%E6%96%B9%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9455,7 +9457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E6%B5%8B%E9%87%8F%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E6%B5%8B%E9%87%8F%E6%96%B9%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9476,7 +9478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E7%8A%B6%E6%80%81%E5%A4%96%E6%8F%92%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E7%8A%B6%E6%80%81%E5%A4%96%E6%8F%92%E6%96%B9%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9497,7 +9499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E7%8A%B6%E6%80%81%E6%9B%B4%E6%96%B0%E6%96%B9%E7%A8%8B/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E7%8A%B6%E6%80%81%E6%9B%B4%E6%96%B0%E6%96%B9%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9518,7 +9520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B/" class="md-nav__link">
+      <a href="../../%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9585,7 +9587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/Bilateral%20Filter%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
+      <a href="../../%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/Bilateral%20Filter%20%E5%8E%9F%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9606,7 +9608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%20FPGA%20%E5%AE%9E%E7%8E%B0%E6%96%87%E6%A1%A3/" class="md-nav__link">
+      <a href="../../%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%20FPGA%20%E5%AE%9E%E7%8E%B0%E6%96%87%E6%A1%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9627,7 +9629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9653,6 +9655,8 @@
                 
   
   
+    
+  
   
   
     
@@ -9662,28 +9666,28 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_7" checked>
         
           
           <label class="md-nav__link" for="__nav_4_2_2_7" id="__nav_4_2_2_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    同态滤波
+    各向异性滤波
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2_2_7">
             <span class="md-nav__icon md-icon"></span>
-            同态滤波
+            各向异性滤波
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -9691,18 +9695,118 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    各向异性滤波记录
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    同态滤波简单介绍
+    各向异性滤波记录
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本思想
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式解释
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公式解释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      迭代
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      散度计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      扩散传导函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      综合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -9740,7 +9844,7 @@
             
   
   <span class="md-ellipsis">
-    维纳滤波
+    同态滤波
   </span>
   
 
@@ -9750,7 +9854,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2_2_8">
             <span class="md-nav__icon md-icon"></span>
-            维纳滤波
+            同态滤波
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -9761,11 +9865,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E7%BB%B4%E7%BA%B3%E6%BB%A4%E6%B3%A2/%E7%BB%B4%E7%BA%B3%E6%BB%A4%E6%B3%A2%E6%AD%A3%E5%88%99%E5%8C%96/" class="md-nav__link">
+      <a href="../../%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    维纳滤波正则化
+    同态滤波简单介绍
   </span>
   
 
@@ -9807,7 +9911,7 @@
             
   
   <span class="md-ellipsis">
-    高斯滤波
+    最小值滤波
   </span>
   
 
@@ -9816,6 +9920,140 @@
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            最小值滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%9C%80%E5%B0%8F%E5%80%BC%E6%BB%A4%E6%B3%A2/%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加速方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_10" id="__nav_4_2_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    维纳滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            维纳滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%BB%B4%E7%BA%B3%E6%BB%A4%E6%B3%A2/%E7%BB%B4%E7%BA%B3%E6%BB%A4%E6%B3%A2%E6%AD%A3%E5%88%99%E5%8C%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    维纳滤波正则化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_11" id="__nav_4_2_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    高斯滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_11">
             <span class="md-nav__icon md-icon"></span>
             高斯滤波
           </label>
@@ -9828,7 +10066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2/%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2%20%E5%B8%B8%E8%A7%81%20Kernel/" class="md-nav__link">
+      <a href="../../%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2/%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2%20%E5%B8%B8%E8%A7%81%20Kernel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9862,8 +10100,6 @@
                 
   
   
-    
-  
   
   
     
@@ -9873,28 +10109,28 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
         
           
           <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    02.特征提取
+    02.特征提取和边缘检测
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2_3">
             <span class="md-nav__icon md-icon"></span>
-            02.特征提取
+            02.特征提取和边缘检测
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -9905,7 +10141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01.%20%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%20%EF%BC%9A%20%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/" class="md-nav__link">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/01.%20%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%20%EF%BC%9A%20%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9923,30 +10159,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    02. 更详细的角点函数
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/02.%20%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9955,128 +10171,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      基本原理说明
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="基本原理说明">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      问题一
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      问题二
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      问题三
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      具体函数
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="具体函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cornerharris" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerHarris
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#goodfeaturestotrack" class="md-nav__link">
-    <span class="md-ellipsis">
-      goodFeaturesToTrack
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cornereigenvalsandvecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerEigenValsAndVecs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cornermineigenval" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerMinEigenVal
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cornersubpix" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerSubPix
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -10089,7 +10183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03.HOG%20%E7%89%B9%E5%BE%81/" class="md-nav__link">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/03.HOG%20%E7%89%B9%E5%BE%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10110,7 +10204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/" class="md-nav__link">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10131,7 +10225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" class="md-nav__link">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/05.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10152,7 +10246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/" class="md-nav__link">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10173,7 +10267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E7%9B%B4%E7%BA%BF%E7%89%B9%E5%BE%81/" class="md-nav__link">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/07.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E7%9B%B4%E7%BA%BF%E7%89%B9%E5%BE%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10194,11 +10288,74 @@
   
   
     <li class="md-nav__item">
-      <a href="../08.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81/" class="md-nav__link">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/08.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     08. 特别的特征 ： 人脸特征
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/09.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9ALSD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09. 直线检测方法 ：LSD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/10.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEdgeDrawing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. 边缘检测方法 ：EdgeDrawing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/11.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEDLines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. 直线检测方法 ：EDLines
   </span>
   
 
@@ -10261,7 +10418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/01.%20%E7%AE%80%E5%8D%95%E5%9B%BE%E5%83%8F%E6%98%AF%E5%88%86%E5%89%B2%20%EF%BC%9A%20%E7%9B%B4%E6%8E%A5%E7%94%A8%E5%BD%A2%E6%80%81%E5%AD%A6%E8%86%A8%E8%83%80%E8%85%90%E8%9A%80/" class="md-nav__link">
+      <a href="../../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/01.%20%E7%AE%80%E5%8D%95%E5%9B%BE%E5%83%8F%E6%98%AF%E5%88%86%E5%89%B2%20%EF%BC%9A%20%E7%9B%B4%E6%8E%A5%E7%94%A8%E5%BD%A2%E6%80%81%E5%AD%A6%E8%86%A8%E8%83%80%E8%85%90%E8%9A%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10282,7 +10439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/02.OpenCV%20%E8%B0%83%E5%8C%85%20%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/" class="md-nav__link">
+      <a href="../../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/02.OpenCV%20%E8%B0%83%E5%8C%85%20%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10303,7 +10460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/03.%20%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%20%EF%BC%9A%20%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+      <a href="../../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/03.%20%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%20%EF%BC%9A%20%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10324,7 +10481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/04.HfsSegment%EF%BC%88hfs%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/" class="md-nav__link">
+      <a href="../../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/04.HfsSegment%EF%BC%88hfs%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10345,7 +10502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/05.GraphSegment%EF%BC%88ximgproc%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/" class="md-nav__link">
+      <a href="../../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/05.GraphSegment%EF%BC%88ximgproc%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10366,7 +10523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/06.GraphCut/" class="md-nav__link">
+      <a href="../../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/06.GraphCut/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10387,7 +10544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/07.GrabCut/" class="md-nav__link">
+      <a href="../../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/07.GrabCut/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10462,7 +10619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%88%86%E8%BE%A8%E7%8E%87%E5%8D%95%E4%BD%8D%E8%A7%A3%E9%87%8A%20%EF%BC%88MTF%EF%BC%89/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%88%86%E8%BE%A8%E7%8E%87%E5%8D%95%E4%BD%8D%E8%A7%A3%E9%87%8A%20%EF%BC%88MTF%EF%BC%89/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10521,7 +10678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%85%89%E8%B0%B1%E5%9B%BE%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%85%89%E8%B0%B1%E5%9B%BE%E7%9A%84%E7%90%86%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10542,7 +10699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%E4%B8%80/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%E4%B8%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10609,7 +10766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%B0%8F%E5%AD%94%E6%88%90%E5%83%8F/%E5%B0%8F%E5%AD%94%E6%88%90%E5%83%8F%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%B0%8F%E5%AD%94%E6%88%90%E5%83%8F/%E5%B0%8F%E5%AD%94%E6%88%90%E5%83%8F%E8%AE%B0%E5%BD%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10676,7 +10833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/0%20%E7%84%A6%E8%B7%9D%E5%92%8C%E6%99%AF%E6%B7%B1/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/0%20%E7%84%A6%E8%B7%9D%E5%92%8C%E6%99%AF%E6%B7%B1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10697,7 +10854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/1%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%95%BF%E7%84%A6/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/1%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%95%BF%E7%84%A6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10718,7 +10875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/2%20%E5%8F%98%E7%84%A6%E5%92%8C%E5%AF%B9%E7%84%A6/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/2%20%E5%8F%98%E7%84%A6%E5%92%8C%E5%AF%B9%E7%84%A6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10739,7 +10896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/3%20%E5%BF%AB%E9%97%A8%E5%92%8C%E5%85%89%E5%9C%88/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/3%20%E5%BF%AB%E9%97%A8%E5%92%8C%E5%85%89%E5%9C%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10760,7 +10917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/4%20%E5%90%84%E7%A7%8D%E6%BB%A4%E9%95%9C/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/4%20%E5%90%84%E7%A7%8D%E6%BB%A4%E9%95%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10781,7 +10938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/5%20%E7%9B%B8%E6%9C%BA%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/5%20%E7%9B%B8%E6%9C%BA%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10802,7 +10959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/6%20YUV420/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/6%20YUV420/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10869,7 +11026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/LAB%20%E5%92%8C%20RGB%20%E4%BA%92%E8%BD%AC%E5%AE%9E%E4%BE%8B%E5%92%8C%E6%B3%A8%E6%84%8F%E7%82%B9/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/LAB%20%E5%92%8C%20RGB%20%E4%BA%92%E8%BD%AC%E5%AE%9E%E4%BE%8B%E5%92%8C%E6%B3%A8%E6%84%8F%E7%82%B9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10890,7 +11047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/asset%20%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E8%A7%86%E9%A2%91%E8%AE%B2%E7%9A%84%E5%BE%88%E5%A5%BD/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/asset%20%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E8%A7%86%E9%A2%91%E8%AE%B2%E7%9A%84%E5%BE%88%E5%A5%BD/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10911,7 +11068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3%20-%20%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3%20-%20%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10970,7 +11127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/HSV%E5%92%8CHSL/HSV%20%E5%92%8C%20HSL/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/HSV%E5%92%8CHSL/HSV%20%E5%92%8C%20HSL/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10991,7 +11148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/HSV%E5%92%8CHSL/RGB%20%E5%92%8C%20HSL%20%E4%BA%92%E8%BD%AC%E5%AE%9E%E7%8E%B0%E6%96%87%E6%A1%A3/" class="md-nav__link">
+      <a href="../../../../%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/HSV%E5%92%8CHSL/RGB%20%E5%92%8C%20HSL%20%E4%BA%92%E8%BD%AC%E5%AE%9E%E7%8E%B0%E6%96%87%E6%A1%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -11065,26 +11222,26 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      基本原理说明
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="基本原理说明">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      问题一
+      基本思想
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式解释
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公式解释">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      问题二
+      迭代
     </span>
   </a>
   
@@ -11093,67 +11250,25 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      问题三
+      散度计算
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      具体函数
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="具体函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cornerharris" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerHarris
+      扩散传导函数
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#goodfeaturestotrack" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      goodFeaturesToTrack
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cornereigenvalsandvecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerEigenValsAndVecs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cornermineigenval" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerMinEigenVal
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cornersubpix" class="md-nav__link">
-    <span class="md-ellipsis">
-      cornerSubPix
+      综合
     </span>
   </a>
   
@@ -11179,112 +11294,95 @@
                   
 
 
-<h1 id="_1">更详细的角点函数</h1>
-<blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/更详细的角点函数</p>
-</blockquote>
-<p>建议看这个博主的<a href="http://shichaoxin.com/2022/05/30/OpenCV%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E8%AF%BE-Harris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">博客</a>，慢下来从原理开始看，收获太大了！！</p>
-<h3 id="_2">基本原理说明</h3>
-<p>知道这章的几个函数，需要了解一些角点的原理。主要是:</p>
-<p>1. 角点检测和矩阵的特征值 <span class="arithmatex">\(\lambda\)</span> 怎么扯起来的？<br />
-2. 矩阵的特征值大小和角点检测准确度的联系<br />
-3. 函数中有一个参数 k 代表什么含义</p>
-<p>这个博主的<a href="http://shichaoxin.com/2022/05/30/OpenCV%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%8C%E8%AF%BE-Harris%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">博客</a> 讲的相当好，接下来相当于是复制粘贴了。</p>
-<h4 id="_3">问题一</h4>
-<p><img alt="1721355176071" src="/asset/image/1721355176071.png" /></p>
-<p>什么是角点：如果在任何方向上滑动窗口，窗口内的灰度都会发生变化，则这是一个角点。窗口滑动的灰度变化可以表示为：</p>
-<p><img alt="1721355340441" src="/asset/image/1721355340441.png" /></p>
-<p>这样角点检测就和某个矩阵的特征值相关联起来了。</p>
-<h4 id="_4">问题二</h4>
-<p><img alt="1721355438000" src="/asset/image/1721355438000.png" /></p>
-<h4 id="_5">问题三</h4>
-<p><img alt="1721355674037" src="/asset/image/1721355674037.png" /></p>
-<h3 id="_6">具体函数</h3>
-<p>理解上面的原理就清楚了，下面主要分成两类，一个是 Harris，一个 Shi-Tomasi；后者其实主要区别就是直接用较小的特征值，这样不用调整上面 k 值。</p>
-<h4 id="cornerharris">cornerHarris</h4>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">cornerHarris</span><span class="p">(</span><span class="w"> </span>
-<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ksize</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">k</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">borderType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BORDER_DEFAULT</span><span class="w"> </span>
-<span class="p">);</span>
-</code></pre></div>
-<p>blockSize 是滑动窗口大小；ksize 是计算梯度的Sobel算子尺寸；k 就是上面问题三的那个值</p>
-<p>注意这个函数是放回图像各个位置的 R 值，所以之后还是要通过类似 <code>R[R &gt; 0.01*R.max()]</code> 挑选出符合条件的点。</p>
-<h4 id="goodfeaturestotrack">goodFeaturesToTrack</h4>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">goodFeaturesToTrack</span><span class="p">(</span><span class="w"> </span>
-<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">image</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">corners</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxCorners</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">qualityLevel</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">minDistance</span><span class="p">,</span>
-<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">noArray</span><span class="p">(),</span><span class="w"> </span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">useHarrisDetector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span><span class="w"> </span>
-<span class="p">);</span>
-<span class="c1">// 官方文档中的示例</span>
-<span class="n">goodFeaturesToTrack</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div>
-<ul>
-<li>maxCorners: 最多返回角点个数。会挑选前 maxCorners 个最优的角点返回。为 0 表示没有返回数量限制</li>
-<li>qualityLevel: 举例而言，最优（即 R 值最大）角点的 R 值为 1500，如果qualityLevel=0.01，则R值小于1500×0.01=15 的角点都会被抛弃。</li>
-<li>minDistance: 返回的角点中，之间最小的欧氏距离</li>
-<li>blocksize, k: 同 Harris</li>
-<li>userHarrisDetector: True 使用 Harris 方法；False 使用 Shi-Tomasi 方法</li>
-</ul>
-<h4 id="cornereigenvalsandvecs">cornerEigenValsAndVecs</h4>
-<p>这个函数是输入图片，然后计算基本原理所说的两个特征值。这就是为什么要理解原理，不然不知道这函数干什么。</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">cornerEigenValsAndVecs</span><span class="p">(</span><span class="w"> </span>
-<span class="w">    </span><span class="n">InputArray</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">ksize</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">borderType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BORDER_DEFAULT</span><span class="w"> </span>
-<span class="p">);</span>
-</code></pre></div>
-<p>参数同上面的函数，下面是一个示例：</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">img</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imread</span><span class="p">(</span><span class="s">&quot;xxx&quot;</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 参数</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ksize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// 计算特征值</span>
-<span class="w">    </span><span class="n">img_lambdas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mat</span><span class="o">::</span><span class="n">zeros</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">CV_32FC</span><span class="p">(</span><span class="mi">6</span><span class="p">));</span>
-<span class="w">    </span><span class="n">cornerEigenValsAndVecs</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">,</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="n">ksize</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// 计算响应，img_lambdas 就是算出的两个特征值</span>
-<span class="w">    </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mat</span><span class="o">::</span><span class="n">zeros</span><span class="p">(</span><span class="n">src</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">CV_32FC1</span><span class="p">);</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">rows</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">cols</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">lambda1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">Vec6f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
-<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">lambda2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">img_lambdas</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">Vec6f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
-<span class="w">            </span><span class="n">R</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lambda1</span><span class="o">*</span><span class="n">lambda2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="o">*</span><span class="n">pow</span><span class="p">((</span><span class="n">lambda1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lambda2</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 挑选出合适的点，模仿 goodFeaturesToTrack 的条件</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maxCorners</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">qualityLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">minDisatnce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">minR</span><span class="p">,</span><span class="w"> </span><span class="n">maxR</span><span class="p">;</span>
-<span class="w">    </span><span class="n">minMaxLoc</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">minR</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">maxR</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Mat</span><span class="p">());</span>
-<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">minR</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">qualityLevel</span><span class="o">*</span><span class="p">(</span><span class="n">maxR</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">minR</span><span class="p">);</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">src</span><span class="p">.</span><span class="n">rows</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">src</span><span class="p">.</span><span class="n">cols</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">harrisRspImg</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">);</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">R</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">threshold</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="c1">// OK!</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">maxCorners</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">                </span><span class="n">maxCorners</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="cornermineigenval">cornerMinEigenVal</h4>
-<p>同上面的函数，不过计算的是较小特征值（因为只求较小值可能求解速度会快一点），即给 Shi-Tomasi 这种方法用的，参数也同上面的函数。</p>
-<h4 id="cornersubpix">cornerSubPix</h4>
-<p>亚像素级别的检测，具体参考上面博主的<a href="http://shichaoxin.com/2022/11/07/OpenCV%E5%9F%BA%E7%A1%80-%E7%AC%AC%E4%B8%89%E5%8D%81%E4%BA%94%E8%AF%BE-%E4%BA%9A%E5%83%8F%E7%B4%A0%E7%BA%A7%E5%88%AB%E8%A7%92%E7%82%B9%E6%A3%80%E6%B5%8B/">文章</a>，非常详细。</p>
+<h1 id="_1">各向异性滤波记录</h1>
+<p>通常用在图像去噪上，文章许多文字来自别的文章，以下是参考链接：</p>
+<p>1. https://zhuanlan.zhihu.com/p/443182644<br />
+2. https://www.zhihu.com/question/430771515/answer/2738003246<br />
+3. https://www.zhihu.com/question/430771515/answer/1597682592</p>
+<h2 id="_2">基本思想</h2>
+<p>传统滤波时，各个方向都一视同仁，边缘和平坦区域都做平滑，去噪的同时容易丢失边缘等有意义的高频，如高斯滤波、均值滤波等。</p>
+<p>因此考虑在做滤波时，各个方向不是一视同仁的，边缘等高频跟平坦区域会区别对待。其实双边滤波也是类似的思路。</p>
+<h2 id="_3">公式解释</h2>
+<p>Perona P, Malik J 于 1990 年提出了 PM 扩散方程，其基本公式为 </p>
+<div class="arithmatex">\[
+\frac{\partial u}{\partial t} = \text{div}(c(u)\nabla u)
+\]</div>
+<p>其中 <span class="arithmatex">\(u\)</span> 是图像，<span class="arithmatex">\(t\)</span> 是第几次迭代，<span class="arithmatex">\(c(u)\)</span> 是扩散的传导函数，<span class="arithmatex">\(\nabla u\)</span> 是梯度，<span class="arithmatex">\(\text{div}\)</span> 是散度，有些会在下面详细解释。</p>
+<h3 id="_4">迭代</h3>
+<p>所以每次迭代，计算 <span class="arithmatex">\(u(t+1) = u(t) + \lambda * \partial u / \partial t\)</span> 进行更新就行。</p>
+<p>这里的 <span class="arithmatex">\(\lambda\)</span> 取值越大越平滑。</p>
+<h3 id="_5">散度计算</h3>
+<p>散度的这个概念是高数后面开始涉及的，就是高斯-斯托克斯那个部分。具体推导不谈，反正直到散度的重要性在于，可用表征空间各点矢量场发散的强弱程度</p>
+<p>散度的计算如下，<span class="arithmatex">\(\bold{v} = \{f(x, y, z), g(x, y, z), h(x, y, z)\}\)</span>：</p>
+<div class="arithmatex">\[
+\text{div}(\bold{v}) = \frac{\partial f(x, y, z)}{\partial x} + \frac{\partial g(x, y, z)}{\partial y} + \frac{\partial h(x, y, z)}{\partial z}
+\]</div>
+<p>回看 PM 扩散方程的公式，我们先忽略 <span class="arithmatex">\(c(u)\)</span> 的定义，假设它都是 1；而另一个项目 <span class="arithmatex">\(\nabla u\)</span> 是梯度，即 <span class="arithmatex">\(\nabla u = (\partial u / \partial x, \partial u / \partial y)\)</span>。</p>
+<p>很多图像处理的文章讲到这里就直接给如下公式，然后说这就是拉普拉斯，非常让人迷惑：</p>
+<div class="arithmatex">\[
+\text{div}(\nabla u) = \frac{\partial^{2} u}{\partial x^2} + \frac{\partial^{2} u}{\partial y^2}
+\]</div>
+<p>下面详细讲一下为什么这样，为了方便，把 <span class="arithmatex">\(\partial u / \partial x\)</span> 记作 <span class="arithmatex">\(H\)</span>，<span class="arithmatex">\(\partial u / \partial y\)</span> 记作 <span class="arithmatex">\(V\)</span>。</p>
+<p>首先明确一点：<strong><span class="arithmatex">\(H\)</span> 和 <span class="arithmatex">\(V\)</span> 也都是函数</strong>，就像原图 <span class="arithmatex">\(u(x, y)\)</span> 一样，即他们也是 <span class="arithmatex">\(H(x, y)\)</span> 和 <span class="arithmatex">\(V(x, y)\)</span>。带入到散度计算公式，得到：<br />
+$$<br />
+\text{div}(\nabla u) <br />
+= \text{div}((H, V))<br />
+= \frac{\partial H(x, y)}{\partial x} + \frac{\partial V(x, y)}{\partial y}<br />
+$$</p>
+<p>现在来看图像中某个像素点 <span class="arithmatex">\((p, q)\)</span>，它的 <span class="arithmatex">\(\text{div}(\nabla u)\)</span> 是多少。首先假设做梯度是当前减去左边，当前减去上边：<br />
+$$<br />
+H(p, q) = u(p, q) - u(p, q-1)<br />
+$$<br />
+$$<br />
+V(p, q) = u(p, q) - u(p-1, q)<br />
+$$</p>
+<p>那么 <span class="arithmatex">\(H\)</span> 做 <span class="arithmatex">\(x\)</span> 方向梯度，得到：<br />
+$$<br />
+\begin{aligned}<br />
+\frac{\partial H}{\partial x}(p, q) <br />
+&amp;= H(p, q) - H(p, q-1) \<br />
+&amp;= \bigg(u(p, q) - u(p, q-1)\bigg) - \bigg(u(p, q-1) - u(p, q-2)\bigg) \<br />
+&amp;= u(p, q) + u(p, q-2) - 2u(p, q-1) \<br />
+\end{aligned}<br />
+$$</p>
+<p>发现结果偏移了一个像素，所以为了方便，规定对 <span class="arithmatex">\(H\)</span> 做 <span class="arithmatex">\(x\)</span> 方向梯度时，<span class="arithmatex">\(H(p, q)\)</span> 是当前减去右边，当前减去下边：<br />
+$$<br />
+\begin{aligned}<br />
+\frac{\partial H}{\partial x}(p, q) <br />
+&amp;= H(p, q) - H(p, q+1) \<br />
+&amp;= \bigg(u(p, q) - u(p, q-1)\bigg) - \bigg(u(p, q+1) - u(p, q)\bigg) \<br />
+&amp;= 2u(p, q) - u(p, q-1) - u(p, q+1) \<br />
+\end{aligned}<br />
+$$</p>
+<p>可以看到正好是中间乘二再减去左边和右边，所以这就是为什么说图像的散度就是拉普拉斯。</p>
+<p>因此，可以写为：<br />
+$$<br />
+\text{div}(\nabla u) = \nabla_{E}(u) + \nabla_{N}(u) + \nabla_{W}(u) + \nabla_{S}(u)<br />
+$$<br />
+其中 <span class="arithmatex">\(\nabla_{E}(u) = u(x,y+1)-u(x,y)\)</span>，<span class="arithmatex">\(\nabla_{W}(u) = u(x,y-1)-u(x,y)\)</span>，另外两个同理。</p>
+<h3 id="_6">扩散传导函数</h3>
+<p>这里的 <span class="arithmatex">\(c(x)\)</span> 有不同的类型，常见的有：</p>
+<div class="arithmatex">\[
+c1(x) = \text{exp}\left(-(x / k)^2\right)
+\]</div>
+<div class="arithmatex">\[
+c2(x) = \frac{1}{1+(x / k)^2}
+\]</div>
+<div class="arithmatex">\[
+c3(x) = \left\{ 
+\begin{array}{ll} 
+1 &amp; \text{ if } (x)^2 = 0 \\
+1 - \text{exp}\left(-\frac{3.315}{(x/k)^8}\right) &amp; \text{ if } (x)^2 &gt; 0 
+\end{array} 
+\right\}
+\]</div>
+<p>这里的 <span class="arithmatex">\(k\)</span> 表示控制扩散的对比因子，值越大越平滑，越不易保留边缘。具体的函数一般常用前两个。</p>
+<h3 id="_7">综合</h3>
+<p>综上，公式如下，从公式可以发现 <span class="arithmatex">\(c(u)\)</span> 也分了方向，即不同方向的系数不同：</p>
+<div class="arithmatex">\[
+u(t+1) = u(t) + \lambda * \sum^{E,W,N,S}_{d}\bigg(c(\nabla_d(u)) * \nabla_d(u)\bigg)
+\]</div>
+<p>其中 <span class="arithmatex">\(c(x)\)</span> 参考上面的扩散传导函数，<span class="arithmatex">\(\nabla_d(u)\)</span> 是差分算子，<span class="arithmatex">\(d\)</span> 是方向。</p>
 
 
 
@@ -11414,7 +11512,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../01.%20%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%20%EF%BC%9A%20%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 01. 特征点三部曲 ： 提取 ； 描述 ； 匹配">
+          <a href="../../%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%AE%B0%E5%BD%95/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 双边滤波记录">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -11424,20 +11522,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                01. 特征点三部曲 ： 提取 ； 描述 ； 匹配
+                双边滤波记录
               </div>
             </div>
           </a>
         
         
           
-          <a href="../03.HOG%20%E7%89%B9%E5%BE%81/" class="md-footer__link md-footer__link--next" aria-label="Next: 03.HOG 特征">
+          <a href="../../%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/" class="md-footer__link md-footer__link--next" aria-label="Next: 同态滤波简单介绍">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                03.HOG 特征
+                同态滤波简单介绍
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -11475,16 +11573,18 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.path", "header.autohide", "navigation.footer"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.path", "header.autohide", "navigation.footer"], "search": "../../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
+      
+        <script src="../../../../../assets/javascripts/toggle-sidebar.js" async></script>
       
     
   </body>

@@ -12,13 +12,13 @@
         <meta name="author" content="Allen Hong">
       
       
-        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/05.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">
+        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/11.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEDLines/">
       
       
-        <link rel="prev" href="../04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/">
+        <link rel="prev" href="../10.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEdgeDrawing/">
       
       
-        <link rel="next" href="../06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/">
+        <link rel="next" href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/01.%20%E7%AE%80%E5%8D%95%E5%9B%BE%E5%83%8F%E6%98%AF%E5%88%86%E5%89%B2%20%EF%BC%9A%20%E7%9B%B4%E6%8E%A5%E7%94%A8%E5%BD%A2%E6%80%81%E5%AD%A6%E8%86%A8%E8%83%80%E8%85%90%E8%9A%80/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>05. 特别的特征 ： 边缘检测 - Allen Hong's Blog</title>
+        <title>11. 直线检测方法 ：EDLines - Allen Hong's Blog</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#edlines" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              05. 特别的特征 ： 边缘检测
+              11. 直线检测方法 ：EDLines
             
           </span>
         </div>
@@ -9673,7 +9673,7 @@
             
   
   <span class="md-ellipsis">
-    同态滤波
+    各向异性滤波
   </span>
   
 
@@ -9682,6 +9682,73 @@
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            各向异性滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    各向异性滤波记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_8" id="__nav_4_2_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    同态滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_8">
             <span class="md-nav__icon md-icon"></span>
             同态滤波
           </label>
@@ -9733,10 +9800,77 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_9" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_2_8" id="__nav_4_2_2_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_2_9" id="__nav_4_2_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    最小值滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            最小值滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E6%9C%80%E5%B0%8F%E5%80%BC%E6%BB%A4%E6%B3%A2/%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加速方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_10" id="__nav_4_2_2_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -9747,8 +9881,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2_8">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_10">
             <span class="md-nav__icon md-icon"></span>
             维纳滤波
           </label>
@@ -9800,10 +9934,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_11" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_2_9" id="__nav_4_2_2_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_2_11" id="__nav_4_2_2_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -9814,8 +9948,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2_9">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_11">
             <span class="md-nav__icon md-icon"></span>
             高斯滤波
           </label>
@@ -9884,7 +10018,7 @@
             
   
   <span class="md-ellipsis">
-    02.特征提取
+    02.特征提取和边缘检测
   </span>
   
 
@@ -9894,7 +10028,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2_3">
             <span class="md-nav__icon md-icon"></span>
-            02.特征提取
+            02.特征提取和边缘检测
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -9986,30 +10120,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    05. 特别的特征 ： 边缘检测
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../05.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -10018,62 +10132,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#canny" class="md-nav__link">
-    <span class="md-ellipsis">
-      Canny
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#structurededgedetection" class="md-nav__link">
-    <span class="md-ellipsis">
-      StructuredEdgeDetection
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edgedrawing" class="md-nav__link">
-    <span class="md-ellipsis">
-      EdgeDrawing
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deriche-paillou" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deriche, Paillou
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -10137,6 +10195,169 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9ALSD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09. 直线检测方法 ：LSD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEdgeDrawing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. 边缘检测方法 ：EdgeDrawing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11. 直线检测方法 ：EDLines
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    11. 直线检测方法 ：EDLines
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      总体流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edge-drawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      流程一：使用 Edge Drawing 初步检测
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="流程一：使用 Edge Drawing 初步检测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      参数说明
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      流程二：对像素链进行拆解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      流程三：判断线段是否可以作为最终直线
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -10997,36 +11218,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#canny" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Canny
+      总体流程
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#structurededgedetection" class="md-nav__link">
+  <a href="#edge-drawing" class="md-nav__link">
     <span class="md-ellipsis">
-      StructuredEdgeDetection
+      流程一：使用 Edge Drawing 初步检测
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="流程一：使用 Edge Drawing 初步检测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      参数说明
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      流程二：对像素链进行拆解
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#edgedrawing" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      EdgeDrawing
+      流程三：判断线段是否可以作为最终直线
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deriche-paillou" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      Deriche, Paillou
+      参考
     </span>
   </a>
   
@@ -11047,87 +11292,75 @@
                   
 
 
-<h1 id="_1">特别的特征：边缘检测</h1>
-<blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/特别的特征：边缘检测</p>
-</blockquote>
-<p>边缘是一个独特的图像特征。</p>
-<h3 id="canny">Canny</h3>
-<p>经典算法，无需多言。要么输入 8-bit 的 image，要么输入处理后的 16S1/16S3 的微分后的结果 dx 和 dy。</p>
-<div class="highlight"><pre><span></span><code><span class="n">cv</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">threshold1</span><span class="p">,</span> <span class="n">threshold2</span><span class="p">[,</span> <span class="n">edges</span><span class="p">[,</span> <span class="n">apertureSize</span><span class="p">[,</span> <span class="n">L2gradient</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">edges</span>
-<span class="n">cv</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">threshold1</span><span class="p">,</span> <span class="n">threshold2</span><span class="p">[,</span> <span class="n">edges</span><span class="p">[,</span> <span class="n">L2gradient</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">edges</span>
+<h1 id="edlines">边缘检测方法：EDLines</h1>
+<p>介绍一种边缘检测方法：EDLines，来自以下文章，它可以在 OpenCV 中使用，具体用法在<a href="07.特别的特征：直线特征.md">另一篇笔记</a>中。</p>
+<ul>
+<li>Edge drawing: a combined real-time edge and segment detector</li>
+<li>EDLines: A real-time line segment detector with a false detection control</li>
+</ul>
+<p>之所以有两篇，是 EDLines 前面用的就是 Edge drawing，其实都是一个作者写的。 Edge drawing 的详细记录在 <a href="10.边缘检测方法：EdgeDrawing.md">另一篇笔记</a> 中。</p>
+<h2 id="_1">总体流程</h2>
+<p>流程一：先用 Edge Drawing 得到了一些连接的像素链； 流程二：对每个像素链进行分解，得到各个线段； 流程三：对线段进行验证，不符要求就丢弃。</p>
+<h2 id="edge-drawing">流程一：使用 Edge Drawing 初步检测</h2>
+<p>Edge Drawing 的详细介绍在 <a href="10.边缘检测方法：EdgeDrawing.md">另一篇笔记</a> 中。下图是 Edge Drawing 各个步骤的临时结果，Edge Drawging 更侧重于边缘检测，他不会考虑直线的问题，以这张图为例，最后 Edge Drawing 会得到四条连接的像素链，即每个矩形对应一个。</p>
+<p><img alt="" src="/asset/image/20250111112652.png" /></p>
+<h3 id="_2">参数说明</h3>
+<p>这里和 Edge Drawing 计算方式或默认值有轻微不同。首先梯度的大小计算方式不同，方向计算也不同，ED 用的 Sobel，EDLines 这里简化一些：</p>
+<p><img alt="" src="/asset/image/20250111120005.png" /></p>
+<p>ED 有一个梯度阈值 <code>gradient_thresh</code>，小于该阈值的点不考虑：ED 使用 36，EDLines 使用 <span class="arithmatex">\(2/\sin(22.5) = 5.22\)</span>，这里差这么多也是因为梯度计算方式有点不同。</p>
+<p>ED 求解锚点（具体看 <a href="10.边缘检测方法：EdgeDrawing.md">ED 方法</a>），有一个 <code>anchor_thresh</code> 参数，表示某个点梯度值比周围点的梯度大多少才可以。这是一个经验参数，ED 用的 4，EDLines 论文中说实验结果显示 3 最好。</p>
+<p>ED 求解锚点（具体看 <a href="10.边缘检测方法：EdgeDrawing.md">ED 方法</a>），还有一个 <code>anchor_interval</code> 参数，表示找锚点时遍历行列的步长，即决定了找锚点的扫描细节程度。ED 用的 4，EDLines 用的 1，即遍历所有的点。</p>
+<h2 id="_3">流程二：对像素链进行拆解</h2>
+<p>下面就要开始对像素链拆分了，比如上面的图，一个矩形对应一个像素链，这条像素链会被拆为四条边。其流程如下：</p>
+<p>1. 首先假设遍历到点 <span class="arithmatex">\(p\)</span>，检测以它为起点的一个最小长度的链条，用最小二乘法拟合直线，然后检测链条和直线之间的误差是否符合要求。如果不符合，说明后面再加多少点都没用了，点 <span class="arithmatex">\(p\)</span> 应该被丢了，去看看点 <span class="arithmatex">\(p+1\)</span> 开始行不行。</p>
+<p>2. 如果点 <span class="arithmatex">\(p\)</span> 符合要求，那么就继续增加点，即尝试延升，同样用最小二乘法拟合，直到失败为止。</p>
+<p>经过实验，链条和最小二乘法拟合的直线的误差选择为一个像素。下面是代码展示，来自于<a href="https://www.cnblogs.com/eleanor/p/16167058.html">该博客</a>，感谢作者。</p>
+<div class="highlight"><pre><span></span><code><span class="n">LineFit</span><span class="p">(</span><span class="n">Pixel</span><span class="w"> </span><span class="o">*</span><span class="n">pixelChain</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">noPixels</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">lineFitError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">;</span><span class="w"> </span><span class="c1">// 目前的直线拟合误差</span>
+<span class="w">    </span><span class="n">LineEquation</span><span class="w"> </span><span class="n">lineEquation</span><span class="p">;</span><span class="w"> </span><span class="c1">// y = ax + b 或者 x = ay + b</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">noPixels</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MIN_LINE_LENGTH</span><span class="p">){</span>
+<span class="w">        </span><span class="n">LeastSquaresLineFit</span><span class="p">(</span><span class="n">pixelChain</span><span class="p">,</span><span class="w"> </span><span class="n">MIN_LINE_LENGTH</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lineEquation</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lineFitError</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lineFitError</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// OK. 一个初始线段被检测到。</span>
+<span class="w">        </span><span class="n">pixelChain</span><span class="w"> </span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">//跳过第一个像素并尝试剩下的像素</span>
+<span class="w">        </span><span class="n">noPixels</span><span class="err">–</span><span class="p">;</span><span class="w"> </span><span class="c1">// 少一个像素</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lineFitError</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">//没有初始线段, Done.</span>
+
+<span class="w">    </span><span class="c1">//一个初始线段被检测到，尝试延展这个线段。</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">lineLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MIN_LINE_LENGTH</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">lineLen</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">noPixels</span><span class="p">){</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ComputePointDistance2Line</span><span class="p">(</span><span class="n">lineEquation</span><span class="p">,</span>
+<span class="w">        </span><span class="n">pixelChain</span><span class="p">[</span><span class="n">lineLen</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="n">lineLen</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 当前线段结束。计算最后的直线方程并输出。</span>
+<span class="w">    </span><span class="n">LeastSquaresLineFit</span><span class="p">(</span><span class="n">pixelChain</span><span class="p">,</span><span class="w"> </span><span class="n">lineLen</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">lineEquation</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Output</span><span class="p">(</span><span class="n">lineEquation</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 从剩余像素中提取线段</span>
+<span class="w">    </span><span class="n">LineFit</span><span class="p">(</span><span class="n">pixelChain</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lineLen</span><span class="p">,</span><span class="w"> </span><span class="n">noPixels</span><span class="o">-</span><span class="n">lineLen</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
-<h3 id="structurededgedetection">StructuredEdgeDetection</h3>
-<p>来自 <a href="https://docs.opencv.org/4.x/de/d51/group__ximgproc__edge.html">ximgproc 的方法</a>，一共两个类：RFFeatureGetter 和 StructuredEdgeDetection。前者是训练时需要用到的，暂且不谈，可参考<a href="https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%2020/%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9E%84%E5%8C%96%E6%A3%AE%E6%9E%97.md">该文章</a>。后者则是训练和使用都会用到的类，是核心内容。方法的原论文<a href="https://openaccess.thecvf.com/content_iccv_2013/papers/Dollar_Structured_Forests_for_2013_ICCV_paper.pdf">链接在此</a>，发表于 ICCV 2013。个人实验代码在 <a href="../code/test_edges.ipynb">test_edges.ipynb</a> 中，简洁版代码如下，总结而言使用方式就是导入模型 + 无脑调用，图片和模型文件都在 opencv extradata 那个仓库中：</p>
-<div class="highlight"><pre><span></span><code><span class="n">model_pth</span> <span class="o">=</span> <span class="s1">&#39;./image/edge/StructuredEdgeDetection.yml&#39;</span>
-<span class="n">pDollar</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">createStructuredEdgeDetection</span><span class="p">(</span><span class="n">model_pth</span><span class="p">)</span>
-
-<span class="c1"># 检测边缘的图片要求：RGB、0-1</span>
-<span class="n">nowimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
-<span class="n">edges</span> <span class="o">=</span> <span class="n">pDollar</span><span class="o">.</span><span class="n">detectEdges</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">nowimg</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span>
-<span class="n">orimap</span> <span class="o">=</span> <span class="n">pDollar</span><span class="o">.</span><span class="n">computeOrientation</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
-<span class="c1"># The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.</span>
-<span class="n">edges_nm</span> <span class="o">=</span> <span class="n">pDollar</span><span class="o">.</span><span class="n">edgesNms</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">orimap</span><span class="p">)</span>
-
-<span class="n">show_images</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="n">edges</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;edges nms&#39;</span><span class="p">,</span> <span class="n">edges_nm</span><span class="p">)</span>
-<span class="p">])</span>
-</code></pre></div>
-<p><img alt="1727266186762" src="/asset/image/1727266186762.png" /></p>
-<h3 id="edgedrawing">EdgeDrawing</h3>
-<p><a href="https://docs.opencv.org/4.x/d4/d8b/group__ximgproc__edge__drawing.html">ximgproc 的方法</a>，不仅可以检测边缘，也可以检测边缘、检测椭圆。传入参数建立对象，然后调用方法。代码在 <a href="../code/test_edges.ipynb">test_edges.ipynb</a> 中。</p>
-<p>原始论文：<br />
-<div class="highlight"><pre><span></span><code>Cihan Topal and Cuneyt Akinlar. Edge drawing: a combined real-time edge and segment detector. Journal of Visual Communication and Image Representation, 23(6):862–872, 2012.
-</code></pre></div><br />
-代码：<br />
-<div class="highlight"><pre><span></span><code><span class="n">rgb_src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;image/edge/sources/06.png&#39;</span><span class="p">)</span>
-<span class="n">gray_src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">rgb_src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
-
-<span class="n">ed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">createEdgeDrawing</span><span class="p">()</span>
-
-<span class="n">edParms</span> <span class="o">=</span> <span class="n">ed</span><span class="o">.</span><span class="n">Params</span><span class="p">()</span>
-<span class="n">edParms</span><span class="o">.</span><span class="n">GradientThresholdValue</span> <span class="o">=</span> <span class="mi">38</span>
-<span class="n">edParms</span><span class="o">.</span><span class="n">EdgeDetectionOperator</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">EdgeDrawing_SOBEL</span>
-<span class="n">edParms</span><span class="o">.</span><span class="n">AnchorThresholdValue</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">ed</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">edParms</span><span class="p">)</span>
-<span class="c1"># 最开始要执行这个函数，相当于和原图绑定一下</span>
-<span class="n">ed</span><span class="o">.</span><span class="n">detectEdges</span><span class="p">(</span><span class="n">gray_src</span><span class="p">)</span>
-
-<span class="n">edges_by_ed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rgb_src</span><span class="p">)</span>
-<span class="n">segments</span> <span class="o">=</span> <span class="n">ed</span><span class="o">.</span><span class="n">getSegments</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">oneseg</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">polylines</span><span class="p">(</span><span class="n">edges_by_ed</span><span class="p">,</span> <span class="p">[</span><span class="n">oneseg</span><span class="p">],</span> <span class="kc">False</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># # EdgeDrawing 还可以检测直线和椭圆</span>
-<span class="c1"># ellipses = ed.detectEllipses()</span>
-<span class="c1"># lines = ed.detectLines()</span>
-
-<span class="n">show_images</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;rgb src&#39;</span><span class="p">,</span> <span class="n">rgb_src</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">&#39;edges by ed&#39;</span><span class="p">,</span> <span class="n">edges_by_ed</span><span class="p">),</span>
-<span class="p">],</span> <span class="n">colnum</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></p>
-<h3 id="deriche-paillou">Deriche, Paillou</h3>
-<p>也是 ximgproc 的方法，Paillou 只能 cpp 调用。查了一下 Deriche，它其实就是在 Canny 上改进了一些东西，比如平滑的方式等等，基本的逻辑是差不多的。代码如下：<br />
-<div class="highlight"><pre><span></span><code>gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
-
-resultX, resultY, result = [], [], []
-for i in range(5, 26, 5):
-    edgesX = cv2.ximgproc.GradientDericheX(gray, alpha=i/10, omega=1)
-    edgesX = edgesX.astype(np.uint8)
-    resultX.append((f&#39;X   alpha={i/10}&#39;, edgesX))
-
-    edgesY = cv2.ximgproc.GradientDericheY(gray, alpha=i/10, omega=1)
-    edgesY = edgesY.astype(np.uint8)
-    resultY.append((f&#39;Y   alpha={i/10}&#39;, edgesY))
-
-    edges = np.sqrt(edgesX*edgesX + edgesY*edgesY).astype(np.uint8)
-    result.append((f&#39;XY   alpha={i/10}&#39;, edges))
-show_images(resultX, colnum=len(resultX))
-show_images(result, colnum=len(result))
-</code></pre></div></p>
+<h2 id="_4">流程三：判断线段是否可以作为最终直线</h2>
+<p>作者用了一个叫做 <strong>NFA</strong> 的指标。NFA(the Number of False Alarms)，假阳性率，这个指标在另一个方法 <a href="09.直线检测方法：LSD.md">LSD</a> 中也用到。</p>
+<p>但两个方法有点区别，LSD 的公式是这样的<br />
+$$<br />
+NFA(r) = (NM)^{5/2} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}<br />
+$$</p>
+<p>但 EDLines 的公式是这样的<br />
+$$<br />
+NFA(r) = (N)^{4} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}<br />
+$$</p>
+<p>其中 <span class="arithmatex">\(N\)</span> 和 <span class="arithmatex">\(M\)</span> 是<strong>图片</strong>的大小，<span class="arithmatex">\(n\)</span> 是当前矩形的像素数量，<span class="arithmatex">\(p\)</span> 叫做精确度，两个方法的默认值都设为 1/8，<span class="arithmatex">\(k\)</span> 是符合条件的像素点数量，而这个条件阈值就是 <span class="arithmatex">\(p\pi\)</span>。</p>
+<p>多说一下精确度 <span class="arithmatex">\(p\)</span>，其最后决定了方向的误差。比如论文中 <span class="arithmatex">\(p = \pi/8\)</span>，说明此时检查像素是否符合条件时，检测该像素的梯度方向和拟合直线的方向差不能超过 <span class="arithmatex">\(\pi/8\)</span>。</p>
+<p>比较两个公式，其实就是前面第一项不同，EDLines 假设了 <span class="arithmatex">\(M = N\)</span>，但指数一个是 5 一个是 4，很奇怪，暂时不细究了。EDLines 论文说这一项代表图像潜在线段的个数，但 LSD 论文中没有提到。</p>
+<p>最终判断 <span class="arithmatex">\(NFA(r) &lt; \epsilon\)</span>，如果满足则认为当前线段是直线，论文中选择 <span class="arithmatex">\(\epsilon = 1\)</span>，LSD 也是如此，所以其实这两个方法判断直线的方式基本一样的。</p>
+<h2 id="_5">参考</h2>
+<p>1. https://www.cnblogs.com/eleanor/p/16167058.html</p>
 
 
 
@@ -11257,7 +11490,7 @@ show_images(result, colnum=len(result))
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 04. 傅里叶描述子">
+          <a href="../10.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEdgeDrawing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 10. 边缘检测方法 ：EdgeDrawing">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -11267,20 +11500,20 @@ show_images(result, colnum=len(result))
                 Previous
               </span>
               <div class="md-ellipsis">
-                04. 傅里叶描述子
+                10. 边缘检测方法 ：EdgeDrawing
               </div>
             </div>
           </a>
         
         
           
-          <a href="../06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/" class="md-footer__link md-footer__link--next" aria-label="Next: 06. 特别的特征 ：Ridgets">
+          <a href="../../04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/01.%20%E7%AE%80%E5%8D%95%E5%9B%BE%E5%83%8F%E6%98%AF%E5%88%86%E5%89%B2%20%EF%BC%9A%20%E7%9B%B4%E6%8E%A5%E7%94%A8%E5%BD%A2%E6%80%81%E5%AD%A6%E8%86%A8%E8%83%80%E8%85%90%E8%9A%80/" class="md-footer__link md-footer__link--next" aria-label="Next: 简单图像是分割：直接用形态学膨胀腐蚀">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                06. 特别的特征 ：Ridgets
+                简单图像是分割：直接用形态学膨胀腐蚀
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -11328,6 +11561,8 @@ show_images(result, colnum=len(result))
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
+      
+        <script src="../../../../assets/javascripts/toggle-sidebar.js" async></script>
       
     
   </body>
