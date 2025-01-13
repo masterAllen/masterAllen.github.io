@@ -12,13 +12,13 @@
         <meta name="author" content="Allen Hong">
       
       
-        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96/03.HOG%20%E7%89%B9%E5%BE%81/">
+        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/05.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">
       
       
-        <link rel="prev" href="../02.%20%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/">
+        <link rel="prev" href="../04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/">
       
       
-        <link rel="next" href="../04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/">
+        <link rel="next" href="../06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>03.HOG 特征 - Allen Hong's Blog</title>
+        <title>05. 特别的特征 ： 边缘检测 - Allen Hong's Blog</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hog" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              03.HOG 特征
+              05. 特别的特征 ： 边缘检测
             
           </span>
         </div>
@@ -9673,7 +9673,7 @@
             
   
   <span class="md-ellipsis">
-    同态滤波
+    各向异性滤波
   </span>
   
 
@@ -9682,6 +9682,73 @@
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            各向异性滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    各向异性滤波记录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_8" id="__nav_4_2_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    同态滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_8">
             <span class="md-nav__icon md-icon"></span>
             同态滤波
           </label>
@@ -9733,10 +9800,77 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_9" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_2_8" id="__nav_4_2_2_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_2_9" id="__nav_4_2_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    最小值滤波
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            最小值滤波
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E6%9C%80%E5%B0%8F%E5%80%BC%E6%BB%A4%E6%B3%A2/%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    加速方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2_10" id="__nav_4_2_2_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -9747,8 +9881,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2_8">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_10">
             <span class="md-nav__icon md-icon"></span>
             维纳滤波
           </label>
@@ -9800,10 +9934,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_11" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_2_9" id="__nav_4_2_2_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_2_11" id="__nav_4_2_2_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -9814,8 +9948,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_2_9">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2_11">
             <span class="md-nav__icon md-icon"></span>
             高斯滤波
           </label>
@@ -9884,7 +10018,7 @@
             
   
   <span class="md-ellipsis">
-    02.特征提取
+    02.特征提取和边缘检测
   </span>
   
 
@@ -9894,7 +10028,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2_3">
             <span class="md-nav__icon md-icon"></span>
-            02.特征提取
+            02.特征提取和边缘检测
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -9944,30 +10078,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    03.HOG 特征
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../03.HOG%20%E7%89%B9%E5%BE%81/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -9976,104 +10090,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      步骤说明
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="步骤说明">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 预处理图像
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 计算梯度
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 计算梯度直方图
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 归一化（可选）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 特征拼接
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hog_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      可视化 HOG 特征
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      代码实现
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -10104,10 +10120,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../05.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    05. 特别的特征 ： 边缘检测
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -10116,6 +10152,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#canny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Canny
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structurededgedetection" class="md-nav__link">
+    <span class="md-ellipsis">
+      StructuredEdgeDetection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edgedrawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      EdgeDrawing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deriche-paillou" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deriche, Paillou
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -10175,6 +10267,69 @@
   
   <span class="md-ellipsis">
     08. 特别的特征 ： 人脸特征
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9ALSD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09. 直线检测方法 ：LSD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEdgeDrawing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. 边缘检测方法 ：EdgeDrawing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEDLines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. 直线检测方法 ：EDLines
   </span>
   
 
@@ -11039,78 +11194,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#canny" class="md-nav__link">
     <span class="md-ellipsis">
-      步骤说明
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="步骤说明">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 预处理图像
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 计算梯度
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 计算梯度直方图
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 归一化（可选）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 特征拼接
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hog_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      可视化 HOG 特征
+      Canny
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#structurededgedetection" class="md-nav__link">
     <span class="md-ellipsis">
-      代码实现
+      StructuredEdgeDetection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edgedrawing" class="md-nav__link">
+    <span class="md-ellipsis">
+      EdgeDrawing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deriche-paillou" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deriche, Paillou
     </span>
   </a>
   
@@ -11131,98 +11244,87 @@
                   
 
 
-<h1 id="hog">HOG 特征</h1>
+<h1 id="_1">特别的特征：边缘检测</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/HOG 特征</p>
+<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/特别的特征：边缘检测</p>
 </blockquote>
-<p>一个比较特别的特征，简单、古老但是却很有用。通过梯度+直方图的方式，HoG 结合 SVM 分类器非常经典的图像识别应用，非常适合行人检测。</p>
-<h3 id="_1">步骤说明</h3>
-<h4 id="1">1. 预处理图像</h4>
-<p>通常需要将训练图像块 resize 到 128*64 大小，其实主要是这个尺寸比例比较适合行人检测，而这是 HOG 最常用的领域；如果检测车子等宽体，那肯定要换个大小。(<a href="https://answers.opencv.org/question/25908/hogsvm-the-size-of-positive-image-must-be-64128-any-other-choice/">参考</a>)</p>
-<h4 id="2">2. 计算梯度</h4>
-<p>计算图像的梯度，包括 x 方向和 y 方向的梯度，然后转成梯度幅值和梯度方向。</p>
-<h4 id="3">3. 计算梯度直方图</h4>
-<p>64*128 大小的图像，分成 8*8 的小块，每个小块计算梯度直方图。直方图的横坐标是 9 个 bin，按照 0-180 的角度划分；直方图的纵坐标是各个对应的像素梯度幅值加起来。</p>
-<p>看下面的图就好理解了，下面这个博尔特被分为了 8x8 的绿色小块，我们专注其中一个小块，有它各个像素的梯度幅值和方向：</p>
-<p><img alt="1721748420272" src="/asset/image/1721748420272.png" /></p>
-<p>然后根据每个像素的梯度方向作为横坐标依据，梯度幅值加到直方图纵坐标中；注意是要按比例划分，而不是落入哪个区间就全加入到那个区间中：</p>
-<p><img alt="1721748572378" src="/asset/image/1721748572378.png" /></p>
-<h4 id="4">4. 归一化（可选）</h4>
-<p>为了减小光照的影响（比如同样边缘的梯度幅值，强光下会比弱光下大）。将每个小块的直方图归一化，归一化公式如下：</p>
-<div class="arithmatex">\[
-H_{norm} = \frac{H}{\sqrt{\sum_{i=1}^{9}H_{i}^{2}} + c}
-\]</div>
-<p>其中 c 是一个很小的数，防止分母为 0。</p>
-<h4 id="5">5. 特征拼接</h4>
-<p>64x128 分割 8x8，一共 8x16 个小块，每个小块有 9 个 bin。按照 2x2 的滑块去遍历（现在最小单位是 8x8 的小块了），每次遍历将 2x2 的小块直方图拼接成 36(4x9) 维向量，这样相当于滑动窗口滑出了 7x15 的区域，最终特征向量是 7x15x36=3780 维。(<a href="./image/2.3/demo.gif">GIF图</a>) 其中这个 2x2 的滑块叫做 block。</p>
-<h3 id="hog_1">可视化 HOG 特征</h3>
-<p>搜索 HOG 时，经常会看到一些结果图：</p>
-<p><img alt="1721787476499" src="/asset/image/1721787476499.png" /></p>
-<p>这个其实不是单纯就根据 HOG 特征的值画出像素大小。现在相当于是 8x8 的小块中有 9x1 的值，每个值代表一个方向的强度，所以就按照类似【星形】结构，哪个方向大那就把那个方向的画的长和深，最终将这个 9x1 的值大致表现出不同方向的强度。</p>
-<h3 id="_2">代码实现</h3>
-<div class="highlight"><pre><span></span><code><span class="n">cv</span><span class="o">::</span><span class="n">HOGDescriptor</span><span class="o">::</span><span class="n">HOGDescriptor</span><span class="p">(</span>
-<span class="w">    </span><span class="n">Size</span><span class="w"> </span><span class="n">_winSize</span><span class="p">,</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="n">_blockSize</span><span class="p">,</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="n">_blockStride</span><span class="p">,</span><span class="w"> </span><span class="n">Size</span><span class="w"> </span><span class="n">_cellSize</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">_nbins</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_derivAperture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">_winSigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
-<span class="w">    </span><span class="n">HOGDescriptor</span><span class="o">::</span><span class="n">HistogramNormType</span><span class="w"> </span><span class="n">_histogramNormType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HOGDescriptor</span><span class="o">::</span><span class="n">L2Hys</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">double</span><span class="w">  </span><span class="n">_L2HysThreshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w">    </span><span class="n">_gammaCorrection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">int</span><span class="w">     </span><span class="n">_nlevels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HOGDescriptor</span><span class="o">::</span><span class="n">DEFAULT_NLEVELS</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w">    </span><span class="n">_signedGradient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span>
-<span class="p">)</span>
+<p>边缘是一个独特的图像特征。</p>
+<h3 id="canny">Canny</h3>
+<p>经典算法，无需多言。要么输入 8-bit 的 image，要么输入处理后的 16S1/16S3 的微分后的结果 dx 和 dy。</p>
+<div class="highlight"><pre><span></span><code><span class="n">cv</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">threshold1</span><span class="p">,</span> <span class="n">threshold2</span><span class="p">[,</span> <span class="n">edges</span><span class="p">[,</span> <span class="n">apertureSize</span><span class="p">[,</span> <span class="n">L2gradient</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">edges</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">threshold1</span><span class="p">,</span> <span class="n">threshold2</span><span class="p">[,</span> <span class="n">edges</span><span class="p">[,</span> <span class="n">L2gradient</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">edges</span>
 </code></pre></div>
-<p>这是一个类，里面有种种方法，用的时候细查文档，里面貌似直接带了和 SVM 结合的函数：https://docs.opencv.org/4.x/d5/d33/structcv_1_1HOGDescriptor.html</p>
-<ul>
-<li>winSize: 图片大小，默认是(64,128)</li>
-<li>cellSize: 每个单元格的大小，即所说的小块，默认是(8,8)</li>
-<li>blockSize: 每个 block 的大小，即最后第五步中所说的按照2x2小块进行滑动窗口，这个窗口的大小。默认是(16,16)</li>
-<li>blockStride: 每个 block 的步长，即第五步滑动窗口每次滑动多长，很显然一定要是 cell 的大小倍数。默认是(8,8)</li>
-<li>nbins: 每个单元格的直方图中的 bin 的数量，默认是 9</li>
-<li>derivAperture: 求梯度时候的算子大小，默认即可</li>
-<li>winSigma: 高斯窗口的标准差，默认即可。在计算直方图之前，对块边缘附近的像素进行平滑，可以提高 HOG 算法的性能，本质上去除噪声。</li>
-<li>histogramNormType: 归一化类型，默认是 L2Hys，即第四步那个公式</li>
-<li>L2HysThreshold: L2-Hys 归一化类型的阈值，即规定每个bin不能超过多少，超过就按照这个阈值来做</li>
-<li>gammaCorrection: 是否进行 gamma 校正，默认是 false</li>
-<li>nlevels: 图像金字塔的层数，默认是 HOGDescriptor::DEFAULT_NLEVELS</li>
-</ul>
-<p>再细节将一个重要函数，detectMultiScale，这个函数即最终的检测，里面参数挺重要的，但这里就讲其中几个，原文来自<a href="https://medium.com/lifes-a-struggle/hog-svm-c2fb01304c0">这篇文章</a>：</p>
-<ul>
-<li>winStride=(4,4): window 与 window 之间的起始位置要间距多少(x和y方向)。间距越大就只有较少的 window 使用 HOG 寻找特征，程序执行速度就会较快但成效较差; 小则反之</li>
-<li>padding=(8,8): 在使用 HOG 寻找特征之前，会先在周围贴 0，一般而言最好加一些</li>
-<li>scale=1.05: 一样，越小那么速度慢效果好；反之亦然</li>
-<li>该函数经常和 NMS（即非极大值抑制，去除重叠框的）配合使用</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># opencv HOG 特征计算</span>
-<span class="n">img_gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;demo.png&#39;</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<h3 id="structurededgedetection">StructuredEdgeDetection</h3>
+<p>来自 <a href="https://docs.opencv.org/4.x/de/d51/group__ximgproc__edge.html">ximgproc 的方法</a>，一共两个类：RFFeatureGetter 和 StructuredEdgeDetection。前者是训练时需要用到的，暂且不谈，可参考<a href="https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%2020/%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9E%84%E5%8C%96%E6%A3%AE%E6%9E%97.md">该文章</a>。后者则是训练和使用都会用到的类，是核心内容。方法的原论文<a href="https://openaccess.thecvf.com/content_iccv_2013/papers/Dollar_Structured_Forests_for_2013_ICCV_paper.pdf">链接在此</a>，发表于 ICCV 2013。个人实验代码在 <a href="../code/test_edges.ipynb">test_edges.ipynb</a> 中，简洁版代码如下，总结而言使用方式就是导入模型 + 无脑调用，图片和模型文件都在 opencv extradata 那个仓库中：</p>
+<div class="highlight"><pre><span></span><code><span class="n">model_pth</span> <span class="o">=</span> <span class="s1">&#39;./image/edge/StructuredEdgeDetection.yml&#39;</span>
+<span class="n">pDollar</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">createStructuredEdgeDetection</span><span class="p">(</span><span class="n">model_pth</span><span class="p">)</span>
 
-<span class="c1"># Specify the parameters for our HOG descriptor</span>
-<span class="n">win_size</span> <span class="o">=</span> <span class="n">img_gray</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">cell_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="n">block_size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
-<span class="n">block_stride</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="n">num_bins</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="c1"># 检测边缘的图片要求：RGB、0-1</span>
+<span class="n">nowimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">pDollar</span><span class="o">.</span><span class="n">detectEdges</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">nowimg</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span>
+<span class="n">orimap</span> <span class="o">=</span> <span class="n">pDollar</span><span class="o">.</span><span class="n">computeOrientation</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+<span class="c1"># The function edgenms in edge image and suppress edges where edge is stronger in orthogonal direction.</span>
+<span class="n">edges_nm</span> <span class="o">=</span> <span class="n">pDollar</span><span class="o">.</span><span class="n">edgesNms</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">orimap</span><span class="p">)</span>
 
-<span class="c1"># Set the parameters of the HOG descriptor using the variables defined above</span>
-<span class="n">hog</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="p">(</span><span class="n">win_size</span><span class="p">,</span> <span class="n">block_size</span><span class="p">,</span> <span class="n">block_stride</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">)</span>
-
-<span class="c1"># Compute the HOG Descriptor for the gray scale image</span>
-<span class="n">hog_descriptor</span> <span class="o">=</span> <span class="n">hog</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">img_gray</span><span class="p">)</span>
+<span class="n">show_images</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;edges&#39;</span><span class="p">,</span> <span class="n">edges</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;edges nms&#39;</span><span class="p">,</span> <span class="n">edges_nm</span><span class="p">)</span>
+<span class="p">])</span>
 </code></pre></div>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># opencv的 默认的 hog+svm行人检测器</span>
-<span class="n">hog</span><span class="o">.</span><span class="n">setSVMDetector</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">HOGDescriptor</span><span class="o">.</span><span class="n">getDefaultPeopleDetector</span><span class="p">())</span>
-<span class="n">capture</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">samples</span><span class="o">.</span><span class="n">findFileOrKeep</span><span class="p">(</span><span class="s1">&#39;./code/video/vtest.avi&#39;</span><span class="p">))</span>
-
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">capture</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-    <span class="c1"># Detect people in the image，这个函数决定了检测情况，尤其是 winStride 和 scale 参数</span>
-    <span class="p">(</span><span class="n">rects</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">hog</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">winStride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
-        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
-
-    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;hog-detector&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<p><img alt="1727266186762" src="/asset/image/1727266186762.png" /></p>
+<h3 id="edgedrawing">EdgeDrawing</h3>
+<p><a href="https://docs.opencv.org/4.x/d4/d8b/group__ximgproc__edge__drawing.html">ximgproc 的方法</a>，不仅可以检测边缘，也可以检测边缘、检测椭圆。传入参数建立对象，然后调用方法。代码在 <a href="../code/test_edges.ipynb">test_edges.ipynb</a> 中。</p>
+<p>原始论文：<br />
+<div class="highlight"><pre><span></span><code>Cihan Topal and Cuneyt Akinlar. Edge drawing: a combined real-time edge and segment detector. Journal of Visual Communication and Image Representation, 23(6):862–872, 2012.
 </code></pre></div><br />
-还有一个 <a href="../code/test_hog_default.py">test_hog_default.py</a> 文件，里面包含了检测之后用 NMS 去除重叠框的代码。</p>
+代码：<br />
+<div class="highlight"><pre><span></span><code><span class="n">rgb_src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;image/edge/sources/06.png&#39;</span><span class="p">)</span>
+<span class="n">gray_src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">rgb_src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+
+<span class="n">ed</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">createEdgeDrawing</span><span class="p">()</span>
+
+<span class="n">edParms</span> <span class="o">=</span> <span class="n">ed</span><span class="o">.</span><span class="n">Params</span><span class="p">()</span>
+<span class="n">edParms</span><span class="o">.</span><span class="n">GradientThresholdValue</span> <span class="o">=</span> <span class="mi">38</span>
+<span class="n">edParms</span><span class="o">.</span><span class="n">EdgeDetectionOperator</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">EdgeDrawing_SOBEL</span>
+<span class="n">edParms</span><span class="o">.</span><span class="n">AnchorThresholdValue</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">ed</span><span class="o">.</span><span class="n">setParams</span><span class="p">(</span><span class="n">edParms</span><span class="p">)</span>
+<span class="c1"># 最开始要执行这个函数，相当于和原图绑定一下</span>
+<span class="n">ed</span><span class="o">.</span><span class="n">detectEdges</span><span class="p">(</span><span class="n">gray_src</span><span class="p">)</span>
+
+<span class="n">edges_by_ed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">rgb_src</span><span class="p">)</span>
+<span class="n">segments</span> <span class="o">=</span> <span class="n">ed</span><span class="o">.</span><span class="n">getSegments</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">oneseg</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">polylines</span><span class="p">(</span><span class="n">edges_by_ed</span><span class="p">,</span> <span class="p">[</span><span class="n">oneseg</span><span class="p">],</span> <span class="kc">False</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># # EdgeDrawing 还可以检测直线和椭圆</span>
+<span class="c1"># ellipses = ed.detectEllipses()</span>
+<span class="c1"># lines = ed.detectLines()</span>
+
+<span class="n">show_images</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;rgb src&#39;</span><span class="p">,</span> <span class="n">rgb_src</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;edges by ed&#39;</span><span class="p">,</span> <span class="n">edges_by_ed</span><span class="p">),</span>
+<span class="p">],</span> <span class="n">colnum</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="deriche-paillou">Deriche, Paillou</h3>
+<p>也是 ximgproc 的方法，Paillou 只能 cpp 调用。查了一下 Deriche，它其实就是在 Canny 上改进了一些东西，比如平滑的方式等等，基本的逻辑是差不多的。代码如下：<br />
+<div class="highlight"><pre><span></span><code>gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
+
+resultX, resultY, result = [], [], []
+for i in range(5, 26, 5):
+    edgesX = cv2.ximgproc.GradientDericheX(gray, alpha=i/10, omega=1)
+    edgesX = edgesX.astype(np.uint8)
+    resultX.append((f&#39;X   alpha={i/10}&#39;, edgesX))
+
+    edgesY = cv2.ximgproc.GradientDericheY(gray, alpha=i/10, omega=1)
+    edgesY = edgesY.astype(np.uint8)
+    resultY.append((f&#39;Y   alpha={i/10}&#39;, edgesY))
+
+    edges = np.sqrt(edgesX*edgesX + edgesY*edgesY).astype(np.uint8)
+    result.append((f&#39;XY   alpha={i/10}&#39;, edges))
+show_images(resultX, colnum=len(resultX))
+show_images(result, colnum=len(result))
+</code></pre></div></p>
 
 
 
@@ -11352,7 +11454,7 @@ H_{norm} = \frac{H}{\sqrt{\sum_{i=1}^{9}H_{i}^{2}} + c}
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../02.%20%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 02. 更详细的角点函数">
+          <a href="../04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 04. 傅里叶描述子">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -11362,20 +11464,20 @@ H_{norm} = \frac{H}{\sqrt{\sum_{i=1}^{9}H_{i}^{2}} + c}
                 Previous
               </span>
               <div class="md-ellipsis">
-                02. 更详细的角点函数
+                04. 傅里叶描述子
               </div>
             </div>
           </a>
         
         
           
-          <a href="../04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/" class="md-footer__link md-footer__link--next" aria-label="Next: 04. 傅里叶描述子">
+          <a href="../06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/" class="md-footer__link md-footer__link--next" aria-label="Next: 06. 特别的特征 ：Ridgets">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                04. 傅里叶描述子
+                06. 特别的特征 ：Ridgets
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -11423,6 +11525,8 @@ H_{norm} = \frac{H}{\sqrt{\sum_{i=1}^{9}H_{i}^{2}} + c}
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
+      
+        <script src="../../../../assets/javascripts/toggle-sidebar.js" async></script>
       
     
   </body>
