@@ -12556,7 +12556,7 @@
 <p><div class="highlight"><pre><span></span><code>Unable to make field private static * accessible module * does not * to unnamed module
 </code></pre></div><br />
 起因: 运行 freemind 出现问题</p>
-<p>原因: 貌似是个 BUG，详情参考 https://bz.apache.org/bugzilla/show_bug.cgi?id=65388 (很不幸我应该算是比较早遇到这个 BUG 的，所以找了好久才找到这个链接)</p>
+<p>原因: 貌似是个 BUG，详情参考 <a href="https://bz.apache.org/bugzilla/show_bug.cgi?id=65388">https://bz.apache.org/bugzilla/show_bug.cgi?id=65388</a> (很不幸我应该算是比较早遇到这个 BUG 的，所以找了好久才找到这个链接)</p>
 <p>解决: 按照链接的方法即可。即 <code>java</code> 命令后面添加参数 <code>--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED</code>，比如我运行 freemind 出现问题，那就 <code>vim /bin/freemind</code>，然后看看哪里需要修改。</p>
 
 

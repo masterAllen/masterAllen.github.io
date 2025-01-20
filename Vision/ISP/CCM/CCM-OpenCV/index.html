@@ -12625,7 +12625,7 @@
 
 <h1 id="opencv-ccm">OpenCV 中使用 CCM</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.3.md</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.3.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.3.md</a></p>
 </blockquote>
 <p>先只简单写一下 CCM 概念：CCM 是从相机 Raw 图到最终出图的一个流程，本质上就是对各个像素的 RGB 做一个矩阵变换。因为 CCM 前的各个像素是属于相机线性颜色空间，要转为如 sRGB 这种颜色空间，需要做一些变换。让其尽可能的解决目标颜色空间，如尽可能让拍色卡拍出的红色、绿色接近目标颜色空间规定的色卡红色、绿色。</p>
 <p>在 OpenCV 中，mcc 和 ccm 这两个模块负责这个功能，而且处理流程还是很线性的，非常易懂。<strong>非常推荐直接看我当时做的实验代码 <a href="../code/test_ccm.ipynb">test_ccm.ipynb</a></strong>：</p>

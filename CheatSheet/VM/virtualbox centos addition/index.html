@@ -12499,7 +12499,7 @@
 <p>用了别人的 ovf 文件，然后发现增强功能一直不能装上，后来发现是内核版本没对应上。</p>
 <!--more-->
 
-<p>首先需要你在 centos 挂载好那个增强功能的 iso，然后执行里面的脚本，发现装不上。挂载方法就是在 VirtualBox 对应的那个 Centos 界面，Setting-&gt;Storage-&gt;add controller(ide)--&gt;add iso in ide controller。</p>
+<p>首先需要你在 centos 挂载好那个增强功能的 iso，然后执行里面的脚本，发现装不上。挂载方法就是在 VirtualBox 对应的那个 Centos 界面，Setting-&gt;Storage-&gt;add controller(ide)&rarr;add iso in ide controller。</p>
 <p>开始进入系统，安装必要软件，这个非常重要。首先确认自己的内核版本<br />
 <div class="highlight"><pre><span></span><code># uname -r
 3.10.0-693.11.6.el7.x86_64 #1 SMP Thu Jan 4 01:06:37 UTC 2018
@@ -12511,8 +12511,8 @@
 </code></pre></div></p>
 <p>最后再重新执行增强文件安装的脚本，重启就发现可以了。</p>
 <p>参考链接如下<br />
-- https://linuxconfig.org/how-to-install-virtualbox-guest-additions-on-centos-7-linux<br />
-- https://www.knownhost.com/wiki/dedicated-servers/kernel-version</p>
+- <a href="https://linuxconfig.org/how-to-install-virtualbox-guest-additions-on-centos-7-linux">https://linuxconfig.org/how-to-install-virtualbox-guest-additions-on-centos-7-linux</a><br />
+- <a href="https://www.knownhost.com/wiki/dedicated-servers/kernel-version">https://www.knownhost.com/wiki/dedicated-servers/kernel-version</a></p>
 
 
 

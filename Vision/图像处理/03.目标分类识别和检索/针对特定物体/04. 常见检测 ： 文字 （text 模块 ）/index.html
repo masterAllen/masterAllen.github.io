@@ -12639,7 +12639,7 @@
 
 <h1 id="text">常见检测：文字（text 模块）</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/常见检测：文字（text 模块）</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/常见检测">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/常见检测</a>：文字（text 模块）</p>
 </blockquote>
 <p>OpenCV 有一个专门的 text 模块，负责处理文字识别。</p>
 <h3 id="_1">文字位置寻找</h3>
@@ -12697,7 +12697,7 @@
 <p>其中前两个只负责文字识别，所以要求图片是包含一段文字的图片，而不是一整张图片，不然基本识别不出来啥，如下图。最后一个 <code>tesseract</code> 本质是用 Google 的 Tessearct 文字识别工具，他的要求就可以是一整张图片，相当于实现文字位置查找 + 文字识别整体流程。但Python 调用推荐用 <code>pytesseract</code> 而不是 OpenCV 的相关代码。</p>
 <p><img alt="1726576154500" src="../../../../../asset/image/1726576154500.png" /></p>
 <h4 id="1-ocrbeamsearchdecoder">1. OCRBeamSearchDecoder</h4>
-<p>看代码即可，文件都能在 https://github.com/opencv/opencv_contrib/tree/master/modules/text/samples 中找到:</p>
+<p>看代码即可，文件都能在 <a href="https://github.com/opencv/opencv_contrib/tree/master/modules/text/samples">https://github.com/opencv/opencv_contrib/tree/master/modules/text/samples</a> 中找到:</p>
 <div class="highlight"><pre><span></span><code><span class="n">chartables</span> <span class="o">=</span> <span class="s2">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;</span>
 
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">loadOCRBeamSearchClassifierCNN</span><span class="p">(</span><span class="s1">&#39;./image/text/OCRBeamSearch_CNN_model_data.xml.gz&#39;</span><span class="p">)</span>
@@ -12736,7 +12736,7 @@
 <span class="w">    </span><span class="kt">int</span><span class="w">     </span><span class="n">component_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span>
 <span class="p">)</span>
 </code></pre></div>
-<p>但是 Python 中只能调用第二种。而且之前还有问题，没有检测空指针，还得感谢这个问题，给 OpenCV 贡献了第一个 commit: https://github.com/opencv/opencv_contrib/pull/3790</p>
+<p>但是 Python 中只能调用第二种。而且之前还有问题，没有检测空指针，还得感谢这个问题，给 OpenCV 贡献了第一个 commit: <a href="https://github.com/opencv/opencv_contrib/pull/3790">https://github.com/opencv/opencv_contrib/pull/3790</a></p>
 <h4 id="2-ocrhmmdecoder">2. OCRHMMDecoder</h4>
 <p>和 OCRBeamSearchDecoder 基本差不多，除了 load 方法不一样而已...</p>
 <div class="highlight"><pre><span></span><code><span class="n">chartables</span> <span class="o">=</span> <span class="s2">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;</span>

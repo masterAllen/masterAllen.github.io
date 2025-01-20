@@ -12589,13 +12589,13 @@
 
 <h1 id="_1">特别的特征：人脸特征</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/特别的特征：人脸特征</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/特别的特征">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/特别的特征</a>：人脸特征</p>
 </blockquote>
 <p>看这篇文章，需要知道 <a href="./3.5.md">Cascade 级联分类器</a>。</p>
 <p>OpenCV 中人脸特征点的检测逻辑：Cascade 检测出人脸的框，在框内使用人脸特征检测器检测具体点。一共有三种人脸特征检测：FacemarkAAM，FacemarkLBF，FacemarkKazemi。检测的结果就是如下图所示：</p>
 <p><img alt="1726760431349" src="../../../../asset/image/1726760431349.png" /></p>
 <h3 id="1">1. 单纯使用</h3>
-<p>看代码即可，lbfmodel.yaml 文件在：https://raw.githubusercontent.com/kurnianggoro/GSOC2017/master/data/lbfmodel.yaml；其他两个没找到相关配置。</p>
+<p>看代码即可，lbfmodel.yaml 文件在：<a href="https://raw.githubusercontent.com/kurnianggoro/GSOC2017/master/data/lbfmodel.yaml">https://raw.githubusercontent.com/kurnianggoro/GSOC2017/master/data/lbfmodel.yaml</a>；其他两个没找到相关配置。</p>
 <p>Cascade 可以有两种：<a href="https://github.com/mxochicale/openCV/blob/master/examples/data/haarcascades/haarcascade_frontalface_alt.xml">Harr</a> 和 <a href="https://github.com/opencv-java/face-detection/blob/master/resources/lbpcascades/lbpcascade_frontalcatface.xml">LBP</a>。链接失效搜索 haarcascade_frontalface_alt 和 lbpcascade_frontalcatface 即可。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;opencv2/face.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;opencv2/core.hpp&quot;</span>
@@ -12650,7 +12650,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="2">2. 自定义训练</h3>
-<p>参考 OpenCV 的 turtorial: https://docs.opencv.org/4.x/d5/dd8/tutorial_facemark_aam.html，下载 lfpw 数据集: https://ibug.doc.ic.ac.uk/download/annotations/lfpw.zip</p>
+<p>参考 OpenCV 的 turtorial: <a href="https://docs.opencv.org/4.x/d5/dd8/tutorial_facemark_aam.html">https://docs.opencv.org/4.x/d5/dd8/tutorial_facemark_aam.html</a>，下载 lfpw 数据集: <a href="https://ibug.doc.ic.ac.uk/download/annotations/lfpw.zip">https://ibug.doc.ic.ac.uk/download/annotations/lfpw.zip</a></p>
 <p>下载需要准备 <code>images_train.txt</code> 和 <code>annotations_train.txt</code>，他们就是每一行表示各个具体文件的路径，如：</p>
 <div class="highlight"><pre><span></span><code>images_train.txt
 /home/user/lfpw/trainset/100032540_1.jpg

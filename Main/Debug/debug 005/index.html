@@ -12660,8 +12660,8 @@
 <h1 id="005linux">『005』Linux 设置打印机(但却不仅仅是设置打印机的问题了)</h1>
 <h2 id="_1">阶段一</h2>
 <p>查阅资料，发现使用 CUPS 就可以了，网上教程也一大堆。比较好的链接在下面，但好像有些问题，后来按惠普官网的信息，进行配置，一步一步配置就可以了</p>
-<p>1. https://blog.csdn.net/soslinken/article/details/89024451<br />
-2. https://developers.hp.com/hp-linux-imaging-and-printing/install/step4/cups/local</p>
+<p>1. <a href="https://blog.csdn.net/soslinken/article/details/89024451">https://blog.csdn.net/soslinken/article/details/89024451</a><br />
+2. <a href="https://developers.hp.com/hp-linux-imaging-and-printing/install/step4/cups/local">https://developers.hp.com/hp-linux-imaging-and-printing/install/step4/cups/local</a></p>
 <h2 id="_2">阶段二</h2>
 <p>发现打印机有错误: Filter failed，查阅，发现错误信息在(/var/log/cups/error_log)，错误信息如下<br />
 <div class="highlight"><pre><span></span><code>pnm2ppa command not found
@@ -12682,10 +12682,10 @@
 <p>网络问题解决，回到了安装 AAA 这个包，安装再次失败，因为这个包和另一个重要包(CUPS)冲突。</p>
 <p>所以我为什么要安装 AAA 这个包呢？我就是为了 pnm2ppa 指令，查阅一下，pnm2ppa 依赖 footmatic-filter，但是我下载的是 footmatic-filter-lprng！</p>
 <p>于是在 AUR 那个 Package Details 看看，发现 footmatic-filter-lprng 没有 footmatic-filter！然后在 pnm2ppa-xxx 的 Package Details 看看，发现下面有评论，说了这个问题！</p>
-<p>也给出了解决方法，其实也就是下载源码安装。于是单独找了pnm2ppa的源码，进行手动安装: http://pnm2ppa.sourceforge.net/</p>
+<p>也给出了解决方法，其实也就是下载源码安装。于是单独找了pnm2ppa的源码，进行手动安装: <a href="http://pnm2ppa.sourceforge.net/">http://pnm2ppa.sourceforge.net/</a></p>
 <h2 id="_5">阶段五</h2>
 <p>安装是成功了，但是打印机还是没法用。最后用来惠普的配套工具hplip，然后照着官网的教程，终于好了。</p>
-<p>https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup</p>
+<p><a href="https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup">https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup</a></p>
 <h2 id="_6">阶段六</h2>
 <p>最后的最后啊，发现是我眼花，使用 CUPS 选择打印机 Model 选错了、网上下错了 PPD 文件...靠...</p>
 <h2 id="_7">总结</h2>

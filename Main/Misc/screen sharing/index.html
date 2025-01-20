@@ -12700,12 +12700,12 @@
 <p>于是搜了一下 screen sharing，但是好家伙，全都是些啥...又忙活了半天，结果没找到。</p>
 <h2 id="_4">最终解决</h2>
 <p>最后想到了神奇的 GitHub，果然这里面有一个，而且特别符合要求：就只是单纯的共享屏幕，作者也说了别的功能不会加，貌似他是被微软的远程桌面的高延迟低画质给气的才搞这一个软件，牛啊牛啊。</p>
-<p>项目链接: https://github.com/screego/server</p>
+<p>项目链接: <a href="https://github.com/screego/server">https://github.com/screego/server</a></p>
 <p>下面是安装配置方法。</p>
 <h3 id="_5">下载安装</h3>
 <p>就正常下载就好，如果用 AUR 的话，配置示例文件是 <code>/etc/screego.config</code>，如果是从 GitHub 下载二进制的话，配置示例文件是 <code>screego.config.example</code>，之后要把示例文件修改到 <code>/etc/screego/server.config</code>。</p>
 <h3 id="_6">生成证书</h3>
-<p>按照下面的方法来就行，虽然我也不知道原理，<strong>基本上是照搬了 https://www.jianshu.com/p/3a2c01577c7c。</strong></p>
+<p>按照下面的方法来就行，虽然我也不知道原理，<strong>基本上是照搬了 <a href="https://www.jianshu.com/p/3a2c01577c7c">https://www.jianshu.com/p/3a2c01577c7c</a>。</strong></p>
 <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-des3<span class="w"> </span>-out<span class="w"> </span>server.key<span class="w"> </span><span class="m">2048</span>
 openssl<span class="w"> </span>rsa<span class="w"> </span>-in<span class="w"> </span>server.key<span class="w"> </span>-out<span class="w"> </span>server.key
 <span class="c1"># 过程中会要求输入一些信息，不填也可</span>

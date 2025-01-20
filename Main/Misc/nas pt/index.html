@@ -12658,7 +12658,7 @@
 2. 通过 ssh 进入到 nas 之后, 看一下能否访问校园网的 v6 网站, 以此来判断是否需要认证. 我这边就是需要认证的, 不过学校有通过别的电脑网页待认证来实现, 不算很麻烦.</p>
 <p>PS: 设置 ssh 登录 -&gt; 打开群晖的「控制面板」，在「终端机和SNMP」中勾选「启动SSH功能」</p>
 <h2 id="qbittorrent">安装 qBittorrent</h2>
-<p>1. 以管理员身份登录群晖，打开「套件中心」，点击右上角「设置」，在「套件来源」选项卡，「新增」一个来源，「名称」任意，「位置」需要考虑版本, 如果是 DSM6.x, 输入「https://spk.imnks.com/」, 如果是更高的, 输入「https://spk7.imnks.com/」，然后「确定」即可。这是「我不是矿神」的spk套件源，常用软件很多。</p>
+<p>1. 以管理员身份登录群晖，打开「套件中心」，点击右上角「设置」，在「套件来源」选项卡，「新增」一个来源，「名称」任意，「位置」需要考虑版本, 如果是 DSM6.x, 输入「<a href="https://spk.imnks.com/">https://spk.imnks.com/</a>」, 如果是更高的, 输入「<a href="https://spk7.imnks.com/">https://spk7.imnks.com/</a>」，然后「确定」即可。这是「我不是矿神」的spk套件源，常用软件很多。</p>
 <p>2. 现在回到「套件中心」的主页面，点击左侧的「社群」，再点击工具栏的刷新按钮，然后在搜索栏输入「qBittorrent」，回车搜索，然后安装即可。</p>
 <p>3. 在浏览器输入http://群晖IP:8085/，看看能不能访问。8085是默认端口，如果无法访问，检查程序是否启动。如果你启用了群晖的防火墙，记得放行端口。</p>
 <p>4. 输入默认账号「admin」，默认密码「adminadmin」登录，现在你进入了qBittorrent的默认Web UI界面，下一步开始配置。</p>
@@ -12670,9 +12670,9 @@
 <ul>
 <li>勾选「自动添加以下 tracker 到新的 torrent」，然后输入你要添加的Tracker即可。</li>
 <li>这里推荐三个Tracker列表，这三个可以一起添加。<ul>
-<li>通用公共Tracker列表：https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt</li>
-<li>针对ACG资源优化的Tracker列表：https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList/AT_best.txt</li>
-<li>ACGTracker（直接添加这个地址即可）：http://open.acgtracker.com:1096/announce</li>
+<li>通用公共Tracker列表：<a href="https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt">https://cdn.jsdelivr.net/gh/ngosang/trackerslist/trackers_best.txt</a></li>
+<li>针对ACG资源优化的Tracker列表：<a href="https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList/AT_best.txt">https://cdn.jsdelivr.net/gh/DeSireFire/animeTrackerList/AT_best.txt</a></li>
+<li>ACGTracker（直接添加这个地址即可）：<a href="http://open.acgtracker.com:1096/announce">http://open.acgtracker.com:1096/announce</a></li>
 </ul>
 </li>
 <li>添加完后点击「保存」。</li>

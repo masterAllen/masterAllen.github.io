@@ -12606,7 +12606,7 @@
 <h1 id="_1">蓝牙重放攻击记录</h1>
 <p>买了一台蓝牙设备，想要电脑写一些不同的逻辑控制它，于是有了这篇文章。</p>
 <h2 id="_2">步骤一：手机抓包</h2>
-<p>参考：https://www.cnblogs.com/eezhijun/p/17629196.html</p>
+<p>参考：<a href="https://www.cnblogs.com/eezhijun/p/17629196.html">https://www.cnblogs.com/eezhijun/p/17629196.html</a></p>
 <p>用的小米手机：</p>
 <ul>
 <li>开发者选项中打开【蓝牙数据包日志】</li>
@@ -12615,12 +12615,12 @@
 <li>拨号键再次输入<em>#</em>#5959#<em>#</em> 结束抓取</li>
 </ul>
 <h2 id="wireshark">步骤二：Wireshark 分析</h2>
-<p>参考：https://zhuanlan.zhihu.com/p/45717775</p>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/45717775">https://zhuanlan.zhihu.com/p/45717775</a></p>
 <p>用 wireshark 打开后发现有各种各样的包，但我们要找 Sent Write，可以在 info 列中排序以此来快速找到。</p>
 <p><img alt="" src="../../../asset/image/20240509001.PNG" /></p>
 <p>上图中有两种 write，0x25和0x29，由于下面全是 0x29，所以 0x29 才是我们发送的命令，而数据包中的 value 就是我们需要重放的数据。</p>
 <h2 id="gatttool">步骤三：GattTool 复现</h2>
-<p>参考：https://zhuanlan.zhihu.com/p/45717775</p>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/45717775">https://zhuanlan.zhihu.com/p/45717775</a></p>
 <p>第三步，使用 gattTool 工具尝试重放工具，这个只有 Linux 才有。没有 Linux 的话，最简单的就是用 U盘制作一个 Ubuntu 启动盘，启动的时候选择【尝试 Ubuntu】，这样也是可以使用终端的。</p>
 <p>1. 寻找设备的地址，这个其实在 Wireshark 里面就可以找到，参考文章使用的另一种方法。</p>
 <p><img alt="" src="../../../asset/image/20240509002.PNG" /></p>

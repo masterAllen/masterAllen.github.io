@@ -12590,10 +12590,10 @@
 <h1 id="_1">图像融合学习记录</h1>
 <p>主要就是 拉普拉斯融合 和 泊松融合。图像融合就是两张图和一个 mask 图，根据 mask 图进行融合。</p>
 <h2 id="_2">拉普拉斯融合</h2>
-<p>https://www.cnblogs.com/riddick/p/8922381.html</p>
+<p><a href="https://www.cnblogs.com/riddick/p/8922381.html">https://www.cnblogs.com/riddick/p/8922381.html</a></p>
 <p>原理太简单了，就是拉普拉斯金字塔分层，三张图都要进行金字塔分层（即两张图和一张掩模图），然后每一层都进行融合，最后再还原。</p>
 <h2 id="_3">泊松融合</h2>
-<p>https://zhuanlan.zhihu.com/p/58867397</p>
+<p><a href="https://zhuanlan.zhihu.com/p/58867397">https://zhuanlan.zhihu.com/p/58867397</a></p>
 <p>问题建模，<span class="arithmatex">\(g\)</span> 是图一，<span class="arithmatex">\(s\)</span> 是图二，<span class="arithmatex">\(\Omega\)</span> 是融合区域。<span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(f^*\)</span> 都可以理解成一个函数，自变量是像素位置，因变量是像素值；<span class="arithmatex">\(f^*\)</span> 是原来的图，<span class="arithmatex">\(f\)</span> 是融合后的图。<span class="arithmatex">\(\partial \Omega\)</span> 是融合区域的边界。</p>
 <p><img alt="" src="../../../../asset/image/20250105140325.jpg" /></p>
 <p>泊松融合作者认为，遵守两个规则时融合效果最好：第一是融合前后融合区的边界不变，第二是融合前后融合区域的内部梯度不变。然后可以当成一个变分问题，如下所示，理解即可，不用过于纠结数学公式：</p>

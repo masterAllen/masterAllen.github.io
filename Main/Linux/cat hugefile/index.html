@@ -12495,7 +12495,7 @@
 
 <h1 id="linux">Linux 如何在命令行中输出大文件中的一小段</h1>
 <p>遇到一个场景, 对于一个大文件, 输出其中的小部分行, 在网上找到了解决方案, 发现有好几种, 时间各不相同, 于是记录一下自己的看法.</p>
-<p>参考: https://unix.stackexchange.com/questions/47407/cat-line-x-to-line-y-on-a-huge-file</p>
+<p>参考: <a href="https://unix.stackexchange.com/questions/47407/cat-line-x-to-line-y-on-a-huge-file">https://unix.stackexchange.com/questions/47407/cat-line-x-to-line-y-on-a-huge-file</a></p>
 <p>假如输出 X 到 Y 行, 有这几种方式<br />
 <div class="highlight"><pre><span></span><code>awk<span class="w"> </span><span class="s2">&quot;NR &gt;= X &amp;&amp; NR &lt;= Y&quot;</span><span class="w"> </span>/path/to/file
 tail<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;+</span><span class="nv">$X</span><span class="s2">&quot;</span><span class="w"> </span>/path/to/file<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="k">$((</span><span class="nv">Y</span><span class="o">-</span><span class="nv">X</span><span class="o">+</span><span class="m">1</span><span class="k">))</span><span class="s2">&quot;</span>

@@ -12576,8 +12576,8 @@
 <p>还是强调一句：学以致用，其实会用就可以了，记录梯度下降和共轭梯度下降的原理是我在阅读论文时（一篇融合闪光和非闪光图像的论文）遇到了麻烦，特此记录。</p>
 <p>本文章主要参考了两个网页内容，这两个网页写的非常好！</p>
 <ul>
-<li>https://o-o-sudo.github.io/numerical-methods/-conjugate-gradient.html</li>
-<li>https://pynumerical.com/archives/88/ and https://pynumerical.com/archives/89/</li>
+<li><a href="https://o-o-sudo.github.io/numerical-methods/-conjugate-gradient.html">https://o-o-sudo.github.io/numerical-methods/-conjugate-gradient.html</a></li>
+<li><a href="https://pynumerical.com/archives/88/">https://pynumerical.com/archives/88/</a> and <a href="https://pynumerical.com/archives/89/">https://pynumerical.com/archives/89/</a></li>
 </ul>
 <h2 id="_2">从梯度下降说起</h2>
 <p>什么！梯度下降还要讲吗？虽然没必要，但我觉得两点是需要理解的：梯度下降为什么能解决Ax=b，梯度下降中每一步之间的关系是什么。</p>
@@ -12588,7 +12588,7 @@
 <p>那么第二个问题，梯度下降中每一步之间的关系是什么。<strong>实际上上一张图公式8那儿已经给了答案：前后两步梯度向量保证正交！！</strong>在图像中就是下图。绿线就是梯度下降，他每次保证是正交的，所以可能：原来一个方向已经到了最优解，结果现在去求第二个方向最优解，导致之前的方向又不是最优的了，所以会反反复复，导致速度变慢。</p>
 <p><img alt="" src="../../../asset/image/20240228004.png" /></p>
 <h2 id="_3">共轭梯度下降</h2>
-<p>共轭梯度下降可以达到上图红线的效果。而它的推导过程如下，本部分完全记录于 https://pynumerical.com/archives/89/，非常好的文章。</p>
+<p>共轭梯度下降可以达到上图红线的效果。而它的推导过程如下，本部分完全记录于 <a href="https://pynumerical.com/archives/89/">https://pynumerical.com/archives/89/</a>，非常好的文章。</p>
 <p><img alt="" src="../../../asset/image/20240228005.png" /></p>
 <p><img alt="" src="../../../asset/image/20240228006.png" /></p>
 <p><img alt="" src="../../../asset/image/20240228007.png" /></p>

@@ -12614,7 +12614,7 @@
 <li>如果 windows 宿主机选择 scrolling，那么 linux 就不是中键</li>
 <li>如果 windows 宿主机选择 middle click，那么 linux 就不能滑动</li>
 <li>xinput list: 只有 libinput，没有 synptaic，也就说那个触摸板脚本是没用的，之所以在 linux 可以，是 Windows 宿主机可以。</li>
-<li>windows 使用 tpmiddle --&gt; Linux 并不可以</li>
+<li>windows 使用 tpmiddle &rarr; Linux 并不可以</li>
 </ul>
 <h2 id="polybar">Polybar</h2>
 <p>安装 arch 之后会发现 polybar 有许多地方没有显示，主要是因为虚拟机中许多东西都是虚拟化，因此在实体机中可以读取的文件在虚拟机中并不存在。</p>
@@ -12625,12 +12625,12 @@
 </ul>
 <h2 id="_1">全屏实现</h2>
 <p>需要安装 open-vm-tools；启动服务 <code>vmware-vmblock-fuse</code>, <code>vmware-user-suid-wrapper</code>, <code>vmtoolsd</code>；在 i3 配置文件中加入 <code>exec vmware-user-suid-wrapper --no-startup-id</code></p>
-<p>参考：https://github.com/masterAllen/VMWare-Guest-FullScreen/blob/master/enable-fullscreen.sh</p>
+<p>参考：<a href="https://github.com/masterAllen/VMWare-Guest-FullScreen/blob/master/enable-fullscreen.sh">https://github.com/masterAllen/VMWare-Guest-FullScreen/blob/master/enable-fullscreen.sh</a></p>
 <h2 id="_2">虚拟机和本机切换</h2>
 <p>1. 最好的方法就是使用触摸板，四指可以顺滑切换。另外在('Touchpad setting', 'Advanced gesture ..')中可以将四指上下改成'Nothing'，这样避免有时会误触。</p>
 <p>2. 使用小红点，配合WGesture</p>
 <ul>
-<li>首先要下载虚拟桌面管理器: https://github.com/MScholtes/VirtualDesktop ，记住解压后的 exe 文件位置，如我的为 <code>C:\Myself\VirtualDesktop</code></li>
+<li>首先要下载虚拟桌面管理器: <a href="https://github.com/MScholtes/VirtualDesktop">https://github.com/MScholtes/VirtualDesktop</a> ，记住解压后的 exe 文件位置，如我的为 <code>C:\Myself\VirtualDesktop</code></li>
 <li>下载 WGesture 软件，开始配置。首先'文件管理器'中，删掉'新窗口'，然后'全局'中，更改'上一个桌面'和'下一个桌面'，其中手势(就是助记符)可以自己创个别的，其他的不要变。我的 WGesture 配置文件如下，可以直接导入。</li>
 </ul>
 
