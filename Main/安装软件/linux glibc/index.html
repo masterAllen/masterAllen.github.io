@@ -12737,7 +12737,7 @@ make<span class="w"> </span>-j<span class="w"> </span><span class="m">4</span><s
 <div class="highlight"><pre><span></span><code><span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;gcc&quot;</span><span class="w"> </span><span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;g++&quot;</span><span class="w">  </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -g3 -ggdb -gdwarf-4 -Og -Wno-error -w -fno-stack-protector -Wl,--rpath=/home/allen/.local/lib/glibc-2.29/x64/lib -Wl,--dynamic-linker=/home/allen/.local/lib/glibc-2.29/x64/lib/ld-2.29.so&quot;</span><span class="w">  </span><span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-g -g3 -ggdb -gdwarf-4 -Og -Wno-error -w -fno-stack-protector -Wl,--rpath=/home/allen/.local/lib/glibc-2.29/x64/lib -Wl,--dynamic-linker=/home/allen/.local/lib/glibc-2.29/x64/lib/ld-2.29.so&quot;</span><span class="w">  </span>../configure<span class="w"> </span>--prefix<span class="o">=</span>/home/allen/.local/lib/glibc-2.31/x64<span class="w"> </span>--disable-werror
 </code></pre></div></p>
 <p>2. 原因二: glibc 2.27 确实好像有点问题<br />
-在网上有补丁: https://sourceware.org/legacy-ml/libc-stable/2018-03/msg00009.html<br />
+在网上有补丁: <a href="https://sourceware.org/legacy-ml/libc-stable/2018-03/msg00009.html">https://sourceware.org/legacy-ml/libc-stable/2018-03/msg00009.html</a><br />
 使用 git apply patch.txt 打上补丁就好了</p>
 <h3 id="_2">命令参数解释</h3>
 <table>
@@ -12795,9 +12795,9 @@ libc.so.6<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </
 <div class="highlight"><pre><span></span><code>patchelf --set-interpreter /home/allen/.local/lib/glibc-2.31/x64/lib/ld-2.31.so demo                
 </code></pre></div></p>
 <h2 id="_4">参考文件</h2>
-<p>1. 官方下载地址: https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/<br />
-2. 编译时主要的参考: https://0xffff.one/d/337<br />
-3. 指定版本时主要的参考: https://bbs.pediy.com/thread-254868.htm</p>
+<p>1. 官方下载地址: <a href="https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/">https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/</a><br />
+2. 编译时主要的参考: <a href="https://0xffff.one/d/337">https://0xffff.one/d/337</a><br />
+3. 指定版本时主要的参考: <a href="https://bbs.pediy.com/thread-254868.htm">https://bbs.pediy.com/thread-254868.htm</a></p>
 
 
 

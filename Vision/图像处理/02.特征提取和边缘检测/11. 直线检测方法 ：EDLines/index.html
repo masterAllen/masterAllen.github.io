@@ -12710,18 +12710,18 @@
 <p>作者用了一个叫做 <strong>NFA</strong> 的指标。NFA(the Number of False Alarms)，假阳性率，这个指标在另一个方法 <a href="09.直线检测方法：LSD.md">LSD</a> 中也用到。</p>
 <p>但两个方法有点区别，LSD 的公式是这样的<br />
 $$<br />
-NFA(r) = (NM)^{5/2} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}<br />
+NFA&reg; = (NM)^{5/2} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}<br />
 $$</p>
 <p>但 EDLines 的公式是这样的<br />
 $$<br />
-NFA(r) = (N)^{4} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}<br />
+NFA&reg; = (N)^{4} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}<br />
 $$</p>
-<p>其中 <span class="arithmatex">\(N\)</span> 和 <span class="arithmatex">\(M\)</span> 是<strong>图片</strong>的大小，<span class="arithmatex">\(n\)</span> 是当前矩形的像素数量，<span class="arithmatex">\(p\)</span> 叫做精确度，两个方法的默认值都设为 1/8，<span class="arithmatex">\(k\)</span> 是符合条件的像素点数量，而这个条件阈值就是 <span class="arithmatex">\(p\pi\)</span>。</p>
+<p>其中 <span class="arithmatex">\(N\)</span> 和 <span class="arithmatex">\(M\)</span> 是<strong>图片</strong>的大小，<span class="arithmatex">\(n\)</span> 是当前矩形的像素数量，<span class="arithmatex">\(p\)</span> 叫做精确度，两个方法的默认值都设为 &#8539;，<span class="arithmatex">\(k\)</span> 是符合条件的像素点数量，而这个条件阈值就是 <span class="arithmatex">\(p\pi\)</span>。</p>
 <p>多说一下精确度 <span class="arithmatex">\(p\)</span>，其最后决定了方向的误差。比如论文中 <span class="arithmatex">\(p = \pi/8\)</span>，说明此时检查像素是否符合条件时，检测该像素的梯度方向和拟合直线的方向差不能超过 <span class="arithmatex">\(\pi/8\)</span>。</p>
 <p>比较两个公式，其实就是前面第一项不同，EDLines 假设了 <span class="arithmatex">\(M = N\)</span>，但指数一个是 5 一个是 4，很奇怪，暂时不细究了。EDLines 论文说这一项代表图像潜在线段的个数，但 LSD 论文中没有提到。</p>
 <p>最终判断 <span class="arithmatex">\(NFA(r) &lt; \epsilon\)</span>，如果满足则认为当前线段是直线，论文中选择 <span class="arithmatex">\(\epsilon = 1\)</span>，LSD 也是如此，所以其实这两个方法判断直线的方式基本一样的。</p>
 <h2 id="_5">参考</h2>
-<p>1. https://www.cnblogs.com/eleanor/p/16167058.html</p>
+<p>1. <a href="https://www.cnblogs.com/eleanor/p/16167058.html">https://www.cnblogs.com/eleanor/p/16167058.html</a></p>
 
 
 

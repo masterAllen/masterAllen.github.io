@@ -12678,7 +12678,7 @@ WantedBy=multi-user.target
 <p>一般会出现几个权限的错误<br />
 1. <code>IOError: [Errno 13] Permission denied: '/var/log/supervisor/supervisord.log'</code><br />
 2. <code>Error: Cannot open an HTTP server: socket.error reported errno.EACCES (13)</code></p>
-<p>参考: https://binkzhao.github.io/2019/04/30/supervisor-%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E9%9B%86%E5%90%88/</p>
+<p>参考: <a href="https://binkzhao.github.io/2019/04/30/supervisor-%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E9%9B%86%E5%90%88/">https://binkzhao.github.io/2019/04/30/supervisor-%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E9%9B%86%E5%90%88/</a></p>
 <p>但是这个链接是直接把目录的权限变成了 777, 这样很不合理. 因此解决方法方法如下.</p>
 <p>1. 使用 root 新建 <code>/var/log/supervisor</code> 和 <code>/var/run/supervisor</code>, 然后把该目录权限转为普通用户.<br />
 2. 修改 <code>/etc/supervisor/supervisord.conf</code>, 也就是 <code>supervisor</code> 配置文件, 把里面的 <code>/var/run</code> 变成 <code>/var/run/supervisor</code>, 因为这个目录在上一步中已经变成普通用户的权限了, 所以普通用户可以在这个目录中建文件, 不会报出权限错误.<br />
@@ -12725,7 +12725,7 @@ stderr_logfile=/root/demo/log/demo.log
 <p>此外, 网上的解答大部分说用 PYTHONPATH, 这个我只有在使用 pyenv 并且设置为全局时才成功, 不清楚如果设置为全局变量时是否有用, 但我觉得在启动脚本中添加绝对路径比指定 PYTHONPATH 更好.</p>
 <h2 id="_4">结尾</h2>
 <p>四个月后再写总结, 发现了一个很重要的问题: Why use supervisor? 可以先使用 systemd 来完成, 如果它完成不了再来用 supervisor 来做吧. 我的要求其实就完全可以用 systemd 来完成.</p>
-<p>参考: systemd vs supervisord --&gt; https://liqiang.io/post/systemd-vs-supervisord</p>
+<p>参考: systemd vs supervisord &rarr; <a href="https://liqiang.io/post/systemd-vs-supervisord">https://liqiang.io/post/systemd-vs-supervisord</a></p>
 
 
 

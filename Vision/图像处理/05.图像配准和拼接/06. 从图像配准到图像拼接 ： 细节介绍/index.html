@@ -12769,11 +12769,11 @@
 
 <h1 id="_1">从图像配准到图像拼接：细节介绍</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/从图像配准到图像拼接：细节介绍</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/从图像配准到图像拼接">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/从图像配准到图像拼接</a>：细节介绍</p>
 </blockquote>
 <p>在 <a href="https://docs.opencv.org/4.x/d1/d46/group__stitching.html">OpenCV 的 Image Stitching 页面</a>上，看到还有好几个 Module 和一个很复杂的流程图。的确，如果是直接无脑用 stitching 很简单，但如果涉及到一些更精细的调节就需要深入了解了。</p>
 <p>OpenCV 提供了一个 stitching_details 的文件，有 CPP 也有 Python，写的非常好，<a href="https://docs.opencv.org/4.x/d8/d19/tutorial_stitcher.html">可以去他的 tutorial 下载</a>，在最后面。</p>
-<p>下面进行逐步解释，需要说明的是，有许多地方和官方的 sample 代码不一致，我的具体代码在 <a href="../code/test_stitching.ipynb">test_stitching.ipynb</a>。此外，这篇文章写的也特别好，涉及的细节很多，推荐查看：https://www.cnblogs.com/huty/p/8516981.html</p>
+<p>下面进行逐步解释，需要说明的是，有许多地方和官方的 sample 代码不一致，我的具体代码在 <a href="../code/test_stitching.ipynb">test_stitching.ipynb</a>。此外，这篇文章写的也特别好，涉及的细节很多，推荐查看：<a href="https://www.cnblogs.com/huty/p/8516981.html">https://www.cnblogs.com/huty/p/8516981.html</a></p>
 <p>先说个下面的 <code>compute_scale</code> 函数，这个在原来的 sample 代码没有。他的作用是计算出一幅图像如果缩放到某 M 个像素时，此时缩放比例是多少。之所以不直接给一个缩放比例，因为图片尺寸不保证一样。当然其实直接给缩放比例也是可以的，处理时的图片尺寸不一定要一样，主要还是参考了 sample 代码，为了保持一致。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_scale</span><span class="p">(</span><span class="n">megapix</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">megapix</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>

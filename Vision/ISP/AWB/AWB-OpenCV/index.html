@@ -12637,7 +12637,7 @@
 
 <h1 id="opencv-awb">OpenCV 中使用 AWB</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.2.md</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.2.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.2.md</a></p>
 </blockquote>
 <p>OpenCV 的 xphoto 模块有三个类负责白平衡：</p>
 <p>1. SimpleAWB：每个通道单独拉伸到固定的范围，有参数 p 表示前后 p% 的像素大小值不被拉伸时考虑<br />
@@ -12663,7 +12663,7 @@
 <p>参考来自 OpenCV 的官方文档：<a href="https://docs.opencv.org/4.x/dc/dcb/tutorial_xphoto_training_white_balance.html">https://docs.opencv.org/4.x/dc/dcb/tutorial_xphoto_training_white_balance.html</a></p>
 <p>我的实验数据在 <code>../code/image/awb</code> 中。</p>
 <h4 id="1">1. 数据准备</h4>
-<p>数据是 Gehler-Shi dataset(http://www.cs.sfu.ca/~colour/data/shi_gehler) ，它是由两台单反相机拍摄的共 568 张图片。每张图片拍的时候都有一张色卡，这样就可以根据色卡算出 Ground Truth 了，结果在该网站的 real_illum_568..mat 文件中。</p>
+<p>数据是 Gehler-Shi dataset(<a href="http://www.cs.sfu.ca/~colour/data/shi_gehler">http://www.cs.sfu.ca/~colour/data/shi_gehler</a>) ，它是由两台单反相机拍摄的共 568 张图片。每张图片拍的时候都有一张色卡，这样就可以根据色卡算出 Ground Truth 了，结果在该网站的 real_illum_568..mat 文件中。</p>
 <p>他的文件结构有点奇怪，解压之后要到很深的地方才能找到 PNG。有四个压缩包，从名字也能看出，第一个是第一个相机，其他三个是第二个相机。把这四个压缩包的文件都放在同一个目录。</p>
 <h4 id="2">2. 训练数据</h4>
 <p>使用<a href="https://github.com/opencv/opencv_contrib/tree/master/modules/xphoto/samples/learn_color_balance.py">官方的脚本文件</a><br />

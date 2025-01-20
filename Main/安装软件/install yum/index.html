@@ -12497,7 +12497,7 @@
 <p>本来想安装 python3，误信网上的一篇文章，用 rpm 把 python2 给卸载掉了，结果发现 yum 是依赖 python2，导致我直接没法用 yum 安装软件了，气死。害的我折腾了半天。</p>
 <!--more-->
 
-<p>补救方法就是下载相关的 rpm 包进行手动安装了。安装包的链接在 http://mirrors.ustc.edu.cn/centos/7/os/x86_64/Packages/ ，注意自己的版本，我的是 centos7。</p>
+<p>补救方法就是下载相关的 rpm 包进行手动安装了。安装包的链接在 <a href="http://mirrors.ustc.edu.cn/centos/7/os/x86_64/Packages/">http://mirrors.ustc.edu.cn/centos/7/os/x86_64/Packages/</a> ，注意自己的版本，我的是 centos7。</p>
 <p>在上述链接中使用 <code>wget</code> 安装如下包，注意这些包的版本也要自己去看是否一样，可以写个脚本。我是图省事，把网页上内容复制到 vim 中，然后用 vim 的一些操作，也挺方便的。</p>
 <div class="highlight"><pre><span></span><code>python-2.7.5-89.el7.x86_64.rpm
 python2-rpm-macros-3-34.el7.noarch.rpm

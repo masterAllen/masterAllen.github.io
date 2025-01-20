@@ -12499,7 +12499,7 @@
 
 <h1 id="edgeboxes">EdgeBoxes</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/EdgeBoxes</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/EdgeBoxes">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/EdgeBoxes</a></p>
 </blockquote>
 <p><a href="https://docs.opencv.org/4.x/d4/d0d/group__ximgproc__edgeboxes.html">ximgproc 中实现的方法</a>，原文<a href="https://pdollar.github.io/files/papers/ZitnickDollarECCV14edgeBoxes.pdf">链接在此</a>，发表于 ECCV 2014。</p>
 <p>有两篇文章讲的还可以（<a href="https://blog.csdn.net/wsj998689aa/article/details/39476551">文章一</a>、<a href="https://www.cnblogs.com/yxh23/p/13619629.html">文章二</a>），能让人意会这篇文章的大致原理。总而言之，没用机器学习的知识，利用边缘信息确定框框内的轮廓个数和与框框边缘重叠的轮廓个数（这点很重要，如果我能够清楚的知道一个框框内完全包含的轮廓个数，那么目标有很大可能就在这个框中。）并基于此对框进行评分，进一步根据得分的高低顺序确定 proposal 信息（proposal 可以理解为目标大概可能的位置，类似于人眼的第一直觉）。后续工作就是在 proposal 内部运行相关检测算法。</p>

@@ -12571,7 +12571,7 @@
 
 <h1 id="_1">从图像配准到图像拼接：简单介绍</h1>
 <blockquote>
-<p>来自本人笔记: https://github.com/masterAllen/LearnOpenCV/blob/main/docs/从图像配准到图像拼接：简单介绍</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/从图像配准到图像拼接">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/从图像配准到图像拼接</a>：简单介绍</p>
 </blockquote>
 <h3 id="_2">普通的配准</h3>
 <p>配准后进行拼接，无比自然的事情。不少文章也是介绍图片拼接才介绍的图片配准。如下图所示：</p>
@@ -12580,8 +12580,8 @@
 <p><img alt="1727608463485" src="../../../../asset/image/1727608463485.png" /><img alt="1727608475849" src="../../../../asset/image/1727608475849.png" /></p>
 <p>但其实这里面还有很多的学问，以下两篇文章写的特别好，作者们都做了一些思考，并且去查看了 Opencv 的实现：</p>
 <ul>
-<li>https://www.cnblogs.com/skyfsm/p/7411961.html</li>
-<li>https://www.cnblogs.com/curiositywang/p/17480796.html</li>
+<li><a href="https://www.cnblogs.com/skyfsm/p/7411961.html">https://www.cnblogs.com/skyfsm/p/7411961.html</a></li>
+<li><a href="https://www.cnblogs.com/curiositywang/p/17480796.html">https://www.cnblogs.com/curiositywang/p/17480796.html</a></li>
 </ul>
 <p>主要是有两个问题：</p>
 <p>1. 特征点如何保证多：两次特征点。先对图一进行特征点提取和筛选匹配（1-&gt;2），再对图二进行特征点的提取和匹配（2-&gt;1），可以保证更多的匹配点被选中，匹配点越多，findHomography求出的变换越准确。这个思路值得借鉴。【文章一】<br />

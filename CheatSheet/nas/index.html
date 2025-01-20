@@ -12640,11 +12640,11 @@
 
 
 <h1 id="nas">买完 NAS 后做的事情</h1>
-<p>保姆级教程: https://post.smzdm.com/p/a25d6537/</p>
+<p>保姆级教程: <a href="https://post.smzdm.com/p/a25d6537/">https://post.smzdm.com/p/a25d6537/</a></p>
 <h2 id="_1">设置主目录</h2>
 <p>NAS 默认没有主目录, 可以在网页中设置, 也可以 ssh 登录后新建 home 下的主目录(<code>/var/services/homes/xxx</code>). </p>
 <h2 id="opkg">安装 opkg</h2>
-<p>按照链接来即可: https://github.com/Entware/Entware/wiki/Install-on-Synology-NAS</p>
+<p>按照链接来即可: <a href="https://github.com/Entware/Entware/wiki/Install-on-Synology-NAS">https://github.com/Entware/Entware/wiki/Install-on-Synology-NAS</a></p>
 <h2 id="shell">修改 shell</h2>
 <p>首先安装 <code>zsh</code>: <code>opkg install zsh</code>. 一定不要通过修改 <code>/etc/passwd</code> 来完成, <strong>否则会阻止 ssh 登录</strong>. 应该直接在 <code>~/.profiles</code> 里填写两行: <code>/path/to/zsh</code> 和 <code>exit</code>.</p>
 <h2 id="webdav">设置 webdav</h2>
@@ -12653,7 +12653,7 @@
 <h2 id="_2">设置防火墙</h2>
 <p>控制面板中仔细找找, 有防火墙设置, 一般我是只开放 Qbitorrent, DNS, DHCP 这三个端口, 同时也允许内网可以访问任何端口, 其他 IP 全部 Deny.</p>
 <h2 id="_3">其他</h2>
-<p>1. 拆卸硬盘以及之后的设置: https://www.appinn.com/synology-dsm218plus-increase-disk-space/<br />
+<p>1. 拆卸硬盘以及之后的设置: <a href="https://www.appinn.com/synology-dsm218plus-increase-disk-space/">https://www.appinn.com/synology-dsm218plus-increase-disk-space/</a><br />
 2. 挂载北邮人种子: ../Misc/nas_pt.md</p>
 
 

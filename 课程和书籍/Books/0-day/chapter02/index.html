@@ -12501,7 +12501,7 @@
 
 <h1 id="_1">第二章: 栈溢出</h1>
 <p>这一章，主要是在返回地址上面插入代码，这个时候的返回地址是静态的</p>
-<p>1. 定位 (shellcode) 的位置 --&gt; <code>jmp esp</code></p>
+<p>1. 定位 (shellcode) 的位置 &rarr; <code>jmp esp</code></p>
 <pre><code>- 怎么做：查找当前某个 dll 的 (jmp esp)，返回地址改成跳转到那边的地址
 - 为什么：返回地址弹出之后，(esp) 正好指向返回地址下面第一个，所以 (jmp esp) 之后，就开始指向返回地址下面的代码
 </code></pre>
