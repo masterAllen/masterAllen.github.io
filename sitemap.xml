@@ -2,1538 +2,1550 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://localhost:8000/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/chrome/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/clash/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/docker/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/edge/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/firefox/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/git/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/gnome%20terminal/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/gnome_terminal/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/i3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/ida/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/java/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/latex/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/makefile/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/mongod/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/nas/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/nodejs/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/numpy/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/okular/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/pacman/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/pdf/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/pip/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/radare2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/ranger/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/rdp/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/redis/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/ssh/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/texlive/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/tmux/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/vue/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/weechat/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/AxMath/AxMath%20%E4%BF%AE%E6%94%B9%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/AxMath/AxMath%20%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/Foxit/Foxit%20%E6%89%93%E5%BC%80%E6%A0%BC%E5%BC%8F/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/GDB/gdb%20cmd/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/GDB/gdb%20gef%20expand/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/GDB/gdb%20trick/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/GDB/gdb/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/MIPS/MIPS%20%E6%8C%87%E4%BB%A4%E5%88%86%E6%9E%90/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/GDB/gdb_cmd/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/GDB/gdb_gef_expand/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/GDB/gdb_trick/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/MIPS/MIPSReference/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/MIPS/MIPS_%20%E6%8C%87%E4%BB%A4%E5%88%86%E6%9E%90/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/MIPS/mips/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20command/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_command/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20debug/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_debug/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20gateway/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_gateway/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20iptables/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_iptables/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20manager/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_manager/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20nmcli%20802.1x/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_nmcli_802.1x/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20tool/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_tool/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Network/network%20ufw/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Network/network_ufw/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QLayout%20%E6%8A%A5%E9%94%99/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QT%20%E5%85%A5%E9%97%A8%E7%9A%84%E8%B5%84%E6%96%99/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QT%20%E6%8A%A5%E9%94%99%E6%B1%87%E6%80%BB/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QT4%20%E5%88%B0%20QT5%20%E7%9A%84%E4%B8%8D%E5%90%8C/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QTDesigner/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QTableWidget%20%E5%A2%9E%E5%88%A0%E9%A1%B9%E7%9B%AE/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QTableWidget%20%E8%B0%83%E6%95%B4%E5%AE%BD%E5%BA%A6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QTextBrowser%20%E8%AE%BE%E7%BD%AE/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QTextEdit%20%E6%B7%BB%E5%8A%A0%E5%86%85%E5%AE%B9/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QTextEdit%20%E8%AE%BE%E7%BD%AE%E6%9C%80%E5%A4%A7%E8%A1%8C%E6%95%B0/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/QThread%20%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E9%80%80%E5%87%BA/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/%E6%9F%A5%E7%9C%8B%20QT%20%E7%89%88%E6%9C%AC/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/QT/%E8%81%94%E5%8A%A8%E4%B8%8B%E6%8B%89%E6%A1%86/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20ack/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_ack/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20awk%20sed/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_awk_sed/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20chsh/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_chsh/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20cp/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_cp/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20curl/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_curl/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20du/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_du/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20jobs/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_jobs/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20ps/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_ps/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20rm/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_rm/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20rsync/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_rsync/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20sort/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_sort/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20tar/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_tar/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20touch/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_touch/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/command%20useradd/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/command_useradd/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/info%20env/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/info_env/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/info%20network/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/info_network/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/info%20system/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/info_system/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/info%20zip/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/info_zip/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Shell/something%20else/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Shell/something_else/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/VM/install%20in%20virtualbox/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/VM/install_in_virtualbox/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/VM/install%20in%20vmware/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/VM/install_in_vmware/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/VM/migrate%20from%20vm/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/VM/virtualbox%20centos%20addition/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/VM/virtualbox%20install/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/VM/migrate_from_vm/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/VM/virtualbox/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/key%20ctrl/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/VM/virtualbox_centos_addition/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/key%20leader/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/VM/virtualbox_install/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/key%20other/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/key_ctrl/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/key%20plugin/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/key_leader/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/key%20search/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/key_other/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20copy%20paste/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/key_plugin/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20debug/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/key_search/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20errorcode/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_copy_paste/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20export/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_debug/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20format/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_errorcode/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20map/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_export/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20normal/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_format/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20tab/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_map/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20tabkey/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_normal/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/Vim/vim%20variable/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_tab/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_tabkey/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/Vim/vim_variable/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/Vim/vimscript/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/Vim/%E6%9C%AA%E5%BD%92%E7%B1%BB/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/WSL/WSL2%20%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/WSL/Win%20%E4%B8%8E%20WSL%20%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/X86/x86%20interupt/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/X86/x86_interupt/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/apache/apache01/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/mysql/mysql%20errorcode/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/ffmpeg/ffmpeg%20%E7%B2%BE%E5%87%86%E5%88%87%E5%89%B2%E6%96%87%E4%BB%B6/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/mysql/mysql/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/CheatSheet/nginx/nginx%20403%20forbidden/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/nginx/nginx%20https/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/nginx/nginx%20location/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/CheatSheet/nginx/nginx%20vue/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/CheatSheet/mysql/mysql_errorcode/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/nginx/nginx/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/nginx/nginx_403_forbidden/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/nginx/nginx_https/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/nginx/nginx_location/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/CheatSheet/nginx/nginx_vue/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/numpy/numpy%20%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/numpy/numpy%20%E8%AE%A1%E7%AE%97%E5%90%8E%E6%9C%89%E4%B8%8D%E5%9B%BA%E5%AE%9A%E7%9A%84%E5%BC%82%E5%B8%B8%E7%82%B9/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/polybar/polybar01/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/CheatSheet/polybar/polybar02/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_001/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20002/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_002/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20003/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_003/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20004/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_004/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20005/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_005/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20006/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_006/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20007/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_007/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20008/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_008/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20009/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_009/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20010/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_010/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Debug/debug%20011/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Debug/debug_011/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20atoi/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_%20%E4%B8%87%E8%83%BD%E5%BC%95%E7%94%A8%E5%92%8C%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20constexpr/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_%20%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E5%92%8C%20move/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20double%20pointer/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_atoi/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20friend/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_constexpr/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20initalize/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_double_pointer/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20mmap/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_friend/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20mutable/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_initalize/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20register/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_mmap/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20socket/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_mutable/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp%20template/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_register/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/cpp/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_socket/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/questions/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/cpp_template/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E4%BD%BF%E7%94%A8%20DLL%20%E6%96%87%E4%BB%B6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/others/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E5%AE%89%E8%A3%85%20Opencv%20%E4%BB%A5%E5%8F%8A%20VS%20%E4%B8%8B%E9%85%8D%E7%BD%AE/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E7%94%9F%E6%88%90%E4%BD%BF%E7%94%A8%20OpenCV%20%E5%87%BD%E6%95%B0%E7%9A%84%20DLL%20%E6%96%87%E4%BB%B6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/Cpp%20%E4%BD%BF%E7%94%A8%20DLL%20%E6%96%87%E4%BB%B6/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Language/CPP/%E5%85%B6%E4%BB%96/Cpp%20%E7%BC%96%E8%AF%91%20Opencv%20X86/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/Cpp%20%E5%AE%89%E8%A3%85%20Opencv%20%E4%BB%A5%E5%8F%8A%20VS%20%E4%B8%8B%E9%85%8D%E7%BD%AE/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/bashrc%20vs%20profile/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/Cpp%20%E7%94%9F%E6%88%90%E4%BD%BF%E7%94%A8%20OpenCV%20%E5%87%BD%E6%95%B0%E7%9A%84%20DLL%20%E6%96%87%E4%BB%B6/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/caps%20to%20ctrl/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/Cpp%20%E7%BC%96%E8%AF%91%20Opencv%20X86/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/cat%20hugefile/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Language/CPP/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/Cpp%20%E7%BC%96%E8%AF%91%20Opencv%20%E7%94%9F%E6%88%90%E7%9A%84%E5%85%B7%E4%BD%93%E7%BB%93%E6%9E%84%EF%BC%88%E5%BC%BA%E7%83%88%E6%8E%A8%E8%8D%90%E7%BC%96%E8%AF%91%E5%90%8E%E7%9C%8B%E4%B8%80%E9%81%8D%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/change%20font/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/bashrc_vs_profile/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/Main/Linux/caps_to_ctrl/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/Main/Linux/cat_hugefile/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/Main/Linux/change_font/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Linux/coredump/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/hidip%20setting/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/hidip_setting/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/libinput%20setting/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/libinput_setting/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Linux/lightdm/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/linux%20remount/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/linux_remount/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/run%20level/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/run_level/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/update%20kernel/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/update_kernel/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/urxvt%20setting/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/urxvt_setting/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Linux/x%20window/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Linux/x_window/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Misc/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/build%20hexo/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/TCL%20Q10G%20Pro%20%E7%94%B5%E8%A7%86%E8%A7%A3%E9%94%81%20ADB/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/check%20websocket/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/build_hexo/</loc>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/Main/Misc/check_websocket/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Misc/debtap/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Misc/fakeroot/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Misc/font/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/library%20path/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/library_path/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/library%20version/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/library_version/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/nas%20pt/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/nas_pt/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/p2p%20introduction/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/p2p_introduction/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/screen%20sharing/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/screen_sharing/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/source%20bashrc/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/source_bashrc/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/supervisor%20in%20virtual/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/supervisor_in_virtual/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/thinkpad%20x1c%20problem/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/thinkpad_x1c_problem/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Misc/zsh%20slow/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Misc/zsh_slow/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Misc/%E7%BA%BF%E6%80%A7%E7%9B%B8%E6%9C%BA%E5%92%8C%20TDI%20%E7%9B%B8%E6%9C%BA%E5%AD%A6%E4%B9%A0/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Misc/%E7%BD%91%E9%A1%B5%E4%BF%AE%E6%94%B9%20Trick/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/Misc/%E8%93%9D%E7%89%99%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB%E8%AE%B0%E5%BD%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/VPN/debug/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/VPN/polipo/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/VPN/vpn%20study/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/VPN/vpn_study/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Main/VPN/V2ray/readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Windows/windows%20key/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Windows/windows_key/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/Windows/windows%20udisk/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/Windows/windows_udisk/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer01/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer02/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer02/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer03/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer03/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20computer04/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer04/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20icinga2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_icinga2/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20virtualbox/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_in_virtualbox/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20vmware/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_in_vmware/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20in%20wsl/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_in_wsl/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20mysql/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_mysql/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install%20yum/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_yum/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20glibc/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20library01/</loc>
-         <lastmod>2025-01-20</lastmod>
-    </url>
-    <url>
-         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux%20library02/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux_glibc/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-%20%E8%A7%86%E9%A2%91/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-1/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-4/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-5/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/AWB/AWB-OpenCV/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/BLC/BLC/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/BLC/%E8%AF%B4%E6%98%8E/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/BNR/BNR/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/BNR/%E8%AF%B4%E6%98%8E/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/CAC/Readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/CCM/CCM-1/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/CCM/CCM-2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/CCM/CCM-3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/CCM/CCM-OpenCV/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/CCM/Readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/DPC/Readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/DPC/dpc/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%B8%80/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%B8%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%BA%8C/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E4%BA%94/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Demosaic/Demosaic%20%E7%B3%BB%E5%88%97%E5%9B%9B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Demosaic/Readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Flicker/Flicker%20%E7%9A%84%E7%90%86%E8%A7%A3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Gamma/Gamma/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/Readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/CAC/Python%20%E5%9B%BE%E5%83%8F%E5%90%8E%E5%A4%84%E7%90%86%E4%B8%8E%E4%BC%98%E5%8C%96%2014-%20%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E4%B9%8B%E6%B6%88%E9%99%A4%E8%89%B2%E5%B7%AE/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/CAC/%E6%B5%B7%E5%BA%B7%E7%BA%BF%E6%89%AB%E7%9B%B8%E6%9C%BA%E5%83%8F%E7%B4%A0%E6%A0%A1%E6%AD%A3%E5%8E%9F%E7%90%86%E6%8E%A8%E6%B5%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/CAC/%E8%89%B2%E5%B7%AE%E6%B6%88%E9%99%A4%E8%AE%B0%E5%BD%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/CAC/Paper/paper-1/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/CAC/Paper/paper-2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/CAC/Paper/paper-3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/Distortion/Camera%20Calibration%20using%20OpenCV/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/Distortion/%E7%9B%B8%E6%9C%BA%E7%95%B8%E5%8F%98%E7%9F%AB%E6%AD%A3%E7%9A%84%E9%80%9A%E4%BF%97%E7%90%86%E8%A7%A3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/Distortion/%E7%9B%B8%E6%9C%BA%E7%9A%84%E7%95%B8%E5%8F%98/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/Distortion/%E9%95%9C%E5%A4%B4%E7%95%B8%E5%8F%98%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/LSC/LSC/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/LSC/Python%20%E5%9B%BE%E5%83%8F%E5%90%8E%E5%A4%84%E7%90%86%E4%B8%8E%E4%BC%98%E5%8C%96%2012-%20%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%E4%B9%8B%E6%99%95%E5%BD%B1%E5%8E%BB%E9%99%A4/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/LSC/readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/%E5%8E%BB%E7%B4%AB%E8%BE%B9/Readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/Lens/%E5%8E%BB%E7%B4%AB%E8%BE%B9/%E5%8E%BB%E7%B4%AB%E8%BE%B9%E8%AE%B0%E5%BD%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-%20%E6%95%88%E6%9E%9C/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-1/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/ISP/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%20-hdrplus/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/01.resize%20%E5%92%8C%20resample/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/02.%20%E5%9F%BA%E7%A1%80%E6%BB%A4%E6%B3%A2%E5%87%BD%E6%95%B0/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/02.%E5%9F%BA%E7%A1%80%E6%BB%A4%E6%B3%A2%E5%87%BD%E6%95%B0/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/03.%20%E9%87%91%E5%AD%97%E5%A1%94%E5%87%BD%E6%95%B0/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/03.%E9%87%91%E5%AD%97%E5%A1%94%E5%87%BD%E6%95%B0/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/04.%20%E5%BD%A2%E6%80%81%E5%AD%A6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/04.%E5%BD%A2%E6%80%81%E5%AD%A6/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/05.%20%E5%BD%A2%E6%80%81%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/05.%E5%BD%A2%E6%80%81%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/06.%20%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/06.%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/07.%20%E9%98%88%E5%80%BC%E5%A4%84%E7%90%86/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/07.%E9%98%88%E5%80%BC%E5%A4%84%E7%90%86/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/08.%20%E7%9B%B4%E6%96%B9%E5%9B%BE/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/08.%E7%9B%B4%E6%96%B9%E5%9B%BE/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/09.%20%E4%BA%8C%E7%BB%B4%E5%87%A0%E4%BD%95%E5%92%8C%E8%BD%AE%E5%BB%93/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/09.%E4%BA%8C%E7%BB%B4%E5%87%A0%E4%BD%95%E5%92%8C%E8%BD%AE%E5%BB%93/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/10.%20%E8%BD%AE%E5%BB%93%E5%8C%B9%E9%85%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/10.%E8%BD%AE%E5%BB%93%E5%8C%B9%E9%85%8D/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/11.%20%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/11.%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/12.%20%E5%9B%BE%E7%89%87%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/12.%E5%9B%BE%E7%89%87%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/13.%20%E6%9D%82%E9%A1%B9/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/13.%E6%9D%82%E9%A1%B9/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/14.%20%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/14.%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Gabor%20%E6%BB%A4%E6%B3%A2/Gabor%20%E6%BB%A4%E6%B3%A2%E4%BD%9C%E7%94%A8/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Guided_Filter/Guided%20Filter-%20%E4%B8%BB%E8%A6%81%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Guided_Filter/Guided_Filter-%20%E4%B8%BB%E8%A6%81%E5%8E%9F%E7%90%86%E5%8F%8A%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Guided_Filter/Guilded%20Filter-%20%E6%9C%80%E7%BB%88%E6%B5%81%E7%A8%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Guided_Filter/Guilded_Filter-%20%E6%9C%80%E7%BB%88%E6%B5%81%E7%A8%8B/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/Median%20Filter-%20%E5%8A%A0%E9%80%9F/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/Median_Filter-%20%E5%8A%A0%E9%80%9F/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/WeightedMedian%20Filter-%20%E5%8E%9F%E7%90%86%E5%92%8C%E5%8A%A0%E9%80%9F/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/WeightedMedian_Filter-%20%E5%8E%9F%E7%90%86%E5%92%8C%E5%8A%A0%E9%80%9F/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2%E5%AE%B6%E6%97%8F/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/Median_Filter/%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%AD%E5%80%BC%E6%BB%A4%E6%B3%A2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/WLS_Filter/WLS%20%E6%BB%A4%E6%B3%A2%20-%20%E8%AE%BA%E6%96%87/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/WLS_Filter/WLS%20%E6%BB%A4%E6%B3%A2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%80/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%80%E8%A1%A5%E5%85%85%E6%9D%90%E6%96%99/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%B8%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E4%BA%8C/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E5%8D%8F%E6%96%B9%E5%B7%AE%E5%A4%96%E6%8F%92%E6%96%B9%E7%A8%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E5%8D%8F%E6%96%B9%E5%B7%AE%E6%9B%B4%E6%96%B0%E6%96%B9%E7%A8%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E6%B5%8B%E9%87%8F%E6%96%B9%E7%A8%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E7%8A%B6%E6%80%81%E5%A4%96%E6%8F%92%E6%96%B9%E7%A8%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B%20-%20%E7%8A%B6%E6%80%81%E6%9B%B4%E6%96%B0%E6%96%B9%E7%A8%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/%E9%98%85%E8%AF%BB%E5%9B%9B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/Bilateral%20Filter%20%E5%8A%A0%E9%80%9F/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/Bilateral_Filter_%20%E5%8A%A0%E9%80%9F/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/Bilateral%20Filter%20%E5%8E%9F%E7%90%86/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/Bilateral_Filter_%20%E5%8E%9F%E7%90%86/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%20FPGA%20%E5%AE%9E%E7%8E%B0%E6%96%87%E6%A1%A3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2/%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%AE%B0%E5%BD%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2/%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E6%9C%80%E5%B0%8F%E5%80%BC%E6%BB%A4%E6%B3%A2/%E5%8A%A0%E9%80%9F%E6%96%B9%E6%B3%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E7%BB%B4%E7%BA%B3%E6%BB%A4%E6%B3%A2/%E7%BB%B4%E7%BA%B3%E6%BB%A4%E6%B3%A2%E6%AD%A3%E5%88%99%E5%8C%96/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2/%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2%20%E5%B8%B8%E8%A7%81%20Kernel/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2/%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2/%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2%20_%20%E5%B8%B8%E8%A7%81%20Kernel/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/01.%20%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%20%EF%BC%9A%20%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/01.%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%EF%BC%9A%E6%8F%90%E5%8F%96%20%EF%BC%9B%20%E6%8F%8F%E8%BF%B0%20%EF%BC%9B%20%E5%8C%B9%E9%85%8D/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/02.%20%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/02.%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E8%A7%92%E7%82%B9%E5%87%BD%E6%95%B0/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/03.HOG%20%E7%89%B9%E5%BE%81/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/04.%20%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/04.%E5%82%85%E9%87%8C%E5%8F%B6%E6%8F%8F%E8%BF%B0%E5%AD%90/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/05.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/05.%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/06.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9ARidgets/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/06.%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9ARidgets/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/07.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E7%9B%B4%E7%BA%BF%E7%89%B9%E5%BE%81/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/07.%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9A%E7%9B%B4%E7%BA%BF%E7%89%B9%E5%BE%81/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/08.%20%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%20%EF%BC%9A%20%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/08.%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9A%E4%BA%BA%E8%84%B8%E7%89%B9%E5%BE%81/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/09.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9ALSD/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/09.%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%EF%BC%9ALSD/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/10.%20%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEdgeDrawing/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/10.%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%EF%BC%9AEdgeDrawing/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/11.%20%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%20%EF%BC%9AEDLines/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/11.%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%EF%BC%9AEDLines/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%85%B6%E4%BB%96/01.EdgeBoxes/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%85%B6%E4%BB%96/02.SelectriveSearchSegmentation/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/00.%20%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%80%E5%A7%8B%20%EF%BC%9AHOG/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/00.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%80%E5%A7%8B%EF%BC%9AHOG/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/01.%20%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%80%E5%A7%8B%20%EF%BC%9AHOG%2BSVM/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/01.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%80%E5%A7%8B%EF%BC%9AHOG%2BSVM/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/02.%20%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8F%90%E5%8D%87%20%EF%BC%9ABoW%20%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/02.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8F%90%E5%8D%87%EF%BC%9ABoW%20%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/03.%20%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8F%90%E5%8D%87%20%EF%BC%9A%20%E7%BA%A7%E8%81%94%E5%88%86%E7%B1%BB%E5%99%A8/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/03.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8F%90%E5%8D%87%EF%BC%9A%E7%BA%A7%E8%81%94%E5%88%86%E7%B1%BB%E5%99%A8/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/04.WalBoost%20%E5%88%86%E7%B1%BB%E5%99%A8%20%EF%BC%88xobject%20%E6%A8%A1%E5%9D%97%20%EF%BC%89%EF%BC%88%20%E6%9C%AA%E6%88%90%E5%8A%9F%20%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/04.WalBoost%20%E5%88%86%E7%B1%BB%E5%99%A8%EF%BC%88xobject%20%E6%A8%A1%E5%9D%97%EF%BC%89%EF%BC%88%E6%9C%AA%E6%88%90%E5%8A%9F%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/05.%20%E5%A4%9A%E7%9B%AE%E6%A0%87%E8%AF%86%E5%88%AB%20%EF%BC%88dpm%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/05.%E5%A4%9A%E7%9B%AE%E6%A0%87%E8%AF%86%E5%88%AB%EF%BC%88dpm%20%E6%A8%A1%E5%9D%97%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/01.%20%E9%9C%8D%E5%B0%94%E5%8F%98%E6%8D%A2%E6%A3%80%E6%B5%8B%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/01.%E9%9C%8D%E5%B0%94%E5%8F%98%E6%8D%A2%E6%A3%80%E6%B5%8B%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%9C%86/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/02.%20%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%20%EF%BC%9A%20%E6%A3%80%E6%B5%8B%E6%A4%AD%E5%9C%86%20%E3%80%81%20%E6%96%91%E7%82%B9/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/02.%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%EF%BC%9A%E6%A3%80%E6%B5%8B%E6%A4%AD%E5%9C%86%20%E3%80%81%20%E6%96%91%E7%82%B9/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/03.%20%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%20%EF%BC%9A%20%E6%9D%A1%E5%BD%A2%E7%A0%81%E4%BA%8C%E7%BB%B4%E7%A0%81/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/03.%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%EF%BC%9A%E6%9D%A1%E5%BD%A2%E7%A0%81%E4%BA%8C%E7%BB%B4%E7%A0%81/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/04.%20%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%20%EF%BC%9A%20%E6%96%87%E5%AD%97%20%EF%BC%88text%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/04.%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%EF%BC%9A%E6%96%87%E5%AD%97%EF%BC%88text%20%E6%A8%A1%E5%9D%97%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/05.%20%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%20%EF%BC%9A%20%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93/05.%E5%B8%B8%E8%A7%81%E6%A3%80%E6%B5%8B%EF%BC%9A%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/01.%20%E7%AE%80%E5%8D%95%E5%9B%BE%E5%83%8F%E6%98%AF%E5%88%86%E5%89%B2%20%EF%BC%9A%20%E7%9B%B4%E6%8E%A5%E7%94%A8%E5%BD%A2%E6%80%81%E5%AD%A6%E8%86%A8%E8%83%80%E8%85%90%E8%9A%80/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/01.%E7%AE%80%E5%8D%95%E5%9B%BE%E5%83%8F%E6%98%AF%E5%88%86%E5%89%B2%EF%BC%9A%E7%9B%B4%E6%8E%A5%E7%94%A8%E5%BD%A2%E6%80%81%E5%AD%A6%E8%86%A8%E8%83%80%E8%85%90%E8%9A%80/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/02.OpenCV%20%E8%B0%83%E5%8C%85%20%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/02.OpenCV%20%E8%B0%83%E5%8C%85%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/03.%20%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%20%EF%BC%9A%20%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/03.%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%EF%BC%9A%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/04.HfsSegment%EF%BC%88hfs%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/04.HfsSegment%EF%BC%88hfs%20%E6%A8%A1%E5%9D%97%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/05.GraphSegment%EF%BC%88ximgproc%20%E6%A8%A1%E5%9D%97%20%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/05.GraphSegment%EF%BC%88ximgproc%20%E6%A8%A1%E5%9D%97%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/06.GraphCut/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/07.GrabCut/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/01.%20%E6%95%B4%E4%BD%93%E9%85%8D%E5%87%86%E4%B8%80%20%EF%BC%9Afeature-based%EF%BC%88reg%E3%80%81ecc%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/01.%E6%95%B4%E4%BD%93%E9%85%8D%E5%87%86%E4%B8%80%EF%BC%9Afeature-based%EF%BC%88reg%E3%80%81ecc%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/02.%20%E6%95%B4%E4%BD%93%E9%85%8D%E5%87%86%E4%BA%8C%20%EF%BC%9Apixel-based%EF%BC%88%20%E7%89%B9%E5%BE%81%E7%82%B9%20%E3%80%81%20%E7%A8%80%E7%96%8F%E5%85%89%E6%B5%81%20%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/02.%E6%95%B4%E4%BD%93%E9%85%8D%E5%87%86%E4%BA%8C%EF%BC%9Apixel-based%EF%BC%88%E7%89%B9%E5%BE%81%E7%82%B9%20%E3%80%81%20%E7%A8%80%E7%96%8F%E5%85%89%E6%B5%81%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/03.%20%E5%B1%80%E9%83%A8%E9%85%8D%E5%87%86%20%EF%BC%9AMeshWarp/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/03.%E5%B1%80%E9%83%A8%E9%85%8D%E5%87%86%EF%BC%9AMeshWarp/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/04.%20%E4%B8%8D%E5%90%8C%E4%BA%AE%E5%BA%A6%E7%9A%84%E9%85%8D%E5%87%86%20%EF%BC%88HDR%20MTB%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/04.%E4%B8%8D%E5%90%8C%E4%BA%AE%E5%BA%A6%E7%9A%84%E9%85%8D%E5%87%86%EF%BC%88HDR%20MTB%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/05.%20%E4%BB%8E%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%88%B0%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%20%EF%BC%9A%20%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/05.%E4%BB%8E%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%88%B0%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%EF%BC%9A%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/06.%20%E4%BB%8E%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%88%B0%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%20%EF%BC%9A%20%E7%BB%86%E8%8A%82%E4%BB%8B%E7%BB%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/06.%E4%BB%8E%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%88%B0%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%EF%BC%9A%E7%BB%86%E8%8A%82%E4%BB%8B%E7%BB%8D/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5/%E5%9B%BE%E7%89%87%E5%AF%B9%E9%BD%90%E8%BF%9B%E5%BA%A6-0531/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%20%EF%BC%9A%20%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%92%8C%E6%B3%8A%E6%9D%BE%E8%9E%8D%E5%90%88/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%EF%BC%9A%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%92%8C%E6%B3%8A%E6%9D%BE%E8%9E%8D%E5%90%88/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%20%EF%BC%9A%20%E6%A2%AF%E5%BA%A6%E6%8A%95%E5%BD%B1%E8%9E%8D%E5%90%88%E9%97%AA%E5%85%89%E9%9D%9E%E9%97%AA%E5%85%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%EF%BC%9A%E6%A2%AF%E5%BA%A6%E6%8A%95%E5%BD%B1%E8%9E%8D%E5%90%88%E9%97%AA%E5%85%89%E9%9D%9E%E9%97%AA%E5%85%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%20%EF%BC%9A%20%E8%81%94%E5%90%88%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%9E%8D%E5%90%88%E9%97%AA%E5%85%89%E9%9D%9E%E9%97%AA%E5%85%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%EF%BC%9A%E8%81%94%E5%90%88%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%9E%8D%E5%90%88%E9%97%AA%E5%85%89%E9%9D%9E%E9%97%AA%E5%85%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E7%89%87%E8%9E%8D%E5%90%88%20%EF%BC%9AHDR%20%E8%9E%8D%E5%90%88/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88/%E5%9B%BE%E7%89%87%E8%9E%8D%E5%90%88%EF%BC%9AHDR%20%E8%9E%8D%E5%90%88/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/07.%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/00.OpenCV%20%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%88%86%E8%BE%A8%E7%8E%87%E5%8D%95%E4%BD%8D%E8%A7%A3%E9%87%8A%20%EF%BC%88MTF%EF%BC%89/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%88%86%E8%BE%A8%E7%8E%87%E5%8D%95%E4%BD%8D%E8%A7%A3%E9%87%8A%EF%BC%88MTF%EF%BC%89/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%85%89%E8%B0%B1%E5%9B%BE%E7%9A%84%E7%90%86%E8%A7%A3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%E4%B8%80/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E5%B0%8F%E5%AD%94%E6%88%90%E5%83%8F/%E5%B0%8F%E5%AD%94%E6%88%90%E5%83%8F%E8%AE%B0%E5%BD%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/0%20%E7%84%A6%E8%B7%9D%E5%92%8C%E6%99%AF%E6%B7%B1/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/0_%20%E7%84%A6%E8%B7%9D%E5%92%8C%E6%99%AF%E6%B7%B1/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/1%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%95%BF%E7%84%A6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/1_%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%95%BF%E7%84%A6/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/2%20%E5%8F%98%E7%84%A6%E5%92%8C%E5%AF%B9%E7%84%A6/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/2_%20%E5%8F%98%E7%84%A6%E5%92%8C%E5%AF%B9%E7%84%A6/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/3%20%E5%BF%AB%E9%97%A8%E5%92%8C%E5%85%89%E5%9C%88/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/3_%20%E5%BF%AB%E9%97%A8%E5%92%8C%E5%85%89%E5%9C%88/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/4%20%E5%90%84%E7%A7%8D%E6%BB%A4%E9%95%9C/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/4_%20%E5%90%84%E7%A7%8D%E6%BB%A4%E9%95%9C/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/5%20%E7%9B%B8%E6%9C%BA%E6%8E%A5%E5%8F%A3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/5_%20%E7%9B%B8%E6%9C%BA%E6%8E%A5%E5%8F%A3/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/6%20YUV420/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E7%9B%B8%E6%9C%BA%E5%92%8C%E9%95%9C%E5%A4%B4/6_YUV420/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/LAB%20%E5%92%8C%20RGB%20%E4%BA%92%E8%BD%AC%E5%AE%9E%E4%BE%8B%E5%92%8C%E6%B3%A8%E6%84%8F%E7%82%B9/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/asset%20%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E8%A7%86%E9%A2%91%E8%AE%B2%E7%9A%84%E5%BE%88%E5%A5%BD/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3%20-%20%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/HSV%E5%92%8CHSL/HSV%20%E5%92%8C%20HSL/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/Vision/%E6%88%90%E5%83%8F%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%85%89%E3%80%81%E9%A2%9C%E8%89%B2%E5%92%8C%E7%9B%B8%E6%9C%BA/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/HSV%E5%92%8CHSL/RGB%20%E5%92%8C%20HSL%20%E4%BA%92%E8%BD%AC%E5%AE%9E%E7%8E%B0%E6%96%87%E6%A1%A3/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
+    </url>
+    <url>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/readme/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter01/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/0-day/chapter02/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/Debug-Hacker/question/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2002/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_02/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2003/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_03/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2004/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_04/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2005/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_05/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2006/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_06/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2007/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_07/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2008/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_08/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note%2009/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E6%B5%81%E7%95%85%E7%9A%84Python/note_09/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/FAQ/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2002/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter_02/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%200304/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter_0304/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2006/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter_06/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter%2007/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%AA%E6%88%91%E4%BF%AE%E5%85%BB/chapter_07/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06%2001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06_01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06%2003/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter06/chapter06_03/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14_01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2004/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14_04/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14%2005/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter14/chapter14_05/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16%2001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16_01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16%2002/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter16/chapter16_02/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter17/chapter17%2001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter17/chapter17_01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter18/chapter18%2001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter18/chapter18_01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19%2001/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19_01/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19%2002/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/Books/%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C/chapter19/chapter19_02/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/1%20%E6%8F%92%E5%80%BC%E5%92%8C%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/1_%20%E6%8F%92%E5%80%BC%E5%92%8C%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/2%20%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%92%8C%E5%85%B1%E8%BD%AD%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/2_%20%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%92%8C%E5%85%B1%E8%BD%AD%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/3%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/3_%20%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/4%20R2/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/4_R2/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
-         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/5%20LMMSE/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/5_LMMSE/</loc>
+         <lastmod>2025-01-22</lastmod>
     </url>
     <url>
          <loc>https://localhost:8000/%E8%AF%BE%E7%A8%8B%E5%92%8C%E4%B9%A6%E7%B1%8D/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/Readme/</loc>
-         <lastmod>2025-01-20</lastmod>
+         <lastmod>2025-01-22</lastmod>
     </url>
 </urlset>
