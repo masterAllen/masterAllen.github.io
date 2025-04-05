@@ -1259,6 +1259,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Linux 按键修改
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1268,6 +1279,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntu-2204" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu 22.04 后的方案
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -15158,6 +15197,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntu-2204" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ubuntu 22.04 后的方案
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -15180,6 +15236,65 @@ xmodmap<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;a
 如果想永久更改，有两种方式：</p>
 <p>1. 第一种就是在开机执行的文件(比如 <code>.xinitrc</code>)中加入上面的命令。<br />
 2. 第二种是先将现在的方案写入文件 <code>xmodmap -pke &gt; .Xmodmap</code>，然后在开机执行的文件中加入命令 <code>xmodmap .Xmodmap</code>。</p>
+<h2 id="ubuntu-2204">Ubuntu 22.04 后的方案</h2>
+<p>问 GPT 也是给出上面的方案。但 Ubuntu 22.04 及其之后上面就失灵了，原因是 XWindows 默认从 Xorg 变成了 Wayland，所以 Xmodmap 不在使用。</p>
+<p>解决方案，直接问 GPT 呗，告诉它这个原因，然后它会告诉正确的答案。我觉得这也是现在这个时代下博客或者笔记的一些意义。不是以前，笔记真的就是知识库，现在这个时代，GPT 能回答我们很多了，但有的时候往往就差那么一两句提示，而这就是现代这种笔记应该做的事情。</p>
+<p>留存一下我当时解决的问答，最后用了方法二。</p>
+<blockquote>
+<p>ubuntu24.04不可以，好像是因为现在用的是Wayland而不是Xorg了</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>对的，你说得完全正确：在 **Ubuntu 24.04** 默认使用的是 **Wayland**，而不是 Xorg。而 `xmodmap` 仅适用于 Xorg，所以在 Wayland 下就不起作用了。
+
+但别急，咱可以用新的方法来映射 Caps Lock 为 Ctrl。在 Wayland（特别是 GNOME 桌面）下推荐用以下方法：
+
+---
+
+## ✅ 方法一：使用 GNOME 设置（图形界面）
+
+1\. 打开「设置」→「键盘」。
+2\. 下拉找到「键盘快捷键」，点击「查看和自定义快捷键」。
+3\. 点击右上角的「三点菜单」 → 选择「输入源」。
+4\. 找到「Caps Lock 行为」，设置为：
+   ```
+   将 Caps Lock 键作为额外的 Ctrl 键
+   ```
+   （原文可能是英文：“Caps Lock as Ctrl”）
+
+---
+
+## 🧠 方法二：使用 `gsettings` 命令（终端设置）
+
+如果你想直接用命令行快速设置：
+
+```bash
+gsettings set org.gnome.desktop.input-sources xkb-options &quot;[&#39;ctrl:nocaps&#39;]&quot;
+```
+
+这个命令会：
+
+- 移除 Caps Lock 功能
+- 把 Caps Lock 键变成一个 **左 Ctrl**
+
+如果你已经有其他键位选项，也可以像这样加进去：
+
+```bash
+gsettings set org.gnome.desktop.input-sources xkb-options &quot;[&#39;ctrl:nocaps&#39;, &#39;another:option&#39;]&quot;
+```
+
+---
+
+## 🔄 恢复默认设置（可选）
+
+如果你想恢复 Caps Lock 的默认行为：
+
+```bash
+gsettings reset org.gnome.desktop.input-sources xkb-options
+```
+
+---
+
+需要我帮你写一个脚本或者 UDEV 规则来处理更复杂的键盘映射，也可以！你现在是用 GNOME 桌面吗？还是别的桌面环境（比如 KDE、Sway、Hyprland）？这样我可以给你更准的建议。
+</code></pre></div>
 
 
 
