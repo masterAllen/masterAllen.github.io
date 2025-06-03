@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#todo" class="md-skip">
+        <a href="#cordic" class="md-skip">
           Skip to content
         </a>
       
@@ -15383,7 +15383,9 @@
                   
 
 
-<h1 id="todo">TODO</h1>
+<h1 id="cordic">CORDIC 算法记录</h1>
+<p>看这篇文章就行了，讲的实在太好了：<a href="https://zhuanlan.zhihu.com/p/717126119">https://zhuanlan.zhihu.com/p/717126119</a>，然后下面评论有一个很好的问题：如果角度旋转两次就刚好是0，那这样连乘序列只有2个，用收敛的值0.6072529就不不精确了，这方面是怎么处理的。回答是较少连乘的时候直接打表存好结果，特别多连乘的时候用收敛值代替。</p>
+<p>我觉得 CORDIC 算法真的是我最喜欢的算法类型了，充满了工程性的魅力。首先是允许一些误差，然后在其基础上利用收敛性将复杂的运算转化为快速简单的运算（位移），这一点很像<a href="../01_HyperLogLog/">上一篇文章的 HyperLogLog 算法</a>，都是允许一些误差然后用并不复杂的数学知识完成收敛。而 CORDIC 更有魅力的是在它连乘数不够，即无法收敛的时候使用了记录表，这简直太有魅力了。</p>
 
 
 
