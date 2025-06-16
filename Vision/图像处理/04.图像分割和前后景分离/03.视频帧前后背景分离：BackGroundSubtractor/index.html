@@ -12,13 +12,13 @@
         <meta name="author" content="Allen Hong">
       
       
-        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/06.GraphCut/">
+        <link rel="canonical" href="https://localhost:8000/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB/03.%E8%A7%86%E9%A2%91%E5%B8%A7%E5%89%8D%E5%90%8E%E8%83%8C%E6%99%AF%E5%88%86%E7%A6%BB%EF%BC%9ABackGroundSubtractor/">
       
       
-        <link rel="prev" href="../05.GraphSegment%EF%BC%88ximgproc%20%E6%A8%A1%E5%9D%97%EF%BC%89/">
+        <link rel="prev" href="../02.%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%89%8D%E5%90%8E%E8%83%8C%E6%99%AF%E5%88%86%E7%A6%BB%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/">
       
       
-        <link rel="next" href="../07.GrabCut/">
+        <link rel="next" href="../04.HfsSegment%EF%BC%88hfs%20%E6%A8%A1%E5%9D%97%EF%BC%89/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>06.GraphCut - Allen Hong's Blog</title>
+        <title>03.视频帧前后背景分离：BackGroundSubtractor - Allen Hong's Blog</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#graphcut" class="md-skip">
+        <a href="#backgroundsubtractor" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              06.GraphCut
+              03.视频帧前后背景分离：BackGroundSubtractor
             
           </span>
         </div>
@@ -7370,6 +7370,220 @@
   
   
   
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_1" id="__nav_5_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Forchecked
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Forchecked
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/000/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    000
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/001/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    001
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/002/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    002
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/003/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    003
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/004/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    004
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/005/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    005
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/006/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    006
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Language/Python/forchecked/007/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    007
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../../Language/Python/" class="md-nav__link">
         
@@ -7459,7 +7673,7 @@
         
   
   <span class="md-ellipsis">
-    Python 查看 packages 包
+    Python查看packages路径
   </span>
   
 
@@ -7480,7 +7694,7 @@
         
   
   <span class="md-ellipsis">
-    Python property() 函数
+    property
   </span>
   
 
@@ -7501,7 +7715,7 @@
         
   
   <span class="md-ellipsis">
-    Pyautogui
+    pyautogui
   </span>
   
 
@@ -7543,7 +7757,7 @@
         
   
   <span class="md-ellipsis">
-    Python Logging 库
+    python_logging
   </span>
   
 
@@ -7564,7 +7778,7 @@
         
   
   <span class="md-ellipsis">
-    Python 的有符号和无符号处理
+    python有无符号处理
   </span>
   
 
@@ -9801,27 +10015,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/11.%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    11.模板匹配
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/12.%E5%9B%BE%E7%89%87%E8%B4%A8%E9%87%8F%E8%AF%84%E4%BB%B7/" class="md-nav__link">
         
   
@@ -11495,27 +11688,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/00.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%80%E5%A7%8B%EF%BC%9AHOG/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    00.数据学习的开始：HOG
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0/01.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%80%E5%A7%8B%EF%BC%9AHOG%2BSVM/" class="md-nav__link">
         
   
@@ -11849,11 +12021,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../02.OpenCV%E8%B0%83%E5%8C%85%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/" class="md-nav__link">
+      <a href="../02.%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%89%8D%E5%90%8E%E8%83%8C%E6%99%AF%E5%88%86%E7%A6%BB%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    02.OpenCV调包：GrabCut, WaterShed, AlphaMatting
+    02.交互式前后背景分离：GrabCut, WaterShed, AlphaMatting
   </span>
   
 
@@ -11867,18 +12039,67 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../03.%E5%9F%BA%E4%BA%8E%E7%BB%9F%E8%AE%A1%EF%BC%9A%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    03.视频帧前后背景分离：BackGroundSubtractor
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    03.基于统计：高斯混合模型
+    03.视频帧前后背景分离：BackGroundSubtractor
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数说明：
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -11917,139 +12138,6 @@
   
   <span class="md-ellipsis">
     05.GraphSegment（ximgproc 模块）
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    06.GraphCut
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    06.GraphCut
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      图的构建
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      符号定义
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      损耗函数计算
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="损耗函数计算">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ra" class="md-nav__link">
-    <span class="md-ellipsis">
-      区域项 \(R(A)\)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ba" class="md-nav__link">
-    <span class="md-ellipsis">
-      边界项 \(B(A)\)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.GrabCut/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    07.GrabCut
   </span>
   
 
@@ -14047,6 +14135,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.HDR/%E4%BD%BF%E7%94%A8OpenCV%E8%BF%9B%E8%A1%8C%E9%95%BF%E7%9F%AD%E5%B8%A7HDR/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用 OpenCV 进行长短帧 HDR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -14645,7 +14754,7 @@
             
   
   <span class="md-ellipsis">
-    97.抗锯齿
+    17.光流和目标追踪
   </span>
   
 
@@ -14654,6 +14763,136 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_18_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_4_18">
+            <span class="md-nav__icon md-icon"></span>
+            17.光流和目标追踪
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.%E5%85%89%E6%B5%81%E5%92%8C%E7%9B%AE%E6%A0%87%E8%BF%BD%E8%B8%AA/01.%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%85%89%E6%B5%81%EF%BC%9A%E7%A8%80%E7%96%8F%E5%92%8C%E7%A8%A0%E5%AF%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基础知识-光流：稀疏和稠密
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.%E5%85%89%E6%B5%81%E5%92%8C%E7%9B%AE%E6%A0%87%E8%BF%BD%E8%B8%AA/02.%E8%BF%BD%E8%B8%AA%EF%BC%9AMeanShift%2C%20CamShift/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    追踪：MeanShift, CamShift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.%E5%85%89%E6%B5%81%E5%92%8C%E7%9B%AE%E6%A0%87%E8%BF%BD%E8%B8%AA/03.%E8%BF%BD%E8%B8%AA%EF%BC%9Atracker%20%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    追踪：tracker 模块
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.%E5%85%89%E6%B5%81%E5%92%8C%E7%9B%AE%E6%A0%87%E8%BF%BD%E8%B8%AA/04.%E8%BF%BD%E8%B8%AA%EF%BC%9Amotempl%20%E6%A8%A1%E5%9D%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    追踪：motempl 模块
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_19" id="__nav_6_4_19_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    97.抗锯齿
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_19">
             <span class="md-nav__icon md-icon"></span>
             97.抗锯齿
           </label>
@@ -14726,10 +14965,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_19" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_20" >
         
           
-          <label class="md-nav__link" for="__nav_6_4_19" id="__nav_6_4_19_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4_20" id="__nav_6_4_20_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14740,8 +14979,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_19_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_19">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_20">
             <span class="md-nav__icon md-icon"></span>
             98.黑科技
           </label>
@@ -14814,10 +15053,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_20" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_21" >
         
           
-          <label class="md-nav__link" for="__nav_6_4_20" id="__nav_6_4_20_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4_21" id="__nav_6_4_21_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -14828,8 +15067,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_20_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_4_20">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_21">
             <span class="md-nav__icon md-icon"></span>
             99.杂项
           </label>
@@ -15755,51 +15994,9 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      图的构建
+      函数说明：
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      符号定义
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      损耗函数计算
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="损耗函数计算">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ra" class="md-nav__link">
-    <span class="md-ellipsis">
-      区域项 \(R(A)\)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ba" class="md-nav__link">
-    <span class="md-ellipsis">
-      边界项 \(B(A)\)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -15818,43 +16015,26 @@
                   
 
 
-<h1 id="graphcut">GraphCut 算法</h1>
-<p>图像分割，乃至图像处理中一篇经典的论文：</p>
+<h1 id="backgroundsubtractor">视频帧前后背景分离：BackGroundSubtractor</h1>
 <blockquote>
-<p>Interactive graph cuts for optimal boundary and region segmentation of objects in N-D images</p>
+<p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.2.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.2.md</a></p>
 </blockquote>
-<p>一个前提，需要用户先指定一些前景和背景：</p>
-<p><img alt="" src="../../../../asset/image/20250105190414.jpg" /></p>
-<h2 id="_1">图的构建</h2>
-<p>首先图片按照四联通转成一张图，然后比较特殊的一点：还需要加两个特殊点，叫做终端节点。起始的时候这两个特殊点和图上所有像素点都相连。</p>
-<p><img alt="" src="../../../../asset/image/20250105190752.jpg" /></p>
-<p>然后这样就能转换为一个图割问题，用来最大流-最小割方法（几年前算法课的死去回忆再一次攻击我...），这个就偏程序算法层了，不谈。后面主要讲图割中重要的损耗在本论文中是什么样的。</p>
-<h2 id="_2">符号定义</h2>
-<p>像素点我们称作 <span class="arithmatex">\(p\)</span>，背景叫做 bkg，前景叫做 obj。</p>
-<p>我们把 <span class="arithmatex">\(A_p\)</span> 定义为像素点 <span class="arithmatex">\(p\)</span> 的标签，那么 <span class="arithmatex">\(A_p\)</span> 只能是 obj 或者 bkg。很明显，每个像素只有两种可能性。<strong>我们把 <span class="arithmatex">\(A\)</span> 定义为所有像素点标签的集合，即 <span class="arithmatex">\(A = (A_1, ..., A_p, ..., A_{|P|})\)</span>。也可以理解它为一种分割方法。</strong></p>
-<p>一定要谨记 <span class="arithmatex">\(A\)</span> 是所有像素点标签的集合，我们最终的目标就是寻找正确的 <span class="arithmatex">\(A\)</span>，即此时总损耗最小。</p>
-<h2 id="_3">损耗函数计算</h2>
-<p>总损耗函数 <span class="arithmatex">\(E(A)\)</span> 在本文中的计算公式为：</p>
-<p><img alt="" src="../../../../asset/image/20250105191433.jpg" /></p>
-<p>其中 <span class="arithmatex">\(\lambda\)</span> 是平衡参数，下面介绍 <span class="arithmatex">\(R(A)\)</span> 和 <span class="arithmatex">\(B(A)\)</span> 的计算。</p>
-<h3 id="ra">区域项 <span class="arithmatex">\(R(A)\)</span></h3>
-<p>从公式很简单看出，<span class="arithmatex">\(R(A)\)</span> 是每一个像素点的 cost 总和。每个像素点的 cost 其实就是像素点 <span class="arithmatex">\(p\)</span> 被归为 <span class="arithmatex">\(obj\)</span> 的 cost 或者被归为 <span class="arithmatex">\(bkg\)</span> 的 cost。</p>
-<p>而每个点这种的 cost 是如何算的呢，这就需要用到用户在最开始指定的一些前景和背景。方法就是按照像素值去计算出前景和背景的各自灰度直方图。</p>
-<p>现在，假设有像素点 <span class="arithmatex">\(p\)</span>，其像素值为 <span class="arithmatex">\(I_p\)</span>，如果最后它被归为前景，那么根据直方图计算出概率为 <span class="arithmatex">\(Pr(I_p|O)\)</span>，如果属于背景，计算出属于背景的概率为 <span class="arithmatex">\(Pr(I_p|B)\)</span>。如果是已经是在用户指定出的前景或背景中，则跳过这个点。</p>
-<p><img alt="" src="../../../../asset/image/20250105194253.jpg" /></p>
-<h3 id="ba">边界项 <span class="arithmatex">\(B(A)\)</span></h3>
-<p>公式中 <span class="arithmatex">\(B(A)\)</span> 的 <span class="arithmatex">\(B(p, q)\)</span> 计算方式为：</p>
-<p><img alt="" src="../../../../asset/image/20250105194559.png" /></p>
-<p>其实就是做一个高斯分布，根据像素值差异给出不同的权重。</p>
+<p>有一些针对视频的前后景分离方法。其实本质原理就是视频每一帧之间差的不大，这样可以用一些简单的方法来判断变化情况，变化的就是前景，不变的就是背景。</p>
+<p>能想到最简单的方法就是前后帧相减，但肯定不够好。后续有一些其他的方法，比如用的混合高斯模型等等，这个就没有细致去了解了。</p>
+<p>OpenCV 里面提供了不少这种视频前后背景分离的类：</p>
+<ul>
+<li><a href="https://docs.opencv.org/4.x/de/de1/group__video__motion.html">https://docs.opencv.org/4.x/de/de1/group__video__motion.html</a></li>
+<li><a href="https://docs.opencv.org/4.x/d2/d55/group__bgsegm.html">https://docs.opencv.org/4.x/d2/d55/group__bgsegm.html</a></li>
+</ul>
+<p>这篇文章记录了一些方法的优缺点：<a href="https://www.cnblogs.com/pipecat/p/13224352.html">https://www.cnblogs.com/pipecat/p/13224352.html</a></p>
+<h3 id="_1">函数说明：</h3>
+<p>都是创建一个类，然后类里面直接调用 apply 函数就好，具体还是看代码。具体查看<a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_backsub.ipynb">代码</a>，我觉得执行一遍就明白了。</p>
 
 
 
 
 
 
-
-  
-  
 
 
 
@@ -15903,61 +16083,6 @@
   </form>
 
 
-<h2 id="__comments">Comments</h2>
-<!-- Insert generated snippet here -->
-
-<script src="https://giscus.app/client.js"
-    data-repo="masterAllen/masterAllen.github.io"
-    data-repo-id="R_kgDOM_LyMQ"
-    data-category="General"
-    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="preferred_color_scheme"
-    data-lang="zh-CN"
-    crossorigin="anonymous"
-    async>
-</script>
-
-<!-- Synchronize Giscus theme with palette -->
-<script>
-    var giscus = document.querySelector("script[src*=giscus]")
-
-    // Set palette on initial load
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object") {
-        var theme = palette.color.scheme === "slate"
-            ? "transparent_dark"
-            : "light"
-
-        // Instruct Giscus to set theme
-        giscus.setAttribute("data-theme", theme)
-    }
-
-    // Register event handlers after documented loaded
-    document.addEventListener("DOMContentLoaded", function () {
-        var ref = document.querySelector("[data-md-component=palette]")
-        ref.addEventListener("change", function () {
-            var palette = __md_get("__palette")
-            if (palette && typeof palette.color === "object") {
-                var theme = palette.color.scheme === "slate"
-                    ? "transparent_dark"
-                    : "light"
-
-                // Instruct Giscus to change theme
-                var frame = document.querySelector(".giscus-frame")
-                frame.contentWindow.postMessage(
-                    { giscus: { setConfig: { theme } } },
-                    "https://giscus.app"
-                )
-            }
-        })
-    })
-</script>
-
                 
               </article>
             </div>
@@ -15975,7 +16100,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../05.GraphSegment%EF%BC%88ximgproc%20%E6%A8%A1%E5%9D%97%EF%BC%89/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 05.GraphSegment（ximgproc 模块）">
+          <a href="../02.%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%89%8D%E5%90%8E%E8%83%8C%E6%99%AF%E5%88%86%E7%A6%BB%EF%BC%9AGrabCut%2C%20WaterShed%2C%20AlphaMatting/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 02.交互式前后背景分离：GrabCut, WaterShed, AlphaMatting">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -15985,20 +16110,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                05.GraphSegment（ximgproc 模块）
+                02.交互式前后背景分离：GrabCut, WaterShed, AlphaMatting
               </div>
             </div>
           </a>
         
         
           
-          <a href="../07.GrabCut/" class="md-footer__link md-footer__link--next" aria-label="Next: 07.GrabCut">
+          <a href="../04.HfsSegment%EF%BC%88hfs%20%E6%A8%A1%E5%9D%97%EF%BC%89/" class="md-footer__link md-footer__link--next" aria-label="Next: 04.HfsSegment（hfs 模块）">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                07.GrabCut
+                04.HfsSegment（hfs 模块）
               </div>
             </div>
             <div class="md-footer__button md-icon">
