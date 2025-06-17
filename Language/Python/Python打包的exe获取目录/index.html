@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pythonexe" class="md-skip">
+        <a href="#python-exe" class="md-skip">
           Skip to content
         </a>
       
@@ -7646,17 +7646,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Python打包的exe获取目录
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -7666,34 +7655,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#python-exe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python 打包的 exe 获取执行目录
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -15986,23 +15947,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#python-exe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Python 打包的 exe 获取执行目录
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -16016,8 +15960,7 @@
                   
 
 
-<h1 id="pythonexe">Python打包的exe获取目录</h1>
-<h2 id="python-exe">Python 打包的 exe 获取执行目录</h2>
+<h1 id="python-exe">Python 打包的 exe 获取执行目录</h1>
 <p>由于打包成一个文件的 exe 会解压到临时目录，所以使用 <code>os.listdir</code> 读取的是那个临时目录。因此注入 <code>os.makedirs('./test')</code> 这种操作都会出问题。</p>
 <p>要用 <code>os.chdir(os.path.dirname(os.path.abspath(sys.executable)))</code> 才能改变成 exe 所在的实际目录。</p>
 
@@ -16026,9 +15969,6 @@
 
 
 
-
-  
-  
 
 
 
@@ -16076,61 +16016,6 @@
     </fieldset>
   </form>
 
-
-<h2 id="__comments">Comments</h2>
-<!-- Insert generated snippet here -->
-
-<script src="https://giscus.app/client.js"
-    data-repo="masterAllen/masterAllen.github.io"
-    data-repo-id="R_kgDOM_LyMQ"
-    data-category="General"
-    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="preferred_color_scheme"
-    data-lang="zh-CN"
-    crossorigin="anonymous"
-    async>
-</script>
-
-<!-- Synchronize Giscus theme with palette -->
-<script>
-    var giscus = document.querySelector("script[src*=giscus]")
-
-    // Set palette on initial load
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object") {
-        var theme = palette.color.scheme === "slate"
-            ? "transparent_dark"
-            : "light"
-
-        // Instruct Giscus to set theme
-        giscus.setAttribute("data-theme", theme)
-    }
-
-    // Register event handlers after documented loaded
-    document.addEventListener("DOMContentLoaded", function () {
-        var ref = document.querySelector("[data-md-component=palette]")
-        ref.addEventListener("change", function () {
-            var palette = __md_get("__palette")
-            if (palette && typeof palette.color === "object") {
-                var theme = palette.color.scheme === "slate"
-                    ? "transparent_dark"
-                    : "light"
-
-                // Instruct Giscus to change theme
-                var frame = document.querySelector(".giscus-frame")
-                frame.contentWindow.postMessage(
-                    { giscus: { setConfig: { theme } } },
-                    "https://giscus.app"
-                )
-            }
-        })
-    })
-</script>
 
                 
               </article>

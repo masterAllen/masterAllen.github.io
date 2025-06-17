@@ -16098,129 +16098,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="需要做的事情">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      ~~列表如何强制按照输入序号渲染~~
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ~~符号的渲染，默认下源文件必须要空一行才能算换行~~
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#txt-code-block" class="md-nav__link">
-    <span class="md-ellipsis">
-      ~~txt 中有 code block 怎么办~~
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      ~~添加评论系统~~
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      ~~图像处理的文章自动生成需要修改格式，比如图片的链接~~
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      ~~本地维护一个多媒体备份~~
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mkdocs" class="md-nav__link">
-    <span class="md-ellipsis">
-      ~~mkdocs 折叠的样式在普通编辑器下无法显示~~
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      保存笔记的网页链接，并且维护一个数据库，即路径和保存文件名
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      需要生成目录树
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      能否在线编辑？？
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      有些代码或视频要分享，则通过上传云盘，然后生成链接。
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      需要添加功能：支持有文件夹或文件不能上传，但是如果文件夹或文件修改名字怎么办？
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      数学渲染问题
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -16309,35 +16186,60 @@
 <h3 id="20241012">2024.10.12</h3>
 <p>初始创建。</p>
 <h2 id="_5">需要做的事情</h2>
-<h3 id="_6">~~列表如何强制按照输入序号渲染~~</h3>
+<details class="note">
+<summary>☑️列表如何强制按照输入序号渲染</summary>
 <p>已解决，转换时检测有序序号，在点前面加个反斜杠</p>
-<h3 id="_7">~~符号的渲染，默认下源文件必须要空一行才能算换行~~</h3>
-<p>查了一下，看来必须自己手动加一个<code>&lt;br&gt;</code>，需要在代码实现。要注意 header, code block 里面不能添加，这些都要实验一下</p>
+</details>
+<details class="note">
+<summary>☑️符号的渲染，默认下源文件必须要空一行才能算换行</summary>
 <p>已解决，使用 <code>n2lbr</code> extension 即可</p>
-<h3 id="txt-code-block">~~txt 中有 code block 怎么办~~</h3>
+</details>
+<details class="note">
+<summary>☑️txt 中有 code block 怎么办</summary>
 <p>已解决，首尾从原来的三个 <code>变为五个</code></p>
-<h3 id="_8">~~添加评论系统~~</h3>
+</details>
+<details class="note">
+<summary>☑️添加评论系统</summary>
 <p>已解决，就使用默认的 Giscus，<a href="https://blog.ichr.me/post/expressing-costs/">这篇文章</a>给了我很大的启发。或许博客的评论系统需要登录反而是一件好事。</p>
-<h3 id="_9">~~图像处理的文章自动生成需要修改格式，比如图片的链接~~</h3>
+</details>
+<details class="note">
+<summary>☑️图像处理的文章自动生成需要修改格式，比如图片的链接</summary>
 <p>已解决，完善转换程序即可</p>
-<h3 id="_10">~~本地维护一个多媒体备份~~</h3>
+</details>
+<details class="note">
+<summary>☑️本地维护一个多媒体备份</summary>
 <p>已解决，完善转换程序即可。程序解析原始文件中的链接，然后将其放入 asset 目录，并且是按照文件路径计算的 MD5 值，资源放在的是 asset 的该名称子目录，这样也防止同名文件。。</p>
-<h3 id="mkdocs">~~mkdocs 折叠的样式在普通编辑器下无法显示~~</h3>
-<p>普通编辑器下可以使用 <code>&lt;details&gt;</code>，这是通用的语法，一般都会支持（而且我怎么感觉这种样式其实比 mkdocs 的 note 折叠更好看）</p>
+</details>
+<details class="note">
+<summary>☑️mkdocs 折叠的样式在普通编辑器下无法显示</summary>
+<p>普通编辑器下可以使用 <code>&lt;detais&gt;</code>，这是通用的语法，一般都会支持（而且我怎么感觉这种样式其实比 mkdocs 的 note 折叠更好看）</p>
 <p>但是 mkdocs 中渲染 <code>&lt;details&gt;</code> 有问题（<a href="https://github.com/squidfunk/mkdocs-material/issues/4084">链接</a>0，所以使用转换程序将 <code>&lt;details&gt;</code> 转成 <code>??? note "xxx"</code>。</p>
-<h3 id="_11">保存笔记的网页链接，并且维护一个数据库，即路径和保存文件名</h3>
+</details>
+<details class="note">
+<summary>保存笔记的网页链接，并且维护一个数据库，即路径和保存文件名</summary>
 <p>目前写了识别链接，没啥好说的，AI 帮忙写正则。后续考虑调用 single-file 下载，然后对应位置修改为 <code>[xx](web_url)（[本地连接](local_path)）</code></p>
-<h3 id="_12">需要生成目录树</h3>
+</details>
+<details class="note">
+<summary>需要生成目录树</summary>
 <p><a href="https://www.w3schools.com/howto/howto_js_treeview.asp">https://www.w3schools.com/howto/howto_js_treeview.asp</a></p>
-<h3 id="_13">能否在线编辑？？</h3>
+</details>
+<details class="note">
+<summary>能否在线编辑？？</summary>
 <p>目前想到的是可以在对应 MD 文章中添加原始文件的链接，点击之后弹出对应的文件。</p>
 <p>TODO: <a href="https://yangzhang.site/Note/NAS/code-server/">https://yangzhang.site/Note/NAS/code-server/</a></p>
-<h3 id="_14">有些代码或视频要分享，则通过上传云盘，然后生成链接。</h3>
+</details>
+<details class="note">
+<summary>有些代码或视频要分享，则通过上传云盘，然后生成链接。</summary>
 <p>好难.. 一个是如何识别哪些代码考虑需要分享？或许是文件链接里面有 code；第二个是如何方向，百度网盘每次手动生成分享链接？？？而且也没法在线下载.. 感觉要上 Alist 之类的工具</p>
-<h3 id="_15">需要添加功能：支持有文件夹或文件不能上传，但是如果文件夹或文件修改名字怎么办？</h3>
+</details>
+<details class="note">
+<summary>需要添加功能：支持有文件夹或文件不能上传，但是如果文件夹或文件修改名字怎么办？</summary>
 <p>目前是在名字后面添加 '#不上传' 来区分了，这种最直观，等 windows 支持标签管理吧...</p>
-<h3 id="_16">数学渲染问题</h3>
+</details>
+<details class="note">
+<summary>数学渲染问题</summary>
 <p>还没搞懂为什么会有各种奇怪的问题</p>
+</details>
 
 
 

@@ -15963,13 +15963,17 @@
 <h1 id="python">Python 打包心得</h1>
 <p>1. 优先 Nuikta：<code>python -m nuitka --mingw64 --standalone --output-dir=out --show-progress --enable-plugin=pyqt5 --nofollow-import-to=numpy,cv2,PIL,six,pytweening,pyscreeze,pyrect,pyperclip --windows-disable-console .\main1.py</code></p>
 <p>2. 如果遇到某些包不好用 Nuikta（如Plotly），则使用 Pyinstaller：<code>pyinstaller -F main.py</code></p>
-<p>3. Pyinstaller最好不只生成一个文件，而是生成目录。<br />
-   1. 复制生成的目录，用于备份。打开程序，然后删除生成目录的所有文件，此时会弹出某些文件被占用的窗口，这些文件统一按照跳过处理。<br />
-   2. 但其实有些文件是不应该删除的，但是不好判断，只能先打开程序执行，如果报错缺少某些文件，就把备份的目录中对应文件复制回去。<br />
-   3. 最后生成的文件中：<code>tcl</code>、<code>tcl8</code>、<code>tk</code> 里面的文件都可以删除，但这三个文件夹要保留。</p>
+<p>3. Pyinstaller最好不只生成一个文件，而是生成目录。</p>
+<ul>
+<li>复制生成的目录，用于备份。打开程序，然后删除生成目录的所有文件，此时会弹出某些文件被占用的窗口，这些文件统一按照跳过处理。</li>
+<li>但其实有些文件是不应该删除的，但是不好判断，只能先打开程序执行，如果报错缺少某些文件，就把备份的目录中对应文件复制回去。</li>
+<li>最后生成的文件中：<code>tcl</code>、<code>tcl8</code>、<code>tk</code> 里面的文件都可以删除，但这三个文件夹要保留。</li>
+</ul>
 <p>4. Pyinstaller 打包过大： 多半是因为在 conda 环境下，并且程序里面有调用 numpy 包（或者其他间接调用了 numpy 的包，如 cv2 等）。进行了一些对比测试后，建议如下：</p>
-<p>1. 不要在 conda 下安装 pyinstaller，即使是 <code>conda install pyinstaller -c conda-forge</code> 也无法解决这个问题。应该在系统原始的 python3 上安装 pyinstaller。貌似是因为 pyinstaller 会根据它自己所在环境寻找 lib 路径，判断哪些包(.so)涵盖进去，所以 conda 环境下某些 lib 会被包进去。如果经常打包，建议直接用一个虚拟机，虽然很笨但是有奇效。<br />
-   2. conda 安装 numpy 建议使用 conda install numpy -c conda-forge，主要是因为 conda 中的 numpy 包有使用 mkl 这个矩阵计算库，打包时很有可能会把 mkl 包上。<strong>本条作废</strong>：这个问题已经解决了，现在 numpy 的安装默认行为已经不是这样了。</p>
+<ul>
+<li>不要在 conda 下安装 pyinstaller，即使是 <code>conda install pyinstaller -c conda-forge</code> 也无法解决这个问题。应该在系统原始的 python3 上安装 pyinstaller。貌似是因为 pyinstaller 会根据它自己所在环境寻找 lib 路径，判断哪些包(.so)涵盖进去，所以 conda 环境下某些 lib 会被包进去。如果经常打包，建议直接用一个虚拟机，虽然很笨但是有奇效。</li>
+<li>~~conda 安装 numpy 建议使用 conda install numpy -c conda-forge，主要是因为 conda 中的 numpy 包有使用 mkl 这个矩阵计算库，打包时很有可能会把 mkl 包上。~~<strong>本条作废</strong>：这个问题已经解决了，现在 numpy 的安装默认行为已经不是这样了。</li>
+</ul>
 
 
 
