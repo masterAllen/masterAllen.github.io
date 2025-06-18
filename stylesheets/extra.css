@@ -1,0 +1,71 @@
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.md-typeset h1 {
+  font-size: 28px;
+  font-size: 1.75rem;
+  margin: 0 0 16px;
+  margin: 0 0 1rem;
+}
+
+.md-typeset h2 {
+  font-size: 24px;
+  font-size: 1.5rem;
+  margin: 45px 0 12.8px;
+  margin: 45px 0 0.8rem;
+}
+
+.md-typeset h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  margin: 40px 0 9.6px;
+  margin: 40px 0 0.6rem;
+}
+
+.md-typeset h4 {
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+.md-typeset h5,
+.md-typeset h6 {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+.md-typeset h6 {
+  color: #777;
+}
+
+.md-typeset figure,
+.md-typeset p {
+  margin: 1.2em 0;
+}
+
+.md-typeset ol,
+.md-typeset p,
+.md-typeset ul {
+  line-height: 25.6px;
+  line-height: 1.6rem;
+  word-spacing: 0.8px;
+  word-spacing: 0.05rem;
+}
+
+.md-typeset ol,
+.md-typeset ul {
+  padding-left: 24px;
+  padding-left: 1.5rem;
+}
+
+.md-typeset iframe {
+  margin: 1em 0;
+}
+
+.md-typeset em {
+  color: #7f8c8d;
+}

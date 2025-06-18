@@ -49,6 +49,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#003graphviz" class="md-skip">
+        <a href="#graphviz" class="md-skip">
           Skip to content
         </a>
       
@@ -16016,24 +16018,28 @@
                   
 
 
-<h1 id="003graphviz">『003』记一次惊天地泣鬼神的安装过程(Graphviz)</h1>
+<h1 id="graphviz">记一次惊天地泣鬼神的安装过程(Graphviz)</h1>
 <p>1. 我只是为了安装 Graphviz，很简单吗，直接 sudo apt install，然而 shell 回复我依赖几个包，但是这几个包还没装</p>
-<p>2. 好吧，那就一个一个装，然而才装了一个，第二个装的时候就报错<br />
-<div class="highlight"><pre><span></span><code>中文---debconf：延迟包配置,因为没有安装 apt-utils
+<p>2. 好吧，那就一个一个装，然而才装了一个，第二个装的时候就报错</p>
+<pre><code>```
+中文---debconf：延迟包配置,因为没有安装 apt-utils
 英文---debconf: delaying package configuration, since apt-utils is not installed
-</code></pre></div></p>
+```
+</code></pre>
 <p>3. 网上竟然说不用管，然而我发现这个其实就是没装上，既然包不靠谱，那我就直接在网上下载 deb 包，用 dpkg 命令安装了</p>
-<p>4. 嗯，前几个安装还可以，然后又出现问题了，发现我以前就遇到过，不过没解决，现在我终于懂的看错误报告了...<br />
-<div class="highlight"><pre><span></span><code>libgvc6-config-update: symbol lookup error: /usr/local/lib/libcgraph.so.6: undefined symbol: aagin
-</code></pre></div></p>
+<p>4. 嗯，前几个安装还可以，然后又出现问题了，发现我以前就遇到过，不过没解决，现在我终于懂的看错误报告了...</p>
+<pre><code>```    
+libgvc6-config-update: symbol lookup error: /usr/local/lib/libcgraph.so.6: undefined symbol: aagin
+```
+</code></pre>
 <p>5. 一看是这个 .so 文件不行嘛，那就下载 .so 文件咯，哈哈太蠢了，过了几分钟我才明白原来 deb 包就是安装这些文件的</p>
-<p>6. 所以重新安装 <code>libcgraph6</code>，哎，怎么死活不行，还是缺这个，那就下其他的，结果下了好几个都不行<br />
-7. 最后我才懂得看文档啊，看文档啊，兄弟，人家的 deb 包不在 <code>/usr/local/lib</code> 中，人家 file list 说的好好的，<code>/local/lib/x...</code>(记不清了)中呀【 <strong>NOTE: 重点</strong> 】</p>
-<p>10. 好，那就到这个文件夹，怎么死活没有 <code>libcgraph.so.6</code> 啊。原来是：每次到了 <code>/usr</code> 中在进入 <code>lib</code> 怎么转到 <code>/lib</code> 中了，而且 <code>/lib</code> 中也有个 <code>x86...</code> 文件夹，蠢啊，我每次到 <code>/usr</code> 中，都是 <code>cd /lib</code>(蠢蠢地解释一下，应该是cd lib)，这个 / 害死人...，谁知道那么巧..， <code>/lib</code> 也有这个 <code>x86..</code> 文件夹</p>
-<p>11. 终于找到好的 <code>libcgraph6.so</code> 了，把它和相应的链接指向文件复制到 <code>/usr/local/lib</code> 中</p>
-<p>12. 编译，啥，not symbolic file，为啥咧，难道是权限问题？改权限，没卵用</p>
-<p>13. 最后才发现，复制之后链接指向什么的都取消了....，所以要从新链接，<code>ln -sf libcgraph.so.6 libcgraph6.so.6.0.0</code> 【 <strong>NOTE: 重点</strong> 】</p>
-<p>14. 搞定！</p>
+<p>6. 所以重新安装 <code>libcgraph6</code>，哎，怎么死活不行，还是缺这个，那就下其他的，结果下了好几个都不行</p>
+<p>7. 最后我才懂得看文档啊，看文档啊，兄弟，人家的 deb 包不在 <code>/usr/local/lib</code> 中，人家 file list 说的好好的，<code>/local/lib/x...</code>(记不清了)中呀(<strong>NOTE: 重点</strong>)</p>
+<p>8. 好，那就到这个文件夹，怎么死活没有 <code>libcgraph.so.6</code> 啊。原来是：每次到了 <code>/usr</code> 中在进入 <code>lib</code> 怎么转到 <code>/lib</code> 中了，而且 <code>/lib</code> 中也有个 <code>x86...</code> 文件夹，蠢啊，我每次到 <code>/usr</code> 中，都是 <code>cd /lib</code>(蠢蠢地解释一下，应该是cd lib)，这个 / 害死人...，谁知道那么巧..， <code>/lib</code> 也有这个 <code>x86..</code> 文件夹</p>
+<p>9. 终于找到好的 <code>libcgraph6.so</code> 了，把它和相应的链接指向文件复制到 <code>/usr/local/lib</code> 中</p>
+<p>10. 编译，啥，not symbolic file，为啥咧，难道是权限问题？改权限，没卵用</p>
+<p>11. 最后才发现，复制之后链接指向什么的都取消了....，所以要从新链接，<code>ln -sf libcgraph.so.6 libcgraph6.so.6.0.0</code> (<strong>NOTE: 重点</strong>)</p>
+<p>12. 搞定！</p>
 <h2 id="_1">总结</h2>
 <p>1. Ubuntu 遇到 delaying package configuration 怎么办？手动安装！<br />
 2. 手动安装怎么装？dpkg！<br />
@@ -16044,6 +16050,9 @@
 
 
 
+
+  
+  
 
 
 
@@ -16091,6 +16100,61 @@
     </fieldset>
   </form>
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>

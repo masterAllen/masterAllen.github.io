@@ -49,6 +49,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#007-understand" class="md-skip">
+        <a href="#understand" class="md-skip">
           Skip to content
         </a>
       
@@ -16154,7 +16156,7 @@
                   
 
 
-<h1 id="007-understand">『007』安装 understand 艰难过程记录: 如何修改动态链接优先级</h1>
+<h1 id="understand">安装 understand 艰难过程记录: 如何修改动态链接优先级</h1>
 <p>安装 understand 艰难过程记录: 如何修改动态链接优先级</p>
 <p>关键词: RUN_PATH, R_PATH, LD_LIBRARY_PATH</p>
 <h2 id="_1">前言</h2>
@@ -16186,14 +16188,14 @@ understand 运行出了问题。<br />
 <p>但是注意看，引发问题的 <code>libQt5Test</code> 这个文件明明在 <code>understand</code> 文件夹中，但是动态链接却在 <code>/usr/lib</code> 中！</p>
 <p>所以先尝试修改可执行文件加载这个库的路径： <code>patchelf --replace-needed libQt5Test.so.5 xxx/libQt5Test.so.5 understand</code>，但是发现这条语句没有效果！<br />
 这是为什么？？</p>
-<details>
-<summary><strong>【第一个知识点】: ldd 和 readelf 区别</strong></summary>
-<p>假设程序需要 <code>A.so</code>，而加载 <code>A.so</code> 需要 <code>B.so</code>。<br />
-<code>ldd</code> 输出的是这个程序【所有需要】的动态链接文件，例子中为 <code>A.so</code> 和 <code>B.so</code>。<br />
-<code>readelf -d xxx | grep NEED</code> 输出的是这个程序【直接需要】的动态链接文件，例子中为 <code>A.so</code>。</p>
-<p>所以这里不行的原因是 <code>libQt5Test.so</code> 不是直接需要的动态链接文件。<br />
-<code>patchelf</code> 本质上修改的是 .dynsym 表，所以它查找发现没有 <code>libQt5Test</code>，就不做任何操作，所以就相当于没执行。</p>
-</details>
+<p>??? "<strong>【第一个知识点】: ldd 和 readelf 区别</strong></summary></p>
+<pre><code>假设程序需要 `A.so`，而加载 `A.so` 需要 `B.so`。
+`ldd` 输出的是这个程序【所有需要】的动态链接文件，例子中为 `A.so` 和 `B.so`。
+`readelf -d xxx | grep NEED` 输出的是这个程序【直接需要】的动态链接文件，例子中为 `A.so`。
+
+所以这里不行的原因是 `libQt5Test.so` 不是直接需要的动态链接文件。
+`patchelf` 本质上修改的是 .dynsym 表，所以它查找发现没有 `libQt5Test`，就不做任何操作，所以就相当于没执行。
+</code></pre>
 <hr />
 <p>所以现在情况是我需要让程序动态链接到 <code>understand</code> 的 <code>libQt5Test</code>，而不会 <code>/usr/lib</code> 中。</p>
 <p>但是 <code>patchelf --replace-needed</code> 无效(就像上面所说，找不到这个间接库)，有一种朴素的方法就是手动找到哪些 <code>libxxx.so</code> 动态链接 <code>libQt5Test</code>，然后用 <code>patchelf</code> 一个个改变它们。</p>
@@ -16255,6 +16257,9 @@ mkdir<span class="w"> </span>libQt<span class="w"> </span><span class="o">&amp;&
 
 
 
+  
+  
+
 
 
   
@@ -16301,6 +16306,61 @@ mkdir<span class="w"> </span>libQt<span class="w"> </span><span class="o">&amp;&
     </fieldset>
   </form>
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>

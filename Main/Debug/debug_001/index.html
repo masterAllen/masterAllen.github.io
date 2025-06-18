@@ -49,6 +49,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#001i3-gnome-terminal" class="md-skip">
+        <a href="#i3-gnome-terminal" class="md-skip">
           Skip to content
         </a>
       
@@ -15960,10 +15962,7 @@
                   
 
 
-<h1 id="001i3-gnome-terminal">『001』i3 下 gnome-terminal 无法切换搜狗输入法</h1>
-<p>一次关于 gnome-terminal 无法切换搜狗输入法的原因排查</p>
-<!--more-->
-
+<h1 id="i3-gnome-terminal">i3 下 gnome-terminal 无法切换搜狗输入法</h1>
 <p>解决方法是执行 <code>/usr/lib/gsd-xsettings</code>。执行完可能会发现字体变小了，输入法的浮窗也变小了，那么执行 <code>dconf</code>，改变 <code>org.gnome.desktop.interface</code> 下的两个 <code>scaling-factor</code>，都改成 2 即可。</p>
 <p>原因分析: 正常情况下 i3 是不需要执行 <code>gsd-xsettings</code> 的，但是由于 <code>gnome-terminal</code> 依赖 gnome 的一些环境，所以此时就需要执行 <code>gsd-xsettings</code> 了。而执行完成之后相当于使用了 gnome 的桌面设置，因此会引发 HiDPI 的问题，所以再使用 gnome 下解决 HiDPI 的方法即可。</p>
 <p>排查过程：</p>
@@ -15977,6 +15976,9 @@
 
 
 
+
+  
+  
 
 
 
@@ -16024,6 +16026,61 @@
     </fieldset>
   </form>
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>

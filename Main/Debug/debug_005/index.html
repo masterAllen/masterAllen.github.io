@@ -49,6 +49,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#005linux" class="md-skip">
+        <a href="#linux" class="md-skip">
           Skip to content
         </a>
       
@@ -16124,7 +16126,7 @@
                   
 
 
-<h1 id="005linux">『005』Linux 设置打印机(但却不仅仅是设置打印机的问题了)</h1>
+<h1 id="linux">Linux 设置打印机遇到问题</h1>
 <h2 id="_1">阶段一</h2>
 <p>查阅资料，发现使用 CUPS 就可以了，网上教程也一大堆。比较好的链接在下面，但好像有些问题，后来按惠普官网的信息，进行配置，一步一步配置就可以了</p>
 <p>1. <a href="https://blog.csdn.net/soslinken/article/details/89024451">https://blog.csdn.net/soslinken/article/details/89024451</a><br />
@@ -16166,6 +16168,9 @@
 
 
 
+
+  
+  
 
 
 
@@ -16213,6 +16218,61 @@
     </fieldset>
   </form>
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>

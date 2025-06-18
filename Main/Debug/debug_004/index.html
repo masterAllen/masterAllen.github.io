@@ -49,6 +49,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#004" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -539,7 +541,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       前言
     </span>
@@ -548,7 +550,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       安装记录
     </span>
@@ -557,7 +559,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       总结
     </span>
@@ -16011,7 +16013,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       前言
     </span>
@@ -16020,7 +16022,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       安装记录
     </span>
@@ -16029,7 +16031,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       总结
     </span>
@@ -16052,27 +16054,34 @@
                   
 
 
-<h1 id="004">『004』记一次换代理之后惨案</h1>
-<h2 id="_1">前言</h2>
+<h1 id="_1">记一次换代理之后惨案</h1>
+<h2 id="_2">前言</h2>
 <p>极游原来的节点炸掉了，只好重新用之前在 Vultr 上搭建的服务器，然后去 Telegram 的群里面看看，发现果然节点正在修复，估计一时半会是修不好了，那就用回原来自己那个龟速的 VPS 吧。然而用了两天之后真的不能忍了，也不知道为什么，自己搭建的服务器从几个月前就一直变的非常慢(以前也快不到哪去)，Youtube 上的速度，呵呵，100-300KB，只能勉强看看 144p，这能忍？</p>
 <p>之前试过什么 BBR 加速等等，都不行，又看到说 Vultr 对于电信支持很垃圾，所以就想着，反正自己搭建服务器就是为了翻墙，那还是寄离人下，用别人的吧。正好某网站打五折，嘿嘿，上车。然后订阅 v2ray 在 Windows 下它的官方软件是支持的，但是 Linux 下没有，所以需要在 Windows 下面导出订阅文件然后转到 Linux 下面去。但是这样太麻烦了，所以查找了一些 Linux 下面支持订阅的客户端，但是就是在安装过程中遇到了问题。</p>
-<h2 id="_2">安装记录</h2>
-<p>1. 打算安装 v2ray-desktop，直接 yay 安装就好了，然而报错了。错误报告如下。<br />
-<div class="highlight"><pre><span></span><code>fatal: unable to access &#39;https://aur.tuna.tsinghua.edu.cn/v2ray-desktop.git/&#39;: Couldn&#39;t resolve host name
-</code></pre></div></p>
-<p>2. 不是很理解，搜了一下发现有个老兄和我一样，然后看看下面的评论，发现原因不一样，凉凉。错误检查如下。<br />
-<div class="highlight"><pre><span></span><code>host aur.tuna.tsinghua.edu.cn ---&gt; 我也不知道什么意思，反正我这个显示正常，那个老兄显示不正常
-git clone https://.../v2ray.. ---&gt; 反过来了，那个老兄可以正常 clone，我这同样 couldn&#39;t resolve host name
-</code></pre></div></p>
-<p>3. 对了，这里我继续查，发现一个帖子里面说可能是 DNS 解析的问题，然后感觉可能是。摆弄了一会，感觉不是，于是放弃这一条路。</p>
+<h2 id="_3">安装记录</h2>
+<p>1. 打算安装 v2ray-desktop，直接 yay 安装就好了，然而报错了。错误报告如下。</p>
+<pre><code>```
+fatal: unable to access 'https://aur.tuna.tsinghua.edu.cn/v2ray-desktop.git/': Couldn't resolve host name
+```
+</code></pre>
+<p>2. 不是很理解，搜了一下发现有个老兄和我一样，然后看看下面的评论，发现原因不一样，凉凉。错误检查如下。</p>
+<pre><code>```
+host aur.tuna.tsinghua.edu.cn ---&gt; 我也不知道什么意思，反正我这个显示正常，那个老兄显示不正常
+git clone https://.../v2ray.. ---&gt; 反过来了，那个老兄可以正常 clone，我这同样 couldn't resolve host name
+```
+</code></pre>
+<p>3. 继续搜索，发现一个帖子里面说可能是 DNS 解析的问题，然后感觉可能是。摆弄了一会，感觉不是，于是放弃这一条路。</p>
 <p>4. 回到第 2 步，分析：</p>
 <pre><code>本质上我是无法 git clone，所以解决这个问题，查找到关掉代理即可。然而这不就回到解放前了吗，如果我把代理关了，那 git clone 可是巨慢无比，所以我肯定要让 git 走代理的，现在代理不行那还搞个锤子。网上搜索 git 走代理，发现一个老兄同样不能，照葫芦画瓢，按照他的检查来看看，然而...看不懂啊！！
+
+```
+nmap localhost ---&gt; 没有显示，真的不懂..
+ss -tln ---&gt; 显示2333端口在监听，同样不懂啊....
+```
 </code></pre>
-<p><code>nmap localhost ---&gt; 没有显示，真的不懂..
-ss -tln ---&gt; 显示2333端口在监听，同样不懂啊....</code></p>
-<p>5. 之后继续查，发现上一步里面，那个评论下面还有，可以用 socks5h 代替 socks5 看看，没报希望，但是！！！成功了！！原来 socks5 是用本地来解析地址， socks5h 是用代理服务器来解析地址，最后会放链接，终于搞定了。</p>
+<p>5. 之后继续查，发现上一步里面，那个评论下面还有，可以用 socks5h 代替 socks5 看看，没报希望，但是！！！成功了！！原来 <strong>socks5 是用本地来解析地址， socks5h 是用代理服务器来解析地址</strong>，终于搞定了。</p>
 <p>6. 然后安装又出错，不过比较好解决了。错误发生是因为访问 gitee 超时吗，我尝试在浏览器中走代理访问这个网站，果然访问不了。现在问题清晰了: 要先用代理服务器解析地址，然后从 github clone，然后还要从 gitee clone，这就麻烦了，github 要代理，gitee 不能代理，无解。所以直接把 v2ray-desktop.git clone 下来手动安装！搞定！(不过辛辛苦苦安装的客户端不符合我的预期..)</p>
-<h2 id="_3">总结</h2>
+<h2 id="_4">总结</h2>
 <p>这是 2020 年 2 月的文章，现在看来，自己还是有所进步的，当时不懂的命令现在基本都搞懂了。从 <code>resolve host name</code> 就可以明显知道是 DNS 的问题，所以问题解决方向就比较明确了，先试一下系统解析 github 能否成功，然后再去来解决。<br />
 不过当时自己还是很 OK 的，要说学到什么，我只能说，学到了耐心...</p>
 
@@ -16081,6 +16090,9 @@ ss -tln ---&gt; 显示2333端口在监听，同样不懂啊....</code></p>
 
 
 
+
+  
+  
 
 
 
@@ -16128,6 +16140,61 @@ ss -tln ---&gt; 显示2333端口在监听，同样不懂啊....</code></p>
     </fieldset>
   </form>
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>

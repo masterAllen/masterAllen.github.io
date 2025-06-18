@@ -47,6 +47,8 @@
       
     
     
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -15961,16 +15963,16 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#20250616" class="md-nav__link">
+  <a href="#20250618" class="md-nav__link">
     <span class="md-ellipsis">
-      2025.06.16
+      2025.06.18
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#20250616_1" class="md-nav__link">
+  <a href="#20250616" class="md-nav__link">
     <span class="md-ellipsis">
       2025.06.16
     </span>
@@ -16157,10 +16159,10 @@
 </tbody>
 </table>
 <h2 id="_4">更新说明</h2>
+<h3 id="20250618">2025.06.18</h3>
+<p>优化了网页风格，参考了 <a href="https://github.com/shd101wyy/crossnote/blob/develop/styles/preview_theme/vue.less">vscode markdown preview enhanced</a> 里面的 <code>vue.js</code> 样式，好看多了。</p>
 <h3 id="20250616">2025.06.16</h3>
-<p>修复了转换时候的跳转链接不正确问题，目前无破损链接。</p>
-<h3 id="20250616_1">2025.06.16</h3>
-<p>优化资源文件存储方式，将 image、pdf 等相关资源文件存储到根据路径计算的 MD5 目录下，防止同名覆盖问题。</p>
+<p>优化资源文件存储方式，将 image、pdf 等相关资源文件存储到根据路径计算的 MD5 目录下，防止同名覆盖问题。修复了转换时候的跳转链接不正确问题，目前无破损链接。</p>
 <h3 id="20250614">2025.06.14</h3>
 <p>解决 mkdocs 无法渲染 <code>&lt;details&gt;</code> 的问题，原始文件使用 <code>&lt;details&gt;</code>，转换时将其修改为 <code>??? note</code> 对应格式。</p>
 <h3 id="20250112">2025.01.12</h3>
@@ -16247,6 +16249,9 @@
 
 
 
+  
+  
+
 
 
   
@@ -16293,6 +16298,61 @@
     </fieldset>
   </form>
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>

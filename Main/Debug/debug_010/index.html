@@ -49,6 +49,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#010-youcompleteme-python" class="md-skip">
+        <a href="#youcompleteme-python" class="md-skip">
           Skip to content
         </a>
       
@@ -628,6 +630,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    debug_010
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -637,6 +650,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考资料
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -15947,6 +15988,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考资料
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -15960,40 +16018,29 @@
                   
 
 
-<h1 id="010-youcompleteme-python">『010』解决 Youcompleteme 支持 Python 超级烂的问题</h1>
+<h1 id="youcompleteme-python">解决 Youcompleteme 支持 Python 超级烂的问题</h1>
 <p>问题：跳转不到位，经常没法跳，文档显示大部分也没有</p>
-<p>1. <br />
-Vim 命令行YcmDebuInfo，查看信息，我这上面显示我的Clangd 为False<br />
+<p>1.  Vim 命令行YcmDebuInfo，查看信息，我这上面显示我的Clangd 为False<br />
 问题很明显，发现clang 就没有安装，安装，然后重新编译，发现还是False</p>
-<p>2.<br />
-在Github 项目上搜索 Issue，发现一个: [1] <br />
-按照上面步骤，即进入YouCompleteMe/third_party/ycmd，然后调用Python<br />
-输入import ycm_core; ycm_core.HasClangSupport()，果然是False</p>
-<p>3. <br />
-这一步想了很久，后来也是看到上面这个链接，说是ycmd 问题，于是还是去ycmd文件夹看看<br />
-发现有个run_test.py，运行一下，果然有问题，相关模块该安装安装，最后还是有问题，显示Werror=xxx</p>
-<p>4. <br />
-以前遇到过这种问题，应该是编译选项的问题，当时在Makefile 里面加了一个disable-werror<br />
-但这里我不知道怎么加了，太复杂了，后来查阅资料.[2]</p>
-<p>原来可以直接强制让GCC/G++ 编译的时候带这个命令，我怎么就没想到呢，但是注意不是这个选项<br />
-答案推荐是-Wno-error，结果试了半天，这个选项还是不行，又找资料，后来看到如果再加上-w，这个问题就解决了</p>
-<p>5. <br />
-终于好了，之后我又查了一会，发现是自己对Wno-error 理解不到位<br />
+<p>2.  在Github 项目上搜索 Issue，发现一个（参考链接1），按照上面步骤，即进入YouCompleteMe/third_party/ycmd，然后调用 Python，输入 <code>import ycm_core; ycm_core.HasClangSupport()</code>，果然是False</p>
+<p>3. 这一步想了很久，后来也是看到上面这个链接，说是ycmd 问题，于是还是去ycmd文件夹看看。发现有个run_test.py，运行一下，果然有问题，相关模块该安装安装，最后还是有问题，显示Werror=xxx</p>
+<p>4. 以前遇到过这种问题，应该是编译选项的问题，当时在Makefile 里面加了一个disable-werror。但这里我不知道怎么加了，太复杂了，后来查阅资料（参考2）。</p>
+<p>原来可以直接强制让GCC/G++ 编译的时候带这个命令，我怎么就没想到呢，但是注意不是这个选项。</p>
+<p>答案推荐是-Wno-error，结果试了半天，这个选项还是不行，又找资料，后来看到如果再加上-w，这个问题就解决了</p>
+<p>5.  终于好了，之后我又查了一会，发现是自己对Wno-error 理解不到位<br />
 如果显示错误信息为-Werror=deprecated-copy，那就添加对于FLAG，为Wno-error=deprecated-copy</p>
-<p>6. <br />
-最终解决方法<br />
-方法一<br />
+<p>6. 最终解决方法<br />
+- 方法一<br />
 <div class="highlight"><pre><span></span><code>直接export CXXFLAGS=&quot;-Wno-error -w&quot; &amp;&amp; export CFLAGS=&quot;-Wno-error -w&quot;
 </code></pre></div><br />
-方法二<br />
+- 方法二<br />
 <div class="highlight"><pre><span></span><code>查看报错信息，例如为-Werror=deprecated-copy
 则对应export CXXFLAGS=&quot;Wno-error=deprecated-copy&quot; &amp;&amp; export CFLAGS=&quot;-Wno-error=deprecated-copy&quot;
 </code></pre></div><br />
 说明，CXXFLAGS 是G++ 使用，CFLAGS 是GCC 使用</p>
-<p>7.<br />
-更新：我发现其实不是Clang 的问题，其实步骤一好像就应该是False，但是好像误打误撞，是ycmd 里面要编译一下</p>
-<p>参考资料<br />
-1. <a href="https://github.com/ycm-core/YouCompleteMe/issues/1155">https://github.com/ycm-core/YouCompleteMe/issues/1155</a><br />
+<p>7.  更新：我发现其实不是Clang 的问题，其实步骤一好像就应该是False，但是好像误打误撞，是ycmd 里面要编译一下</p>
+<h2 id="_1">参考资料</h2>
+<p>1. <a href="https://github.com/ycm-core/YouCompleteMe/issues/1155">https://github.com/ycm-core/YouCompleteMe/issues/1155</a><br />
 2. <a href="https://stackoverflow.com/questions/28278455/gcc-with-werror-and-wno-error-unused">https://stackoverflow.com/questions/28278455/gcc-with-werror-and-wno-error-unused</a></p>
 
 
@@ -16001,6 +16048,9 @@ Vim 命令行YcmDebuInfo，查看信息，我这上面显示我的Clangd 为Fals
 
 
 
+
+  
+  
 
 
 
@@ -16048,6 +16098,61 @@ Vim 命令行YcmDebuInfo，查看信息，我这上面显示我的Clangd 为Fals
     </fieldset>
   </form>
 
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
 
                 
               </article>
