@@ -58,8 +58,8 @@
 
 .md-typeset ol,
 .md-typeset ul {
-  padding-left: 24px;
-  padding-left: 1.5rem;
+  padding-left: 0px;
+  padding-left: 0em;
 }
 
 .md-typeset iframe {
