@@ -19140,7 +19140,13 @@
 <h1 id="python-">Python 打包心得-程序篇</h1>
 <h2 id="exe">获取 exe 的执行目录</h2>
 <p>由于打包成一个文件的 exe 会解压到临时目录，所以使用 <code>os.listdir</code> 读取的是那个临时目录。因此使用 <code>os.makedirs('./test')</code> 或者 <code>open('./log.txt, 'w')</code> 等很常见操作都会出问题。</p>
-<p>要用 <code>os.chdir(os.path.dirname(os.path.abspath(sys.executable)))</code> 才能改变成 exe 所在的实际目录。</p>
+<p>要用 <code>os.chdir(os.path.dirname(os.path.abspath(sys.executable)))</code> 才能改变成 exe 所在的实际目录。但如果不是 exe 而是日常使用 py 文件则又不对，所以最终改成：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 正常运行 .py 文件时</span>
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s1">&#39;frozen&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># 被 PyInstaller 等工具打包后的执行路径</span>
+    <span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+</code></pre></div>
 
 
 
