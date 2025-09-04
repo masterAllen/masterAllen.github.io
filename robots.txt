@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://masterallen.github.io/sitemap.xml

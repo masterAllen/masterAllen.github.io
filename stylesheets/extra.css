@@ -69,3 +69,99 @@
 .md-typeset em {
   color: #7f8c8d;
 }
+
+:root {
+  --md-admonition-icon--folder: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8z"/></svg>')
+}
+.md-typeset .admonition.folder,
+.md-typeset details.folder {
+  border-color: rgb(40, 20, 0, 0.6);
+}
+.md-typeset .folder > .admonition-title,
+.md-typeset .folder > summary {
+  background-color: rgba(220, 210, 70, 0.1);
+}
+.md-typeset .folder > .admonition-title::before,
+.md-typeset .folder > summary::before {
+  background-color: rgb(237, 192, 68);
+  -webkit-mask-image: var(--md-admonition-icon--folder);
+          mask-image: var(--md-admonition-icon--folder);
+}
+
+:root {
+  --md-admonition-icon--file: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/></svg>')
+}
+.md-typeset .admonition.file,
+.md-typeset details.file {
+  border-color: rgb(237, 237, 237);
+}
+.md-typeset .file > .admonition-title,
+.md-typeset .file > summary {
+  background-color: rgba(237, 237, 237, 0.1);
+}
+.md-typeset .file > .admonition-title::before,
+.md-typeset .file > summary::before {
+  background-color: rgb(237, 237, 237);
+  -webkit-mask-image: var(--md-admonition-icon--file);
+          mask-image: var(--md-admonition-icon--file);
+}
+
+.md-typeset .admonition.folder:hover,
+.md-typeset .admonition.file:hover,
+.md-typeset details.folder:hover,
+.md-typeset details.file:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.md-typeset .file > .admonition-title,
+.md-typeset .file > summary {
+  cursor: default;
+}
+
+/* 统一图标尺寸与间距 */
+.md-typeset .folder > .admonition-title::before,
+.md-typeset .folder > summary::before,
+.md-typeset .file > .admonition-title::before,
+.md-typeset .file > summary::before {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+}
+
+/* 嵌套层级：更像树状结构 */
+.md-typeset .admonition.folder .admonition,
+.md-typeset .admonition.folder details {
+  margin: 0.35rem 0 0 0.75rem;
+}
+
+/* 为嵌套的子项绘制竖线（弱化的分隔） */
+.md-typeset .admonition.folder .admonition,
+.md-typeset .admonition.folder details {
+  position: relative;
+}
+
+/* 列表在“目录/文件”内容中的视觉 */
+.md-typeset .folder ul,
+.md-typeset .folder ol {
+  margin: 0.25rem 0 0.25rem 1rem;
+}
+
+.md-typeset .folder li {
+  margin: 0.1rem 0;
+}
+
+/* 文件链接样式：保持整洁 */
+.md-typeset .file a {
+  /* color: inherit; */
+  text-decoration: none;
+}
+
+.md-typeset .file a:hover {
+  text-decoration: underline;
+}
+
+/* 悬浮态微弱高亮，提升可发现性 */
+.md-typeset .folder > .admonition-title:hover,
+.md-typeset .folder > summary:hover {
+  filter: brightness(0.98);
+}
