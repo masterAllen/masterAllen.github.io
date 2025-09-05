@@ -79,7 +79,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -20686,15 +20686,15 @@ min \ \lambda||\alpha||_1 + \frac{1}{2} \ ||\widetilde{D} * \alpha - \widetilde{
 <p>对一个个块进行求解后，最终得到一整张图片。但是作者还不满足，因为要明白我们认为 <span class="arithmatex">\(D_h * \alpha \approx x\)</span>，这是约等于，所以还是有误差，所以尝试用整体来优化。</p>
 <p>设整体的图片，低清图片是 <span class="arithmatex">\(Y\)</span>，高清图片是 <span class="arithmatex">\(X\)</span>。在超分领域中，我们有如下公认的道理，其中 <strong>D</strong> 是下采样，<strong>H</strong> 是用于模糊的滤波。：</p>
 <div class="arithmatex">\[
-Y = \bold{D}(\bold{H}(X))
+Y = \mathbf{D}(\mathbf{H}(X))
 \]</div>
 <p>假设 <span class="arithmatex">\(X_0\)</span> 是实际的高清图片，现在我们的目标为：</p>
 <div class="arithmatex">\[
-X^* = \text{arg} \mathop{\min}_{C} || X - X_0 || \quad \text{where} \ \ \bold{D}(\bold{H}(X)) = Y
+X^* = \text{arg} \mathop{\min}_{C} || X - X_0 || \quad \text{where} \ \ \mathbf{D}(\mathbf{H}(X)) = Y
 \]</div>
 <p>作者使用了 back-projection 方法解决，其中 <span class="arithmatex">\(\uparrow s\)</span> 是上采样，<span class="arithmatex">\(p\)</span> 是一个 back-projection 滤波器，都是自己设置的方式：</p>
 <div class="arithmatex">\[
-X_{t+1} = X_{t} + ((Y - \bold{D}(\bold{H}(X)) \uparrow s) * p
+X_{t+1} = X_{t} + ((Y - \mathbf{D}(\mathbf{H}(X)) \uparrow s) * p
 \]</div>
 <p>其实这里 back-projection 我也不太会，反正只要知道这是不断迭代的方式，反正知道上一步通过不断拿一个小块去推测对应的高清块，直到预测完一个高清图片后，就根据上面公式进行迭代就行，迭代这一步就和之前每次取小块预测无关了。</p>
 <h2 id="_2">字典的选取</h2>

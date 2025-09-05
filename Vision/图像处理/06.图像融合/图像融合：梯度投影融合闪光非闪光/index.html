@@ -79,7 +79,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -20700,16 +20700,16 @@ w_s(x, y) = \tanh(\sigma * (I(x, y) - \tau_s))
 \nabla \Phi^{*} = w_s * \nabla \alpha + (1 - w_s) * \nabla \Phi^{*}
 \]</div>
 <p>得到新的梯度后，需要还原图像。这儿其实是一个经典问题，把它当成泊松融合就行：即我们有要融合的图像，这是未知的，和泊松融合一样；我们还有一个原始图像，这里的区别就是：泊松融合那里这个是知道的，但我们这里只知道它的梯度场。</p>
-<p>但没有关系，泊松融合的经典公式如下，其中 <span class="arithmatex">\(f\)</span> 是最终融合后的图像，<span class="arithmatex">\(\bold{v}\)</span> 是融合前图像的梯度场，<span class="arithmatex">\(\Omega\)</span> 是融合区域（不包含边界），<span class="arithmatex">\(\partial \Omega\)</span> 是融合区域边界。</p>
+<p>但没有关系，泊松融合的经典公式如下，其中 <span class="arithmatex">\(f\)</span> 是最终融合后的图像，<span class="arithmatex">\(\mathbf{v}\)</span> 是融合前图像的梯度场，<span class="arithmatex">\(\Omega\)</span> 是融合区域（不包含边界），<span class="arithmatex">\(\partial \Omega\)</span> 是融合区域边界。</p>
 <p><img alt="" src="../../../../asset/image/0949eea76d3b45cff3cf86a3ed4f99a6/20250111230617.png" /></p>
-<p>对于 <span class="arithmatex">\(\text{div } \bold{v}\)</span>，其表示对原始图像的梯度场 <span class="arithmatex">\(v\)</span> 做散度，因此就是拉普拉斯操作（下面的 <span class="arithmatex">\(g\)</span> 是原始图像）：</p>
+<p>对于 <span class="arithmatex">\(\text{div } \mathbf{v}\)</span>，其表示对原始图像的梯度场 <span class="arithmatex">\(v\)</span> 做散度，因此就是拉普拉斯操作（下面的 <span class="arithmatex">\(g\)</span> 是原始图像）：</p>
 <div class="arithmatex">\[
-\text{div } \bold{v} = \text{div} (u, v) = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}
+\text{div } \mathbf{v} = \text{div} (u, v) = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}
 \]</div>
 <div class="arithmatex">\[
-(u, v) = \left( \frac{\partial g}{\partial x}, \frac{\partial g}{\partial y} \right) \Rightarrow \text{div } \bold{v} = \frac{\partial^2 g}{\partial x^2} + \frac{\partial^2 g}{\partial y^2}
+(u, v) = \left( \frac{\partial g}{\partial x}, \frac{\partial g}{\partial y} \right) \Rightarrow \text{div } \mathbf{v} = \frac{\partial^2 g}{\partial x^2} + \frac{\partial^2 g}{\partial y^2}
 \]</div>
-<p>而我们上面一大段操作得到的新的梯度场，就是这里的 <span class="arithmatex">\(\bold{v}\)</span>，即这里的 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span>。所以 <span class="arithmatex">\(\text{div } \bold{v}\)</span> 就用上面的第一行的公式即可得到，即梯度 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 分别再做一次行或列的梯度，然后加起来。</p>
+<p>而我们上面一大段操作得到的新的梯度场，就是这里的 <span class="arithmatex">\(\mathbf{v}\)</span>，即这里的 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span>。所以 <span class="arithmatex">\(\text{div } \mathbf{v}\)</span> 就用上面的第一行的公式即可得到，即梯度 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 分别再做一次行或列的梯度，然后加起来。</p>
 <p>之后用泊松融合的公式去求解，其中边界的值就规定是非闪光的图像边界即可。</p>
 <p>结果：</p>
 <p><img alt="" src="../../../../asset/image/0949eea76d3b45cff3cf86a3ed4f99a6/20250112002356.png" /></p>
