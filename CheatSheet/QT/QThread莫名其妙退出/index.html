@@ -11221,6 +11221,8 @@
       
         
       
+        
+      
     
     
       
@@ -11260,6 +11262,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Language/Python/Python%E5%A4%84%E7%90%86Qt%E5%BC%82%E5%B8%B8%E6%B3%A8%E6%84%8F%E7%82%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python处理Qt异常注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -11486,10 +11509,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_12" >
         
           
-          <label class="md-nav__link" for="__nav_5_3_11" id="__nav_5_3_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_3_12" id="__nav_5_3_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -11500,8 +11523,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3_11">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_12">
             <span class="md-nav__icon md-icon"></span>
             forcheck
           </label>
@@ -20614,6 +20637,17 @@
       <span class="c1"># 传入到线程中，其中 prepare 是自己定义的方法</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
       <span class="c1"># 启动线程</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+<p>或者大胆一点，直接就是在点击按钮后再初始化，但改成是成员变量：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Test</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_click</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">on_click</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="c1"># ...</span>
+      <span class="c1"># 之前是 thread = QThread()，现在直接绑定到 self，所以结束之后不会被回收</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
 
