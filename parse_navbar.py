@@ -1,17 +1,23 @@
 import os
+import re
 
 def parse_rules(pth):
-    # 检查文件夹里面有没有 .pages 文件，如果有则进行解析
-    navbar_rules = []
-    now_type = None
-    with open(pth, 'r', encoding='utf8') as f:
-        for line in f:
-            if 'use_filename' in line:
-                now_type = 'use_filename'
-            else:
-                # 1. xxxx
-                re_str = line[line.find(' ')+1:]
-                navbar_rules.append((now_type, re_str))
-    return navbar_rules
+    def remove_number_prefix(s):
+        return re.sub(r'^\d+\.\s*', '', s)
 
-            
+    navbar_rules = {'title': [], 'order': []}
+
+    if not os.path.exists(pth):
+        return navbar_rules
+
+    with open(pth, 'r', encoding='utf8') as f:
+        now_type = None
+        for line in f:
+            if 'filename' in line:
+                now_type = 'title'
+            elif 'order' in line:
+                now_type = 'order'
+            elif now_type is not None:
+                re_str = remove_number_prefix(line).strip()
+                navbar_rules[now_type].append(re_str)
+    return navbar_rules
