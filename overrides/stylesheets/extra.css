@@ -1,0 +1,247 @@
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.md-typeset h1 {
+  font-size: 28px;
+  font-size: 1.75rem;
+  margin: 0 0 16px;
+  margin: 0 0 1rem;
+}
+
+.md-typeset h2 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  margin: 45px 0 12.8px;
+  margin: 45px 0 0.8rem;
+}
+
+.md-typeset h3 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  margin: 40px 0 9.6px;
+  margin: 40px 0 0.6rem;
+}
+
+.md-typeset h4 {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+.md-typeset h5,
+.md-typeset h6 {
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+.md-typeset h6 {
+  color: #777;
+}
+
+.md-typeset figure,
+.md-typeset p {
+  margin: 1em 0;
+}
+
+.md-typeset ol,
+.md-typeset p,
+.md-typeset ul {
+  line-height: 25.6px;
+  line-height: 1.6rem;
+  word-spacing: 0.8px;
+  word-spacing: 0.05rem;
+}
+
+/* 第一层列表不缩进（像 Word 一样） */
+.md-typeset ol,
+.md-typeset ul,
+.md-typeset article ol,
+.md-typeset article ul,
+.md-typeset .md-content__inner ol,
+.md-typeset .md-content__inner ul {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+/* 嵌套列表保持缩进 */
+.md-typeset li > ul,
+.md-typeset li > ol,
+.md-typeset article li > ul,
+.md-typeset article li > ol {
+  padding-left: 1.5em !important;
+  margin-left: 0 !important;
+}
+
+/* 列表项：只缩进列表标记，不缩进整个列表 */
+.md-typeset ul > li,
+.md-typeset ol > li,
+.md-typeset article ul > li,
+.md-typeset article ol > li {
+  padding-left: 0.5em !important;
+  list-style-position: outside !important;
+}
+
+.md-typeset iframe {
+  margin: 1em 0;
+}
+
+.md-typeset em {
+  color: #7f8c8d;
+}
+
+:root {
+  --md-admonition-icon--folder: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8z"/></svg>')
+}
+.md-typeset .admonition.folder,
+.md-typeset details.folder {
+  border-color: rgb(40, 20, 0, 0.6);
+}
+.md-typeset .folder > .admonition-title,
+.md-typeset .folder > summary {
+  background-color: rgba(220, 210, 70, 0.1);
+}
+.md-typeset .folder > .admonition-title::before,
+.md-typeset .folder > summary::before {
+  background-color: rgb(237, 192, 68);
+  -webkit-mask-image: var(--md-admonition-icon--folder);
+          mask-image: var(--md-admonition-icon--folder);
+}
+
+:root {
+  --md-admonition-icon--file: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/></svg>')
+}
+.md-typeset .admonition.file,
+.md-typeset details.file {
+  border-color: rgb(237, 237, 237);
+}
+.md-typeset .file > .admonition-title,
+.md-typeset .file > summary {
+  background-color: rgba(237, 237, 237, 0.1);
+}
+.md-typeset .file > .admonition-title::before,
+.md-typeset .file > summary::before {
+  background-color: rgb(237, 237, 237);
+  -webkit-mask-image: var(--md-admonition-icon--file);
+          mask-image: var(--md-admonition-icon--file);
+}
+
+.md-typeset .admonition.folder:hover,
+.md-typeset .admonition.file:hover,
+.md-typeset details.folder:hover,
+.md-typeset details.file:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.md-typeset .file > .admonition-title,
+.md-typeset .file > summary {
+  cursor: default;
+}
+
+/* 统一图标尺寸与间距 */
+.md-typeset .folder > .admonition-title::before,
+.md-typeset .folder > summary::before,
+.md-typeset .file > .admonition-title::before,
+.md-typeset .file > summary::before {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25rem;
+}
+
+/* 嵌套层级：更像树状结构 */
+.md-typeset .admonition.folder .admonition,
+.md-typeset .admonition.folder details {
+  margin: 0.35rem 0 0 0.75rem;
+}
+
+/* 为嵌套的子项绘制竖线（弱化的分隔） */
+.md-typeset .admonition.folder .admonition,
+.md-typeset .admonition.folder details {
+  position: relative;
+}
+
+/* 列表在"目录/文件"内容中的视觉 */
+.md-typeset .folder ul,
+.md-typeset .folder ol {
+  margin: 0.25rem 0 0.25rem 1rem;
+}
+
+.md-typeset .folder li {
+  margin: 0.1rem 0;
+}
+
+/* 文件链接样式：保持整洁 */
+.md-typeset .file a {
+  /* color: inherit; */
+  text-decoration: none;
+}
+
+.md-typeset .file a:hover {
+  text-decoration: underline;
+}
+
+/* 悬浮态微弱高亮，提升可发现性 */
+.md-typeset .folder > .admonition-title:hover,
+.md-typeset .folder > summary:hover {
+  filter: brightness(0.98);
+}
+
+/* 文件操作链接样式：放在标题右侧，字体更小，颜色更淡 */
+.md-typeset h1 {
+  position: relative;
+}
+
+.md-typeset .file-actions {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: normal;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.md-typeset h1 .file-actions {
+  margin-left: auto;
+}
+
+.md-typeset .file-actions:hover {
+  opacity: 1;
+}
+
+.md-typeset .file-action-link {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.md-typeset .file-action-link:hover {
+  color: #2962ff;
+  text-decoration: underline;
+}
+
+/* 移动端适配：链接换行显示 */
+@media (max-width: 768px) {
+  .md-typeset h1 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .md-typeset h1 .file-actions {
+    margin-left: 0;
+    margin-top: 0.25rem;
+  }
+}
+
+/* 【】包起来的内容高亮显示 */
+.md-typeset mark.term-highlight {
+  background-color: rgba(255, 235, 59, 0.4);
+  color: inherit;
+  padding: 0.1em 0.2em;
+  border-radius: 3px;
+  font-weight: 600;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
