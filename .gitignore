@@ -1,1 +1,7 @@
 site
+docs
+__pycache__
+*.bin
+mp4.txt
+!docs/index.md
+test.py

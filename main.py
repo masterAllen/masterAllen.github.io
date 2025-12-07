@@ -6,7 +6,17 @@ import subprocess
 for i in range(1, 4):
     subprocess.run(['python', f'main{i}.py'])
 
+import shutil
 import settings
+
+# 把 overrides 中的 javascripts 和 stylesheets 文件夹内容复制到 docs 目录
+overrides_dir = os.path.join(settings.dstdir, 'overrides')
+for subdir in ['javascripts', 'stylesheets']:
+    src_subdir = os.path.join(overrides_dir, subdir)
+    dst_subdir = os.path.join(settings.docsdir, subdir)
+    os.makedirs(dst_subdir, exist_ok=True)
+    shutil.copytree(src_subdir, dst_subdir, dirs_exist_ok=True)
+
 # 统计 asset 目录下的各个子目录容量大小
 asset_dir = settings.assetdir
 if os.path.exists(asset_dir):
