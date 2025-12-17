@@ -49,11 +49,6 @@ if __name__ == '__main__':
     for dirname in topdir_dirs:
         todos.append((os.path.join(srcdir, dirname), os.path.join(dstdir, dirname)))
 
-    assetdir = settings.assetdir
-    os.makedirs(assetdir, exist_ok=True)
-    for ftype in ['html', 'pdf', 'image']:
-        os.makedirs(os.path.join(assetdir, ftype), exist_ok=True)
-
     # 首页也要更新
     todos.append((os.path.join(srcdir, 'index.md'), os.path.join(dstdir, 'index.md')))
     # configs.update_cache(srcindex, dstindex, os.stat(srcindex).st_mtime)
@@ -75,12 +70,14 @@ if __name__ == '__main__':
             for special_dirname in settings.special_dirs:
                 if nowname.startswith(special_dirname):
                     # TODO: 如果目录名称是材料、papers 等，那么就单独写一个 README，把这些文件列出来，是否要展示：先不进行展示
-                    nowdst = utils.abspath(os.path.join(nowdst, '目录文件列表.md'))
+
+                    # 结构: Reference/xxx.md
+                    nowdst = utils.abspath(os.path.join(nowdst, '..', 'Reference', f'{nowname}.md'))
                     configs.process_if_needed(nowsrc, nowdst, lambda src, dst: transform_file.do_special_dir(src, dst))
                     is_special_dir = True
                     break
 
-            if 'image' in nowname:
+            if nowname.startswith('image'):
                 # print(nowsrc)
                 is_special_dir = True
 
@@ -127,28 +124,26 @@ if __name__ == '__main__':
 
         if os.path.isfile(nowsrc):
             nowname = os.path.basename(nowsrc)
-            newname = transform_name.remove_suffix(nowname)
-            newname = transform_name.beautify_name(newname)
 
             if nowname.startswith('~'):
                 continue
 
+            file_type = utils.check_url_type(nowname)
+
             '''
             特殊文件
             1. link 文件实现存储，到最后统一处理
-            2. mp4 文件记录下来，最后统一处理
             '''
             if nowname.endswith('link') or nowname.endswith('lnk'):
                 link_files.append((nowsrc, os.path.dirname(nowdst)))
-            if nowname.endswith('mp4'):
-                mp4_file.write(os.path.join(os.path.dirname(nowsrc), nowname) + '\n')
 
             '''
             临时 Debug 区域
             '''
             # 先根据时间，判断要不要更改；如果没修改，那么就按照原来的搞；否则就继续处理
-            if (not nowname.endswith('md')) and (not nowname.endswith('txt')):
+            # if (not nowname.endswith('md')) and (not nowname.endswith('mp4')):
             # if True:
+            if (file_type == 'html') or (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
                 if not configs.is_need_update(nowsrc):
                     configs.update_cache_byold(nowsrc)
                     continue
@@ -156,26 +151,31 @@ if __name__ == '__main__':
             # TODO: 这里需要修改地更好
             nowsrc_dir, nowdst_dir = os.path.dirname(nowsrc), os.path.dirname(nowdst)
 
+            newname = transform_name.remove_suffix(nowname) if file_type == 'text' else nowname
+            newname = transform_name.beautify_name(newname)
+
             web_file_abs = None
             if nowname.endswith('md'):
-                web_file_abs = transform_file.do_md(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
-            if nowname.endswith('html') or nowname.endswith('htm'):
-                web_file_abs = transform_file.do_html(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
-            if nowname.endswith('ipynb'):
-                web_file_abs = transform_file.do_ipynb(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
-            if nowname.endswith('PNG') or nowname.endswith('png') or nowname.endswith('jpg'):
-                web_file_abs = transform_file.do_png(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
-            if nowname.endswith('pdf'):
-                web_file_abs = transform_file.do_pdf(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
-            if nowname.endswith('docx'):
-                web_file_abs = transform_file.do_word(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
-            if nowname.endswith('pptx'):
-                web_file_abs = transform_file.do_ppt(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
+                web_file_abs = transform_file.do_md(nowsrc_dir, nowdst_dir, nowname, newname)
             if nowname.endswith('txt'):
-                web_file_abs = transform_file.do_txt(nowsrc_dir, nowdst_dir, assetdir, nowname, newname)
+                web_file_abs = transform_file.do_txt(nowsrc_dir, nowdst_dir, nowname, newname)
+            if nowname.endswith('ipynb'):
+                web_file_abs = transform_file.do_ipynb(nowsrc_dir, nowdst_dir, nowname, newname)
+            if file_type == 'html':
+                web_file_abs = transform_file.do_html(nowsrc_dir, nowdst_dir, nowname, newname)
+            if file_type == 'image':
+                web_file_abs = transform_file.do_png(nowsrc_dir, nowdst_dir, nowname, newname)
+            if file_type == 'pdf':
+                web_file_abs = transform_file.do_pdf(nowsrc_dir, nowdst_dir, nowname, newname)
+            if file_type == 'word':
+                web_file_abs = transform_file.do_word(nowsrc_dir, nowdst_dir, nowname, newname)
+            if file_type == 'ppt':
+                web_file_abs = transform_file.do_ppt(nowsrc_dir, nowdst_dir, nowname, newname)
+            if file_type == 'video':
+                web_file_abs = transform_file.do_video(nowsrc_dir, nowdst_dir, nowname, newname)
             if nowname == '.pages':
                 # 如果是 .pages 文件，如果有以后会用到，需要复制过去
-                shutil.copy(nowsrc, nowdst)
+                utils.copy(nowsrc, nowdst)
                 web_file_abs = nowdst
 
             # 生成结果后，保存到 cache 中
@@ -202,7 +202,7 @@ if __name__ == '__main__':
             # 需要更新：把 **原始文件对应的 WEB 文件** 直接复制到想要的位置去
             source_web_path = configs.get_web_path(source_raw_path)
             link_web_path = os.path.join(link_dst_dir, os.path.basename(source_web_path))
-            shutil.copy2(source_web_path, link_web_path)
+            utils.copy(source_web_path, link_web_path)
 
             # 把这个链接文件复制到目标目录即可
             print('----------更新链接文件----------')
@@ -234,36 +234,3 @@ if __name__ == '__main__':
     处理缓存文件
     '''
     configs.save_cache() # 保存 cache
-
-    # 删除不在 configs 中的文件
-    generated_files = set()
-    for file in configs.file_cache:
-        generated_files.add(utils.abspath(configs.file_cache[file][1]))
-
-    # 有些文件夹不进行检查...
-    notcheck_dirnames = ['asset', 'javascripts', 'stylesheets']
-    notcheck_dirpaths = [utils.abspath(os.path.join(dstdir, dirname)) for dirname in notcheck_dirnames]
-
-    for root, dirs, files in os.walk(dstdir):
-        for file in files:
-            file_path = utils.abspath(os.path.join(root, file))
-
-            # 检查是否在 asset_dir 中
-            if any(os.path.commonpath([file_path, dirpath]) == dirpath for dirpath in notcheck_dirpaths):
-                # print(f'跳过文件: {file_path}')
-                continue
-
-            if file_path not in generated_files:
-                print(f'删除不在 configs 中的文件: {file_path}')
-                os.remove(file_path)
-
-    # 遍历目标目录，删除空目录
-    for root, dirs, files in os.walk(dstdir):
-        for dir in dirs:
-            if len(os.listdir(os.path.join(root, dir))) == 0:
-                os.rmdir(os.path.join(root, dir))
-
-    # generated_files = set()
-    # for file in configs.new_file_cache:
-    #     if '材料' in file:
-    #         print(file, configs.new_file_cache[file])

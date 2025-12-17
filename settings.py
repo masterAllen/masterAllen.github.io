@@ -9,7 +9,10 @@ dstdir = r'D:\Blog\masterAllen.github.io'
 import os
 docsdir = os.path.join(dstdir, 'docs')
 assetdir = os.path.join(docsdir, 'asset')
-config_dir = os.path.join(dstdir, 'configs')
+
+# 配置文件使用当前脚本所在路径
+config_dir = os.path.join('.', 'configs')
+overrides_dir = os.path.join('.', 'overrides')
 
 special_dirs = [
     '材料',
@@ -19,3 +22,5 @@ special_dirs = [
     'code',
     'asset',
 ]
+
+skip_types = {'web', 'base64', 'unknown'}

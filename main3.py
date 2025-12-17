@@ -23,7 +23,7 @@ def traverse_dir(rootdir, nowdir):
     old_md_names = md_names.copy()
     for md_name in old_md_names:
         if md_name.lower().startswith('index.md'):
-            result['readme'] = os.path.relpath(os.path.join(nowdir, md_name), rootdir)
+            result['readme'] = utils.relpath(os.path.join(nowdir, md_name), rootdir)
             md_names.remove(md_name)
 
     # 如果有 .pages 文件，按照 .pages 文件的规则排序
@@ -47,14 +47,13 @@ def traverse_dir(rootdir, nowdir):
     ordered_files = {}
     for name in rules['order']:
         if name in md_titles:
-            ordered_files[md_titles[name]] = os.path.relpath(os.path.join(nowdir, name), rootdir)
+            ordered_files[md_titles[name]] = utils.relpath(os.path.join(nowdir, name), rootdir)
             del md_titles[name]
 
     # 再把剩下的文件按标题排序
     md_titles = sorted(md_titles.items(), key=lambda x: x[0])
     for name, title in md_titles:
-        mdpth = os.path.normpath(os.path.abspath(os.path.join(nowdir, name)))
-        ordered_files[title] = os.path.relpath(os.path.join(nowdir, name), rootdir)
+        ordered_files[title] = utils.relpath(os.path.join(nowdir, name), rootdir)
     result['mdfiles'] = ordered_files
 
     # 再处理文件夹

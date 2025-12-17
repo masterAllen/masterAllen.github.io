@@ -10,7 +10,7 @@ import utils
 import urllib.parse
 from PIL import Image
 
-def do_md(srcdir, dstdir, assetdir, nowname, newname):
+def do_md(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
     with open(dstpth, 'w', encoding='utf8') as f:
@@ -38,7 +38,7 @@ def do_md(srcdir, dstdir, assetdir, nowname, newname):
     return dstpth
 
 
-def do_html(srcdir, dstdir, assetdir, nowname, newname):
+def do_html(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
 
@@ -50,14 +50,9 @@ def do_html(srcdir, dstdir, assetdir, nowname, newname):
                 srcurl = oneline.strip()[4:].strip()
                 break
 
-    asset_reldir = None
-
-    # 如果小于 10M 才会保存
-    fsize = os.path.getsize(srcpth)
-    if fsize < 10 * 1024 * 1024:
-        asset_reldir = utils.asset_link(dstpth, assetdir, 'html')
-        asset_absdir = os.path.join(os.path.dirname(dstpth), asset_reldir)
-        shutil.copy2(srcpth, os.path.join(asset_absdir, nowname))
+    asset_absdir = utils.asset_link(srcpth, 'html')
+    asset_reldir = utils.relpath(asset_absdir, dstpth)
+    utils.copy(srcpth, os.path.join(asset_absdir, nowname))
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
@@ -70,7 +65,7 @@ def do_html(srcdir, dstdir, assetdir, nowname, newname):
     return dstpth
 
 
-def do_ipynb(srcdir, dstdir, assetdir, nowname, newname):
+def do_ipynb(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth  = os.path.join(dstdir, f'{newname}.md')
 
@@ -93,15 +88,15 @@ def do_ipynb(srcdir, dstdir, assetdir, nowname, newname):
     return dstpth
 
 
-def do_png(srcdir, dstdir, assetdir, nowname, newname):
+def do_png(srcdir, dstdir, nowname, newname):
     # 获取原文的地址
     srcpth = os.path.join(srcdir, nowname)
     dstpth  = os.path.join(dstdir, f'{newname}.md')
 
     # 获取 asset 的相对路径
-    asset_reldir = utils.asset_link(dstpth, assetdir, 'image')
-    asset_absdir = os.path.join(os.path.dirname(dstpth), asset_reldir)
-    shutil.copyfile(srcpth, os.path.join(asset_absdir, nowname))
+    asset_absdir = utils.asset_link(srcpth, 'image')
+    asset_reldir = utils.relpath(asset_absdir, dstpth)
+    utils.copy(srcpth, os.path.join(asset_absdir, nowname))
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
@@ -112,43 +107,54 @@ def do_png(srcdir, dstdir, assetdir, nowname, newname):
     return dstpth
 
 
-def do_pdf(srcdir, dstdir, assetdir, nowname, newname):
+def do_pdf(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
+
+    # 获取 asset 的相对路径
+    asset_absdir = utils.asset_link(srcpth, 'pdf')
+    asset_reldir = utils.relpath(asset_absdir, dstpth)
+    utils.copy(srcpth, os.path.join(asset_absdir, nowname))
+
     with open(dstpth, 'w', encoding='utf-8') as f:
         f.write(utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {newname}\n')
         f.writelines(utils.get_filelink(srcpth) + '\n')
-        f.writelines(f'原文为 PDF 格式，目前暂不转换')
+        f.writelines(f'原文为 PDF 格式：[链接]({asset_reldir}/{nowname})')
         f.writelines('\n')
     return dstpth
 
-def do_word(srcdir, dstdir, assetdir, nowname, newname):
+def do_word(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
 
     # 原文转成 pdf
-    pdf_reldir = utils.asset_link(dstpth, assetdir, 'pdf')
-    pdf_absdir = os.path.join(os.path.dirname(dstpth), pdf_reldir)
+    pdf_absdir = utils.asset_link(srcpth, 'pdf')
+    pdf_reldir = utils.relpath(pdf_absdir, dstpth)
+    pdf_absfile = os.path.join(pdf_absdir, f'{newname}.pdf')
     for tidx in range(3):
         time.sleep(tidx)
         try:
-            docx2pdf.convert(srcpth, pdf_absdir)
+            docx2pdf.convert(srcpth, pdf_absfile)
             break
         except:
             pass
 
     # PDF 再转为图片
-    pdf = pdfium.PdfDocument(os.path.join(pdf_absdir, f'{newname}.pdf'))
-    img_reldir = utils.asset_link(dstpth, assetdir, 'image')
-    img_absdir = os.path.join(os.path.dirname(dstpth), img_reldir)
+    pdf = pdfium.PdfDocument(pdf_absfile)
+
+    img_absdir = utils.asset_link(srcpth, 'image')
+    img_reldir = utils.relpath(img_absdir, dstpth)
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
         f.write(utils.get_topinfo(comments=True, hide=['toc']) + '\n')
         f.writelines(f'# {newname}\n')
         f.writelines(utils.get_filelink(srcpth) + '\n')
-        f.writelines(f'**原文格式为 word，本文为转换后的图片。原文也转换了 [PDF 格式]({pdf_reldir}/{newname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
+
+        info_str = f'原文也转换了 [PDF 格式]({pdf_reldir}/{newname}.pdf)'
+        f.writelines(info_str)
+
         f.writelines('\n')
         for count, page in enumerate(pdf):
             imgpth = os.path.join(img_absdir, f'out{count}.jpg')
@@ -169,23 +175,23 @@ def do_word(srcdir, dstdir, assetdir, nowname, newname):
     return dstpth
 
 
-def do_ppt(srcdir, dstdir, assetdir, nowname, newname):
+def do_ppt(srcdir, dstdir, nowname, newname):
     # 原文转成 pdf
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
 
     # 转成 PDF
-    pdf_reldir = utils.asset_link(dstpth, assetdir, 'pdf')
-    pdf_absdir = os.path.join(os.path.dirname(dstpth), pdf_reldir)
-    pdf_abspth = os.path.join(pdf_absdir, f'{newname}.pdf')
-    if os.path.exists(pdf_abspth):
-        os.remove(pdf_abspth)
+    pdf_absdir = utils.asset_link(srcpth, 'pdf')
+    pdf_reldir = utils.relpath(pdf_absdir, dstpth)
+    pdf_absfile = os.path.join(pdf_absdir, f'{newname}.pdf')
+    if os.path.exists(pdf_absfile):
+        os.remove(pdf_absfile)
     pptxtopdf.convert(srcpth, pdf_absdir) # convert 第二个参数是文件夹
 
     # PDF 再转为图片
-    pdf = pdfium.PdfDocument(pdf_abspth)
-    img_reldir = utils.asset_link(dstpth, assetdir, 'image')
-    img_absdir = os.path.join(os.path.dirname(dstpth), img_reldir)
+    pdf = pdfium.PdfDocument(pdf_absfile)
+    img_absdir = utils.asset_link(srcpth, 'image')
+    img_reldir = utils.relpath(img_absdir, dstpth)
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
@@ -201,7 +207,7 @@ def do_ppt(srcdir, dstdir, assetdir, nowname, newname):
     return dstpth
 
 
-def do_txt(srcdir, dstdir, assetdir, nowname, newname):
+def do_txt(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth  = os.path.join(dstdir, f'{newname}.md')
 
@@ -238,9 +244,6 @@ def do_txt(srcdir, dstdir, assetdir, nowname, newname):
 
     return dstpth
 
-def do_link(srcdir, dstdir, assetdir, nowname, newname):
-    pass
-
 def do_special_dir(srcdir, dstpth):
     # 在 dstdir 中创建一个 README.md 文件
     os.makedirs(os.path.dirname(dstpth), exist_ok=True)
@@ -252,3 +255,26 @@ def do_special_dir(srcdir, dstpth):
         f.writelines(f'本文件为自动生成，以下列表展示了这个资源目录的文件名称，以供参考：\n\n')
         for file in os.listdir(srcdir):
             f.writelines(f'- {file}\n')
+
+def do_video(srcdir, dstdir, nowname, newname):
+    srcpth = os.path.join(srcdir, nowname)
+    dstpth  = os.path.join(dstdir, f'{newname}.md')
+
+    # # 获取 asset 的相对路径
+    # asset_absdir, asset_reldir = utils.asset_link(dstpth, 'video')
+    # utils.copy(srcpth, os.path.join(asset_absdir, nowname))
+
+    # 写入文件
+    with open(dstpth, 'w', encoding='utf-8') as f:
+        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.writelines(f'# {newname}\n')
+        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(f'源文件为视频文件，暂不进行转换\n')
+
+        # f.writelines('\n')
+        # f.writelines('<video controls>\n')
+        # # mkdocs 的一个奇怪的点，src 索引针对的是上一层目录
+        # f.writelines(f'<source src="../{asset_reldir}/{nowname}" type="video/mp4">\n')
+        # f.writelines('</video>\n')
+
+    return dstpth

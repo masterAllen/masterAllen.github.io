@@ -48,14 +48,6 @@ class ConfigParser:
 
     def save_cache(self):
         pickle.dump(self.new_file_cache, open(self.file_cache_dpath, 'wb'))
-        self.file_cache = self.new_file_cache
-
-        # # 存储新生成的文件
-        # new_files = set()
-        # for srcpth in self.new_file_cache:
-        #     if srcpth not in self.file_cache:
-        #         new_files.add(srcpth)
-        # pickle.dump(new_files, open(self.new_generated_file_dpath, 'wb')) 
 
     def get_web_path(self, srcpath):
         return self.new_file_cache[srcpath][1]
@@ -102,7 +94,7 @@ class ConfigParser:
         # 生成的文件是否一致
         if dstpath is not None and utils.abspath(old_dstpath) != utils.abspath(dstpath):
             return True
-        
+
         # 新文件不存在，需要更新
         if not os.path.exists(old_dstpath):
             return True
