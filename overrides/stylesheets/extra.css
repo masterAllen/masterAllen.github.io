@@ -13,7 +13,11 @@
   margin: 0 0 1rem;
 }
 
+<<<<<<< HEAD
 /* .md-typeset h2 {
+=======
+.md-typeset h2 {
+>>>>>>> c806f12ae6498d8d74ada8bcc75a3da9349d034e
   font-size: 20px;
   font-size: 1.25rem;
   margin: 45px 0 12.8px;
@@ -25,6 +29,7 @@
   font-size: 1.125rem;
   margin: 40px 0 9.6px;
   margin: 40px 0 0.6rem;
+<<<<<<< HEAD
 } */
 
 .md-typeset h2 {
@@ -39,6 +44,8 @@
   font-size: 1.125rem;
   margin: 9.6px 0 9.6px;
   margin: 0.6rem 0 0.6rem;
+=======
+>>>>>>> c806f12ae6498d8d74ada8bcc75a3da9349d034e
 }
 
 .md-typeset h4 {
@@ -259,6 +266,7 @@
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
+<<<<<<< HEAD
 
 /* 标题折叠功能样式 */
 .md-typeset .collapsible-heading {
@@ -309,3 +317,5 @@
 .md-typeset .collapsible-section > *:last-child {
   margin-bottom: 0;
 } */
+=======
+>>>>>>> c806f12ae6498d8d74ada8bcc75a3da9349d034e
