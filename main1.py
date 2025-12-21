@@ -23,7 +23,8 @@ if __name__ == '__main__':
     dstdir = utils.abspath(settings.docsdir)
 
     # 记录所有 mp4 文件
-    mp4_file = open(os.path.join(settings.config_dir, 'mp4.txt'), 'w', encoding='utf8')
+    mp4_files = open(os.path.join(settings.config_dir, 'mp4.txt'), 'w', encoding='utf8')
+    big_files = open(os.path.join(settings.config_dir, 'big_files.txt'), 'w', encoding='utf8')
 
     # 加载 Special 文件，这些文件不在 main 中处理，使用对应的文件进行处理
     raw_specials = yaml.load(open(os.path.join(settings.config_dir, 'special.yml'), 'r', encoding='utf8'), Loader=yaml.FullLoader)
@@ -49,9 +50,14 @@ if __name__ == '__main__':
     for dirname in topdir_dirs:
         todos.append((os.path.join(srcdir, dirname), os.path.join(dstdir, dirname)))
 
-    # 首页也要更新
-    todos.append((os.path.join(srcdir, 'index.md'), os.path.join(dstdir, 'index.md')))
-    # configs.update_cache(srcindex, dstindex, os.stat(srcindex).st_mtime)
+    # 首页单独更新
+    srcpth = os.path.join(srcdir, 'index.md')
+    dstpth = os.path.join(dstdir, 'index.md')
+    with open(dstpth, 'w', encoding='utf8') as f:
+        f.write(utils.get_topinfo(comments=True, hide=['navigation']) + '\n')
+        with open(srcpth, 'r', encoding='utf8') as srcf:
+            f.write(srcf.read())
+    configs.update_cache(srcpth, dstpth, os.stat(srcpth).st_mtime)
 
     # 需要处理的链接文件
     link_files = []
@@ -143,7 +149,9 @@ if __name__ == '__main__':
             # 先根据时间，判断要不要更改；如果没修改，那么就按照原来的搞；否则就继续处理
             # if (not nowname.endswith('md')) and (not nowname.endswith('mp4')):
             # if True:
-            if (file_type == 'html') or (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
+            # if (file_type == 'html') or (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
+            # if (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
+            if (file_type == 'word') or (file_type == 'image'):
                 if not configs.is_need_update(nowsrc):
                     configs.update_cache_byold(nowsrc)
                     continue
@@ -151,32 +159,43 @@ if __name__ == '__main__':
             # TODO: 这里需要修改地更好
             nowsrc_dir, nowdst_dir = os.path.dirname(nowsrc), os.path.dirname(nowdst)
 
-            newname = transform_name.remove_suffix(nowname) if file_type == 'text' else nowname
+            newname = nowname
+            # 统一不去后缀了，避免重名
+            # newname = transform_name.remove_suffix(nowname) 
             newname = transform_name.beautify_name(newname)
 
-            web_file_abs = None
-            if nowname.endswith('md'):
-                web_file_abs = transform_file.do_md(nowsrc_dir, nowdst_dir, nowname, newname)
-            if nowname.endswith('txt'):
-                web_file_abs = transform_file.do_txt(nowsrc_dir, nowdst_dir, nowname, newname)
-            if nowname.endswith('ipynb'):
-                web_file_abs = transform_file.do_ipynb(nowsrc_dir, nowdst_dir, nowname, newname)
-            if file_type == 'html':
-                web_file_abs = transform_file.do_html(nowsrc_dir, nowdst_dir, nowname, newname)
-            if file_type == 'image':
-                web_file_abs = transform_file.do_png(nowsrc_dir, nowdst_dir, nowname, newname)
-            if file_type == 'pdf':
-                web_file_abs = transform_file.do_pdf(nowsrc_dir, nowdst_dir, nowname, newname)
-            if file_type == 'word':
-                web_file_abs = transform_file.do_word(nowsrc_dir, nowdst_dir, nowname, newname)
-            if file_type == 'ppt':
-                web_file_abs = transform_file.do_ppt(nowsrc_dir, nowdst_dir, nowname, newname)
-            if file_type == 'video':
-                web_file_abs = transform_file.do_video(nowsrc_dir, nowdst_dir, nowname, newname)
-            if nowname == '.pages':
-                # 如果是 .pages 文件，如果有以后会用到，需要复制过去
-                utils.copy(nowsrc, nowdst)
-                web_file_abs = nowdst
+            # 检查文件是否超过大小，如果超过，则直接转成说明的文件
+            file_size = os.path.getsize(nowsrc)
+            if file_size > settings.MAX_FILE_SIZE:
+                web_file_abs = transform_file.do_file_too_large(nowsrc_dir, nowdst_dir, nowname, newname, file_type)
+                big_files.write(f'{nowsrc}\n')
+            else:
+                web_file_abs = None
+                
+            if web_file_abs is None:
+                # 正常处理文件
+                if nowname.endswith('md'):
+                    web_file_abs = transform_file.do_md(nowsrc_dir, nowdst_dir, nowname, newname)
+                if nowname.endswith('txt'):
+                    web_file_abs = transform_file.do_txt(nowsrc_dir, nowdst_dir, nowname, newname)
+                if nowname.endswith('ipynb'):
+                    web_file_abs = transform_file.do_ipynb(nowsrc_dir, nowdst_dir, nowname, newname)
+                if file_type == 'html':
+                    web_file_abs = transform_file.do_html(nowsrc_dir, nowdst_dir, nowname, newname)
+                if file_type == 'image':
+                    web_file_abs = transform_file.do_png(nowsrc_dir, nowdst_dir, nowname, newname)
+                if file_type == 'pdf':
+                    web_file_abs = transform_file.do_pdf(nowsrc_dir, nowdst_dir, nowname, newname)
+                if file_type == 'word':
+                    web_file_abs = transform_file.do_word(nowsrc_dir, nowdst_dir, nowname, newname)
+                if file_type == 'ppt':
+                    web_file_abs = transform_file.do_ppt(nowsrc_dir, nowdst_dir, nowname, newname)
+                if file_type == 'video':
+                    web_file_abs = transform_file.do_video(nowsrc_dir, nowdst_dir, nowname, newname)
+                if nowname == '.pages':
+                    # 如果是 .pages 文件，如果有以后会用到，需要复制过去
+                    utils.copy(nowsrc, nowdst)
+                    web_file_abs = nowdst
 
             # 生成结果后，保存到 cache 中
             if web_file_abs is not None:
@@ -227,7 +246,7 @@ if __name__ == '__main__':
         if not hasattr(module, "run"):
             raise AttributeError(f"{name}.py does not have a 'run' function")
 
-        print(f'RUN {pyfile}, nowsrc={nowsrc}, nowdst={dst}')
+        # print(f'RUN {pyfile}, nowsrc={nowsrc}, nowdst={dst}')
         module.run(nowsrc, dst, configs)
 
     '''

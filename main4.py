@@ -53,7 +53,7 @@ for root, dirs, files in os.walk(settings.docsdir):
                 content = f.read()
 
             matches = utils.extract_links(content)
-            for link_url, is_html in matches:
+            for url_start, url_end, link_url, is_html in matches:
                 # 如果是 HTML 链接，那么去除前面的 ../ 才是真正的路径
                 if is_html:
                     link_url = link_url[3:]
@@ -66,7 +66,7 @@ for root, dirs, files in os.walk(settings.assetdir):
         asset_file = utils.abspath(os.path.join(root, file))
         if asset_file not in asset_files:
             print(f'删除不在 asset_files 中的文件: {asset_file}')
-            # os.remove(asset_file)
+            os.remove(asset_file)
 
 
 # 遍历目标目录，删除空目录
@@ -87,9 +87,10 @@ for subdir in ['javascripts', 'stylesheets']:
 # 把 overrides 中的 partials 文件夹内容复制到 partials 目录
 # UPDATE: 这个就是用于评论的，offline 不需要
 src_subdir = os.path.join(overrides_dir, 'partials')
-dst_subdir = os.path.join(settings.dstdir, 'overrides', 'partials')
-os.makedirs(dst_subdir, exist_ok=True)
-utils.copy(src_subdir, dst_subdir)
+if os.path.exists(src_subdir):
+    dst_subdir = os.path.join(settings.dstdir, 'overrides', 'partials')
+    os.makedirs(dst_subdir, exist_ok=True)
+    utils.copy(src_subdir, dst_subdir)
 
 # 统计 asset 目录下的各个子目录容量大小
 asset_dir = settings.assetdir

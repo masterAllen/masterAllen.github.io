@@ -48,7 +48,7 @@ def asset_link(asset_src, asset_type, makedir=True):
     now_assetdir = abspath(os.path.join(settings.assetdir, asset_type, file_md5))
 
     if makedir:
-        print(f'创建 asset 目录: {now_assetdir}')
+        # print(f'创建 asset 目录: {now_assetdir}')
         os.makedirs(now_assetdir, exist_ok=True)
 
     return now_assetdir
@@ -197,6 +197,16 @@ def relpath(pth1, pth2):
 
 # 匹配 Markdown 链接格式 [text](url)
 def extract_links(content):
+    """
+    提取内容中的所有链接
+    参数:
+        content: 要提取链接的内容
+    返回: [(url_start, url_end, link_url, is_html), ...]
+        - url_start: URL 开始位置（`(` 之后）
+        - url_end: URL 结束位置（`)` 之前）
+        - link_url: 链接 URL
+        - is_html: 是否是 HTML 链接
+    """
     # 原来的实现：使用 markdown 和 lxml 解析，但无法处理 ??? 等扩展语法
     # import markdown
     # from lxml import etree
@@ -221,13 +231,15 @@ def extract_links(content):
 
     # 最终：支持包含空格和括号的链接，使用栈算法处理嵌套括号
     matches = []
-    # 找到所有 [text]( 的位置
+    
+    # 找到所有 [text]( 的位置（Markdown 链接）
     pattern = r'\[([^\]]*)\]\('
     for match in re.finditer(pattern, content):
-        start_pos = match.end()  # `(` 的位置
+        url_start = match.end()  # `(` 的位置
+        
         # 从 `(` 开始，使用栈来找到匹配的 `)`
         depth = 1
-        pos = start_pos
+        pos = url_start
         url_end = -1
         
         while pos < len(content) and depth > 0:
@@ -240,23 +252,33 @@ def extract_links(content):
                     break
             pos += 1
         
-        if url_end > 0:
-            link_url = content[start_pos:url_end].strip()
-            # 如果链接被引号包裹，去除引号
-            if (len(link_url) >= 2 and link_url.startswith('"') and link_url.endswith('"')) or \
-               (len(link_url) >= 2 and link_url.startswith("'") and link_url.endswith("'")):
-                link_url = link_url[1:-1]
-            matches.append((link_url, False))
+        if url_end < 0:
+            continue
+        
+        # 提取链接 URL
+        link_url = content[url_start:url_end].strip()
+        # 如果链接被引号包裹，去除引号
+        if (len(link_url) >= 2 and link_url.startswith('"') and link_url.endswith('"')) or \
+           (len(link_url) >= 2 and link_url.startswith("'") and link_url.endswith("'")):
+            link_url = link_url[1:-1]
+        
+        matches.append((url_start, url_end, link_url, False))
 
-    pattern = re.compile(
+    # 找到所有 HTML 属性中的链接（src= 或 href=）
+    html_pattern = re.compile(
         r'''(?i)(?:src|href)=(".*?"|'.*?')'''
     )
-    for match in pattern.finditer(content):
+    for match in html_pattern.finditer(content):
+        url_start = match.start(1)  # 引号开始位置
+        url_end = match.end(1)  # 引号结束位置
         url = match.group(1)
         # 去掉首尾的引号
         if (url.startswith('"') and url.endswith('"')) or (url.startswith("'") and url.endswith("'")):
             url = url[1:-1]
-        matches.append((url, True))
+            url_start += 1  # 调整位置，排除引号
+            url_end -= 1
+        
+        matches.append((url_start, url_end, url, True))
 
     return matches
 
@@ -308,8 +330,8 @@ def check_url_type(url):
 
 # 复制文件，可以在这里检查文件大小，防止复制大文件
 def copy(src, dst):
-    maxsize = 10 * 1024 * 1024
-    # maxsize = 1000 * 1000 * 1024 * 1024
+    maxsize = settings.MAX_FILE_SIZE
+
     if os.path.isdir(src):
         os.makedirs(dst, exist_ok=True)
         # 遍历源目录

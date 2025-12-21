@@ -34,7 +34,12 @@ def traverse_dir(rootdir, nowdir):
     for md_name in md_names:
         # 获取文件标题
         title1 = utils.get_md_title(os.path.join(nowdir, md_name))
-        title2 = transform_name.beautify_name(transform_name.remove_suffix(md_name))
+
+        # 获取文件名，转换后的都是 xx.png.md 这种格式，需要去掉两次后缀
+        title2 = md_name
+        title2 = transform_name.remove_suffix(title2)
+        title2 = transform_name.remove_suffix(title2)
+        title2 = transform_name.beautify_name(title2)
 
         title = title1 if title1 is not None else title2
         for re_str in rules['title']:
@@ -67,6 +72,13 @@ def traverse_dir(rootdir, nowdir):
             subdirs.remove(name)
     subdirs = sorted(subdirs, key=lambda x: x.lower())
     ordered_subdirs.extend(subdirs)
+
+    # 如果 references 在 ordered_subdirs 中，那么把他放在最后
+    for name in ordered_subdirs:
+        if name.lower() == 'reference':
+            ordered_subdirs.remove(name)
+            ordered_subdirs.append(name)
+            break
 
     # 统计数量
     num = len(result['mdfiles']) + (result['readme'] is not None)
