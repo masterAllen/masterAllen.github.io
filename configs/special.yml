@@ -1,6 +1,19 @@
 # 特殊路径处理配置
-# 格式：源文件路径: 处理脚本文件名
-"Language/Python/README.md": "处理Python.py"
-"算法记录/做题记录/CCF-CSP": "处理CCF_CSP.py"
-"算法记录/做题记录/刘汝佳算法竞赛": "处理CCF_CSP.py"
+# 文件路径: 
+#  - 处理脚本文件名
+#  - 是否跳过常规处理（有的文件夹可能即需要用特殊文件生成，也包含常规处理）
+"Language/Python/README.md": 
+  - "处理Python.py"
+  - True
 
+"算法记录/做题记录/CCF-CSP": 
+  - "处理CCF_CSP.py"
+  - True
+
+"算法记录/做题记录/刘汝佳算法竞赛": 
+  - "处理CCF_CSP.py"
+  - True
+
+"IP地理定位": 
+  - "处理IP地理定位.py"
+  - True

@@ -1,12 +1,9 @@
 dirs: 
     - Main
-<<<<<<< HEAD
     - 课程知识
     - 书籍记录
-=======
-    - 课程和书籍
->>>>>>> c806f12ae6498d8d74ada8bcc75a3da9349d034e
     - 算法记录
     - CheatSheet
     - Language
     - Vision
+    - IP地理定位
