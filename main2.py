@@ -23,8 +23,15 @@ def process_markdown_links(content, webfile_pth, raw2web_mapping, web2raw_mappin
     result = []
     
     # 使用 utils.extract_links 提取所有链接及其位置信息
-    matches = utils.extract_links(content)
-    
+    matches = utils.extract_links(content, exclude=settings.skip_types)
+
+    if rawfile_pth is None:
+        if len(matches) > 0:
+            print(f'在特殊文件 {webfile_pth} 中发现了链接，但原始文件不存在')
+            print(f'链接: {matches}')
+            print(f'--------------------------------')
+        return []
+
     for url_start, url_end, link_url, is_html in matches:
         link_type = utils.check_url_type(link_url)
         if link_type in settings.skip_types:
@@ -32,12 +39,22 @@ def process_markdown_links(content, webfile_pth, raw2web_mapping, web2raw_mappin
 
         link_url_abs = (Path(webfile_pth).parent / link_url).resolve()
 
-        # 如果是 HTML 链接，并且指向了正确的文件，我们要在前面加个 ../
-        # 这是 Mkdocs 的特性，渲染 HTML 是从当前文件（而不是所在目录）开始计算的
-        if link_url_abs.exists() and not os.path.isabs(link_url) and is_html:
-            new_link_url = '../' + link_url
-            result.append((url_start, url_end, new_link_url, link_url))
-            continue
+        # 如果是 HTML 链接，Mkdocs 的特性，渲染 HTML 是从当前文件（而不是所在目录）开始计算的
+        if is_html:
+            # 如果链接指向的文件存在，在前面加个 ../
+            if link_url_abs.exists() and not os.path.isabs(link_url):
+                new_link_url = '../' + link_url
+                result.append((url_start, url_end, new_link_url, link_url))
+                continue
+
+            # 在前面减去 ../ 看看是否能访问到，能访问到说明是对的，是直接跳过就行
+            temp_link_url = os.path.join(os.path.dirname(webfile_pth), link_url[3:])
+            if os.path.exists(temp_link_url):
+                continue
+
+            # 如果 HTML 中是 /xx/yy.js 这种，也是忽略
+            if link_url.startswith('/') and link_type == 'code':
+                continue
 
         # 检查链接是否失效：如果是绝对路径，或者文件不存在，那么就说明链接失效
         if os.path.isabs(link_url) or not link_url_abs.exists():
@@ -265,8 +282,8 @@ def process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping):
 
 # 用于记录文件路径的转换
 import pickle
-import configParser
-config_parser = configParser.ConfigParser()
+import config_parser
+config_parser = config_parser.ConfigParser()
 file_cache = config_parser.file_cache
 
 raw2web_mapping = {k: v[1] for k, v in file_cache.items()}

@@ -16,7 +16,8 @@ import yaml
 
 import utils
 import settings
-from configParser import ConfigParser
+from config_parser import ConfigParser
+from ignore_parser import IgnoreParser
 
 if __name__ == '__main__':
     srcdir = utils.abspath(settings.srcdir)
@@ -30,15 +31,17 @@ if __name__ == '__main__':
     raw_specials = yaml.load(open(os.path.join(settings.config_dir, 'special.yml'), 'r', encoding='utf8'), Loader=yaml.FullLoader)
     specials = {}
     if raw_specials:  # 处理 YAML 文件为空或只有注释的情况
-        for rel_src, rel_py in raw_specials.items():
+        for rel_src, [rel_py, is_skip] in raw_specials.items():
             abs_src = utils.abspath(os.path.join(srcdir, rel_src))
             abs_py = utils.abspath(os.path.join('.', rel_py))
-            specials[abs_src] = {'py': abs_py, 'dsts': None}
+            specials[abs_src] = {'py': abs_py, 'dsts': None, 'is_skip': is_skip}
 
     assert all([os.path.exists(k) for k in specials.keys()])
-    assert all([os.path.exists(v['py']) for v in specials.values()])
 
     configs = ConfigParser()
+    
+    # 初始化忽略规则解析器
+    ignore_parser = IgnoreParser(srcdir)
 
     # dirnames 表示待处理的文件/文件夹
     todos = collections.deque([])
@@ -57,7 +60,7 @@ if __name__ == '__main__':
         f.write(utils.get_topinfo(comments=True, hide=['navigation']) + '\n')
         with open(srcpth, 'r', encoding='utf8') as srcf:
             f.write(srcf.read())
-    configs.update_cache(srcpth, dstpth, os.stat(srcpth).st_mtime)
+    configs.update_cache(srcpth, dstpth)
 
     # 需要处理的链接文件
     link_files = []
@@ -67,6 +70,13 @@ if __name__ == '__main__':
 
     while len(todos):
         nowsrc, nowdst = todos.popleft()
+
+        # 特殊文件
+        if nowsrc in specials:
+            print(f'special: {nowsrc} -> {nowdst}')
+            specials[nowsrc]['dsts'] = utils.abspath(nowdst)
+            if specials[nowsrc]['is_skip']:
+                continue
 
         if os.path.isdir(nowsrc):
             is_special_dir = False
@@ -94,37 +104,22 @@ if __name__ == '__main__':
 
             # 如果是文件夹，那么先获取当前文件夹的子文件夹或者子文件，根据情况添加到 todos 中
             now_subdirs, now_subfiles = [], []
+            file_count = 0
             for nowname in os.listdir(nowsrc):
-                # 如果里面有 '#不上传'，那么就跳过
-                if '#不上传' in nowname:
-                    srcfpath = utils.abspath(os.path.join(nowsrc, nowname))
-                    nowname = nowname[0:nowname.find('#不上传')]
-                    dstfpath = utils.abspath(os.path.join(nowdst, f'{nowname}.md'))
-                    with open(dstfpath, 'w', encoding='utf8') as f:
-                        f.writelines(f'# {nowname}\n')
-                        f.writelines('本文件涉及隐私，不上传，谢谢\n')
-                    configs.update_cache(srcfpath, dstfpath, os.stat(srcfpath).st_mtime)
+                newsrc = utils.abspath(os.path.join(nowsrc, nowname))
+                
+                # 检查是否应该忽略（使用 .ignore 规则）
+                if ignore_parser.should_ignore(newsrc):
                     continue
-
-                # 如果是 zip 文件，就说明这是 zip 文件
-                if nowname.endswith('zip'):
-                    srcfpath = utils.abspath(os.path.join(nowsrc, nowname))
-                    nowname = nowname[0:nowname.find('.zip')]
-                    dstfpath = utils.abspath(os.path.join(nowdst, f'{nowname}.md'))
-                    with open(dstfpath, 'w', encoding='utf8') as f:
-                        f.writelines(f'# {nowname}\n')
-                        f.writelines('源文件为 ZIP 文件，不上传\n')
-                    configs.update_cache(srcfpath, dstfpath, os.stat(srcfpath).st_mtime)
-                    continue
+                
+                if os.path.isfile(newsrc):
+                    file_count += 1
+                    # TODO: 如果文件过多，就不处理
+                    if file_count > 20:
+                        continue
 
                 # 如果是单独处理的文件夹，跳过去
                 newdst = utils.abspath(os.path.join(nowdst, nowname))
-                newsrc = utils.abspath(os.path.join(nowsrc, nowname))
-                if newsrc in specials:
-                    print(f'special: {newsrc} -> {newdst}')
-                    specials[newsrc]['dsts'] = utils.abspath(newdst)
-                    continue
-
                 todos.append((newsrc, newdst))
                 continue
 
@@ -147,11 +142,13 @@ if __name__ == '__main__':
             临时 Debug 区域
             '''
             # 先根据时间，判断要不要更改；如果没修改，那么就按照原来的搞；否则就继续处理
-            # if (not nowname.endswith('md')) and (not nowname.endswith('mp4')):
+            if (not nowname.endswith('md')) and (not nowname.endswith('mp4')):
             # if True:
             # if (file_type == 'html') or (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
             # if (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
-            if (file_type == 'word') or (file_type == 'image'):
+            # if (file_type == 'word') or (file_type == 'image'):
+            # if (file_type != 'video' and file_type != 'text'):
+            # if (file_type != 'word'):
                 if not configs.is_need_update(nowsrc):
                     configs.update_cache_byold(nowsrc)
                     continue
@@ -163,15 +160,20 @@ if __name__ == '__main__':
             # 统一不去后缀了，避免重名
             # newname = transform_name.remove_suffix(nowname) 
             newname = transform_name.beautify_name(newname)
+            web_file_abs = None
+
+            # 如果文件名包含“不上传”，则不处理
+            if '不上传' in nowname:
+                web_file_abs = transform_file.do_secret_file(nowsrc_dir, nowdst_dir, nowname, newname)
 
             # 检查文件是否超过大小，如果超过，则直接转成说明的文件
             file_size = os.path.getsize(nowsrc)
             if file_size > settings.MAX_FILE_SIZE:
                 web_file_abs = transform_file.do_file_too_large(nowsrc_dir, nowdst_dir, nowname, newname, file_type)
                 big_files.write(f'{nowsrc}\n')
-            else:
-                web_file_abs = None
+
                 
+            print(f'Processing file: {nowsrc}')
             if web_file_abs is None:
                 # 正常处理文件
                 if nowname.endswith('md'):
@@ -192,6 +194,8 @@ if __name__ == '__main__':
                     web_file_abs = transform_file.do_ppt(nowsrc_dir, nowdst_dir, nowname, newname)
                 if file_type == 'video':
                     web_file_abs = transform_file.do_video(nowsrc_dir, nowdst_dir, nowname, newname)
+                if file_type == 'code':
+                    web_file_abs = transform_file.do_code(nowsrc_dir, nowdst_dir, nowname, newname)
                 if nowname == '.pages':
                     # 如果是 .pages 文件，如果有以后会用到，需要复制过去
                     utils.copy(nowsrc, nowdst)
@@ -210,7 +214,7 @@ if __name__ == '__main__':
     # 更新 cache
     for raw_file_abs, web_file_abs in changed_files:
         # print(f'Raw: {raw_file_abs}; Web: {web_file_abs}')
-        configs.update_cache(raw_file_abs, web_file_abs, os.stat(raw_file_abs).st_mtime)
+        configs.update_cache(raw_file_abs, web_file_abs)
 
     # 处理 link 文件，格式: [链接文件原始路径，应该生成的文件所在目录]
     for link_src_path, link_dst_dir in link_files:
@@ -227,27 +231,27 @@ if __name__ == '__main__':
             print('----------更新链接文件----------')
             print(f'原始链接文件: {link_src_path}, 原始文件: {source_raw_path}')
             print(f'复制链接文件: {source_web_path} -> {link_web_path}')
-            configs.update_cache(link_src_path, link_web_path, os.stat(link_src_path).st_mtime)
+            configs.update_cache(link_src_path, link_web_path)
         else:
             configs.update_cache_byold(link_src_path)
 
 
     # 处理 Special 文件
-    import importlib.util
+    import importlib
     for nowsrc, info in specials.items():
         pyfile = info['py']
-        dst = info['dsts']
-        if not dst:
-            print(f'warning: special {nowsrc} 未匹配到目标目录，跳过')
-            continue
+        nowdst = info['dsts']
 
         name = os.path.basename(pyfile)[:-3]
         module = importlib.import_module(f"{name}")
         if not hasattr(module, "run"):
             raise AttributeError(f"{name}.py does not have a 'run' function")
 
-        # print(f'RUN {pyfile}, nowsrc={nowsrc}, nowdst={dst}')
-        module.run(nowsrc, dst, configs)
+        module.run(nowsrc, nowdst, configs)
+        # def process_special(src, dst):
+        #     print(f'{src} 需要更新.... {dst}')
+        #     module.run(src, dst, configs)
+        # configs.process_if_needed(nowsrc, nowdst, process_special)
 
     '''
     处理缓存文件

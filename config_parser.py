@@ -40,8 +40,8 @@ class ConfigParser:
         if self.file_cache_dpath.exists():
             self.file_cache = pickle.load(open(self.file_cache_dpath, 'rb'))
 
-    def update_cache(self, srcpath, dstpath, time):
-        self.new_file_cache[srcpath] = (time, dstpath)
+    def update_cache(self, srcpath, dstpath):
+        self.new_file_cache[srcpath] = (self.get_mtime(srcpath), dstpath)
 
     def update_cache_byold(self, srcpath):
         self.new_file_cache[srcpath] = self.file_cache[srcpath]
@@ -126,7 +126,7 @@ class ConfigParser:
         """
         if self.is_need_update(srcpath, dstpath):
             processor(srcpath, dstpath)
-            self.update_cache(srcpath, dstpath, self.get_mtime(srcpath))
+            self.update_cache(srcpath, dstpath)
             return True
         else:
             self.update_cache_byold(srcpath)

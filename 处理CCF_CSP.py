@@ -3,16 +3,13 @@ import os
 from pathlib import Path
 import shutil
 
-import configParser
-
 def run(srcdir, dstdir, configs):
     os.makedirs(dstdir, exist_ok=True)
 
     # 1. 复制 README.md
     readme_src_path = f'{srcdir}/README.md'
     readme_dst_path = f'{dstdir}/README.md'
-    configs.process_if_needed(readme_src_path, readme_dst_path, 
-                              lambda src, dst: shutil.copy2(src, dst))
+    configs.process_if_needed(readme_src_path, readme_dst_path, shutil.copy2)
 
     # 2. 遍历子目录
     # subdirs = [x for x in os.listdir(srcdir) if x.isdigit()]
@@ -32,8 +29,7 @@ def run(srcdir, dstdir, configs):
         if len(mdfiles) == 1:
             new_src = f'{nowsrc}/{mdfiles[0]}'
             new_dst = f'{nowdst}/index.md'
-            configs.process_if_needed(new_src, new_dst, 
-                                      lambda src, dst: shutil.copy2(src, dst))
+            configs.process_if_needed(new_src, new_dst, shutil.copy2)
 
         # 2. 找到 cpp 文件，然后转成 md 文件
         for suffix in ['cpp', 'h', 'py']:
@@ -53,7 +49,6 @@ def run(srcdir, dstdir, configs):
                         f.write(f'```{suffix}\n')
                         f.write(content)
                         f.write('```\n')
-                
                 configs.process_if_needed(new_src, new_dst, process_code_file)
 
     return True

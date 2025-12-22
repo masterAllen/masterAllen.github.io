@@ -196,7 +196,7 @@ def relpath(pth1, pth2):
     return result
 
 # 匹配 Markdown 链接格式 [text](url)
-def extract_links(content):
+def extract_links(content, exclude={}):
     """
     提取内容中的所有链接
     参数:
@@ -280,7 +280,13 @@ def extract_links(content):
         
         matches.append((url_start, url_end, url, True))
 
-    return matches
+    new_matches = []
+    for match in matches:
+        link_type = check_url_type(match[2])
+        if link_type not in exclude:
+            new_matches.append(match)
+
+    return new_matches
 
 # 分析链接文件的类型
 def check_url_type(url):
@@ -303,6 +309,13 @@ def check_url_type(url):
 
     # 是否是图片
     suffix = os.path.splitext(url)[1].lower()
+
+    code_extensions = {
+        '.py', '.cpp', '.h', '.hpp', '.c', '.js'
+    }
+    if suffix in code_extensions:
+        return 'code'
+
     image_extensions = {
         '.jpg', '.jpeg', '.png', '.gif', 
         '.bmp', '.webp', '.svg', '.webp'

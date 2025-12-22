@@ -4,7 +4,8 @@
 # config_dir = r'D:\Blog\test\web\configs'
 
 srcdir = r'D:\Blog\done'
-dstdir = r'D:\Blog\masterAllen.github.io'
+# dstdir = r'D:\Blog\masterAllen.github.io'
+dstdir = r'D:\BlogSite\masterAllen.github.io'
 
 import os
 docsdir = os.path.join(dstdir, 'docs')
@@ -16,11 +17,10 @@ overrides_dir = os.path.join('.', 'overrides')
 
 special_dirs = [
     '材料',
-    'reference',
     'papers',
-    'src',
-    'code',
     'asset',
 ]
 
 skip_types = {'web', 'base64', 'unknown'}
+
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB

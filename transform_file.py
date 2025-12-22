@@ -3,12 +3,25 @@ import re
 import time
 import shutil
 import docx2pdf
-from win32com.client import Dispatch
+from win32com.client import Dispatch, DispatchEx
 import pypdfium2 as pdfium
 import numpy as np
 import utils
 import transform_name
 from PIL import Image
+
+def do_secret_file(srcdir, dstdir, nowname, newname):
+    srcpth = os.path.join(srcdir, nowname)
+    dstpth = os.path.join(dstdir, f'{newname}.md')
+    title = transform_name.remove_suffix(newname)
+    with open(dstpth, 'w', encoding='utf-8') as f:
+        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.writelines(f'# {title}\n')
+        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(f'\n')
+        f.writelines(f'**⚠️ 此文件为保密文件，不上传。**\n')
+        f.writelines(f'\n')
+    return dstpth
 
 def do_file_too_large(srcdir, dstdir, nowname, newname, file_type):
     """
@@ -57,8 +70,8 @@ def do_file_too_large(srcdir, dstdir, nowname, newname, file_type):
 
 def do_md(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
-    dstpth = os.path.join(dstdir, f'{newname}.md')
     title = transform_name.remove_suffix(newname)
+    dstpth = os.path.join(dstdir, f'{title}.md')
 
     with open(dstpth, 'w', encoding='utf8') as f:
         f.write(utils.get_topinfo(comments=True) + '\n')
@@ -200,13 +213,20 @@ def do_word(srcdir, dstdir, nowname, newname):
     pdf_absdir = utils.asset_link(srcpth, 'pdf')
     pdf_reldir = utils.relpath(pdf_absdir, dstpth)
     pdf_absfile = os.path.join(pdf_absdir, f'{newname}.pdf')
-    for tidx in range(3):
-        time.sleep(tidx)
-        try:
-            docx2pdf.convert(srcpth, pdf_absfile)
-            break
-        except:
-            pass
+
+    word = DispatchEx("Word.Application")
+    word.Visible = False
+
+    doc_path = os.path.abspath(srcpth)
+    pdf_path = os.path.abspath(pdf_absfile)
+
+    doc = word.Documents.Open(doc_path)
+    doc.ExportAsFixedFormat(
+        OutputFileName=pdf_path,
+        ExportFormat=17  # wdExportFormatPDF
+    )
+    doc.Close(False)
+    word.Quit()
 
     # PDF 再转为图片
     pdf = pdfium.PdfDocument(pdf_absfile)
@@ -285,13 +305,17 @@ def do_txt(srcdir, dstdir, nowname, newname):
     dstpth  = os.path.join(dstdir, f'{newname}.md')
     title = transform_name.remove_suffix(newname)
 
+    with open(srcpth, 'r', encoding='utf-8') as srcf:
+        content = srcf.readlines()
+
+    if len(content) == 0:
+        return None
+
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
         f.write(utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
         f.writelines(utils.get_filelink(srcpth) + '\n')
-        with open(srcpth, 'r', encoding='utf-8') as srcf:
-            content = srcf.readlines()
 
         # 查看是否应该是 markdown 文件
         flag = False
@@ -314,7 +338,8 @@ def do_txt(srcdir, dstdir, nowname, newname):
                 f.writelines('`````')
             except:
                 print(f"处理 TXT 文件错误，原始文件路径: {srcpth}，content 长度: {len(content)}")
-                raise Exception(f"处理 TXT 文件错误，原始文件路径: {srcpth}，content 长度: {len(content)}")
+                return None
+                # raise Exception(f"处理 TXT 文件错误，原始文件路径: {srcpth}，content 长度: {len(content)}")
 
     return dstpth
 
@@ -357,5 +382,42 @@ def do_video(srcdir, dstdir, nowname, newname):
         # f.writelines(f'    因此这里增加一个注释，便于后续处理: [WhatCanISay]({asset_reldir}/{nowname})\n')
         # f.writelines('-->\n')
 
+
+    return dstpth
+
+
+def do_code(srcdir, dstdir, nowname, newname):
+    srcpth = os.path.join(srcdir, nowname)
+    dstpth  = os.path.join(dstdir, f'{newname}.md')
+    title = transform_name.remove_suffix(newname)
+
+    suffix = os.path.splitext(nowname)[1].lower()
+
+    # 写入文件
+    with open(dstpth, 'w', encoding='utf-8') as f:
+        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.writelines(f'# {title}\n')
+        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(f'原始文件为 {suffix} 代码，本文是转换后的 Markdown 文件。\n\n')
+        f.writelines(f'```{suffix}\n')
+        with open(srcpth, 'r', encoding='utf-8') as srcf:
+            content = srcf.readlines()
+            f.writelines(content)
+        f.writelines(f'```\n')
+
+    return dstpth
+
+
+def do_unknown(srcdir, dstdir, nowname, newname):
+    srcpth = os.path.join(srcdir, nowname)
+    dstpth = os.path.join(dstdir, f'{newname}.md')
+    title = transform_name.remove_suffix(newname)
+
+    # 写入文件
+    with open(dstpth, 'w', encoding='utf-8') as f:
+        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.writelines(f'# {title}\n')
+        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(f'原始文件为 {srcpth}，未知文件类型。\n\n')
 
     return dstpth

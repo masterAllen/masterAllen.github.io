@@ -13,7 +13,7 @@ import shutil
 import utils
 import settings
 
-from configParser import ConfigParser
+from config_parser import ConfigParser
 
 
 configs = ConfigParser()
