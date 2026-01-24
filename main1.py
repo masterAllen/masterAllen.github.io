@@ -39,8 +39,12 @@ if __name__ == '__main__':
     assert all([os.path.exists(k) for k in specials.keys()])
 
     configs = ConfigParser()
-    
+
     # 初始化忽略规则解析器
+    # 如果首页有 gitignore 文件，那么先删除这个文件
+    if os.path.exists(os.path.join(srcdir, '.gitignore')):
+        os.remove(os.path.join(srcdir, '.gitignore'))
+
     ignore_parser = IgnoreParser(srcdir)
 
     # dirnames 表示待处理的文件/文件夹
@@ -107,7 +111,7 @@ if __name__ == '__main__':
             file_count = 0
             for nowname in os.listdir(nowsrc):
                 newsrc = utils.abspath(os.path.join(nowsrc, nowname))
-                
+
                 # 检查是否应该忽略（使用 .ignore 规则）
                 if ignore_parser.should_ignore(newsrc):
                     continue
@@ -115,10 +119,9 @@ if __name__ == '__main__':
                 if os.path.isfile(newsrc):
                     file_count += 1
                     # TODO: 如果文件过多，就不处理
-                    if file_count > 20:
+                    if file_count > 100:
                         continue
 
-                # 如果是单独处理的文件夹，跳过去
                 newdst = utils.abspath(os.path.join(nowdst, nowname))
                 todos.append((newsrc, newdst))
                 continue
@@ -126,10 +129,19 @@ if __name__ == '__main__':
         if os.path.isfile(nowsrc):
             nowname = os.path.basename(nowsrc)
 
-            if nowname.startswith('~'):
+            # 如果是 .pages 文件，如果有以后会用到，需要复制过去
+            if nowname == '.pages':
+                utils.copy(nowsrc, nowdst)
+                configs.update_pages_cache(nowsrc, nowdst)
+                continue
+
+            if nowname.startswith('~') or nowname.startswith('_') or nowname.startswith('.'):
                 continue
 
             file_type = utils.check_url_type(nowname)
+
+            if file_type == 'unknown':
+                continue
 
             '''
             特殊文件
@@ -142,16 +154,22 @@ if __name__ == '__main__':
             临时 Debug 区域
             '''
             # 先根据时间，判断要不要更改；如果没修改，那么就按照原来的搞；否则就继续处理
-            if (not nowname.endswith('md')) and (not nowname.endswith('mp4')):
+            # if (not nowname.endswith('md')) and (not nowname.endswith('mp4')):
             # if True:
             # if (file_type == 'html') or (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
             # if (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
-            # if (file_type == 'word') or (file_type == 'image'):
+            # if (file_type == 'word') or (file_type == 'ppt'):
             # if (file_type != 'video' and file_type != 'text'):
-            # if (file_type != 'word'):
+            # if (file_type == 'ppt' or file_type == 'word'):
+            # if (file_type == 'ppt'):
+            if (file_type != 'text'):
                 if not configs.is_need_update(nowsrc):
                     configs.update_cache_byold(nowsrc)
                     continue
+
+            if file_type == 'video':
+                big_files.write(f'video: {nowsrc}\n')
+                big_files.write(f'size: {os.path.getsize(nowsrc)}\n')
 
             # TODO: 这里需要修改地更好
             nowsrc_dir, nowdst_dir = os.path.dirname(nowsrc), os.path.dirname(nowdst)
@@ -172,7 +190,6 @@ if __name__ == '__main__':
                 web_file_abs = transform_file.do_file_too_large(nowsrc_dir, nowdst_dir, nowname, newname, file_type)
                 big_files.write(f'{nowsrc}\n')
 
-                
             print(f'Processing file: {nowsrc}')
             if web_file_abs is None:
                 # 正常处理文件
@@ -196,10 +213,6 @@ if __name__ == '__main__':
                     web_file_abs = transform_file.do_video(nowsrc_dir, nowdst_dir, nowname, newname)
                 if file_type == 'code':
                     web_file_abs = transform_file.do_code(nowsrc_dir, nowdst_dir, nowname, newname)
-                if nowname == '.pages':
-                    # 如果是 .pages 文件，如果有以后会用到，需要复制过去
-                    utils.copy(nowsrc, nowdst)
-                    web_file_abs = nowdst
 
             # 生成结果后，保存到 cache 中
             if web_file_abs is not None:

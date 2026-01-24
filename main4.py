@@ -1,108 +1,151 @@
 '''
-完成之后，对目录进行一些处理：
-1. 删除不再 configs 中的文件
-2. 删除空目录
-3. 删除 asset 中不需要的资源
-3. 把前端相关文件（javascripts、stylesheets、partials）复制到对应的目录
-4. 统计 asset 目录下的各个子目录容量大小
+生成侧边栏的索引
 '''
-
 import os
-import shutil
+os.chdir(os.path.dirname(__file__))
 
+import re
+import yaml
+import shutil
 import utils
+import parse_navbar
+import transform_name
 import settings
 
-from config_parser import ConfigParser
+def traverse_dir(rootdir, nowdir):
+    result = {}
 
+    # 先处理文件
+    md_names = {x for x in os.listdir(nowdir) if x.endswith('.md')}
 
-configs = ConfigParser()
+    # 先找有没有 index
+    result['readme'] = None
+    old_md_names = md_names.copy()
+    for md_name in old_md_names:
+        if md_name.lower().startswith('index.md'):
+            result['readme'] = utils.relpath(os.path.join(nowdir, md_name), rootdir)
+            md_names.remove(md_name)
 
-srcdir = utils.abspath(settings.srcdir)
-docsdir = utils.abspath(settings.docsdir)
+    # 如果有 .pages 文件，按照 .pages 文件的规则排序
+    rules = parse_navbar.parse_rules(os.path.join(nowdir, '.pages'))
 
-# 删除不在 configs 中的文件
-generated_files = set()
-for file in configs.file_cache:
-    generated_files.add(utils.abspath(configs.file_cache[file][1]))
+    # 获取文件标题
+    md_titles = {}
+    for md_name in md_names:
+        # 获取文件标题
+        title1 = utils.get_md_title(os.path.join(nowdir, md_name))
 
-# 有些文件夹不进行检查...
-notcheck_dirnames = ['asset', 'javascripts', 'stylesheets']
-notcheck_dirpaths = [utils.abspath(os.path.join(docsdir, dirname)) for dirname in notcheck_dirnames]
+        # 获取文件名，转换后的都是 xx.png.md 这种格式，需要去掉两次后缀
+        title2 = md_name
+        title2 = transform_name.remove_suffix(title2)
+        if utils.check_url_type(title2) == 'unknown':
+            title2 = title2 + '.md'
+        title2 = transform_name.beautify_name(title2)
 
-for root, dirs, files in os.walk(docsdir):
-    for file in files:
-        file_path = utils.abspath(os.path.join(root, file))
+        title = title1 if title1 is not None else title2
+        for re_str in rules['title']:
+            if re_str == '*' or re.match(re_str, md_name) is not None:
+                title = title2
+                break
+        md_titles[md_name] = title
 
-        # 检查是否在 asset_dir 中
-        if any(os.path.commonpath([file_path, dirpath]) == dirpath for dirpath in notcheck_dirpaths):
-            # print(f'跳过文件: {file_path}')
+    # 检测标题冲突：统计每个标题出现的次数
+    from collections import Counter
+    title_counts = Counter(md_titles.values())
+    
+    # 对于出现多次的标题，给所有相关文件添加扩展名后缀
+    duplicate_titles = {title for title, count in title_counts.items() if count > 1}
+    if duplicate_titles:
+        for md_name in list(md_titles.keys()):
+            if md_titles[md_name] in duplicate_titles:
+                # 提取原始文件的扩展名（去掉 .md 后的扩展名）
+                base_name = transform_name.remove_suffix(md_name)
+                ext = os.path.splitext(base_name)[1]
+                md_titles[md_name] = f"{md_titles[md_name]}{ext}"
+
+    # 先把 .pages 文件中规定的顺序的文件放进去
+    ordered_files = {}
+    for name in rules['order']:
+        if name in md_titles:
+            ordered_files[md_titles[name]] = utils.relpath(os.path.join(nowdir, name), rootdir)
+            del md_titles[name]
+
+    # 再把剩下的文件按标题排序
+    md_titles = sorted(md_titles.items(), key=lambda x: x[0])
+    for name, title in md_titles:
+        ordered_files[title] = utils.relpath(os.path.join(nowdir, name), rootdir)
+    result['mdfiles'] = ordered_files
+
+    # 再处理文件夹
+    subdirs = {x for x in os.listdir(nowdir) if os.path.isdir(os.path.join(nowdir, x))}
+
+    # 还是一样，要排序
+    ordered_subdirs = []
+    for name in rules['order']:
+        if name in subdirs:
+            ordered_subdirs.append(name)
+            subdirs.remove(name)
+    subdirs = sorted(subdirs, key=lambda x: x.lower())
+    ordered_subdirs.extend(subdirs)
+
+    # 如果 references 在 ordered_subdirs 中，那么把他放在最后
+    for name in ordered_subdirs:
+        if name.lower() == 'reference':
+            ordered_subdirs.remove(name)
+            ordered_subdirs.append(name)
+            break
+
+    # 统计数量
+    num = len(result['mdfiles']) + (result['readme'] is not None)
+
+    # 按照顺序去处理子文件夹
+    for subdir in ordered_subdirs:
+        sub_result, sub_num = traverse_dir(rootdir, os.path.join(nowdir, subdir))
+        num += sub_num
+        if sub_num > 0:
+            result[subdir] = sub_result
+
+    return result, num
+
+def print_one(rules, depth=1):
+    result = ''
+    if rules['readme'] is not None:
+        result += ' ' * 4 * depth
+        result += f'- {rules["readme"].replace('\\', '/')}\n'
+
+    for key, value in rules['mdfiles'].items():
+        result += ' ' * 4 * depth
+        result += f'- "{key}": {value.replace('\\', '/')}\n'
+
+    for key, value in rules.items():
+        if key == 'readme' or key == 'mdfiles':
             continue
+        result += ' ' * 4 * depth
+        result += f'- "{key}":\n'
+        result += print_one(value, depth + 1)
+    return result
 
-        if file_path not in generated_files:
-            print(f'删除不在 configs 中的文件: {file_path}')
-            os.remove(file_path)
+# 主程序
+website_dir = settings.docsdir
 
-# 删除资源目录，先遍历各个目录文件，提取出资源链接
-asset_files = set()
-for root, dirs, files in os.walk(settings.docsdir):
-    for file in files:
-        if file.endswith('.md'):
-            webfile_pth = utils.abspath(os.path.join(root, file))
-            with open(webfile_pth, 'r', encoding='utf-8') as f:
-                content = f.read()
+result = {'readme': None, 'mdfiles': {}}
 
-            matches = utils.extract_links(content)
-            for url_start, url_end, link_url, is_html in matches:
-                # 如果是 HTML 链接，那么去除前面的 ../ 才是真正的路径
-                if is_html:
-                    link_url = link_url[3:]
-                asset_abs = utils.abspath(os.path.join(os.path.dirname(webfile_pth), link_url))
-                asset_files.add(asset_abs)
-
-# 遍历 asset，检查是否有文件不在 asset_files 中
-for root, dirs, files in os.walk(settings.assetdir):
-    for file in files:
-        asset_file = utils.abspath(os.path.join(root, file))
-        if asset_file not in asset_files:
-            print(f'删除不在 asset_files 中的文件: {asset_file}')
-            os.remove(asset_file)
+# 遍历程序
+topdir_info = yaml.load(open(os.path.join(settings.config_dir, 'topdir.yml'), 'r', encoding='utf8'), Loader=yaml.FullLoader)
+topdir_dirs = topdir_info['dirs']
+for dirname in topdir_dirs:
+    if os.path.exists(os.path.join(website_dir, dirname)):
+        now_result, num = traverse_dir(website_dir, os.path.join(website_dir, dirname))
+        result[dirname] = now_result
 
 
-# 遍历目标目录，删除空目录
-for root, dirs, files in os.walk(docsdir):
-    for dir in dirs:
-        if len(os.listdir(os.path.join(root, dir))) == 0:
-            os.rmdir(os.path.join(root, dir))
+with open(os.path.join(settings.dstdir, 'mkdocs.yml'), 'r', encoding='utf8') as f:
+    lines = f.readlines()
 
-
-# 把 overrides 中的 javascripts 和 stylesheets 文件夹内容复制到 docs 目录
-overrides_dir = settings.overrides_dir
-for subdir in ['javascripts', 'stylesheets']:
-    src_subdir = os.path.join(overrides_dir, subdir)
-    dst_subdir = os.path.join(settings.docsdir, subdir)
-    os.makedirs(dst_subdir, exist_ok=True)
-    utils.copy(src_subdir, dst_subdir)
-
-# 把 overrides 中的 partials 文件夹内容复制到 partials 目录
-# UPDATE: 这个就是用于评论的，offline 不需要
-src_subdir = os.path.join(overrides_dir, 'partials')
-if os.path.exists(src_subdir):
-    dst_subdir = os.path.join(settings.dstdir, 'overrides', 'partials')
-    os.makedirs(dst_subdir, exist_ok=True)
-    utils.copy(src_subdir, dst_subdir)
-
-# 统计 asset 目录下的各个子目录容量大小
-asset_dir = settings.assetdir
-if os.path.exists(asset_dir):
-    print("asset 目录各子目录容量(MB):")
-    for subdir in os.listdir(asset_dir):
-        subdir_path = os.path.join(asset_dir, subdir)
-        if os.path.isdir(subdir_path):
-            total_size = 0
-            for dirpath, dirnames, filenames in os.walk(subdir_path):
-                for fname in filenames:
-                    fpath = os.path.join(dirpath, fname)
-                    if os.path.isfile(fpath):
-                        total_size += os.path.getsize(fpath)
-            print(f"{subdir}: {total_size / (1024*1024):.2f} MB")
+with open(os.path.join(settings.dstdir, 'mkdocs.yml'), 'w', encoding='utf8') as f:
+    for line in lines:
+        if 'nav:' in line:
+            break
+        f.write(line)
+    f.write('nav:\n')
+    f.write(print_one(result, 1))

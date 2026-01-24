@@ -1,8 +1,4 @@
 import os
-import re
-import time
-import shutil
-import docx2pdf
 from win32com.client import Dispatch, DispatchEx
 import pypdfium2 as pdfium
 import numpy as np
@@ -17,8 +13,6 @@ def do_secret_file(srcdir, dstdir, nowname, newname):
     with open(dstpth, 'w', encoding='utf-8') as f:
         f.write(utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
-        f.writelines(f'\n')
         f.writelines(f'**⚠️ 此文件为保密文件，不上传。**\n')
         f.writelines(f'\n')
     return dstpth
@@ -360,11 +354,6 @@ def do_video(srcdir, dstdir, nowname, newname):
     dstpth  = os.path.join(dstdir, f'{newname}.md')
     title = transform_name.remove_suffix(newname)
 
-    # 获取 asset 的相对路径
-    asset_absdir = utils.asset_link(srcpth, 'video')
-    asset_reldir = utils.relpath(asset_absdir, dstpth)
-    utils.copy(srcpth, os.path.join(asset_absdir, nowname))
-
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
         f.write(utils.get_topinfo(comments=True) + '\n')
@@ -372,18 +361,40 @@ def do_video(srcdir, dstdir, nowname, newname):
         f.writelines(utils.get_filelink(srcpth) + '\n')
 
         f.writelines('\n')
-        f.writelines('<video controls>\n')
-        f.writelines(f'<source src="{asset_reldir}/{nowname}" type="video/mp4">\n')
-        f.writelines('</video>\n')
-
-        # f.writelines('<!--\n') 
-        # f.writelines('    在 Mkdocs 中，HTML 和 Markdown 解析路径方式不一样，HTML 是从文件本身开始，而 Markdown 则要从当前目录开始。\n')
-        # f.writelines('    Python 的解析和 HTML 是一样的，由于这种不一致性，导致后续一些对资源的处理难度和繁琐程度大大加强。\n')
-        # f.writelines(f'    因此这里增加一个注释，便于后续处理: [WhatCanISay]({asset_reldir}/{nowname})\n')
-        # f.writelines('-->\n')
-
+        f.writelines(f'视频文件，暂不上传⚠️\n')
+        f.writelines(f'\n')
 
     return dstpth
+
+# def do_video(srcdir, dstdir, nowname, newname):
+#     srcpth = os.path.join(srcdir, nowname)
+#     dstpth  = os.path.join(dstdir, f'{newname}.md')
+#     title = transform_name.remove_suffix(newname)
+
+#     # 获取 asset 的相对路径
+#     asset_absdir = utils.asset_link(srcpth, 'video')
+#     asset_reldir = utils.relpath(asset_absdir, dstpth)
+#     utils.copy(srcpth, os.path.join(asset_absdir, nowname))
+
+#     # 写入文件
+#     with open(dstpth, 'w', encoding='utf-8') as f:
+#         f.write(utils.get_topinfo(comments=True) + '\n')
+#         f.writelines(f'# {title}\n')
+#         f.writelines(utils.get_filelink(srcpth) + '\n')
+
+#         f.writelines('\n')
+#         f.writelines('<video controls>\n')
+#         f.writelines(f'<source src="{asset_reldir}/{nowname}" type="video/mp4">\n')
+#         f.writelines('</video>\n')
+
+#         # f.writelines('<!--\n') 
+#         # f.writelines('    在 Mkdocs 中，HTML 和 Markdown 解析路径方式不一样，HTML 是从文件本身开始，而 Markdown 则要从当前目录开始。\n')
+#         # f.writelines('    Python 的解析和 HTML 是一样的，由于这种不一致性，导致后续一些对资源的处理难度和繁琐程度大大加强。\n')
+#         # f.writelines(f'    因此这里增加一个注释，便于后续处理: [WhatCanISay]({asset_reldir}/{nowname})\n')
+#         # f.writelines('-->\n')
+
+
+#     return dstpth
 
 
 def do_code(srcdir, dstdir, nowname, newname):

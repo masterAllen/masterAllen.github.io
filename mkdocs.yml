@@ -1,219 +1,97 @@
 # 项目信息
 site_name: Allen Hong's Blog
-site_url: https://localhost:8000/ # 我在nginx中使用的是8000端口，如果你使用的是80端口，可以直接写成https://localhost/。
+site_url: https://masterallen.github.io
 site_author: Allen Hong
 site_description: >-
   Welcome to Allen Hong's Blog. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.
 
 # 代码仓库信息
-repo_name: masterAllen/masterAllen.github.io # 仓库名称
-repo_url: https://github.com/masterAllen/masterAllen.github.io/ # 仓库地址
+repo_name: My Github Link # 仓库名称
+repo_url: https://github.com/masterAllen # 仓库地址
 
 # 版权信息
-copyright: Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen)
+copyright: Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
 
 # 配置
 theme:
-  # custom_dir: material/overrides # 自定义文件夹，对于个别页面，如果你不想使用主题的默认样式，可以在这里进行修改，使用里面的文件覆盖主题的默认文件。具体可以参考material官方文档。
   name: material 
+  custom_dir: overrides
   # logo: static/images/logo.jpg # logo 图片
   language: en # 默认语言
-  # features: # 功能  
+  features: # 功能  
+    # - navigation.instant # 瞬间加载 - 如果这个开着，那么语言切换后就会跳转至首页，所以我关掉了
+    # - navigation.expand # 导航栏默认全部展开，这个肯定不合适
+    # - navigation.sections # 导航栏的section
+    # - navigation.tabs.sticky # tab始终可见
+    # - navigation.prune # 只构建可见的页面
+    # - navigation.top # 开启顶部导航栏
+    - navigation.tabs # 顶级索引被作为tab
+    - navigation.path  # sponsor only，但是很有用
+    - navigation.indexes # 点击 section 显示 readme，而不是 readme 是 section 下面单独一篇文章
+    - header.autohide # 下滑时会把 header 隐藏起来
+    - navigation.footer # 底部导航栏
     # - announce.dismiss # 可以叉掉公告的功能
-#     - content.action.edit # 编辑按钮，似乎没啥用
-#     - content.action.view # 查看按钮，似乎没啥用
-#     - content.code.annotate # 代码注释，具体不清楚
-#     - content.code.copy # 复制代码按钮
-#     # - content.code.select # 选择代码按钮
-#     # - content.tabs.link # 链接标签
-#     - content.tooltips # 不太清楚呢这个
-#     # - header.autohide # 自动隐藏header
-#     - navigation.expand # 默认展开导航栏
-#     - navigation.footer # 底部导航栏
-#     - navigation.indexes # 索引按钮可以直接触发文件，而不是只能点击其下属选项浏览，这个功能可以给对应的section提供很好的预览和导航功能
-#     # - navigation.instant # 瞬间加载 - 如果这个开着，那么语言切换后就会跳转至首页，所以我关掉了
-#     - navigation.instant.prefetch # 预加载
-#     - navigation.instant.progress # 进度条
-#     - navigation.path # 导航路径， 目前好像没啥用
-#     # - navigation.prune # 只构建可见的页面
-#     - navigation.sections # 导航栏的section
-#     - navigation.tabs # 顶级索引被作为tab
-#     - navigation.tabs.sticky # tab始终可见
-#     - navigation.top # 开启顶部导航栏
-#     - navigation.tracking # 导航栏跟踪
-#     - search.highlight # 搜索高亮
-#     - search.share # 搜索分享
-#     - search.suggest # 搜索建议
-#     - toc.follow # 目录跟踪-页面右侧的小目录
-#     # - toc.integrate # 目录跟踪集成到左侧大目录中
 
-#   palette:
-#     - media: "(prefers-color-scheme)" # 主题颜色
-#       scheme: slate
-#       primary: black
-#       accent: indigo
-#       toggle:
-#         icon: material/link
-#         name: Switch to light mode
-#     - media: "(prefers-color-scheme: light)" # 浅色
-#       scheme: default
-#       primary: indigo
-#       accent: indigo
-#       toggle:
-#         icon: material/toggle-switch
-#         name: Switch to dark mode
-#     - media: "(prefers-color-scheme: dark)" # 深色
-#       scheme: slate
-#       primary: black
-#       accent: indigo
-#       toggle:
-#         icon: material/toggle-switch-off
-#         name: Switch to system preference
-#   font: # 字体，大概率不需要换
-#     text: Roboto
-#     code: Roboto Mono
-#   favicon: assets/favicon.png # 网站图标 似乎不需要管
-#   icon: # 一些用到的icon
-#     logo: logo
-#     previous: fontawesome/solid/angle-left
-#     next: fontawesome/solid/angle-right
-#     tag:
-#       default-tag: fontawesome/solid/tag
-#       hardware-tag: fontawesome/solid/microchip
-#       software-tag: fontawesome/solid/laptop-code
+  palette: 
+    primary: teal
+
 
 # pip install mkdocs-open-in-new-tab
-
 # Plugins
 plugins:
-  - open-in-new-tab
-  - awesome-pages           # 导航
+  # 生成在线网站时候不要注释
+  - exclude:
+      regex:
+        # - '.*asset/\.md$'
+        # - '.*asset.*\.md$'
+
   - search
-  # - search.suggest
-  # - search.highlight
-#   - tags # 标签功能插件
-#   - blog # 博客功能插件
-#   - rss: # rss订阅插件 - 不太懂是干嘛的目前
+  - open-in-new-tab
+  - toggle-sidebar:
+      toggle_button: all
+#   - rss:
 #       match_path: blog/posts/.* 
 #       date_from_meta:
 #         as_creation: date
 #       categories:
 #         - categories
 #         - tags 
-#   # - social # 目前我开启会报错，还没研究透 
-#   - search: # 搜索插件
-#       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])' # 分隔符
-#   - minify: # 压缩插件
-#       minify_html: true
-#   # - privacy # 隐私插件
-#   - i18n: # 多语言插件
-#       docs_structure: suffix # 抄来的，不太懂
-#       fallback_to_default: true # 抄来的，不太懂
-#       reconfigure_material: true # 抄来的，不太懂
-#       reconfigure_search: true # 抄来的，不太懂
-#       languages: # 多语言配置 - 需要小心一点
-#         - locale: en
-#           default: true # 默认语言
-#           name: English
-#           build: true # 是否构建
-#           # site_name: Infinity
-#         - locale: zh
-#           name: 简体中文
-#           build: true
-#           nav_translations: # 导航栏翻译，不可以有缩进
-#             HOME: 首页
-#             ABOUT: 关于
-#             SPONSORSHIP: 赞助
-#             CS: 计算机
-#             CODING: 编程
-#             EMBEDDED-SYS: 嵌入式系统
-#             DSP: 数字信号处理
-#             PERCEPTION: 感知
-#             ACTUATION: 执行
-#             IOT: 物联网
-#             CLOUD: 云
-#             CLOUD-TECH: 云技术
-#             HANDS-ON: 上手实践
-#             Have A Server: 拥有一台服务器
-#             Server Configuration: 服务器配置
-#             Get A Domain Name: 获得一个域名
-#             AI: 人工智能
-#             RESEARCH: 研究
-#             PROJECT: 项目
-# # Hooks - 讲真，这个东西我还没搞懂
-# # hooks:
-# #   - material/overrides/hooks/shortcodes.py
-# #   - material/overrides/hooks/translations.py
-
-# # 额外配置项
-# extra:
-#   generator: false # 是否显示生成器
-#   status: # 不是很懂有什么用
-#     new: Recently added
-#     deprecated: Deprecated
-#   analytics: # 分析工具， 我反正没用到
-#     provider: google
-#     property: !ENV GOOGLE_ANALYTICS_KEY
-#     feedback: # feedback form
-#       title: Was this page helpful?
-#       ratings:
-#         - icon: material/thumb-up-outline
-#           name: This page was helpful
-#           data: 1
-#           note: >-
-#             Thanks for your feedback!
-#         - icon: material/thumb-down-outline
-#           name: This page could be improved
-#           data: 0
-#           note: >- 
-#             Thanks for your feedback! Help us improve this page by
-#             using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
-#   social: # 社交媒体
-#     - icon: fontawesome/solid/house
-#       link: http://www.cuishuaiwen.com/
-#     - icon: fontawesome/brands/github
-#       link: https://github.com/Shuaiwen-Cui
-#     - icon: fontawesome/brands/linkedin
-#       link: https://www.linkedin.com/in/shaun-shuaiwen-cui/
-#     - icon: fontawesome/brands/researchgate
-#       link: https://www.researchgate.net/profile/Shuaiwen-Cui
-#     - icon: fontawesome/brands/orcid
-#       link: https://orcid.org/0000-0003-4447-6687
-#     - icon: fontawesome/brands/twitter
-#       link: https://twitter.com/ShuaiwenC
-#   tags: # 自定义标签
-#     Default: default-tag
-#     Hardware: hardware-tag
-#     Software: software-tag
-#   # consent: # 征求同意 Cookie
-#   #   title: Cookie consent
-#   #   description: >- 
-#   #     We use cookies to recognize your repeated visits and preferences, as well
-#   #     as to measure the effectiveness of our documentation and whether users
-#   #     find what they're searching for. With your consent, you're helping us to
-#   #     make our documentation better.
 
 # 扩展
-markdown_extensions: # markdown extensions
+markdown_extensions:
   - abbr
   - nl2br
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - javascripts/copy.js
+  - javascripts/collapsible-headings.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
 
 extra:
   analytics: 
+    provider: google
+    property: G-WSXPFTNRTD
     feedback:
       title: Was this page helpful?
+      title: Was this page helpful?
       ratings:
-        - icon: material/emoticon-happy-outline
+        - icon: material/thumb-up-outline
           name: This page was helpful
           data: 1
           note: >-
-            Thanks for your feedback!
-        - icon: material/emoticon-sad-outline
+            Thanks! You can leave some advices in the comment section below. 
+        - icon: material/thumb-down-outline
           name: This page could be improved
           data: 0
           note: >- 
-            Thanks for your feedback! Help us improve this page by
-            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.

@@ -42,8 +42,8 @@ def list_files(folder, patterns=None, exclude_dirs=None, max_display_count=MAX_D
         
         # 目录全部显示，文件如果超过限制则省略
         display_dirs = dirs  # 目录全部显示
-        has_more_files = len(files) > MAX_DISPLAY_COUNT
-        display_files = files[:MAX_DISPLAY_COUNT-1] if has_more_files else files
+        has_more_files = len(files) > max_display_count
+        display_files = files[:max_display_count-1] if has_more_files else files
         
         # 合并显示列表：目录 + 文件
         display_names = display_dirs + display_files
@@ -173,7 +173,7 @@ def run(srcdir, dstdir, configs):
         # 保存目录树到文件
         tree_output_file = os.path.join(dstdir, '阅读论文目录树.md')
         with open(tree_output_file, "w", encoding="utf-8") as f:
-            f.write("# 阅读论文及记录目录树\n\n")
+            f.write("# 阅读论文目录树\n\n")
             f.write('```markdown\n')
             f.write(tree_content)
             f.write('\n```\n')

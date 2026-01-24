@@ -244,7 +244,7 @@ def replace_arrow_safely(content):
     return ''.join(parts)
 
 
-def process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping):
+def process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_replace=False):
     try:
         with open(webfile_pth, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -266,9 +266,10 @@ def process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping):
         # print(f'处理文件 {webfile_pth} 时需要替换 {len(need_replaces)} 个链接')
         
         # 按位置从后往前替换，避免位置偏移
-        need_replaces.sort(key=lambda x: x[0], reverse=True)
-        for url_start, url_end, new_link, old_link_url in need_replaces:
-            content = content[:url_start] + new_link + content[url_end:]
+        if is_replace:
+            need_replaces.sort(key=lambda x: x[0], reverse=True)
+            for url_start, url_end, new_link, old_link_url in need_replaces:
+                content = content[:url_start] + new_link + content[url_end:]
 
         # 6. 写回文件
         with open(webfile_pth, 'w', encoding='utf-8') as f:
@@ -297,6 +298,22 @@ for root, dirs, files in os.walk(settings.docsdir):
     for file in files:
         if file.endswith('.md'):
             webfile_pth = utils.abspath(os.path.join(root, file))
-            process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping)
+            process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_replace=False)
+
+# 询问是否进行替换，只有回答y才进行替换，然后就在执行上面的操作就行
+do_replace_input = input("是否进行替换？输入y进行替换，其它键跳过: ").strip().lower()
+do_replace = do_replace_input == 'y'
+if not do_replace:
+    raise Exception("跳过替换操作，主动发生异常，防止调用该任务的程序继续执行其他任务")
+
+# 再来一遍
+for root, dirs, files in os.walk(settings.docsdir):
+    if 'asset' in root or 'code' in root or 'src' in root:
+        continue
+
+    for file in files:
+        if file.endswith('.md'):
+            webfile_pth = utils.abspath(os.path.join(root, file))
+            process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_replace=True)
 
 print('所有文件处理完成！')

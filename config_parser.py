@@ -12,7 +12,7 @@ class ConfigParser:
     def __init__(self):
         self.config_dpath = config_dpath = Path(settings.config_dir)
         self.file_cache_dpath = config_dpath / 'file_info.bin'
-        # self.new_generated_file_dpath = config_dpath / 'new_generated_filepath.bin'
+        self.pages_cache_dpath = config_dpath / 'pages_info.bin'
 
         # 1. 加载 topdir.yml 文件 --> 读取哪些文件夹要处理
         topdir_info = yaml.load(open(config_dpath / 'topdir.yml', 'r', encoding='utf8'), Loader=yaml.FullLoader)
@@ -20,6 +20,9 @@ class ConfigParser:
 
         self.file_cache: Dict[Path, Tuple[float, Path]] = dict() 
         ''' file_cache 的格式：<Key = 原始文件路径, Value = (原始文件修改时间, 转换后的文件路径)> '''
+
+        self.pages_cache: Dict[Path, Path] = dict()
+        ''' pages_cache 的格式：<Key = 原始 .pages 文件路径, Value = 转换后的 .pages 文件路径> '''
 
         self.load_cache()
 
@@ -39,15 +42,23 @@ class ConfigParser:
         self.new_file_cache = dict()
         if self.file_cache_dpath.exists():
             self.file_cache = pickle.load(open(self.file_cache_dpath, 'rb'))
+        
+        self.new_pages_cache = dict()
+        if self.pages_cache_dpath.exists():
+            self.pages_cache = pickle.load(open(self.pages_cache_dpath, 'rb'))
 
     def update_cache(self, srcpath, dstpath):
+        srcpath = utils.abspath(srcpath)
+        dstpath = utils.abspath(dstpath)
         self.new_file_cache[srcpath] = (self.get_mtime(srcpath), dstpath)
 
     def update_cache_byold(self, srcpath):
+        srcpath = utils.abspath(srcpath)
         self.new_file_cache[srcpath] = self.file_cache[srcpath]
 
     def save_cache(self):
         pickle.dump(self.new_file_cache, open(self.file_cache_dpath, 'wb'))
+        pickle.dump(self.new_pages_cache, open(self.pages_cache_dpath, 'wb'))
 
     def get_web_path(self, srcpath):
         return self.new_file_cache[srcpath][1]
@@ -85,6 +96,10 @@ class ConfigParser:
         Returns:
             bool: True 表示需要更新，False 表示不需要更新
         """
+        srcpath = utils.abspath(srcpath)
+        if dstpath:
+            dstpath = utils.abspath(dstpath)
+
         # 如果不在旧缓存中，需要更新
         if srcpath not in self.file_cache:
             return True
@@ -124,6 +139,8 @@ class ConfigParser:
         Returns:
             bool: 是否需要更新（True=已更新，False=使用缓存）
         """
+        srcpath = utils.abspath(srcpath)
+        dstpath = utils.abspath(dstpath)
         if self.is_need_update(srcpath, dstpath):
             processor(srcpath, dstpath)
             self.update_cache(srcpath, dstpath)
@@ -131,3 +148,28 @@ class ConfigParser:
         else:
             self.update_cache_byold(srcpath)
             return False
+    
+    def update_pages_cache(self, srcpath, dstpath):
+        """
+        更新 .pages 文件缓存
+        
+        Args:
+            srcpath: 原始 .pages 文件路径
+            dstpath: 目标 .pages 文件路径
+        """
+        srcpath = utils.abspath(srcpath)
+        dstpath = utils.abspath(dstpath)
+        self.new_pages_cache[srcpath] = dstpath
+    
+    def get_all_pages_files(self):
+        """
+        获取所有存储的 .pages 文件路径（目标路径）
+        
+        Returns:
+            set: 所有 .pages 文件的目标路径集合
+        """
+        # 合并旧缓存和新缓存中的所有 .pages 文件
+        all_pages = set()
+        all_pages.update(self.pages_cache.values())
+        all_pages.update(self.new_pages_cache.values())
+        return all_pages
