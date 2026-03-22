@@ -9,3 +9,5 @@ configs/big_files.txt
 test.py
 architecture_analysis.md
 check.py
+pngquant/
+test.txt
