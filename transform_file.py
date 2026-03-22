@@ -17,7 +17,7 @@ def do_secret_file(srcdir, dstdir, nowname, newname):
         f.writelines(f'\n')
     return dstpth
 
-def do_file_too_large(srcdir, dstdir, nowname, newname, file_type):
+def do_file_too_large(srcdir, dstdir, nowname, newname):
     """
     处理文件过大的情况，生成一个说明文件
     
@@ -26,7 +26,6 @@ def do_file_too_large(srcdir, dstdir, nowname, newname, file_type):
         dstdir: 目标目录
         nowname: 原始文件名
         newname: 新文件名
-        file_type: 文件类型
     
     返回:
         生成的文件路径
@@ -48,6 +47,7 @@ def do_file_too_large(srcdir, dstdir, nowname, newname, file_type):
         'video': '视频文件',
         'unknown': '文件'
     }
+    file_type = utils.check_url_type(nowname)
     file_type_name = type_messages.get(file_type, '文件')
     
     # 写入文件
@@ -208,19 +208,33 @@ def do_word(srcdir, dstdir, nowname, newname):
     pdf_reldir = utils.relpath(pdf_absdir, dstpth)
     pdf_absfile = os.path.join(pdf_absdir, f'{newname}.pdf')
 
-    word = DispatchEx("Word.Application")
-    word.Visible = False
-
     doc_path = os.path.abspath(srcpth)
     pdf_path = os.path.abspath(pdf_absfile)
 
-    doc = word.Documents.Open(doc_path)
-    doc.ExportAsFixedFormat(
-        OutputFileName=pdf_path,
-        ExportFormat=17  # wdExportFormatPDF
-    )
-    doc.Close(False)
-    word.Quit()
+    word = None
+    doc = None
+    try:
+        word = DispatchEx("Word.Application")
+        word.Visible = False
+        word.DisplayAlerts = 0  # wdAlertsNone，抑制弹窗避免卡住
+        doc = word.Documents.Open(
+            doc_path,
+            ConfirmConversions=False,  # 不弹出格式转换确认框
+            ReadOnly=True,             # 只读打开，减少弹窗
+            AddToRecentFiles=False,
+            NoEncodingDialog=True,     # 不弹出编码选择框
+        )
+        doc.ExportAsFixedFormat(
+            OutputFileName=pdf_path,
+            ExportFormat=17  # wdExportFormatPDF
+        )
+        doc.Close(False)
+    finally:
+        if word is not None:
+            try:
+                word.Quit()
+            except Exception:
+                pass
 
     # PDF 再转为图片
     pdf = pdfium.PdfDocument(pdf_absfile)

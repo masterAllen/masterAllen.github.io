@@ -2,7 +2,10 @@
 import os
 os.chdir(os.path.dirname(__file__))
 
+
 import subprocess
+subprocess.run(['python', f'main3.py'], check=True)
+
 for i in range(1, 5):
     print(f'RUNNING: main{i}.py...')
     subprocess.run(['python', f'main{i}.py'], check=True)

@@ -3,7 +3,8 @@ docs
 asset/
 __pycache__
 *.bin
-mp4.txt
+configs/mp4.txt
+configs/big_files.txt
 !docs/index.md
 test.py
 architecture_analysis.md
