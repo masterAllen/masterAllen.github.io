@@ -73,6 +73,7 @@ extra_javascript:
   - javascripts/mathjax.js
   - javascripts/copy.js
   - javascripts/collapsible-headings.js
+  - javascripts/resizable-sidebar.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
@@ -83,7 +84,6 @@ extra:
     provider: google
     property: G-WSXPFTNRTD
     feedback:
-      title: Was this page helpful?
       title: Was this page helpful?
       ratings:
         - icon: material/thumb-up-outline

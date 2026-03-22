@@ -1,3 +1,194 @@
+/* ========== 布局调整 ========== */
+
+/* 侧边栏可拖拽调整宽度（由 resizable-sidebar.js 控制变量值） */
+:root {
+  --sidebar-primary-width: 10rem;
+}
+.sidebar-resize-handle {
+  display: none;
+}
+@media screen and (min-width: 76.25em) {
+  .sidebar-resize-handle {
+    display: block;
+  }
+  .md-sidebar--primary {
+    width: var(--sidebar-primary-width) !important;
+    min-width: var(--sidebar-primary-width) !important;
+    max-width: var(--sidebar-primary-width) !important;
+    position: relative;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--primary .md-sidebar__inner,
+  .md-sidebar--primary .md-nav {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--primary .md-sidebar__inner {
+    padding-right: 0.2rem;
+  }
+  /* 拖拽条样式：使用 fixed 定位，避免被侧边栏内部滚动区域遮挡 */
+  .sidebar-resize-handle {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    cursor: col-resize;
+    z-index: 9999;
+  }
+  [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+    border-right-color: rgba(255, 255, 255, 0.2);
+  }
+  .sidebar-resize-handle:hover,
+  .sidebar-resize-handle.sidebar-resize-handle--active {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* 增加内容区域宽度 */
+.md-grid {
+  max-width: 90rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+/* 左侧导航栏与内容之间的间隔 + 整个侧边栏背景色 */
+/* .md-sidebar--primary .md-sidebar__scrollwrap,
+.md-sidebar--primary .md-sidebar__inner,
+.md-sidebar--primary .md-nav,
+.md-sidebar--primary .md-nav__title,
+.md-sidebar--primary .md-nav__source,
+.md-sidebar--primary .md-nav__list {
+  background-color: #f5f7fa !important;
+} */
+
+.md-sidebar--primary {
+  margin-right: 1.5rem;
+}
+
+/* 右侧目录栏与内容之间的间隔 */
+.md-sidebar--secondary {
+  margin-left: 1.5rem;
+}
+
+/* 内容区域宽度 */
+.md-content {
+  max-width: none;
+}
+
+/* ========== 左侧导航：轻量优化（保留 Material 原有风格） ========== */
+
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  scrollbar-gutter: stable;
+}
+
+/* 导航项：圆角方块 + 悬停凸显 */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--primary .md-nav__item > label {
+  border-radius: 4px;
+  margin-right: 2px;
+  padding: 0.15rem 0.35rem;
+  transition: background 0.15s ease;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container {
+  padding: 0.15rem 0.35rem;
+}
+.md-sidebar--primary .md-nav__item:hover > .md-nav__link,
+.md-sidebar--primary .md-nav__item:hover > label,
+.md-sidebar--primary .md-nav__item:hover > .md-nav__container {
+  background: rgba(0, 0, 0, 0.06);
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item:hover > .md-nav__link,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item:hover > label,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item:hover > .md-nav__container {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* 长标题：截断 + 悬停显示完整 */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--primary .md-nav__item label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.md-sidebar--primary .md-nav__item:hover > .md-nav__link,
+.md-sidebar--primary .md-nav__item:hover > label,
+.md-sidebar--primary .md-nav__item:hover > .md-nav__container .md-nav__link {
+  overflow: visible !important;
+  white-space: normal !important;
+  word-break: break-word;
+}
+
+/* 展开箭头置于左侧；容器（如鸟哥的Linux私房菜）内子元素不重复 padding */
+.md-sidebar--primary .md-nav__link.md-nav__container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container > label,
+.md-sidebar--primary .md-nav__link.md-nav__container > a {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container > label {
+  order: -1;
+  flex-shrink: 0;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container > a.md-nav__link {
+  flex: 1;
+  min-width: 0;
+  margin-left: 0.15rem;
+}
+.md-sidebar--primary .md-nav__item--nested > .md-nav__link:not(.md-nav__container) {
+  display: flex;
+}
+.md-sidebar--primary .md-nav__link:not(.md-nav__container) .md-nav__icon {
+  order: -1;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* 展开时层级缩进 + 竖线 */
+.md-sidebar--primary .md-nav__item--nested:has(.md-nav__toggle:checked) > .md-nav {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  margin-left: 0.5rem;
+  padding-left: 0;
+}
+.md-sidebar--primary .md-nav[data-md-level="1"] {
+  border-left: none !important;
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--nested:has(.md-nav__toggle:checked) > .md-nav {
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav[data-md-level="1"] {
+  border-left: none !important;
+}
+
+/* 图片居中且限制高度 */
+.md-typeset img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-height: 450px; */
+  width: auto;
+  object-fit: contain;
+}
+
+/* 大屏幕下进一步优化 */
+@media screen and (min-width: 76.25em) {
+  .md-content__inner {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+
+/* ========== 标题样式 ========== */
+
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
@@ -13,11 +204,7 @@
   margin: 0 0 1rem;
 }
 
-<<<<<<< HEAD
-/* .md-typeset h2 {
-=======
 .md-typeset h2 {
->>>>>>> c806f12ae6498d8d74ada8bcc75a3da9349d034e
   font-size: 20px;
   font-size: 1.25rem;
   margin: 45px 0 12.8px;
@@ -29,9 +216,9 @@
   font-size: 1.125rem;
   margin: 40px 0 9.6px;
   margin: 40px 0 0.6rem;
-<<<<<<< HEAD
-} */
+}
 
+/* Overwritten styles for h2 and h3 to adjust margins */
 .md-typeset h2 {
   font-size: 20px;
   font-size: 1.25rem;
@@ -44,8 +231,6 @@
   font-size: 1.125rem;
   margin: 9.6px 0 9.6px;
   margin: 0.6rem 0 0.6rem;
-=======
->>>>>>> c806f12ae6498d8d74ada8bcc75a3da9349d034e
 }
 
 .md-typeset h4 {
@@ -266,32 +451,34 @@
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-<<<<<<< HEAD
 
 /* 标题折叠功能样式 */
 .md-typeset .collapsible-heading {
   -webkit-user-select: none;
   user-select: none;
-  transition: opacity 0.2s ease;
-}
-
-.md-typeset .collapsible-heading:hover {
-  opacity: 0.8;
 }
 
 .md-typeset .collapsible-heading .collapsible-icon {
   display: inline-block;
-  margin-right: 0.5em;
-  transition: transform 0.3s ease;
-  font-size: 0.7em;
+  margin-left: 0.8em;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  font-size: 0.65em;
   vertical-align: middle;
   cursor: pointer;
-  color: #666;
+  color: #999;
   line-height: 1;
+  opacity: 0; /* 默认隐藏 */
 }
 
+/* 鼠标悬停在标题上时显示箭头 */
+.md-typeset .collapsible-heading:hover .collapsible-icon {
+  opacity: 1;
+}
+
+/* 已折叠状态时，箭头始终显示 */
 .md-typeset .collapsible-heading.collapsed .collapsible-icon {
   transform: rotate(-90deg);
+  opacity: 1;
 }
 
 .md-typeset .collapsible-section {
@@ -317,5 +504,3 @@
 .md-typeset .collapsible-section > *:last-child {
   margin-bottom: 0;
 } */
-=======
->>>>>>> c806f12ae6498d8d74ada8bcc75a3da9349d034e
