@@ -3,8 +3,9 @@
 1. 删除不再 configs 中的文件
 2. 删除空目录
 3. 删除 asset 中不需要的资源
-3. 把前端相关文件（javascripts、stylesheets、partials）复制到对应的目录
-4. 统计 asset 目录下的各个子目录容量大小
+4. 遍历原始文件，找到 asset 中对应的目录，在其中添加 rawdir.txt 文件写入原始目录
+5. 把前端相关文件（javascripts、stylesheets、partials）复制到对应的目录
+6. 统计 asset 目录下的各个子目录容量大小
 '''
 import os
 os.chdir(os.path.dirname(__file__))
@@ -67,15 +68,34 @@ for root, dirs, files in os.walk(settings.assetdir):
     for file in files:
         asset_file = utils.abspath(os.path.join(root, file))
         if asset_file not in asset_files:
-            print(f'删除不在 asset_files 中的文件: {asset_file}')
+            # rawdir.txt 是我们自己生成的，用来辅助我们找到原始目录的
+            # 这个可以删除，因为后面又会重新生成；相当于每次更新都会重新做一轮删除再添加的浪费操作
+            # 只不过这里就不打印了，防止错过其他有效信息
+            if 'rawdir' not in asset_file:
+                print(f'删除不在 asset_files 中的文件: {asset_file}')
             os.remove(asset_file)
-
 
 # 遍历目标目录，删除空目录
 for root, dirs, files in os.walk(docsdir):
     for dir in dirs:
         if len(os.listdir(os.path.join(root, dir))) == 0:
             os.rmdir(os.path.join(root, dir))
+
+# 遍历原始文件，找到 asset 中对应的目录，在其中添加 txt 文件写入原始目录
+# 先看一下 assetdir 中有哪些子目录 (image, pdf, text...)
+asset_subdirs = set(os.listdir(settings.assetdir))
+for rawfile_pth in configs.file_cache:
+    # 只有文件才有对应的资源，目录不会
+    if not os.path.isfile(rawfile_pth):
+        continue
+
+    for name in asset_subdirs:
+        # 获取 asset 的路径
+        now_asset_dir = utils.asset_link(rawfile_pth, name, makedir=False)
+        if os.path.exists(now_asset_dir):
+            asset_file = utils.abspath(os.path.join(now_asset_dir, 'rawdir.txt'))
+            with open(asset_file, 'w', encoding='utf-8') as f:
+                f.write(rawfile_pth)
 
 
 # 把 overrides 中的 javascripts 和 stylesheets 文件夹内容复制到 docs 目录
