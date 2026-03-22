@@ -39,6 +39,15 @@ def get_filelink(filepth):
 # filepth: 生成的文件路径；asset_type: 文件类型
 # 返回：生成 asset 的绝对路径、相对 dir(filepth) 的路径
 def asset_link(asset_src, asset_type, makedir=True):
+    '''
+    asset_link: 生成 asset 的绝对路径
+    Args:
+        asset_src: 原始路径，要求必须是文本文件。如 a.txt 包含 b.png，此时 asset_src 是 a.txt。
+        asset_type: 文件类型，如 image, pdf, text, code, video, etc.
+        makedir: 如果 asset 目录不存在，创建目录
+    Returns:
+        asset_absdir: 生成 asset 目录的绝对路径
+    '''
     assert(not os.path.isdir(asset_src))
 
     asset_src_dir = abspath(os.path.dirname(asset_src))
@@ -297,7 +306,11 @@ def check_url_type(url):
     # 如果是网页链接，跳过
     if parsed_url.scheme and parsed_url.scheme in ['http', 'https']:
         return 'web'
-        
+
+    # 如果是 .pages，返回 .pages
+    if url.endswith('.pages'):
+        return '.pages'
+
     # 如果是base64或data:image链接，跳过
     if 'base64' in url or url.startswith('data:image'):
         return 'base64'
@@ -309,6 +322,10 @@ def check_url_type(url):
 
     # 是否是图片
     suffix = os.path.splitext(url)[1].lower()
+
+    link_extensions = {'.link', '.lnk'}
+    if suffix in link_extensions:
+        return 'link'
 
     code_extensions = {
         '.py', '.cpp', '.h', '.hpp', '.c', '.js'
