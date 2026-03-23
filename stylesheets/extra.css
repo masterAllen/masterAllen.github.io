@@ -1,3 +1,257 @@
+/**
+ * MkDocs Material 主题覆盖样式（extra.css）
+ *
+ * 在 mkdocs.yml 中通过 extra_css 引入；与 overrides/ 下的 JS（如 resizable-sidebar、
+ * collapsible-headings）配合使用。修改后需重新 mkdocs build/serve 生效。
+ *
+ * 结构概览：
+ * 1. 布局：网格宽度、左右边距、可拖拽侧栏
+ * 2. 左侧导航：悬停、长标题、叶子节点文件图标、嵌套竖线
+ * 3. 正文：图片、标题层级、列表缩进
+ * 4. 自定义 Admonition：folder / file（图标与嵌套树状）
+ * 5. 文末操作链接、中文【】高亮、标题折叠
+ */
+
+/* ========== 布局调整 ========== */
+
+/* 侧边栏可拖拽调整宽度（由 resizable-sidebar.js 控制变量值） */
+:root {
+  --sidebar-primary-width: 10rem;
+}
+.sidebar-resize-handle {
+  display: none;
+}
+@media screen and (min-width: 76.25em) {
+  .sidebar-resize-handle {
+    display: block;
+  }
+  .md-sidebar--primary {
+    width: var(--sidebar-primary-width) !important;
+    min-width: var(--sidebar-primary-width) !important;
+    max-width: var(--sidebar-primary-width) !important;
+    position: relative;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--primary .md-sidebar__inner,
+  .md-sidebar--primary .md-nav {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--primary .md-sidebar__inner {
+    padding-right: 0.2rem;
+  }
+  /* 拖拽条样式：使用 fixed 定位，避免被侧边栏内部滚动区域遮挡 */
+  .sidebar-resize-handle {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    cursor: col-resize;
+    z-index: 9999;
+  }
+  [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+    border-right-color: rgba(255, 255, 255, 0.2);
+  }
+  .sidebar-resize-handle:hover,
+  .sidebar-resize-handle.sidebar-resize-handle--active {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* 主内容区网格：加宽并增加左右留白 */
+.md-grid {
+  max-width: 90rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+/* 左侧导航栏与内容之间的间隔 + 整个侧边栏背景色 */
+/* .md-sidebar--primary .md-sidebar__scrollwrap,
+.md-sidebar--primary .md-sidebar__inner,
+.md-sidebar--primary .md-nav,
+.md-sidebar--primary .md-nav__title,
+.md-sidebar--primary .md-nav__source,
+.md-sidebar--primary .md-nav__list {
+  background-color: #f5f7fa !important;
+} */
+
+.md-sidebar--primary {
+  margin-right: 1.5rem;
+}
+
+/* 右侧目录栏与内容之间的间隔 */
+.md-sidebar--secondary {
+  margin-left: 1.5rem;
+}
+
+/* 内容区域宽度 */
+.md-content {
+  max-width: none;
+}
+
+/* ========== 左侧导航：轻量优化（保留 Material 原有风格） ========== */
+
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  scrollbar-gutter: stable;
+}
+
+/* 导航项：圆角方块 + 悬停凸显 */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--primary .md-nav__item > label {
+  border-radius: 4px;
+  margin-right: 2px;
+  padding: 0.15rem 0.35rem;
+  transition: background 0.15s ease;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container {
+  padding: 0.15rem 0.35rem;
+}
+.md-sidebar--primary .md-nav__item:hover > .md-nav__link,
+.md-sidebar--primary .md-nav__item:hover > label,
+.md-sidebar--primary .md-nav__item:hover > .md-nav__container {
+  background: rgba(0, 0, 0, 0.06);
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item:hover > .md-nav__link,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item:hover > label,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item:hover > .md-nav__container {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* 长标题：截断 + 悬停显示完整 */
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--primary .md-nav__item label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.md-sidebar--primary .md-nav__item:hover > .md-nav__link,
+.md-sidebar--primary .md-nav__item:hover > label,
+.md-sidebar--primary .md-nav__item:hover > .md-nav__container .md-nav__link {
+  overflow: visible !important;
+  white-space: normal !important;
+  word-break: break-word;
+}
+
+/* 展开箭头置于左侧；容器（如鸟哥的Linux私房菜）内子元素不重复 padding */
+.md-sidebar--primary .md-nav__link.md-nav__container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container > label,
+.md-sidebar--primary .md-nav__link.md-nav__container > a {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container > label {
+  order: -1;
+  flex-shrink: 0;
+}
+.md-sidebar--primary .md-nav__link.md-nav__container > a.md-nav__link {
+  flex: 1;
+  min-width: 0;
+  margin-left: 0.15rem;
+}
+.md-sidebar--primary .md-nav__item--nested > .md-nav__link:not(.md-nav__container) {
+  display: flex;
+}
+.md-sidebar--primary .md-nav__link:not(.md-nav__container) .md-nav__icon {
+  order: -1;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/*
+ * 叶子节点（无子导航的页面链接）左侧显示小「文件」图标，风格接近 VS Code
+ * 有子项的 section 使用 .md-nav__item--nested，不显示此图标
+ */
+.md-sidebar--primary .md-nav__item:not(.md-nav__item--nested) > .md-nav__link:not(.md-nav__container) {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.md-sidebar--primary .md-nav__item:not(.md-nav__item--nested) > .md-nav__link:not(.md-nav__container) .md-ellipsis {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.md-sidebar--primary .md-nav__item:not(.md-nav__item--nested) > .md-nav__link:not(.md-nav__container)::before {
+  content: "";
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.1rem;
+  opacity: 0.72;
+  background-color: var(--md-default-fg-color--lighter, #666);
+  -webkit-mask-image: var(--nav-file-icon);
+  mask-image: var(--nav-file-icon);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+/* 侧栏文件节点 ::before 用的 SVG（与下方 Admonition 的 :root 变量无关，可合并到同一 :root，此处分开仅为可读性） */
+:root {
+  /* 简化文件轮廓（类似 IDE 文档图标） */
+  --nav-file-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='black' d='M4 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V5.5L9.5 1H4zm1 1h4v3.5a.5.5 0 0 0 .5.5H12v8H5V2z'/%3E%3C/svg%3E");
+}
+
+/*
+ * 有 ## 时 Material 会在当前项多渲染 <label for="__toc"> + <a> 两行同名。
+ * 必须写在上面的「叶子链接 display:flex」规则之后，否则后者会覆盖 display:none。
+ * !important 用于压过同选择器链上的 flex。下方 nav.md-nav--secondary 内仍可折叠目录。
+ */
+.md-sidebar--primary .md-nav__item--active > label.md-nav__link[for="__toc"] {
+  display: none !important;
+}
+
+
+/* 展开时层级缩进 + 竖线 */
+.md-sidebar--primary .md-nav__item--nested:has(.md-nav__toggle:checked) > .md-nav {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  margin-left: 0.5rem;
+  padding-left: 0;
+}
+.md-sidebar--primary .md-nav[data-md-level="1"] {
+  border-left: none !important;
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__item--nested:has(.md-nav__toggle:checked) > .md-nav {
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav[data-md-level="1"] {
+  border-left: none !important;
+}
+
+/* ========== 正文：图片 ========== */
+
+/* 图片居中；高度原可用 max-height 限制，当前注释掉以保留原图比例 */
+.md-typeset img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-height: 450px; */
+  width: auto;
+  object-fit: contain;
+}
+
+/* 宽屏：正文内层再增加左右边距，避免一行过长 */
+@media screen and (min-width: 76.25em) {
+  .md-content__inner {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+
+/* ========== 正文：标题与段落 ========== */
+/* 颜色与字重；h2/h3 有两段 margin 定义，后者覆盖前者以收紧段间距 */
+
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
@@ -25,6 +279,21 @@
   font-size: 1.125rem;
   margin: 40px 0 9.6px;
   margin: 40px 0 0.6rem;
+}
+
+/* 再次覆盖 h2/h3：收紧上下外边距（相对 Material 默认更紧凑） */
+.md-typeset h2 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  margin: 12.8px 0 12.8px;
+  margin: 0.8rem 0 0.8rem;
+}
+
+.md-typeset h3 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  margin: 9.6px 0 9.6px;
+  margin: 0.6rem 0 0.6rem;
 }
 
 .md-typeset h4 {
@@ -56,7 +325,7 @@
   word-spacing: 0.05rem;
 }
 
-/* 第一层列表不缩进（像 Word 一样） */
+/* 列表：第一层不整体左缩进（类似 Word）；嵌套列表再缩进 */
 .md-typeset ol,
 .md-typeset ul,
 .md-typeset article ol,
@@ -93,9 +362,20 @@
   color: #7f8c8d;
 }
 
+/* ========== 自定义 Admonition：folder / file ========== */
+/*
+ * 在 Markdown 中使用自定义 class，例如：
+ *   !!! folder "目录名"
+ *   ??? file "文件名"
+ * 或 HTML <details class="folder"> / <details class="file">。
+ * 下面用 SVG data URL 作为 mask，标题前的色块即图标；folder 偏黄、file 偏灰。
+ */
+
 :root {
+  /* 文件夹图标（Material admonition 标题 ::before 用 mask 着色） */
   --md-admonition-icon--folder: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8z"/></svg>')
 }
+/* 边框与标题背景色 */
 .md-typeset .admonition.folder,
 .md-typeset details.folder {
   border-color: rgb(40, 20, 0, 0.6);
@@ -104,6 +384,7 @@
 .md-typeset .folder > summary {
   background-color: rgba(220, 210, 70, 0.1);
 }
+/* 标题左侧图标：黄色 + 文件夹轮廓 */
 .md-typeset .folder > .admonition-title::before,
 .md-typeset .folder > summary::before {
   background-color: rgb(237, 192, 68);
@@ -112,6 +393,7 @@
 }
 
 :root {
+  /* 文件/文档图标 */
   --md-admonition-icon--file: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/></svg>')
 }
 .md-typeset .admonition.file,
@@ -122,6 +404,7 @@
 .md-typeset .file > summary {
   background-color: rgba(237, 237, 237, 0.1);
 }
+/* 标题左侧图标：浅灰 + 文件轮廓 */
 .md-typeset .file > .admonition-title::before,
 .md-typeset .file > summary::before {
   background-color: rgb(237, 237, 237);
@@ -129,6 +412,7 @@
           mask-image: var(--md-admonition-icon--file);
 }
 
+/* 整块轻微阴影，hover 时略明显 */
 .md-typeset .admonition.folder:hover,
 .md-typeset .admonition.file:hover,
 .md-typeset details.folder:hover,
@@ -136,12 +420,13 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
+/* file 块标题：默认手型关闭，避免误以为是可点击展开（若用 details 则仍由浏览器控制） */
 .md-typeset .file > .admonition-title,
 .md-typeset .file > summary {
   cursor: default;
 }
 
-/* 统一图标尺寸与间距 */
+/* 与 Material 默认 admonition 图标对齐：统一 folder/file 的 ::before 尺寸 */
 .md-typeset .folder > .admonition-title::before,
 .md-typeset .folder > summary::before,
 .md-typeset .file > .admonition-title::before,
@@ -157,13 +442,13 @@
   margin: 0.35rem 0 0 0.75rem;
 }
 
-/* 为嵌套的子项绘制竖线（弱化的分隔） */
+/* 预留：若需用伪元素画竖线可在此 position 基础上扩展 */
 .md-typeset .admonition.folder .admonition,
 .md-typeset .admonition.folder details {
   position: relative;
 }
 
-/* 列表在"目录/文件"内容中的视觉 */
+/* folder 内部列表：略缩进，与树状层级一致 */
 .md-typeset .folder ul,
 .md-typeset .folder ol {
   margin: 0.25rem 0 0.25rem 1rem;
@@ -183,17 +468,19 @@
   text-decoration: underline;
 }
 
-/* 悬浮态微弱高亮，提升可发现性 */
+/* folder 标题 hover：轻微变暗，提示可交互（若用 details） */
 .md-typeset .folder > .admonition-title:hover,
 .md-typeset .folder > summary:hover {
   filter: brightness(0.98);
 }
 
-/* 文件操作链接样式：放在标题右侧，字体更小，颜色更淡 */
+/* ========== 页面内「文件操作」链接（如 main 脚本注入到 h1 旁）========== */
+/* h1 作为 flex 容器时，子元素 .file-actions 可贴右（见下方 @media） */
 .md-typeset h1 {
   position: relative;
 }
 
+/* 小字、低对比度；hover 时 opacity 拉满 */
 .md-typeset .file-actions {
   font-size: 0.75rem;
   color: #999;
@@ -235,7 +522,7 @@
   }
 }
 
-/* 【】包起来的内容高亮显示 */
+/* ========== 中文【】转 <mark class="term-highlight"> 后的样式（见 main 流水线）========== */
 .md-typeset mark.term-highlight {
   background-color: rgba(255, 235, 59, 0.4);
   color: inherit;
@@ -245,3 +532,56 @@
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
+
+/* ========== 标题折叠（collapsible-headings.js）========== */
+.md-typeset .collapsible-heading {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.md-typeset .collapsible-heading .collapsible-icon {
+  display: inline-block;
+  margin-left: 0.8em;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  font-size: 0.65em;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #999;
+  line-height: 1;
+  opacity: 0; /* 默认隐藏 */
+}
+
+/* 鼠标悬停在标题上时显示箭头 */
+.md-typeset .collapsible-heading:hover .collapsible-icon {
+  opacity: 1;
+}
+
+/* 已折叠状态时，箭头始终显示 */
+.md-typeset .collapsible-heading.collapsed .collapsible-icon {
+  transform: rotate(-90deg);
+  opacity: 1;
+}
+
+.md-typeset .collapsible-section {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: visible; /* 默认可见，折叠时由 JS 控制为 hidden */
+}
+
+.md-typeset .collapsible-section[style*="display: none"] {
+  max-height: 0 !important;
+  opacity: 0;
+}
+
+/* 确保折叠内容区域的样式保持正常 */
+/* .md-typeset .collapsible-section > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.md-typeset .collapsible-section > *:first-child {
+  margin-top: 0;
+}
+
+.md-typeset .collapsible-section > *:last-child {
+  margin-bottom: 0;
+} */

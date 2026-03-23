@@ -1,0 +1,27 @@
+# Python 读取 Firefox 的历史记录
+
+最近做了一个有点水的作业，需要读取 Firefox 的历史记录，以前没遇过这种需求，查了一下感觉还是很有用的。
+
+Firefox 在 Linux 中历史记录的存储位置在 `~/.mozilla/firefox/` 中的一个子目录里面，文件名称叫做 `places.sqlite`。
+从名字也可以看出，这个是用 `sqlite3` 进行存储的文件，所以用 Python 处理 `sqlite3` 的方式处理就行了。
+
+处理过程如果 Firefox 是启动状态，这个文件可能会被 lock。 **所以建议可以把这个文件复制到一个新文件。**
+```python
+import os  
+import sqlite3  
+data_path=r'/home/allen/.mozilla/firefox/ypuvnorw.default-release/'
+history_db = os.path.join(data_path, 'places.sqlite')  
+
+c = sqlite3.connect(history_db)
+cursor = c.cursor()
+    
+select_statement = "SELECT url, visit_count FROM moz_places;"  
+try:
+    cursor.execute(select_statement)  
+except:
+    time.sleep(10)
+    continue
+results = cursor.fetchall() #tuple  
+```
+
+参考： <https://aurelieherbelot.net/web/read-firefox-history-linux-terminal/>
