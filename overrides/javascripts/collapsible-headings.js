@@ -40,7 +40,7 @@
     return wrapper;
   }
 
-  // 添加折叠图标
+  // 添加折叠图标（放在标题右侧，悬停时显示）
   function addToggleIcon(heading) {
     if (heading.querySelector('.collapsible-icon')) {
       return; // 已经添加过图标
@@ -48,17 +48,11 @@
     
     const icon = document.createElement('span');
     icon.className = 'collapsible-icon';
-    icon.innerHTML = '▼';
-    icon.style.cssText = `
-      display: inline-block;
-      margin-right: 0.5em;
-      transition: transform 0.3s ease;
-      font-size: 0.7em;
-      vertical-align: middle;
-      cursor: pointer;
-    `;
+    // 使用 SVG chevron 图标，更现代美观
+    icon.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>';
     
-    heading.insertBefore(icon, heading.firstChild);
+    // 追加到标题末尾（而不是开头）
+    heading.appendChild(icon);
   }
 
   // 初始化标题折叠功能
@@ -171,10 +165,10 @@
             wrapper.style.overflow = 'visible';
           }, 300); // 与 transition 时间一致
           
-          if (icon) {
-            icon.style.transform = 'rotate(0deg)';
-            icon.innerHTML = '▼';
-          }
+          // if (icon) {
+          //   icon.style.transform = 'rotate(0deg)';
+          //   icon.innerHTML = '▼';
+          // }
           heading.classList.remove('collapsed');
         } else {
           // 折叠
@@ -183,10 +177,10 @@
           // 强制重排
           wrapper.offsetHeight;
           wrapper.style.maxHeight = '0';
-          if (icon) {
-            icon.style.transform = 'rotate(-90deg)';
-            icon.innerHTML = '▼';
-          }
+          // if (icon) {
+          //   icon.style.transform = 'rotate(-90deg)';
+          //   icon.innerHTML = '▼';
+          // }
           heading.classList.add('collapsed');
         }
       };

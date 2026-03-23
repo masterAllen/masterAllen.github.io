@@ -78,18 +78,6 @@ def process_markdown_links(content, webfile_pth, raw2web_mapping, web2raw_mappin
                 2.2 如果不再 mapping 中，那就把这个文件放在资料库中
             '''
 
-            # # 如果 asset 资源存在，那么我们把文件链接改成资源文件链接就行
-            # if os.path.exists(asset_absfile):
-            #     pth2 = asset_absfile                 # 资源文件路径
-            #     pth1 = webfile_pth                   # 当前这个 MD 文件被转换后的路径
-
-            #     link_relpth = utils.relpath(pth2, pth1)
-            #     if is_html:
-            #         link_relpth = '../' + link_relpth
-
-            #     result.append((link_url, link_relpth))
-            #     continue
-
             # 原文件的链接不存在，说明原始文件中链接有错
             if not os.path.exists(link_url_abs):
                 # 原始文件中的链接有错，需要提醒用户
