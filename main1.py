@@ -58,14 +58,14 @@ if __name__ == '__main__':
     for dirname in topdir_dirs:
         todos.append((os.path.join(srcdir, dirname), os.path.join(dstdir, dirname)))
 
-    # # 首页 index.md 单独处理：先写入 topinfo，再追加源文件内容
-    # srcpth = os.path.join(srcdir, 'index.md')
-    # dstpth = os.path.join(dstdir, 'index.md')
-    # with open(dstpth, 'w', encoding='utf8') as f:
-    #     f.write(utils.get_topinfo(comments=True, hide=['navigation']) + '\n')
-    #     with open(srcpth, 'r', encoding='utf8') as srcf:
-    #         f.write(srcf.read())
-    # configs.update_cache(srcpth, dstpth)
+    # 首页 index.md 单独处理：先写入 topinfo，再追加源文件内容
+    srcpth = os.path.join(srcdir, 'index.md')
+    dstpth = os.path.join(dstdir, 'index.md')
+    with open(dstpth, 'w', encoding='utf8') as f:
+        f.write(utils.get_topinfo(comments=True, hide=['navigation']) + '\n')
+        with open(srcpth, 'r', encoding='utf8') as srcf:
+            f.write(srcf.read())
+    configs.update_cache(srcpth, dstpth)
 
     # link 文件延后处理：主循环仅收集，遍历结束后再统一处理（见文档「特殊处理四」）
     link_files = []
@@ -89,7 +89,7 @@ if __name__ == '__main__':
 
             # ---------- 特殊目录：材料/papers/asset -> 生成 Reference/xxx.md 汇总；image -> 跳过 ----------
             for special_dirname in settings.special_dirs:
-                if nowname.startswith(special_dirname):
+                if nowname.lower().startswith(special_dirname.lower()):
                     # 如果目录名称是材料、papers 等，那么就单独写一个 README，把这些文件列出来，是否要展示：先不进行展示
                     # 结构: Reference/xxx.md
                     nowdst = utils.abspath(os.path.join(nowdst, '..', 'Reference', f'{nowname}.md'))
@@ -229,19 +229,24 @@ if __name__ == '__main__':
         # link 文件特殊点：既要看 **当前链接文件** 是否有更新，也要看 **原始文件** 是否更新
         source_raw_path = utils.abspath(winshell.shortcut(link_src_path).path)
 
-        if configs.is_need_update(source_raw_path) or configs.is_need_update(link_src_path):
-            # 需要更新：把 **原始文件对应的 WEB 文件** 直接复制到想要的位置去
-            source_web_path = configs.get_web_path(source_raw_path)
-            link_web_path = os.path.join(os.path.dirname(link_dst_path), os.path.basename(source_web_path))
-            utils.copy(source_web_path, link_web_path)
+        try:
+            if configs.is_need_update(source_raw_path) or configs.is_need_update(link_src_path):
+                # 需要更新：把 **原始文件对应的 WEB 文件** 直接复制到想要的位置去
+                source_web_path = configs.get_web_path(source_raw_path)
+                link_web_path = os.path.join(os.path.dirname(link_dst_path), os.path.basename(source_web_path))
+                utils.copy(source_web_path, link_web_path)
 
-            # 把这个链接文件复制到目标目录即可
-            print('----------更新链接文件----------')
-            print(f'原始链接文件: {link_src_path}, 原始文件: {source_raw_path}')
-            print(f'复制链接文件: {source_web_path} -> {link_web_path}')
-            configs.update_cache(link_src_path, link_web_path)
-        else:
-            configs.update_cache_byold(link_src_path)
+                # 把这个链接文件复制到目标目录即可
+                print('----------更新链接文件----------')
+                print(f'原始链接文件: {link_src_path}, 指向原始文件: {source_raw_path}')
+                print(f'复制链接文件: {source_web_path} -> {link_web_path}')
+                configs.update_cache(link_src_path, link_web_path)
+            else:
+                configs.update_cache_byold(link_src_path)
+        except Exception as e:
+            print(f'原始链接文件: {link_src_path}')
+            print(f'指向文件: {link_dst_path}')
+            raise Exception(f'链接文件处理失败: {e}')
 
 
     # 处理 Special 文件

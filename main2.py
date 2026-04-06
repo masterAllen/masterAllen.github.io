@@ -10,6 +10,7 @@ import re
 import urllib.parse
 import shutil
 import utils
+import utils_main2
 import settings
 from pathlib import Path
 
@@ -28,7 +29,7 @@ def process_markdown_links(content, webfile_pth, raw2web_mapping, web2raw_mappin
     if rawfile_pth is None:
         if len(matches) > 0:
             print(f'在特殊文件 {webfile_pth} 中发现了链接，但原始文件不存在')
-            print(f'链接: {matches}')
+            # print(f'链接: {matches}')
             print(f'--------------------------------')
         return []
 
@@ -238,13 +239,16 @@ def process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_repl
             content = f.read()
 
         # 1. 处理有序列表
-        # content = utils.add_slash(content)
+        # content = utils_main2.add_slash(content)
+
+        # 2. 在列表前面自动添加空行
+        content = utils_main2.add_blank_before_list(content)
 
         # 2. 处理 details 标签 (<details> 转为 ???note)
-        content = utils.process_details(content)
+        content = utils_main2.process_details(content)
 
         # 3. 处理【】包起来的内容，转换为更醒目的格式
-        content = utils.process_square_brackets(content)
+        content = utils_main2.process_square_brackets(content)
 
         # 4. 把 -> 替换成右箭头 →，但要注意 <!--...--> 这种注释不应该转换
         content = replace_arrow_safely(content)
@@ -270,38 +274,43 @@ def process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_repl
         exit(0)
 
 # 用于记录文件路径的转换
-import pickle
-import config_parser
-config_parser = config_parser.ConfigParser()
-file_cache = config_parser.file_cache
+def run(is_replace=False):
+    import pickle
+    import config_parser
+    config_parser = config_parser.ConfigParser()
+    file_cache = config_parser.file_cache
 
-raw2web_mapping = {k: v[1] for k, v in file_cache.items()}
-web2raw_mapping = {v[1]: k for k, v in file_cache.items()}
+    raw2web_mapping = {k: v[1] for k, v in file_cache.items()}
+    web2raw_mapping = {v[1]: k for k, v in file_cache.items()}
 
-# 遍历处理所有 Markdown 文件，检查链接是否有损伤
-for root, dirs, files in os.walk(settings.docsdir):
-    if 'asset' in root or 'code' in root or 'src' in root:
-        continue
+    # 遍历处理所有 Markdown 文件，检查链接是否有损伤
+    for root, dirs, files in os.walk(settings.docsdir):
+        if 'asset' in root or 'code' in root or 'src' in root:
+            continue
 
-    for file in files:
-        if file.endswith('.md'):
-            webfile_pth = utils.abspath(os.path.join(root, file))
-            process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_replace=False)
+        for file in files:
+            if file.endswith('.md'):
+                webfile_pth = utils.abspath(os.path.join(root, file))
+                process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_replace=False)
 
-# 询问是否进行替换，只有回答y才进行替换，然后就在执行上面的操作就行
-do_replace_input = input("是否进行替换？输入y进行替换，其它键跳过: ").strip().lower()
-do_replace = do_replace_input == 'y'
-if not do_replace:
-    raise Exception("跳过替换操作，主动发生异常，防止调用该任务的程序继续执行其他任务")
+    # 询问是否进行替换，只有回答y才进行替换，然后就在执行上面的操作就行
+    if not is_replace:
+        do_replace_input = input("是否进行替换？输入y进行替换，其它键跳过: ").strip().lower()
+        is_replace = do_replace_input == 'y'
+    if not is_replace:
+        raise Exception("跳过替换操作，主动发生异常，防止调用该任务的程序继续执行其他任务")
 
-# 再来一遍
-for root, dirs, files in os.walk(settings.docsdir):
-    if 'asset' in root or 'code' in root or 'src' in root:
-        continue
+    # 再来一遍
+    for root, dirs, files in os.walk(settings.docsdir):
+        if 'asset' in root or 'code' in root or 'src' in root:
+            continue
 
-    for file in files:
-        if file.endswith('.md'):
-            webfile_pth = utils.abspath(os.path.join(root, file))
-            process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_replace=True)
+        for file in files:
+            if file.endswith('.md'):
+                webfile_pth = utils.abspath(os.path.join(root, file))
+                process_markdown_file(webfile_pth, raw2web_mapping, web2raw_mapping, is_replace=True)
 
-print('所有文件处理完成！')
+    print('所有文件处理完成！')
+
+if __name__ == '__main__':
+    run(is_replace=True)

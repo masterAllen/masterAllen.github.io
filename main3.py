@@ -30,7 +30,7 @@ for file in configs.file_cache:
 generated_files.update(configs.get_all_pages_files())
 
 # 有些文件夹不进行检查...
-notcheck_dirnames = ['asset', 'javascripts', 'stylesheets']
+notcheck_dirnames = ['asset', 'javascripts', 'stylesheets', '归档']
 notcheck_dirpaths = [utils.abspath(os.path.join(docsdir, dirname)) for dirname in notcheck_dirnames]
 
 for root, dirs, files in os.walk(docsdir):
@@ -57,9 +57,13 @@ for root, dirs, files in os.walk(settings.docsdir):
 
             matches = utils.extract_links(content)
             for url_start, url_end, link_url, is_html in matches:
+                if utils.check_url_type(link_url) == 'web':
+                    continue
+
                 # 如果是 HTML 链接，那么去除前面的 ../ 才是真正的路径
                 if is_html:
                     link_url = link_url[3:]
+
                 asset_abs = utils.abspath(os.path.join(os.path.dirname(webfile_pth), link_url))
                 asset_files.add(asset_abs)
 

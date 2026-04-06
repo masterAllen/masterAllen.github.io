@@ -241,6 +241,24 @@
   object-fit: contain;
 }
 
+/* README 等中的 <figure class="img-center">：图与 figcaption 整体居中 */
+.md-typeset figure.img-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.md-typeset figure.img-center img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.md-typeset figure.img-center figcaption {
+  text-align: center;
+  margin-top: 0.5em;
+}
+
 /* 宽屏：正文内层再增加左右边距，避免一行过长 */
 @media screen and (min-width: 76.25em) {
   .md-content__inner {
