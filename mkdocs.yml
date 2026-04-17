@@ -47,8 +47,6 @@ plugins:
 
   - search
   - open-in-new-tab
-  - toggle-sidebar:
-      toggle_button: all
 #   - rss:
 #       match_path: blog/posts/.* 
 #       date_from_meta:
@@ -74,6 +72,7 @@ extra_javascript:
   - javascripts/copy.js
   - javascripts/collapsible-headings.js
   - javascripts/resizable-sidebar.js
+  - javascripts/sidebar-toggle-buttons.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:

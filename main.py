@@ -21,6 +21,7 @@ PIPELINE = [
     ("写入 asset rawdir（write_asset_rawdir）", "write_asset_rawdir.py"),
     ("统计 asset 体积（report_asset_sizes）", "report_asset_sizes.py"),
     ("再次清理多余文件（delete_unnecessary_files）", "delete_unnecessary_files.py"),
+    ("复制 overrides（copy_overrides）", "copy_overrides.py"),
 ]
 
 

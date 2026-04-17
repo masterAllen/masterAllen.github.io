@@ -288,8 +288,6 @@
 .md-typeset h2 {
   font-size: 20px;
   font-size: 1.25rem;
-  margin: 45px 0 12.8px;
-  margin: 45px 0 0.8rem;
 }
 
 .md-typeset h3 {
@@ -304,14 +302,14 @@
   font-size: 20px;
   font-size: 1.25rem;
   margin: 12.8px 0 12.8px;
-  margin: 0.8rem 0 0.8rem;
+  margin: 1.8rem 0 0.8rem;
 }
 
 .md-typeset h3 {
   font-size: 18px;
   font-size: 1.125rem;
   margin: 9.6px 0 9.6px;
-  margin: 0.6rem 0 0.6rem;
+  margin: 1.0rem 0 0.6rem;
 }
 
 .md-typeset h4 {
@@ -337,8 +335,7 @@
 .md-typeset ol,
 .md-typeset p,
 .md-typeset ul {
-  line-height: 25.6px;
-  line-height: 1.6rem;
+  line-height: 1.5;
   word-spacing: 0.8px;
   word-spacing: 0.05rem;
 }
@@ -497,7 +494,7 @@
 .md-typeset details.question {
   width: 60% !important;
   margin: 0.6rem 0 0.9rem auto !important;
-  font-size: 1.02rem !important;
+  font-size: 1.0rem !important;
   line-height: 1.55;
   border-radius: 0.55rem;
 }
@@ -505,6 +502,11 @@
 /* question 块的字体间隔更小一些 这样更加紧凑 */
 .md-typeset .admonition.question > p {
   line-height: 1.5;
+}
+
+/* answer 块的字体恢复为原状, mkdocs 原有的过于小了 */
+.md-typeset .abstract {
+  font-size: 0.8rem !important;
 }
 
 .md-typeset .question > .admonition-title,
@@ -547,6 +549,65 @@
     width: 100% !important;
     margin-left: 0 !important;
     font-size: 1rem !important;
+  }
+}
+
+/* ========== 头部双按钮：分别切换左侧导航栏与右侧 TOC ========== */
+.custom-sidebar-toggle-group {
+  display: flex;
+  align-items: center;
+  margin-left: 0.35rem;
+}
+
+.custom-sidebar-toggle-button {
+  margin: 0 0.1rem;
+  opacity: 0.72;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.custom-sidebar-toggle-button:hover {
+  opacity: 1;
+}
+
+.custom-sidebar-toggle-button[aria-pressed="true"] {
+  opacity: 1;
+}
+
+.custom-sidebar-toggle-button[aria-pressed="false"] {
+  opacity: 0.42;
+}
+
+.custom-sidebar-toggle-button[disabled],
+.custom-sidebar-toggle-button[aria-disabled="true"] {
+  opacity: 0.24;
+  cursor: default;
+}
+
+/* 兼容旧页面：若插件残留按钮，优先隐藏 */
+.mkdocs-toggle-sidebar-button {
+  display: none !important;
+}
+
+@media screen and (min-width: 60em) {
+  html[data-sidebar-secondary-state="hidden"] .md-sidebar--secondary {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 76.1875em) {
+  html[data-sidebar-primary-state="hidden"] .md-sidebar--primary {
+    display: none !important;
+  }
+
+  html[data-sidebar-primary-state="hidden"] .sidebar-resize-handle {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 76.1875em) {
+  .custom-sidebar-toggle-group {
+    display: none;
   }
 }
 
