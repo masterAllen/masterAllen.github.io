@@ -7,19 +7,19 @@ MkDocs 可用的 Web 格式。通过 configs 缓存实现增量更新，仅转�
 详见 docs/main1.md
 """
 import os
-import winshell  # 用于解析 Windows 快捷方式 (.lnk)
+import winshell
 
-import transform_name
-import transform_file
 import collections
 import shutil
-import json
 import yaml
 
 import utils
 import settings
-from config_parser import ConfigParser
-from ignore_parser import IgnoreParser
+from utils import transform_file
+from utils import transform_name
+from utils.config_parser import ConfigParser
+from utils.ignore_parser import IgnoreParser
+
 
 if __name__ == '__main__':
     srcdir = utils.abspath(settings.srcdir)
@@ -67,9 +67,7 @@ if __name__ == '__main__':
             f.write(srcf.read())
     configs.update_cache(srcpth, dstpth)
 
-    # link 文件延后处理：主循环仅收集，遍历结束后再统一处理（见文档「特殊处理四」）
     link_files = []
-
     # 需要处理的文件
     pending_files = []
 
@@ -139,9 +137,9 @@ if __name__ == '__main__':
             if file_type == 'unknown':
                 continue
 
-            # link/lnk 文件：收集后延后处理，依赖「原始文件已转换完成」
+            # link/lnk 文件改由独立阶段 build_links 统一处理
             if file_type == 'link':
-                link_files.append((nowsrc, nowdst))
+                link_files.append(nowsrc)
                 continue
 
             '''
@@ -224,31 +222,6 @@ if __name__ == '__main__':
             # 更新 cache
             configs.update_cache(nowsrc, web_file_abs)
 
-    # 处理 link 文件，格式: [链接文件原始路径，应该生成的文件名称]
-    for link_src_path, link_dst_path in link_files:
-        # link 文件特殊点：既要看 **当前链接文件** 是否有更新，也要看 **原始文件** 是否更新
-        source_raw_path = utils.abspath(winshell.shortcut(link_src_path).path)
-
-        try:
-            if configs.is_need_update(source_raw_path) or configs.is_need_update(link_src_path):
-                # 需要更新：把 **原始文件对应的 WEB 文件** 直接复制到想要的位置去
-                source_web_path = configs.get_web_path(source_raw_path)
-                link_web_path = os.path.join(os.path.dirname(link_dst_path), os.path.basename(source_web_path))
-                utils.copy(source_web_path, link_web_path)
-
-                # 把这个链接文件复制到目标目录即可
-                print('----------更新链接文件----------')
-                print(f'原始链接文件: {link_src_path}, 指向原始文件: {source_raw_path}')
-                print(f'复制链接文件: {source_web_path} -> {link_web_path}')
-                configs.update_cache(link_src_path, link_web_path)
-            else:
-                configs.update_cache_byold(link_src_path)
-        except Exception as e:
-            print(f'原始链接文件: {link_src_path}')
-            print(f'指向文件: {link_dst_path}')
-            raise Exception(f'链接文件处理失败: {e}')
-
-
     # 处理 Special 文件
     import importlib
     for nowsrc, info in specials.items():
@@ -265,6 +238,12 @@ if __name__ == '__main__':
         #     print(f'{src} 需要更新.... {dst}')
         #     module.run(src, dst, configs)
         # configs.process_if_needed(nowsrc, nowdst, process_special)
+
+    for link_src_path in link_files:
+        shortcut_target = winshell.shortcut(link_src_path).path
+        source_raw_path = utils.abspath(shortcut_target)
+        configs.update_link_cache(link_src_path, source_raw_path)
+
 
     '''
     处理缓存文件

@@ -9,7 +9,7 @@ from collections import defaultdict
 
 import utils
 import settings
-from config_parser import ConfigParser
+from utils.config_parser import ConfigParser
 
 
 def _is_under_reference_dir(webpath):

@@ -8,9 +8,29 @@ import re
 import yaml
 import shutil
 import utils
-import parse_navbar
-import transform_name
+from utils import transform_name
 import settings
+
+def parse_rules(pth):
+    def remove_number_prefix(s):
+        return re.sub(r'^\d+\.\s*', '', s)
+
+    navbar_rules = {'title': [], 'order': []}
+
+    if not os.path.exists(pth):
+        return navbar_rules
+
+    with open(pth, 'r', encoding='utf8') as f:
+        now_type = None
+        for line in f:
+            if 'filename' in line:
+                now_type = 'title'
+            elif 'order' in line:
+                now_type = 'order'
+            elif now_type is not None:
+                re_str = remove_number_prefix(line).strip()
+                navbar_rules[now_type].append(re_str)
+    return navbar_rules
 
 def traverse_dir(rootdir, nowdir):
     result = {}
@@ -27,7 +47,7 @@ def traverse_dir(rootdir, nowdir):
             md_names.remove(md_name)
 
     # 如果有 .pages 文件，按照 .pages 文件的规则排序
-    rules = parse_navbar.parse_rules(os.path.join(nowdir, '.pages'))
+    rules = parse_rules(os.path.join(nowdir, '.pages'))
 
     # 获取文件标题
     md_titles = {}

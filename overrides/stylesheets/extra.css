@@ -492,6 +492,64 @@
   filter: brightness(0.98);
 }
 
+/* question 块：靠右显示、略放大字号、整体更紧凑 */
+.md-typeset .admonition.question,
+.md-typeset details.question {
+  width: 60% !important;
+  margin: 0.6rem 0 0.9rem auto !important;
+  font-size: 1.02rem !important;
+  line-height: 1.55;
+  border-radius: 0.55rem;
+}
+
+/* question 块的字体间隔更小一些 这样更加紧凑 */
+.md-typeset .admonition.question > p {
+  line-height: 1.5;
+}
+
+.md-typeset .question > .admonition-title,
+.md-typeset .question > summary {
+  margin: 0;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.md-typeset .admonition.question > p,
+.md-typeset .admonition.question > ul,
+.md-typeset .admonition.question > ol,
+.md-typeset .admonition.question > .admonition-title + *,
+.md-typeset details.question > *:not(summary) {
+  margin-top: 0.45rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.md-typeset .admonition.question > :last-child,
+.md-typeset details.question > :last-child {
+  margin-bottom: 0 !important;
+}
+
+.md-typeset .admonition.question > p,
+.md-typeset .admonition.question > ul,
+.md-typeset .admonition.question > ol,
+.md-typeset details.question > *:not(summary) {
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.md-typeset details.question > *:last-child,
+.md-typeset .admonition.question > *:last-child {
+  padding-bottom: 0.55rem;
+}
+
+@media (max-width: 76.1875em) {
+  .md-typeset .admonition.question,
+  .md-typeset details.question {
+    width: 100% !important;
+    margin-left: 0 !important;
+    font-size: 1rem !important;
+  }
+}
+
 /* ========== 页面内「文件操作」链接（如 main 脚本注入到 h1 旁）========== */
 /* h1 作为 flex 容器时，子元素 .file-actions 可贴右（见下方 @media） */
 .md-typeset h1 {

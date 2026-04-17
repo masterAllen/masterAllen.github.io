@@ -20,24 +20,21 @@
 | word     | 使用 docx2pdf 转为 pdf，再转为图片，将图片合成到一个 markdown 中                                               |
 | ppt      | 使用 pptx2pdf 转为 pdf，再转为图片，将图片合成到一个 markdown 中                                               |
 
-## 文件结构
+## 主流程
 
-### 核心脚本文件
+`main.py` 使用流水线方式串联步骤：
 
-- **main.py** - 主处理文件，负责调用各个任务模块
-- **main1.py** - 文件转换任务，遍历原始文件库，将各种格式的文件转换为适合 mkdocs-material 展示的 markdown 文件
-- **main2.py** - Markdown 处理模块，负责检查和更新文件中的链接、调整内容格式以适配 mkdocs-material 的展示效果
-- **main3.py** - 侧边栏生成模块，根据各个目录下的 `.pages` 文件自动生成导航侧边栏
-
-### 配置文件目录 (configs)
-
-- **file_info.bin** - 文件转换记录数据库，以 Key-Value 形式存储原始文件路径与生成文件路径及转换时间的映射关系
-- **mp4.txt** - 视频链接记录文件，用于存储原始文件中的视频链接信息（后续可能用于视频处理）
-- **special.yml** - 特殊处理配置，定义需要特殊处理的目录及其对应的处理方式
-- **topdir.yml** - 顶级目录配置，指定需要处理的第一级目录（注：理论上可直接遍历获取，但考虑到可能存在不想公开的目录，故采用配置文件方式）
-
-### 主题定制目录 (overrides)
-
-- **javascripts/** - JavaScript 扩展文件，用于增强 mkdocs-material 功能，如数学公式渲染、链接复制到剪贴板等
-- **stylesheets/** - CSS 样式文件，用于自定义主题样式，如标题样式、添加快速获取原始文件路径的入口等
-- **partials/** - 模板片段文件，用于集成评论系统等第三方功能
+| 步骤 | 脚本 | 作用 |
+| --- | --- | --- |
+| 01 | `repair_src_links.py` | 修复源目录链接，处理文件改名/路径变化导致的失效引用（基于文件 ID 查找）。 |
+| 02 | `base_build.py` | 执行主转换流程，遍历源目录并生成目标文件，同时更新缓存以支持增量构建。 |
+| 03 | `delete_unnecessary_files.py` | 清理生成目录中的多余文件（含失效转换结果与不再使用的资源）。 |
+| 04 | `postprocess_dst_mds.py` | 后处理目标 Markdown 格式（列表、details、箭头等），提升 mkdocs 渲染效果。 |
+| 05 | `repair_dst_links.py` | 修复目标 Markdown 中的引用链接，将资源链接对齐到目标目录。 |
+| 06 | `compress_images.py` | 压缩图片资源（jpg / png 分别处理），减少体积且尽量避免改动链接后缀。 |
+| 07 | `gen_archive.py` | 生成归档页面。 |
+| 08 | `gen_navbar.py` | 生成侧边栏导航结构。 |
+| 09 | `check_single_index.py` | 检查生成目录中“仅含 index.md”的目录，避免最终展示突兀。 |
+| 10 | `write_asset_rawdir.py` | 在 asset 子目录写入 `rawdir.txt`，记录原始文件路径，便于追溯。 |
+| 11 | `report_asset_sizes.py` | 统计 asset 目录大小。 |
+| 12 | `delete_unnecessary_files.py` | 再次执行收尾清理。 |

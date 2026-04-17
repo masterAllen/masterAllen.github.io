@@ -2,16 +2,18 @@ import os
 from win32com.client import Dispatch, DispatchEx
 import pypdfium2 as pdfium
 import numpy as np
-import utils
-import transform_name
 from PIL import Image
+
+from . import file_utils
+from . import path_utils
+from . import transform_name
 
 def do_secret_file(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
     title = transform_name.remove_suffix(newname)
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
         f.writelines(f'**⚠️ 此文件为保密文件，不上传。**\n')
         f.writelines(f'\n')
@@ -47,14 +49,14 @@ def do_file_too_large(srcdir, dstdir, nowname, newname):
         'video': '视频文件',
         'unknown': '文件'
     }
-    file_type = utils.check_url_type(nowname)
+    file_type = file_utils.check_url_type(nowname)
     file_type_name = type_messages.get(file_type, '文件')
     
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
         f.writelines(f'\n')
         f.writelines(f'**⚠️ 此 {file_type_name}过大（{file_size_mb:.2f} MB，超过 10MB 限制），未上传。**\n')
         f.writelines(f'\n')
@@ -68,7 +70,7 @@ def do_md(srcdir, dstdir, nowname, newname):
     dstpth = os.path.join(dstdir, f'{title}.md')
 
     with open(dstpth, 'w', encoding='utf8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
 
         # 读取原文件的标题（假定第一行为标题），作为 md 文件的开头
         with open(srcpth, 'r', encoding='utf8') as srcf:
@@ -83,7 +85,7 @@ def do_md(srcdir, dstdir, nowname, newname):
             f.write(f'{title}\n')
 
             # 写入 filelink
-            f.write(utils.get_filelink(srcpth) + '\n')
+            f.write(file_utils.get_filelink(srcpth) + '\n')
 
             # 写入内容（如果 title 已写过则跳过第一行）
             for line in lines[content_start:]:
@@ -106,15 +108,15 @@ def do_html(srcdir, dstdir, nowname, newname):
                 srcurl = oneline.strip()[4:].strip()
                 break
 
-    asset_absdir = utils.asset_link(srcpth, 'html')
-    asset_reldir = utils.relpath(asset_absdir, dstpth)
-    copy_success = utils.copy(srcpth, os.path.join(asset_absdir, nowname))
+    asset_absdir = path_utils.asset_link(srcpth, 'html')
+    asset_reldir = path_utils.relpath(asset_absdir, dstpth)
+    copy_success = file_utils.file_utils.copy(srcpth, os.path.join(asset_absdir, nowname))
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
         f.writelines(f'转载文章，文章链接：[{srcurl}]({srcurl})\n')
         if asset_reldir is not None:
             f.writelines(f'本地备份：[链接]({asset_reldir}/{nowname})\n')
@@ -133,10 +135,10 @@ def do_ipynb(srcdir, dstdir, nowname, newname):
     with open(dstpth, 'w', encoding='utf-8') as f:
         # 把原文转的 md 内容追加到这里，然后开头部分添加一个说明
         with open(srcpth, 'r', encoding='utf-8') as srcf:
-            f.write(utils.get_topinfo(comments=True) + '\n')
+            f.write(file_utils.get_topinfo(comments=True) + '\n')
             # 开头的标题
             f.writelines(f'# {title}\n')
-            f.writelines(utils.get_filelink(srcpth) + '\n')
+            f.writelines(file_utils.get_filelink(srcpth) + '\n')
             # 开头添加说明
             f.writelines(f'本文原始格式为 ipynb' + '\n')
             # 剩余部分补上
@@ -152,15 +154,15 @@ def do_png(srcdir, dstdir, nowname, newname):
     title = transform_name.remove_suffix(newname)
 
     # 获取 asset 的相对路径
-    asset_absdir = utils.asset_link(srcpth, 'image')
-    asset_reldir = utils.relpath(asset_absdir, dstpth)
-    utils.copy(srcpth, os.path.join(asset_absdir, nowname))
+    asset_absdir = path_utils.asset_link(srcpth, 'image')
+    asset_reldir = path_utils.relpath(asset_absdir, dstpth)
+    file_utils.copy(srcpth, os.path.join(asset_absdir, nowname))
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
         f.writelines(f'![{newname}]({asset_reldir}/{nowname})\n')
     return dstpth
 
@@ -171,20 +173,20 @@ def do_pdf(srcdir, dstdir, nowname, newname):
     title = transform_name.remove_suffix(newname)
 
     # 获取 asset 的相对路径
-    asset_absdir = utils.asset_link(srcpth, 'pdf')
-    asset_reldir = utils.relpath(asset_absdir, dstpth)
-    utils.copy(srcpth, os.path.join(asset_absdir, nowname))
+    asset_absdir = path_utils.asset_link(srcpth, 'pdf')
+    asset_reldir = path_utils.relpath(asset_absdir, dstpth)
+    file_utils.copy(srcpth, os.path.join(asset_absdir, nowname))
 
     # PDF 再转为图片
     pdf = pdfium.PdfDocument(srcpth)
-    img_absdir = utils.asset_link(srcpth, 'image')
-    img_reldir = utils.relpath(img_absdir, dstpth)
+    img_absdir = path_utils.asset_link(srcpth, 'image')
+    img_reldir = path_utils.relpath(img_absdir, dstpth)
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True, hide=['toc']) + '\n')
+        f.write(file_utils.get_topinfo(comments=True, hide=['toc']) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
 
         f.writelines(f'原文为 PDF 格式：[链接]({asset_reldir}/{nowname})')
         for count, page in enumerate(pdf):
@@ -204,8 +206,8 @@ def do_word(srcdir, dstdir, nowname, newname):
     title = transform_name.remove_suffix(newname)
 
     # 原文转成 pdf
-    pdf_absdir = utils.asset_link(srcpth, 'pdf')
-    pdf_reldir = utils.relpath(pdf_absdir, dstpth)
+    pdf_absdir = path_utils.asset_link(srcpth, 'pdf')
+    pdf_reldir = path_utils.relpath(pdf_absdir, dstpth)
     pdf_absfile = os.path.join(pdf_absdir, f'{newname}.pdf')
 
     print(f'pdf_absfile: {pdf_absfile}')
@@ -244,14 +246,14 @@ def do_word(srcdir, dstdir, nowname, newname):
     # PDF 再转为图片
     pdf = pdfium.PdfDocument(pdf_absfile)
 
-    img_absdir = utils.asset_link(srcpth, 'image')
-    img_reldir = utils.relpath(img_absdir, dstpth)
+    img_absdir = path_utils.asset_link(srcpth, 'image')
+    img_reldir = path_utils.relpath(img_absdir, dstpth)
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True, hide=['toc']) + '\n')
+        f.write(file_utils.get_topinfo(comments=True, hide=['toc']) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
 
         info_str = f'原文也转换了 [PDF 格式]({pdf_reldir}/{newname}.pdf)'
         f.writelines(info_str)
@@ -283,8 +285,8 @@ def do_ppt(srcdir, dstdir, nowname, newname):
     title = transform_name.remove_suffix(newname)
 
     # 转成 PDF
-    pdf_absdir = utils.asset_link(srcpth, 'pdf')
-    pdf_reldir = utils.relpath(pdf_absdir, dstpth)
+    pdf_absdir = path_utils.asset_link(srcpth, 'pdf')
+    pdf_reldir = path_utils.relpath(pdf_absdir, dstpth)
 
     # PPTConvert 一定是转成了去掉后缀的 PDF
     pdf_absfile = os.path.join(pdf_absdir, f'{newname}.pdf')
@@ -296,14 +298,14 @@ def do_ppt(srcdir, dstdir, nowname, newname):
 
     # PDF 再转为图片
     pdf = pdfium.PdfDocument(pdf_absfile)
-    img_absdir = utils.asset_link(srcpth, 'image')
-    img_reldir = utils.relpath(img_absdir, dstpth)
+    img_absdir = path_utils.asset_link(srcpth, 'image')
+    img_reldir = path_utils.relpath(img_absdir, dstpth)
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
         f.writelines(f'**原文格式为 PPTX，本文为转换后的图片。原文也转换了 [PDF 格式]({pdf_reldir}/{newname}.pdf)（个人笔记，请勿用于商业，转载请注明来源！）**\n')
         for count, page in enumerate(pdf):
             imgpth = os.path.join(img_absdir, f'{newname}_out{count}.jpg')
@@ -326,9 +328,9 @@ def do_txt(srcdir, dstdir, nowname, newname):
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
 
         # 查看是否应该是 markdown 文件
         flag = False
@@ -361,7 +363,7 @@ def do_special_dir(srcdir, dstpth):
     os.makedirs(os.path.dirname(dstpth), exist_ok=True)
     with open(dstpth, 'w', encoding='utf-8') as f:
         # 列出 srcdir 中的所有文件
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {os.path.basename(srcdir)}\n')
 
         f.writelines(f'本文件为自动生成，以下列表展示了这个资源目录的文件名称，以供参考：\n\n')
@@ -375,9 +377,9 @@ def do_video(srcdir, dstdir, nowname, newname):
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
 
         f.writelines('\n')
         f.writelines(f'视频文件，暂不上传⚠️\n')
@@ -391,15 +393,15 @@ def do_video(srcdir, dstdir, nowname, newname):
 #     title = transform_name.remove_suffix(newname)
 
 #     # 获取 asset 的相对路径
-#     asset_absdir = utils.asset_link(srcpth, 'video')
-#     asset_reldir = utils.relpath(asset_absdir, dstpth)
-#     utils.copy(srcpth, os.path.join(asset_absdir, nowname))
+#     asset_absdir = path_utils.asset_link(srcpth, 'video')
+#     asset_reldir = path_utils.relpath(asset_absdir, dstpth)
+#     file_utils.copy(srcpth, os.path.join(asset_absdir, nowname))
 
 #     # 写入文件
 #     with open(dstpth, 'w', encoding='utf-8') as f:
-#         f.write(utils.get_topinfo(comments=True) + '\n')
+#         f.write(file_utils.get_topinfo(comments=True) + '\n')
 #         f.writelines(f'# {title}\n')
-#         f.writelines(utils.get_filelink(srcpth) + '\n')
+#         f.writelines(file_utils.get_filelink(srcpth) + '\n')
 
 #         f.writelines('\n')
 #         f.writelines('<video controls>\n')
@@ -425,9 +427,9 @@ def do_code(srcdir, dstdir, nowname, newname):
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
         f.writelines(f'原始文件为 {suffix} 代码，本文是转换后的 Markdown 文件。\n\n')
         f.writelines(f'```{suffix}\n')
         with open(srcpth, 'r', encoding='utf-8') as srcf:
@@ -445,9 +447,9 @@ def do_unknown(srcdir, dstdir, nowname, newname):
 
     # 写入文件
     with open(dstpth, 'w', encoding='utf-8') as f:
-        f.write(utils.get_topinfo(comments=True) + '\n')
+        f.write(file_utils.get_topinfo(comments=True) + '\n')
         f.writelines(f'# {title}\n')
-        f.writelines(utils.get_filelink(srcpth) + '\n')
+        f.writelines(file_utils.get_filelink(srcpth) + '\n')
         f.writelines(f'原始文件为 {srcpth}，未知文件类型。\n\n')
 
     return dstpth

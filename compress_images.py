@@ -12,7 +12,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 import shutil
-import pickle
+import json
 
 import utils
 import settings
@@ -21,7 +21,7 @@ from PIL import Image
 # 仅处理 JPG / PNG
 IMAGE_EXTS = {'.jpg', '.jpeg', '.png'}
 CONFIG_DIR = settings.config_dir
-CACHE_PATH = os.path.join(CONFIG_DIR, 'image_compress_info.bin')
+CACHE_PATH = os.path.join(CONFIG_DIR, 'image_compress_info.json')
 
 _script_dir = Path(settings.script_dir)
 
@@ -48,15 +48,48 @@ def _require_pngquant():
 
 def _load_cache():
     if os.path.exists(CACHE_PATH):
-        with open(CACHE_PATH, 'rb') as f:
-            return pickle.load(f)
+        with open(CACHE_PATH, 'r', encoding='utf-8') as f:
+            cache = json.load(f)
+
+        def _freeze_json_value(value):
+            if isinstance(value, list):
+                return tuple(_freeze_json_value(item) for item in value)
+            if isinstance(value, dict):
+                return {k: _freeze_json_value(v) for k, v in value.items()}
+            return value
+
+        for info in cache.values():
+            params = info.get('params')
+            if params is not None:
+                info['params'] = _freeze_json_value(params)
+        return cache
     return {}
 
 
 def _save_cache(cache):
     os.makedirs(CONFIG_DIR, exist_ok=True)
-    with open(CACHE_PATH, 'wb') as f:
-        pickle.dump(cache, f)
+    serializable_cache = {}
+    for img_path, info in cache.items():
+        serializable_info = dict(info)
+        params = serializable_info.get('params')
+        if isinstance(params, tuple):
+            serializable_info['params'] = list(params)
+        serializable_cache[img_path] = serializable_info
+
+    lines = ['{']
+    items = list(serializable_cache.items())
+    for idx, (img_path, info) in enumerate(items):
+        item_lines = [
+            f'  {json.dumps(img_path, ensure_ascii=False)}: {{',
+            f'    "params": {json.dumps(info.get("params"), ensure_ascii=False)},',
+            f'    "mtime": {json.dumps(info.get("mtime"), ensure_ascii=False)}',
+            '  }' + (',' if idx < len(items) - 1 else ''),
+        ]
+        lines.extend(item_lines)
+    lines.append('}')
+
+    with open(CACHE_PATH, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines) + '\n')
 
 
 def _params_key(opts):
@@ -134,7 +167,7 @@ def _compress_png_pngquant(img_path, opts, pngquant_exe: Path):
 
 
 def _compress_image(img_path, opts, pngquant_exe: Path):
-    """压缩单张图片，返回 (新路径, 原大小, 新大小)。后缀保持不变。"""
+    """压缩单张图片，返回 (原大小, 新大小)。后缀保持不变。"""
     img_path = utils.abspath(img_path)
     orig_size = os.path.getsize(img_path)
     ext = Path(img_path).suffix.lower()
@@ -158,7 +191,7 @@ def _compress_image(img_path, opts, pngquant_exe: Path):
         pass
 
     new_size = os.path.getsize(img_path)
-    return img_path, orig_size, new_size
+    return orig_size, new_size
 
 
 def _file_hash(path, chunk_size=65536):
@@ -198,7 +231,6 @@ def run():
         return
 
     pngquant_exe = _require_pngquant()
-    print(f'PNG 使用 pngquant: {pngquant_exe}')
 
     opts = settings.IMAGE_OPTIMIZATION
     params_key = _params_key(opts)
@@ -224,6 +256,8 @@ def run():
             skipped += 1
             continue
 
+        print(cache.get('params'), params_key)
+
         try:
             # 压缩前备份
             rel_from_dstdir = os.path.relpath(img_path, settings.assetdir)
@@ -231,16 +265,16 @@ def run():
             if _ensure_backup(img_path, backup_path):
                 print(f'备份: {img_path}')
 
-            new_path, orig_size, new_size = _compress_image(img_path, opts, pngquant_exe)
+            orig_size, new_size = _compress_image(img_path, opts, pngquant_exe)
             pct = (1 - new_size / orig_size) * 100 if orig_size > 0 else 0
-            # print(f'压缩: {img_path}')
             print(f'  {orig_size/1024:.1f} KB -> {new_size/1024:.1f} KB (减少 {pct:.1f}%)')
 
-            cache[new_path] = {'params': params_key, 'mtime': os.path.getmtime(new_path)}
             compressed += 1
         except Exception as e:
             print(f'错误: {img_path} - {e}')
             errors += 1
+
+        cache[img_path] = {'params': params_key, 'mtime': os.path.getmtime(img_path)}
 
     _save_cache(cache)
     print(f'\n压缩完成: {compressed} 张, 跳过 {skipped} 张, 错误 {errors} 张')

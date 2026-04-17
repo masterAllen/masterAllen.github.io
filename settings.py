@@ -21,10 +21,12 @@ assetdir = os.path.join(docsdir, 'asset')
 
 special_dirs = [
     '材料',
+    'paper',
     'papers',
     'asset',
     'code',
-    'codes'
+    'codes',
+    'source'
 ]
 
 skip_types = {'web', 'base64', 'unknown'}

@@ -1,18 +1,18 @@
 import os
 import yaml 
-import pickle
 import settings
 import json
-import winshell
-import utils
 from pathlib import Path
-from typing import Dict, Tuple
+
+from .path_utils import abspath
+from typing import Any, Dict, Tuple
 
 class ConfigParser:
     def __init__(self):
         self.config_dpath = config_dpath = Path(settings.config_dir)
-        self.file_cache_dpath = config_dpath / 'file_info.bin'
-        self.pages_cache_dpath = config_dpath / 'pages_info.bin'
+        self.file_cache_dpath = config_dpath / 'cache_file.json'
+        self.pages_cache_dpath = config_dpath / 'pages_info.json'
+        self.link_cache_dpath = config_dpath / 'cache_link.json'
 
         # 1. 加载 topdir.yml 文件 --> 读取哪些文件夹要处理
         topdir_info = yaml.load(open(config_dpath / 'topdir.yml', 'r', encoding='utf8'), Loader=yaml.FullLoader)
@@ -23,6 +23,9 @@ class ConfigParser:
 
         self.pages_cache: Dict[Path, Path] = dict()
         ''' pages_cache 的格式：<Key = 原始 .pages 文件路径, Value = 转换后的 .pages 文件路径> '''
+
+        self.link_cache: Dict[str, dict[str, Any]] = dict()
+        ''' link_cache 的格式：<Key = 原始 link 文件路径, Value = 链接目标与派生产物信息> '''
 
         self.load_cache()
 
@@ -38,30 +41,82 @@ class ConfigParser:
         # assert(all([os.path.exists(k) for k in specials.keys()]))
         # assert(all([os.path.exists(v[0]) for v in specials.values()]))
 
+    def _load_json(self, path: Path, default):
+        if not path.exists():
+            return default
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
+    def _save_json(self, path: Path, data) -> None:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def _serialize_file_cache(self, cache: Dict[str, Tuple[float, str]]) -> dict:
+        result = {}
+        for srcpath, (mtime, dstpath) in cache.items():
+            result[abspath(srcpath)] = {
+                'mtime': mtime,
+                'dst': abspath(dstpath),
+            }
+        return result
+
+    def _deserialize_file_cache(self, data: dict) -> Dict[str, Tuple[float, str]]:
+        result = {}
+        for srcpath, info in data.items():
+            result[abspath(srcpath)] = (info['mtime'], abspath(info['dst']))
+        return result
+
+    def _serialize_pages_cache(self, cache: Dict[str, str]) -> dict:
+        return {abspath(srcpath): abspath(dstpath) for srcpath, dstpath in cache.items()}
+
+    def _deserialize_pages_cache(self, data: dict) -> Dict[str, str]:
+        return {abspath(srcpath): abspath(dstpath) for srcpath, dstpath in data.items()}
+
     def load_cache(self):
         self.new_file_cache = dict()
-        if self.file_cache_dpath.exists():
-            self.file_cache = pickle.load(open(self.file_cache_dpath, 'rb'))
+        self.file_cache = dict()
         
         self.new_pages_cache = dict()
+        self.pages_cache = dict()
+
+        self.new_link_cache = dict()
+        self.link_cache = dict()
+
+        if self.file_cache_dpath.exists():
+            self.file_cache = self._deserialize_file_cache(self._load_json(self.file_cache_dpath, {}))
+
         if self.pages_cache_dpath.exists():
-            self.pages_cache = pickle.load(open(self.pages_cache_dpath, 'rb'))
+            self.pages_cache = self._deserialize_pages_cache(self._load_json(self.pages_cache_dpath, {}))
+
+        if self.link_cache_dpath.exists():
+            self.link_cache = self._load_json(self.link_cache_dpath, {})
 
     def update_cache(self, srcpath, dstpath):
-        srcpath = utils.abspath(srcpath)
-        dstpath = utils.abspath(dstpath)
+        srcpath = abspath(srcpath)
+        dstpath = abspath(dstpath)
         self.new_file_cache[srcpath] = (self.get_mtime(srcpath), dstpath)
 
     def update_cache_byold(self, srcpath):
-        srcpath = utils.abspath(srcpath)
+        srcpath = abspath(srcpath)
         self.new_file_cache[srcpath] = self.file_cache[srcpath]
 
+    def save_main_cache(self):
+        self._save_json(self.file_cache_dpath, self._serialize_file_cache(self.new_file_cache))
+        self._save_json(self.pages_cache_dpath, self._serialize_pages_cache(self.new_pages_cache))
+
+    def save_link_cache(self):
+        with open(self.link_cache_dpath, 'w', encoding='utf-8') as f:
+            json.dump(self.new_link_cache, f, ensure_ascii=False, indent=2)
+
     def save_cache(self):
-        pickle.dump(self.new_file_cache, open(self.file_cache_dpath, 'wb'))
-        pickle.dump(self.new_pages_cache, open(self.pages_cache_dpath, 'wb'))
+        self.save_main_cache()
+        self.save_link_cache()
 
     def get_web_path(self, srcpath):
-        return self.new_file_cache[srcpath][1]
+        srcpath = abspath(srcpath)
+        if srcpath in self.new_file_cache:
+            return self.new_file_cache[srcpath][1]
+        return self.file_cache[srcpath][1]
 
     def get_mtime(self, srcpath):
         """
@@ -96,9 +151,9 @@ class ConfigParser:
         Returns:
             bool: True 表示需要更新，False 表示不需要更新
         """
-        srcpath = utils.abspath(srcpath)
+        srcpath = abspath(srcpath)
         if dstpath:
-            dstpath = utils.abspath(dstpath)
+            dstpath = abspath(dstpath)
 
         # 如果不在旧缓存中，需要更新
         if srcpath not in self.file_cache:
@@ -107,7 +162,7 @@ class ConfigParser:
         old_mtime, old_dstpath = self.file_cache[srcpath]
 
         # 生成的文件是否一致
-        if dstpath is not None and utils.abspath(old_dstpath) != utils.abspath(dstpath):
+        if dstpath is not None and abspath(old_dstpath) != abspath(dstpath):
             return True
 
         # 新文件不存在，需要更新
@@ -139,8 +194,8 @@ class ConfigParser:
         Returns:
             bool: 是否需要更新（True=已更新，False=使用缓存）
         """
-        srcpath = utils.abspath(srcpath)
-        dstpath = utils.abspath(dstpath)
+        srcpath = abspath(srcpath)
+        dstpath = abspath(dstpath)
         if self.is_need_update(srcpath, dstpath):
             processor(srcpath, dstpath)
             self.update_cache(srcpath, dstpath)
@@ -157,9 +212,45 @@ class ConfigParser:
             srcpath: 原始 .pages 文件路径
             dstpath: 目标 .pages 文件路径
         """
-        srcpath = utils.abspath(srcpath)
-        dstpath = utils.abspath(dstpath)
+        srcpath = abspath(srcpath)
+        dstpath = abspath(dstpath)
         self.new_pages_cache[srcpath] = dstpath
+
+    def update_link_cache(self, link_srcpath, target_raw):
+        link_srcpath = abspath(link_srcpath)
+        target_raw = abspath(target_raw)
+        self.new_link_cache[link_srcpath] = {
+            'mtime': os.path.getmtime(link_srcpath) if os.path.exists(link_srcpath) else None,
+            'target_raw': target_raw,
+        }
+
+    def get_link_output_file(self, link_srcpath, target_raw):
+        link_srcpath = abspath(link_srcpath)
+        target_raw = abspath(target_raw)
+
+        try:
+            source_web_path = abspath(self.get_web_path(target_raw))
+        except KeyError:
+            return None
+
+        if os.path.isdir(source_web_path):
+            return None
+
+        rel_link_path = os.path.relpath(link_srcpath, settings.srcdir)
+        link_dst_path = abspath(os.path.join(settings.docsdir, rel_link_path))
+        return abspath(os.path.join(os.path.dirname(link_dst_path), os.path.basename(source_web_path)))
+
+    def get_all_link_output_files(self):
+        all_outputs = set()
+        for cache in (self.link_cache, self.new_link_cache):
+            for link_srcpath, info in cache.items():
+                target_raw = info.get('target_raw')
+                if not target_raw:
+                    continue
+                output_file = self.get_link_output_file(link_srcpath, target_raw)
+                if output_file is not None:
+                    all_outputs.add(output_file)
+        return all_outputs
     
     def get_all_pages_files(self):
         """

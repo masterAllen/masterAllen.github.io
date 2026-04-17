@@ -5,8 +5,8 @@ def remove_suffix(name):
 
 # 将文件名的中文和英文之间加一个空格点号除外
 def beautify_name(name):
-    if '#不上传' in name:
-        name = name.replace('#不上传', '')
+    # if '#不上传' in name:
+    #     name = name.replace('#不上传', '')
 
     # result = ''
     # prev_type = None
