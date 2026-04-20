@@ -490,8 +490,7 @@
 }
 
 /* question 块：靠右显示、略放大字号、整体更紧凑 */
-.md-typeset .admonition.question,
-.md-typeset details.question {
+.md-typeset .admonition.info {
   width: 60% !important;
   margin: 0.6rem 0 0.9rem auto !important;
   font-size: 0.9rem !important;
@@ -500,7 +499,7 @@
 }
 
 /* question 块的字体间隔更小一些 这样更加紧凑 */
-.md-typeset .admonition.question > p {
+.md-typeset .admonition.info > p {
   line-height: 1.5;
 }
 
@@ -509,43 +508,34 @@
   font-size: 0.8rem !important;
 }
 
-.md-typeset .question > .admonition-title,
-.md-typeset .question > summary {
+.md-typeset .info > .admonition-title,
+.md-typeset .info > summary {
   margin: 0;
   padding: 0.45rem 0.8rem;
   font-size: 0.95rem;
 }
 
-.md-typeset .admonition.question > p,
-.md-typeset .admonition.question > ul,
-.md-typeset .admonition.question > ol,
-.md-typeset .admonition.question > .admonition-title + *,
-.md-typeset details.question > *:not(summary) {
+.md-typeset .admonition.info > p,
+.md-typeset .admonition.info > ul,
+.md-typeset .admonition.info > ol,
+.md-typeset .admonition.info > .admonition-title + * {
   margin-top: 0.45rem !important;
   margin-bottom: 0.45rem !important;
 }
 
-.md-typeset .admonition.question > :last-child,
-.md-typeset details.question > :last-child {
-  margin-bottom: 0 !important;
-}
-
-.md-typeset .admonition.question > p,
-.md-typeset .admonition.question > ul,
-.md-typeset .admonition.question > ol,
-.md-typeset details.question > *:not(summary) {
+.md-typeset .admonition.info > p,
+.md-typeset .admonition.info > ul,
+.md-typeset .admonition.info > ol {
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
 
-.md-typeset details.question > *:last-child,
-.md-typeset .admonition.question > *:last-child {
+/* .md-typeset .admonition.info > *:last-child {
   padding-bottom: 0.55rem;
-}
+} */
 
 @media (max-width: 76.1875em) {
-  .md-typeset .admonition.question,
-  .md-typeset details.question {
+  .md-typeset .admonition.info {
     width: 100% !important;
     margin-left: 0 !important;
     font-size: 1rem !important;
