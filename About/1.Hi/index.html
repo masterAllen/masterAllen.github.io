@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -40357,6 +40359,69 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#20260427" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.04.27
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20260417" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.04.17
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20260320" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.03.20
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20260120" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.01.20
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20261113" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.11.13
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20251021" class="md-nav__link">
+    <span class="md-ellipsis">
+      2025.10.21
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20250810" class="md-nav__link">
+    <span class="md-ellipsis">
+      2025.08.10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#20250621" class="md-nav__link">
     <span class="md-ellipsis">
       2025.06.21
@@ -40732,6 +40797,69 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#20260427" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.04.27
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20260417" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.04.17
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20260320" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.03.20
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20260120" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.01.20
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20261113" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.11.13
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20251021" class="md-nav__link">
+    <span class="md-ellipsis">
+      2025.10.21
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20250810" class="md-nav__link">
+    <span class="md-ellipsis">
+      2025.08.10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#20250621" class="md-nav__link">
     <span class="md-ellipsis">
       2025.06.21
@@ -40942,8 +41070,22 @@
 </tbody>
 </table>
 <h2 id="_4">更新说明</h2>
+<h3 id="20260427">2026.04.27</h3>
+<p>调整数学渲染，切换到 KaTEX；并且增加一些自动化操作防止渲染失败（比如行内块上下要保证有空格）</p>
+<h3 id="20260417">2026.04.17</h3>
+<p>优化左侧边栏和右侧 toc 栏的折叠展开，折叠按钮在顶部。原先使用 mkdocs-toggle-sidebar，但它只有一个按钮，没办法做到左右分别操作。</p>
+<h3 id="20260320">2026.03.20</h3>
+<p>优化侧边栏样式；增加侧边栏可拉伸功能。</p>
+<h3 id="20260120">2026.01.20</h3>
+<p>优化折叠标题的方式</p>
+<h3 id="20261113">2026.11.13</h3>
+<p>优化侧边栏，长度过长时进行截断，鼠标悬停后显示全部文本</p>
+<h3 id="20251021">2025.10.21</h3>
+<p>优化文件存储，对图片进行压缩处理。</p>
+<h3 id="20250810">2025.08.10</h3>
+<p>添加可折叠标题功能。</p>
 <h3 id="20250621">2025.06.21</h3>
-<p>主页隐藏导航栏，使用 <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages">Section index</a> 的特性，即点击某个子文件夹，会自动显示其对应下的 index.md 文章。该特性和 <code>mkdocs-awesome-pages</code> 冲突，所以不用该插件，花了几小时手动写了转换脚本实现该功能。目前是直接在 <code>mkdocs.yml</code> 中放入 <code>nav</code> 字段来完成的。</p>
+<p>主页隐藏导航栏，使用 <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages">Section index</a> 的特性，即点击某个子文件夹，会自动显示其对应下的 index.md 文章。该特性和 <code>mkdocs-awesome-pages</code> 冲突，所以不用该插件，手动写转换脚本来实现该功能。目前是直接在 <code>mkdocs.yml</code> 中放入 <code>nav</code> 字段来完成的。</p>
 <h3 id="20250618">2025.06.18</h3>
 <p>优化了网页风格，参考了 <a href="https://github.com/shd101wyy/crossnote/blob/develop/styles/preview_theme/vue.less">vscode markdown preview enhanced</a> 里面的 <code>vue.js</code> 样式，好看多了。</p>
 <h3 id="20250616">2025.06.16</h3>
@@ -40987,7 +41129,7 @@
 </details>
 <details class="note">
 <summary>☑️添加评论系统</summary>
-<p>已解决，就使用默认的 Giscus，<a href="https://blog.ichr.me/post/expressing-costs/">这篇文章</a>给了我很大的启发。或许博客的评论系统需要登录反而是一件好事。</p>
+<p>已解决，就使用默认的 Giscus，<a href="https://blog.ichr.me/post/expressing-costs/">这篇文章</a> 给了我很大的启发。或许博客的评论系统需要登录反而是一件好事。</p>
 </details>
 <details class="note">
 <summary>☑️图像处理的文章自动生成需要修改格式，比如图片的链接</summary>
@@ -41007,13 +41149,15 @@
 <p>目前写了识别链接，没啥好说的，AI 帮忙写正则。后续考虑调用 single-file 下载，然后对应位置修改为 <code>[xx](web_url)（[本地连接](local_path)）</code></p>
 </details>
 <details class="note">
-<summary>需要生成目录树</summary>
+<summary>☑️需要生成目录树</summary>
 <p><a href="https://www.w3schools.com/howto/howto_js_treeview.asp">https://www.w3schools.com/howto/howto_js_treeview.asp</a></p>
 <p>目前导航栏就是脚本自动生成的，所以现在只需要寻找一个合理美观的展示插件即可。</p>
+<p>事实证明，并不需要目录树...</p>
 </details>
 <details class="note">
-<summary>能否在线编辑？？</summary>
-<p>目前的打算：将原始笔记放入 github 私有仓库，在对应生成 MD 文章中添加原始文件的链接，点击之后即可跳转到 github 进行修改。这样的方式虽然修改非 markdown 文件较麻烦，但没有必要为了这些少数而牺牲大量时间去思考解决方法。</p>
+<summary>☑️能否在线编辑？？</summary>
+<p>目前的方式：将原始笔记放入 github 私有仓库，在对应生成 MD 文章中添加原始文件的链接，点击之后即可跳转到 github 进行修改。这样的方式虽然修改非 markdown 文件较麻烦，但没有必要为了这些少数而牺牲大量时间去思考解决方法。</p>
+<p>经过长时间的实测，这玩意就没有用过。所以说，不要做完美主义，先搭建一个简陋版的，看看自己是不是真能用起来吧...</p>
 </details>
 <details class="note">
 <summary>有些代码或视频要分享，则通过上传云盘，然后生成链接。</summary>
@@ -41222,8 +41366,6 @@
     
       <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
-      
         <script src="../../javascripts/copy.js"></script>
       
         <script src="../../javascripts/collapsible-headings.js"></script>
@@ -41233,6 +41375,12 @@
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
       

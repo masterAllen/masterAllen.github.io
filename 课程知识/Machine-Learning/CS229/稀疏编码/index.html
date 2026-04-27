@@ -54,6 +54,8 @@
     
       <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -40626,16 +40628,16 @@
 <h2 id="k-svd">K-SVD 方法</h2>
 <p>设训练集为 Y，字典为 D。流程如下：</p>
 <p><strong>阶段一</strong>：初始化字典，并且将其二阶范数归一化（其实想想不就是变成坐标系的基向量吗）。构建方式文章使用了 DCT 字典，有人用随机数，效果都差不多，只不过迭代可能会久。然后用字典去表示训练集 Y，得到 X，这里一般用的是 OMP 算法，就是相当于是求 <span class="arithmatex">\(DX=Y\)</span> 这个方程。</p>
-<p>将矩阵用向量表示，其中行数表示的是维度<br />
-$$<br />
-Y_{M<em>N} = [y_1, y_2, ..., y_{N-1}, y_N] \<br />
-D_{M</em>K} = [d_1, d_2, ..., d_{K-1}, d_K] \<br />
-X_{K*N} = [x_1, x_2, ..., x_{N-1}, x_N]<br />
-$$<br />
-阶段二：我们目标更新某一列，那么，我们的目标是最小化：<br />
-$$<br />
-||Y - DX||<em>2^2 = ||Y - \sum</em>{i=1}^{K} d_i * x_i^T||_2^2<br />
-$$</p>
+<p>将矩阵用向量表示，其中行数表示的是维度</p>
+<div class="arithmatex">\[
+Y_{M*N} = [y_1, y_2, ..., y_{N-1}, y_N] \\
+D_{M*K} = [d_1, d_2, ..., d_{K-1}, d_K] \\
+X_{K*N} = [x_1, x_2, ..., x_{N-1}, x_N]
+\]</div>
+<p>阶段二：我们目标更新某一列，那么，我们的目标是最小化：</p>
+<div class="arithmatex">\[
+||Y - DX||_2^2 = ||Y - \sum_{i=1}^{K} d_i * x_i^T||_2^2
+\]</div>
 
 
 
@@ -40831,8 +40833,6 @@ $$</p>
     
       <script src="../../../../assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
-      
         <script src="../../../../javascripts/copy.js"></script>
       
         <script src="../../../../javascripts/collapsible-headings.js"></script>
@@ -40842,6 +40842,12 @@ $$</p>
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
       

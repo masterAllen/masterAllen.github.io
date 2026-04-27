@@ -50,6 +50,8 @@
     
       <link rel="stylesheet" href="stylesheets/extra.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -40508,6 +40510,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#20260427" class="md-nav__link">
+    <span class="md-ellipsis">
+      2026.04.27
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#20260417" class="md-nav__link">
     <span class="md-ellipsis">
       2026.04.17
@@ -40770,6 +40781,8 @@
 </tbody>
 </table>
 <h2 id="_4">更新说明</h2>
+<h3 id="20260427">2026.04.27</h3>
+<p>调整数学渲染，切换到 KaTEX；并且增加一些自动化操作防止渲染失败（比如行内块上下要保证有空格）</p>
 <h3 id="20260417">2026.04.17</h3>
 <p>优化左侧边栏和右侧 toc 栏的折叠展开，折叠按钮在顶部。原先使用 mkdocs-toggle-sidebar，但它只有一个按钮，没办法做到左右分别操作。</p>
 <h3 id="20260320">2026.03.20</h3>
@@ -41028,8 +41041,6 @@
     
       <script src="assets/javascripts/bundle.525ec568.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
-      
         <script src="javascripts/copy.js"></script>
       
         <script src="javascripts/collapsible-headings.js"></script>
@@ -41039,6 +41050,12 @@
         <script src="javascripts/sidebar-toggle-buttons.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
         <script src="/js/open_in_new_tab.js"></script>
       
