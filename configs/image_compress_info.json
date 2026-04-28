@@ -5178,5 +5178,1473 @@
   "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\563e47afe9f3c6c41df4910ec759144a\\20250111190627.png": {
     "params": [85, [65, 80], 1920],
     "mtime": 1775639934.3650384
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\3554766498a9077e71137a90e69e46b3\\10_realloc.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496087.7522175
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\4c626f8a3d19f13133682b274b2b7e42\\checksec.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496088.1522532
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496088.3828204
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496088.5886676
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496088.8111012
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496089.0486908
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496089.24937
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496089.4681575
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496089.6827605
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out15.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496089.8898368
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496090.0916655
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496090.3144164
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496090.5082755
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496090.691663
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496090.8702445
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496091.1008425
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496091.314899
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pdf_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496091.533937
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496091.7421634
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496091.9503436
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496092.163084
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496092.369936
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496092.5719795
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496092.7801454
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496093.1055076
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out15.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496093.3674455
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496093.637924
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496093.8225179
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496094.0398088
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496094.222948
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496094.3995726
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496094.5771518
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496094.7711928
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\576c9bac14b7a7203eec68d18e312c61\\23_heap_paradise.pptx_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496094.9782653
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pdf_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496095.1703916
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pdf_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496095.3845835
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pdf_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496095.5835598
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pdf_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496095.765818
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pdf_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496095.9791036
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pdf_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496096.1528807
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pdf_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496096.3657646
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496096.5918145
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496096.7892168
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496097.0206857
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496097.2304
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496097.4964302
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pptx_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496097.7020216
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6008d7392cfcbb608506126fd0973cab\\11_tcache_tear.pptx_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496097.9074996
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496098.1222043
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496098.326403
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496098.5348487
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496098.7397914
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496098.9540248
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496099.1653614
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496099.37756
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496099.586047
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496099.795414
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496100.0004494
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496100.2186778
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496100.4242387
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496100.6405482
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496100.8460069
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pdf_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496101.0614562
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496101.2707326
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496101.4763637
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496101.6924298
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496101.8976934
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496102.1131437
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496102.3410716
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496102.5576344
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496102.7676344
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496102.9891787
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496103.1939113
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496103.4039273
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496103.6127667
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496103.8759255
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496104.079252
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\6c931cb7fd74d242a0744803e90aecf8\\19_secret_garden.pptx_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496104.2933
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496104.5024433
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496104.7089033
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496104.916335
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496105.1538618
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496105.38578
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496105.605964
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496105.8104048
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496106.038944
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496106.251503
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496106.4674637
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496106.6778884
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496106.9138713
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496107.12647
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496107.346596
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pdf_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496107.574938
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496107.7751548
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496107.9595134
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496108.1323774
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496108.3296707
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496108.5405338
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496108.7560573
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496108.9583192
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496109.1566405
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496109.370049
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496109.5706947
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496109.7894993
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496109.9984617
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\718afa7b82e313055bf40085637dcfc0\\09_appelstore.pptx_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496110.2003694
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\78fd065547482b383c08741ddfdc0a4e\\checksec.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496110.34676
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\78fd065547482b383c08741ddfdc0a4e\\test.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496111.0043952
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\7b7652e4662df3e03cb2be83143b58e4\\checksec.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496111.1530392
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\7b7652e4662df3e03cb2be83143b58e4\\code01.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496111.2560992
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\7b7652e4662df3e03cb2be83143b58e4\\file.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496111.3627005
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\95fff09a082988719af9f8ae2bd53889\\checkseck.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496111.5115871
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\95fff09a082988719af9f8ae2bd53889\\code.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496111.8687246
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\95fff09a082988719af9f8ae2bd53889\\file.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496111.9680738
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496112.1720328
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496112.3664598
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496112.5816755
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496112.7960587
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496113.0304008
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496113.2413526
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496113.4680672
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out15.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496113.6726413
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496113.8790514
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496114.0822072
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496114.2956088
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496114.4993622
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496114.7103877
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496114.9304683
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496115.1428046
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pdf_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496115.356363
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496115.5598307
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496115.76212
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496115.972311
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496116.1782236
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496116.384659
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496116.593278
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496116.801864
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out15.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496117.027915
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496117.2347052
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496117.4587224
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496117.6684408
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496117.901955
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496118.1162405
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496118.3144855
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496118.5298383
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a5c50e848bfc4d4c65e10dc8a4647a59\\24_realloc_revenge.pptx_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496118.7717338
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pdf_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496118.9884212
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pdf_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496119.2005463
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pdf_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496119.4314425
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pdf_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496119.6439514
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pdf_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496119.8832443
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496120.0932631
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496120.3225737
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496120.5384004
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496120.751176
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b0fb6faeb497a64a9b5cbe28d650ccbf\\12_seethefile.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496120.9632418
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\d2fbb2025c7aa15ee5721cd0911b9ee6\\test.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496121.123101
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496121.3574336
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496121.5762277
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496121.7896078
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496121.9998555
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496122.2229712
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496122.4536495
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496122.6631432
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496122.8744428
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496123.0866065
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496123.3010778
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496123.5076249
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496123.7200859
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496123.934788
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\secret_of_my_heart.pptx_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496124.145558
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\something_else.pptx_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496124.3601735
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\something_else.pptx_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496124.5748703
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\something_else.pptx_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496124.7845051
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\something_else.pptx_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496125.0115583
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\f157f2650b089ba121d91d0180e44c9f\\something_else.pptx_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496125.224585
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fcdb5ae86b19634047216420a8a86ba8\\hacknote.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776496125.3779745
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\7d2bd83429d5eba2ba9d21002b7f140d\\Defense_ASLR.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592541.189607
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\7d2bd83429d5eba2ba9d21002b7f140d\\Defense_Canary.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592541.424907
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\7d2bd83429d5eba2ba9d21002b7f140d\\Defense_PIE.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592541.942984
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260103095826.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592542.1532204
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260103100153.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592542.315688
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260103100317.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592542.471486
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260103100658.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592542.6377275
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260103102254.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592543.0391161
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260103114218.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592543.469018
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260104120155.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592543.8978553
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\8754c332843a34e678cf8e89442d5e31\\20260104120401.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592544.3180299
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\a9d2cd73f4e8d7a594bcf27bdffb4842\\pwntools_nun.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592544.8221471
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e8a549bd6b18d954ee092f0c161d90e1\\binary_segment.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592545.3296714
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e8a549bd6b18d954ee092f0c161d90e1\\cpu_name.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776594605.7734742
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e8a549bd6b18d954ee092f0c161d90e1\\program_life.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776592545.5214622
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\0436d31074f4440ee1e1180c27a480c3\\20260102082535.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776842090.0558429
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\0436d31074f4440ee1e1180c27a480c3\\20260102082932.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776842090.481996
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\0436d31074f4440ee1e1180c27a480c3\\20260102083020.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776842092.4299943
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\0436d31074f4440ee1e1180c27a480c3\\20260102083220.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776842094.9617593
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\0436d31074f4440ee1e1180c27a480c3\\20260102084259.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776842096.6446335
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\0436d31074f4440ee1e1180c27a480c3\\20260102084324.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776842098.1560948
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\26331dbcec74e292a8525bc9a8a37965\\20260102094651.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776842098.7651663
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\61ff4cedaa2a92c493f6df9f35af75ad\\20260102001.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771670.2017002
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out0.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771670.6275244
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out1.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771671.046982
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out10.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771671.4371552
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out11.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771671.8478324
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out12.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771672.2614753
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out13.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771672.7029383
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out14.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771673.120036
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out15.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771673.6231368
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out16.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771674.0035586
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out17.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771674.4017072
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out18.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771674.790313
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out19.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771675.1681337
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out2.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771675.5559993
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out20.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771675.9281578
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out21.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771676.3340738
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out22.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771676.711595
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out23.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771677.0889692
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out24.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771677.4708807
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out25.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771677.875996
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out26.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771678.255643
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out27.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771678.6314044
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out28.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771679.035975
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out29.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771679.4098282
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out3.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771679.7859704
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out30.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771680.175362
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out31.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771680.550384
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out32.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771680.95897
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out33.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771681.3504474
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out34.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771681.7433362
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out35.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771682.1246777
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out36.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771682.5103116
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out37.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771682.916603
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out38.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771683.32227
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out39.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771683.726005
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out4.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771684.115713
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out40.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771684.5177648
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out41.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771684.9184518
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out42.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771685.3246613
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out43.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771685.7294858
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out44.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771686.143317
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out45.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771686.547254
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out46.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771686.9445045
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out47.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771687.3515253
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out48.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771687.7517776
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out49.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771688.1632948
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out5.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771688.5644166
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out50.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771688.980675
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out51.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771689.3764803
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out52.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771689.7960641
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out53.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771690.20603
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out54.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771690.6134772
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out55.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771691.0123425
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out56.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771691.4198635
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out57.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771691.8237042
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out58.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771692.2255175
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out59.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771692.6320827
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out6.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771693.0056188
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out60.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771693.3545344
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out61.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771693.7499912
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out62.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771694.1731966
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out63.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771694.5771637
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out64.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771694.9894104
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out65.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771695.3876958
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out66.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771695.7661462
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out67.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771696.1777692
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out68.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771696.590591
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out69.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771697.0114639
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out7.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771697.4254587
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out70.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771697.8264837
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out71.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771698.2268064
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out72.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771698.6386404
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out73.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771699.0414732
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out74.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771699.450205
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out75.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771699.85799
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out76.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771700.2523992
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out77.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771700.6513786
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out78.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771701.037974
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out79.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771701.4175084
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out8.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771701.7549627
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out80.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771702.0977046
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out81.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771702.457064
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out82.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771702.8233228
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out83.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771703.1824415
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out84.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771703.5431824
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out85.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771703.8985157
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out86.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771704.2407951
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out87.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771704.6066687
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out88.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771704.9628265
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out89.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771705.3128192
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out9.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771705.7039833
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out90.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771706.1578827
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out91.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771706.5670297
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out92.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771706.9200642
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out93.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771707.3185558
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out94.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771707.7162821
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out95.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771708.1222155
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out96.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771708.5343928
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out97.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771708.948435
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e91f75cfd9a026c9069258b9c404031d\\FILE Structures.pdf_out98.jpg": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771709.4762385
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\eb40c4e4a77a35cc98fae9ae3ae9cc33\\20260102085752.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776771709.8079672
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e55c6b197bc750eca9c62a9cc15a560f\\20260421201854.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776774044.4991777
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104015545.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911939.365638
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104015607.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911939.4567251
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104015634.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911939.5483005
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104062132.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911940.337689
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104062256.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911941.1764936
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104063234.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911941.91225
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104093038.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911942.3230152
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104094057.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911942.477629
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104115942.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911942.6051636
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260104124153.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911942.787283
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260105064230.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911942.873247
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260105093618.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911943.0802898
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260114082902.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911943.184747
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260114090455.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911943.5722432
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260130115129.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911943.7963943
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260130115811.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911944.08573
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131010647.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911944.2186947
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131120804.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911944.352231
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131120917.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911944.4633923
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131121640.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911944.580688
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131122225.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911945.015753
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131122957.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911945.1042707
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131123015.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911945.3278866
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131124050.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911945.691122
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131124202.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911945.8256555
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131125358.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911947.1821856
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\126e958db9a28a22cc6454e127bcbfba\\20260131125902.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911947.2897148
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\30ae03c2ca195f63e6883269eb6eaafc\\20260106030144.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911947.377229
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\337942f7f8c2360373d352b6352a3cd0\\20260105111751.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911947.5567179
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\337942f7f8c2360373d352b6352a3cd0\\20260105122635.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911947.6903214
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\3b6a1a6062416f365dbf9bdecf91c26b\\20260128112057.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911947.8437364
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b1607ce5a75613b51c858822bb6e0f1b\\20260131112808.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911948.1048908
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b1607ce5a75613b51c858822bb6e0f1b\\20260131114147.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911948.398522
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\b1607ce5a75613b51c858822bb6e0f1b\\20260201093148.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911948.5566347
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e2bc32d824febca4af12fcdb3bdf760e\\20260129115755.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911948.676464
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e2bc32d824febca4af12fcdb3bdf760e\\20260129115853.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911948.7639806
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\e2bc32d824febca4af12fcdb3bdf760e\\20260130121419.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911948.857494
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fee1c16493b3f1b4a06f4dd224701436\\20260105112259.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911949.1682975
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fee1c16493b3f1b4a06f4dd224701436\\20260105115743.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911949.5551775
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fee1c16493b3f1b4a06f4dd224701436\\20260106120153.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911949.9646952
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fee1c16493b3f1b4a06f4dd224701436\\20260106121934.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911950.400998
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fee1c16493b3f1b4a06f4dd224701436\\20260106123354.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911950.882159
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fee1c16493b3f1b4a06f4dd224701436\\20260106124505.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911951.3292236
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\fee1c16493b3f1b4a06f4dd224701436\\20260114063352.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911951.4002616
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260114094417.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911951.486792
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260114100036.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911951.809362
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260114100707.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911952.1559532
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260114102129.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911952.3470037
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260114102438.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911952.439933
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260131112808.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911952.6806216
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260131114147.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911952.9449244
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201074623.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911953.3562653
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201083000.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911953.4300797
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201083732.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911953.5294645
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201090431.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911953.6214893
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201121741.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911953.7875252
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201122029.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911954.0026782
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201123154.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911954.2340765
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\ffc61a72e190537346d892e0d733168a\\20260201123540.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1776911954.443145
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\69e7019d9d145bf8ba50ee44f92681c9\\20260425150010.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1777254305.2148008
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\69e7019d9d145bf8ba50ee44f92681c9\\20260425150011.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1777254305.3682697
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\69e7019d9d145bf8ba50ee44f92681c9\\20260425150012.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1777254305.609367
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\69e7019d9d145bf8ba50ee44f92681c9\\20260425150013.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1777254305.71994
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\69e7019d9d145bf8ba50ee44f92681c9\\20260425150014.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1777254305.8850577
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\69e7019d9d145bf8ba50ee44f92681c9\\20260425150015.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1777254306.1684873
+  },
+  "D:\\BlogSite\\masterAllen.github.io\\docs\\asset\\image\\981a270ea5a5ac1dc001ac0bab0b2720\\20260427180832.png": {
+    "params": [85, [65, 80], 1920],
+    "mtime": 1777286459.5914164
   }
 }

@@ -146,9 +146,9 @@ if __name__ == '__main__':
             临时 Debug 区域
             '''
             # 先根据时间，判断要不要更改；如果没修改，那么就按照原来的搞；否则就继续处理
-            if True:
+            # if True:
             # if (file_type == 'html') or (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
-            # if (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
+            if not ((file_type == 'word') or (file_type == 'ppt') or (file_type == 'image') or (file_type == 'pdf')):
             # if (file_type == 'word') or (file_type == 'ppt'):
             # if (file_type != 'video' and file_type != 'text'):
             # if (file_type == 'ppt' or file_type == 'word'):

@@ -68,7 +68,7 @@ def process_markdown_links(content, webfile_pth, raw2web_mapping, web2raw_mappin
             elif link_url_abs in raw2web_mapping:
                 target_web_path = raw2web_mapping[link_url_abs]
 
-            if target_web_path is not None:
+            if target_web_path is not None and link_type != 'image':
                 pth2 = target_web_path
                 pth1 = webfile_pth
 

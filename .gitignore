@@ -1,13 +1,34 @@
-site
-docs
+# MkDocs build output and generated site content
+site/
+docs/
 asset/
-__pycache__
+!docs/index.md
+
+# Python cache / binary artifacts
+__pycache__/
+*.py[cod]
 *.bin
+
+# Generated local caches and reports
+configs/cache_file.json
+configs/cache_link.json
+configs/image_compress_info.json
+configs/link_identity_cache.json
 configs/mp4.txt
 configs/big_files.txt
-!docs/index.md
-test.py
-architecture_analysis.md
-check.py
+
+# Local tools
 pngquant/
+
+# Downloaded third-party math bundles; keep custom glue code like katex.js tracked
+overrides/javascripts/auto-render.min.js
+overrides/javascripts/katex.min.js
+overrides/javascripts/tex-mml-chtml.js
+overrides/stylesheets/katex.min.css
+overrides/stylesheets/fonts/KaTeX_*
+
+# Scratch files
+test.py
 test.txt
+check.py
+architecture_analysis.md

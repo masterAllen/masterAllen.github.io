@@ -84,9 +84,9 @@ def main() -> None:
         if link_web_path.lower().endswith('.md'):
             _rewrite_copied_markdown_links(link_web_path, source_web_path, web2raw_mapping)
 
-        print('----------更新链接文件----------')
-        print(f'原始链接文件: {link_src_path}, 指向原始目标: {target_raw}')
-        print(f'复制结果: {source_web_path} -> {link_web_path}')
+        # print('----------更新链接文件----------')
+        # print(f'原始链接文件: {link_src_path}, 指向原始目标: {target_raw}')
+        # print(f'复制结果: {source_web_path} -> {link_web_path}')
 
 
 if __name__ == '__main__':

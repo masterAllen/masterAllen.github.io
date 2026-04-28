@@ -1,3 +1,4 @@
+import html
 import os
 from win32com.client import Dispatch, DispatchEx
 import pypdfium2 as pdfium
@@ -167,6 +168,14 @@ def do_png(srcdir, dstdir, nowname, newname):
     return dstpth
 
 
+def write_doc_page_image(f, img_src, alt):
+    escaped_src = html.escape(img_src, quote=True)
+    escaped_alt = html.escape(alt, quote=True)
+    f.writelines('<figure class="doc-page">\n')
+    f.writelines(f'    <img class="doc-page__image" src="{escaped_src}" alt="{escaped_alt}">\n')
+    f.writelines('</figure>\n')
+
+
 def do_pdf(srcdir, dstdir, nowname, newname):
     srcpth = os.path.join(srcdir, nowname)
     dstpth = os.path.join(dstdir, f'{newname}.md')
@@ -195,7 +204,11 @@ def do_pdf(srcdir, dstdir, nowname, newname):
             nowimg = np.array(nowimg)
             nowimg = Image.fromarray(nowimg)
             nowimg.save(imgpth)
-            f.writelines(f'![IMG{count}]({img_reldir}/{nowname}_out{count}.jpg)\n')
+            write_doc_page_image(
+                f,
+                f'{img_reldir}/{nowname}_out{count}.jpg',
+                f'{title} page {count + 1}',
+            )
         f.writelines('\n')
 
     return dstpth
@@ -274,7 +287,11 @@ def do_word(srcdir, dstdir, nowname, newname):
 
             nowimg = Image.fromarray(nowimg)
             nowimg.save(imgpth)
-            f.writelines(f'![IMG{count}]({img_reldir}/{newname}_out{count}.jpg)\n')
+            write_doc_page_image(
+                f,
+                f'{img_reldir}/{newname}_out{count}.jpg',
+                f'{title} page {count + 1}',
+            )
     return dstpth
 
 
@@ -311,7 +328,11 @@ def do_ppt(srcdir, dstdir, nowname, newname):
             imgpth = os.path.join(img_absdir, f'{newname}_out{count}.jpg')
             nowimg = page.render(scale=4).to_pil()
             nowimg.save(imgpth)
-            f.writelines(f'![{newname}_out{count}]({img_reldir}/{newname}_out{count}.jpg)\n')
+            write_doc_page_image(
+                f,
+                f'{img_reldir}/{newname}_out{count}.jpg',
+                f'{title} slide {count + 1}',
+            )
     return dstpth
 
 

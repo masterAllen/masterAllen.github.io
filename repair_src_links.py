@@ -2,6 +2,7 @@ import argparse
 import ctypes
 import json
 import os
+import sys
 from datetime import datetime
 from pathlib import Path
 from ctypes import wintypes
@@ -413,6 +414,14 @@ def main():
         print("---- 未找到（快捷方式）----")
         for lnk_file, broken_abs in lnk_unresolved:
             print(f"{lnk_file} -> {broken_abs}")
+
+    if md_unresolved or lnk_unresolved:
+        print("================================================")
+        print("修复失败，请检查修复结果")
+        print("================================================")
+        print()
+        print()
+        sys.exit(1)
 
 
 if __name__ == "__main__":

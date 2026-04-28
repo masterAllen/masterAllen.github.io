@@ -231,13 +231,20 @@
 
 /* ========== 正文：图片 ========== */
 
-/* 图片居中；高度原可用 max-height 限制，当前注释掉以保留原图比例 */
+/* 普通图片居中并限制显示高度；文档页面图在下方单独放开高度 */
+:root {
+  --content-image-max-height: min(70vh, 560px);
+  --doc-page-max-width: 100%;
+}
+
 .md-typeset img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  /* max-height: 450px; */
+  max-width: 100%;
+  max-height: var(--content-image-max-height);
   width: auto;
+  height: auto;
   object-fit: contain;
 }
 
@@ -257,6 +264,20 @@
 .md-typeset figure.img-center figcaption {
   text-align: center;
   margin-top: 0.5em;
+}
+
+/* PDF / Word / PPT 转换得到的页面图：按正文宽度自然收缩，不套普通图片限高 */
+.md-typeset figure.doc-page {
+  margin: 1.2rem auto;
+  text-align: center;
+}
+
+.md-typeset figure.doc-page img,
+.md-typeset img.doc-page__image {
+  max-width: var(--doc-page-max-width);
+  max-height: none;
+  width: auto;
+  height: auto;
 }
 
 /* 宽屏：正文内层再增加左右边距，避免一行过长 */
@@ -490,17 +511,16 @@
 }
 
 /* question 块：靠右显示、略放大字号、整体更紧凑 */
-.md-typeset .admonition.question,
-.md-typeset details.question {
+.md-typeset .admonition.info {
   width: 60% !important;
   margin: 0.6rem 0 0.9rem auto !important;
-  font-size: 1.0rem !important;
+  font-size: 0.9rem !important;
   line-height: 1.55;
   border-radius: 0.55rem;
 }
 
 /* question 块的字体间隔更小一些 这样更加紧凑 */
-.md-typeset .admonition.question > p {
+.md-typeset .admonition.info > p {
   line-height: 1.5;
 }
 
@@ -509,43 +529,34 @@
   font-size: 0.8rem !important;
 }
 
-.md-typeset .question > .admonition-title,
-.md-typeset .question > summary {
+.md-typeset .info > .admonition-title,
+.md-typeset .info > summary {
   margin: 0;
   padding: 0.45rem 0.8rem;
   font-size: 0.95rem;
 }
 
-.md-typeset .admonition.question > p,
-.md-typeset .admonition.question > ul,
-.md-typeset .admonition.question > ol,
-.md-typeset .admonition.question > .admonition-title + *,
-.md-typeset details.question > *:not(summary) {
+.md-typeset .admonition.info > p,
+.md-typeset .admonition.info > ul,
+.md-typeset .admonition.info > ol,
+.md-typeset .admonition.info > .admonition-title + * {
   margin-top: 0.45rem !important;
   margin-bottom: 0.45rem !important;
 }
 
-.md-typeset .admonition.question > :last-child,
-.md-typeset details.question > :last-child {
-  margin-bottom: 0 !important;
-}
-
-.md-typeset .admonition.question > p,
-.md-typeset .admonition.question > ul,
-.md-typeset .admonition.question > ol,
-.md-typeset details.question > *:not(summary) {
+.md-typeset .admonition.info > p,
+.md-typeset .admonition.info > ul,
+.md-typeset .admonition.info > ol {
   padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
 
-.md-typeset details.question > *:last-child,
-.md-typeset .admonition.question > *:last-child {
+/* .md-typeset .admonition.info > *:last-child {
   padding-bottom: 0.55rem;
-}
+} */
 
 @media (max-width: 76.1875em) {
-  .md-typeset .admonition.question,
-  .md-typeset details.question {
+  .md-typeset .admonition.info {
     width: 100% !important;
     margin-left: 0 !important;
     font-size: 1rem !important;
@@ -722,3 +733,20 @@
 .md-typeset .collapsible-section > *:last-child {
   margin-bottom: 0;
 } */
+
+
+/* ========== katex css 设置 ========== */
+/* 设置上下间距不要太大 */
+.katex-display {
+  margin: 0.1em 0 !important;
+}
+
+/* ========= admotion 设置 ========== */
+/* mkdocs 原有的 admonition 字体过于小了 */
+.md-typeset .note {
+  font-size: 0.7rem !important;
+}
+
+.md-typeset .question {
+  font-size: 0.7rem !important;
+}

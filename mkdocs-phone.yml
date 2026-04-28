@@ -1,0 +1,90 @@
+# mkdocs-phone 区别：
+# 1. 没有 overrides, 也就是没有 giscus comments
+# 2. 没有 google anlysis
+# 3. 去除代码仓库的链接，因为他每次加载都要尝试解析
+# 4. 使用本地的 js 而不是 https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+# 项目信息
+site_name: Allen Hong's Blog
+site_url: https://masterallen.github.io
+site_author: Allen Hong
+site_description: >-
+  Welcome to Allen Hong's Blog. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.
+
+# 代码仓库信息
+# repo_name: My Github Link # 仓库名称
+# repo_url: https://github.com/masterAllen # 仓库地址
+
+# 版权信息
+copyright: Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+
+# 配置
+theme:
+  name: material 
+  # logo: static/images/logo.jpg # logo 图片
+  language: en # 默认语言
+  features: # 功能  
+    # - navigation.instant # 瞬间加载 - 如果这个开着，那么语言切换后就会跳转至首页，所以我关掉了
+    # - navigation.expand # 导航栏默认全部展开，这个肯定不合适
+    # - navigation.sections # 导航栏的 section
+    # - navigation.tabs.sticky # tab 始终可见
+    # - navigation.prune # 只构建可见的页面
+    # - navigation.top # 开启顶部导航栏
+    - navigation.tabs # 顶级索引被作为 tab
+    - navigation.path  # sponsor only，但是很有用
+    - navigation.indexes # 点击 section 显示 readme，而不是 readme 是 section 下面单独一篇文章
+    - header.autohide # 下滑时会把 header 隐藏起来
+    - navigation.footer # 底部导航栏
+    # - announce.dismiss # 可以叉掉公告的功能
+
+  palette: 
+    primary: teal
+
+
+# pip install mkdocs-open-in-new-tab
+# Plugins
+plugins:
+  # 生成在线网站时候不要注释
+  - exclude:
+      regex:
+        # - '.*asset/\.md$'
+        # - '.*asset.*\.md$'
+
+  - search
+  - open-in-new-tab
+#   - rss:
+#       match_path: blog/posts/.* 
+#       date_from_meta:
+#         as_creation: date
+#       categories:
+#         - categories
+#         - tags 
+
+# 扩展
+markdown_extensions:
+  - abbr
+  - nl2br
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/copy.js
+  - javascripts/collapsible-headings.js
+  - javascripts/resizable-sidebar.js
+  - javascripts/sidebar-toggle-buttons.js
+  # - javascripts/mathjax.js
+  - javascripts/katex.min.js
+  - javascripts/auto-render.min.js
+  - javascripts/katex.js
+
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/katex.min.css
+
+nav:
+  - Main
