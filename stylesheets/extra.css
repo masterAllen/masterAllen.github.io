@@ -231,13 +231,20 @@
 
 /* ========== 正文：图片 ========== */
 
-/* 图片居中；高度原可用 max-height 限制，当前注释掉以保留原图比例 */
+/* 普通图片居中并限制显示高度；文档页面图在下方单独放开高度 */
+:root {
+  --content-image-max-height: min(60vh, 500px);
+  --doc-page-max-width: 100%;
+}
+
 .md-typeset img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  /* max-height: 450px; */
+  max-width: 100%;
+  max-height: var(--content-image-max-height);
   width: auto;
+  height: auto;
   object-fit: contain;
 }
 
@@ -257,6 +264,20 @@
 .md-typeset figure.img-center figcaption {
   text-align: center;
   margin-top: 0.5em;
+}
+
+/* PDF / Word / PPT 转换得到的页面图：按正文宽度自然收缩，不套普通图片限高 */
+.md-typeset figure.doc-page {
+  margin: 1.2rem auto;
+  text-align: center;
+}
+
+.md-typeset figure.doc-page img,
+.md-typeset img.doc-page__image {
+  max-width: var(--doc-page-max-width);
+  max-height: none;
+  width: auto;
+  height: auto;
 }
 
 /* 宽屏：正文内层再增加左右边距，避免一行过长 */
