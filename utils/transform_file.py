@@ -223,10 +223,10 @@ def do_word(srcdir, dstdir, nowname, newname):
     pdf_reldir = path_utils.relpath(pdf_absdir, dstpth)
     pdf_absfile = os.path.join(pdf_absdir, f'{newname}.pdf')
 
-    print(f'pdf_absfile: {pdf_absfile}')
-    print(f'pdf_reldir: {pdf_reldir}')
-    print(f'pdf_absdir: {pdf_absdir}')
-    print(f'dstpth: {dstpth}')
+    # print(f'pdf_absfile: {pdf_absfile}')
+    # print(f'pdf_reldir: {pdf_reldir}')
+    # print(f'pdf_absdir: {pdf_absdir}')
+    # print(f'dstpth: {dstpth}')
 
     doc_path = os.path.abspath(srcpth)
     pdf_path = os.path.abspath(pdf_absfile)

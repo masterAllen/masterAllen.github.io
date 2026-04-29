@@ -1,6 +1,6 @@
 {
   "D:\\Blog\\done\\index.md": {
-    "mtime": 1777282851.2919757,
+    "mtime": 1777371215.0340612,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\index.md"
   },
   "D:\\Blog\\done\\Main\\readme.md": {
@@ -160,7 +160,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\index.md"
   },
   "D:\\Blog\\done\\About\\1.Hi.md": {
-    "mtime": 1777282851.2919757,
+    "mtime": 1777371215.0340612,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\About\\1.Hi.md"
   },
   "D:\\Blog\\done\\About\\2.为什么选择github作为评论区.md": {
@@ -574,6 +574,22 @@
   "D:\\Blog\\done\\课程知识\\强化学习\\02.策略迭代和价值迭代.md": {
     "mtime": 1777282618.5438483,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\02.策略迭代和价值迭代.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\03.三种经典方法.md": {
+    "mtime": 1777015203.8104863,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\03.三种经典方法.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\04.DQN.md": {
+    "mtime": 1777017983.4069817,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\04.DQN.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\05.基于策略的方法.md": {
+    "mtime": 1777030590.3520584,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\05.基于策略的方法.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\06.Actor-Critic.md": {
+    "mtime": 1777034870.0473492,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\06.Actor-Critic.md"
   },
   "D:\\Blog\\done\\课程知识\\数学知识\\1.插值和误差分析.docx": {
     "mtime": 1710297899.0928047,
@@ -1856,16 +1872,20 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Operating-System\\个人笔记\\虚拟地址总结.txt.md"
   },
   "D:\\Blog\\done\\课程知识\\Operating-System\\问答\\Q1.为什么数组写入比读取慢.md": {
-    "mtime": 1760448287.099036,
+    "mtime": 1777376093.004476,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Operating-System\\问答\\Q1.为什么数组写入比读取慢.md"
   },
   "D:\\Blog\\done\\课程知识\\Operating-System\\问答\\Q2.为什么数组写入1比写入0慢.md": {
-    "mtime": 1767696207.7895758,
+    "mtime": 1777376219.8080535,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Operating-System\\问答\\Q2.为什么数组写入1比写入0慢.md"
   },
   "D:\\Blog\\done\\课程知识\\Operating-System\\问答\\Q3.C语言不同文件是否可以声明同名变量.md": {
     "mtime": 1760667712.5589898,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Operating-System\\问答\\Q3.C语言不同文件是否可以声明同名变量.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Operating-System\\问答\\Q4.为什么栈比堆快.md": {
+    "mtime": 1777376442.2470958,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Operating-System\\问答\\Q4.为什么栈比堆快.md"
   },
   "D:\\Blog\\done\\课程知识\\信息安全\\compilebackdoor\\给编译器加后门.md": {
     "mtime": 1766408170.7104318,

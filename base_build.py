@@ -142,19 +142,24 @@ if __name__ == '__main__':
                 link_files.append(nowsrc)
                 continue
 
+            cache_dst = None
+            if '不上传' in nowname:
+                cache_name = transform_name.beautify_name(nowname)
+                cache_dst = utils.abspath(os.path.join(os.path.dirname(nowdst), f'{cache_name}.md'))
+
             '''
             临时 Debug 区域
             '''
             # 先根据时间，判断要不要更改；如果没修改，那么就按照原来的搞；否则就继续处理
-            # if True:
+            if True:
             # if (file_type == 'html') or (file_type == 'word') or (file_type == 'ppt') or (file_type == 'image'):
-            if not ((file_type == 'word') or (file_type == 'ppt') or (file_type == 'image') or (file_type == 'pdf')):
+            # if not ((file_type == 'word') or (file_type == 'ppt') or (file_type == 'image') or (file_type == 'pdf')):
             # if (file_type == 'word') or (file_type == 'ppt'):
             # if (file_type != 'video' and file_type != 'text'):
             # if (file_type == 'ppt' or file_type == 'word'):
             # if (file_type == 'ppt'):
             # if (file_type != 'text'):
-                if not configs.is_need_update(nowsrc):
+                if not configs.is_need_update(nowsrc, cache_dst):
                     configs.update_cache_byold(nowsrc)
                     continue
 

@@ -233,7 +233,7 @@
 
 /* 普通图片居中并限制显示高度；文档页面图在下方单独放开高度 */
 :root {
-  --content-image-max-height: min(70vh, 560px);
+  --content-image-max-height: min(60vh, 500px);
   --doc-page-max-width: 100%;
 }
 
