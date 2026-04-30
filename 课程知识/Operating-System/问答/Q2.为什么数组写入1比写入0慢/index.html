@@ -10397,6 +10397,8 @@
       
         
       
+        
+      
     
     
       
@@ -10540,6 +10542,27 @@
   
   <span class="md-ellipsis">
     C语言不同文件是否可以声明同名变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q4.%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A0%88%E6%AF%94%E5%A0%86%E5%BF%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    为什么栈比堆快
   </span>
   
 
@@ -17645,6 +17668,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -17751,6 +17782,90 @@
   
   <span class="md-ellipsis">
     DQN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/05.%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/06.Actor-Critic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actor-Critic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/07.%E5%90%8C%E5%BC%82%E7%AD%96%E7%95%A5%E5%92%8C%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    同异策略和重要性采样
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/08.TRPO%E5%92%8CPPO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRPO 和 PPO
   </span>
   
 
@@ -40639,7 +40754,28 @@
 <p>非常好的视频，对于这个问题，建议从 55:00 开始看。</p>
 <p>如下图所示，为什么这个数组中，写入 1 比写入 0 要慢？</p>
 <h2 id="_1">问题说明</h2>
-<p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20251014212630.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">BM_write0</span><span class="p">(</span><span class="n">benchmark</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#pragma omp parallel for</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">benchmark</span><span class="o">::</span><span class="n">DoNotOptimize</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">BENCHMARK</span><span class="p">(</span><span class="n">BM_write0</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">BM_write1</span><span class="p">(</span><span class="n">benchmark</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#pragma omp parallel for</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">benchmark</span><span class="o">::</span><span class="n">DoNotOptimize</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">BENCHMARK</span><span class="p">(</span><span class="n">BM_write1</span><span class="p">);</span>
+</code></pre></div>
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20251014212648.png" /></p>
 <h2 id="_2">回答</h2>
 <p>知道这个问题，需要先了解 Cache 和 Memory 是 64B 为单位的，建议需要先看<a href="../Q1.%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%B0%E7%BB%84%E5%86%99%E5%85%A5%E6%AF%94%E8%AF%BB%E5%8F%96%E6%85%A2/">这个问题</a></p>

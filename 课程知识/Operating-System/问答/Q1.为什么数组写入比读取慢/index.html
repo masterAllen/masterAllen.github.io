@@ -10397,6 +10397,8 @@
       
         
       
+        
+      
     
     
       
@@ -10540,6 +10542,27 @@
   
   <span class="md-ellipsis">
     C语言不同文件是否可以声明同名变量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Q4.%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A0%88%E6%AF%94%E5%A0%86%E5%BF%AB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    为什么栈比堆快
   </span>
   
 
@@ -17645,6 +17668,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -17751,6 +17782,90 @@
   
   <span class="md-ellipsis">
     DQN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/05.%E5%9F%BA%E4%BA%8E%E7%AD%96%E7%95%A5%E7%9A%84%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于策略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/06.Actor-Critic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Actor-Critic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/07.%E5%90%8C%E5%BC%82%E7%AD%96%E7%95%A5%E5%92%8C%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    同异策略和重要性采样
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/08.TRPO%E5%92%8CPPO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TRPO 和 PPO
   </span>
   
 
@@ -40639,10 +40754,49 @@
 <p>非常好的视频，很有意思的问题。</p>
 <p>如下图所示，为什么写入数组比读取数组要慢？</p>
 <h2 id="_2">问题说明</h2>
-<p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20251014211245.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">BM_read</span><span class="p">(</span><span class="n">benchmark</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
+<span class="cp">#pragma omp parallel for reduction(+:ret)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">ret</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">benchmark</span><span class="o">::</span><span class="n">DoNotOptimize</span><span class="p">(</span><span class="n">ret</span><span class="p">);</span>
+<span class="w">        </span><span class="n">benchmark</span><span class="o">::</span><span class="n">DoNotOptimize</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">BENCHMARK</span><span class="p">(</span><span class="n">BM_read</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">BM_write</span><span class="p">(</span><span class="n">benchmark</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#pragma omp parallel for</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">benchmark</span><span class="o">::</span><span class="n">DoNotOptimize</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">BENCHMARK</span><span class="p">(</span><span class="n">BM_write</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">BM_read_and_write</span><span class="p">(</span><span class="n">benchmark</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#pragma omp parallel for</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">benchmark</span><span class="o">::</span><span class="n">DoNotOptimize</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">BENCHMARK</span><span class="p">(</span><span class="n">BM_read_and_write</span><span class="p">);</span>
+</code></pre></div>
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20251014211357.png" /></p>
 <h2 id="_3">回答</h2>
-<p>这是 Cache 和 Memory 打交道的原因。如果 Cache 向 Memory 中写入数据，必须是 64B 为寻址。所以像上面的代码中给某个地址写入 4B 数据时，他需要<strong>把这个地址计算对齐后的地址，读取 64B 数据到 Cache，把其中对应的 4B 数据替换掉，择机写回去（也就是说不是立即写回，假如下一次又要修改这个 64B 部分或整体数据，就可以利用 Cache 存好的了）</strong>。</p>
+<p>这是 Cache 和 Memory 打交道的原因。如果 Cache 向 Memory 中写入数据，必须是 64B 为寻址。上面的代码中给某个地址每次写入和读取的是 4B 数据时，所以写入时：</p>
+<ol>
+<li>CPU 向 Cache 发送 4B 数据（读取时正好反过来，最后 Cache 向 CPU 返回 4B 数据）</li>
+<li>Cache 从 Memory 读取对齐后的地址，读取 64B 数据到 Cache (读取时也会有)</li>
+<li>Cache 把其中对应的 4B 数据替换掉，择机写回 Memory（也就是说不是立即写回，假如下一次又要修改这个 64B 部分或整体数据，就可以利用 Cache 存好的了）（读取时没有）</li>
+</ol>
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20251014211432.png" /></p>
 <p>而读取就没有这个问题，Cache 也是从 Memory 读取 64B，但是由于上面代码读取数组时顺序读取，当某次 Cache 从 Memory 搬运 64B 之后，读取下一个数据时这个 64B 已经存在 Cache 里面了，所以 Cache 直接就返回结果了。</p>
 <p>综上，假设数组有 <code>64*n</code> B，那么读取时 Cache 从 Memory 读取 <code>n</code> 次；写入时 Cache 必须从 Memory 读取 <code>n</code> 次（关键），向 Memory 写回也是 <code>n</code> 次，所以结果就写入比读取慢两倍。</p>
