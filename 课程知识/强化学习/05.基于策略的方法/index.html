@@ -17616,6 +17616,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -17897,6 +17901,48 @@
   
   <span class="md-ellipsis">
     TRPO 和 PPO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%96%B9%E6%B3%95DDPG%E5%92%8CTD3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    确定性方法 DDPG 和 TD3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.%E7%BB%93%E6%9D%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    结语
   </span>
   
 
@@ -40815,7 +40861,7 @@
 <div class="file-actions" data-title-link="true"><span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\课程知识\强化学习\05.基于策略的方法.md">复制本地路径</span> | <a href="https://github.com/masterAllen/BlogRawData/edit/main/课程知识/强化学习/05.基于策略的方法.md" class="file-action-link">在线编辑</a></div>
 
 <h2 id="_2">新方法的引入</h2>
-<p>前面介绍许多的方法，这些方法都是<strong>基于价值的方法</strong>，也就是智能体需要通过价值函数（如Q函数）评估每个动作的价值，然后选择最优动作。对于连续动作空间，动作是无限多的，无法像离散动作空间那样枚举所有可能的动作并计算其价值。非要算也可以，一种常见的解决方法是离散化连续动作空间，但这会带来很多新的问题，如离散化的粒度如何确定、维度灾难等等……</p>
+<p>前面介绍许多的方法，这些方法都是<strong>基于价值的方法</strong>，也就是智能体需要通过价值函数（如 Q 函数）评估每个动作的价值，然后选择最优动作。对于连续动作空间，动作是无限多的，无法像离散动作空间那样枚举所有可能的动作并计算其价值。非要算也可以，一种常见的解决方法是离散化连续动作空间，但这会带来很多新的问题，如离散化的粒度如何确定、维度灾难等等……</p>
 <p>下面通过一个例子来说明这样的情况，对于机器人运动而言，我们关注其中的一个关节，状态 s 表示当前关节角度和当前速度，现在我们需要知道下一个动作是什么。如果拆分成离散：</p>
 <p>关节角度为 <code>0~360</code>，每 1 度拆分，这样就有拆成 36 个离散档位，即总动作数为 36 个；一个关节这样，两个关节就 <span class="arithmatex">\(36^2\)</span>，三个关节就更多，我们是这样选择动作的：</p>
 <div class="arithmatex">\[
@@ -40856,10 +40902,10 @@ a = \mu_\theta(s)<br />
 <p><strong>因为：纯确定性策略，有一个绝症：不会探索，必死。</strong></p>
 <hr />
 <h1 id="1">核心原因 1：环境不知道好坏，必须靠「随机」试探</h1>
-<h3 id="1-a">1. 纯确定性策略（直接输出a）</h3>
+<h3 id="1-a">1. 纯确定性策略（直接输出 a）</h3>
 <p>看见状态 <span class="arithmatex">\(s\)</span>，<strong>永远只做同一个动作</strong>。</p>
 <ul>
-<li>永远左转、永远用力矩0.5、永远同一种走位</li>
+<li>永远左转、永远用力矩 0.5、永远同一种走位</li>
 <li>哪怕这条路奖励很低、是死胡同，它<strong>一辈子不会换动作</strong></li>
 <li>完全没有探索能力，直接锁死局部最优</li>
 </ul>
@@ -40915,14 +40961,14 @@ a = \mu_\theta(s)<br />
 <p>全程一成不变，<strong>没法动态调节探索强度</strong>。</p>
 <hr />
 <h1 id="_8">终极总结：两条路线并存，各有分工</h1>
-<h2 id="a-a">路线A：确定性策略（直接输出动作 a）</h2>
+<h2 id="a-a">路线 A：确定性策略（直接输出动作 a）</h2>
 <p>代表：DDPG、TD3</p>
 <ul>
 <li>无概率、无采样</li>
 <li>依赖<strong>外部加噪声</strong>强行探索</li>
 <li>适合：仿真控制、环境简单、不需要复杂探索</li>
 </ul>
-<h2 id="ba">路线B：随机策略（输出高斯分布，采样a）</h2>
+<h2 id="b-a">路线 B：随机策略（输出高斯分布，采样 a）</h2>
 <p>代表：PPO、A2C、SAC、原始策略梯度</p>
 <ul>
 <li>内部自带概率分布，<strong>原生自带探索</strong></li>
@@ -40943,7 +40989,7 @@ a = \mu_\theta(s)<br />
 <details class="note">
 <summary>为什么是高斯分布</summary>
 <p>以下是 AI 的回答：</p>
-<p>直接给你<strong>行业真相+分类结论</strong>，精准回答：</p>
+<p>直接给你<strong>行业真相 + 分类结论</strong>，精准回答：</p>
 <hr />
 <h2 id="_10">一、结论</h2>
 <ol>
@@ -40993,7 +41039,7 @@ PPO / A2C / DDPG / TD3 / SAC 连续版本，<strong>原生标配对角高斯</st
 <h3 id="1-dqn">① 价值派：DQN 家族</h3>
 <ul>
 <li>离散：Categorical 打分</li>
-<li>连续：<strong>天生不能用</strong>，必须改成 DDPG/TD3 演员-评论家</li>
+<li>连续：<strong>天生不能用</strong>，必须改成 DDPG/TD3 演员 - 评论家</li>
 </ul>
 <h3 id="2-pgpposac">② 策略派：PG/PPO/SAC 家族</h3>
 <ul>
@@ -41018,7 +41064,7 @@ PPO / A2C / DDPG / TD3 / SAC 连续版本，<strong>原生标配对角高斯</st
 </ul>
 <hr />
 <p>需要我给你对比一张极简对照表：<br />
-「离散Categorical」vs「连续高斯」的网络输出、数学形式、采样方式，一眼彻底分清吗？</p>
+「离散 Categorical」vs「连续高斯」的网络输出、数学形式、采样方式，一眼彻底分清吗？</p>
 </details>
 <h2 id="_16">第一种简单的方法</h2>
 <p>我们的目标是最终训练出 <span class="arithmatex">\(\pi_\theta\)</span>，为了形式化这个目标，我们定义目标函数</p>
@@ -41044,7 +41090,7 @@ G(\tau) = \sum_{t=0}^{T} \gamma^t r_t
 \]</div>
 <p>其中，只有 <span class="arithmatex">\(p_{\theta}(\tau)\)</span> 与 <span class="arithmatex">\(\theta\)</span> 有关。</p>
 <p>奖励函数<span class="arithmatex">\(G(\tau)\)</span> 不需要是可微分的（differentiable），这不影响我们解决接下来的问题。例如，如果在生成对抗网络（generative adversarial network，GAN）里面，<span class="arithmatex">\(G(\tau)\)</span> 是一个判别器（discriminator），它就算无法微分，我们还是可以做接下来的运算。</p>
-<p>我们可以对 <span class="arithmatex">\(\nabla p_{\theta}(\tau)\)</span> 使用式(4.1)，得到 <span class="arithmatex">\(\nabla p_{\theta}(\tau)=p_{\theta}(\tau)  \nabla \log p_{\theta}(\tau)\)</span>。</p>
+<p>我们可以对 <span class="arithmatex">\(\nabla p_{\theta}(\tau)\)</span> 使用式 (4.1)，得到 <span class="arithmatex">\(\nabla p_{\theta}(\tau)=p_{\theta}(\tau)  \nabla \log p_{\theta}(\tau)\)</span>。</p>
 <div class="arithmatex">\[
     \nabla f(x)=f(x)\nabla \log f(x) \tag{4.1}
 \]</div>
@@ -41053,7 +41099,7 @@ G(\tau) = \sum_{t=0}^{T} \gamma^t r_t
     \frac{\nabla p_{\theta}(\tau)}{p_{\theta}(\tau)}= \nabla \log p_{\theta}(\tau)
 \]</div>
 <p>注：上式用了对数函数的求导公式，对数函数 <span class="arithmatex">\(f(x)=\log x\)</span> 的导数为 <span class="arithmatex">\(\frac{1}{x}\)</span>。</p>
-<p>如式(4.2)所示，我们对 <span class="arithmatex">\(\tau\)</span> 进行求和，把 <span class="arithmatex">\(G(\tau)\)</span>  和  <span class="arithmatex">\(\log p_{\theta}(\tau)\)</span> 这两项使用 <span class="arithmatex">\(p_{\theta}(\tau)\)</span> 进行加权， 既然使用 <span class="arithmatex">\(p_{\theta}(\tau)\)</span> 进行加权 ，它们就可以被写成期望的形式。也就是我们从 <span class="arithmatex">\(p_{\theta}(\tau)\)</span> 这个分布里面采样 <span class="arithmatex">\(\tau\)</span> ， 去计算 <span class="arithmatex">\(G(\tau)\)</span> 乘 <span class="arithmatex">\(\nabla\log p_{\theta}(\tau)\)</span>，对所有可能的 <span class="arithmatex">\(\tau\)</span> 进行求和，就是期望的值（expected value）。</p>
+<p>如式 (4.2) 所示，我们对 <span class="arithmatex">\(\tau\)</span> 进行求和，把 <span class="arithmatex">\(G(\tau)\)</span>  和  <span class="arithmatex">\(\log p_{\theta}(\tau)\)</span> 这两项使用 <span class="arithmatex">\(p_{\theta}(\tau)\)</span> 进行加权，既然使用 <span class="arithmatex">\(p_{\theta}(\tau)\)</span> 进行加权，它们就可以被写成期望的形式。也就是我们从 <span class="arithmatex">\(p_{\theta}(\tau)\)</span> 这个分布里面采样 <span class="arithmatex">\(\tau\)</span> ，去计算 <span class="arithmatex">\(G(\tau)\)</span> 乘 <span class="arithmatex">\(\nabla\log p_{\theta}(\tau)\)</span>，对所有可能的 <span class="arithmatex">\(\tau\)</span> 进行求和，就是期望的值（expected value）。</p>
 <div class="arithmatex">\[
     \begin{aligned}
         \nabla J_{\theta}&amp;=\sum_{\tau} G(\tau) \nabla p_{\theta}(\tau)\\&amp;=\sum_{\tau} G(\tau) p_{\theta}(\tau) \frac{\nabla p_{\theta}(\tau)}{p_{\theta}(\tau)} \\&amp;=
@@ -41069,9 +41115,8 @@ G(\tau) = \sum_{t=0}^{T} \gamma^t r_t
         &amp;=\frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} G\left(\tau^{n}\right) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
         \end{aligned}
 \]</div>
-<!-- <details> -->
-<summary> 第二项 log 的推导过程 </summary>
-
+<details class="note">
+<summary>第二项 log 的推导过程</summary>
 <div class="arithmatex">\[
     \begin{aligned}
         \nabla \log p_{\theta}(\tau) &amp;= \nabla \left(\log p(s_1)+\sum_{t=1}^{T}\log p_{\theta}(a_t|s_t)+ \sum_{t=1}^{T}\log p(s_{t+1}|s_t,a_t) \right) \\
@@ -41091,7 +41136,7 @@ G(\tau) = \sum_{t=0}^{T} \gamma^t r_t
 \]</div>
 <p>具体的方式，首先固定好参数 <span class="arithmatex">\(\theta\)</span>，然后去交互，交互完以后，就可以得到大量游戏的数据。记录好每个状态 s 采取了动作 a，多次尝试。根据采集的数据更新模型，然后继续采样，反反复复。</p>
 <figure class="img-center">
-    <img src="./05.基于策略的方法.md "文件过大，未上传"" alt="策略梯度">
+    <img src="../../../asset/image/69e7019d9d145bf8ba50ee44f92681c9/20260424184226.png" alt="策略梯度">
     <figcaption> 策略梯度 </figcaption>
 </figure>
 
@@ -41107,8 +41152,8 @@ G_t = \sum_{k=t}^{T} \gamma^{k} r_k
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} G_{t}^{n} \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
 \]</div>
-<p>有个技巧，叫做 <strong>添加基线</strong>。如果给定状态 <span class="arithmatex">\(s\)</span> 采取动作 <span class="arithmatex">\(a\)</span>，整场游戏得到正的奖励，就要增加 <span class="arithmatex">\((s,a)\)</span> 的概率。如果给定状态 <span class="arithmatex">\(s\)</span> 执行动作 <span class="arithmatex">\(a\)</span>，整场游戏得到负的奖励，就要减小 <span class="arithmatex">\((s,a)\)</span> 的概率。但<strong>在很多游戏里面，奖励总是正的，最低都是 0</strong>。比如打乒乓球游戏， 分数为 0 ~ 21 分，所以 <span class="arithmatex">\(G(\tau)\)</span> 总是正的。</p>
-<p>所以很直观咯，用 <span class="arithmatex">\(G(\tau)\)</span> 减去一个值就行了，减去一个 <span class="arithmatex">\(b\)</span>，这个就叫基线。即最终是 <span class="arithmatex">\(G(\tau)-b\)</span>，可以对 <span class="arithmatex">\(G(\tau)\)</span> 的值取期望， 计算 <span class="arithmatex">\(G(\tau)\)</span> 的平均值，令 <span class="arithmatex">\(b \approx E[G(\tau)]\)</span>。</p>
+<p>有个技巧，叫做 <strong>添加基线</strong>。如果给定状态 <span class="arithmatex">\(s\)</span> 采取动作 <span class="arithmatex">\(a\)</span>，整场游戏得到正的奖励，就要增加 <span class="arithmatex">\((s,a)\)</span> 的概率。如果给定状态 <span class="arithmatex">\(s\)</span> 执行动作 <span class="arithmatex">\(a\)</span>，整场游戏得到负的奖励，就要减小 <span class="arithmatex">\((s,a)\)</span> 的概率。但<strong>在很多游戏里面，奖励总是正的，最低都是 0</strong>。比如打乒乓球游戏，分数为 0 ~ 21 分，所以 <span class="arithmatex">\(G(\tau)\)</span> 总是正的。</p>
+<p>所以很直观咯，用 <span class="arithmatex">\(G(\tau)\)</span> 减去一个值就行了，减去一个 <span class="arithmatex">\(b\)</span>，这个就叫基线。即最终是 <span class="arithmatex">\(G(\tau)-b\)</span>，可以对 <span class="arithmatex">\(G(\tau)\)</span> 的值取期望，计算 <span class="arithmatex">\(G(\tau)\)</span> 的平均值，令 <span class="arithmatex">\(b \approx E[G(\tau)]\)</span>。</p>
 <p>有了基线以后，我们就可以得到最终的梯度：</p>
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (G_{t}^{n}-b) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
