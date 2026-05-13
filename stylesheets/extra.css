@@ -468,42 +468,39 @@
 }
 
 .md-typeset h1 {
-  font-size: 28px;
-  font-size: 1.75rem;
+  font-size: 26px;
+  font-size: 1.7rem;
   margin: 0 0 16px;
   margin: 0 0 1rem;
 }
 
 .md-typeset h2 {
   font-size: 20px;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
 }
 
 .md-typeset h3 {
   font-size: 18px;
   font-size: 1.125rem;
-  margin: 40px 0 9.6px;
-  margin: 40px 0 0.6rem;
-}
-
-/* 再次覆盖 h2/h3：收紧上下外边距（相对 Material 默认更紧凑） */
-.md-typeset h2 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  margin: 12.8px 0 12.8px;
-  margin: 1.8rem 0 0.8rem;
-}
-
-.md-typeset h3 {
-  font-size: 18px;
-  font-size: 1.125rem;
-  margin: 9.6px 0 9.6px;
-  margin: 1.0rem 0 0.6rem;
+  font-weight: 575;
 }
 
 .md-typeset h4 {
   font-size: 14px;
   font-size: 0.875rem;
+  font-weight: 550;
+}
+
+
+/* 再次覆盖 h2/h3：收紧上下外边距（相对 Material 默认更紧凑） */
+.md-typeset h2 {
+  margin: 12.8px 0 12.8px;
+  margin: 1.8rem 0 0.8rem;
+}
+
+.md-typeset h3 {
+  margin: 9.6px 0 9.6px;
+  margin: 1.0rem 0 0.6rem;
 }
 
 .md-typeset h5,
@@ -519,6 +516,16 @@
 .md-typeset figure,
 .md-typeset p {
   margin: 1em 0;
+}
+
+/* 引用块：略增上下间距；左侧竖条偏绿（与 --sidebar-vuepress-accent 同系） */
+.md-typeset blockquote {
+  margin-top: 1.35em;
+  margin-bottom: 1.35em;
+  border-left: 0.25rem solid rgba(62, 175, 124, 0.82) !important;
+}
+[data-md-color-scheme="slate"] .md-typeset blockquote {
+  border-left: 0.25rem solid rgba(110, 200, 160, 0.78) !important;
 }
 
 .md-typeset ol,
