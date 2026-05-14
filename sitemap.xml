@@ -715,6 +715,9 @@
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/07.Transformer/5.%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81%E4%B8%8B.mp4/</loc>
       </url>
       <url>
+        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/07.Transformer/6.Transformer%E9%97%AE%E4%B8%8E%E7%AD%94/</loc>
+      </url>
+      <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/07.Transformer/Transformer%20(%E4%B8%8A).mp4/</loc>
       </url>
       <url>
@@ -755,6 +758,12 @@
       </url>
       <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/11.LLM/LinearAttention/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/11.LLM/LoRA/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/11.LLM/Prefill_Decode/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/99.Misc/%E5%85%83%E5%AD%A6%E4%B9%A0%20Meta%20Learning%20(%E4%B8%80)%20-%20%E5%85%83%E5%AD%A6%E4%B9%A0%E5%92%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%80%E6%A0%B7%E4%B9%9F%E6%98%AF%E4%B8%89%E5%80%8B%E6%AD%A5%E9%A9%9F.mp4/</loc>
@@ -1508,6 +1517,9 @@
       </url>
       <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/02.%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/03.%E9%80%86%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E8%AE%B0%E5%BD%95/</loc>

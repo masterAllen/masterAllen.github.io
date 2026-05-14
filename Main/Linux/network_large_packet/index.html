@@ -10112,6 +10112,8 @@
       
         
       
+        
+      
     
     
     
@@ -10222,6 +10224,33 @@
     
   
   5.位置编码下
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/07.Transformer/6.Transformer%E9%97%AE%E4%B8%8E%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transformer 问与答
 
     
   </span>
@@ -10773,6 +10802,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -10856,6 +10889,60 @@
     
   
   LineraAttention
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/11.LLM/LoRA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LoRA 和 Multi-LoRA
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/11.LLM/Prefill_Decode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  PD: Prefill and Decode
 
     
   </span>
@@ -22393,6 +22480,8 @@
       
         
       
+        
+      
     
     
     
@@ -22503,6 +22592,33 @@
     
   
   正向运动学
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/03.%E9%80%86%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  逆向运动学
 
     
   </span>
@@ -50677,11 +50793,12 @@
 sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.core.rmem_default<span class="o">=</span><span class="m">134217728</span>
 sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.core.netdev_max_backlog<span class="o">=</span><span class="m">5000</span>
 </code></pre></div>
+<p>注意：这个命令重启后就失效。要保证重启后可行，自行询问 AI。</p>
 <h2 id="mtu">二、网卡设置 MTU 较小</h2>
 <p>执行如下命令，<strong>将 <code>eth0</code> 替换为实际网卡名</strong>：</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>dev<span class="w"> </span>eth0<span class="w"> </span>mtu<span class="w"> </span><span class="m">9000</span>
 </code></pre></div>
-<p>如果未生效，<strong>则有可能是使用了 USB 网卡，需要安装网卡驱动</strong>。</p>
+<p>如果未生效，<strong>则有可能是使用了 USB 网卡，需要安装网卡驱动</strong>。个人在 Linux 安装网卡驱动的实践文章：<a href=".././install_network_driver/">链接</a></p>
 
 
 

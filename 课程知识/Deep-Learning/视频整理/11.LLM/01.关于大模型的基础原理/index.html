@@ -10045,6 +10045,8 @@
       
         
       
+        
+      
     
     
     
@@ -10155,6 +10157,33 @@
     
   
   5.位置编码下
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07.Transformer/6.Transformer%E9%97%AE%E4%B8%8E%E7%AD%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transformer 问与答
 
     
   </span>
@@ -10708,6 +10737,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -10859,6 +10892,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        问题二
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -10883,6 +10927,60 @@
     
   
   LineraAttention
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LoRA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  LoRA 和 Multi-LoRA
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Prefill_Decode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  PD: Prefill and Decode
 
     
   </span>
@@ -22420,6 +22518,8 @@
       
         
       
+        
+      
     
     
     
@@ -22530,6 +22630,33 @@
     
   
   正向运动学
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/03.%E9%80%86%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  逆向运动学
 
     
   </span>
@@ -50634,6 +50761,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        问题二
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -50783,6 +50921,13 @@
 <li>逐字预测下一个 token，自回归生成</li>
 </ol>
 <p>👉 全程<strong>没有 Encoder，不需要第二个输入</strong>，就只剩一路输入。</p>
+</details>
+<h2 id="_4">问题二</h2>
+<details class="question">
+<summary>那既然这样，他是怎么预测第一个词的？平白无故生成第一个词？</summary>
+<p>既然是 Decoder-only 架构，那就相当于把用户的问题作为 Decoder 的输入呗，此时会预测出第一个词，这个阶段叫 Prefill。</p>
+<p>然后把新产生的词作为输入，继续预测下一个词，这个阶段叫 Decode，也叫自回归阶段。</p>
+<p>比如用户问：<code>How are you</code>，此时把 <code>How are you</code> 作为 Decoder 的输入，会预测出第一个词 <code>Fine</code>，然后把这个 <code>Fine</code> 作为输入，即此时输入是 <code>How are you. Fine</code>，继续预测下一个词 <code>Thank</code>，以此类推，直到预测出最后一个词。</p>
 </details>
 
 
