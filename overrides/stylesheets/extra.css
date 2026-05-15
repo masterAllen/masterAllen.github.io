@@ -214,9 +214,29 @@
   white-space: nowrap;
 }
 
+.vercount-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1rem;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.64rem;
+}
+
+.vercount-stats span span {
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+}
+
 @media screen and (max-width: 45em) {
   .md-copyright {
     align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .vercount-stats {
+    align-items: center;
     flex-direction: column;
   }
 

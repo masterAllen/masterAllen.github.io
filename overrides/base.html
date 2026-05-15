@@ -214,6 +214,11 @@
                       {% include "partials/content.html" %}
                     {% endblock %}
                   </article>
+                  <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                    <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                    <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                    <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                  </div>
                 </div>
               {% endblock %}
               {% include "partials/javascripts/content.html" %}
@@ -283,6 +288,7 @@
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}
+      <script defer src="https://events.vercount.one/js"></script>
     {% endblock %}
   </body>
 </html>
