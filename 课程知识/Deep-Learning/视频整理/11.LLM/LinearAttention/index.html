@@ -10741,6 +10741,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -11008,6 +11012,60 @@
     
   
   PD: Prefill and Decode
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sampling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Sampling
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tokenizer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Tokenizer
 
     
   </span>
@@ -50961,7 +51019,7 @@
 <p>主要参考：<a href="https://zhuanlan.zhihu.com/p/718156896">https://zhuanlan.zhihu.com/p/718156896</a></p>
 </blockquote>
 <h2 id="_1">前提知识</h2>
-<p>[[Prefill_Decode]]</p>
+<p><a href=".././Prefill_Decode/">Prefix and Decode</a></p>
 <hr />
 <h2 id="_2">基本介绍</h2>
 <p>LinearAttention 是 Transformer 的一种改进，主要用于减少计算量。如下图所示，L 是序列也就是上下文的长度，当前复杂度是 LxLxd，这时我们所熟悉的。而下图 LinearAttention 则是将 softmax 去掉，用近似的函数 sim 来替代并且改变了 QKV 的计算顺序，这时中间结果从 LxL 的矩阵变成了 dxd，同时复杂度变成了 dxdxL（当然 d 如果是 4096 这个级别，d 平方已经在千万级别也不小了，这时还有工作可以考虑减小 d 等等），但是整个运算过程确实和 L 的长度呈线性相关性了。</p>
@@ -51134,6 +51192,11 @@
 
                     
                   </article>
+                  <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                    <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                    <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                    <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                  </div>
                 </div>
               
               
@@ -51238,6 +51301,7 @@
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
+      <script defer src="https://events.vercount.one/js"></script>
     
   </body>
 </html>
