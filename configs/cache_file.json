@@ -11,6 +11,14 @@
     "mtime": 1774772641.1933718,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\index.md"
   },
+  "D:\\Blog\\done\\书籍记录\\readme.md": {
+    "mtime": 1778309217.5940273,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\书籍记录\\index.md"
+  },
+  "D:\\Blog\\done\\算法记录\\readme.md": {
+    "mtime": 1778298427.2590995,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\算法记录\\index.md"
+  },
   "D:\\Blog\\done\\CheatSheet\\ardunio.md": {
     "mtime": 1750043157.135757,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\CheatSheet\\ardunio.md"
@@ -56,7 +64,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\CheatSheet\\ida.md"
   },
   "D:\\Blog\\done\\CheatSheet\\java.md": {
-    "mtime": 1749978878.8946154,
+    "mtime": 1778295673.3013425,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\CheatSheet\\java.md"
   },
   "D:\\Blog\\done\\CheatSheet\\latex.md": {
@@ -164,7 +172,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\About\\1.Hi.md"
   },
   "D:\\Blog\\done\\About\\2.为什么选择github作为评论区.md": {
-    "mtime": 1776408919.0878997,
+    "mtime": 1777880719.3961227,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\About\\2.为什么选择github作为评论区.md"
   },
   "D:\\Blog\\done\\About\\3.原始文章样式及转换流程.md": {
@@ -174,6 +182,10 @@
   "D:\\Blog\\done\\About\\4.添加问答样式.md": {
     "mtime": 1777286359.441655,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\About\\4.添加问答样式.md"
+  },
+  "D:\\Blog\\done\\About\\5.MkDocs_Admonitions_修改.md": {
+    "mtime": 1778308344.5295792,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\About\\5.MkDocs_Admonitions_修改.md"
   },
   "D:\\Blog\\done\\Main\\Debug\\debug_001.md": {
     "mtime": 1750222159.01182,
@@ -220,7 +232,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Debug\\debug_011.md"
   },
   "D:\\Blog\\done\\Main\\Linux\\bashrc_vs_profile.md": {
-    "mtime": 1749978878.9346125,
+    "mtime": 1778723681.365211,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Linux\\bashrc_vs_profile.md"
   },
   "D:\\Blog\\done\\Main\\Linux\\caps_to_ctrl.md": {
@@ -244,7 +256,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Linux\\hidip_setting.md"
   },
   "D:\\Blog\\done\\Main\\Linux\\install_network_driver.md": {
-    "mtime": 1777106209.7448902,
+    "mtime": 1778567586.813833,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Linux\\install_network_driver.md"
   },
   "D:\\Blog\\done\\Main\\Linux\\libinput_setting.md": {
@@ -260,7 +272,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Linux\\linux_remount.md"
   },
   "D:\\Blog\\done\\Main\\Linux\\network_large_packet.md": {
-    "mtime": 1777105152.7040458,
+    "mtime": 1778741391.4559364,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Linux\\network_large_packet.md"
   },
   "D:\\Blog\\done\\Main\\Linux\\run_level.md": {
@@ -362,6 +374,10 @@
   "D:\\Blog\\done\\Main\\Misc\\输出自身的程序.md": {
     "mtime": 1766409334.8570218,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Misc\\输出自身的程序.md"
+  },
+  "D:\\Blog\\done\\Main\\Misc\\远程桌面的键盘映射.md": {
+    "mtime": 1778315622.8436296,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Main\\Misc\\远程桌面的键盘映射.md"
   },
   "D:\\Blog\\done\\Main\\Misc\\远程连接方法记录.md": {
     "mtime": 1774776257.162431,
@@ -584,12 +600,28 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\04.DQN.md"
   },
   "D:\\Blog\\done\\课程知识\\强化学习\\05.基于策略的方法.md": {
-    "mtime": 1777030590.3520584,
+    "mtime": 1777800948.597007,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\05.基于策略的方法.md"
   },
   "D:\\Blog\\done\\课程知识\\强化学习\\06.Actor-Critic.md": {
     "mtime": 1777034870.0473492,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\06.Actor-Critic.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\07.同异策略和重要性采样.md": {
+    "mtime": 1777098743.0979676,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\07.同异策略和重要性采样.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\08.TRPO和PPO.md": {
+    "mtime": 1777099897.346522,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\08.TRPO和PPO.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\09.确定性方法DDPG和TD3.md": {
+    "mtime": 1777100091.353709,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\09.确定性方法DDPG和TD3.md"
+  },
+  "D:\\Blog\\done\\课程知识\\强化学习\\10.结束.md": {
+    "mtime": 1777874980.823748,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\强化学习\\10.结束.md"
   },
   "D:\\Blog\\done\\课程知识\\数学知识\\1.插值和误差分析.docx": {
     "mtime": 1710297899.0928047,
@@ -618,6 +650,22 @@
   "D:\\Blog\\done\\课程知识\\数学知识\\材料": {
     "mtime": 1718162523.7711227,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\数学知识\\Reference\\材料.md"
+  },
+  "D:\\Blog\\done\\课程知识\\机器人学\\00.导言.md": {
+    "mtime": 1778509332.211168,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\机器人学\\00.导言.md"
+  },
+  "D:\\Blog\\done\\课程知识\\机器人学\\01.旋转矩阵.md": {
+    "mtime": 1778510907.461791,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\机器人学\\01.旋转矩阵.md"
+  },
+  "D:\\Blog\\done\\课程知识\\机器人学\\02.正向运动学.md": {
+    "mtime": 1778658533.920084,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\机器人学\\02.正向运动学.md"
+  },
+  "D:\\Blog\\done\\课程知识\\机器人学\\03.逆向运动学.md": {
+    "mtime": 1778741873.4099905,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\机器人学\\03.逆向运动学.md"
   },
   "D:\\Blog\\done\\课程知识\\模拟电路\\模拟电路记录.md": {
     "mtime": 1770544613.327397,
@@ -724,8 +772,20 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\算法记录\\个人欣赏的算法\\04_Munkres分配.md"
   },
   "D:\\Blog\\done\\算法记录\\做题记录\\README.md": {
-    "mtime": 1749718589.957544,
+    "mtime": 1778298415.9239156,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\算法记录\\做题记录\\index.md"
+  },
+  "D:\\Blog\\done\\算法记录\\单纯记录\\01.后缀数组.md": {
+    "mtime": 1778554862.8052626,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\算法记录\\单纯记录\\01.后缀数组.md"
+  },
+  "D:\\Blog\\done\\算法记录\\单纯记录\\02.BWT.md": {
+    "mtime": 1778561412.5446224,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\算法记录\\单纯记录\\02.BWT.md"
+  },
+  "D:\\Blog\\done\\算法记录\\单纯记录\\readme.md": {
+    "mtime": 1778560406.8228128,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\算法记录\\单纯记录\\index.md"
   },
   "D:\\Blog\\done\\CheatSheet\\Apache\\apache01.md": {
     "mtime": 1749979184.0276506,
@@ -1272,7 +1332,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\CMOS的理解\\03.理解blanking.md"
   },
   "D:\\Blog\\done\\Vision\\CMOS的理解\\04.理解PCLK和HSYNC.md": {
-    "mtime": 1777104857.4660795,
+    "mtime": 1778298640.1416721,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\CMOS的理解\\04.理解PCLK和HSYNC.md"
   },
   "D:\\Blog\\done\\Vision\\CMOS的理解\\05.理解CDS.md": {
@@ -2092,47 +2152,51 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\01.resize和resample.html.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\02.基础滤波函数.md": {
-    "mtime": 1770975336.528684,
+    "mtime": 1736402563.8080003,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\02.基础滤波函数.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\03.金字塔函数.md": {
-    "mtime": 1770975336.5296848,
+    "mtime": 1720765127.8840926,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\03.金字塔函数.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\04.形态学.md": {
-    "mtime": 1770975336.5306873,
+    "mtime": 1777896188.0809243,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\04.形态学.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\05.形态学的应用.md": {
-    "mtime": 1770975336.5306873,
+    "mtime": 1777896705.2667015,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\05.形态学的应用.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\06.变换矩阵.md": {
-    "mtime": 1770975336.531685,
+    "mtime": 1735179284.666049,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\06.变换矩阵.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\07.阈值处理.md": {
-    "mtime": 1770975336.5330374,
+    "mtime": 1777896970.202761,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\07.阈值处理.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\08.直方图.md": {
-    "mtime": 1770975336.534049,
+    "mtime": 1749989904.8801804,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\08.直方图.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\09.二维几何和轮廓.md": {
-    "mtime": 1770975336.5354595,
+    "mtime": 1735179284.661045,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\09.二维几何和轮廓.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\10.轮廓匹配.md": {
-    "mtime": 1770975336.5369751,
+    "mtime": 1735179284.6590476,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\10.轮廓匹配.md"
   },
+  "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\11.模板匹配.md": {
+    "mtime": 1735179284.657045,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\11.模板匹配.md"
+  },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\12.图片质量评价.md": {
-    "mtime": 1770975336.5389762,
+    "mtime": 1735179284.657045,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\12.图片质量评价.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\13.杂项.md": {
-    "mtime": 1770975336.5389762,
+    "mtime": 1735270641.0430093,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\00.基本概念\\13.杂项.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\00.基本概念\\14.色彩空间.md": {
@@ -2144,35 +2208,35 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\01.各种滤波\\index.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\01.特征点三部曲：提取；描述；匹配.md": {
-    "mtime": 1770975336.5399747,
+    "mtime": 1725374806.206349,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\01.特征点三部曲：提取；描述；匹配.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\02.更详细的角点函数.md": {
-    "mtime": 1770975336.5412498,
+    "mtime": 1721357796.4062545,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\02.更详细的角点函数.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\03.HOG 特征.md": {
-    "mtime": 1770975336.5412498,
+    "mtime": 1737697312.2087786,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\03.HOG 特征.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\04.傅里叶描述子.md": {
-    "mtime": 1770975336.5422592,
+    "mtime": 1727260254.0914385,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\04.傅里叶描述子.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\05.特别的特征：边缘检测.md": {
-    "mtime": 1770975336.5422592,
+    "mtime": 1727503378.9686801,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\05.特别的特征：边缘检测.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\06.特别的特征：Ridgets.md": {
-    "mtime": 1770975336.543258,
+    "mtime": 1727502107.8557487,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\06.特别的特征：Ridgets.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\07.特别的特征：直线特征.md": {
-    "mtime": 1770975336.5442615,
+    "mtime": 1736565732.2372282,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\07.特别的特征：直线特征.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\08.特别的特征：人脸特征.md": {
-    "mtime": 1770975336.5452576,
+    "mtime": 1726760509.9065182,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\08.特别的特征：人脸特征.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\02.特征提取和边缘检测\\09.直线检测方法：LSD.md": {
@@ -2192,23 +2256,23 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\02.特征提取和边缘检测\\Reference\\asset.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\04.图像分割和前后景分离\\01.简单图像是分割：直接用形态学膨胀腐蚀.md": {
-    "mtime": 1770975336.5527408,
+    "mtime": 1735282077.0322988,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\04.图像分割和前后景分离\\01.简单图像是分割：直接用形态学膨胀腐蚀.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\04.图像分割和前后景分离\\02.交互式前后背景分离：GrabCut, WaterShed, AlphaMatting.md": {
-    "mtime": 1770975336.553748,
+    "mtime": 1723452538.775682,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\04.图像分割和前后景分离\\02.交互式前后背景分离：GrabCut, WaterShed, AlphaMatting.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\04.图像分割和前后景分离\\03.视频帧前后背景分离：BackGroundSubtractor.md": {
-    "mtime": 1770975336.553748,
+    "mtime": 1721650663.7032075,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\04.图像分割和前后景分离\\03.视频帧前后背景分离：BackGroundSubtractor.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\04.图像分割和前后景分离\\04.HfsSegment（hfs 模块）.md": {
-    "mtime": 1770975336.554747,
+    "mtime": 1723647239.7306893,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\04.图像分割和前后景分离\\04.HfsSegment（hfs 模块）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\04.图像分割和前后景分离\\05.GraphSegment（ximgproc 模块）.md": {
-    "mtime": 1770975336.554747,
+    "mtime": 1727317011.5466864,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\04.图像分割和前后景分离\\05.GraphSegment（ximgproc 模块）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\04.图像分割和前后景分离\\asset": {
@@ -2216,27 +2280,27 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\04.图像分割和前后景分离\\Reference\\asset.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\05.图像配准和拼接\\01.整体配准一：feature-based（reg、ecc）.md": {
-    "mtime": 1770975336.555746,
+    "mtime": 1727173834.1473308,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\05.图像配准和拼接\\01.整体配准一：feature-based（reg、ecc）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\05.图像配准和拼接\\02.整体配准二：pixel-based（特征点、稀疏光流）.md": {
-    "mtime": 1770975336.555746,
+    "mtime": 1735284615.7055256,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\05.图像配准和拼接\\02.整体配准二：pixel-based（特征点、稀疏光流）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\05.图像配准和拼接\\03.局部配准：MeshWarp.md": {
-    "mtime": 1770975336.555746,
+    "mtime": 1727194261.0462651,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\05.图像配准和拼接\\03.局部配准：MeshWarp.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\05.图像配准和拼接\\04.不同亮度的配准（HDR MTB）.md": {
-    "mtime": 1770975336.5567455,
+    "mtime": 1727174097.6941078,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\05.图像配准和拼接\\04.不同亮度的配准（HDR MTB）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\05.图像配准和拼接\\05.从图像配准到图像拼接：简单介绍.md": {
-    "mtime": 1770975336.5567455,
+    "mtime": 1727608759.9947295,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\05.图像配准和拼接\\05.从图像配准到图像拼接：简单介绍.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\05.图像配准和拼接\\06.从图像配准到图像拼接：细节介绍.md": {
-    "mtime": 1770975336.5579855,
+    "mtime": 1727659751.4848964,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\05.图像配准和拼接\\06.从图像配准到图像拼接：细节介绍.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\05.图像配准和拼接\\图片对齐进度-0531#不上传.pptx": {
@@ -2267,9 +2331,9 @@
     "mtime": 1749996474.6759896,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\06.图像融合\\图片融合：HDR融合.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\07.模板匹配\\00.OpenCV使用模板匹配.md": {
-    "mtime": 1770975336.5379782,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\07.模板匹配\\00.OpenCV使用模板匹配.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\07.模板匹配\\01.OpenCV使用模板匹配.md": {
+    "mtime": 1777929712.2666097,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\07.模板匹配\\01.OpenCV使用模板匹配.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\08.噪声\\readme.md": {
     "mtime": 1770972088.8326252,
@@ -2352,7 +2416,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\锐化和对比度增强的关系.txt.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\12.HDR\\01.使用OpenCV进行长短帧HDR.md": {
-    "mtime": 1770975336.5627902,
+    "mtime": 1749991585.2735004,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\12.HDR\\01.使用OpenCV进行长短帧HDR.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\12.HDR\\02.ExposureFusion.md": {
@@ -2407,9 +2471,9 @@
     "mtime": 1750382462.0911956,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\13.色调和颜色\\饱和度调整.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\14.风格化和修图\\使用OpenCV进行风格化.md": {
-    "mtime": 1770975336.5638072,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\14.风格化和修图\\使用OpenCV进行风格化.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\14.风格化和修图\\01.使用OpenCV进行风格化.md": {
+    "mtime": 1733650934.6133943,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\14.风格化和修图\\01.使用OpenCV进行风格化.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\14.风格化和修图\\修图：放大眼睛.md": {
     "mtime": 1749996700.4360375,
@@ -2464,19 +2528,19 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\16.图像补全\\Reference\\asset.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\17.光流和目标追踪\\01.基础知识-光流：稀疏和稠密.md": {
-    "mtime": 1770975336.5579855,
+    "mtime": 1727184479.831206,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\17.光流和目标追踪\\01.基础知识-光流：稀疏和稠密.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\17.光流和目标追踪\\02.追踪：MeanShift, CamShift.md": {
-    "mtime": 1770975336.558995,
+    "mtime": 1727193202.47473,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\17.光流和目标追踪\\02.追踪：MeanShift, CamShift.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\17.光流和目标追踪\\03.追踪：tracker 模块.md": {
-    "mtime": 1770975336.558995,
+    "mtime": 1721659811.7632713,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\17.光流和目标追踪\\03.追踪：tracker 模块.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\17.光流和目标追踪\\04.追踪：motempl 模块.md": {
-    "mtime": 1770975336.5599916,
+    "mtime": 1726067428.5577464,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\17.光流和目标追踪\\04.追踪：motempl 模块.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\18.后期去色差\\01.去色差说明.md": {
@@ -2507,33 +2571,33 @@
     "mtime": 1749978879.0588436,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\01.去雾.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\04.图像相似度.md": {
-    "mtime": 1770975336.5638072,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\04.图像相似度.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\02.图像相似度.md": {
+    "mtime": 1723805037.4299533,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\02.图像相似度.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\05.视网膜模型.md": {
-    "mtime": 1770975336.5648181,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\05.视网膜模型.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\03.视网膜模型.md": {
+    "mtime": 1724485100.134902,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\03.视网膜模型.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\06.显著性检测.md": {
-    "mtime": 1770975336.5648181,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\06.显著性检测.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\04.显著性检测.md": {
+    "mtime": 1724682633.0030892,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\04.显著性检测.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\07.SuperPixels.md": {
-    "mtime": 1770975336.5648181,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\07.SuperPixels.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\05.SuperPixels.md": {
+    "mtime": 1727316486.0047135,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\05.SuperPixels.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\08.PeiLinNormalization.md": {
-    "mtime": 1770975336.566303,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\08.PeiLinNormalization.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\06.PeiLinNormalization.md": {
+    "mtime": 1727521469.518401,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\06.PeiLinNormalization.md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\09.Radon Transform(拉东变换).md": {
-    "mtime": 1770975336.566303,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\09.Radon Transform(拉东变换).md"
+  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\07.Radon Transform(拉东变换).md": {
+    "mtime": 1727578583.8136132,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\07.Radon Transform(拉东变换).md"
   },
-  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\10.Phase Unwarping.md": {
-    "mtime": 1770975336.566303,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\10.Phase Unwarping.md"
+  "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\08.Phase Unwarping.md": {
+    "mtime": 1728608017.080294,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\99.杂项\\08.Phase Unwarping.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\99.杂项\\11.Flicker的理解.docx": {
     "mtime": 1733116060.2520194,
@@ -2607,6 +2671,10 @@
     "mtime": 1704613092.3443518,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\07.CAC\\色差消除记录.docx.md"
   },
+  "D:\\Blog\\done\\Vision\\相机ISP\\08.AWB\\01.AWB-OpenCV.md": {
+    "mtime": 1749990567.406017,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\08.AWB\\01.AWB-OpenCV.md"
+  },
   "D:\\Blog\\done\\Vision\\相机ISP\\08.AWB\\AWB-1.docx": {
     "mtime": 1733062180.3682282,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\08.AWB\\AWB-1.docx.md"
@@ -2630,10 +2698,6 @@
   "D:\\Blog\\done\\Vision\\相机ISP\\08.AWB\\AWB-6.docx": {
     "mtime": 1733061454.6959713,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\08.AWB\\AWB-6.docx.md"
-  },
-  "D:\\Blog\\done\\Vision\\相机ISP\\08.AWB\\AWB-OpenCV.md": {
-    "mtime": 1770975336.5599916,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\08.AWB\\AWB-OpenCV.md"
   },
   "D:\\Blog\\done\\Vision\\相机ISP\\08.AWB\\AWB-视频.txt": {
     "mtime": 1733061474.337289,
@@ -2691,6 +2755,10 @@
     "mtime": 1770951842.9073498,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\11.RGBDenoise\\denoise.md"
   },
+  "D:\\Blog\\done\\Vision\\相机ISP\\12.CCM\\01.CCM-OpenCV.md": {
+    "mtime": 1724484691.8435192,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\12.CCM\\01.CCM-OpenCV.md"
+  },
   "D:\\Blog\\done\\Vision\\相机ISP\\12.CCM\\CCM-1.htm": {
     "mtime": 1698112986.30507,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\12.CCM\\CCM-1.htm.md"
@@ -2702,10 +2770,6 @@
   "D:\\Blog\\done\\Vision\\相机ISP\\12.CCM\\CCM-3.docx": {
     "mtime": 1704679578.9750457,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\12.CCM\\CCM-3.docx.md"
-  },
-  "D:\\Blog\\done\\Vision\\相机ISP\\12.CCM\\CCM-OpenCV.md": {
-    "mtime": 1770975336.5613458,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\相机ISP\\12.CCM\\CCM-OpenCV.md"
   },
   "D:\\Blog\\done\\Vision\\相机ISP\\12.CCM\\readme.md": {
     "mtime": 1770951908.4825568,
@@ -2935,9 +2999,9 @@
     "mtime": 1717345797.7207513,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\01.入门介绍和基础知识\\2. 预测本频道观看人数（下） - 机器学习基本概念简介.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\02.关于训练（重要）\\神经网络训练不起来怎么办（1）：局部最小值（：Loacl Minima）与鞍点（Saddle Point）.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\02.关于训练（重要）\\神经网络训练不起来怎么办（1）：局部最小值（Loacl Minima）与鞍点（Saddle Point）.mp4": {
     "mtime": 1717345816.7241948,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\02.关于训练（重要）\\神经网络训练不起来怎么办（1）：局部最小值（：Loacl Minima）与鞍点（Saddle Point）.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\02.关于训练（重要）\\神经网络训练不起来怎么办（1）：局部最小值（Loacl Minima）与鞍点（Saddle Point）.mp4.md"
   },
   "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\02.关于训练（重要）\\神经网络训练不起来怎么办（2）：批次（batch）与动量（Momentum）.mp4": {
     "mtime": 1717345826.3096075,
@@ -2983,33 +3047,49 @@
     "mtime": 1717345889.5047748,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\06.Seq2Seq\\Transformer (下).mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\3. KNNLM.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\3.KNNLM.mp4": {
     "mtime": 1728231068.183218,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\3. KNNLM.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\3.KNNLM.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (一) – 芝麻街与进击的巨人.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\4.位置编码上.mp4": {
+    "mtime": 1777888872.898857,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\4.位置编码上.mp4.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\5.位置编码下.mp4": {
+    "mtime": 1777890392.7386482,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\5.位置编码下.mp4.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\6.Transformer问与答.md": {
+    "mtime": 1778679901.185527,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\07.Transformer\\6.Transformer问与答.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\1.BERT_完全闲话的介绍.mp4": {
     "mtime": 1717346021.5706372,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (一) – 芝麻街与进击的巨人.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\1.BERT_完全闲话的介绍.mp4.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\2.BERT_正式教学.mp4": {
+    "mtime": 1717346031.6403484,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\2.BERT_正式教学.mp4.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\3.BERT_原理分析.mp4": {
+    "mtime": 1717346049.8358254,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\3.BERT_原理分析.mp4.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\4.BERT_闲谈GPT.mp4": {
+    "mtime": 1717346053.9246562,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\4.BERT_闲谈GPT.mp4.md"
   },
   "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (三) – BERT的奇闻轶事.mp4": {
-    "mtime": 1717346049.8358254,
+    "mtime": 1717346049.0,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (三) – BERT的奇闻轶事.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (二) – BERT简介.mp4": {
-    "mtime": 1717346031.6403484,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (二) – BERT简介.mp4.md"
-  },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (四) – GPT的野望.mp4": {
-    "mtime": 1717346053.9246562,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\08.BERT\\自监督学习 (Self-supervised Learning) (四) – GPT的野望.mp4.md"
-  },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (上) – 基本概念.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (上).mp4": {
     "mtime": 1717346057.8343792,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (上) – 基本概念.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (上).mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (下) – 领结变声器与更多应用.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (下).mp4": {
     "mtime": 1717346063.6498947,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (下) – 领结变声器与更多应用.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\09.Auto-Encoder\\自编码器 (Auto-encoder) (下).mp4.md"
   },
   "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\10.TransformerCV\\MAE.mp4": {
     "mtime": 1718895591.0652118,
@@ -3023,69 +3103,73 @@
     "mtime": 1728231532.1417532,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\10.TransformerCV\\ViT.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\元学习 Meta Learning (一) - 元学习和机器学习一样也是三個步驟.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\01.关于大模型的基础原理.md": {
+    "mtime": 1778671019.9542387,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\01.关于大模型的基础原理.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\LinearAttention.md": {
+    "mtime": 1778810816.3362527,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\LinearAttention.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\LoRA.md": {
+    "mtime": 1778809152.894313,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\LoRA.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\Prefill_Decode.md": {
+    "mtime": 1778724828.596677,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\Prefill_Decode.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\Sampling.md": {
+    "mtime": 1778811538.7423453,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\Sampling.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\Tokenizer.md": {
+    "mtime": 1778810918.6293478,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.LLM\\Tokenizer.md"
+  },
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\元学习 Meta Learning (一) - 元学习和机器学习一样也是三個步驟.mp4": {
     "mtime": 1717346205.026836,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\元学习 Meta Learning (一) - 元学习和机器学习一样也是三個步驟.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\元学习 Meta Learning (一) - 元学习和机器学习一样也是三個步驟.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\元学习 Meta Learning (二) - 万物皆可 Meta.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\元学习 Meta Learning (二) - 万物皆可 Meta.mp4": {
     "mtime": 1717346212.7824953,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\元学习 Meta Learning (二) - 万物皆可 Meta.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\元学习 Meta Learning (二) - 万物皆可 Meta.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (一) – 强化学习跟机器学习一样都是三个步骤.mp4": {
-    "mtime": 1717346129.0451455,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (一) – 强化学习跟机器学习一样都是三个步骤.mp4.md"
-  },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (三) - Actor-Critic.mp4": {
-    "mtime": 1717346141.74971,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (三) - Actor-Critic.mp4.md"
-  },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (二) – Policy Gradient与修课心情.mp4": {
-    "mtime": 1717346135.472399,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (二) – Policy Gradient与修课心情.mp4.md"
-  },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (五) - 如何从示范中学习？逆向强化学习（Inverse RL）.mp4": {
-    "mtime": 1717346150.0098379,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (五) - 如何从示范中学习？逆向强化学习（Inverse RL）.mp4.md"
-  },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (四) - 回馈非常罕见的时候怎么办？机器的望梅止渴.mp4": {
-    "mtime": 1717346145.2225637,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\强化学习 (Reinforcement Learning, RL) (四) - 回馈非常罕见的时候怎么办？机器的望梅止渴.mp4.md"
-  },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\机器学习模型的可解释性 (Explainable ML) (上) – 为什么神经网络可以正确分辨.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\机器学习模型的可解释性 (Explainable ML) (上) – 为什么神经网络可以正确分辨.mp4": {
     "mtime": 1717346100.6242645,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\机器学习模型的可解释性 (Explainable ML) (上) – 为什么神经网络可以正确分辨.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\机器学习模型的可解释性 (Explainable ML) (上) – 为什么神经网络可以正确分辨.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\机器学习模型的可解释性 (Explainable ML) (下) –机器心中的猫长什么样子？.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\机器学习模型的可解释性 (Explainable ML) (下) –机器心中的猫长什么样子？.mp4": {
     "mtime": 1717346108.0696678,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\机器学习模型的可解释性 (Explainable ML) (下) –机器心中的猫长什么样子？.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\机器学习模型的可解释性 (Explainable ML) (下) –机器心中的猫长什么样子？.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\来自人类的恶意攻击 (Adversarial Attack) (一) – 基本概念.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\来自人类的恶意攻击 (Adversarial Attack) (一) – 基本概念.mp4": {
     "mtime": 1717346073.186702,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\来自人类的恶意攻击 (Adversarial Attack) (一) – 基本概念.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\来自人类的恶意攻击 (Adversarial Attack) (一) – 基本概念.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\来自人类的恶意攻击 (Adversarial Attack) (二) – 神经网络能否躲过人类深不见底的恶意？.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\来自人类的恶意攻击 (Adversarial Attack) (二) – 神经网络能否躲过人类深不见底的恶意？.mp4": {
     "mtime": 1717346081.824583,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\来自人类的恶意攻击 (Adversarial Attack) (二) – 神经网络能否躲过人类深不见底的恶意？.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\来自人类的恶意攻击 (Adversarial Attack) (二) – 神经网络能否躲过人类深不见底的恶意？.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\概述领域自适应 (Domain Adaptation).mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\概述领域自适应 (Domain Adaptation).mp4": {
     "mtime": 1717346121.132494,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\概述领域自适应 (Domain Adaptation).mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\概述领域自适应 (Domain Adaptation).mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\神经网络压缩 (Network Compression) (一) - 神经网络剪枝 (Pruning）与大乐透假说.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\神经网络压缩 (Network Compression) (一) - 神经网络剪枝 (Pruning）与大乐透假说.mp4": {
     "mtime": 1717346173.927377,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\神经网络压缩 (Network Compression) (一) - 神经网络剪枝 (Pruning）与大乐透假说.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\神经网络压缩 (Network Compression) (一) - 神经网络剪枝 (Pruning）与大乐透假说.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\神经网络压缩(Network Compression) (二) - 从各自不同的面向来压缩神经网络.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\神经网络压缩(Network Compression) (二) - 从各自不同的面向来压缩神经网络.mp4": {
     "mtime": 1717346194.0915442,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\神经网络压缩(Network Compression) (二) - 从各自不同的面向来压缩神经网络.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\神经网络压缩(Network Compression) (二) - 从各自不同的面向来压缩神经网络.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\终身学习 (Life Long Learning, LL) (一) -灾难性遗忘（catastrophic forgetting）.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\终身学习 (Life Long Learning, LL) (一) -灾难性遗忘（catastrophic forgetting）.mp4": {
     "mtime": 1717346155.6845262,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\终身学习 (Life Long Learning, LL) (一) -灾难性遗忘（catastrophic forgetting）.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\终身学习 (Life Long Learning, LL) (一) -灾难性遗忘（catastrophic forgetting）.mp4.md"
   },
-  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\终身学习 (Life Long Learning, LL) (二) - 灾难性遗忘（catastrophic forgetting）的克服之道.mp4": {
+  "D:\\Blog\\done\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\终身学习 (Life Long Learning, LL) (二) - 灾难性遗忘（catastrophic forgetting）的克服之道.mp4": {
     "mtime": 1717346164.7057724,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\11.Misc\\终身学习 (Life Long Learning, LL) (二) - 灾难性遗忘（catastrophic forgetting）的克服之道.mp4.md"
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\Deep-Learning\\视频整理\\99.Misc\\终身学习 (Life Long Learning, LL) (二) - 灾难性遗忘（catastrophic forgetting）的克服之道.mp4.md"
   },
   "D:\\Blog\\done\\课程知识\\Operating-System\\Jiang-OS\\截图\\屏幕截图(50).png": {
     "mtime": 1691336520.6056948,
@@ -3264,7 +3348,7 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\信息安全\\pwnable_kr\\note\\34.echo2.md"
   },
   "D:\\Blog\\done\\课程知识\\信息安全\\pwnable_kr\\note\\35.note.md": {
-    "mtime": 1766750407.6996226,
+    "mtime": 1778125306.1084144,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\课程知识\\信息安全\\pwnable_kr\\note\\35.note.md"
   },
   "D:\\Blog\\done\\课程知识\\信息安全\\pwnable_kr\\note\\36.alloca.md": {
@@ -3552,51 +3636,51 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\01.各种滤波\\高斯滤波\\高斯滤波_常见Kernel.PNG.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\其他\\01.EdgeBoxes.md": {
-    "mtime": 1770975336.5527408,
+    "mtime": 1727317961.3447113,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\其他\\01.EdgeBoxes.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\其他\\02.SelectriveSearchSegmentation.md": {
-    "mtime": 1770975336.5527408,
+    "mtime": 1727325344.9569054,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\其他\\02.SelectriveSearchSegmentation.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\01.数据学习的开始：HOG+SVM.md": {
-    "mtime": 1770975336.5492563,
+    "mtime": 1749990530.6526961,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\01.数据学习的开始：HOG+SVM.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\02.数据学习的提升：BoW 词袋模型.md": {
-    "mtime": 1770975336.5502572,
+    "mtime": 1749990554.382224,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\02.数据学习的提升：BoW 词袋模型.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\03.数据学习的提升：级联分类器.md": {
-    "mtime": 1770975336.5502572,
+    "mtime": 1723476189.6041088,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\03.数据学习的提升：级联分类器.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\04.WalBoost 分类器（xobject 模块）（未成功）.md": {
-    "mtime": 1770975336.551263,
+    "mtime": 1726813794.838589,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\04.WalBoost 分类器（xobject 模块）（未成功）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\05.多目标识别（dpm 模块）.md": {
-    "mtime": 1770975336.551263,
+    "mtime": 1735380778.4860752,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\基于数据学习\\05.多目标识别（dpm 模块）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\01.霍尔变换检测直线和圆.md": {
-    "mtime": 1770975336.5462577,
+    "mtime": 1723123799.8582523,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\01.霍尔变换检测直线和圆.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\02.常见检测：检测椭圆、斑点.md": {
-    "mtime": 1770975336.547258,
+    "mtime": 1727326205.6391947,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\02.常见检测：检测椭圆、斑点.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\03.常见检测：条形码二维码.md": {
-    "mtime": 1770975336.547258,
+    "mtime": 1727325918.3744075,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\03.常见检测：条形码二维码.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\04.常见检测：文字（text 模块）.md": {
-    "mtime": 1770975336.5482576,
+    "mtime": 1726578335.7457316,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\04.常见检测：文字（text 模块）.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\05.常见检测：人脸识别.md": {
-    "mtime": 1770975336.5482576,
+    "mtime": 1726915645.3270874,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\05.常见检测：人脸识别.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\03.目标分类识别和检索\\针对特定物体\\06.高精度检测圆.md": {
@@ -3652,11 +3736,11 @@
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\08.噪声\\03.噪声标定\\Reference\\材料.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\08.噪声\\04.去噪方法\\asset": {
-    "mtime": 1770975336.5613458,
+    "mtime": 1778031053.1375065,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\08.噪声\\04.去噪方法\\Reference\\asset.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\08.噪声\\04.去噪方法\\README.md": {
-    "mtime": 1770972020.9748008,
+    "mtime": 1777964909.7640164,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\08.噪声\\04.去噪方法\\index.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\08.噪声\\05.彩色噪声\\asset": {
@@ -3666,6 +3750,10 @@
   "D:\\Blog\\done\\Vision\\图像处理\\08.噪声\\05.彩色噪声\\个人记录.docx": {
     "mtime": 1700637474.4729688,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\08.噪声\\05.彩色噪声\\个人记录.docx.md"
+  },
+  "D:\\Blog\\done\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\01.对比度增强-OpenCV.md": {
+    "mtime": 1727506514.4018514,
+    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\01.对比度增强-OpenCV.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\ACE.md": {
     "mtime": 1749978879.0386832,
@@ -3686,10 +3774,6 @@
   "D:\\Blog\\done\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\同态滤波.md": {
     "mtime": 1770974959.6362686,
     "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\同态滤波.md"
-  },
-  "D:\\Blog\\done\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\对比度增强-OpenCV.md": {
-    "mtime": 1770975336.5613458,
-    "dst": "D:\\BlogSite\\masterAllen.github.io\\docs\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\对比度增强-OpenCV.md"
   },
   "D:\\Blog\\done\\Vision\\图像处理\\11.锐化和低光照和对比度增强\\低光照_对比度增强\\材料": {
     "mtime": 1699257325.8307524,

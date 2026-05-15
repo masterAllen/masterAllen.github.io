@@ -19,7 +19,7 @@ def _is_under_reference_dir(webpath):
     except ValueError:
         return False
     parts = [p for p in rel.replace('\\', '/').split('/') if p and p != '.']
-    return bool(parts) and parts[0].lower() == 'reference'
+    return len(parts) >= 2 and parts[-2].lower() == 'reference'
 
 
 def collect_articles(file_cache):

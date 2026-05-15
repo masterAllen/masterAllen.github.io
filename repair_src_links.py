@@ -149,6 +149,28 @@ def save_cache(cache_file: str, cache_data: dict):
         json.dump(cache_data, f, ensure_ascii=False, indent=2)
 
 
+def load_converted_md_paths(build_cache_file: str) -> set[str] | None:
+    """configs/cache_file.json 中登记的源 .md，用于统计范围；文件不存在时返回 None（统计全部）。"""
+    if not os.path.exists(build_cache_file):
+        return None
+    with open(build_cache_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    out: set[str] = set()
+    for k in data:
+        if str(k).lower().endswith(".md"):
+            out.add(abspath(k))
+    return out
+
+
+def load_converted_lnk_paths(link_cache_file: str) -> set[str] | None:
+    """configs/cache_link.json 中登记的源快捷方式，用于统计范围；文件不存在时返回 None（统计全部）。"""
+    if not os.path.exists(link_cache_file):
+        return None
+    with open(link_cache_file, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return {abspath(k) for k in data}
+
+
 def resolve_moved_path(
     missing_abs: str,
     cache_data: dict,
@@ -186,6 +208,7 @@ def repair_markdown_links(
     cache_data: dict,
     current_id_to_path: dict[str, str],
     dry_run: bool,
+    converted_md: set[str] | None = None,
 ):
     total_files = 0
     total_replaced = 0
@@ -201,7 +224,9 @@ def repair_markdown_links(
                     continue
 
                 md_file = abspath(os.path.join(dirpath, fn))
-                total_files += 1
+                count_this = converted_md is None or md_file in converted_md
+                if count_this:
+                    total_files += 1
                 with open(md_file, "r", encoding="utf-8") as f:
                     content = f.read()
 
@@ -221,7 +246,8 @@ def repair_markdown_links(
                         current_id_to_path,
                     )
                     if not new_abs:
-                        unresolved.append((md_file, target_abs))
+                        if converted_md is None or md_file in converted_md:
+                            unresolved.append((md_file, target_abs))
                         continue
 
                     rel = os.path.relpath(new_abs, os.path.dirname(md_file)).replace("\\", "/")
@@ -234,7 +260,8 @@ def repair_markdown_links(
                 to_replace.sort(key=lambda x: x[0], reverse=True)
                 for start, end, new_rel, _lu, _ba, _na in to_replace:
                     content = content[:start] + new_rel + content[end:]
-                total_replaced += len(to_replace)
+                if count_this:
+                    total_replaced += len(to_replace)
                 if not dry_run:
                     with open(md_file, "w", encoding="utf-8") as f:
                         f.write(content)
@@ -255,6 +282,7 @@ def repair_shortcuts(
     current_path_to_id: dict[str, str],
     current_id_to_path: dict[str, str],
     dry_run: bool,
+    converted_lnk: set[str] | None = None,
 ):
     total_links = 0
     total_fixed = 0
@@ -271,7 +299,9 @@ def repair_shortcuts(
                     continue
 
                 lnk_path = abspath(os.path.join(dirpath, fn))
-                total_links += 1
+                count_this = converted_lnk is None or lnk_path in converted_lnk
+                if count_this:
+                    total_links += 1
                 try:
                     target = winshell.shortcut(lnk_path).path
                 except Exception:
@@ -303,7 +333,8 @@ def repair_shortcuts(
                     )
 
                 if not new_target:
-                    unresolved.append((lnk_path, target_abs))
+                    if converted_lnk is None or lnk_path in converted_lnk:
+                        unresolved.append((lnk_path, target_abs))
                     continue
 
                 if dry_run:
@@ -316,7 +347,8 @@ def repair_shortcuts(
                     print(f"  原指向(失效): {target_abs}")
                     print(f"  替换为: {new_target}")
 
-                total_fixed += 1
+                if count_this:
+                    total_fixed += 1
 
                 if link_id:
                     target_id = current_path_to_id.get(new_target) or id_to_str(get_file_unique_id(new_target))
@@ -350,6 +382,11 @@ def main():
 
     cache_data = load_cache(cache_file)
 
+    build_cache_file = abspath(os.path.join(settings.config_dir, "cache_file.json"))
+    link_cache_file = abspath(os.path.join(settings.config_dir, "cache_link.json"))
+    converted_md = load_converted_md_paths(build_cache_file)
+    converted_lnk = load_converted_lnk_paths(link_cache_file)
+
     roots = [src_root] if os.path.exists(src_root) else []
 
     if not roots:
@@ -377,6 +414,7 @@ def main():
         cache_data,
         current_id_to_path,
         args.dry_run,
+        converted_md=converted_md,
     )
     lnk_files, lnk_fixed, lnk_unresolved = repair_shortcuts(
         [src_root],
@@ -384,6 +422,7 @@ def main():
         current_path_to_id,
         current_id_to_path,
         args.dry_run,
+        converted_lnk=converted_lnk,
     )
 
     total_md_files += md_files
@@ -400,8 +439,20 @@ def main():
 
     print("----")
     print(f"索引对象总数: {total_indexed}")
-    print(f"Markdown 扫描文件数: {total_md_files}, 修复链接数: {total_md_replaced}")
-    print(f"快捷方式扫描数: {total_lnk_files}, 修复数: {total_lnk_fixed}")
+    if converted_md is not None:
+        print(
+            f"Markdown 文件数（仅统计 configs/cache_file.json 已登记 .md）: {total_md_files}, "
+            f"其中修复链接数: {total_md_replaced}"
+        )
+    else:
+        print(f"Markdown 扫描文件数: {total_md_files}, 修复链接数: {total_md_replaced}")
+    if converted_lnk is not None:
+        print(
+            f"快捷方式数（仅统计 configs/cache_link.json 已登记）: {total_lnk_files}, "
+            f"其中修复数: {total_lnk_fixed}"
+        )
+    else:
+        print(f"快捷方式扫描数: {total_lnk_files}, 修复数: {total_lnk_fixed}")
     print(f"可替代总数: {total_md_replaced + total_lnk_fixed}")
     print(f"找不到总数: {len(md_unresolved) + len(lnk_unresolved)}")
 

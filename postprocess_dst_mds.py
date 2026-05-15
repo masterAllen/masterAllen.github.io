@@ -18,6 +18,10 @@ NAME_RE = re.compile(r"""\bname\s*=\s*["'](?P<name>[^"']*)["']""", re.IGNORECASE
 HEADING_RE = re.compile(r'^\s*#{1,6}\s+(?P<title>.+?)\s*$')
 IMAGE_RE = re.compile(r'!\[(?P<alt>[^\]]*)\]\((?P<src>[^)]+)\)')
 DEFINE_RE = re.compile(r'^\s*<!--\s*define:\s*(?P<title>.*?)\s*-->\s*$', re.IGNORECASE)
+FIGCAPTION_RE = re.compile(r'^\s*<!--\s*figcaption\s*-->\s*$', re.IGNORECASE)
+QUESTION_RE = re.compile(r'^\s*<!--\s*question\s*-->\s*$', re.IGNORECASE)
+LLM_RE = re.compile(r'^\s*<!--\s*llm\s*-->\s*$', re.IGNORECASE)
+END_RE = re.compile(r'^\s*<!--\s*end\s*-->\s*$', re.IGNORECASE)
 CODE_FENCE_RE = re.compile(r'^\s*(`{3,}|~{3,})')
 
 
@@ -113,6 +117,29 @@ def add_blank_before_list(text):
     return '\n'.join(result)
 
 
+def ensure_blank_after_code_fence(text):
+    """
+    确保围栏式代码块（``` / ~~~）结束后存在一个空行。
+    若代码块已位于文末则不再补空行；空行的缩进与闭合行保持一致，
+    以兼容 admonition / 列表内嵌代码块的场景。
+    """
+    lines = text.split('\n')
+    result: list[str] = []
+    active_fence: str | None = None
+
+    for i, line in enumerate(lines):
+        prev_fence = active_fence
+        active_fence = update_code_fence_state(line, active_fence)
+        result.append(line)
+
+        if prev_fence is not None and active_fence is None:
+            if i + 1 < len(lines) and lines[i + 1].strip() != '':
+                indent = ' ' * (len(line) - len(line.lstrip(' ')))
+                result.append(indent)
+
+    return '\n'.join(result)
+
+
 def ensure_blank_around_block_math(text):
     """
     确保 $$ ... $$ 块级公式上下都是空行；跳过代码块内部。
@@ -199,7 +226,7 @@ def find_comment_end(lines: list[str], start: int) -> int | None:
         active_fence = update_code_fence_state(lines[index], active_fence)
         if get_code_fence(lines[index]):
             continue
-        if active_fence is None and line_text(lines[index]).strip().lower() == '<!-- end -->':
+        if active_fence is None and END_RE.match(line_text(lines[index])):
             return index
     return None
 
@@ -281,7 +308,7 @@ def convert_details(lines: list[str], start: int) -> tuple[list[str], int] | Non
 
 
 def convert_figcaption(lines: list[str], start: int) -> tuple[list[str], int] | None:
-    if line_text(lines[start]).strip().lower() != '<!-- figcaption -->':
+    if not FIGCAPTION_RE.match(line_text(lines[start])):
         return None
 
     end = find_comment_end(lines, start)
@@ -319,7 +346,7 @@ def extract_heading_title(lines: list[str]) -> tuple[str, list[str]]:
 
 
 def convert_question_comment(lines: list[str], start: int) -> tuple[list[str], int] | None:
-    if line_text(lines[start]).strip().lower() != '<!-- question -->':
+    if not QUESTION_RE.match(line_text(lines[start])):
         return None
 
     end = find_comment_end(lines, start)
@@ -331,7 +358,7 @@ def convert_question_comment(lines: list[str], start: int) -> tuple[list[str], i
 
 
 def convert_llm_comment(lines: list[str], start: int) -> tuple[list[str], int] | None:
-    if line_text(lines[start]).strip().lower() != '<!-- llm -->':
+    if not LLM_RE.match(line_text(lines[start])):
         return None
 
     end = find_comment_end(lines, start)
@@ -530,6 +557,7 @@ def process_markdown_file(webfile_pth: str) -> None:
         if has_llm_block:
             content = ensure_toc_hidden(content)
         content = ensure_blank_around_block_math(content)
+        content = ensure_blank_after_code_fence(content)
         content = add_blank_before_list(content)
         content = process_square_brackets(content)
         content = replace_arrow_safely(content)

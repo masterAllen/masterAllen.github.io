@@ -1,9 +1,9 @@
 # 项目信息
-site_name: Allen Hong's Blog
+site_name: Allen Hong's Notes
 site_url: https://masterallen.github.io
 site_author: Allen Hong
 site_description: >-
-  Welcome to Allen Hong's Blog. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.
+  Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.
 
 # 代码仓库信息
 repo_name: My Github Link # 仓库名称
@@ -14,6 +14,7 @@ copyright: Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
 
 # 配置
 theme:
+  # variant: classic
   name: material 
   custom_dir: overrides
   # logo: static/images/logo.jpg # logo 图片
@@ -35,6 +36,7 @@ theme:
   palette: 
     primary: teal
 
+validation: false
 
 # pip install mkdocs-open-in-new-tab
 # Plugins
