@@ -1131,8 +1131,8 @@
   grid-template-columns: repeat(var(--archive-heatmap-week-count), var(--archive-heatmap-cell-size));
   gap: var(--archive-heatmap-cell-gap);
   width: max-content;
-  margin-left: 1.35rem;
-  margin-bottom: 0.25rem;
+  margin: 0 auto 0.25rem;
+  padding-left: 1.35rem;
   white-space: nowrap;
 }
 
@@ -1141,6 +1141,8 @@
   align-items: flex-start;
   gap: 0.35rem;
   min-width: max-content;
+  width: max-content;
+  margin: 0 auto;
 }
 
 .md-typeset .archive-heatmap__weekdays {
