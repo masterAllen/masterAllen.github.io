@@ -20,6 +20,11 @@
   --sidebar-fixed-left: max(1rem, calc((100vw - 90rem) / 2 + 1rem));
   --main-area-bottom-offset: .6rem;
   --sidebar-vuepress-accent: #3eaf7c;
+  /* 正文标题 h2–h5：按层级区分色相，浅色模式 */
+  --heading-h2-color: #1a5276;
+  --heading-h3-color: #267352;
+  --heading-h4-color: #9a6516;
+  --heading-h5-color: #5c4d8a;
 }
 .md-main__inner {
   margin-top: 0.5rem;
@@ -479,15 +484,9 @@
 /* ========== 正文：标题与段落 ========== */
 /* 颜色与字重；h2/h3 有两段 margin 定义，后者覆盖前者以收紧段间距 */
 
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4 {
+.md-typeset h1 {
   color: #2c3e50;
   font-weight: 600;
-}
-
-.md-typeset h1 {
   font-size: 26px;
   font-size: 1.7rem;
   margin: 0 0 16px;
@@ -495,20 +494,29 @@
 }
 
 .md-typeset h2 {
+  color: var(--heading-h2-color);
+  font-weight: 600;
   font-size: 20px;
   font-size: 1.4rem;
 }
 
 .md-typeset h3 {
+  color: var(--heading-h3-color);
   font-size: 18px;
   font-size: 1.125rem;
   font-weight: 575;
 }
 
 .md-typeset h4 {
+  color: var(--heading-h4-color);
   font-size: 14px;
   font-size: 0.875rem;
   font-weight: 550;
+}
+
+.md-typeset h5 {
+  color: var(--heading-h5-color);
+  font-weight: 525;
 }
 
 
@@ -531,6 +539,17 @@
 
 .md-typeset h6 {
   color: #777;
+}
+
+[data-md-color-scheme="slate"] {
+  --heading-h2-color: #7eb8e3;
+  --heading-h3-color: #6ec99a;
+  --heading-h4-color: #e0b868;
+  --heading-h5-color: #b8a8e0;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: #e8eaed;
 }
 
 .md-typeset figure,
