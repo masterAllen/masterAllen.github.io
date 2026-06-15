@@ -4,6 +4,54 @@
         <loc>https://masterallen.github.io/Main/</loc>
       </url>
       <url>
+        <loc>https://masterallen.github.io/Main/VSCode%E9%BC%A0%E6%A0%87%E6%82%AC%E5%81%9C%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/ZSH%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E5%8E%9F%E5%9B%A0%E6%8E%92%E6%9F%A5/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/thinkpad_x1c_problem/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E4%B8%8A%E4%BD%8D%E6%9C%BA%E6%98%AF%E6%80%8E%E4%B9%88%E6%8B%BF%E5%88%B0%E6%95%B0%E6%8D%AE%E7%9A%84/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E4%BF%AE%E6%94%B9%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E5%85%B3%E4%BA%8EUnicode%E5%92%8CUTF8%E7%9A%84%E7%90%86%E8%A7%A3/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E5%AE%BF%E4%B8%BB%E6%9C%BA%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%B1%E4%BA%AB%E5%B1%8F%E5%B9%95/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E6%A8%A1%E6%8B%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B7%A5%E5%85%B7fakeroot/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E7%BC%96%E5%86%99GUI%E7%A8%8B%E5%BA%8F%E5%AF%B9%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AD%A6%E4%B9%A0/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E7%BD%91%E9%A1%B5%E4%BF%AE%E6%94%B9Trick/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E8%93%9D%E7%89%99%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB%E8%AE%B0%E5%BD%95/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8supervisor/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E8%BE%93%E5%87%BA%E8%87%AA%E8%BA%AB%E7%9A%84%E7%A8%8B%E5%BA%8F/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E9%94%AE%E7%9B%98%E6%98%A0%E5%B0%84/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/</loc>
+      </url>
+      <url>
         <loc>https://masterallen.github.io/Main/Debug/debug_001/</loc>
       </url>
       <url>
@@ -46,15 +94,6 @@
         <loc>https://masterallen.github.io/Main/Linux/cat_hugefile/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Main/Linux/change_font/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Linux/coredump/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Linux/hidip_setting/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Main/Linux/install_network_driver/</loc>
       </url>
       <url>
@@ -64,109 +103,10 @@
         <loc>https://masterallen.github.io/Main/Linux/lightdm/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Main/Linux/linux_remount/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Main/Linux/network_large_packet/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Main/Linux/run_level/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Linux/update_kernel/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Linux/urxvt_setting/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Main/Linux/x_window/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/ArchLinux%E5%AE%89%E8%A3%85deb%E5%8C%85/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/TCL%20Q10G%20Pro%20%E7%94%B5%E8%A7%86%E8%A7%A3%E9%94%81ADB.html/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/VSCode%E9%BC%A0%E6%A0%87%E6%82%AC%E5%81%9C%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/ZSH%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E5%8E%9F%E5%9B%A0%E6%8E%92%E6%9F%A5/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/thinkpad_x1c_problem/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E4%B8%8A%E4%BD%8D%E6%9C%BA%E6%98%AF%E6%80%8E%E4%B9%88%E6%8B%BF%E5%88%B0%E6%95%B0%E6%8D%AE%E7%9A%84/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E4%BF%AE%E6%94%B9%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E5%85%B3%E4%BA%8EUnicode%E5%92%8CUTF8%E7%9A%84%E7%90%86%E8%A7%A3/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B5%8B%E8%AF%95WebSocket/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E5%AE%BF%E4%B8%BB%E6%9C%BA%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%B1%E4%BA%AB%E5%B1%8F%E5%B9%95/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E6%A8%A1%E6%8B%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B7%A5%E5%85%B7fakeroot/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E7%BA%BF%E6%80%A7%E7%9B%B8%E6%9C%BA%E5%92%8CTDI%E7%9B%B8%E6%9C%BA%E5%AD%A6%E4%B9%A0/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E7%BC%96%E5%86%99GUI%E7%A8%8B%E5%BA%8F%E5%AF%B9%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AD%A6%E4%B9%A0/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E7%BD%91%E9%A1%B5%E4%BF%AE%E6%94%B9Trick/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E8%84%9A%E6%9C%AC%E4%B8%ADsource_bashrc%E6%97%A0%E6%95%88%E5%8E%9F%E5%9B%A0/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E8%93%9D%E7%89%99%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB%E8%AE%B0%E5%BD%95/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8supervisor/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E8%BE%93%E5%87%BA%E8%87%AA%E8%BA%AB%E7%9A%84%E7%A8%8B%E5%BA%8F/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%9A%84%E9%94%AE%E7%9B%98%E6%98%A0%E5%B0%84/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/%E9%93%BE%E6%8E%A5%E5%8A%A8%E6%80%81%E5%BA%93%E6%8A%A5%E9%94%99/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Misc/Reference/asset/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Windows/windows_key/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/Windows/windows_udisk/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/debug_006/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/debug_007/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer01/</loc>
@@ -179,15 +119,6 @@
       </url>
       <url>
         <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer04/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_icinga2/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_in_virtualbox/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_in_vmware/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_in_wsl/</loc>
