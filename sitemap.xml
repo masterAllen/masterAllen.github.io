@@ -4,6 +4,9 @@
         <loc>https://masterallen.github.io/Main/</loc>
       </url>
       <url>
+        <loc>https://masterallen.github.io/Main/VSCode%E5%90%8C%E6%AD%A5%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6/</loc>
+      </url>
+      <url>
         <loc>https://masterallen.github.io/Main/VSCode%E9%BC%A0%E6%A0%87%E6%82%AC%E5%81%9C%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</loc>
       </url>
       <url>
@@ -85,6 +88,12 @@
         <loc>https://masterallen.github.io/Main/Debug/debug_011/</loc>
       </url>
       <url>
+        <loc>https://masterallen.github.io/Main/ESP32/ESP32%E4%BC%A0%E8%BE%93%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B9%B1%E7%A0%81/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/Linux/Linux%E7%BC%96%E8%AF%91%E5%85%8D%E5%AE%89%E8%A3%85qt%E7%A8%8B%E5%BA%8F/</loc>
+      </url>
+      <url>
         <loc>https://masterallen.github.io/Main/Linux/bashrc_vs_profile/</loc>
       </url>
       <url>
@@ -106,7 +115,19 @@
         <loc>https://masterallen.github.io/Main/Linux/network_large_packet/</loc>
       </url>
       <url>
+        <loc>https://masterallen.github.io/Main/Linux/run_level/</loc>
+      </url>
+      <url>
         <loc>https://masterallen.github.io/Main/Linux/x_window/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/NAS/QNAP%20docker%20%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86.html/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/NAS/nas/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Main/NAS/nas_use_vpn/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer01/</loc>
@@ -119,18 +140,6 @@
       </url>
       <url>
         <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_computer04/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_in_wsl/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_mysql/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/install_yum/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Main/%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/linux_glibc/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/</loc>
@@ -323,198 +332,6 @@
       </url>
       <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/05.Application_Layer/VPN/05.V2ray%E4%BD%BF%E7%94%A8%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/record.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942009%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P10.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942018%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P11.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942019%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P12.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942020%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P2.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942010%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P3.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942011%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P4.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942012%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P5.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942013%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P6.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942014%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P7.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942015%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P8.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942016%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Computer-Network/Problem/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%94%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90%EF%BC%88%E6%9C%89%E5%AD%97%E5%B9%95%E6%97%A0%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%20(P9.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C408%E8%80%83%E7%A0%942017%E5%B9%B4%E7%9C%9F%E9%A2%98%E8%A7%A3%E6%9E%90).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P12%20%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%A5%BD%E5%A4%84.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P14%20%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P15%20%E5%8F%8B%E5%85%83.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P24%20%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%92%8C%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P27%20%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E4%B8%AD%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E8%A1%A8%E7%8E%B0.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P28%20%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P29%20%E5%AE%9E%E4%BE%8B-%E5%A4%9A%E6%80%81%E7%9A%84%E5%A5%BD%E5%A4%84.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P31%20%E5%A4%9A%E6%80%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P32%20%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P32%20%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/auto%E5%92%8Cdecltype.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E9%BB%98%E8%AE%A4%E5%80%BC.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E7%BB%9F%E4%B8%80%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/String.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E5%93%88%E5%B8%8C%E8%A1%A8.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%20%20%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%20%E9%83%AD%E7%82%9C%20(P43.%204_4.%20vector,deque%E5%92%8Clist).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%20%20%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%20%E9%83%AD%E7%82%9C%20(P44.%205_5.%20%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%20%20%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%20%E9%83%AD%E7%82%9C%20(P45.%201_1.%20set%E5%92%8Cmultiset).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%20%20%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%20%E9%83%AD%E7%82%9C%20(P46.%202_2.%20map%E5%92%8Cmultimap).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%20%20%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%20%E9%83%AD%E7%82%9C%20(P47.%203_3.%20stack%E5%92%8Cqueu%E5%92%8C%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%20%20%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%20%E9%83%AD%E7%82%9C%20(P48.%204_4.%20%E7%AE%97%E6%B3%95(%E4%B8%80)).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89C++%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%20%20%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%20%E9%83%AD%E7%82%9C%20(P49.%205_5.%20%E7%AE%97%E6%B3%95(%E4%BA%8C)).mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/STL/%E8%BF%AD%E4%BB%A3%E5%99%A8.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/15.Reference.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/21.Operator%20new%EF%BC%8Coperator%20delete.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/23.%E9%87%8D%E8%BD%BDnew(),delete()%E7%A4%BA%E4%BE%8B.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/24.Basic_String%E4%BD%BF%E7%94%A8new(extra)%E6%89%A9%E5%85%85%E7%94%B3%E8%AF%B7%E9%87%8F%20%20.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/3.non-explicit%20one%20argument%20constructor.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/4.pointer-like%20classes.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/5.function-like%20classes.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/const.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E4%BE%AF%E6%9D%B0/temp-%E8%87%AA%E5%B7%B1%E8%A6%81%E5%BD%95%E5%88%B6%E4%B8%80%E4%B8%8B.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P10%20%E5%AE%9E%E4%BE%8B-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P7%20%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P8%20%E5%A4%8D%E5%88%B6%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P9%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%A8%A1%E6%9D%BF/10.specialization.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%A8%A1%E6%9D%BF/11.%E6%A8%A1%E6%9D%BF%E5%81%8F%E7%89%B9%E5%8C%96.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%A8%A1%E6%9D%BF/12%E6%A8%A1%E6%9D%BF%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%A8%A1%E6%9D%BF/9.Member%20Template.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E6%A8%A1%E6%9D%BF/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P39%20%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P17%20%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD-%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P18%20%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E4%B8%BA%E5%8F%8B%E5%85%83%E7%9A%84%E5%8E%9F%E5%9B%A0.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P20%20%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P21%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P22%20%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/%E8%AF%BE%E7%A8%8B%E7%9F%A5%E8%AF%86/Data-Structure/</loc>
@@ -1885,55 +1702,10 @@
         <loc>https://masterallen.github.io/CheatSheet/ardunio/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/CheatSheet/chrome/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/CheatSheet/clash/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/CheatSheet/docker/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/edge/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/CheatSheet/firefox/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/git/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/gnome_terminal/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/i3/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/ida/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/java/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/latex/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/makefile/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/mongod/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/nodejs/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/pacman/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/pdf/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/pip/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/potplayer/</loc>
@@ -1942,31 +1714,13 @@
         <loc>https://masterallen.github.io/CheatSheet/powershell/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/CheatSheet/radare2/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/ranger/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/CheatSheet/rdp/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/redis/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/rustdesk/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/CheatSheet/ssh/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/texlive/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/tmux/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/vue/</loc>
+        <loc>https://masterallen.github.io/CheatSheet/scp/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/weechat.pdf/</loc>
@@ -1987,16 +1741,7 @@
         <loc>https://masterallen.github.io/CheatSheet/AxMath/AxMath%E5%8D%A1%E9%A1%BF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.PNG/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/CheatSheet/ESP32/ESP32Camera%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/ESP32/ESP32%E4%BC%A0%E8%BE%93%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B9%B1%E7%A0%81/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/CheatSheet/FFmpeg/ffmpeg%E7%B2%BE%E5%87%86%E5%88%87%E5%89%B2%E6%96%87%E4%BB%B6/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Foxit/Foxit%E6%89%93%E5%BC%80%E6%A0%BC%E5%BC%8F.PNG/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/GDB/gdb/</loc>
@@ -2009,30 +1754,6 @@
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/GDB/gdb_trick/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/MIPS/MIPSReference.pdf/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/MIPS/MIPS_%E6%8C%87%E4%BB%A4%E5%88%86%E6%9E%90.html/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/MIPS/mips.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/MySQL/mysql/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/MySQL/mysql_errorcode/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/NAS/QNAP%20docker%20%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86.html/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/NAS/nas/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/NAS/nas_use_vpn/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/Network/network_command/</loc>
@@ -2063,21 +1784,6 @@
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/Network/network_windows/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Nginx/nginx/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Nginx/nginx_403_forbidden/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Nginx/nginx_https/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Nginx/nginx_location/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Nginx/nginx_vue/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/CheatSheet/Numpy/numpy%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6/</loc>
@@ -2146,63 +1852,6 @@
         <loc>https://masterallen.github.io/CheatSheet/QT/%E6%9F%A5%E7%9C%8BQT%E7%89%88%E6%9C%AC.txt/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_ack.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_awk_sed.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_chsh.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_cp.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_curl.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_du/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_jobs.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_ps.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_rm/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_rsync/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_sort.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_tar.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_touch.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/command_useradd.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/info_env/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/info_network.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/info_system/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/info_zip.txt/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/Shell/something_else.txt/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/CheatSheet/Vim/key_ctrl/</loc>
       </url>
       <url>
@@ -2257,36 +1906,6 @@
         <loc>https://masterallen.github.io/CheatSheet/Vim/%E6%9C%AA%E5%BD%92%E7%B1%BB.txt/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/CheatSheet/VM/install_in_virtualbox/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/VM/install_in_vmware/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/VM/migrate_from_vm/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/VM/virtualbox/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/VM/virtualbox_centos_addition/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/VM/virtualbox_install/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/VSCode/VSCode%E5%90%8C%E6%AD%A5%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/WSL/WSL2%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86.html/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/WSL/Win%E4%B8%8EWSL%E4%BA%92%E7%9B%B8%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/CheatSheet/X86/x86_interupt.pdf/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/CheatSheet/Reference/asset/</loc>
       </url>
       <url>
@@ -2305,9 +1924,6 @@
         <loc>https://masterallen.github.io/Language/CPP/cpp_friend/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/CPP/cpp_initalize.txt/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Language/CPP/cpp_mmap/</loc>
       </url>
       <url>
@@ -2320,19 +1936,130 @@
         <loc>https://masterallen.github.io/Language/CPP/cpp_socket/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/CPP/cpp_template.jpg/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Language/CPP/cpp_%E4%B8%87%E8%83%BD%E5%BC%95%E7%94%A8%E5%92%8C%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91.html/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Language/CPP/cpp_%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E5%92%8Cmove.html/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/CPP/others.txt/</loc>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/CPP/%E5%A4%87%E5%BF%98%E5%BD%95.txt/</loc>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P12%20%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%A5%BD%E5%A4%84.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P14%20%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P15%20%E5%8F%8B%E5%85%83.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P24%20%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E5%92%8C%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P27%20%E7%BB%A7%E6%89%BF%E5%85%B3%E7%B3%BB%E4%B8%AD%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E8%A1%A8%E7%8E%B0.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P28%20%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E5%A4%9A%E6%80%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P29%20%E5%AE%9E%E4%BE%8B-%E5%A4%9A%E6%80%81%E7%9A%84%E5%A5%BD%E5%A4%84.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P31%20%E5%A4%9A%E6%80%81%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P32%20%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P32%20%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/auto%E5%92%8Cdecltype.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E9%BB%98%E8%AE%A4%E5%80%BC.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/C++11%20%E6%96%B0%E7%89%B9%E6%80%A7/%E7%BB%9F%E4%B8%80%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/15.Reference.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/21.Operator%20new%EF%BC%8Coperator%20delete.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/23.%E9%87%8D%E8%BD%BDnew(),delete()%E7%A4%BA%E4%BE%8B.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/24.Basic_String%E4%BD%BF%E7%94%A8new(extra)%E6%89%A9%E5%85%85%E7%94%B3%E8%AF%B7%E9%87%8F%20%20.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/3.non-explicit%20one%20argument%20constructor.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/4.pointer-like%20classes.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/5.function-like%20classes.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E4%BE%AF%E6%9D%B0/const.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P10%20%E5%AE%9E%E4%BE%8B-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P7%20%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P8%20%E5%A4%8D%E5%88%B6%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P9%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%A8%A1%E6%9D%BF/10.specialization.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%A8%A1%E6%9D%BF/11.%E6%A8%A1%E6%9D%BF%E5%81%8F%E7%89%B9%E5%8C%96.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%A8%A1%E6%9D%BF/12%E6%A8%A1%E6%9D%BF%E6%A8%A1%E6%9D%BF%E5%8F%82%E6%95%B0.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%A8%A1%E6%9D%BF/9.Member%20Template.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E6%A8%A1%E6%9D%BF/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P39%20%E6%A8%A1%E6%9D%BF%E5%AE%9E%E4%BE%8B.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P17%20%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD-%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P18%20%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E4%B8%BA%E5%8F%8B%E5%85%83%E7%9A%84%E5%8E%9F%E5%9B%A0.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P20%20%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P21%20%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/CPP/CPP-Study/%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%89%EF%BC%89P22%20%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E9%87%8D%E8%BD%BD.mp4/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Language/CPP/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/Cpp%E4%BD%BF%E7%94%A8DLL%E6%96%87%E4%BB%B6.htm/</loc>
@@ -2356,25 +2083,19 @@
         <loc>https://masterallen.github.io/Language/CPP/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/Reference/asset/</loc>
       </url>
       <url>
+        <loc>https://masterallen.github.io/Language/Python/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/Python%E4%B8%ADPaddleOCR%E6%AF%94%E8%BE%83%E6%85%A2/</loc>
+      </url>
+      <url>
         <loc>https://masterallen.github.io/Language/Python/Python%E5%8D%B8%E8%BD%BD%E6%89%80%E6%9C%89%E5%BA%93/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Language/Python/Python%E5%A4%84%E7%90%86Excel%E5%9B%BE%E8%A1%A8%E6%95%A3%E7%82%B9%E6%B6%88%E5%A4%B1/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/Python/Python%E5%A4%84%E7%90%86Qt%E5%BC%82%E5%B8%B8%E6%B3%A8%E6%84%8F%E7%82%B9/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Language/Python/Python%E6%82%AC%E5%81%9C%E6%98%BE%E7%A4%BA%E6%B3%A8%E9%87%8A/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/Python%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E6%89%93%E5%8C%85%E7%AF%87/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/Python%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E7%95%AA%E5%A4%96/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/Python%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E7%A8%8B%E5%BA%8F%E7%AF%87/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Language/Python/Python%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95/</loc>
@@ -2386,16 +2107,10 @@
         <loc>https://masterallen.github.io/Language/Python/Python%E8%AF%AD%E6%B3%95%E7%B3%96%E5%A4%87%E5%BF%98%E5%BD%95/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/Python/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Language/Python/property/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Language/Python/pyautogui/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/pyenv.txt/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Language/Python/python_logging/</loc>
@@ -2404,49 +2119,34 @@
         <loc>https://masterallen.github.io/Language/Python/python%E6%9C%89%E6%97%A0%E7%AC%A6%E5%8F%B7%E5%A4%84%E7%90%86/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/Python/pywinauto/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/000/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/001/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/002/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/003/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/004/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/005/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/006/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/forcheck/007/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/import/01.Python%E6%A8%A1%E5%9D%97%E6%90%9C%E7%B4%A2%E6%9C%BA%E5%88%B6/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/import/02.%E8%A7%A3%E5%86%B3%E5%90%8C%E7%9B%AE%E5%BD%95%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AF%BC%E5%85%A5/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/import/03.%E6%9B%B4%E6%B7%B1%E5%B1%82%E6%AC%A1%E7%9A%84%E6%96%87%E4%BB%B6%E7%9A%84%E5%AF%BC%E5%85%A5/</loc>
-      </url>
-      <url>
-        <loc>https://masterallen.github.io/Language/Python/import/04.%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F/</loc>
-      </url>
-      <url>
         <loc>https://masterallen.github.io/Language/Python/opencv/cv2-ImportError/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Language/Python/paddleocr/Python-PaddleOCR%E6%AF%94%E8%BE%83%E6%85%A2/</loc>
+        <loc>https://masterallen.github.io/Language/Python/pyqt/Python%E5%A4%84%E7%90%86Qt%E5%BC%82%E5%B8%B8%E6%B3%A8%E6%84%8F%E7%82%B9/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/python%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0/01.Python%E6%A8%A1%E5%9D%97%E6%90%9C%E7%B4%A2%E6%9C%BA%E5%88%B6/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/python%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0/02.%E8%A7%A3%E5%86%B3%E5%90%8C%E7%9B%AE%E5%BD%95%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AF%BC%E5%85%A5/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/python%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0/03.%E6%9B%B4%E6%B7%B1%E5%B1%82%E6%AC%A1%E7%9A%84%E6%96%87%E4%BB%B6%E7%9A%84%E5%AF%BC%E5%85%A5/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/python%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0/04.%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/python%E6%89%93%E5%8C%85/Python%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E6%89%93%E5%8C%85%E7%AF%87/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/python%E6%89%93%E5%8C%85/Python%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E7%95%AA%E5%A4%96/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/python%E6%89%93%E5%8C%85/Python%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E7%A8%8B%E5%BA%8F%E7%AF%87/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Language/Python/pywinauto/00.pywinauto%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Language/Python/pywinauto/01.pywinauto%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90TreeItem/</loc>
@@ -3094,6 +2794,9 @@
         <loc>https://masterallen.github.io/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE/%E9%A3%8E%E6%A0%BC%E5%8C%96%EF%BC%9A%E6%B0%B4%E5%BD%A9%E7%94%BB/</loc>
       </url>
       <url>
+        <loc>https://masterallen.github.io/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE/%E9%A3%8E%E6%A0%BC%E5%8C%96%EF%BC%9A%E8%80%81%E7%85%A7%E7%89%87-autocorrect%E5%AE%A1%E6%A0%B8/</loc>
+      </url>
+      <url>
         <loc>https://masterallen.github.io/Vision/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE/%E9%A3%8E%E6%A0%BC%E5%8C%96%EF%BC%9A%E8%80%81%E7%85%A7%E7%89%87/</loc>
       </url>
       <url>
@@ -3250,25 +2953,28 @@
         <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/01.AWB-OpenCV/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-1.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-1-%E6%95%B4%E4%BD%93%E9%80%BB%E8%BE%91/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-2.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-2-%E7%81%B0%E5%BA%A6%E4%B8%96%E7%95%8C%E5%92%8C%E5%AE%8C%E7%BE%8E%E5%8F%8D%E5%B0%84.docx/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-3.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-3-%E7%8C%9C%E6%B5%8B%E5%85%89%E6%BA%90.docx/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-4/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-4-%E4%BD%BF%E7%94%A8AI/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-5.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-5-Convolutional%20Color%20Constancy/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-6.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-6-%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%80%E4%BA%9BAI%E6%96%B9%E6%B3%95/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-%E8%A7%86%E9%A2%91.txt/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/AWB-%E8%A7%86%E9%A2%91%E7%9A%84AWB/</loc>
+      </url>
+      <url>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/Reference/asset/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/08.AWB/Reference/%E6%9D%90%E6%96%99/</loc>
@@ -3277,19 +2983,19 @@
         <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/1.Demosaic%E7%B3%BB%E5%88%97%E4%B8%80.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/1.Demosaic%E7%B3%BB%E5%88%97%E4%B8%80/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/2.Demosaic%E7%B3%BB%E5%88%97%E4%BA%8C.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/2.Demosaic%E7%B3%BB%E5%88%97%E4%BA%8C/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/3.Demosaic%E7%B3%BB%E5%88%97%E4%B8%89.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/3.Demosaic%E7%B3%BB%E5%88%97%E4%B8%89/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/4.Demosaic%E7%B3%BB%E5%88%97%E5%9B%9B.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/4.Demosaic%E7%B3%BB%E5%88%97%E5%9B%9B/</loc>
       </url>
       <url>
-        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/5.Demosaic%E7%B3%BB%E5%88%97%E4%BA%94.docx/</loc>
+        <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/5.Demosaic%E7%B3%BB%E5%88%97%E4%BA%94/</loc>
       </url>
       <url>
         <loc>https://masterallen.github.io/Vision/%E7%9B%B8%E6%9C%BAISP/09.Demosaic/Reference/papers/</loc>
