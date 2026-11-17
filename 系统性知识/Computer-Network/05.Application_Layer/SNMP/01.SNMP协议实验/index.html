@@ -1,0 +1,1179 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/Computer-Network/05.Application_Layer/SNMP/01.SNMP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E9%AA%8C/">
+      
+      
+        <link rel="prev" href="../../P2P/%E4%BD%BF%E7%94%A8%E7%BE%A4%E6%99%96%E5%AF%B9BYPT%E5%81%9A%E7%A7%8D/">
+      
+      
+        <link rel="next" href="../02.SNMP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E9%AA%8C%E4%BA%8C/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>SNMP 协议实验一：配置 SNMP 基础通信 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#snmp-snmp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SNMP 协议实验一：配置 SNMP 基础通信
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+  <a href="../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        准备
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="准备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        两台机器选择
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        上层管理开放端口
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        其他辅助
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        SNMP 简要说明
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snmp-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        配置 SNMP manager
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snmp-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        配置 SNMP Agent
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        测试通信
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        设置正常用户
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        回顾及安全性分析
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        其他
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Computer-Network
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../CA/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    05.Application_Layer
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    SNMP
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="snmp-snmp">SNMP 协议实验一：配置 SNMP 基础通信</h1>
+<div class="file-actions" data-image-edit-revision="ea690e88a9166e5ad8c25bd8477b62f131af73726faab71032878a87330afca5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CSNMP%5C01.SNMP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E9%AA%8C.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CSNMP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\SNMP\01.SNMP协议实验.md">复制路径</span></div>
+
+<p>这是我研一期间导师教的课程《计算机网络管理》中的一个选做实验，当时弄了将近一天，结果一直没有通，后来就放弃了。五年之后了，居然闲着没事想起来这个事情，再试试之后完成了。时间过得真是快，感觉五年前就在昨天一样。</p>
+<h2 id="_1">准备</h2>
+<h3 id="_2">两台机器选择</h3>
+<p>推荐还是直接临时买两个云服务器，反正也不是很贵，这样也不会破坏环境，而且还有公网 IP，很适合做实验。防火墙记得弄好。</p>
+<p>这里我就直接参考<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04#step-4-setting-up-a-basic-firewall">这篇文章</a>，其实里面的新建用户不用做，直接 root 反而更加方便，毕竟只是实验。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>ufw<span class="w"> </span>allow<span class="w"> </span>OpenSSH
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>ufw<span class="w"> </span><span class="nb">enable</span>
+</span></code></pre></div>
+<h3 id="_3">上层管理开放端口</h3>
+<p>不仅如此，云服务器上面的管理设置也要开端口。我一开始没开端口结果一直连不上。可以直接无脑开 UDP 就行，这就是临时买两台服务器的好处，不用担心安全问题。或者就只开 161 和 162 端口。</p>
+<p><img alt="" src="../../../../../asset/image/63008c4faeba9b7b802acb6b67c4da63/20260328214003.png" /></p>
+<h3 id="_4">其他辅助</h3>
+<p>一些做实验之后的善意提醒：</p>
+<ol>
+<li>最好买国内的服务器，我一开始用的 Digital Ocean，实在太卡了，太影响效率和心情了，越影响心情效率越低，恶性循环。</li>
+<li>使用 SSH 免密登录，后面很有可能要经常登入登出。</li>
+<li>使用 <a href="https://github.com/akinomyoga/ble.sh"><code>ble.sh</code></a> 这个 bash 自动补全工具，后面 SNMP 的命令非常长，这个确实很有帮助。直接安装如下：</li>
+</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># Quick INSTALL to BASHRC (If this doesn&#39;t work, please follow Sec 1.3)</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--shallow-submodules<span class="w"> </span>https://github.com/akinomyoga/ble.sh.git
+</span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span>make<span class="w"> </span>-C<span class="w"> </span>ble.sh<span class="w"> </span>install<span class="w"> </span><span class="nv">PREFIX</span><span class="o">=</span>~/.local
+</span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source -- ~/.local/share/blesh/ble.sh&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+</span></code></pre></div>
+<h2 id="snmp">SNMP 简要说明</h2>
+<p>这里还是简短说一下 SNMP 协议，就把他理解成管理员和被管理机器就行了。管理员叫 manager，被管理员叫 agent，平时都是 manager 向 agent 问东西，比如你启动多久了等等。偶尔 agent 如果发现自己报错，也会主动上报给 manager，这个叫做 trap，这个配置实现在另外一篇文章单独写。</p>
+<p>其实就是一层规范化的应用协议而已，没有什么特别之处。</p>
+<h2 id="snmp-manager">配置 SNMP manager</h2>
+<p>安装软件</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>snmp<span class="w"> </span>snmp-mibs-downloader
+</span></code></pre></div>
+<p>修改配置文件，这里的 MIB 就是按照 SNMP 协议的规范翻译一些名词，比如原来发送 <code>1.3.6.1.2.1.1.5.0</code> 这种奇怪的数字，现在可以替代为 <code>sysName.0</code>。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># /etc/snmp/snmp.conf</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># As the snmp packages come without MIB files due to license reasons, loading</span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span><span class="c1"># of MIBs is disabled by default. If you added the MIBs you can reenable</span>
+</span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span><span class="c1"># loading them by commenting out the following line.</span>
+</span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span><span class="c1"># 这里注释掉</span>
+</span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span><span class="c1">#mibs :</span>
+</span></code></pre></div>
+<details class="note">
+<summary>为什么是注释掉，才是启用 MIBS，通常来说不都是不注释才启用吗</summary>
+<p><code>mibs:</code> 它的意思不是“启用 MIB”，而是：把 MIB 列表设为空（= 不加载任何 MIB）；所以注释掉之后，程序就会回到默认行为：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>自动加载系统里的 MIB
+</span></code></pre></div>
+<p>所以变成<strong>启用状态</strong>，即使用了 <code>snmp-mibs-downloader</code> 这个工具。</p>
+</details>
+<p>然后就弄好了，什么也不用动。因为 SNMP 中 manager 向 agent 发消息，所以后面 manager 使用 <code>snmpget</code> 等等命令发消息的时候，命令执行时才加载配置文件，所以这里没有什么后台要运行的任务。</p>
+<h2 id="snmp-agent">配置 SNMP Agent</h2>
+<p>首先配置中修改为监听任意地址<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
+</span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>
+</span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>#  Listen for connections from the local system only
+</span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span>#agentAddress  udp:127.0.0.1:161
+</span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span>#  Listen for connections on all interfaces (both IPv4 *and* IPv6)
+</span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span>agentAddress udp:161,udp6:[::1]:161
+</span></code></pre></div></p>
+<p>然后建立一个 snmp user，snmp 通信要求通信的时候要有一个用户，而不是简单的指定 IP 和端口，就理解成当前的各个通信软件就行了。这里我们创立一个临时用户 <code>bootstrap</code>，密码就叫 <code>temp_password</code>，密码这里可以自行修改。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
+</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>createUser bootstrap MD5 temp_password DES
+</span></code></pre></div>
+<p><strong>这里为什么使用临时用户，继续往下看一直到结尾就知道了</strong></p>
+<p>然后配置用户权限，我们临时用户叫 <code>bootstrap</code>，假设我们最终用的名字叫 <code>demo</code>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
+</span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>rwuser bootstrap priv
+</span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>rwuser demo priv
+</span></code></pre></div>
+<p>最后重启服务，然后防火墙打开 161 端口，即允许 <strong>manager server</strong> 的 161 端口访问这台机器。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>snmpd
+</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>from<span class="w"> </span>manager_server_ip_address<span class="w"> </span>to<span class="w"> </span>any<span class="w"> </span>port<span class="w"> </span><span class="m">161</span>
+</span></code></pre></div>
+<h2 id="_5">测试通信</h2>
+<p>现在已经配置完毕了，测试通信，即 manager 向 agent 发送信息：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>bootstrap<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span><span class="m">1</span>.3.6.1.2.1.1.1.0
+</span></code></pre></div>
+<p>这里的 <code>1.3.6.1.2.1.1.1.0</code> 就是 SNMP 协议的 OID，就是管理员要获取的信息，这个意思是 <code>displaying system information</code>，正确的结果类似：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>SNMPv2-MIB::sysDescr.0<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span>Linux<span class="w"> </span>agent<span class="w"> </span><span class="m">4</span>.15.0-66-generic<span class="w"> </span><span class="c1">#75-Ubuntu SMP Tue Oct 1 05:24:09 UTC 2019 x86_64</span>
+</span></code></pre></div>
+<p>上面 <code>配置 SNMP Manager</code> 中提到我们有 MIBS 的支持，所以这里可以直接使用 <code>sysDescr.0</code> 这个 MIB 来获取系统信息：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>bootstrap<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
+</span></code></pre></div>
+<p>得到类似结果：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span>DISMAN-EVENT-MIB::sysUpTimeInstance<span class="w"> </span><span class="o">=</span><span class="w"> </span>Timeticks:<span class="w"> </span><span class="o">(</span><span class="m">53309</span><span class="o">)</span><span class="w"> </span><span class="m">0</span>:08:53.09
+</span></code></pre></div>
+<h2 id="_6">设置正常用户</h2>
+<p>前面提到 <code>bootstrap</code> 是临时用户，现在来演示正常应该如何操作，我们通过 <code>bootstrap</code> 用户通信，通信内容是：建立一个 <code>demo</code> 用户：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span>snmpusm<span class="w"> </span>-u<span class="w"> </span>bootstrap<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>create<span class="w"> </span>demo<span class="w"> </span>bootstrap
+</span></code></pre></div>
+<p>得到结果：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span>User successfully created.
+</span></code></pre></div>
+<p>现在我们有了 <code>demo</code> 用户，它的密码也是 <code>temp_password</code>，我们可以修改掉，修改成 <code>new_password</code>：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span>snmpusm<span class="w"> </span>-u<span class="w"> </span>demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>passwd<span class="w"> </span>temp_password<span class="w"> </span>new_password
+</span></code></pre></div>
+<p>得到结果：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span>SNMPv3 Key(s) successfully changed.
+</span></code></pre></div>
+<p>测试一下通信，就是上面一章节中的 <code>bootstrap</code> 替换成 <code>demo</code>：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>new_password<span class="w"> </span>-X<span class="w"> </span>new_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
+</span></code></pre></div>
+<p>然后我们就可以删除 <code>bootstrap</code> 这个临时用户了，具体操作在最后再谈。现在我们来评估这种安全性。</p>
+<h2 id="_7">回顾及安全性分析</h2>
+<p>还是强调，这些通信<strong>都是由 manager 发起</strong>，即 manager 是我们的管理器，安全性很高。agent 是路由器之类的，它被人任意使用没有关系。</p>
+<ol>
+<li>manager 首先使用 <code>bootstrap</code> 和对应的密码连接 agent，让他建立一个 <code>demo</code> 用户；</li>
+<li>manager 使用 <code>demo</code> 修改密码；</li>
+<li>manager 使用 <code>demo</code> 和对应的密码连接 agent，删除 <code>bootstrap</code> 用户；</li>
+<li>manager 使用 <code>demo</code> 和对应的密码连接 agent，进行通信。</li>
+</ol>
+<p>agent 里面只有 <code>bootstrap</code> 和它的明文密码，agent 是怎么知道 <code>demo</code> 用户的？在 <code>/var/lib/snmp/snmpd.conf</code> 中：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos="1 "></span>usmUser 1 3 0x80001f8880e13a533c7d6cc76900000000 &quot;demo&quot; &quot;demo&quot; NULL .1.3.6.1.6.3.10.1.1.2 0x018ea09d0b4caa6f7707d5f44774036d .1.3.6.1.6.3.10.1.2.2 0x018ea09d0b4caa6f7707d5f44774036d 0x
+</span><span id="__span-18-2"><span class="linenos" data-linenos="2 "></span>usmUser 1 3 0x80001f8880e13a533c7d6cc76900000000 &quot;bootstrap&quot; &quot;bootstrap&quot; NULL .1.3.6.1.6.3.10.1.1.2 0x697b326cd929726752a592fba5de1cd6 .1.3.6.1.6.3.10.1.2.2 0x697b326cd929726752a592fba5de1cd6 0x
+</span><span id="__span-18-3"><span class="linenos" data-linenos="3 "></span>setserialno 490637702
+</span></code></pre></div>
+<p>只不过这是加密后的密码，所以当我们删除掉 <code>bootstrap</code> 之后，agent 上并没有什么可以被攻击的信息了（只有加密的密码），这就是安全性的保证。</p>
+<p><strong>这也是临时用户 <code>bootstrap</code> 存在的意义</strong></p>
+<h2 id="_8">其他</h2>
+<p>如果为了方便，我们可以在 manager 中配置文件：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># ~/.snmp/snmp.conf</span>
+</span><span id="__span-19-2"><span class="linenos" data-linenos="2 "></span>
+</span><span id="__span-19-3"><span class="linenos" data-linenos="3 "></span>defSecurityName<span class="w"> </span>demo
+</span><span id="__span-19-4"><span class="linenos" data-linenos="4 "></span>defSecurityLevel<span class="w"> </span>authPriv
+</span><span id="__span-19-5"><span class="linenos" data-linenos="5 "></span>defAuthType<span class="w"> </span>MD5
+</span><span id="__span-19-6"><span class="linenos" data-linenos="6 "></span>defPrivType<span class="w"> </span>DES
+</span><span id="__span-19-7"><span class="linenos" data-linenos="7 "></span>defAuthPassphrase<span class="w"> </span>new_password
+</span><span id="__span-19-8"><span class="linenos" data-linenos="8 "></span>defPrivPassphrase<span class="w"> </span>new_password
+</span></code></pre></div>
+<p>原来的方式：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>new_password<span class="w"> </span>-X<span class="w"> </span>new_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
+</span></code></pre></div>
+<p>现在的方式，比较方便了：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
+</span></code></pre></div>
+<p>删除 <code>bootstrap</code> 用户的做法：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
+</span><span id="__span-22-2"><span class="linenos" data-linenos="2 "></span>
+</span><span id="__span-22-3"><span class="linenos" data-linenos="3 "></span># comment or remove the following lines
+</span><span id="__span-22-4"><span class="linenos" data-linenos="4 "></span>#createUser bootstrap MD5 temp_password DES
+</span><span id="__span-22-5"><span class="linenos" data-linenos="5 "></span>#rwuser bootstrap priv
+</span></code></pre></div>
+<p>然后重启 snmp：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>snmpd
+</span></code></pre></div>
+<p>如果想要完全删除：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><span class="linenos" data-linenos="1 "></span>snmpusm<span class="w"> </span>agent_server_ip_address<span class="w"> </span>delete<span class="w"> </span>bootstrap
+</span></code></pre></div>
+<p>得到：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><span class="linenos" data-linenos="1 "></span>User successfully deleted.
+</span></code></pre></div>
+<h2 id="_9">总结</h2>
+<p>这就是第一部分的内容。五年前，我用自己笔记本 ArchLinux 系统和实验室配的台式机 Windows 系统尝试做实验，结果折腾了快一天，差了很多资料，各种千奇百怪的论坛，但还是没有成功。五年之后直接两台云服务器，然后非常非常顺利地就完成了，用时不到一小时。我觉得这就是更加务实了吧，没有什么奇奇怪怪的技术洁癖（当时可能觉得一定要用身边的机器才算完美）。</p>
+<p>下一篇介绍如何进行 SNMP Trap 通信，这个是反过来的，是 agent 向 manager 发送信息。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../P2P/%E4%BD%BF%E7%94%A8%E7%BE%A4%E6%99%96%E5%AF%B9BYPT%E5%81%9A%E7%A7%8D/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 使用群晖对 BYPT 做种.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                使用群晖对 BYPT 做种.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02.SNMP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E9%AA%8C%E4%BA%8C/" class="md-footer__link md-footer__link--next" aria-label="Next: 02.SNMP 协议实验二.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                02.SNMP 协议实验二.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

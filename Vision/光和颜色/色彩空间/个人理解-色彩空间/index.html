@@ -1,0 +1,1149 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/Vision/%E5%85%89%E5%92%8C%E9%A2%9C%E8%89%B2/%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3-%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4/">
+      
+      
+        <link rel="prev" href="../../%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%E4%B8%80.htm/">
+      
+      
+        <link rel="next" href="../%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E8%A7%86%E9%A2%91%E6%8E%A8%E8%8D%90/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>色彩空间的理解 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              色彩空间的理解
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+  <a href="../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-site-root="../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        一、光谱色和非光谱色
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cie" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        二、CIE 颜色实验和光谱曲线
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cie-rgb" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        三、CIE-RGB
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        四、亮度
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cie-xyz" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        五、CIE-XYZ 空间
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cie-xyy" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        六、CIE-xyY 空间
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#srgb" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        七、sRGB
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yuvhslhsv" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        八、YUV，HSL，HSV
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cie-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        九、CIE-Lab
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        十、总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        参考资料
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Vision
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../%E5%85%89%E7%9A%84%E5%81%8F%E6%8C%AF/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    光和颜色
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    色彩空间
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="_1">色彩空间的理解</h1>
+<div class="file-actions" data-image-edit-revision="71dd3203ab73ca2ac878838a8fbacf8bcab71cdd96d95ef826e2e7df10e9224d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%85%89%E5%92%8C%E9%A2%9C%E8%89%B2%5C%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%5C%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3-%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%85%89%E5%92%8C%E9%A2%9C%E8%89%B2%5C%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\光和颜色\色彩空间\个人理解-色彩空间.md">复制路径</span></div>
+
+<h2 id="_2">一、光谱色和非光谱色</h2>
+<p>首先阅读前需要注意：抛弃以前的 RGB 值表示颜色的想法，现在我们置身于物理世界中，我们作为人类，发现其他动物都不能看到颜色，只有我们人类可以看到。那么颜色究竟是怎么一回事？</p>
+<p><em><u>结论：这个世界没有颜色，不同波长的光组合起来光，被大脑接收，大脑告诉我们颜色的感觉。</u></em></p>
+<p>回顾牛顿的三棱镜，将太阳光分离出了可见光谱。这些其实就是不同波长的光，如波长为 550nm 的光，我们称它给我们的感觉叫做绿色。下面的几种颜色叫做光谱色（Spectral Color）。</p>
+<p><img alt="光谱色" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image1.jpeg#w50" /></p>
+<p>然而，我们却能感觉到很多其他的颜色。比如粉红色，虽然红色-&gt;橙色有着过渡，但是并没有发现有粉红色这种颜色。而这些颜色就叫做非光谱色，是通过这<strong>几种不同波长的光混合而成</strong>。</p>
+<h2 id="cie">二、CIE 颜色实验和光谱曲线</h2>
+<p>我们现在的<strong>目标是复现光谱色</strong>（请一定要注意，我们现在只是复现光谱色），CIE 组织做了这种尝试，选了三种波长的光。现在有两个问题：</p>
+<ol>
+<li>
+<p>为什么选三种：因为人眼对颜色感知的细胞是三种，分别是 LMS，具体细节不用考虑。选择三种波长的光已经能很好满足人眼的感知。</p>
+</li>
+<li>
+<p>为什么选红绿蓝这三种光：这里强调的是，我们现在没有颜色的概念，我们就是选了感觉是红色、绿色、蓝色的光。如红色，你可以选择 780nm 波长的光、也可以选择 750nm 的光。而 CIE 组织是权威机构，它做了实验，因此以后都要按照它的标准。</p>
+</li>
+</ol>
+<p>于是 CIE 就做了著名的黑屋实验，具体实验内容参考资料，只要知道就是用三种光混合，问参与者的感觉，最后形成了下图：</p>
+<p><img alt="CIE 颜色实验" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image2.png" /></p>
+<p>这个图的意义，我们能够用三种不同波长的光组合形成一个特定波长的光，如表现 610nm 的光可以用如下的图展示。此外上方的曲线图的纵轴是<strong>相对大小</strong>，因此下图中如果 RGB 三光分别调小系数，那么就能够让人眼感觉光在变暗：</p>
+<p><img alt="CIE 颜色实验" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image3.png#w70" /></p>
+<p>通过这样的方式，我们沿着横轴，每一个波长的光有一个 (R,G,B) 的三元组。这就是耳熟能详的颜色匹配实验。</p>
+<p>小趣事：CIE 很权威对吧，然而 CIE 当时做的著名实验只找了几十人！难以置信。而到了 2000 年左右时，刚才所说的三个和颜色有关的细胞 LMS，我们人类成功模拟了它们的感光度。然而，只能说生物学的发展没有跟上物理学发展的脚步，我们已经用了那么多年的 CIE-RGB 模型，积重难返了！！</p>
+<h2 id="cie-rgb">三、CIE-RGB</h2>
+<p>下面才是正式开始色彩空间的讲解。<strong>现在我们进行这样的处理</strong>：<span class="arithmatex">\(r = R/(R + G + B)\)</span>，其他同理。得出如下非常重要的三维空间的一条线，这条线是有颜色的，也就是光谱图的颜色，即红色逐渐变为紫色：</p>
+<p><img alt="CIE-RGB" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image4.png#w50" /></p>
+<p>由于我们的转换方式，可以得知 <span class="arithmatex">\(b = 1 - r - g\)</span>，我们只需要二维平面即可，还是一样，这条黑色曲线上面是有颜色的，即光谱色。：</p>
+<p><img alt="CIE-RGB" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image5.png" /></p>
+<p>现在我们考虑曲线内部的点，对于一个点，我们可知 r 和 g，然后推出 b，这样就获取到了 rgb 三个光的比例。假设给一个 <span class="arithmatex">\(k*r\)</span> 大小的 R 光、给一个 <span class="arithmatex">\(k*g\)</span> 大小的 G 光、给一个 <span class="arithmatex">\(k*b\)</span> 大小的 B 光，合成了一个光 L，这个 L 给了我们一种颜色的感觉。此时如果是 <span class="arithmatex">\(2k*r+2k*g+2k*b\)</span> 合成一个光 L2，由于比例关系还是 rgb，此时这个光给我们颜色的感觉很类似刚才的 L。</p>
+<p><strong>因此，曲线里面的每个点对应了一个颜色！</strong>这就是我们之前想找的非光谱色，得到了 CIE-RGB 颜色空间的图示：</p>
+<p><img alt="CIE-RGB" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image6.webp#w70" /></p>
+<p>有几个点需要说明：</p>
+<ol>
+<li>
+<p>再次强调：R 光 G 光 B 光只是我们从光谱色中挑出的三个不同波长的光，对于 G 光，可以选择 550nm，也可以 560nm。只不过 CIE 是权威机构，我们一致按照它挑的三种光。</p>
+</li>
+<li>
+<p>曲线外面有没有颜色？这个不理解，个人认为曲线外面合成的光，给人眼是没有颜色感觉。反正我们也不管曲线外面，曲线里面的颜色够够的。</p>
+</li>
+<li>
+<p>负数的意义？假设只有 r 是负数，实际上就是 ==合成的光 L + r 大小的 R 光== 和 ==g 大小的 G 光 + b 大小的 B 光== 给人眼的感觉是一样的。图中第一象限的三角形中的颜色，是我们可以用 R 光 G 光 B 光合成的；第四象限的颜色，就需要其他类型的基础光进行合成，怎么合成，这不在我们的学习内容内。</p>
+</li>
+<li>
+<p>灰色哪去了？灰色和白色都是强度不同，给我们的感受也不同。==r 大小 R 光+g 大小 G 光+b 大小 B 光== 和 ==2r 大小 R 光 +2g 大小 G 光 +2b 大小 B 光== 给我们的感觉是有点不同的，图中是固定好了 R+G+B 下的结果。或许这个平面图没有完全表现所有颜色，<strong>但是现在我们就是规定了 <a href="#r">颜色</a> 这个概念，这个概念就是一个坐标值。因此在这样的概念中，灰色和白色是一个颜色！（并不严谨，之后会讨论）</strong></p>
+</li>
+</ol>
+<h2 id="_3">四、亮度</h2>
+<p>现在，先让我们介绍一个概念：<mark class="term-highlight">光度函数（Luminosity function）</mark>。<strong>它其实也是一个 CIE 做的实验，用于表现人眼的感知程度。</strong>不同波长有对应的值，最后就是一个函数<span class="arithmatex">\(V(\lambda)\)</span>，如下图所示：</p>
+<p><img alt="光度函数" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image7.png#80" /></p>
+<p>我们的考虑是：能不能用我们三色光曲线去近似上面的图？比如 500nm 的光，我们有系数 rgb，表示这样比例下，RGB 三光合成时颜色有点像，此时一定可以模拟出系数来，即：</p>
+<div class="arithmatex">\[
+r*x_{1}*V(R) + g*x_{2}*V(G) + b*x_{3}*V(B) = V(500)
+\]</div>
+<p>这个公式是由无穷多解的，比如其中一个解就是两个 x 取 0，求出剩下的那个 x。但是又来一个 400nm 的光，它有新的上面方程。又有 450nm、550nm…。这样有了很多个方程，未知数是 x，没有一种可能：这个 x 是有解的？或者说，是可以近似的？</p>
+<p>结果发现真的是可以的！结果<span class="arithmatex">\(1.000*R + 4.590*G + 0.060*B\)</span> 可以近似，如下图所示。其实细想：对于光，人眼的光度就是 LMS 这三种类型的细胞共同合成的感觉。而我们选择三种基本光其实也是近似 LMS 感光行为，虽然感光曲线肯定和 LMS 感光不一样，但多少有点类似。比如观察感光程度，可以发现 G 的贡献特别大，而人眼细胞中 M 的贡献也是最大（很大）。</p>
+<p><img alt="" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image8.png" /></p>
+<p>注意<strong>这里是光谱色的模拟</strong>。然后我们就扩展到整个色彩空间中，规定了这个概念：<a href="#r">亮度（luminosity）</a>，对于 RGB 三光合成的光，它的<a href="#r">亮度</a>就是 <span class="arithmatex">\(1.000*R + 4.590*G + 0.060*B\)</span>。</p>
+<p><strong>没错，亮度也是人为定义的概念！（个人观点）</strong> 他就是人类近似出光谱色的感光程度，然后将近似的公式扩展整个色彩之中。换句话说，假如我就用三个光的平均值来表示亮度，也可以呀，只不过你没有啥依据，你这样定义的亮度都无法符合光谱色给人眼的感觉。</p>
+<h2 id="cie-xyz">五、CIE-XYZ 空间</h2>
+<p>XYZ 空间中 Y 就是上面所说的拟合值。而 XZ 是？它其实是为了取消掉 CIE-RGB 中的负数。对于 XYZ 的理解，就可以理解成坐标转换：</p>
+<blockquote>
+<p>对于一个平面点 (1,1)，假设我现在将<mark class="term-highlight">基</mark>改为 (1,1) 和 (-1,1)，那么这个点就成了 (1,0)。换成这样的基有什么好处，我就知道了向量映射在 45 度角的长度。</p>
+</blockquote>
+<p>所以 XYZ 中有一个基就是 Y，而 X 和 Z 就是选择的另外两个基，当然他可不是乱选的啊，后面会提到。最后，光谱色下 XYZ 空间的系数变成下图：</p>
+<p><img alt="CIE-XYZ" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image9.png" /></p>
+<p>对于 XYZ，非常推荐看维基百科的内容：<a href="https://en.wikipedia.org/wiki/CIE_1931_color_space#Meaning_of_X,_Y_and_Z">https://en.wikipedia.org/wiki/CIE_1931_color_space#Meaning_of_X,_Y_and_Z</a></p>
+<h2 id="cie-xyy">六、CIE-xyY 空间</h2>
+<p>OK，但是 CIE-RGB 有一个彩色平面图，CIE-XYZ 有没有呢。当然有，我们进行类似转换：</p>
+<div class="arithmatex">\[
+x = \frac{X}{X + Y + Z}\ \ \ \ \ y = \frac{Y}{X + Y + Z}\ \ \ \ z = \frac{Z}{X + Y + Z}
+\]</div>
+<p>这样我们可以得到类似 CIE-RGB 的图。但是且慢！CIE-RGB 中规定 R+G+B 是一个定值（先这样理解），从而得到平面图；CIE-XYZ 也规定 X+Y+Z 是一个定值，然后得到平面图吧？</p>
+<p>这样真的好吗，X+Y+Z 是什么含义呢？没含义。于是我们只规定一个 Y 值，来进行约束。这有点抽象，我们代入 CIE-RGB 空间：</p>
+<blockquote>
+<p>假设我不用 R+G+B 来约束，我现在规定 B 一定是 100 大小的光。那么重新画出 rg 空间色彩图，可知点 (0.1, 0.8) 的颜色就是 100R+800G+100B 合成的光给我们的感觉；而点 (0.2, 0.6) 对应的颜色就是 100R+300B+100B 合成的光给我们的感觉。</p>
+</blockquote>
+<p>在 CIE-RGB 中规定 B 的值可能有点奇怪。但是在 CIE-XYZ 中规定 Y 就显得很合理了，它代表了 <a href="#r">亮度</a> 嘛。所以我们一般规定 Y=1 或者 Y=100，然后画出 x 和 z 组成的平面图。<strong>但是 CIE 它规定的是</strong> <span class="arithmatex">\(\mathbf{y = Z/(X + Y + Z)}\)</span> <strong>，所以最后平面分别是 x 和 y</strong>，这个规定其实我感觉不是很好。最后变成的结果如下，左图是 RGB，右图是 xyY：</p>
+<p><img alt="CIE-xyY" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image10.PNG" /></p>
+<p>最后就是想回到 XYZ 空间转换的问题，X 和 Z 为什么选择这种 X 和 Z。回到 CIE-RGB 空间的色彩图，左图的 Cb、Cr、Cg 分别是右图的 (0,0)、(0,1)、(1,0)。而 Cb-&gt;Cr 这条线其实是右图的 x 轴，Cb-&gt;Cg 这条线是右图的 y 轴。</p>
+<p>所以，XYZ 转换它可不是乱转换的，既考虑了亮度 Y，又让颜色转换看起来合理，训练有素。推荐 B 站视频：色彩空间为什么那么空？（<a href="https://www.bilibili.com/video/BV19e4y1y7Mo">https://www.bilibili.com/video/BV19e4y1y7Mo</a>）</p>
+<h2 id="srgb">七、sRGB</h2>
+<p>到了这里，就一切好说通了。我在上面的马蹄图选择三个点，这三个点就相当于是我的三个基本光，跟 CIE-RGB 选择三个光一样，只不过点不同而已。所以选择哪三个点（哪三个波长的光）很关键，需要统一一下，各家就是有不一样的想法。这就是 sRGB、AdobeRGB 等等的由来。</p>
+<p>当然：要注意 sRGB 不是线性的，他最后还有个 gamma 转换。主要有几个问题：</p>
+<ol>
+<li>
+<p>问：选择哪种波长的光，那这不就意味着三个点都是在边缘处嘛，这样才是光谱色。为什么 sRGB 的三个点在内部呢</p>
+<blockquote>
+<p>答：无所谓呀，我在内部就说明我的基本光是合成的罢了。比如 400nm 和 500nm 的光 2 比 1 混合（只是举例子哈），组成一个光，这就是我其中一个基本光。</p>
+</blockquote>
+</li>
+<li>
+<p>问：既然如此，为什么要选择内部的光，而不是光谱色的光？用光谱色即面积大，又方便。</p>
+<blockquote>
+<p>答：历史原因。2012 年提出的 Rec.2020 就是三个光都在边缘。为什么以前不行？因为以前显示器不行，是物理层面上的不行，显示不了较为边缘的光。</p>
+</blockquote>
+</li>
+<li>
+<p>问：有 sRGB 坐标，可以转到 XYZ 空间坐标去吗？</p>
+<blockquote>
+<p>答：当然可以了，从 XYZ 到 sRGB 其实就是一个转换，那我逆转换不就行了。当然首先要把 sRGB 去 gamma，转成了线性 sRGB，然后再去转成 XYZ。对于线性 sRGB 某个点，他的坐标是 (r,g,b)，三个基本光在 XYZ 的坐标分别为 RGB。你可以想象一下，那就相当于我用 r 大小的 R、g 大小的 G、b 大小的 B，合成了一个光，那不就加起来就完事了嘛。如下图所示，注意这里的 Rlinear 在 0-1 之间。PS：你可以试着将 RGB 的 XYZ 转为 xyY，你会发现坐标就是我们选择的三个点坐标。</p>
+</blockquote>
+<!-- blog-edit-end:21c6ec5dce75ee60:b55 -->
+<!-- blog-edit-start:21c6ec5dce75ee60:b56 -->
+<p><img alt="sRGB 转换" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image11.png" /></p>
+<!-- blog-edit-end:21c6ec5dce75ee60:b56 -->
+<!-- blog-edit-start:21c6ec5dce75ee60:b57 -->
+</li>
+<li>
+<p>问：从上面的公式可以感觉出。不同（RGB）所得结果下 Y 是不同的，那当然了，比如{1,0,0}和{0,0,1}。那么 Y 不同怎么在 xyY 空间显示马蹄图呢，马蹄图要求 Y=1 或 Y=100 呀。</p>
+</li>
+</ol>
+<blockquote>
+<p>答：调整 Y 呗，比如每个颜色我得出之后，就归一化让 Y=1 即可。当然这种做法其实不好，会有条状显示。那为什么我们经常看到如 sRGB、AdobeRGB 等空间在马蹄图上的三角形呢？<strong>实际上因为我们不用管三角形里面的颜色怎么样，画三角形只是想表示我能显示哪些范围的颜色。你可以想象：不同 RGB 模型下，三角形里面的颜色肯定有细微差别呀，所以不用纠结 RGB 模型在马蹄图上的颜色！</strong></p>
+</blockquote>
+<h2 id="yuvhslhsv">八、YUV，HSL，HSV</h2>
+<p>那么 YUV、HIS、HSV 又是什么？实际上这三个都是在 sRGB 这种颜色空间基础上进行的。网上资料，基本大部分都在千篇一律地说：Y 代表亮度、UV 代表颜色差异；V 代表亮度、HS 代表颜色差异…</p>
+<p>这样的阐述实在是误导人！实际这些空间的<mark class="term-highlight">亮度</mark>不是<mark class="term-highlight">亮度</mark>。用英文来解释就很清晰了，YUV 的 Y 表示<mark class="term-highlight">luma</mark>、HSL 的 L 表示<mark class="term-highlight">lightness</mark>、HSV 的 V 表示<mark class="term-highlight">value、brightness</mark>，<strong>而我们在 CIE-XYZ 颜色空间中的 Y 表示<mark class="term-highlight">luminance</mark>。</strong></p>
+<p>从转换公式我们也可以看到，这三个空间的《亮度》都是人类想要体现出 RGB 三维坐标下的人眼感觉，即这些名词是人为定义的变量，背后没有物理意义。</p>
+<p><img alt="YUV, HSL, HSV" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image12.png#w70" /></p>
+<p>为什么要有这些空间：</p>
+<ol>
+<li>
+<p>YUV 是因为黑白电视，RGB 的图像要显示出黑白的，那就这样做咯。有一个问题是 RGB 色彩空间有很多啊，难道每个色彩空间都用同一套公式？答案是否，每个空间都有对应的 YUV 转换公式。</p>
+</li>
+<li>
+<p>RGB 对人类来说很不直观，难以理解，比如 10R20G30B，这是什么东东。人类更习惯想知道是鲜艳还是灰暗？HSB 和 HSL 基于此被创造出来。调色的时候，你觉得哪个更符合你的直觉，对你来说，它就更优秀。</p>
+</li>
+</ol>
+<p>HSV 和 HSL 的问题是，虽然很多时候确实还挺符合人眼，做的不错。但是第一转换的还不够，有时无法符合人眼；第二是没有有效地将颜色分为三个值分量，即改变某个分量其实会影响下一个分量；第三就是计算复杂度过高。</p>
+<p><img alt="HSV 和 HSL" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image13.png" /></p>
+<p>下面这张图充分体现了各个颜色空间的转换程度，想要更多资料，查阅维基百科的 HSL 和 HSV 空间（<a href="https://en.wikipedia.org/wiki/HSL_and_HSV#Disadvantages">https://en.wikipedia.org/wiki/HSL_and_HSV#Disadvantages</a>）：</p>
+<p><img alt="色彩空间转换" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image14.png" /></p>
+<h2 id="cie-lab">九、CIE-Lab</h2>
+<p>回到 XYZ 空间，这个马蹄图，他有一个缺陷：跨度和人眼感觉不成线性。如下面这个经典的图，每个圈表示人眼感觉一样，很显然有问题，所以就有了 Lab 空间。差一个右边的方图</p>
+<p><img alt="Lab 空间" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image15.png#w70" /></p>
+<p>Lab 空间的转换本质上就是将上面的马蹄图变成 xx，所以转换方式也挺复杂。具体查阅维基百科就行。</p>
+<h2 id="_4">十、总结</h2>
+<p>最后，可以去看一下参考资料里面第二个，即 B 站的视频，讲的很不错。下面这张图总结了我们讲的各种空间，希望可以弄清楚。Good Job！</p>
+<p><img alt="色彩空间总结" src="../../../../asset/image/0a193bafa5159a1758fce484e83d6995/image16.png" /></p>
+<h2 id="_5">参考资料</h2>
+<ul>
+<li>
+<p>非常好的关于色彩空间的文章：<a href="https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a">https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a</a></p>
+</li>
+<li>
+<p>B 站的一个特别直观的视频，同时包括色温的说明：<a href="https://www.bilibili.com/video/BV19e4y1y7Mo">https://www.bilibili.com/video/BV19e4y1y7Mo</a></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../%E5%85%89%E7%9A%84%E7%90%86%E8%A7%A3/%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%E4%B8%80.htm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 参考文章一.htm">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                参考文章一.htm
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%E8%A7%86%E9%A2%91%E6%8E%A8%E8%8D%90/" class="md-footer__link md-footer__link--next" aria-label="Next: 色彩空间视频推荐.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                色彩空间视频推荐.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

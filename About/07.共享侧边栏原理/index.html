@@ -1,0 +1,1197 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/About/07.%E5%85%B1%E4%BA%AB%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%8E%9F%E7%90%86/">
+      
+      
+        <link rel="prev" href="../06.%E6%9C%AC%E5%9C%B0%E5%BF%AB%E9%80%9F%E7%BC%96%E8%BE%91/">
+      
+      
+        <link rel="next" href="../08.%E4%BC%98%E5%8C%96%E4%BE%A7%E8%BE%B9%E6%A0%8F%E9%97%AA%E7%83%81/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>博客共享侧边栏实现原理 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              博客共享侧边栏实现原理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../navigation/shared/group-9-623cc78a2f1a.html" data-site-root="../../" aria-busy="true">
+  <a href="../..">加载栏目目录…</a>
+</div>
+<script src="../../javascripts/shared-navigation.js"></script>
+
+<script src="../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../navigation/shared/group-9-623cc78a2f1a.html"
+         data-site-root="../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        一、场景说明
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        二、问题一：一个网页怎么加载两部分 HTML？
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、问题一：一个网页怎么加载两部分 HTML？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.1 浏览器显示的是 DOM 树
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.2 脚本生成专门的侧边栏文件
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.3 JavaScript 请求导航片段并插入页面
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 JavaScript 请求导航片段并插入页面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        请求侧边栏的方式
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        如何知道请求哪一个
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        解析站点地址
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.3 高亮部分处理
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        三、问题二：没有命令选项，怎么拆开侧边栏？
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、问题二：没有命令选项，怎么拆开侧边栏？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.1 侧边栏由主题模板决定
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.2 覆盖模板，改成输出占位区域
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        四、文件更新与浏览器缓存如何处理？
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        五、解决结果
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        六、对应源码位置
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    About
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="_1">博客共享侧边栏实现原理</h1>
+<div class="file-actions" data-image-edit-revision="ec0765c98aa5df161a19789479bb2fd6a7f06d2b130b453cdc218c60887cb7cb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CAbout%5C07.%E5%85%B1%E4%BA%AB%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%8E%9F%E7%90%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CAbout" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\About\07.共享侧边栏原理.md">复制路径</span></div>
+
+<h2 id="_2">一、场景说明</h2>
+<p>当前博客有大量文章，许多文章的左侧共享一个侧边栏。如果一个文件更新了，需要重新构建所有文章页面，这样会导致构建速度非常慢。所以需要一种方式，只重新构建该文件的页面，而不是所有文件。</p>
+<p>当前实现是：<strong>构建完整文章页面，但把页面中的左侧导航替换为占位区域；浏览器打开页面后，再加载当前栏目共享的导航片段。</strong></p>
+<p>文章页面仍然包含顶部栏目、正文、右侧文章目录、样式和脚本引用等内容。只有原先重复嵌入的完整左侧导航被抽离。</p>
+<h2 id="html">二、问题一：一个网页怎么加载两部分 HTML？</h2>
+<h3 id="21-dom">2.1 浏览器显示的是 DOM 树</h3>
+<p>浏览器收到 HTML 后，会把它解析成 DOM 树。页面显示出来以后，JavaScript 仍然可以往这棵树里添加节点。新加入的节点与原有正文参与同一个页面的布局，并使用页面里已经加载的 CSS。</p>
+<p>文章页面最初可以理解为下面的结构。这是说明原理的简化代码，不是项目模板的完整内容：</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>  <span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>顶部栏目<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
+</span><span id="__span-0-4"><span class="linenos" data-linenos=" 4 "></span>  <span class="p">&lt;</span><span class="nt">aside</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;sidebar&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-0-5"><span class="linenos" data-linenos=" 5 "></span>    加载栏目目录…
+</span><span id="__span-0-6"><span class="linenos" data-linenos=" 6 "></span>  <span class="p">&lt;/</span><span class="nt">aside</span><span class="p">&gt;</span>
+</span><span id="__span-0-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-0-8"><span class="linenos" data-linenos=" 8 "></span>  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+</span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>文章标题<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>文章正文……<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span>  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+</span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<h3 id="22">2.2 脚本生成专门的侧边栏文件</h3>
+<p>正如开头所说的，许多文件的左侧共享一个侧边栏。所以脚本会生成专门的侧边栏文件，如下图所示。</p>
+<p><img alt="侧边栏 HTML 文件" src="../../asset/image/46f05c202369a3182a6170171ddfaef0/20261013023524.png" /></p>
+<p>每个文件名后面那么多数字和字母，其实是根据内容计算的哈希，只要保证唯一性即可。把文件里面的代码替换到上面的 <code>sidebar</code> 区域即可。</p>
+<h3 id="23-javascript">2.3 JavaScript 请求导航片段并插入页面</h3>
+<h4 id="_3">请求侧边栏的方式</h4>
+<p>页面脚本发起另一次 HTTP 请求，取得当前栏目公共导航文件的文本，然后将它插入侧边栏区域：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 示意代码</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;/navigation/shared/group-3-012345abcdef.html&quot;</span><span class="p">);</span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+</span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#sidebar&quot;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">;</span>
+</span></code></pre></div>
+<p>返回的就是是 HTML 片段，赋值给 <code>innerHTML</code> 后，浏览器将这段文本解析成节点，放入现有页面。</p>
+<h4 id="_4">如何知道请求哪一个</h4>
+<p>上面请求是如何知道要请求哪个侧边栏呢，其实在每个页面中都写好了：</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="p">&lt;</span><span class="nt">div</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>  <span class="na">data-shared-navigation</span><span class="o">=</span><span class="s">&quot;../../navigation/shared/group-3-012345abcdef.html&quot;</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>  <span class="na">data-site-root</span><span class="o">=</span><span class="s">&quot;../../&quot;</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>  <span class="na">aria-busy</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span>  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../../&quot;</span><span class="p">&gt;</span>占位区域，请求成功，这一整行会被替换为导航节点…<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>其中：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data-shared-navigation</code></td>
+<td>目录 HTML 的地址，相对于当前页面解析</td>
+</tr>
+<tr>
+<td><code>data-site-root</code></td>
+<td>站点根目录，用来解析共享目录内部的链接和图片地址</td>
+</tr>
+<tr>
+<td><code>aria-busy</code></td>
+<td>表示目录是否仍在加载；加载结束或失败后设为 <code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_5">解析站点地址</h4>
+<p>上面请求是用的相对总地址的请求，所以需要一开始先解析站点地址：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">siteRoot</span><span class="p">,</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span><span class="p">);</span>
+</span></code></pre></div>
+<p>举例子：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="s2">&quot;../../../&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="s2">&quot;http://127.0.0.1:8000/Language/CPP/cpp_constexpr/&quot;</span>
+</span><span id="__span-4-4"><span class="linenos" data-linenos="4 "></span><span class="p">);</span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos="5 "></span><span class="c1">// 得到：http://127.0.0.1:8000/</span>
+</span><span id="__span-4-6"><span class="linenos" data-linenos="6 "></span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos="7 "></span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="s2">&quot;Language/Python/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">root</span><span class="p">).</span><span class="nx">href</span><span class="p">;</span>
+</span><span id="__span-4-8"><span class="linenos" data-linenos="8 "></span><span class="c1">// 得到：http://127.0.0.1:8000/Language/Python/</span>
+</span></code></pre></div>
+<p>完整过程如下：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span>打开文章地址
+</span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>    ↓
+</span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>取得完整文章 HTML：正文 + 页面框架 + 导航占位区域
+</span><span id="__span-5-4"><span class="linenos" data-linenos=" 4 "></span>    ↓
+</span><span id="__span-5-5"><span class="linenos" data-linenos=" 5 "></span>执行页面 JavaScript
+</span><span id="__span-5-6"><span class="linenos" data-linenos=" 6 "></span>    ↓
+</span><span id="__span-5-7"><span class="linenos" data-linenos=" 7 "></span>请求所属栏目的公共导航片段
+</span><span id="__span-5-8"><span class="linenos" data-linenos=" 8 "></span>    ↓
+</span><span id="__span-5-9"><span class="linenos" data-linenos=" 9 "></span>将导航节点插入占位区域
+</span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span>    ↓
+</span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span>根据当前文章地址设置高亮、展开父目录
+</span></code></pre></div>
+<p>因此，最终只有一个页面、一棵 DOM 树。文章内容来自首次请求，导航片段来自后续请求。</p>
+<h3 id="23">2.3 高亮部分处理</h3>
+<p>侧边栏会高亮当前文章，所以如果不做处理，这部分会有问题。</p>
+<p>插入导航后，脚本比较当前页面 URL 与导航链接，给匹配文章设置高亮和 <code>aria-current="page"</code>，再展开它的父目录。这样，同一份 Language 导航既可以用于 Python 文章，也可以用于 CPP 文章。</p>
+<h2 id="_6">三、问题二：没有命令选项，怎么拆开侧边栏？</h2>
+<h3 id="31">3.1 侧边栏由主题模板决定</h3>
+<p>构建命令负责组织构建过程，而页面里哪些位置输出什么 HTML，由主题模板决定。因此，拆分左侧导航不要求命令行提供专门选项。</p>
+<p>原先的模板逻辑可以简化为：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>&lt;aside&gt;
+</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>  {% include &quot;partials/nav.html&quot; %}
+</span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>&lt;/aside&gt;
+</span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span>
+</span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span>&lt;main&gt;
+</span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span>  {{ page.content }}
+</span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span>&lt;/main&gt;
+</span></code></pre></div>
+<p>构建每篇文章时，<code>partials/nav.html</code> 会展开导航树，产生导航 HTML。结果就是很多文章页面重复保存相同目录。</p>
+<h3 id="32">3.2 覆盖模板，改成输出占位区域</h3>
+<p>项目已有自定义主题模板目录。我们在 <code>overrides/base.html</code> 中，将左侧导航的引用改为：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>{% include &quot;partials/shared-nav.html&quot; %}
+</span></code></pre></div>
+<p>新的 <code>shared-nav.html</code> 先判断文章所属的顶部栏目，再通过生成的清单取得该栏目的公共导航路径。它的实际输出结构是：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>&lt;div data-shared-navigation=&quot;{{ shared.path(selected.index) | url }}&quot;
+</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>     data-site-root=&quot;{{ base_url }}/&quot;
+</span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span>     aria-busy=&quot;true&quot;&gt;
+</span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span>  &lt;a href=&quot;{{ &#39;.&#39; | url }}&quot;&gt;加载栏目目录…&lt;/a&gt;
+</span><span id="__span-8-5"><span class="linenos" data-linenos="5 "></span>&lt;/div&gt;
+</span></code></pre></div>
+<p>其中：</p>
+<ul>
+<li><code>data-shared-navigation</code>：当前栏目导航片段的地址。</li>
+<li><code>data-site-root</code>：用于解析片段内链接的站点根地址。</li>
+<li><code>aria-busy</code>：表示目录仍在加载。</li>
+</ul>
+<p>这里不再展开整棵左侧导航，但正文和页面其他部分仍然按原来的模板流程生成。</p>
+<h2 id="_7">四、文件更新与浏览器缓存如何处理？</h2>
+<p>公共导航文件名带有根据内容计算的哈希，实际名称类似：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>navigation/shared/group-6-48ff05914319.html
+</span></code></pre></div>
+<p>只修改文章正文时，导航结构不变，公共导航文件也不需要变化。同栏目文章引用相同地址，浏览器可以按照 HTTP 缓存规则复用已有响应；是否重新请求，还取决于服务端缓存头和浏览器设置。</p>
+<p>调整某个栏目目录后，导航内容改变，生成器会计算新的文件名。重新构建的文章页面引用新地址，浏览器便会获取新的导航片段。</p>
+<h2 id="_8">五、解决结果</h2>
+<p>以前每篇文章 HTML 都携带大量重复导航。抽离后，构建产物中的 HTML 总量从约 <strong>817 MiB 降到 84 MiB</strong>。这是此前两次产物统计的结果，主要收益来自减少重复导航。</p>
+<h2 id="_9">六、对应源码位置</h2>
+<p>以下为维护时应修改的源码位置，生成目录中的文件会被后续构建覆盖。</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>D:\Blog\scripts\web\generate_shared_navigation.py</code></td>
+<td>生成公共导航片段和路径清单</td>
+</tr>
+<tr>
+<td><code>D:\Blog\scripts\web\overrides\base.html</code></td>
+<td>完整页面模板，引用共享导航占位模板</td>
+</tr>
+<tr>
+<td><code>D:\Blog\scripts\web\overrides\partials\shared-nav.html</code></td>
+<td>按当前顶部栏目输出导航地址与占位区域</td>
+</tr>
+<tr>
+<td><code>D:\Blog\scripts\web\overrides\javascripts\shared-navigation.js</code></td>
+<td>请求片段、插入 DOM、设置当前文章状态</td>
+</tr>
+<tr>
+<td><code>D:\Blog\scripts\web\live_preview.py</code></td>
+<td>启动本地快速预览时生成共享导航</td>
+</tr>
+<tr>
+<td><code>D:\Blog\scripts\web\mkdocs-phone.yml</code></td>
+<td>本地/手机版配置，加载导航脚本</td>
+</tr>
+<tr>
+<td><code>D:\Blog\scripts\web\mkdocs-web.yml</code></td>
+<td>网页版配置，加载导航脚本</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../06.%E6%9C%AC%E5%9C%B0%E5%BF%AB%E9%80%9F%E7%BC%96%E8%BE%91/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 06.本地快速编辑.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                06.本地快速编辑.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08.%E4%BC%98%E5%8C%96%E4%BE%A7%E8%BE%B9%E6%A0%8F%E9%97%AA%E7%83%81/" class="md-footer__link md-footer__link--next" aria-label="Next: 08.优化侧边栏闪烁.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                08.优化侧边栏闪烁.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../javascripts/copy.js"></script>
+      
+        <script src="../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../javascripts/archive-filter.js"></script>
+      <script defer src="../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

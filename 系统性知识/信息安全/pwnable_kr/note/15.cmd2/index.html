@@ -1,0 +1,1105 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/pwnable_kr/note/15.cmd2/">
+      
+      
+        <link rel="prev" href="../14.cmd1/">
+      
+      
+        <link rel="next" href="../16.uaf/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>处理命令行过滤(Pwnable.kr cmd 系列) - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pwnablekr-cmd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              处理命令行过滤(Pwnable.kr cmd 系列)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+  <a href="../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cmd1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        cmd1
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        cmd2
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmd3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        cmd3
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="cmd3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        答案一
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        答案二
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        重要说明
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        参考
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    信息安全
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    pwnable_kr
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    note
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="pwnablekr-cmd">处理命令行过滤(Pwnable.kr cmd 系列)</h1>
+<div class="file-actions" data-image-edit-revision="410ae1342103ce548fe0a4b23cde0d044ef9645684cfb0d1153f12b8a099b99b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C15.cmd2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\15.cmd2.md">复制路径</span></div>
+
+<h2 id="cmd1">cmd1</h2>
+<p><strong>题目规定需要绝对路径</strong>，简化的源代码如下<br />
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">bool</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="c1">// strstr()，0 表示没有找到子字符串</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">retrun</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;flag&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sh&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tmp&quot;</span><span class="p">);</span>
+</span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="p">}</span>
+</span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[],</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">envp</span><span class="p">){</span>
+</span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="w">        </span><span class="n">system</span><span class="p">(</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>可以看到，如果单纯地使用<code>/bin/sh</code>会失败，使用<code>/bin/cat flag</code>也会失败，所以怎么办呢？</p>
+<p>解决方法: <code>/bin/cat fla*</code> 或者 <code>/bin/cat 'f'lag</code></p>
+<h2 id="cmd2">cmd2</h2>
+<p><strong>题目规定需要绝对路径</strong>，简化的源代码如下<br />
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">cmd</span><span class="p">){</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;=&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PATH&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;export&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">            </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;`&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;flag&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-4"><span class="linenos" data-linenos=" 4 "></span><span class="p">}</span>
+</span><span id="__span-1-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-1-6"><span class="linenos" data-linenos=" 6 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[],</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">envp</span><span class="p">){</span>
+</span><span id="__span-1-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">system</span><span class="p">(</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>首先一个问题：需要使用绝对路径，那么<code>cd</code> 和 <code>pwd</code>需要绝对路径吗？</p>
+<p>答案：不需要，因为<code>pwd</code>是<code>shell built-in command</code>. 使用<code>which pwd</code>，输出就是<code>shell built-in command</code>。</p>
+<p>现在坏了，直接不能输入<code>/</code>了，这可怎么办？解决办法如下</p>
+<ol>
+<li>
+<p>使用<code>pwd</code>命令，执行<code>./cmd2 'cd .. &amp;&amp; pwd'</code>，结果为<code>/home</code>；执行<code>./cmd2 'cd .. &amp;&amp; cd .. &amp;&amp; pwd'</code>，结果为<code>/</code>，此时我们就可以用<code>$(pwd)</code>来代替<code>/</code>了。</p>
+<p>所以最后我们的输入为<code>./cmd2 'cd .. &amp;&amp; cd .. &amp;&amp; $(pwd)bin$(pwd)cat $(pwd)home$(pwd)cmd2$(pwd)fla*'</code></p>
+</li>
+<li>
+<p>因为限制了<code>bin</code>，<code>flag</code>这些字段，所以我们新建文件<code>/tmp/cmd2/allen</code>，里面存<code>/bin/sh</code>，这样我们只要把那个文件改成可执行，然后执行这个文件即可，<strong>通过文件来绕过命令行过滤</strong>。</p>
+<p>所以最后我们的输入为<code>/home/cmd2/cmd2 '$(pwd)tmp$(pwd)allen'</code>，其中当前目录为<code>/</code></p>
+</li>
+</ol>
+<h2 id="cmd3">cmd3</h2>
+<p>源代码是很长的 python 文件，这里就简单说一下。</p>
+<p>首先是文件存储情况，有两个文件夹，<code>flagbox</code>和<code>jail</code>，<code>jail</code>中提供三个执行文件: <code>ls</code>, <code>cat</code>, <code>id</code>，<code>flagbox</code>中在程序运行是会存储一个随机命名文件，如<code>KG3TSCVOPHSPINJD1N3MOD3T637CLX5L</code>，程序运行时会告诉我们，然后我们要输出这个文件里的内容，然后会得到flag。</p>
+<p>要求只可以使用以下字符：<code>()[]{}&lt;&gt;#$%,?;_</code>。不要求绝对路径，但是在<code>rbash</code>这个 shell 下执行的，关于这个 shell，可以参考[1]，比较重要的一点，是不允许执行带有<code>/</code>的命令，但是除了命令是可以的。也即是说<code>/bin/ls</code>不可以，但是<code>cat test/test.txt</code>是可以的！</p>
+<p>乍一看这道题，这怎么做嘛，就这几个破字符，连字母数字都不能输入，这怎么搞？所以，要慢慢来。下面都是利用 shell 的特性。</p>
+<ol>
+<li>
+<p>第一要解决<code>cat</code>。<br></p>
+<!-- blog-edit-end:39dab9a662956195:b16 -->
+<!-- blog-edit-start:39dab9a662956195:b17 -->
+<p><strong>知识点一：shell 中 <code>?</code> 匹配</strong>。比如当前文件夹有<code>test.sh</code>，如果我使用<code>???????</code>，那么 shell 就会匹配到<code>test.sh</code>，自动将我们输入转为匹配到的。本题目<code>cat</code>存放在<code>jail</code>目录中，所以我们使用<code>????/???</code>就可以匹配到了(有问题往下看)。</p>
+<!-- blog-edit-end:39dab9a662956195:b17 -->
+<!-- blog-edit-start:39dab9a662956195:b18 -->
+<p><strong>知识点二：shell 中 <code>$_</code> 变量</strong>。上一步很好, 但 <code>rbash</code> 不允许使用<code>/</code>，所以命令会失败。但是 SHELL 有变量 <code>$_</code> 表示上一次的 <code>argv[-1]</code>, 所以我们仍然得到了变量<code>$_ = jail/cat</code>。</p>
+<!-- blog-edit-end:39dab9a662956195:b18 -->
+<!-- blog-edit-start:39dab9a662956195:b19 -->
+<p><strong>知识点三：shell 如何进行截断赋值</strong>。现在就是怎么处理这个变量, 使用<code>____=${_#?????}</code>，这样<code>$____</code>变量就会丢弃<code>$_</code>变量的前面5个字符(因为<code>?</code>有5个)，所以经过这样的赋值我们得到了变量<code>$____ = cat</code>。</p>
+<!-- blog-edit-end:39dab9a662956195:b19 -->
+<!-- blog-edit-start:39dab9a662956195:b20 -->
+</li>
+<li>
+<p>第二要解决空格。<br></p>
+</li>
+</ol>
+<p><strong>知识点四：shell 中有好几种方式可以代替空格</strong>。参考[2]，现在我们可以用<code>&lt;&gt;</code>或者<code>&gt;</code>来代替空格。但是，对于<code>rbash</code>，应该只能使用<code>&lt;</code>而不能使用<code>&lt;&gt;</code>！</p>
+<h3 id="_1">答案一</h3>
+<p>刚开始告诉我们存储密码的文件: <code>flag/xxx(32bits)</code>, 此时我们新建 <code>/tmp/__/1</code> 文件, 其中内容即为 <code>flag/xxx(32bits)</code>.</p>
+<ul>
+<li>
+<p><code>????/???</code><br><br />
+匹配到 <code>jail/cat</code>, 即 <code>_</code> 为 <code>jail/cat</code>.</p>
+</li>
+<li>
+<p><code>__=${_#?????}</code><br><br />
+让 <code>__</code> 等于 <code>cat</code>, 由于 <code>PATH=jail</code>, 所以执行 <code>cat</code> 是可以的.</p>
+</li>
+<li>
+<p><code>$($__&lt;/???/__/?)</code><br><br />
+括号里面相当于 <code>cat /tmp/__/1</code>, 里面是 <code>flag/xxxx</code>, 最终相当于我们执行了 <code>flag/xxxx</code> 命令.</p>
+</li>
+<li>
+<p><code>$__&lt;$_</code><br><br />
+由于上一条执行了 <code>flag/xxx</code> 命令, 所以 <code>$_</code> 等于 <code>flag/xxx</code>, 所以最终相当于 <code>cat flag/xxxx</code>.</p>
+</li>
+</ul>
+<h3 id="_2">答案二</h3>
+<p>唯一的不同点是第三条, 干脆直接输入 <code>? * 7 / ? * 32</code>, 我在这里用 <code>* 7</code> 缩写, 实际情况要全部写上, 最后同样会匹配到文件 <code>flagbox/xxx(32bits)</code>.</p>
+<h3 id="_3">重要说明</h3>
+<p>上面的两个答案, 一定要一起执行, 即最终输入为 <code>cmd1; cmd2; cmd3; cmd4</code>, 分开写是错的.</p>
+<blockquote>
+<p><strong>为什么是错的?</strong></p>
+<p>以第一句和第二句为例. 第一句 <code>????/???</code> 想匹配 <code>jail/cat</code>, 此时命令行最后会输出错误信息: <code>/bin/rbash: line 1: jail/cat: ...</code>.</p>
+<p>如果单独写这一句后回车, 此时的 <code>$_</code> 为 <code>/bin/rbash</code>!!! 但如果不是单独一句, 比如 <code>cmd1; cmd2</code>, 在执行 <code>cmd2</code> 的时候, <code>$_</code> 为 <code>jail/cat</code>!!!</p>
+<p>仔细体会这之间的差异, 原因就是由于回车后, <code>rbash</code> 发现错误后相当于执行了 <code>rbash</code> 命令, 导致 <code>$_</code> 成了 <code>/bin/rbash</code>.</p>
+</blockquote>
+<h2 id="_4">总结</h2>
+<ul>
+<li>
+<p>有一些命令是自带命令，这些并不是执行 <code>/bin</code> 目录中的可执行文件, 比如<code>pwd</code>，不确定的话可以使用<code>which</code>命令查看一下</p>
+</li>
+<li>
+<p>以例子来谈，使用<code>fla*</code>来解决 <code>flag</code> 的限制，使用<code>$(pwd)</code>来解决 <code>/</code> 的限制</p>
+</li>
+<li>
+<p>SHELL 特殊用法: <code>?</code>, <code>$_</code>, <code>&lt;</code>, <code>&lt;&gt;</code></p>
+</li>
+<li>
+<p><code>cmd3</code> 可以好好看看, 以及一定要注意 <code>$_</code> 可能会被最后的报警产生意外的错误</p>
+</li>
+</ul>
+<h2 id="_5">参考</h2>
+<p>[1] <a href="https://xz.aliyun.com/t/7642">https://xz.aliyun.com/t/7642</a></p>
+<p>[2] <a href="https://www.cnblogs.com/sevck/p/6072721.html">https://www.cnblogs.com/sevck/p/6072721.html</a></p>
+<!-- flagbox/EIFBJAJKNULDNVO8T2RCCWCME0SB1V1O -->
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../14.cmd1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 14.cmd1.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                14.cmd1.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../16.uaf/" class="md-footer__link md-footer__link--next" aria-label="Next: 16.uaf.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                16.uaf.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

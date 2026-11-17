@@ -1,0 +1,1089 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/04.%E8%BD%A8%E8%BF%B9%E8%A7%84%E5%88%92/">
+      
+      
+        <link rel="prev" href="../03.%E9%80%86%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+      
+      
+        <link rel="next" href="../05.%E7%BB%93%E8%AF%AD/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>轨迹规划 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              轨迹规划
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+  <a href="../../..">加载栏目目录…</a>
+</div>
+<script src="../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        引言
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cubic-polynomials" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Cubic Polynomials
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cubic Polynomials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        思路描述
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-cubic-polynomials" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        扩展到所有点（General Cubic Polynomials）
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        习题
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Linear Function
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linear Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        思路描述
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genera-linear-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Genera Linear Function
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        实际情况的限制
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        习题
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        轨迹规划实例
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../00.%E5%AF%BC%E8%A8%80/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    机器人学
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="_1">轨迹规划</h1>
+<div class="file-actions" data-image-edit-revision="a50bd1f0d5ea6af0a6aee35162eb32ceafafeafc7fdfe8ffd72c2b212f6c8e58" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%5C04.%E8%BD%A8%E8%BF%B9%E8%A7%84%E5%88%92.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\机器人学\04.轨迹规划.md">复制路径</span></div>
+
+<blockquote>
+<p>以台湾大学林沛群教授的机器人学课程为例，链接内容：<a href="https://www.bilibili.com/video/BV1v4411H7ez">https://www.bilibili.com/video/BV1v4411H7ez</a></p>
+</blockquote>
+<p>第五章和第六章讲了轨迹规划，轨迹规划就是规划机械臂的轨迹，让机械臂按照规划的轨迹运动。</p>
+<h2 id="_2">引言</h2>
+<p>首先是介绍，5-1 小节讲的还是有点复杂了，就看下面的图就行了。有起始点和中间点，我们要规划出机械臂的轨迹，让末端按照规划的轨迹运动，显然图中虚线比红线更要合理。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511211609.png" /></p>
+<p>5-2 和 5-3 都不要看，其实就讲了一个核心：<strong>规划合理路径有两种思路</strong>：</p>
+<ul>
+<li>Joint-space：算出各个关节要运动的情况，让关节突变不要严重</li>
+<li>Cartesian-Space: 直接是末端端点的运动情况即可，这种可以最直观和最优路径</li>
+</ul>
+<p>通常用的是 Cartesian-Space，比较简单直观。</p>
+<p>然后就开始讲了轨迹规划的细节，因为涉及到了两章，所以可能会有点长。</p>
+<h2 id="cubic-polynomials">Cubic Polynomials</h2>
+<p>第五章剩下部分，讲了其中一类方法：Cubic Polynomials。</p>
+<h3 id="_3">思路描述</h3>
+<p>很简单，用三次方程去模拟。如下图所示，现在先当成一维去想，其中 <span class="arithmatex">\(\theta\)</span> 表示位置，<span class="arithmatex">\(\theta'\)</span> 表示速度：</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511212801.png" /></p>
+<p>所以也是普通的解方程。上图中，最后方程三和四，速度我们是不知道的。所以我们要定义最下面两个方程，也就是定义前后端点的速度。有几种方法。</p>
+<ol>
+<li>
+<p>直接定义：没错，非常简单粗暴，或者就是简单用一下规则，如下图所示。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511212107.png" /></p>
+</li>
+<li>
+<p>加速度是 Continous，也就是某个点他是第一段的末端，同时也是第二段的起始点，要保证这个时候加速度是一样的。这样要用三个点去联立，八个未知数一共八个方程，其中点 0 是起始点，点 1 是中间点，点 2 是末端点：</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511212558.png" /></p>
+</li>
+</ol>
+<h3 id="general-cubic-polynomials">扩展到所有点（General Cubic Polynomials）</h3>
+<p>5-6 小节刚开始就是把上面的方法扩展到所有点。本质上都是一样的，同理，从上面中可以知道，需要我们去定义首末端点的行为去增加两个方程，这样才有唯一解。比如定义速度、加速度等等。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511213032.png" /></p>
+<h3 id="_4">习题</h3>
+<p>5-6-02 和 5-6-03 讲了一个非常棒的例子，如下图所示：</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511213057.png" /></p>
+<p>其中，5-6-02 讲了在 Cartesian Space 下的情况，本质就是上面讲的原理的直接套用，最终求出轨迹规划之后，再反推各个关节的运动情况。如下图，左边三个子图就是轨迹规划完成之后反推到各个关节的运动情况。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511213243.png" /></p>
+<p>5-6-03 讲了在 Joint Space 下的情况，本质就是先求出几个中间点的时候，各个关节的角度，然后在每个关节上自己独立去做上面的 Cubic Polynomials。如下图，左边三个子图是各个关节独立去做规划的，做完之后合成到位置上，得到右图的轨迹。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511213454.png" /></p>
+<h2 id="linear-function">Linear Function</h2>
+<p>第六章讲轨迹规划另一个方法：Linear Function with Parabolic Blends。</p>
+<h3 id="_5">思路描述</h3>
+<p>如下图所示，其实就是变成两点之间直线运动。这种规划确实蛮符合直觉的，我们肯定是希望直线更好。</p>
+<p>但是由于关节从静止到运动，需要缓冲一下，实际情况是绿色的线。前面会有一段加速之间，中间保持匀速，最后再减速。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511213750.png" /></p>
+<p>6-1 小节就聚焦一段的情况，就是假设起始点和终止点速度为 0，此时也是直接联立方程式就好了。这里的 <span class="arithmatex">\(t_b\)</span> 是我们自己设计的，决定了加速度是多少。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511214232.png" /></p>
+<h3 id="genera-linear-function">Genera Linear Function</h3>
+<p>还是一样，扩展到所有点，6-3 主要负责将这一部分。</p>
+<p>其实没啥，我们只要设计好要求的加速度（或者设计加速用的时间，本质上一样），然后就正常求解方程。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511214404.png" /></p>
+<p>注意点 1, 6-3-01 小节说的，不要认为每个关节的加速度都一样，我们要根据关节各自不同的情况给每个关节设计不同的加速度。而且实际情况如下图，还有可能会不同姿态下给同一个关节设置不同的加速度，因为不同姿态下同一个关节受力也不一样。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511214704.png" /></p>
+<p>注意点 2，其实之前讲解的时候，规划的轨迹没有落在要求的点上面，而是在其附近。如果一定要强求这样，可以把 via point（也就是要求的点）转成其附近的两个点，如下图所示，红色点转成橘色点，总之是上 via point 落在轨迹规划中的直线部分，而不是加速减速的曲线部分。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511214915.png" /></p>
+<h3 id="_6">实际情况的限制</h3>
+<p>然后 6-4 讲了实际情况其实有的轨迹是没有办法行动的，一定要确认一下。举的三个例子很好：</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511215336.png" /></p>
+<ol>
+<li>第一个，内圈表示机械臂末端无法到达。此时我们规划直线，其实这是一条不可能走成功的线。</li>
+<li>第二个，从 1 到 6，虽然规划直线可以走通，但实际情况会看到这个线并不好，关节发生了很大的扭转。</li>
+<li>第三个，从 B 到 A，虽然末端位置同样是 A，如果是机械臂是蓝色的线的姿态，无法走通；只有机械臂姿态是绿色线的姿态，这个时候，才能走通，机械臂此时按照绿色的几个示意去变化。</li>
+</ol>
+<h3 id="_7">习题</h3>
+<p>6-5 就是讲了例子，和上一章一样的机械臂，这里直接给出动画：</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511215910.gif" /></p>
+<h2 id="_8">轨迹规划实例</h2>
+<p>第七章，就是专门讲了例子。依然是拿水杯的例子，简单但经典。</p>
+<p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260511220220.png" /></p>
+<p>按照 Cartesian Space 的思路：</p>
+<ol>
+<li>首先进行轨迹规划，从几个点去得到机械臂末端的运动轨迹。</li>
+<li>得到各个轨迹中的点，使用逆向运动学，反推得到各个关节的角度。</li>
+<li>
+<p>关节按照计算的不同时刻的角度，进行运动。</p>
+<!-- blog-edit-end:a50bd1f0d5ea6af0:b54 -->
+<!-- blog-edit-start:a50bd1f0d5ea6af0:b55 -->
+<p>按照 Joint Space 的思路：</p>
+<!-- blog-edit-end:a50bd1f0d5ea6af0:b55 -->
+<!-- blog-edit-start:a50bd1f0d5ea6af0:b56 -->
+</li>
+<li>
+<p>首先使用逆向运动学，得到几个设计点的时候，各个关节的角度。</p>
+</li>
+<li>按照轨迹规划的方法，每个关节去做角度规划。</li>
+<li>
+<p>关节按照计算的不同时刻的角度，进行运动。</p>
+<!-- blog-edit-end:a50bd1f0d5ea6af0:b56 -->
+<!-- blog-edit-start:a50bd1f0d5ea6af0:b57 -->
+<p>可以看到 Joint-Space 比较简单，计算量也小，只要做设计点的时候逆向运动学；而 Catesian-Space 是根据设计点去规划轨迹，得到更多的点，每个点都要做逆向运动学。</p>
+<!-- blog-edit-end:a50bd1f0d5ea6af0:b57 -->
+<!-- blog-edit-start:a50bd1f0d5ea6af0:b58 -->
+<p>但是实际用的比较少。虽然容易控制关节，但末端轨迹可能很怪。比如抓水杯：</p>
+<!-- blog-edit-end:a50bd1f0d5ea6af0:b58 -->
+<!-- blog-edit-start:a50bd1f0d5ea6af0:b59 -->
+</li>
+<li>
+<p>姿态要保持水平，杯子不能倒了</p>
+</li>
+<li>不要撞到桌子</li>
+<li>...</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../03.%E9%80%86%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 03.逆向运动学.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                03.逆向运动学.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05.%E7%BB%93%E8%AF%AD/" class="md-footer__link md-footer__link--next" aria-label="Next: 05.结语.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                05.结语.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../javascripts/copy.js"></script>
+      
+        <script src="../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

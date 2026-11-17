@@ -1,0 +1,1035 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF/%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E8%AE%B0%E5%BD%95/">
+      
+      
+        <link rel="prev" href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/05.%E7%BB%93%E8%AF%AD/">
+      
+      
+        <link rel="next" href="../../%E8%AE%A1%E7%AE%97%E6%91%84%E5%BD%B1%E5%AD%A6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>模拟电路记录 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              模拟电路记录
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+  <a href="../../..">加载栏目目录…</a>
+</div>
+<script src="../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-mos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 基础器件：二极管、三极管、MOS管、晶体管
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 后面根据西电的课程来看
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 运放的<mark class="term-highlight">虚短</mark>和<mark class="term-highlight">虚断</mark>的介绍
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 放大器、相加器、相减器各种器件
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. 比较器
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6. 振荡器
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7. 跳过一部分
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        8. 集成电路
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9. 功率放大器
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        10. 从 MOS 管到 数字电路
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        11. 问题汇总
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    模拟电路
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="_1">模拟电路记录</h1>
+<div class="file-actions" data-image-edit-revision="ca5887509fc2833d68e1ad4e7cf2b8178c28ffe4aeaf94b5c07965a7db629f06" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%5C%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF%E8%AE%B0%E5%BD%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%A8%A1%E6%8B%9F%E7%94%B5%E8%B7%AF" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\模拟电路\模拟电路记录.md">复制路径</span></div>
+
+<p>因为工作在芯片厂，又和几位模拟电路的同事较为熟悉。非常好奇，在业余时间看了一会模拟电路的知识。总体而言，我认为对于计算机专业的学生而言，模拟电路是有必要学习的，但只要了解 1%就够了。</p>
+<p>但是我很庆幸山大的计算机本科不学模拟电路，因为现在的大学教育，开设课程和学习到有用知识完全是两码事。事实上，计算机专业开设了模电课的那些学校的学生，对这一决定基本都是吐槽的。的确如此，作为计算机专业的学生而言，陷于各种电路分析、各种元器件的伏安特性曲线理解，一定充满了痛苦。</p>
+<p>我之所以认为计算机应该学习模电，是学完后能让自己对计算机、对自己的专业又有了一丝倾佩，真是人类智慧的伟大体现啊。计算机从二进制实现一个个强大的功能，这是伟大的智慧。0 和 1 是伟大的抽象，相信许多计算机的学生都深有体会，这样的感悟会发生在数电、操作系统等课程上。而这种抽象是怎么从物理世界构建的，这是学习模电所能解答的，在学习模电的时候，当看到数字上的抽象如何在物理上被解释时，忍不住再一次感叹计算机的伟大。</p>
+<p>换言之，我认为计算机专业的学生学习模拟电路，<strong>一定要充分利用我们计算机无处不在的封装、分层的思想，不要拘泥于各种电路分析，不理解的地方就当成定理、当成黑盒子来看待就好</strong>。比如三极管中的放大系数，不同区域下不同情况，我觉得不用太去理解，甚至不用去细看。</p>
+<hr />
+<p>下面是我学习的记录：</p>
+<h2 id="1-mos">1. 基础器件：二极管、三极管、MOS管、晶体管</h2>
+<ul>
+<li>二极管可以多了解一点，上交的课程教的不错。我学习时并没有去按照多子少子理解，就只看电子的移动就行，然后把电源的正负极去理解成磁铁，这样就很容易懂。虽然不正规，但要始终铭记自己学习模电是当成科普来看的。</li>
+<li>稳压二极管，也不用知道为什么它反向击穿能一直维持电压，<a href="https://www.bilibili.com/video/BV1qY4y1t7sc">B 站一个视频介绍</a>。</li>
+<li>三极管我就看了 <a href="https://www.bilibili.com/video/BV1fB4y147Gn">B 站上的一个动画讲解</a>。里面涉及到一个放大倍数，我不想去知道为什么这个放大倍数是一样的，当成定理来看。总而言之，三极管起到了一个放大的作用。好像很惨，放大作用被运放取代，开关作用被 MOS 管取代。</li>
+<li>MOS 管，当成三极管的替代，应用场景主要是开关。把 MOS 管理解成电压控制、三极管电流控制的。反正他比三极管优点太多了，除了贵一点点。<a href="https://www.bilibili.com/video/BV1YP4y147TF">B站视频链接</a></li>
+<li>IGBT，也是一个开关。用在一些高铁、汽车大电压大电流会用。<a href="https://www.bilibili.com/video/BV1cd4y1a7oa">B站视频链接</a></li>
+</ul>
+<p>然后就是晶体管是什么？为什么大模型说：二极管不是晶体管，三极管是晶体管。其实...二级三级这些都是结构上，而晶体管对比的叫真空管，是材料上的差异。正确应该是叫晶体二极管和晶体三极管，这样才有区别于真空二极管和三极管。<br />
+<img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250829193119.png" /></p>
+<h2 id="2">2. 后面根据西电的课程来看</h2>
+<p>课程视频：<a href="https://www.bilibili.com/video/BV15x411o7Nw">https://www.bilibili.com/video/BV15x411o7Nw</a></p>
+<p>首先是绪论，这个绪论讲的特别好：</p>
+<ul>
+<li>把电子器件的发展情况讲的让我理解了，从电子管到三极管，然后到后来的结形管、MOS管等等，尤其是里面谈到晶体管在二战时暴露的缺点，让我感觉这个发展的确非常有逻辑性。</li>
+<li>然后绪论里面提到了一个特别重要的负反馈概念，并基于此引出运算放大器的登场，我感觉太合理了。</li>
+</ul>
+<h2 id="3">3. 运放的<mark class="term-highlight">虚短</mark>和<mark class="term-highlight">虚断</mark>的介绍</h2>
+<p>这里不用去过分的理解<mark class="term-highlight">虚短</mark>和<mark class="term-highlight">虚断</mark>，用高中（初中？）知识去思考即可，知道这两个概念是由公式推导出来的，然后把他们当成定理即可。而这两个概念在后续的课程里面会反复提到，所以这里是让脑子有个印象，而不至于到后面一脸迷糊。</p>
+<h2 id="4">4. 放大器、相加器、相减器各种器件</h2>
+<p>放大器和相加器可以细节看看，看一下如何是用<mark class="term-highlight">虚短</mark>和<mark class="term-highlight">虚断</mark>推出电路的作用的。后面的相减器、积分器等等，我就是直接走马观花了，许多地方不求甚解，没有仔细去想。目的是去明白在<strong>只用模拟时的那个年代，其实电子工程师已经能做出相当强大的东西了</strong>。</p>
+<p>后面的 <code>I-V 变换器</code> 更加粗略看了，我只看了这是个什么玩意，用图表示是什么样子。而后面的 RC 滤波器，更加没看了，毕竟高通低通这些玩意早就是别的课程基础中的基础了，模电上则是讲如何用模拟器件实现他们。</p>
+<p>我当时的记录：./运放.xmind</p>
+<h2 id="5">5. 比较器</h2>
+<p>按照顺序，之后就是比较器。这里可以细节看看，因为不难...看的时候紧紧记住一点：他就是通过运放开环来的。而且比较器这里有几个耳熟能详的应用，有：波形整形、脉宽调制（PWM）</p>
+<ol>
+<li>通过对比较器的理解，进一步感觉模拟器件相比数字器件有很大的不同。</li>
+<li>知道名词：<strong>施密特触发器</strong>，作用：模拟波形转化为方波。知道它的内部一个巧妙原理：<strong>迟滞比较</strong>，这个思想在信号处理上都是有用的，<a href="https://www.bilibili.com/video/BV1JG411j7BU">B 站视频</a>讲的很好。</li>
+</ol>
+<p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250829183950.png" /></p>
+<h2 id="6">6. 振荡器</h2>
+<p>知道振荡器是什么，就是生成各种周期波的玩意。这里有两个部分，第一个是 3.2 节的方波、三角波这种的；然后是 8.6 节的正弦波，这一小节甚至只要看前面一小点就行，后面的各种细节都可以直接略过。</p>
+<h2 id="7">7. 跳过一部分</h2>
+<ul>
+<li>第四章就是介绍半导体各种物理元件，这个是第一部分就看了，所以就跳过。里面虽然还介绍了场效应管等等器件，但是没必要去看了，这里很多地方太细节了。</li>
+<li>第五章是介绍基本放大器的实现。这里也不看，由于在第一小节看了一点三极管的知识，知道它有放大的作用，所以把这章就理解成用三极管实现运放里面的放大器就行。</li>
+</ul>
+<h2 id="8">8. 集成电路</h2>
+<p>跳了很多很多，然后到了 6.1 节，这是一个很重要的一节，通过这里能知道：原来集成电路和普通的电路是两码事，你会感觉集成电路真是人类工艺上的杰作。</p>
+<ul>
+<li>电阻、电容尽量少做，尤其是电容，成本极高，举的例子中某个芯片的内部电路居然只用了一个电容。为什么成本高？面积大。</li>
+<li>包括后面的 6.2 节电流源电路刚开始的一小块，知道集成电路上用电流源替代电阻，能进一步体会出集成电路的特别之处。</li>
+<li>差动放大器简单看看，走马观花。看这一小节，感觉到模电真是要遇到很多细节问题，比如一个简单的减法器，没想到也会牵涉很多的分析。</li>
+</ul>
+<h2 id="9">9. 功率放大器</h2>
+<p>只看第一小节，知道功率放大器是啥玩意就行。</p>
+<h2 id="10-mos">10. 从 MOS 管到 数字电路</h2>
+<p>这里看 B 站的视频（<a href="https://www.bilibili.com/video/BV1sA2nYsEVS">https://www.bilibili.com/video/BV1sA2nYsEVS</a>）第 15 和 第 16 节，讲的很好。总之通过对 MOS 管输出电压的抽象，得到了数字电路的基本单元：门，从此走向数字电路的世界。再见，模电！</p>
+<p><strong>需要知道 CMOS 和 TTL 分别表示什么东西，CMOS 就是用 MOS 管进行搭建的电路，TTL 是用三极管搭建的电路。因为不同器件的特性，导致高低电平的范围不同。</strong></p>
+<p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250829183440.png" /></p>
+<h2 id="11">11. 问题汇总</h2>
+<ol>
+<li>有一个小问题很有意思：为什么用电压而不是电流作为模拟转电路的桥梁？</li>
+</ol>
+<p>解答：有很多原因，具体直接问大模型。其中一个原因是功耗，最简单的理解电路断开的时候，也有电压，此时功耗相当于是 0 了，这真是件好事情，而电流就做不到。其实 MOS 管就是类似，电压在高区间和低区间时，电流都很小，所以功耗很低。具体可以看清华大学数字电路课程第九章41分钟，不用细细理解，去体会这个很巧妙的设定。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6/05.%E7%BB%93%E8%AF%AD/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 05.结语.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                05.结语.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../%E8%AE%A1%E7%AE%97%E6%91%84%E5%BD%B1%E5%AD%A6/" class="md-footer__link md-footer__link--next" aria-label="Next: 计算摄影学">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                计算摄影学
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../javascripts/copy.js"></script>
+      
+        <script src="../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

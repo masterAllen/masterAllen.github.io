@@ -1,0 +1,1637 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/Main/%E5%AE%9E%E7%8E%B0Cursor%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6/">
+      
+      
+        <link rel="prev" href="../%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/">
+      
+      
+        <link rel="next" href="../%E5%AE%BF%E4%B8%BB%E6%9C%BA%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%B1%E4%BA%AB%E5%B1%8F%E5%B9%95/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>实现 VSCode/Cursor 快速打开文件 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vscodecursor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              实现 VSCode/Cursor 快速打开文件
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+  <a href="../..">加载栏目目录…</a>
+</div>
+<script src="../../javascripts/shared-navigation.js"></script>
+
+<script src="../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-site-root="../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 现象和结论
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 实验条件与计时结果
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 实验条件与计时结果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.1 环境检查
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.2 初始完整路径计时
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.3 分段计时：请求转交前后分别花了多久
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.4 直接连接已有实例
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 直接连接已有实例的原理
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 直接连接已有实例的原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.1 找到已有 Cursor 的管道
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.2 和 Cursor 进行通信总览
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.3 编码请求
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.4 编码为二进制
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.5 传输层消息头
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.6 读取返回结果
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3.7 连接初始化
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 通信机制的资料来源
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 通信机制的资料来源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.1 第一手依据：本机安装的 Cursor 代码
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2 VS Code 上游源码：用于核对结构和协议
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. 实验协议封装代码
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Main
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="vscodecursor">实现 VSCode/Cursor 快速打开文件</h1>
+<div class="file-actions" data-image-edit-revision="8c46ff5a053ba6ce51bf7982342de29925cdd238c334b6f5fc19fcb35941e3f7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%9E%E7%8E%B0Cursor%E5%BF%AB%E9%80%9F%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\实现Cursor快速打开文件.md">复制路径</span></div>
+
+<h2 id="1">1. 现象和结论</h2>
+<p>本机已经打开了 Cursor，结果从外部调用 Cursor 去打开文件却要等待数秒。理论上应该很快，比如人工操作时，可以直接按下 <code>Ctrl+P</code> 输入文件路径，然后按下回车，文件就打开了。</p>
+<p><strong>结论：已有 Cursor 窗口打开文件本身很快，主要延迟发生在外部调用启动新 Cursor 进程、准备向已有实例转交请求之前。</strong></p>
+<p>当前普通调用路径：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>→ 启动新的 Cursor.exe
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>→ 新进程执行一部分初始化
+</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>→ 发现已有 Cursor 实例
+</span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>→ 通过本机 IPC 管道转交请求
+</span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>→ 已有窗口打开文件
+</span></code></pre></div>
+<p>如果不启动新的 Cursor.exe 进程，而是直接使用 IPC 管道，则可以很快打开文件：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>→ 连接已有 Cursor 的 IPC 管道
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>→ 调用 launch.start
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>→ 已有窗口打开文件
+</span></code></pre></div>
+<p>目前博客就是使用这种方式，把这种方式注册成一种协议，然后通过浏览器点击打开，打开速度极快，很香。配合<a href=".././点击关闭按钮隐藏到托盘/">点击关闭按钮隐藏到托盘</a>，可以做到非常方便的打开和关闭。</p>
+<p><img alt="VSCode/Cursor 快速打开文件" src="../../asset/image/746989483530c87ab73a277eb8a70dd9/PixPin_2026-10-12_19-30-45.gif" /></p>
+<h2 id="2">2. 实验条件与计时结果</h2>
+<h3 id="21">2.1 环境检查</h3>
+<ul>
+<li>已运行的 Cursor 主进程当时为 PID <code>28060</code>。</li>
+<li>主进程打开的工作区为 <code>C:\Users\34802\Desktop\WorkSpaces\blog.code-workspace</code>。</li>
+<li>工作区包含 <code>D:/Blog</code> 和 <code>D:/BlogSite</code>。</li>
+<li>Windows 的 <code>cursor://</code> 协议指向同一个 Cursor 安装目录，注册命令为：</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>&quot;C:\Program Files\cursor\Cursor.exe&quot; --open-url -- &quot;%1&quot;
+</span></code></pre></div>
+<ul>
+<li>博客编辑按钮是普通的 <code>cursor://file/...</code> 链接，没有额外的 JavaScript 等待逻辑。</li>
+<li>实验交替打开 <code>D:\Blog\done\index.md</code> 与 <code>D:\Blog\done\About\1.Hi.md</code>，没有写入文件内容。</li>
+<li>这两个路径是同一个 NTFS 文件的硬链接；交替打开它们用于观察窗口标题变化。</li>
+</ul>
+<h3 id="22">2.2 初始完整路径计时</h3>
+<p>下面以已有 Cursor 窗口标题切换到目标文件作为可观察终点：</p>
+<table>
+<thead>
+<tr>
+<th>调用方式</th>
+<th>观测到的时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 唤起 <code>cursor://</code> 协议</td>
+<td>5.19、6.23、6.43 秒左右</td>
+</tr>
+<tr>
+<td>直接运行协议处理命令</td>
+<td>3.42、3.54 秒左右</td>
+</tr>
+<tr>
+<td>直接运行 Cursor.exe，并指定复用窗口</td>
+<td>3.72 秒左右</td>
+</tr>
+<tr>
+<td><code>cursor --reuse-window</code></td>
+<td>3.61、3.84、4.19 秒左右</td>
+</tr>
+</tbody>
+</table>
+<p>这些测试都复用了原来的 blog 窗口。表中是不同批次的观测值，不能直接相减后认定 Windows 协议调用固定增加了多少时间；浏览器点击到 Windows 开始处理请求的耗时没有单独测量。</p>
+<h3 id="23">2.3 分段计时：请求转交前后分别花了多久</h3>
+<p>随后使用带日志的直接调用，并缩短窗口标题轮询间隔，取得两次有效对照：</p>
+<table>
+<thead>
+<tr>
+<th>时刻，从进程启动开始计算</th>
+<th style="text-align: right;">第一次</th>
+<th style="text-align: right;">第二次</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>准备给已有实例前台权限的日志</td>
+<td style="text-align: right;">2.237 秒</td>
+<td style="text-align: right;">2.240 秒</td>
+</tr>
+<tr>
+<td><code>Sending env to running instance</code></td>
+<td style="text-align: right;">2.245 秒</td>
+<td style="text-align: right;">2.250 秒</td>
+</tr>
+<tr>
+<td><code>Sent env to running instance</code></td>
+<td style="text-align: right;">2.359 秒</td>
+<td style="text-align: right;">2.353 秒</td>
+</tr>
+<tr>
+<td>窗口标题切换到目标文件</td>
+<td style="text-align: right;">2.483 秒</td>
+<td style="text-align: right;">2.464 秒</td>
+</tr>
+</tbody>
+</table>
+<p>因此，这两次实验中：</p>
+<ul>
+<li>发出转交请求之前，已经消耗约 2.24 秒。</li>
+<li>发出请求到窗口标题切换，仅约 0.22～0.24 秒。</li>
+<li>主要等待已经发生在已有窗口收到打开请求之前。</li>
+</ul>
+<h3 id="24">2.4 直接连接已有实例</h3>
+<p>实验直接连接 Cursor 已有管道，先查询进程编号，再交替发送四次打开请求：</p>
+<table>
+<thead>
+<tr>
+<th>测试</th>
+<th style="text-align: right;">IPC 调用返回</th>
+<th style="text-align: right;">窗口标题切换</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一次</td>
+<td style="text-align: right;">0.0838 秒</td>
+<td style="text-align: right;">0.1989 秒</td>
+</tr>
+<tr>
+<td>第二次</td>
+<td style="text-align: right;">0.1965 秒</td>
+<td style="text-align: right;">0.4012 秒</td>
+</tr>
+<tr>
+<td>第三次</td>
+<td style="text-align: right;">0.1497 秒</td>
+<td style="text-align: right;">0.2372 秒</td>
+</tr>
+<tr>
+<td>第四次</td>
+<td style="text-align: right;">0.1279 秒</td>
+<td style="text-align: right;">0.2453 秒</td>
+</tr>
+</tbody>
+</table>
+<p>初次连接并调用 <code>getMainProcessId</code> 耗时约 0.0376 秒，返回 PID <code>28060</code>，与已有实例一致。</p>
+<p>这里的四次打开测试是在 Python 已启动、管道已连接的情况下进行的，不包含 Python 启动和建立连接的全部耗时。窗口标题变化是本次实验采用的可观察终点，不等于完成了画面渲染或窗口切到最前台的验证。</p>
+<h2 id="3">3. 直接连接已有实例的原理</h2>
+<h3 id="31-cursor">3.1 找到已有 Cursor 的管道</h3>
+<p>用 PowerShell 枚举 Windows 命名管道：</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="no">[System.IO.Directory]</span><span class="p">::</span><span class="n">GetFiles</span><span class="p">(</span><span class="s1">&#39;\\.\pipe\&#39;</span><span class="p">)</span> <span class="p">|</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>    <span class="nb">Where-Object</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">-match</span> <span class="s1">&#39;main-sock$&#39;</span> <span class="p">}</span>
+</span></code></pre></div>
+<p>举例而言，当时找到并连接的是：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>\\.\pipe\22026640-3.22.7-main-sock
+</span></code></pre></div>
+<p>这个管道名称不能写成所有机器都通用的常量；Cursor 版本或用户数据目录不同，名称也可能不同。另外，<code>main-sock</code> 后缀也可能出现在其他基于 VS Code 的程序中，仅靠名称筛选还不足以确认目标是 Cursor。</p>
+<h3 id="32-cursor">3.2 和 Cursor 进行通信总览</h3>
+<p>实验中使用 <code>probe.call</code> 和 Cursor 通信。它是实验脚本自行编写的 RPC（远程过程调用）封装。</p>
+<p>它完成：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>→ 编码请求头和参数
+</span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>→ 添加传输消息头
+</span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>→ 写入命名管道
+</span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span>→ 读取完整响应
+</span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span>→ 解码并匹配请求编号
+</span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span>→ 返回结果或抛出错误
+</span></code></pre></div>
+<h3 id="33">3.3 编码请求</h3>
+<p>具体代码如下，后面进行具体解释：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">request_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seq</span>
+</span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-6-4"><span class="linenos" data-linenos=" 4 "></span>
+</span><span id="__span-6-5"><span class="linenos" data-linenos=" 5 "></span>    <span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="n">request_id</span><span class="p">,</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span>
+</span><span id="__span-6-6"><span class="linenos" data-linenos=" 6 "></span>    <span class="n">payload</span> <span class="o">=</span> <span class="n">enc</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> <span class="o">+</span> <span class="n">enc</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+</span><span id="__span-6-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-6-8"><span class="linenos" data-linenos=" 8 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-6-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-6-10"><span class="linenos" data-linenos="10 "></span>    <span class="n">response_header</span><span class="p">,</span> <span class="n">response_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+</span><span id="__span-6-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-6-12"><span class="linenos" data-linenos="12 "></span>    <span class="k">if</span> <span class="n">response_header</span> <span class="o">!=</span> <span class="p">[</span><span class="mi">201</span><span class="p">,</span> <span class="n">request_id</span><span class="p">]:</span>
+</span><span id="__span-6-13"><span class="linenos" data-linenos="13 "></span>        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">((</span><span class="n">response_header</span><span class="p">,</span> <span class="n">response_body</span><span class="p">))</span>
+</span><span id="__span-6-14"><span class="linenos" data-linenos="14 "></span>
+</span><span id="__span-6-15"><span class="linenos" data-linenos="15 "></span>    <span class="k">return</span> <span class="n">response_body</span>
+</span></code></pre></div>
+<p>下面进行举例解释。首先当我们知道管道之后，想先调用 <code>getMainProcessId</code>，确认对方是已有 Cursor。具体方法就是发送一个 RPC 请求：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">probe</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;getMainProcessId&quot;</span><span class="p">,</span> <span class="p">[])</span>
+</span></code></pre></div>
+<p>结合上面的代码，相当于发送了如下的请求：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="n">request_id</span><span class="p">,</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="s2">&quot;getMainProcessId&quot;</span><span class="p">]</span>
+</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>100</code></td>
+<td>调用一个有返回结果的方法</td>
+</tr>
+<tr>
+<td><code>request_id</code></td>
+<td>当前调用编号，与响应匹配</td>
+</tr>
+<tr>
+<td><code>launch</code></td>
+<td>Cursor 已注册的通道</td>
+</tr>
+<tr>
+<td><code>getMainProcessId</code></td>
+<td>通道上的方法</td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>参数列表</td>
+</tr>
+</tbody>
+</table>
+<p>Cursor 接收请求之后，会在 <code>launch</code> 通道对应的服务上调用 <code>getMainProcessId</code> 方法，并返回结果。<code>launch</code> 是 Cursor 已有的通道；<code>getMainProcessId</code> 也是它已有的方法。</p>
+<p>再比如，我们想让 Cursor 打开文件，具体方法就是发送一个 RPC 请求，具体内容是：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">probe</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+</span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="s2">&quot;start&quot;</span><span class="p">,</span>
+</span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="p">[</span>
+</span><span id="__span-9-4"><span class="linenos" data-linenos=" 4 "></span>        <span class="p">{</span>
+</span><span id="__span-9-5"><span class="linenos" data-linenos=" 5 "></span>            <span class="s2">&quot;_&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">r</span><span class="s2">&quot;D:\Blog\done\index.md&quot;</span><span class="p">],</span>
+</span><span id="__span-9-6"><span class="linenos" data-linenos=" 6 "></span>            <span class="s2">&quot;reuse-window&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-9-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="p">},</span>
+</span><span id="__span-9-8"><span class="linenos" data-linenos=" 8 "></span>        <span class="p">{},</span>
+</span><span id="__span-9-9"><span class="linenos" data-linenos=" 9 "></span>    <span class="p">],</span>
+</span><span id="__span-9-10"><span class="linenos" data-linenos="10 "></span><span class="p">)</span>
+</span></code></pre></div>
+<p>相当于发送了如下的请求：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="n">request_id</span><span class="p">,</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="s2">&quot;start&quot;</span><span class="p">]</span>
+</span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span>    <span class="p">{</span>
+</span><span id="__span-10-4"><span class="linenos" data-linenos="4 "></span>        <span class="s2">&quot;_&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">Blog</span><span class="se">\\</span><span class="s2">done</span><span class="se">\\</span><span class="s2">index.md&quot;</span><span class="p">],</span>
+</span><span id="__span-10-5"><span class="linenos" data-linenos="5 "></span>        <span class="s2">&quot;reuse-window&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-10-6"><span class="linenos" data-linenos="6 "></span>    <span class="p">},</span>
+</span><span id="__span-10-7"><span class="linenos" data-linenos="7 "></span>    <span class="p">{},</span>
+</span><span id="__span-10-8"><span class="linenos" data-linenos="8 "></span><span class="p">]</span>
+</span></code></pre></div>
+<p>相当于 Cursor 内部调用：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="nx">launch</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span>
+</span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span><span class="w">        </span><span class="s2">&quot;_&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;D:\\Blog\\done\\index.md&quot;</span><span class="p">],</span>
+</span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="s2">&quot;reuse-window&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-6"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">{}</span>
+</span><span id="__span-11-7"><span class="linenos" data-linenos="7 "></span><span class="p">);</span>
+</span></code></pre></div>
+<p>第一个参数是类似命令行解析后的参数对象；<code>_</code> 是文件路径列表，<code>reuse-window</code> 要求复用窗口。第二个参数是调用方环境变量，实验中传入空对象 <code>{}</code>。这两个参数由 <code>start(args, userEnv)</code> 的方法签名决定。</p>
+<p>这些方法来自本机 Cursor 的 <code>main.js</code>，并通过 VS Code 上游的 <a href="https://github.com/microsoft/vscode/blob/main/src/vs/platform/launch/electron-main/launchMainService.ts">launchMainService.ts</a> 核对：<code>ILaunchMainService</code> 声明了 <code>start(args, userEnv)</code> 和 <code>getMainProcessId()</code>，后者的实现返回主进程的 <code>process.pid</code>。<code>launch</code> 通道的获取和调用流程则位于主进程 <code>main.ts</code>。资料来源详见第 4 节。</p>
+<h3 id="34">3.4 编码为二进制</h3>
+<p>实际传输时，需要把上面的请求头和参数分别编码，再拼接成一个消息体，即 <code>enc(header) + enc(args)</code>。</p>
+<p>实验用到的类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">标记</th>
+<th>类型</th>
+<th>后续内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><code>0</code></td>
+<td>JavaScript <code>undefined</code></td>
+<td>无</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>1</code></td>
+<td>字符串</td>
+<td>字节长度、UTF-8 内容</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>4</code></td>
+<td>数组</td>
+<td>元素个数、逐项编码</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>5</code></td>
+<td>对象</td>
+<td>JSON 字节长度、JSON 内容</td>
+</tr>
+<tr>
+<td style="text-align: right;"><code>6</code></td>
+<td>整数</td>
+<td>变长整数</td>
+</tr>
+</tbody>
+</table>
+<p>例如字符串 <code>launch</code>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span>01 06 6C 61 75 6E 63 68
+</span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span>│  │  └── UTF-8 字节 ──┘
+</span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span>│  └─ 长度为 6
+</span><span id="__span-12-4"><span class="linenos" data-linenos="4 "></span>└─ 类型为字符串
+</span></code></pre></div>
+<p>请求头 <code>[100, 0, "launch", "start"]</code>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span>04 04                       数组，共 4 个元素
+</span><span id="__span-13-2"><span class="linenos" data-linenos="2 "></span>06 64                       整数 100
+</span><span id="__span-13-3"><span class="linenos" data-linenos="3 "></span>06 00                       整数 0
+</span><span id="__span-13-4"><span class="linenos" data-linenos="4 "></span>01 06 6C 61 75 6E 63 68     字符串 launch
+</span><span id="__span-13-5"><span class="linenos" data-linenos="5 "></span>01 05 73 74 61 72 74        字符串 start
+</span></code></pre></div>
+<p>上面的字节使用十六进制表示，例如 <code>64</code> 对应十进制整数 <code>100</code>。长度和整数采用变长编码：每字节贡献 7 位，最高位表示后面是否还有字节；例如 <code>100 → 64</code>，<code>200 → C8 01</code>。字符串长度按 UTF-8 字节数计算，中文字符串不能直接使用字符个数作为长度。</p>
+<p>这些规则来自 <a href="https://github.com/microsoft/vscode/blob/main/src/vs/base/parts/ipc/common/ipc.ts">ipc.ts</a> 中的 <code>DataType</code>、<code>serialize()</code>、<code>deserialize()</code> 和变长整数读写函数，详见第 4.2 节。</p>
+<h3 id="35">3.5 传输层消息头</h3>
+<p>编码后，还需要按 Cursor/VS Code 这套 IPC 实现的传输格式，在消息体前添加传输层消息头。RPC 是一种调用方式，没有统一规定所有实现都必须使用下面的格式。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span>┌────────┬──────────┬──────────┬────────────┬──────────┐
+</span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span>│ 类型   │ 消息编号 │ 确认编号 │ 内容长度   │ RPC 内容 │
+</span><span id="__span-14-3"><span class="linenos" data-linenos="3 "></span>│ 1 字节 │ 4 字节   │ 4 字节   │ 4 字节     │ N 字节   │
+</span><span id="__span-14-4"><span class="linenos" data-linenos="4 "></span>└────────┴──────────┴──────────┴────────────┴──────────┘
+</span></code></pre></div>
+<p>消息头包含一个单字节类型字段，以及三个采用大端序的 4 字节整数，合计 13 字节。“内容长度”只计算后面的 RPC 消息体，不包含这 13 字节消息头。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
+</span><span id="__span-15-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">transport_header</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>
+</span><span id="__span-15-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="s2">&quot;&gt;BIII&quot;</span><span class="p">,</span>       <span class="c1"># &gt;BIII 表示一个单字节整数和三个大端序的 32 位整数。</span>
+</span><span id="__span-15-4"><span class="linenos" data-linenos=" 4 "></span>        <span class="mi">1</span><span class="p">,</span>             <span class="c1"># 普通消息</span>
+</span><span id="__span-15-5"><span class="linenos" data-linenos=" 5 "></span>        <span class="mi">0</span><span class="p">,</span>             <span class="c1"># 传输层消息编号</span>
+</span><span id="__span-15-6"><span class="linenos" data-linenos=" 6 "></span>        <span class="mi">0</span><span class="p">,</span>             <span class="c1"># 传输层确认编号</span>
+</span><span id="__span-15-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="nb">len</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span>
+</span><span id="__span-15-8"><span class="linenos" data-linenos=" 8 "></span>    <span class="p">)</span>
+</span><span id="__span-15-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-15-10"><span class="linenos" data-linenos="10 "></span>    <span class="bp">self</span><span class="o">.</span><span class="n">pipe</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">transport_header</span> <span class="o">+</span> <span class="n">payload</span><span class="p">)</span>
+</span></code></pre></div>
+<p>这里有两种编号：传输头中的消息编号、确认编号，以及 RPC 请求头中的 <code>request_id</code>。实验采用的普通 <code>Protocol</code> 会把前两者填为 <code>0</code>；<code>request_id</code> 仍逐次增加，用来匹配方法调用与响应。</p>
+<p>这个格式来自 <a href="https://github.com/microsoft/vscode/blob/main/src/vs/base/parts/ipc/common/ipc.net.ts">ipc.net.ts</a> 中的 <code>ProtocolConstants.HeaderLength</code>、<code>ProtocolWriter</code> 和 <code>Protocol.send()</code>，详见第 4.2 节。</p>
+<h3 id="36">3.6 读取返回结果</h3>
+<p>管道是字节流，一次读取不保证恰好得到一条完整消息，所以需要维护缓冲区：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span>读取字节并追加到缓冲区
+</span><span id="__span-16-2"><span class="linenos" data-linenos="2 "></span>        ↓
+</span><span id="__span-16-3"><span class="linenos" data-linenos="3 "></span>缓冲区是否已有 13 字节传输头？
+</span><span id="__span-16-4"><span class="linenos" data-linenos="4 "></span>        ↓
+</span><span id="__span-16-5"><span class="linenos" data-linenos="5 "></span>取出内容长度 N
+</span><span id="__span-16-6"><span class="linenos" data-linenos="6 "></span>        ↓
+</span><span id="__span-16-7"><span class="linenos" data-linenos="7 "></span>是否已有完整的 13 + N 字节？
+</span><span id="__span-16-8"><span class="linenos" data-linenos="8 "></span>        ↓
+</span><span id="__span-16-9"><span class="linenos" data-linenos="9 "></span>取出 RPC 内容，解码响应头和返回值
+</span></code></pre></div>
+<p>假如成功响应，则返回结果为：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span><span class="p">[</span><span class="mi">201</span><span class="p">,</span> <span class="n">request_id</span><span class="p">]</span>  <span class="c1"># 响应头</span>
+</span><span id="__span-17-2"><span class="linenos" data-linenos="2 "></span><span class="n">result</span>            <span class="c1"># 返回值</span>
+</span></code></pre></div>
+<p><code>202</code>、<code>203</code> 表示错误响应，不能当作成功处理。</p>
+<p><code>call()</code> 还需要检查响应编号与当前 <code>request_id</code> 一致。例如 <code>[201, 0]</code> 表示第 <code>0</code> 次调用成功，后面的值才是该方法的返回结果。协议类型和响应格式可在第 4.2 节所列的 <code>ipc.ts</code> 中核对。</p>
+<h3 id="37">3.7 连接初始化</h3>
+<p>第一次 <code>call()</code> 之前，还有连接初始化步骤：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos=" 1 "></span>打开 Cursor 命名管道
+</span><span id="__span-18-2"><span class="linenos" data-linenos=" 2 "></span>        ↓
+</span><span id="__span-18-3"><span class="linenos" data-linenos=" 3 "></span>发送连接身份 &quot;main&quot;
+</span><span id="__span-18-4"><span class="linenos" data-linenos=" 4 "></span>        ↓
+</span><span id="__span-18-5"><span class="linenos" data-linenos=" 5 "></span>接收服务端初始化消息 [200]
+</span><span id="__span-18-6"><span class="linenos" data-linenos=" 6 "></span>        ↓
+</span><span id="__span-18-7"><span class="linenos" data-linenos=" 7 "></span>发送客户端初始化消息 [200]
+</span><span id="__span-18-8"><span class="linenos" data-linenos=" 8 "></span>        ↓
+</span><span id="__span-18-9"><span class="linenos" data-linenos=" 9 "></span>调用 launch.getMainProcessId，核对实例
+</span><span id="__span-18-10"><span class="linenos" data-linenos="10 "></span>        ↓
+</span><span id="__span-18-11"><span class="linenos" data-linenos="11 "></span>调用 launch.start，打开文件
+</span><span id="__span-18-12"><span class="linenos" data-linenos="12 "></span>        ↓
+</span><span id="__span-18-13"><span class="linenos" data-linenos="13 "></span>关闭管道
+</span></code></pre></div>
+<p>这里的 <code>"main"</code> 是通信上下文名称；<code>[200]</code> 中的 <code>200</code> 是初始化消息类型，和 HTTP 状态码没有关系。初始化消息同样使用前面的编码和 13 字节传输头，并不是把字符串 <code>"[200]"</code> 直接写入管道。</p>
+<p>这个顺序依据 <code>ipc.ts</code> 中 <code>IPCClient</code>、<code>ChannelClient</code> 和 <code>ChannelServer</code> 的实现还原。实验封装只处理当前这些初始化消息和串行调用，不是通用的并发 RPC 客户端。</p>
+<h2 id="4">4. 通信机制的资料来源</h2>
+<h3 id="41-cursor">4.1 第一手依据：本机安装的 Cursor 代码</h3>
+<p>安装目录中读取过的文件：</p>
+<ul>
+<li><code>C:\Program Files\cursor\resources\app\package.json</code>：确认实验时安装版本为 3.22.7。</li>
+<li><code>C:\Program Files\cursor\resources\app\out\main.js</code>：包含主实例管道命名、<code>claimInstance()</code>、<code>launch</code> 通道和转交请求的实现。</li>
+<li><code>C:\Program Files\cursor\resources\app\out\cli.js</code>：普通 CLI 会派生 Cursor 进程。</li>
+<li><code>C:\Program Files\cursor\resources\app\bin\cursor.cmd</code>：Windows CLI 启动包装脚本。</li>
+</ul>
+<p>本机 <code>main.js</code> 中实际存在这些标识和日志文字：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos="1 "></span>mainIPCHandle
+</span><span id="__span-19-2"><span class="linenos" data-linenos="2 "></span>claimInstance
+</span><span id="__span-19-3"><span class="linenos" data-linenos="3 "></span>Sending some foreground love to the running instance:
+</span><span id="__span-19-4"><span class="linenos" data-linenos="4 "></span>Sending env to running instance...
+</span><span id="__span-19-5"><span class="linenos" data-linenos="5 "></span>Sent env to running instance. Terminating...
+</span></code></pre></div>
+<p>按源码语义还原，转交的关键步骤类似于：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos="1 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">connect</span><span class="p">(</span><span class="nx">mainIPCHandle</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="p">);</span>
+</span><span id="__span-20-2"><span class="linenos" data-linenos="2 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ProxyChannel</span><span class="p">.</span><span class="nx">toService</span><span class="p">(</span>
+</span><span id="__span-20-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nx">client</span><span class="p">.</span><span class="nx">getChannel</span><span class="p">(</span><span class="s2">&quot;launch&quot;</span><span class="p">),</span>
+</span><span id="__span-20-4"><span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">disableMarshalling</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-20-5"><span class="linenos" data-linenos="5 "></span><span class="p">);</span>
+</span><span id="__span-20-6"><span class="linenos" data-linenos="6 "></span>
+</span><span id="__span-20-7"><span class="linenos" data-linenos="7 "></span><span class="k">await</span><span class="w"> </span><span class="nx">windowsAllowSetForegroundWindow</span><span class="p">(</span><span class="nx">launch</span><span class="p">,</span><span class="w"> </span><span class="nx">log</span><span class="p">);</span>
+</span><span id="__span-20-8"><span class="linenos" data-linenos="8 "></span><span class="k">await</span><span class="w"> </span><span class="nx">launch</span><span class="p">.</span><span class="nx">start</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">);</span>
+</span></code></pre></div>
+<p>上面是便于阅读的语义还原，不是直接复制压缩后的本机代码，也不是可以独立运行的完整 JavaScript 程序。</p>
+<h3 id="42-vs-code">4.2 VS Code 上游源码：用于核对结构和协议</h3>
+<ol>
+<li>
+<p><a href="https://github.com/microsoft/vscode/blob/main/src/vs/code/electron-main/main.ts">主进程启动与已有实例转交：main.ts</a></p>
+<ul>
+<li>创建、初始化服务后调用 <code>claimInstance()</code>。</li>
+<li>连接已有实例并使用 <code>launch</code> 通道。</li>
+<li>处理 Windows 前台窗口权限。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/microsoft/vscode/blob/main/src/vs/base/parts/ipc/common/ipc.ts">IPC 请求、响应和序列化：ipc.ts</a></p>
+<ul>
+<li>请求类型 <code>100</code>，初始化与响应类型 <code>200</code>、<code>201</code> 等。</li>
+<li><code>serialize()</code> / <code>deserialize()</code>。</li>
+<li>通道名、方法名和参数的编码方式。</li>
+<li><code>IPCClient</code> 的连接身份与初始化行为。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/microsoft/vscode/blob/main/src/vs/base/parts/ipc/common/ipc.net.ts">IPC 传输封装：ipc.net.ts</a></p>
+<ul>
+<li>13 字节消息头。</li>
+<li>普通消息的收发。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/microsoft/vscode/blob/main/src/vs/base/parts/ipc/node/ipc.net.ts">Node 管道连接与命名：node/ipc.net.ts</a></p>
+<ul>
+<li>Windows 命名管道连接。</li>
+<li>根据用户数据路径和版本生成静态管道名的机制。</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/microsoft/vscode/blob/main/src/vs/platform/launch/electron-main/launchMainService.ts">打开文件的方法与参数：launchMainService.ts</a></p>
+<ul>
+<li><code>ILaunchMainService</code> 声明了 <code>start(args, userEnv)</code> 和 <code>getMainProcessId()</code>。</li>
+<li><code>start</code> 将文件打开请求交给窗口服务，处理 <code>reuse-window</code> 等参数。</li>
+<li><code>getMainProcessId()</code> 返回主进程编号。</li>
+</ul>
+</li>
+</ol>
+<p>这些链接指向上游 <code>main</code> 分支，会随时间变化。关于本机 Cursor 的判断，以当时安装代码及实际调用结果为直接依据，不能仅凭最新 VS Code 源码推断所有 Cursor 版本行为相同。</p>
+<h2 id="5">5. 实验协议封装代码</h2>
+<p>下面保留实验所用协议封装的核心逻辑，便于理解和复现。它是教学用的实验代码，不是已完成的博客修复程序。</p>
+<p>限制：只实现实验需要的类型与普通消息；未完成自动实例发现、多窗口选择、前台权限处理和失败回退。应传入经过核对的当前 Cursor 管道名。这里把 Python <code>None</code> 映射到协议 <code>undefined</code>，并没有实现对 JSON <code>null</code> 的独立表示。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><span class="linenos" data-linenos="  1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">ctypes</span>
+</span><span id="__span-21-2"><span class="linenos" data-linenos="  2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+</span><span id="__span-21-3"><span class="linenos" data-linenos="  3 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">msvcrt</span>
+</span><span id="__span-21-4"><span class="linenos" data-linenos="  4 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+</span><span id="__span-21-5"><span class="linenos" data-linenos="  5 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-21-6"><span class="linenos" data-linenos="  6 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">ctypes</span><span class="w"> </span><span class="kn">import</span> <span class="n">wintypes</span>
+</span><span id="__span-21-7"><span class="linenos" data-linenos="  7 "></span>
+</span><span id="__span-21-8"><span class="linenos" data-linenos="  8 "></span>
+</span><span id="__span-21-9"><span class="linenos" data-linenos="  9 "></span><span class="n">kernel32</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">WinDLL</span><span class="p">(</span><span class="s2">&quot;kernel32&quot;</span><span class="p">,</span> <span class="n">use_last_error</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-21-10"><span class="linenos" data-linenos=" 10 "></span><span class="n">kernel32</span><span class="o">.</span><span class="n">PeekNamedPipe</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-21-11"><span class="linenos" data-linenos=" 11 "></span>    <span class="n">wintypes</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span>
+</span><span id="__span-21-12"><span class="linenos" data-linenos=" 12 "></span>    <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
+</span><span id="__span-21-13"><span class="linenos" data-linenos=" 13 "></span>    <span class="n">wintypes</span><span class="o">.</span><span class="n">DWORD</span><span class="p">,</span>
+</span><span id="__span-21-14"><span class="linenos" data-linenos=" 14 "></span>    <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
+</span><span id="__span-21-15"><span class="linenos" data-linenos=" 15 "></span>    <span class="n">ctypes</span><span class="o">.</span><span class="n">POINTER</span><span class="p">(</span><span class="n">wintypes</span><span class="o">.</span><span class="n">DWORD</span><span class="p">),</span>
+</span><span id="__span-21-16"><span class="linenos" data-linenos=" 16 "></span>    <span class="n">ctypes</span><span class="o">.</span><span class="n">c_void_p</span><span class="p">,</span>
+</span><span id="__span-21-17"><span class="linenos" data-linenos=" 17 "></span><span class="p">]</span>
+</span><span id="__span-21-18"><span class="linenos" data-linenos=" 18 "></span><span class="n">kernel32</span><span class="o">.</span><span class="n">PeekNamedPipe</span><span class="o">.</span><span class="n">restype</span> <span class="o">=</span> <span class="n">wintypes</span><span class="o">.</span><span class="n">BOOL</span>
+</span><span id="__span-21-19"><span class="linenos" data-linenos=" 19 "></span>
+</span><span id="__span-21-20"><span class="linenos" data-linenos=" 20 "></span>
+</span><span id="__span-21-21"><span class="linenos" data-linenos=" 21 "></span><span class="k">def</span><span class="w"> </span><span class="nf">vql</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+</span><span id="__span-21-22"><span class="linenos" data-linenos=" 22 "></span>    <span class="n">result</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+</span><span id="__span-21-23"><span class="linenos" data-linenos=" 23 "></span>    <span class="k">while</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="mi">128</span><span class="p">:</span>
+</span><span id="__span-21-24"><span class="linenos" data-linenos=" 24 "></span>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">value</span> <span class="o">&amp;</span> <span class="mi">127</span><span class="p">)</span> <span class="o">|</span> <span class="mi">128</span><span class="p">)</span>
+</span><span id="__span-21-25"><span class="linenos" data-linenos=" 25 "></span>        <span class="n">value</span> <span class="o">&gt;&gt;=</span> <span class="mi">7</span>
+</span><span id="__span-21-26"><span class="linenos" data-linenos=" 26 "></span>    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span id="__span-21-27"><span class="linenos" data-linenos=" 27 "></span>    <span class="k">return</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</span><span id="__span-21-28"><span class="linenos" data-linenos=" 28 "></span>
+</span><span id="__span-21-29"><span class="linenos" data-linenos=" 29 "></span>
+</span><span id="__span-21-30"><span class="linenos" data-linenos=" 30 "></span><span class="k">def</span><span class="w"> </span><span class="nf">enc</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+</span><span id="__span-21-31"><span class="linenos" data-linenos=" 31 "></span>    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-21-32"><span class="linenos" data-linenos=" 32 "></span>        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span>  <span class="c1"># 实验约定：表示 undefined。</span>
+</span><span id="__span-21-33"><span class="linenos" data-linenos=" 33 "></span>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-21-34"><span class="linenos" data-linenos=" 34 "></span>        <span class="n">data</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span id="__span-21-35"><span class="linenos" data-linenos=" 35 "></span>        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x01</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">vql</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">+</span> <span class="n">data</span>
+</span><span id="__span-21-36"><span class="linenos" data-linenos=" 36 "></span>    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-21-37"><span class="linenos" data-linenos=" 37 "></span>        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x06</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">vql</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</span><span id="__span-21-38"><span class="linenos" data-linenos=" 38 "></span>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span id="__span-21-39"><span class="linenos" data-linenos=" 39 "></span>        <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x04</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">vql</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">enc</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+</span><span id="__span-21-40"><span class="linenos" data-linenos=" 40 "></span>    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span id="__span-21-41"><span class="linenos" data-linenos=" 41 "></span>    <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x05</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">vql</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="o">+</span> <span class="n">data</span>
+</span><span id="__span-21-42"><span class="linenos" data-linenos=" 42 "></span>
+</span><span id="__span-21-43"><span class="linenos" data-linenos=" 43 "></span>
+</span><span id="__span-21-44"><span class="linenos" data-linenos=" 44 "></span><span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</span><span id="__span-21-45"><span class="linenos" data-linenos=" 45 "></span>    <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-21-46"><span class="linenos" data-linenos=" 46 "></span>
+</span><span id="__span-21-47"><span class="linenos" data-linenos=" 47 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">number</span><span class="p">():</span>
+</span><span id="__span-21-48"><span class="linenos" data-linenos=" 48 "></span>        <span class="k">nonlocal</span> <span class="n">position</span>
+</span><span id="__span-21-49"><span class="linenos" data-linenos=" 49 "></span>        <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-21-50"><span class="linenos" data-linenos=" 50 "></span>        <span class="n">shift</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-21-51"><span class="linenos" data-linenos=" 51 "></span>        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-21-52"><span class="linenos" data-linenos=" 52 "></span>            <span class="n">byte</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">position</span><span class="p">]</span>
+</span><span id="__span-21-53"><span class="linenos" data-linenos=" 53 "></span>            <span class="n">position</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-21-54"><span class="linenos" data-linenos=" 54 "></span>            <span class="n">value</span> <span class="o">|=</span> <span class="p">(</span><span class="n">byte</span> <span class="o">&amp;</span> <span class="mi">127</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span>
+</span><span id="__span-21-55"><span class="linenos" data-linenos=" 55 "></span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">byte</span> <span class="o">&amp;</span> <span class="mi">128</span><span class="p">:</span>
+</span><span id="__span-21-56"><span class="linenos" data-linenos=" 56 "></span>                <span class="k">return</span> <span class="n">value</span>
+</span><span id="__span-21-57"><span class="linenos" data-linenos=" 57 "></span>            <span class="n">shift</span> <span class="o">+=</span> <span class="mi">7</span>
+</span><span id="__span-21-58"><span class="linenos" data-linenos=" 58 "></span>
+</span><span id="__span-21-59"><span class="linenos" data-linenos=" 59 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">item</span><span class="p">():</span>
+</span><span id="__span-21-60"><span class="linenos" data-linenos=" 60 "></span>        <span class="k">nonlocal</span> <span class="n">position</span>
+</span><span id="__span-21-61"><span class="linenos" data-linenos=" 61 "></span>        <span class="n">tag</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">position</span><span class="p">]</span>
+</span><span id="__span-21-62"><span class="linenos" data-linenos=" 62 "></span>        <span class="n">position</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-21-63"><span class="linenos" data-linenos=" 63 "></span>        <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-21-64"><span class="linenos" data-linenos=" 64 "></span>            <span class="k">return</span> <span class="kc">None</span>
+</span><span id="__span-21-65"><span class="linenos" data-linenos=" 65 "></span>        <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+</span><span id="__span-21-66"><span class="linenos" data-linenos=" 66 "></span>            <span class="k">return</span> <span class="n">number</span><span class="p">()</span>
+</span><span id="__span-21-67"><span class="linenos" data-linenos=" 67 "></span>        <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+</span><span id="__span-21-68"><span class="linenos" data-linenos=" 68 "></span>            <span class="k">return</span> <span class="p">[</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">())]</span>
+</span><span id="__span-21-69"><span class="linenos" data-linenos=" 69 "></span>        <span class="n">size</span> <span class="o">=</span> <span class="n">number</span><span class="p">()</span>
+</span><span id="__span-21-70"><span class="linenos" data-linenos=" 70 "></span>        <span class="n">raw</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">position</span><span class="p">:</span><span class="n">position</span> <span class="o">+</span> <span class="n">size</span><span class="p">]</span>
+</span><span id="__span-21-71"><span class="linenos" data-linenos=" 71 "></span>        <span class="n">position</span> <span class="o">+=</span> <span class="n">size</span>
+</span><span id="__span-21-72"><span class="linenos" data-linenos=" 72 "></span>        <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-21-73"><span class="linenos" data-linenos=" 73 "></span>            <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+</span><span id="__span-21-74"><span class="linenos" data-linenos=" 74 "></span>        <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-21-75"><span class="linenos" data-linenos=" 75 "></span>            <span class="k">return</span> <span class="n">raw</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</span><span id="__span-21-76"><span class="linenos" data-linenos=" 76 "></span>        <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+</span><span id="__span-21-77"><span class="linenos" data-linenos=" 77 "></span>            <span class="k">return</span> <span class="n">raw</span>
+</span><span id="__span-21-78"><span class="linenos" data-linenos=" 78 "></span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported data tag: </span><span class="si">{</span><span class="n">tag</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-21-79"><span class="linenos" data-linenos=" 79 "></span>
+</span><span id="__span-21-80"><span class="linenos" data-linenos=" 80 "></span>    <span class="n">header</span> <span class="o">=</span> <span class="n">item</span><span class="p">()</span>
+</span><span id="__span-21-81"><span class="linenos" data-linenos=" 81 "></span>    <span class="n">body</span> <span class="o">=</span> <span class="n">item</span><span class="p">()</span> <span class="k">if</span> <span class="n">position</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+</span><span id="__span-21-82"><span class="linenos" data-linenos=" 82 "></span>    <span class="k">return</span> <span class="n">header</span><span class="p">,</span> <span class="n">body</span>
+</span><span id="__span-21-83"><span class="linenos" data-linenos=" 83 "></span>
+</span><span id="__span-21-84"><span class="linenos" data-linenos=" 84 "></span>
+</span><span id="__span-21-85"><span class="linenos" data-linenos=" 85 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Probe</span><span class="p">:</span>
+</span><span id="__span-21-86"><span class="linenos" data-linenos=" 86 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipe_name</span><span class="p">):</span>
+</span><span id="__span-21-87"><span class="linenos" data-linenos=" 87 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">pipe_name</span> <span class="o">=</span> <span class="n">pipe_name</span>
+</span><span id="__span-21-88"><span class="linenos" data-linenos=" 88 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+</span><span id="__span-21-89"><span class="linenos" data-linenos=" 89 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-21-90"><span class="linenos" data-linenos=" 90 "></span>
+</span><span id="__span-21-91"><span class="linenos" data-linenos=" 91 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-21-92"><span class="linenos" data-linenos=" 92 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">pipe</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipe_name</span><span class="p">,</span> <span class="s2">&quot;r+b&quot;</span><span class="p">,</span> <span class="n">buffering</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="__span-21-93"><span class="linenos" data-linenos=" 93 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">handle</span> <span class="o">=</span> <span class="n">msvcrt</span><span class="o">.</span><span class="n">get_osfhandle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipe</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+</span><span id="__span-21-94"><span class="linenos" data-linenos=" 94 "></span>        <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-21-95"><span class="linenos" data-linenos=" 95 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">enc</span><span class="p">(</span><span class="s2">&quot;main&quot;</span><span class="p">))</span>
+</span><span id="__span-21-96"><span class="linenos" data-linenos=" 96 "></span>            <span class="n">header</span><span class="p">,</span> <span class="n">_body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+</span><span id="__span-21-97"><span class="linenos" data-linenos=" 97 "></span>            <span class="k">if</span> <span class="n">header</span> <span class="o">!=</span> <span class="p">[</span><span class="mi">200</span><span class="p">]:</span>
+</span><span id="__span-21-98"><span class="linenos" data-linenos=" 98 "></span>                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected initialization: </span><span class="si">{</span><span class="n">header</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-21-99"><span class="linenos" data-linenos=" 99 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">enc</span><span class="p">([</span><span class="mi">200</span><span class="p">])</span> <span class="o">+</span> <span class="n">enc</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+</span><span id="__span-21-100"><span class="linenos" data-linenos="100 "></span>            <span class="k">return</span> <span class="bp">self</span>
+</span><span id="__span-21-101"><span class="linenos" data-linenos="101 "></span>        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+</span><span id="__span-21-102"><span class="linenos" data-linenos="102 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">pipe</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-21-103"><span class="linenos" data-linenos="103 "></span>            <span class="k">raise</span>
+</span><span id="__span-21-104"><span class="linenos" data-linenos="104 "></span>
+</span><span id="__span-21-105"><span class="linenos" data-linenos="105 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">):</span>
+</span><span id="__span-21-106"><span class="linenos" data-linenos="106 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">pipe</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-21-107"><span class="linenos" data-linenos="107 "></span>
+</span><span id="__span-21-108"><span class="linenos" data-linenos="108 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">):</span>
+</span><span id="__span-21-109"><span class="linenos" data-linenos="109 "></span>        <span class="n">header</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&gt;BIII&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+</span><span id="__span-21-110"><span class="linenos" data-linenos="110 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">pipe</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span> <span class="o">+</span> <span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-21-111"><span class="linenos" data-linenos="111 "></span>
+</span><span id="__span-21-112"><span class="linenos" data-linenos="112 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="__span-21-113"><span class="linenos" data-linenos="113 "></span>        <span class="n">deadline</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">+</span> <span class="mi">3</span>
+</span><span id="__span-21-114"><span class="linenos" data-linenos="114 "></span>        <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">deadline</span><span class="p">:</span>
+</span><span id="__span-21-115"><span class="linenos" data-linenos="115 "></span>            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">:</span>
+</span><span id="__span-21-116"><span class="linenos" data-linenos="116 "></span>                <span class="n">size</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack_from</span><span class="p">(</span><span class="s2">&quot;&gt;I&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">9</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-21-117"><span class="linenos" data-linenos="117 "></span>                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">13</span> <span class="o">+</span> <span class="n">size</span><span class="p">:</span>
+</span><span id="__span-21-118"><span class="linenos" data-linenos="118 "></span>                    <span class="n">payload</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">13</span> <span class="o">+</span> <span class="n">size</span><span class="p">])</span>
+</span><span id="__span-21-119"><span class="linenos" data-linenos="119 "></span>                    <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="p">[:</span><span class="mi">13</span> <span class="o">+</span> <span class="n">size</span><span class="p">]</span>
+</span><span id="__span-21-120"><span class="linenos" data-linenos="120 "></span>                    <span class="k">return</span> <span class="n">decode</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-21-121"><span class="linenos" data-linenos="121 "></span>
+</span><span id="__span-21-122"><span class="linenos" data-linenos="122 "></span>            <span class="n">available</span> <span class="o">=</span> <span class="n">wintypes</span><span class="o">.</span><span class="n">DWORD</span><span class="p">()</span>
+</span><span id="__span-21-123"><span class="linenos" data-linenos="123 "></span>            <span class="n">ok</span> <span class="o">=</span> <span class="n">kernel32</span><span class="o">.</span><span class="n">PeekNamedPipe</span><span class="p">(</span>
+</span><span id="__span-21-124"><span class="linenos" data-linenos="124 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">handle</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-21-125"><span class="linenos" data-linenos="125 "></span>                <span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="n">available</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-21-126"><span class="linenos" data-linenos="126 "></span>            <span class="p">)</span>
+</span><span id="__span-21-127"><span class="linenos" data-linenos="127 "></span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">ok</span><span class="p">:</span>
+</span><span id="__span-21-128"><span class="linenos" data-linenos="128 "></span>                <span class="k">raise</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">WinError</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">get_last_error</span><span class="p">())</span>
+</span><span id="__span-21-129"><span class="linenos" data-linenos="129 "></span>            <span class="k">if</span> <span class="n">available</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+</span><span id="__span-21-130"><span class="linenos" data-linenos="130 "></span>                <span class="bp">self</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pipe</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">available</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
+</span><span id="__span-21-131"><span class="linenos" data-linenos="131 "></span>            <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-21-132"><span class="linenos" data-linenos="132 "></span>                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.002</span><span class="p">)</span>
+</span><span id="__span-21-133"><span class="linenos" data-linenos="133 "></span>
+</span><span id="__span-21-134"><span class="linenos" data-linenos="134 "></span>        <span class="k">raise</span> <span class="ne">TimeoutError</span><span class="p">(</span><span class="s2">&quot;IPC response timed out&quot;</span><span class="p">)</span>
+</span><span id="__span-21-135"><span class="linenos" data-linenos="135 "></span>
+</span><span id="__span-21-136"><span class="linenos" data-linenos="136 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+</span><span id="__span-21-137"><span class="linenos" data-linenos="137 "></span>        <span class="n">request_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seq</span>
+</span><span id="__span-21-138"><span class="linenos" data-linenos="138 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-21-139"><span class="linenos" data-linenos="139 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">enc</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="n">request_id</span><span class="p">,</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">])</span> <span class="o">+</span> <span class="n">enc</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+</span><span id="__span-21-140"><span class="linenos" data-linenos="140 "></span>        <span class="n">header</span><span class="p">,</span> <span class="n">body</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+</span><span id="__span-21-141"><span class="linenos" data-linenos="141 "></span>        <span class="k">if</span> <span class="n">header</span> <span class="o">!=</span> <span class="p">[</span><span class="mi">201</span><span class="p">,</span> <span class="n">request_id</span><span class="p">]:</span>
+</span><span id="__span-21-142"><span class="linenos" data-linenos="142 "></span>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">((</span><span class="n">header</span><span class="p">,</span> <span class="n">body</span><span class="p">))</span>
+</span><span id="__span-21-143"><span class="linenos" data-linenos="143 "></span>        <span class="k">return</span> <span class="n">body</span>
+</span></code></pre></div>
+<p>使用示例；运行前需要核对当前管道：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">pipe_name</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">.\pipe\22026640-3.22.7-main-sock&quot;</span>
+</span><span id="__span-22-2"><span class="linenos" data-linenos=" 2 "></span>
+</span><span id="__span-22-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">with</span> <span class="n">Probe</span><span class="p">(</span><span class="n">pipe_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">probe</span><span class="p">:</span>
+</span><span id="__span-22-4"><span class="linenos" data-linenos=" 4 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cursor PID:&quot;</span><span class="p">,</span> <span class="n">probe</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;getMainProcessId&quot;</span><span class="p">,</span> <span class="p">[]))</span>
+</span><span id="__span-22-5"><span class="linenos" data-linenos=" 5 "></span>    <span class="n">probe</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+</span><span id="__span-22-6"><span class="linenos" data-linenos=" 6 "></span>        <span class="s2">&quot;start&quot;</span><span class="p">,</span>
+</span><span id="__span-22-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="p">[</span>
+</span><span id="__span-22-8"><span class="linenos" data-linenos=" 8 "></span>            <span class="p">{</span><span class="s2">&quot;_&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">r</span><span class="s2">&quot;D:\Blog\done\index.md&quot;</span><span class="p">],</span> <span class="s2">&quot;reuse-window&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+</span><span id="__span-22-9"><span class="linenos" data-linenos=" 9 "></span>            <span class="p">{},</span>
+</span><span id="__span-22-10"><span class="linenos" data-linenos="10 "></span>        <span class="p">],</span>
+</span><span id="__span-22-11"><span class="linenos" data-linenos="11 "></span>    <span class="p">)</span>
+</span></code></pre></div>
+<p>这里的 <code>start</code> 返回只表示 RPC 调用完成，不能把返回时刻直接作为文件已显示的时刻。原实验另行观察已有窗口标题变化，才得到第 2 节的显示时间。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 压缩算法.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                压缩算法.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E5%AE%BF%E4%B8%BB%E6%9C%BA%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%B1%E4%BA%AB%E5%B1%8F%E5%B9%95/" class="md-footer__link md-footer__link--next" aria-label="Next: 宿主机和虚拟机共享屏幕.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                宿主机和虚拟机共享屏幕.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../javascripts/copy.js"></script>
+      
+        <script src="../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../javascripts/archive-filter.js"></script>
+      <script defer src="../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

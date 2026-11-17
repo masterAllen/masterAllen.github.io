@@ -84,8 +84,8 @@
       // 添加折叠图标
       addToggleIcon(heading);
       
-      // 设置标题可点击
-      heading.style.cursor = 'pointer';
+      // 标题文字可选择，仅箭头可点击折叠
+      heading.style.cursor = 'text';
       heading.classList.add('collapsible-heading');
       
       // 默认展开状态
@@ -185,8 +185,8 @@
         }
       };
       
-      // 绑定点击事件
-      heading.addEventListener('click', toggle);
+      // 仅箭头触发折叠，标题文字保留正常选择行为
+      heading.querySelector('.collapsible-icon').addEventListener('click', toggle);
       
       // 初始化动画样式
       wrapper.style.transition = 'max-height 0.3s ease, opacity 0.3s ease';

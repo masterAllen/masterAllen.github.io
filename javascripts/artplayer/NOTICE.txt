@@ -1,0 +1,6 @@
+ArtPlayer 5.4.0 (MIT)
+Source: https://github.com/zhw2590582/ArtPlayer
+Package: https://registry.npmjs.org/artplayer/-/artplayer-5.4.0.tgz
+Verified tarball integrity: sha512-2B+plbx8N2yNsjK4nJU3+EOG8TULm1LRZk/QPkWRAMEX2Ee/MSnZG/WJYz8kcoZxZuLKcQ3uXifqLuPxZOH29A==
+Upstream dist/artplayer.mjs, unmodified, saved as artplayer.js for local servers' JavaScript MIME support.
+Includes stylesheet and Chinese translation.

@@ -1,0 +1,1063 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BB%93/">
+      
+      
+        <link rel="prev" href="../../Operating-System/%E9%97%AE%E7%AD%94/03.C%E8%AF%AD%E8%A8%80%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%A3%B0%E6%98%8E%E5%90%8C%E5%90%8D%E5%8F%98%E9%87%8F/">
+      
+      
+        <link rel="next" href="../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>信号与系统 总结和概述 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              信号与系统 总结和概述
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+  <a href="../../..">加载栏目目录…</a>
+</div>
+<script src="../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第一章
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第二章
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第三章
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第四章
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第五章 - 第七章
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第五章 - 第七章">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iir" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        IIR 滤波器设计
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-fir" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第七章 - FIR 滤波器设计
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    信号处理系统
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="_1">信号与系统 总结和概述</h1>
+<div class="file-actions" data-image-edit-revision="6e6d90dfae442d709623955cfe28de695de02a3eaaf2c3aafc8aec660b74c75d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%5C%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BB%93.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%B3%BB%E7%BB%9F" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信号处理系统\信号处理系统总结.md">复制路径</span></div>
+
+<p>工作后补了这门课，学习过程中可以说非常的惊讶：</p>
+<ol>
+<li>惊讶计算机学科真是最简单的工科了，这门其他专业的简单基础课，没想到竟然这门难。相比之下，数据结构、操作系统等等计算机的基础课，有点像脑筋急转弯，逻辑占比较重，和数学没有太大关联。</li>
+<li>惊讶人类的智慧。这种惊讶我在操作系统中也曾多次有过，毕竟操作系统本质上也是一个机械系统。每次看到由工程师将理论变为实用，变为更加实用，都会感慨：啊，作为人类实在太棒了！这门课刚开始的时域频域分解都是数学，并没有对这门课有什么好的想法，但是看到了调制解调，充满了人类智慧的工业艺术品！从那之后，就开始一发不可收拾，深深沉醉这门课的魅力。</li>
+<li>惊讶计算机竟然不开这么课。一方面这门课是为数不多的用数学较多的课程，另一方面也让学生能了解手里的计算机是这个多媒体世界的基石，原来很常见的一些功能背后是这样的道理。</li>
+</ol>
+<h2 id="_2">第一章</h2>
+<p>能理解这个公式即可：</p>
+<p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820223438.png" /></p>
+<p>一个总体的提纲</p>
+<p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820223601.png" /></p>
+<h2 id="_3">第二章</h2>
+<details class="note">
+<summary>主要是理解 z 变换。其实也好理解，连续变量进行拉普拉斯变换，离散变量进行拉普拉斯变换，那就是 z 变换了。</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820233431.png" alt="z 变换"><figcaption>Z 变换推导，可以不细究</figcaption></figure></p>
+</details>
+<p><strong>一个很重要的知识点，系统频率响应一定可以写成如下公式</strong>，其中 <span class="arithmatex">\(|H(e^jw)|\)</span> 叫做幅频响应，后面叫做相频响应：</p>
+<p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820233147.png" /></p>
+<details class="note">
+<summary>为什么可以写成这个样式？原因其实就是复数的性质：</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820233233.png" style="zoom: 155%;" /><figcaption> 本质就是一个复数性质 </figcaption></figure></p>
+</details>
+<h2 id="_4">第三章</h2>
+<p>主要就是对傅里叶变换弄懂。</p>
+<ol>
+<li>傅里叶级数：正常人都能懂</li>
+<li>傅里叶变换：掌握关键，它的出现是因为<strong>傅里叶技术只对周期信号而言</strong>，非周期信号，那么我们就需要用新的方式理解。</li>
+<li>
+<p>离散时间信号傅里叶变换（DTFT）：这里思路其实特别顺，为什么需要这个？因为我们实际中处理的信号是离散的，然后用傅里叶变换可以推出来。发现带来的结果是频域变得周期了，这也就是为什么频域不能混叠，这就是<strong>时域采样定理</strong>，即我们用每 T 秒进行采样后，<span class="arithmatex">\((2\pi/T)/2\)</span> 以上的频率是必须要丢弃的。</p>
+<details class="note">
+<summary>DTFT：本质原因是时域需要离散化</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250821222850.png" alt="DTFT"><figcaption> DTFT：本质原因是时域需要离散化 </figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250821223757.png" alt="时域采样定理"><figcaption> DTFT 的公式推导，就是从傅里叶变换推导来的 </figcaption></figure></p>
+</details>
+</li>
+<li>
+<p>离散傅里叶技术（DFS）：这里其实真的也特别顺，为什么需要这个？因为我们计算机表达频域也只能用离散的表达！所以频率也要离散。反推回来发现时域就变成了周期。<strong>而且这里的转换就是信号处理的频域处理技术的本质。</strong></p>
+<ol>
+<li>
+<p>如下图所示，数字信号处理的频域处理技术的本质就是这里：我们先对一个信号时域上离散化，然后转成频域，但我们计算机只能离散化这个频域；离散化之后可以对这个频域进行一些如低通滤波处理；之后再从这个离散化的频域 DFS 转回时域的信号。此时，时域信号是周期的，我们保留主周期即可。<br />
+    <figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250821224126.png" alt="DFS 频域处理技术"><figcaption> DFS 的由来，频域上需要采样，这是重点 </figcaption></figure></p>
+</li>
+<li>
+<p>那可能就有疑问了，不对啊：如果我本来时间序列是无限长的呢？恭喜你，你已经知道了采样定理的一部分。如下图所示，我们要保证频域采样点数 <span class="arithmatex">\(N\)</span> 大于时域的序列长度 <span class="arithmatex">\(M\)</span>，所以无限长的序列注定会有损失的。<br />
+    <figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250821224932.png" alt="采样定理"><figcaption> 频域采样定理 </figcaption></figure></p>
+</li>
+</ol>
+</li>
+<li>
+<p>离散傅里叶变换（DFT）：这个就特别特别简单。就理解成，DFS 转换后的时域变成了周期，那我们保留主周期就行了！</p>
+<details class="note">
+<summary>DFT，就是保留一个主周期</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250821225603.png" alt="DFT"><figcaption>DFT，就是保留一个主周期</figcaption></figure></p>
+</details>
+</li>
+</ol>
+<h2 id="_5">第四章</h2>
+<p>DFT 加速成 FFT，略</p>
+<h2 id="-">第五章 - 第七章</h2>
+<p>第五章讲了 IIR 和 FIR 的基本概念，然后讲了它们各自的滤波器结构。首先就是要明确的是 <strong>IIR 和 FIR 是数字滤波器！！</strong>，这是要一直记住的。后面几节下面再说。</p>
+<p>IIR 和 FIR 的区别，IIR 是无限长，FIR 是有限长：</p>
+<ul>
+<li>IIR: <span class="arithmatex">\(y(n) = 0.5*x(n) + 0.5*y(n-1)\)</span>；</li>
+<li>FIR: <span class="arithmatex">\(y(n) = 0.5*x(n) + 0.5*x(n-1)\)</span>。</li>
+</ul>
+<p>第五章前半部分 + 第六章全部，是讲的 IIR 滤波器；第五章后面 + 第七章是讲的 FIR 滤波器。下面就按照类型进行说明。<strong>我们设计的时候，第一步就是想要设计出 IIR 还是 FIR</strong>，然后根据下面的方法去进行设计。</p>
+<h3 id="iir">IIR 滤波器设计</h3>
+<p>如果要设计 IIR 滤波器，应该怎么办？流程如下：</p>
+<details class="note">
+<summary>1. 先根据参数，设计模拟巴特沃斯滤波器（也就是第六章前面几节）</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820224224.png" alt="模拟巴特沃斯滤波器"><figcaption>具体细节不谈，最后就可以根据参数指标，设计出模拟滤波器</figcaption></figure></p>
+</details>
+<details class="note">
+<summary>2. 模拟滤波器用一些方法转成数字滤波器（也就是第六章后面几节说的两个方法）</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820224313.png" alt="模拟转数字"><figcaption>其中一个方法，反正就是有模拟滤波器的公式，然后离散化，就是数字滤波器公式</figcaption></figure></p>
+</details>
+<details class="note">
+<summary>3. 转成数字滤波器之后，我们得到的是什么？我们得到是 H(z)，有了它我们可以干什么？我们就可以用第五章里面几节说的方法，设计出<b>数字滤波器</b>的结构，即用一些物理寄存器、乘法器之类的器件构造出我们想要的 IIR 数字滤波器。</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820224538.png" alt="IIR 滤波器结构 1"><figcaption>其中一个方法，先把 H(z) 转为差分方程</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820224605.png" alt="IIR 滤波器结构 2"><figcaption>差分方程得到后再画图</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820224636.png" alt="IIR 滤波器结构 3"><figcaption>画图后确定用的寄存器等器件</figcaption></figure></p>
+</details>
+<h3 id="-fir">第七章 - FIR 滤波器设计</h3>
+<p>第七章就是讲如果要设计 FIR 滤波器，应该怎么办？方法是：</p>
+<details class="note">
+<summary>1. 首先要明确，我们设计的叫做<b>线性相位的 FIR 滤波器</b>，FIR 滤波器不只这一种。这里的线性相位是指系统的频率响应函数可以写成如下的 FIR 滤波器：</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820230504.png" alt="线性相位条件"><figcaption><b>线性相位</b> FIR 滤波器 可以写成上述公式</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820231559.png" alt="线性相位特性"><figcaption>FIR 滤波器不止线性相位这一种，但是非线性一般对我们没有太大用</figcaption></figure></p>
+</details>
+<details class="note">
+<summary>2. 在这个基础上，就研究了上面图片中的一类二类线性相位，最后能得出系统冲击响应 h(n) 是奇还是偶函数。这里的 N 就是 FIR 滤波器有限长度的长度。</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820230615.png" alt="线性相位分类"><figcaption>研究不同类别的线性相位，得到如上结果</figcaption></figure></p>
+</details>
+<details class="note">
+<summary>3. 之后就是四类 FIR 滤波器，进行了讨论，看看各自适合什么。比如下图中就是可以做低通滤波器。pi 就是系统最大频率。</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820231122.png" alt="FIR 滤波器类型"><figcaption>研究不同类别的线性相位，分别适合什么场景</figcaption></figure></p>
+</details>
+<details class="note">
+<summary>4. 前面都是理论基础，然后就是正式设计了。三种方法，只看频域采样设计方法既可以，按照一个例子说明最好，按照一个例子说明最好：</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820231800.png" alt="频域采样设计方法 1"><figcaption>频率采样设计方法：先确定理想的滤波情况，分析确定是用哪种线性相位</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820232117.png" alt="频域采样设计方法 2"><figcaption>理想的滤波情况是什么：如上图过滤高频，理想的就是一个矩形窗</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820232252.png" alt="频域采样设计方法 3"><figcaption>不仅仅只有矩形窗这个东西，每种都有优缺点</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820231826.png" alt="频域采样设计方法 4"><figcaption>理想转为实际，按照上面第一张图片确定好用哪种线性相位，又确定好采样点，很容易得到结果</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820231913.png" alt="频域采样设计方法 5"><figcaption>如果采样点很少，效果很差</figcaption></figure><br />
+<figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820231953.png" alt="频域采样设计方法 6"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820232007.png" alt="频域采样设计方法 7"><figcaption>增加采样点，改善效果</figcaption></figure></p>
+</details>
+<details class="note">
+<summary>5. 最后同样，确定了公式，就可以用寄存器这些器件构造出滤波器了</summary>
+<p><figure class="img-center"><img src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250820232503.png" alt="FIR 滤波器实现"><figcaption>FIR 滤波器有了公式之后确定器件</figcaption></figure></p>
+</details>
+<h3 id="_6">总结</h3>
+<p>所以第五章后面几节就是讲第六第七章设计完<strong>数字滤波器</strong>的公式之后，如何搭建它。具体细节就不用多研究了，可以看视频。上面的例子中都是用最简单搭建方法来做的，意思到了即可。而第六章第七章则是讲的如何构建 IIR 或者 FIR 的公式。</p>
+<details class="note">
+<summary>问题：那么模拟滤波器在哪里用到的？</summary>
+<p>回答：在构建 IIR 公式那儿用到了一次。先根据参数确定了模拟滤波器，进行时域采样，就能转成 IIR 滤波器了</p>
+</details>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../Operating-System/%E9%97%AE%E7%AD%94/03.C%E8%AF%AD%E8%A8%80%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E5%A3%B0%E6%98%8E%E5%90%8C%E5%90%8D%E5%8F%98%E9%87%8F/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 03.C 语言不同文件是否可以声明同名变量.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                03.C 语言不同文件是否可以声明同名变量.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-footer__link md-footer__link--next" aria-label="Next: 给编译器加后门.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                给编译器加后门.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../javascripts/copy.js"></script>
+      
+        <script src="../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1082 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/Main/ESP32/%E7%BB%99esptool%E5%8C%85%E8%A3%85GUI/">
+      
+      
+        <link rel="prev" href="../ESP32%E5%AE%9E%E7%8E%B0%E6%9C%89%E7%BA%BFOTA/">
+      
+      
+        <link rel="next" href="../../Linux/Linux%E7%BC%96%E8%AF%91%E5%85%8D%E5%AE%89%E8%A3%85qt%E7%A8%8B%E5%BA%8F/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>记录：包装 esptool GUI - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#esptool-gui" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              记录：包装 esptool GUI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+  <a href="../../..">加载栏目目录…</a>
+</div>
+<script src="../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-site-root="../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 实现调用代码升级
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 外部代码中传入这些参数
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 像串口助手一样自动检测串口列表，并更新
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 出错会直接退出
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-gui-no-json-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. 打包 GUI 界面时显示 No JSON Found
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6. 打包时间很长，GUI 界面会卡顿
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        复盘
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Main
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../ESP32%E4%BC%A0%E8%BE%93%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B9%B1%E7%A0%81/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ESP32
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="esptool-gui">记录：包装 esptool GUI</h1>
+<div class="file-actions" data-image-edit-revision="7b9c5e8aeacee3abfc51904df4d7f051f680af8c2187341ce5a47f55f6b25326" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32%5C%E7%BB%99esptool%E5%8C%85%E8%A3%85GUI.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\ESP32\给esptool包装GUI.md">复制路径</span></div>
+
+<p>需要给客户提供升级工具，虽然 ESP32 官方提供了对应 exe，但会显示具体芯片，在网上找到 GUI 工具背后的源码，很幸运 ESP32 官方将其开源，所以可以直接下载下来在命令行使用。</p>
+<p>所以之后我们要做的就是写一个 GUI 界面即可，但其实中间还是遇到了一些坑，特此记录一下。</p>
+<h2 id="1">1. 实现调用代码升级</h2>
+<p>下载完源码后，首先就要先实现调用代码升级，才能之后把他包装成 GUI 界面。</p>
+<p><code>python esptool.py</code> 后面还需要很多参数，即使看官方文档也很有可能漏掉，估计会消耗很多时间。这里我觉得很巧妙，直接使用 Arduino IDE 进行固件烧写，然后他的下方终端有一些输出信息，发现他其实也用的是 esptool，所以这样我们就能从这些输出信息中获取到需要传入的参数。</p>
+<h2 id="2">2. 外部代码中传入这些参数</h2>
+<p>然后我们要写一个 GUI 代码，里面调用 <code>esptool.py</code> 的方法，但需要知道传入的参数是怎么传的。</p>
+<p>分析他的代码结构即可，也很容易分析，其最后到了 <code>esptool/__init.py__</code> 文件的 <code>main</code> 方法，里面有如下语句：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>    <span class="n">argv</span> <span class="o">=</span> <span class="n">expand_file_arguments</span><span class="p">(</span><span class="n">argv</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+</span></code></pre></div>
+<p>都已经为我们贴心准备了。我们只需要第一次在这里加入 <code>print(argv)</code>，然后执行命令行操作，看看最终的 argv 是什么，发现是一个列表，那外部 GUI 代码就先构造这个列表，然后作为参数传进去即可。</p>
+<h2 id="3">3. 像串口助手一样自动检测串口列表，并更新</h2>
+<p>使用下面代码即可，有一些库可以直接用来检测串口</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 获取所有可用的串口</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">def</span><span class="w"> </span><span class="nf">get_ports</span><span class="p">():</span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">ports</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">list_ports</span><span class="o">.</span><span class="n">comports</span><span class="p">()</span>
+</span><span id="__span-1-4"><span class="linenos" data-linenos=" 4 "></span>    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">port</span><span class="o">.</span><span class="n">device</span> <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">ports</span><span class="p">]</span>
+</span><span id="__span-1-5"><span class="linenos" data-linenos=" 5 "></span>    <span class="k">return</span> <span class="n">result</span>
+</span><span id="__span-1-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-1-7"><span class="linenos" data-linenos=" 7 "></span><span class="c1"># 更新下拉框</span>
+</span><span id="__span-1-8"><span class="linenos" data-linenos=" 8 "></span><span class="k">def</span><span class="w"> </span><span class="nf">update_combobox</span><span class="p">():</span>
+</span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span>    <span class="n">options</span> <span class="o">=</span> <span class="n">get_ports</span><span class="p">()</span>
+</span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span>    <span class="n">combobox</span><span class="p">[</span><span class="s1">&#39;values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span>  <span class="c1"># 更新下拉框的选项</span>
+</span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-1-12"><span class="linenos" data-linenos="12 "></span>    <span class="n">now_option</span> <span class="o">=</span> <span class="n">combobox</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="__span-1-13"><span class="linenos" data-linenos="13 "></span>    <span class="k">if</span> <span class="n">now_option</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+</span><span id="__span-1-14"><span class="linenos" data-linenos="14 "></span>        <span class="n">now_option</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># 默认选择第一个选项</span>
+</span><span id="__span-1-15"><span class="linenos" data-linenos="15 "></span>
+</span><span id="__span-1-16"><span class="linenos" data-linenos="16 "></span>    <span class="n">combobox</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">now_option</span><span class="p">)</span>
+</span><span id="__span-1-17"><span class="linenos" data-linenos="17 "></span>
+</span><span id="__span-1-18"><span class="linenos" data-linenos="18 "></span>    <span class="c1"># 每隔1000毫秒（1秒）重新调用 update_combobox</span>
+</span><span id="__span-1-19"><span class="linenos" data-linenos="19 "></span>    <span class="n">root</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">update_combobox</span><span class="p">)</span>
+</span><span id="__span-1-20"><span class="linenos" data-linenos="20 "></span><span class="n">update_combobox</span><span class="p">()</span>
+</span></code></pre></div>
+<h2 id="4">4. 出错会直接退出</h2>
+<p>发现 GUI 调用的时候，如果烧录出错（比如 COM 口选择错），会直接退出，即使 GUI 主程序代码使用 try-except 也不行。</p>
+<p>后来发现是 <code>esptool.py</code> 中使用 <code>sys.exit()</code> 退出了，所以需要捕获 sys.exit 函数：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>        <span class="n">esptool</span><span class="o">.</span><span class="n">_main</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>        <span class="n">action_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;升级完成&quot;</span><span class="p">)</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">,</span> <span class="s2">&quot;固件升级成功&quot;</span><span class="p">)</span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span>    <span class="k">except</span> <span class="ne">SystemExit</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</span></code></pre></div>
+<p>而在 <code>esptool</code> 源码中，修改 <code>sys.exit()</code> 的参数，这样弹窗也能显示具体信息了：<br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>        <span class="n">main</span><span class="p">()</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>    <span class="k">except</span> <span class="n">esptool</span><span class="o">.</span><span class="n">FatalError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span>        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">A fatal error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span>        <span class="c1"># 原来时 sys.exit(1)</span>
+</span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></code></pre></div></p>
+<h2 id="5-gui-no-json-found">5. 打包 GUI 界面时显示 No JSON Found</h2>
+<p>使用 nuitka 打包时，显示 No JSON Found，在网上也没有找到对应措施。后来是在源码搜索 "not found" 找到对应源码才明白是为什么，具体在 loder.py 文件中。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">StubFlasher</span><span class="p">:</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">STUB_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;targets&quot;</span><span class="p">,</span> <span class="s2">&quot;stub_flasher&quot;</span><span class="p">)</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="c1"># directories will be searched in the order of STUB_SUBDIRS</span>
+</span><span id="__span-4-4"><span class="linenos" data-linenos=" 4 "></span>    <span class="n">STUB_SUBDIRS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">]</span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-4-6"><span class="linenos" data-linenos=" 6 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chip_name</span><span class="p">):</span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_json_path</span><span class="p">(</span><span class="n">chip_name</span><span class="p">))</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+</span><span id="__span-4-8"><span class="linenos" data-linenos=" 8 "></span>            <span class="n">stub</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+</span><span id="__span-4-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span>        <span class="c1"># ...</span>
+</span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-4-12"><span class="linenos" data-linenos="12 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">get_json_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chip_name</span><span class="p">):</span>
+</span><span id="__span-4-13"><span class="linenos" data-linenos="13 "></span>        <span class="n">chip_name</span> <span class="o">=</span> <span class="n">strip_chip_name</span><span class="p">(</span><span class="n">chip_name</span><span class="p">)</span>
+</span><span id="__span-4-14"><span class="linenos" data-linenos="14 "></span>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">subdir</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">STUB_SUBDIRS</span><span class="p">):</span>
+</span><span id="__span-4-15"><span class="linenos" data-linenos="15 "></span>            <span class="n">json_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">STUB_DIR</span><span class="p">,</span> <span class="n">subdir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">chip_name</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
+</span><span id="__span-4-16"><span class="linenos" data-linenos="16 "></span>            <span class="c1"># ...</span>
+</span></code></pre></div>
+<p>可以看到，这里他会使用 <code>get_json_path</code> 动态导入 JSON 文件，所以打包的时候就没有把最后要导入的文件打包进去，所以就会显示 No JSON Found。</p>
+<p>解决方法就是这里直接改成静态导入，因为我们的芯片是固定的，所以这里 <code>get_json_path</code> 返回的文件是固定的。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">StubFlasher</span><span class="p">:</span>
+</span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">STUB_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;targets&quot;</span><span class="p">,</span> <span class="s2">&quot;stub_flasher&quot;</span><span class="p">)</span>
+</span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="c1"># directories will be searched in the order of STUB_SUBDIRS</span>
+</span><span id="__span-5-4"><span class="linenos" data-linenos=" 4 "></span>    <span class="n">STUB_SUBDIRS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">]</span>
+</span><span id="__span-5-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-5-6"><span class="linenos" data-linenos=" 6 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chip_name</span><span class="p">):</span>
+</span><span id="__span-5-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;固定的路径（可以先print然后执行看看是哪一个）&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+</span><span id="__span-5-8"><span class="linenos" data-linenos=" 8 "></span>            <span class="n">stub</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+</span><span id="__span-5-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span>        <span class="c1"># ...</span>
+</span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-5-12"><span class="linenos" data-linenos="12 "></span>    <span class="c1"># 没有用了，直接注释掉</span>
+</span><span id="__span-5-13"><span class="linenos" data-linenos="13 "></span>    <span class="c1"># def get_json_path(self, chip_name):</span>
+</span><span id="__span-5-14"><span class="linenos" data-linenos="14 "></span>    <span class="c1">#     chip_name = strip_chip_name(chip_name)</span>
+</span><span id="__span-5-15"><span class="linenos" data-linenos="15 "></span>    <span class="c1">#     for i, subdir in enumerate(self.STUB_SUBDIRS):</span>
+</span><span id="__span-5-16"><span class="linenos" data-linenos="16 "></span>    <span class="c1">#         json_path = os.path.join(self.STUB_DIR, subdir, f&quot;{chip_name}.json&quot;)</span>
+</span></code></pre></div>
+<h2 id="6-gui">6. 打包时间很长，GUI 界面会卡顿</h2>
+<p>这也是经典问题了，如果是 QT 那就直接用 QThread。但这里我图轻量，用的 tkinter，一开始是用的 tkinter 叫做 <code>after</code> 的函数，但感觉还是乱。</p>
+<p>后来我干脆修改 <code>esptool.py</code> 源码了。搜索其更新过程的输出文本，定位到源码的位置，后来发现主要慢的地方是 <code>log.set_progress</code> 那里，从 0% 到 100% 挺慢的，进一步定位，发现在 <code>esptool/logger.py</code> 文件中：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">set_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percentage</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="sd">        Sets the progress of long-running operations to a specific percentage.</span>
+</span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span><span class="sd">        Overwrite this method in a custom logger to implement e.g. a progress bar.</span>
+</span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span>
+</span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span><span class="sd">        Percentage is a float between 0 and 100.</span>
+</span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-6-8"><span class="linenos" data-linenos="8 "></span>        <span class="k">pass</span>
+</span></code></pre></div>
+<p>可以看到，他是空着的。我们可以直接用，所以我们将这个 <code>log</code> 对象和我们的 <code>button</code> 绑定，然后执行 <code>set_progress</code> 时候，直接修改 <code>button</code> 的文本。<br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># esptool/logger.py</span>
+</span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">set_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percentage</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+</span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">percentage</span> <span class="o">=</span> <span class="n">percentage</span>
+</span><span id="__span-7-4"><span class="linenos" data-linenos=" 4 "></span>        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">percentage</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+</span><span id="__span-7-5"><span class="linenos" data-linenos=" 5 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;正在升级... </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">percentage</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</span><span id="__span-7-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-7-7"><span class="linenos" data-linenos=" 7 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">set_button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">button</span><span class="p">):</span>
+</span><span id="__span-7-8"><span class="linenos" data-linenos=" 8 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">button</span> <span class="o">=</span> <span class="n">button</span>
+</span><span id="__span-7-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-7-10"><span class="linenos" data-linenos="10 "></span><span class="c1"># main.py</span>
+</span><span id="__span-7-11"><span class="linenos" data-linenos="11 "></span><span class="c1"># 按下按钮后</span>
+</span><span id="__span-7-12"><span class="linenos" data-linenos="12 "></span><span class="k">def</span><span class="w"> </span><span class="nf">on_button_click</span><span class="p">():</span>
+</span><span id="__span-7-13"><span class="linenos" data-linenos="13 "></span>    <span class="c1"># ...</span>
+</span><span id="__span-7-14"><span class="linenos" data-linenos="14 "></span>    <span class="kn">import</span><span class="w"> </span><span class="nn">esptool</span>
+</span><span id="__span-7-15"><span class="linenos" data-linenos="15 "></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">esptool.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span>
+</span><span id="__span-7-16"><span class="linenos" data-linenos="16 "></span>    <span class="n">log</span><span class="o">.</span><span class="n">set_button</span><span class="p">(</span><span class="n">action_button</span><span class="p">)</span>
+</span><span id="__span-7-17"><span class="linenos" data-linenos="17 "></span>
+</span><span id="__span-7-18"><span class="linenos" data-linenos="18 "></span>    <span class="n">esptool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p>但发现并没有起作用。后来终于明白了：主程序 GUI 是始终卡住的。如果要让按钮的文本更新，那么需要 <code>on_button_click</code> 执行完毕后，才会刷新。</p>
+<p>所以这里就用多线程来完成：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">on_button_click</span><span class="p">():</span>
+</span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="c1"># ... 构建 argv</span>
+</span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_esptool</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">argv</span><span class="p">,),</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span><span id="__span-8-4"><span class="linenos" data-linenos=" 4 "></span>
+</span><span id="__span-8-5"><span class="linenos" data-linenos=" 5 "></span><span class="c1"># 多线程中执行 esptool，这样 esptool 里面如果修改了 button 文本，那么主线程也会及时刷新</span>
+</span><span id="__span-8-6"><span class="linenos" data-linenos=" 6 "></span><span class="k">def</span><span class="w"> </span><span class="nf">run_esptool</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
+</span><span id="__span-8-7"><span class="linenos" data-linenos=" 7 "></span>    <span class="kn">import</span><span class="w"> </span><span class="nn">esptool</span>
+</span><span id="__span-8-8"><span class="linenos" data-linenos=" 8 "></span>    <span class="kn">from</span><span class="w"> </span><span class="nn">esptool.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span>
+</span><span id="__span-8-9"><span class="linenos" data-linenos=" 9 "></span>    <span class="n">log</span><span class="o">.</span><span class="n">set_button</span><span class="p">(</span><span class="n">action_button</span><span class="p">)</span>
+</span><span id="__span-8-10"><span class="linenos" data-linenos="10 "></span>
+</span><span id="__span-8-11"><span class="linenos" data-linenos="11 "></span>    <span class="n">action_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">DISABLED</span><span class="p">)</span>
+</span><span id="__span-8-12"><span class="linenos" data-linenos="12 "></span>    <span class="n">action_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;正在升级...&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="_1">复盘</h2>
+<ol>
+<li>打包时先不要 disable-console，不要图快</li>
+<li>打包时如果代码中有静态加载文件的（即源码中加载的是固定的文件链接），可以放心了。最后打包会自动将文件打包到 exe 中。</li>
+<li>
+<p>打包时如果代码中有动态加载文件的，打包后执行可能就有问题。最好就是在源码处打印一下，看看究竟加载的什么文件。</p>
+<ol>
+<li>如果始终固定，那么就写死路径改成静态加载；</li>
+</ol>
+</li>
+<li>
+<p>如果文件不一定是唯一的，那就打消打包成一个文件的想法吧，老老实实在当前 exe 文件中新建目录，把那些配置文件放进去，然后修改源码，让他加载文件时从当前 exe 目录加载这些文件。</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ESP32%E5%AE%9E%E7%8E%B0%E6%9C%89%E7%BA%BFOTA/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ESP32实现有线 OTA.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                ESP32实现有线 OTA.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../Linux/Linux%E7%BC%96%E8%AF%91%E5%85%8D%E5%AE%89%E8%A3%85qt%E7%A8%8B%E5%BA%8F/" class="md-footer__link md-footer__link--next" aria-label="Next: Linux 编译免安装 qt 程序.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Linux 编译免安装 qt 程序.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../javascripts/copy.js"></script>
+      
+        <script src="../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

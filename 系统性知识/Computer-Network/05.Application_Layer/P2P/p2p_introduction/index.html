@@ -1,0 +1,1044 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/Computer-Network/05.Application_Layer/P2P/p2p_introduction/">
+      
+      
+        <link rel="prev" href="../NAS%E5%81%9A%E7%A7%8D%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E6%80%9D%E8%80%83/">
+      
+      
+        <link rel="next" href="../%E4%BD%BF%E7%94%A8%E7%BE%A4%E6%99%96%E5%AF%B9BYPT%E5%81%9A%E7%A7%8D/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>P2P 技术科普 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#p2p" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              P2P 技术科普
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+  <a href="../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#p2p_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        一、P2P 基本原理
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p2p_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        二、P2P 的发展
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、P2P 的发展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#napster" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第一代、Napster
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2p-p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        第二代、非结构化 P2P 和 结构化 P2P
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        三、BT 工作原理简介
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        四、BT 的缺陷和改进
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Computer-Network
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../CA/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    05.Application_Layer
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../NAS%E5%81%9A%E7%A7%8D%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E6%80%9D%E8%80%83/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    P2P
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="p2p">P2P 技术科普</h1>
+<div class="file-actions" data-image-edit-revision="74aee3e2c1e1dac55a2c42850221175efddad930f316518795fc27b80ca98e41" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CP2P%5Cp2p_introduction.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CP2P" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\P2P\p2p_introduction.md">复制路径</span></div>
+
+<p>基本都是照抄这下面两个链接，进行稍微改动，非常感谢！转载请务必转这两个地址！</p>
+<ul>
+<li>
+<p><a href="http://blog.kakarott.net/archives/category/p2p">p2p科普 – kakarott of Might And Magic</a></p>
+</li>
+<li>
+<p><a href="https://www.aneasystone.com/archives/2015/05/how-does-magnet-link-work.html">磁力链接是如何实现下载的？ - aneasystone's blog</a></p>
+</li>
+</ul>
+<h2 id="p2p_1">一、P2P 基本原理</h2>
+<p>在 P2P 技术之前，网络中的所有人大多都是通过一种叫做 “<strong>客户端 / 服务器</strong>” 的模式被组织在一起。<strong>一个服务器向很多客户提供服务</strong>。</p>
+<p>举个例子吧： kaka 有一台机子，里面存有全套的央视春晚，他想把他的挚爱分享给所有人。于是不论是通过广告还是别的什么方式，很多人知道了 kaka 有这个资源的消息。通过网络，他们就可以向 kaka 建立连接并从他的机子上下载。这样就形成了一个以 kaka 为中心的小型网络。这当中，kaka 是服务器，其他人都是客户端。</p>
+<p>我们来看看这种模式天生的一些弱点：</p>
+<p>1. 服务器扮演的角色太重了，网络的一切都指着他。假如 kaka 不小心把电脑从 6 楼扔下去，<strong>整个网络就都瘫痪了</strong>。请注意，想要把一个服务器弄失灵的方法太多了，所以使用这中模式的风险是比较大的。<br />
+2. <strong>网络的资源利用率低下</strong>。所有客户都只能从服务器那获得资源，因为他们之间不认识，甚至不知道相互的存在。然而，现实中，可能每个人都有自己独门的资源，比如日天有无数游戏，威哥有无数动漫电影……. 总之，整个网络的资源可能是服务器的无数倍。但是苦无客户端之间没有交流的渠道，所以<strong>资源无法互通</strong>。<br />
+3. 关于完美服务器的假设，基本不成立。</p>
+<p>P2P 技术就是要解决上述的问题已达到如下的效果： 所有人的资源都可以被别人找到并使用。没有哪个人特别重要，<strong>人人平等（peer-to-peer 就是这个意思）</strong>，任何一个人失灵都不会导致网络的死亡。</p>
+<p>这里以 Gnutella 为例，对 P2P 基本原理进行介绍。 Gnutella 是一种典型的 P2P 网络，很具代表性，以其为基础的软件有 Limewire。这种网络里，没有服务器。用户之间任意连接：</p>
+<p><img alt="test" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250615001.png" /></p>
+<p>Kaka 认识 ‘日天’‘curt’‘威’， 日天认识‘小胖’，威认识‘候泡’，Curt 认识 ‘路’。当然真正的网络有至少有成百上千个用户，这里只是展示一个小的局部。</p>
+<p>这个网络如何工作呢？比如 kaka 想要找一首叫‘走进新时代’的歌。一个基本交易要经过如下几步：</p>
+<p>1. kaka 给他的邻居们每人发一个请求消息，‘你们丫谁有走进新时代？’<br />
+2. 日天，威，curt 吐血，‘谁 tm 听这歌啊，我没有’。于是把 kaka 的消息转发给他们的邻居：日天发给小胖，威发给候泡，curt 发给路总。<br />
+3. 当 kaka 邻居的邻居们收到这个消息后，同样，先看看自己有没有。比如，候泡有这个歌，他就可以给 kaka 发个消息：‘爷这有，来下吧’<br />
+4. 卡卡于是可以直接去候泡那下载。</p>
+<p>很多人说在 p2p 里面，<strong>所有人即是服务器又是客户端</strong>。应该这样理解，比如，kaka 在上例中就是个客户端。 但当有人要想要春晚的时候，只要那人的请求消息能被转到 kaka 这，kaka 就可以成为一个服务器。</p>
+<p>最后要说的是 P2P 的现状以及应用。目前 P2P 与传统的‘客户端 / 服务器’模式可以说分庭抗礼，互为补充。那么为什么没能取而代之呢？因为，P2P 也有自身的弱点，其中包括：</p>
+<p>1. 占带宽（50% 以上的网络带宽都是 P2P 占用的，搜索方法不灵）<br />
+2. 安全（不具体解释了，太专业了，总之和加密那些东西有关）<br />
+3. 诚信（没有中央控制，你传个毛片也可以告诉你是新闻联播）<br />
+4. 自私（我什么都不付出，有也说没有）<br />
+5. 知识产权保护（在中国相当于盗版的集散地）等等。 至于这些问题的对策以及其不足，以后会做专题介绍。</p>
+<h2 id="p2p_2">二、P2P 的发展</h2>
+<p>下面，简要介绍一下 P2P 技术的发展。</p>
+<h3 id="napster">第一代、Napster</h3>
+<p>这一代的 p2p 只是<strong>把资源从服务器上拿掉了</strong>。中央服务器上只有一个目录。这个目录记录着哪个用户有哪些资源。要建立这样的一个目录，要求网络中的每个人都要告诉这个服务器：他有什么资源。</p>
+<p>1. Kaka 发一个资源请求向中央服务器。<br />
+2. 这个服务器然后检索目录，并告诉 Kaka，日天有他要的东西。<br />
+3. Kaka 直接去找日天下东西。</p>
+<p>这样做，解决了高带宽需求（服务器只需要转发一些消息，而不用真格的提供资源），低资源利用率的问题（网络里谁都可以发挥作用了）。但是，他仍然面临严重的<mark class="term-highlight">单一故障点</mark>风险。同时，napster 的出现严重挑战了知识产权法，并最终导致其在 2001 年被勒令关闭。</p>
+<h3 id="p2p-p2p">第二代、非结构化 P2P 和 结构化 P2P</h3>
+<p>Napster 帝国的坍塌，导致了江湖上群雄并起，老的规矩也就法不责众了，其中 Gnutella 等非结构的 P2P 脱颖而出。非结构化说白了就是，用户之间瞎连，没有规定谁必须和谁有连接，基本随机。其基本搜索方法是地毯式的，如果这样的搜索能够遍及整个网络。那么，只要资源存在就一定能一网打尽。</p>
+<p>但是上天要求每一个用户都要给自己资源请求加一个限制，于是每个资源请求都只能走几步就必须停了，即使什么都还没找到。因为地毯式的搜索要消耗大量的网络资源，比如，平均一个人有 4 个邻居，如果资源请求的限制为 5. 那么一共需要 4+42+43+44+45=<strong>1364</strong> 个信息，每个信息多大呢？大概几 k 到几十 k，也就是说一个信息就<strong>至少几 m</strong>。一个人一个信息就这么大了，想想一个大网络，每人十几个邻居，限制提高到 7 或 8. 这就是为什么中国很多地方，尤其是网吧限制 p2p. 因为他们可怜的带宽都被 p2p 的请求信息占用了。</p>
+<p>当然，p2p 的设计者们都看到了问题，于是提出了很多<strong>新的搜索方法</strong>。这些方法可以分成两种：</p>
+<p>1. <strong>根据以前的搜索信息对以后的搜索进行预测</strong>；根据经验的搜索准确率可能会高一点，但是这种方法要求每个用户都要建一些表来记录以前的数据，而且每次发送或接到请求都要经过一系列的计算才能决定发给哪个邻居。而且程序上难以实现，更重要的是平均准确率并不比瞎找好很多。这里就不多做介绍了。<br />
+2. <strong>瞎找，碰运气</strong>。介绍两种最常见的：</p>
+<ul>
+<li><strong>K-walkers</strong>: 第一个人先把消息发给 k 个邻居，具体多少都自己定。 然后从第一轮邻居开始都只把消息转发给他们的一个邻居。</li>
+<li><strong>水纹式（涟漪式）</strong>：先定一个限制。第一个人先发给第一层的邻居。如果第一层不灵，他们再发给他们的邻居。一旦找到资源就不再继续了。这样的话最坏的情况就是原始的地毯式。好点的情况就是，消息没到限制就找到了相应的资源，就停了。</li>
+</ul>
+<p>这种非结构的 p2p 的优点在于，操作简单，完全不需要中央控制，所以又称为<mark class="term-highlight">存（纯）p2p</mark>。其缺点同样明显，要么牺牲搜索成功率，要么牺牲带宽占有量。</p>
+<p>于是又有人提出了<strong>结构化的 P2P</strong>。数学的东西我就不说了，基本的思想就是：</p>
+<p>1. 每个用户，资源都得有个名字。<br />
+2. 有一种数学加密方法，对这些名字加密。且保证如果名字不同，那么得到的结果就不同。<br />
+3. 如一资源和一用户加密后结果接近，就把该资源的地址放到相应的用户身上。</p>
+<blockquote>
+<p>举个例子：</p>
+<p>有三个人，日天，kaka，威哥。三个资源：“一剪梅.mp3”,“八荣八耻歌歌词.txt”,“xxx.avi”，对这六个东西加密后分别得到： 100，200，3000， 3002， 233，98，‘xxx.avi’的下载地址就会被分配到‘日天’的机子上，于是当你想搜索 “xxx.avi”，你的消息就会通过某种方法被传到到日天那。</p>
+</blockquote>
+<p>这样，结构化的 P2P 就可以保证，只要网络里有相应的资源，就一定能找到。但是由于其程序实现的难度，加之维护网络所需的投入太大，并不被经常使用。尽管他有很漂亮的数据。</p>
+<p>当然还有第三代的，以后再做专题。</p>
+<h2 id="bt">三、BT 工作原理简介</h2>
+<p>2002 年左右，程小胖告诉我有一种软件可以下片，人越多越快。很神奇。请注意，并不是所有的 P2P 技术都能做到这点，其他的 P2P 基本上只是<strong>提高网络资源的利用率，但是，网络中的每一单买卖都仍然采用，1 对 1 的客户端服务器模式</strong>。回顾一下之前讲过的 P2P，去掉技术细节，做一单买卖可以这样描述：</p>
+<p>1. 有人向网络发一个资源请求（请求者）。有很多种搜索方法可供选择。<br />
+2. 当一个有该的资源的人（提供者）收到这个的请求，他会设法通知请求者：他那有其想要的东西。<br />
+3. 于是请求者去找提供者下载。</p>
+<p>这样做的一个<strong>缺点</strong>就是，比如，我选择了一个比较矬的提供者，而那人的带宽只有 30k，然而网络中还有很多潜在提供者，可能有的人能达到 30m。但是由于我在选择时只无法对对方的带宽做出判断而无福消受。</p>
+<p>这样做还有一个致命的漏洞！比如，我收到一个关于 “海贼王” 的请求，而且我有全套。按理说我应该通知请求者，让他来我这下。但是，让他来我这里下东西，对我来说，除了占我带宽，增加我中毒的风险，没有任何的好处。那我凭什么主动邀请他来？？我何不装 ytd，对该请求视而不见？非常不幸的是，跟我有相同想法的孙子在一般 p2p 网络里面占了大多数，甚至绝大多数。这就是搭便车问题（free riding）。所幸还是有一些大侠的，无偿的提供着大量资源，他们的存在使得那些一般的 P2P 得以侥幸存活。</p>
+<p>其实，如果仅仅依赖活雷锋们，P2P 就失去了其人人平等的意义。大侠们回复了网络中绝大多数的请求，于是人人都愿意与这些人建立连接，因为这样能更快的找到资源。于是这些大侠们就成了变得越来越红，网络的拓扑结构将会发生变化。</p>
+<p><strong>这样的变化很不好，因为 P2P 又逐渐变成了客户端 / 服务器模式了。</strong></p>
+<p>于是，不论是学术界还是产业界都意识到，如果没有一种<strong>鼓励机制</strong>来刺激提供者，P2P 将失去其天生的魅力。在众多解决方案中 BT 脱颖而出，迅速发展了起来。BT 是简称，在国外可能会产生歧义，如 British Telecommunications 等等。所以大家尽量还是用全称，尤其是和外国人说的时候 Bit-Torrent。有人说 BT 是第三代的 P2P，我认为这是因为他把 P2P 的理念更加深入的实现了。</p>
+<p>在 BitTorrent 当中，所有的资源都被切成很小的等份（碎片）。这里，你不需要知道怎么切，只需要知道有一种技术可以把一个文件切成很多小等份，还能把这些等份再重新的组装。在这个技术的支持下，bittorrent 中所有有相同请求的用户可以相互传资源的碎片。而且谁传的多，谁就将获得更多。具体技术如下：</p>
+<ul>
+<li>首先，有同样资源请求的人怎么能相互认识呢？bittorrent 中每一个资源都对应有一个叫 <strong>tracker</strong> 的服务器。只要你对一个资源有意思，你就必须先联系这个资源相应的 tracker。或者你想要共享一个资源你也必须联系 tracker。这样的话，tracker 就掌握着整个网络中<strong>谁想要这个资源</strong>以及<strong>谁有这个资源</strong>。当然，为了节约，一个 tracker 可以负责多种资源。</li>
+<li>那么，怎么找到 tracker 呢？大家可能听说过做种子，每个有完整资源的人都可以做种子，其实就是生成一个后缀是.torrent 的文件。每一款 bittorrent 应用软件都会自动帮你生成，所以不用担心。你只要知道这个文件中包括两部分内容：<code>1，tracker的地址。2，相关资源的一些属性，比如大小，名字等等。</code>这个 torrent 文件一般都可以发布在网上，比如某某人的博客，或者论坛上。</li>
+<li>于是，大家可以从网上找到 torrent 文件，并从中知道 tracker 在哪。再通过联系 tracker 得到一个<strong>名单</strong>，其中包括一部分正在下载或有完整资源的用户。这时候，你就可以与这些人建立链接，并分别从他们身上要不同的碎片。当然要相同资源的人越多，你可以建立连接的人就越多，也就更可能早日得到所有碎片。</li>
+<li>还有一点很重要就是，bittorrent 有自己的<strong>鼓励机制</strong>，就是说，你做的贡献大就会被鼓励，你不做贡献就会被惩罚。具体的操作是，<strong>每个人在下载的同时也上传，比如说我正在下载完分片一之后，同时也可以把分片一传给其他正在下载的用户</strong>。传给谁呢？谁给我给的多，我就传给谁。而且我只传个前 4 名的（视具体软件具体分析，也可能是前 8 名或其他）。</li>
+</ul>
+<h2 id="bt_1">四、BT 的缺陷和改进</h2>
+<p>Bittorrent 大概的工作原理就是这样了，还有些细节这里不多说了。我个人认为 Bittorrent 的设计还是很不错的，但是其只适用于文件共享，或视频共享。然而网络中的资源又何止电影音乐？？绝大多数的资源是不可分的，bittorrent 的局限性还是相当大！ 另一点可悲的是，大多数宽带用户是 ADSL，也就是说他们的下载上传的带宽上限差别很大，比如，下载最大 2m/s，上传却只有 100k/s。这也限制了 bittorrent 的发挥。</p>
+<p>此外可以看出 Tracker 服务器在 BT 网络中充当着非常重要的作用，和传统的客户端/服务器模式一样，Tracker 服务器同样会存在单点故障问题。所以在 BT 技术的基础上，后来又衍生出 DHT 网络和磁力链接技术，DHT 全称为分布式哈希表（Distributed Hash Table），是一种分布式存储方法。</p>
+<p>DHT网络是 Tracker-less 的，不依赖于其他的 Tracker 服务器。在这种情况下，每个客户端负责一个小范围的路由，并负责存储一小部分数据，从而实现整个 DHT 网络的寻址和存储。使用支持该技术的 BT 下载软件，用户无需连上 Tracker 就可以下载，因为软件会在 DHT 网络中寻找下载同一文件的其他用户并与之通讯，开始下载任务。</p>
+<p>在网络中定位资源最简单的方法是 URL（统一资源定位符），它是通过资源的位置来进行定位。而在 DHT 网络中，则是使用 URN（统一资源名称）来进行定位，磁力链接就是基于文件内容的散列函数值来链接到特定文件，生成一个唯一的文件识别符，从而在DHT网络中定位并下载文件。 一个最简单的磁力链接格式如下：<code>magnet:?xt=urn:btih:51df6808c739174c8f264701ba94460c5238d6ce</code>，其中  <code>urn</code> 为统一资源名称，<code>btih</code> 是 BitTorrent Info Hash 的缩写，是 BitTorrent 使用的 Hash 函数。除了 <code>btih</code> 还可以是其他类型的 Hash函数，但不如 <code>btih</code> 用的多。这一串长度为 40 的字符串正是文件内容的 Hash，BT 下载工具就根据这个 Hash 在 DHT 网络中定位下载文件。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../NAS%E5%81%9A%E7%A7%8D%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E6%80%9D%E8%80%83/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NAS 做种的安全性思考.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                NAS 做种的安全性思考.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E4%BD%BF%E7%94%A8%E7%BE%A4%E6%99%96%E5%AF%B9BYPT%E5%81%9A%E7%A7%8D/" class="md-footer__link md-footer__link--next" aria-label="Next: 使用群晖对 BYPT 做种.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                使用群晖对 BYPT 做种.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

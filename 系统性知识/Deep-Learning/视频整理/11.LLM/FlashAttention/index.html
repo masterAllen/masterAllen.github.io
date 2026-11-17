@@ -1,0 +1,1230 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/Deep-Learning/%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86/11.LLM/FlashAttention/">
+      
+      
+        <link rel="prev" href="../02.KVCache.mp4/">
+      
+      
+        <link rel="next" href="../LinearAttention/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>FlashAttention 的简单理解 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#flashattention" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FlashAttention 的简单理解
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+  <a href="../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#softmax-online-softmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        从 softmax 到 online-softmax
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#online-softmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        online-softmax 的好处（重点）
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="online-softmax 的好处（重点）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        三个循环的情况
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        两个循环的情况
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashattention-v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FlashAttention V1
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FlashAttention V1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        原理和推导
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flashattention-v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        FlashAttention V2
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FlashAttention V2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        V1 的分块操作
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        V2 的优化
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="V2 的优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matmul-tensor-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        减少非 matmul 的冗余计算，增加 Tensor Cores 运算比例
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seqlen" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        增加 seqlen 维度的并行
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warp-partitioning-split-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        更好的 Warp Partitioning 策略，避免 Split-K
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Deep-Learning
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../01.%E5%85%A5%E9%97%A8%E4%BB%8B%E7%BB%8D%E5%92%8C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%20%E9%A2%84%E6%B5%8B%E6%9C%AC%E9%A2%91%E9%81%93%E8%A7%82%E7%9C%8B%E4%BA%BA%E6%95%B0%EF%BC%88%E4%B8%8A%EF%BC%89%20-%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E7%AE%80%E4%BB%8B.mp4/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    视频整理
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../01.%E5%85%B3%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    11.LLM
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="flashattention">FlashAttention 的简单理解</h1>
+<div class="file-actions" data-image-edit-revision="10c843871f08de5dbfacffe3ede687f9f58c01eb5af6021d95b9deabe0d1d3e5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CFlashAttention.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\FlashAttention.md">复制路径</span></div>
+
+<blockquote>
+<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/668888063">https://zhuanlan.zhihu.com/p/668888063</a></p>
+</blockquote>
+<h2 id="softmax-online-softmax">从 softmax 到 online-softmax</h2>
+<p>首先，softmax 的计算公式是：</p>
+<div class="arithmatex">\[
+\operatorname{softmax}(x)_i = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}
+\]</div>
+<p>工程上，为了防止溢出，通常会减去一个最大值，确保指数项不会溢出：</p>
+<div class="arithmatex">\[
+\operatorname{safe\text{-}softmax}(x)_i = \frac{e^{x_i - m}}{\sum_{j=1}^{n} e^{x_j - m}}
+\]</div>
+<div class="arithmatex">\[
+m = \max(x_1, x_2, \ldots, x_n)
+\]</div>
+<p>如下是伪代码：</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260523203326.png" /></p>
+<p>下面介绍 online-softmax，它的目标是把上面的 3 个 <code>for</code> 循环变为 2 个 <code>for</code> 循环，方法如下：</p>
+<p>构造 <span class="arithmatex">\(d'_i\)</span>。其中，<span class="arithmatex">\(m_i = \max(x_1, \ldots, x_i)\)</span>，定义如下：</p>
+<div class="arithmatex">\[
+d'_i \leftarrow d'_{i-1} e^{m_{i-1} - m_i} + e^{x_i - m_i}
+\]</div>
+<p>根据定义，可以得到：</p>
+<div class="arithmatex">\[
+d_N = d'_N = \sum_{j=1}^{N} e^{x_j - m_N}
+\]</div>
+<p>并且因此可以递推地计算：</p>
+<div class="arithmatex">\[
+d'_i = d'_{i-1} e^{m_{i-1} - m_i} + e^{x_i - m_i}
+\]</div>
+<details class="note">
+<summary>推导过程</summary>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525100014.png" /></p>
+</details>
+<p>所以，它的好处是可以变成两个 <code>for</code> 循环：</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525100056.png" /></p>
+<h2 id="online-softmax">online-softmax 的好处（重点）</h2>
+<p>但是，变成两个 <code>for</code> 循环的好处是什么呢？仔细想想，其实时间复杂度根本就没有变。跑三个 <code>for</code> 循环计算次数是 <code>3*N</code>，现在变成两个 <code>for</code> 循环，但第一个循环中计算两次，所以计算次数还是 <code>3*N</code>，甚至细究起来，online-softmax 的计算量还更大一些。</p>
+<p>理解这一点就是核心之处了。<strong>无论是 online-softmax 还是 FlashAttention，都不是从时间复杂度上进行优化，而是尽可能提高缓存友好性，减少程序在 SRAM 和更慢存储介质之间的数据交换。</strong></p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525101029.png" /></p>
+<h3 id="_1">三个循环的情况</h3>
+<p>我们先来看三个循环的情况。假设 SRAM 只能存储四个向量：</p>
+<p>第一步，计算 <span class="arithmatex">\(m_i\)</span>，每次之后要进行交换，即：</p>
+<ol>
+<li>
+<p>计算 <span class="arithmatex">\(m_1\)</span> 时，<span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(m_0\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_0, x_1, m_1\)</span></p>
+</li>
+<li>
+<p>把 <span class="arithmatex">\(m_0\)</span> 和 <span class="arithmatex">\(x_1\)</span> 从 SRAM 送出去（否则下一步最后会有五个向量）</p>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(m_2\)</span> 时，<span class="arithmatex">\(x_2\)</span> 和 <span class="arithmatex">\(m_1\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_1, x_2, m_2\)</span></p>
+</li>
+<li>
+<p>同理，把 <span class="arithmatex">\(m_1\)</span> 和 <span class="arithmatex">\(x_2\)</span> 从 SRAM 送出去</p>
+<!-- blog-edit-end:10c843871f08de5d:b27 -->
+<!-- blog-edit-start:10c843871f08de5d:b28 -->
+<p>第二步，计算 <span class="arithmatex">\(d_i\)</span>，每次之后要进行交换，即：</p>
+<!-- blog-edit-end:10c843871f08de5d:b28 -->
+<!-- blog-edit-start:10c843871f08de5d:b29 -->
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(d_1\)</span> 时，<span class="arithmatex">\(d_0\)</span>、<span class="arithmatex">\(m_N\)</span> 和 <span class="arithmatex">\(x_1\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_N, x_1, d_0, d_1\)</span></p>
+</li>
+<li>
+<p>把 <span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(d_0\)</span> 从 SRAM 送出去</p>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(d_2\)</span> 时，<span class="arithmatex">\(d_1\)</span>、<span class="arithmatex">\(m_N\)</span> 和 <span class="arithmatex">\(x_2\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_N, x_2, d_1, d_2\)</span></p>
+</li>
+<li>
+<p>同理，把 <span class="arithmatex">\(x_2\)</span> 和 <span class="arithmatex">\(d_1\)</span> 从 SRAM 送出去</p>
+<!-- blog-edit-end:10c843871f08de5d:b29 -->
+<!-- blog-edit-start:10c843871f08de5d:b30 -->
+<p>第三步，计算 <span class="arithmatex">\(a_i\)</span>，每次之后要进行交换，即：</p>
+<!-- blog-edit-end:10c843871f08de5d:b30 -->
+<!-- blog-edit-start:10c843871f08de5d:b31 -->
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(a_1\)</span> 时，<span class="arithmatex">\(d_N\)</span>、<span class="arithmatex">\(m_N\)</span> 和 <span class="arithmatex">\(x_1\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_N, x_1, d_N, a_1\)</span></p>
+</li>
+<li>
+<p>把 <span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(a_1\)</span> 从 SRAM 送出去</p>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(a_2\)</span> 时，<span class="arithmatex">\(d_N\)</span>、<span class="arithmatex">\(m_N\)</span> 和 <span class="arithmatex">\(x_2\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_N, x_2, d_N, a_2\)</span></p>
+</li>
+<li>
+<p>同理，把 <span class="arithmatex">\(x_2\)</span> 和 <span class="arithmatex">\(a_2\)</span> 从 SRAM 送出去</p>
+</li>
+</ol>
+<p>综上所述，每一轮里，基本都是从 SRAM 中读取，计算完之后再送出去，缓存友好性很差，甚至可以说基本没有。</p>
+<h3 id="_2">两个循环的情况</h3>
+<p>对于第一个 <code>for</code> 循环，即：</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525103315.png" /></p>
+<ol>
+<li>
+<p>计算 <span class="arithmatex">\(m_1\)</span> 和 <span class="arithmatex">\(d_1\)</span> 时，<span class="arithmatex">\(m_0\)</span>、<span class="arithmatex">\(x_1\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_0, x_1, m_1, d_1\)</span></p>
+</li>
+<li>
+<p>把 <span class="arithmatex">\(m_0\)</span> 和 <span class="arithmatex">\(x_1\)</span> 从 SRAM 送出去</p>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(m_2\)</span> 和 <span class="arithmatex">\(d_2\)</span> 时，<span class="arithmatex">\(m_1\)</span>、<span class="arithmatex">\(x_2\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_1, x_2, m_2, d_2\)</span></p>
+</li>
+<li>
+<p>把 <span class="arithmatex">\(m_1\)</span> 和 <span class="arithmatex">\(x_2\)</span> 从 SRAM 送出去</p>
+</li>
+</ol>
+<p>对于第二个 <code>for</code> 循环，和上面三个循环中的最后一个是一样的。</p>
+<p>所以总体来看，在两个循环的情况下，我们也是每次都要从 SRAM 中读取，计算完之后再送出去。但由于只需要两个循环，所以和 SRAM 交换的次数会少很多。</p>
+<p>关键点就在于第一个循环做了合并，从而把 <span class="arithmatex">\(m_i\)</span> 和 <span class="arithmatex">\(d_i\)</span> 的计算合并到一起，减少了和 SRAM 的交换次数。</p>
+<h2 id="flashattention-v1">FlashAttention V1</h2>
+<p>从这一小节开始，进入到 FlashAttention 部分。既然可以优化成两个 <code>for</code> 循环（2-pass），我们还能不能优化成 1-pass？遗憾的是，对于 safe-softmax，并不存在这样的 1-pass 算法。但是，Attention 的目标并不是求 softmax，而是求最终的输出 <span class="arithmatex">\(O\)</span>：</p>
+<div class="arithmatex">\[
+\operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right) V
+\]</div>
+<h3 id="_3">原理和推导</h3>
+<p>原始计算 Attention 的情况，其实就是多了红框中的部分，其他部分就是上面介绍的 online-softmax 流程。</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525104035.png" /></p>
+<p>下面介绍 FlashAttention 的做法。它有点类似 online-softmax，也是定义一个新的变量：</p>
+<div class="arithmatex">\[
+o'_i := \sum_{j=1}^{i} \frac{e^{x_j - m_i}}{d'_i} \, V[j,:]
+\]</div>
+<p>由定义可知：</p>
+<div class="arithmatex">\[
+o'_N = o_N := \sum_{j=1}^{N} \frac{e^{x_j - m_N}}{d'_N} \, V[j,:]
+\]</div>
+<p>并且可以推导出 <span class="arithmatex">\(o'_i\)</span> 和 <span class="arithmatex">\(o'_{i-1}\)</span> 的关系：</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525104451.png" /></p>
+<p>所以，最终可以合并为一个循环：</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525104552.png" /></p>
+<h3 id="_4">总结</h3>
+<p>可以看出，FlashAttention 的优化和 online-softmax 的优化思路很相似。通过一个新的定义，成功把 <span class="arithmatex">\(a_i\)</span> 这一步隐去了，因此可以合并为一个循环。</p>
+<h2 id="flashattention-v2">FlashAttention V2</h2>
+<p><strong>这一部分会很简略，甚至很多地方可能是错的。</strong></p>
+<h3 id="v1">V1 的分块操作</h3>
+<p>显然，正常情况下，对于向量肯定不是一个一个地操作，而是进行分块处理：</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525105040.png" /></p>
+<p>上面的 <span class="arithmatex">\(b\)</span> 就是分块大小，下面是 FlashAttention V1 的伪代码：</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525105125.png" /></p>
+<p>我没有太细究这一部分，意会即可。具体可以看参考文章，里面还有各种细节分析，比如分块大小对速度的具体影响公式等等。（不过我感觉太细节了。）</p>
+<h3 id="v2">V2 的优化</h3>
+<p>FlashAttention V2 其实没有大刀阔斧的优化，更多是在 V1 的基础上做一些细节优化。</p>
+<h4 id="matmul-tensor-cores">减少非 matmul 的冗余计算，增加 Tensor Cores 运算比例</h4>
+<p>这个不了解，没细看。</p>
+<h4 id="seqlen">增加 seqlen 维度的并行</h4>
+<p>FA1 中的伪代码是先 load K/V，再 load Q；在 FA2 中，算法调换了循环顺序，先 load Q，再 load K、V。</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525105632.png" /></p>
+<p>它的好处就是调整完之后，<span class="arithmatex">\(O_i\)</span> 可以直接在外层计算，不像 FA1 中那样需要在内层计算。具体细节其实还有很多，比如上面的操作只会出现在 forward 中，backward 中没有调整顺序。具体细节看参考文章。</p>
+<h4 id="warp-partitioning-split-k">更好的 Warp Partitioning 策略，避免 Split-K</h4>
+<p>这一部分也没有细看，就放一张图吧。具体细节还是看参考文章。</p>
+<p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525110014.png" /></p>
+<h2 id="_5">总结</h2>
+<p>这是一个非常扎实且有效的工作。现在，FlashAttention 也是计算 Attention 的主要实现方式之一。其中的思想很有过去计算机时代的特点：空间很宝贵，因此要尽量提升缓存一致性。平时更普遍的思路往往是空间无所谓，优化计算量才是关键；过去很多节省空间的算法，也基本被遗弃在历史长河中了。但是在显存场景里，还是有很多空间利用的 trick，比较有 old-school 的感觉。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02.KVCache.mp4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 02.KVCache.mp4">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                02.KVCache.mp4
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../LinearAttention/" class="md-footer__link md-footer__link--next" aria-label="Next: LinearAttention.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                LinearAttention.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

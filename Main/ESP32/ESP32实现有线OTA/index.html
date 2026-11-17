@@ -1,0 +1,1485 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/Main/ESP32/ESP32%E5%AE%9E%E7%8E%B0%E6%9C%89%E7%BA%BFOTA/">
+      
+      
+        <link rel="prev" href="../ESP32%E4%BC%A0%E8%BE%93%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B9%B1%E7%A0%81/">
+      
+      
+        <link rel="next" href="../%E7%BB%99esptool%E5%8C%85%E8%A3%85GUI/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>给 ESP32 增加串口有线 OTA 功能 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#esp32-ota" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              给 ESP32 增加串口有线 OTA 功能
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+  <a href="../../..">加载栏目目录…</a>
+</div>
+<script src="../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-site-root="../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        一、实现原理
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        二、准备支持 OTA 的分区表
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        三、设计一套简单的串口升级协议
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、设计一套简单的串口升级协议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 启动帧
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 固件数据帧
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 结束帧
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ota_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        四、从正常串口通信切换到 OTA 模式
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        五、根据帧头读取不同长度的数据
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ota_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        六、初始化 OTA 写入
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ota_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        七、校验数据并写入 OTA 分区
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        八、结束写入并切换启动分区
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ota_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        九、增加 OTA 超时恢复
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#perform_ota" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        十、<code>perform_OTA()</code> 的完整结构
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        十一、上位机需要做什么
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        十二、当前方案的边界
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Main
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../ESP32%E4%BC%A0%E8%BE%93%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B9%B1%E7%A0%81/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ESP32
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="esp32-ota">给 ESP32 增加串口有线 OTA 功能</h1>
+<div class="file-actions" data-image-edit-revision="0396c55c32b8f4b7ba5142085d7b67ac7d8c16dbbf9e197d62ae9e040029b71b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32%5CESP32%E5%AE%9E%E7%8E%B0%E6%9C%89%E7%BA%BFOTA.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\ESP32\ESP32实现有线OTA.md">复制路径</span></div>
+
+<p>ESP32 自带很方便的无线 OTA 调用接口，但是现在我们需要有线 OTA，所以要在其基础上修改。</p>
+<p>很明显，既然可以无线，那么一定可以有线，因为核心其实不是“无线下载”，而是：<strong>在设备运行期间，将新的应用固件写入非当前运行的应用分区，再切换启动分区。</strong></p>
+<p>固件数据从哪里来并不重要。它可以来自 HTTP、蓝牙、SD 卡，也可以来自 UART 串口。</p>
+<p>本文主要介绍 ESP32 固件端的修改。上位机只负责按照约定的数据格式发送固件，不是本文重点。</p>
+<h2 id="_1">一、实现原理</h2>
+<p>ESP32 的 OTA 分区表通常包含两个应用分区，例如 <code>ota_0</code> 和 <code>ota_1</code>。设备从其中一个分区运行时，可以把新固件写入另一个分区。</p>
+<p>有线 OTA 的整体流程如下：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>正常运行并监听串口
+</span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>        ↓
+</span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>识别 OTA 启动命令
+</span><span id="__span-0-4"><span class="linenos" data-linenos=" 4 "></span>        ↓
+</span><span id="__span-0-5"><span class="linenos" data-linenos=" 5 "></span>取得下一个 OTA 应用分区
+</span><span id="__span-0-6"><span class="linenos" data-linenos=" 6 "></span>        ↓
+</span><span id="__span-0-7"><span class="linenos" data-linenos=" 7 "></span>初始化 OTA 写入
+</span><span id="__span-0-8"><span class="linenos" data-linenos=" 8 "></span>        ↓
+</span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>串口接收固件数据帧
+</span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>        ↓
+</span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span>检查包序号和 CRC
+</span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span>        ↓
+</span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span>逐包写入备用分区
+</span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span>        ↓
+</span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span>收到结束帧
+</span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span>        ↓
+</span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span>结束并校验 OTA 镜像
+</span><span id="__span-0-18"><span class="linenos" data-linenos="18 "></span>        ↓
+</span><span id="__span-0-19"><span class="linenos" data-linenos="19 "></span>设置新启动分区并重启
+</span></code></pre></div>
+<p>真正完成 Flash 写入和分区切换的，是 ESP-IDF 提供的几个接口：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">esp_ota_get_next_update_partition</span><span class="p">();</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">esp_ota_begin</span><span class="p">();</span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="n">esp_ota_write</span><span class="p">();</span>
+</span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="n">esp_ota_end</span><span class="p">();</span>
+</span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="n">esp_ota_set_boot_partition</span><span class="p">();</span>
+</span></code></pre></div>
+<p>我们需要增加的主要逻辑，是把现有串口通信与这些接口连接起来。</p>
+<h2 id="ota">二、准备支持 OTA 的分区表</h2>
+<p>有线只是固件的传输方式，ESP32 最终仍然依赖 OTA 分区机制。因此，工程使用的 Partition Scheme 必须包含 OTA 数据分区以及至少两个应用分区。</p>
+<p>程序中可以遍历应用分区，检查当前 Flash 中是否存在 <code>ota_0</code> 和 <code>ota_1</code>：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">check_ota_partitions</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">esp_partition_t</span><span class="w"> </span><span class="o">*</span><span class="n">part</span><span class="p">;</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">esp_partition_iterator_t</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_partition_find</span><span class="p">(</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">        </span><span class="n">ESP_PARTITION_TYPE_APP</span><span class="p">,</span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="n">ESP_PARTITION_SUBTYPE_ANY</span><span class="p">,</span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="nb">NULL</span>
+</span><span id="__span-2-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="p">);</span>
+</span><span id="__span-2-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">found_ota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="n">part</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_partition_get</span><span class="p">(</span><span class="n">it</span><span class="p">);</span>
+</span><span id="__span-2-12"><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">part</span><span class="o">-&gt;</span><span class="n">subtype</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ESP_PARTITION_SUBTYPE_APP_OTA_0</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span><span class="w">            </span><span class="n">part</span><span class="o">-&gt;</span><span class="n">subtype</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ESP_PARTITION_SUBTYPE_APP_OTA_1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span><span class="w">            </span><span class="n">DEBUG_PRINT</span><span class="p">(</span>
+</span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span><span class="w">                </span><span class="s">&quot;Found OTA partition: %s, address: 0x%x, size: %d bytes</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+</span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span><span class="w">                </span><span class="n">part</span><span class="o">-&gt;</span><span class="n">label</span><span class="p">,</span>
+</span><span id="__span-2-17"><span class="linenos" data-linenos="17 "></span><span class="w">                </span><span class="n">part</span><span class="o">-&gt;</span><span class="n">address</span><span class="p">,</span>
+</span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span><span class="w">                </span><span class="n">part</span><span class="o">-&gt;</span><span class="n">size</span>
+</span><span id="__span-2-19"><span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="p">);</span>
+</span><span id="__span-2-20"><span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="n">found_ota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-2-21"><span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-22"><span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_partition_next</span><span class="p">(</span><span class="n">it</span><span class="p">);</span>
+</span><span id="__span-2-23"><span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-24"><span class="linenos" data-linenos="24 "></span>
+</span><span id="__span-2-25"><span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">found_ota</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-26"><span class="linenos" data-linenos="26 "></span><span class="w">        </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;No OTA partitions found.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-2-27"><span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-28"><span class="linenos" data-linenos="28 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>如果设备只有一个应用分区，就没有安全的位置写入下一版应用，后面的 OTA 代码也无法正常工作。</p>
+<h2 id="_2">三、设计一套简单的串口升级协议</h2>
+<p>为了让正常业务数据和 OTA 数据可以共用串口，我定义了三种帧：启动帧、固件数据帧和结束帧。</p>
+<h3 id="1">1. 启动帧</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>00 64 00 1A CRC_L CRC_H
+</span></code></pre></div>
+<ul>
+<li><code>00 64</code>：OTA 启动标识。</li>
+<li><code>00 1A</code>：设备 ID，其中 <code>1A</code> 是举的例子。</li>
+<li>最后两个字节：CRC16。</li>
+</ul>
+<h3 id="2">2. 固件数据帧</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>00 65 SEQ_H SEQ_L DATA[256] CRC_L CRC_H
+</span></code></pre></div>
+<ul>
+<li><code>00 65</code>：数据帧标识。</li>
+<li><code>SEQ_H SEQ_L</code>：从 0 开始递增的 16 位包序号，采用大端顺序。</li>
+<li><code>DATA[256]</code>：固件数据，每包固定 256 字节。</li>
+<li><code>CRC_L CRC_H</code>：整帧的 CRC16，低字节在前。</li>
+</ul>
+<p>一个完整的数据帧长度为：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>2 字节帧头 + 2 字节序号 + 256 字节固件 + 2 字节 CRC = 262 字节
+</span></code></pre></div>
+<h3 id="3">3. 结束帧</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>00 66 COUNT_H COUNT_L CRC_L CRC_H
+</span></code></pre></div>
+<p>结束帧中的 <code>COUNT</code> 表示本次发送的数据包总数。ESP32 会用它与实际成功写入的包数进行比较。</p>
+<p>数据帧采用 CRC16 校验，当前算法的初始值为 <code>0xFFFF</code>，多项式为 <code>0xA001</code>。CRC 可以发现串口传输中的大部分误码；包序号则用于发现丢包、重复包和乱序。</p>
+<h2 id="ota_1">四、从正常串口通信切换到 OTA 模式</h2>
+<p>ESP32 平时仍然按照原有方式处理业务数据。只有检测到 OTA 启动帧时，才进入固件接收流程。</p>
+<p>当前实现使用 <code>is_OTA_header()</code> 判断帧头和设备 ID，每次收到一个数据包，都会判断一下，如果符合条件，那么进入 OTA 模式：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">bool</span><span class="w"> </span><span class="nf">is_OTA_header</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">OTA_HEADER_SIZE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-7-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">            </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x64</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-7-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">            </span><span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-7-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">            </span><span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DEVICE_ID</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-7-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-7-11"><span class="linenos" data-linenos="11 "></span><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="_3">五、根据帧头读取不同长度的数据</h2>
+<p>进入 OTA 模式后，ESP32 只需要处理数据帧 <code>0x0065</code> 和结束帧 <code>0x0066</code>。</p>
+<p>数据帧是固定长度，但结束帧只有 6 字节。因此，接收函数先读取两个字节的帧头，再决定还需要读取多少数据：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">OTArecv</span><span class="p">(</span><span class="n">HardwareSerial</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nowSerial</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">wantsize</span><span class="p">)</span>
+</span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
+</span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">now_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nowSerial</span><span class="p">.</span><span class="n">readBytes</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-8-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">now_bytes</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+</span><span id="__span-8-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-8-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x66</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="c1">// 结束帧总长度为 6 字节</span>
+</span><span id="__span-8-10"><span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="n">wantsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+</span><span id="__span-8-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mh">0x65</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-12"><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;NOT 0x0065, clear: %02X %02X &quot;</span><span class="p">,</span>
+</span><span id="__span-8-13"><span class="linenos" data-linenos="13 "></span><span class="w">                    </span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</span><span id="__span-8-14"><span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">nowSerial</span><span class="p">.</span><span class="n">available</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-15"><span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;%02X &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nowSerial</span><span class="p">.</span><span class="n">read</span><span class="p">());</span>
+</span><span id="__span-8-16"><span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-17"><span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-8-18"><span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+</span><span id="__span-8-19"><span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-20"><span class="linenos" data-linenos="20 "></span>
+</span><span id="__span-8-21"><span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="n">now_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nowSerial</span><span class="p">.</span><span class="n">readBytes</span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">wantsize</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-8-22"><span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">now_bytes</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">wantsize</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-23"><span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;recv not enough data, want=%d, now=%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+</span><span id="__span-8-24"><span class="linenos" data-linenos="24 "></span><span class="w">                    </span><span class="n">wantsize</span><span class="p">,</span><span class="w"> </span><span class="n">now_bytes</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-8-25"><span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">nowSerial</span><span class="p">.</span><span class="n">available</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-26"><span class="linenos" data-linenos="26 "></span><span class="w">            </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;%02X &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nowSerial</span><span class="p">.</span><span class="n">read</span><span class="p">());</span>
+</span><span id="__span-8-27"><span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-28"><span class="linenos" data-linenos="28 "></span><span class="w">        </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-8-29"><span class="linenos" data-linenos="29 "></span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+</span><span id="__span-8-30"><span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-31"><span class="linenos" data-linenos="31 "></span>
+</span><span id="__span-8-32"><span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">wantsize</span><span class="p">;</span>
+</span><span id="__span-8-33"><span class="linenos" data-linenos="33 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p><code>readBytes()</code> 会等待指定数量的数据或等待到串口超时。读取长度不正确时，本次数据会被视为无效帧。</p>
+<h2 id="ota_2">六、初始化 OTA 写入</h2>
+<p>开始进行 OTA，首先获取当前运行分区之外的下一个升级分区：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="k">const</span><span class="w"> </span><span class="n">esp_partition_t</span><span class="w"> </span><span class="o">*</span><span class="n">ota_partition</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">esp_ota_get_next_update_partition</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span>
+</span><span id="__span-9-4"><span class="linenos" data-linenos="4 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ota_partition</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-5"><span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;OTA partition not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-9-6"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-9-7"><span class="linenos" data-linenos="7 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>随后调用 <code>esp_ota_begin()</code> 初始化写入：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">esp_ota_handle_t</span><span class="w"> </span><span class="n">ota_handle</span><span class="p">;</span>
+</span><span id="__span-10-2"><span class="linenos" data-linenos=" 2 "></span>
+</span><span id="__span-10-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_begin</span><span class="p">(</span>
+</span><span id="__span-10-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">ota_partition</span><span class="p">,</span>
+</span><span id="__span-10-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">OTA_SIZE_UNKNOWN</span><span class="p">,</span>
+</span><span id="__span-10-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="o">&amp;</span><span class="n">ota_handle</span>
+</span><span id="__span-10-7"><span class="linenos" data-linenos=" 7 "></span><span class="p">);</span>
+</span><span id="__span-10-8"><span class="linenos" data-linenos=" 8 "></span>
+</span><span id="__span-10-9"><span class="linenos" data-linenos=" 9 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;esp_ota_begin failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">esp_err_to_name</span><span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span><span id="__span-10-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-10-12"><span class="linenos" data-linenos="12 "></span><span class="p">}</span>
+</span><span id="__span-10-13"><span class="linenos" data-linenos="13 "></span>
+</span><span id="__span-10-14"><span class="linenos" data-linenos="14 "></span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;ota_partition: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ota_partition</span><span class="o">-&gt;</span><span class="n">label</span><span class="p">);</span>
+</span></code></pre></div>
+<p>这里使用 <code>OTA_SIZE_UNKNOWN</code>，表示 ESP32 在开始写入时不依赖上位机提前发送固件总字节数。</p>
+<p>到这一步，备用 OTA 分区已经准备好，可以开始接收并写入固件。</p>
+<h2 id="ota_3">七、校验数据并写入 OTA 分区</h2>
+<p>ESP32 使用 <code>packet_num</code> 记录下一包期望收到的序号：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">packet_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span></code></pre></div>
+<p>接收到 <code>0x0065</code> 数据帧后，先从第 3、4 字节取出包序号：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">now_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span>
+</span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">now_num</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">packet_num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-4"><span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-12-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>序号正确后，再检查整帧 CRC：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">check_crc</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bytes_received</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;Received bin data crc incorrect</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-13-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-13-4"><span class="linenos" data-linenos="4 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>数据帧前 4 字节是帧头和包序号，最后 2 字节是 CRC，所以真正的固件内容长度为：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span><span class="n">bytes_received</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span>
+</span></code></pre></div>
+<p>校验全部通过后，提取固件内容并写入 OTA 分区：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">bin_data</span><span class="p">[</span><span class="n">bytes_received</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span><span class="p">];</span>
+</span><span id="__span-15-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">memcpy</span><span class="p">(</span><span class="n">bin_data</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">bytes_received</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span>
+</span><span id="__span-15-3"><span class="linenos" data-linenos=" 3 "></span>
+</span><span id="__span-15-4"><span class="linenos" data-linenos=" 4 "></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_write</span><span class="p">(</span>
+</span><span id="__span-15-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">ota_handle</span><span class="p">,</span>
+</span><span id="__span-15-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">bin_data</span><span class="p">,</span>
+</span><span id="__span-15-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">bytes_received</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span>
+</span><span id="__span-15-8"><span class="linenos" data-linenos=" 8 "></span><span class="p">);</span>
+</span><span id="__span-15-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-15-10"><span class="linenos" data-linenos="10 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;esp_ota_write failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">esp_err_to_name</span><span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span><span id="__span-15-12"><span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span><span id="__span-15-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">esp_ota_end</span><span class="p">(</span><span class="n">ota_handle</span><span class="p">);</span>
+</span><span id="__span-15-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-15-15"><span class="linenos" data-linenos="15 "></span><span class="p">}</span>
+</span><span id="__span-15-16"><span class="linenos" data-linenos="16 "></span>
+</span><span id="__span-15-17"><span class="linenos" data-linenos="17 "></span><span class="n">resetOtaActivity</span><span class="p">();</span>
+</span><span id="__span-15-18"><span class="linenos" data-linenos="18 "></span><span class="n">packet_num</span><span class="o">++</span><span class="p">;</span>
+</span></code></pre></div>
+<p>这里没有先把整个固件保存到 RAM，而是收到一包、校验一包、写入一包。无论固件有多大，ESP32 都只需要保留一个数据帧大小的接收缓冲区。</p>
+<p>完整的接收循环如下：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">bytes_received</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OTArecv</span><span class="p">(</span><span class="n">nowSerial</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">wantsize</span><span class="p">);</span>
+</span><span id="__span-16-3"><span class="linenos" data-linenos=" 3 "></span>
+</span><span id="__span-16-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bytes_received</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="c1">// 让出 CPU，保证超时监控任务可以运行</span>
+</span><span id="__span-16-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-16-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-16-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-16-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-16-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x65</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-11"><span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">now_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span><span id="__span-16-12"><span class="linenos" data-linenos="12 "></span>
+</span><span id="__span-16-13"><span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">now_num</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">packet_num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-14"><span class="linenos" data-linenos="14 "></span><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-16-15"><span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-16-16"><span class="linenos" data-linenos="16 "></span>
+</span><span id="__span-16-17"><span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">check_crc</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bytes_received</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-18"><span class="linenos" data-linenos="18 "></span><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-16-19"><span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-16-20"><span class="linenos" data-linenos="20 "></span>
+</span><span id="__span-16-21"><span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">bin_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-16-22"><span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">bin_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bytes_received</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+</span><span id="__span-16-23"><span class="linenos" data-linenos="23 "></span>
+</span><span id="__span-16-24"><span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_write</span><span class="p">(</span><span class="n">ota_handle</span><span class="p">,</span><span class="w"> </span><span class="n">bin_data</span><span class="p">,</span><span class="w"> </span><span class="n">bin_size</span><span class="p">);</span>
+</span><span id="__span-16-25"><span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-26"><span class="linenos" data-linenos="26 "></span><span class="w">            </span><span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span><span id="__span-16-27"><span class="linenos" data-linenos="27 "></span><span class="w">            </span><span class="n">esp_ota_end</span><span class="p">(</span><span class="n">ota_handle</span><span class="p">);</span>
+</span><span id="__span-16-28"><span class="linenos" data-linenos="28 "></span><span class="w">            </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-16-29"><span class="linenos" data-linenos="29 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-16-30"><span class="linenos" data-linenos="30 "></span>
+</span><span id="__span-16-31"><span class="linenos" data-linenos="31 "></span><span class="w">        </span><span class="n">resetOtaActivity</span><span class="p">();</span>
+</span><span id="__span-16-32"><span class="linenos" data-linenos="32 "></span><span class="w">        </span><span class="n">packet_num</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-16-33"><span class="linenos" data-linenos="33 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-16-34"><span class="linenos" data-linenos="34 "></span><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x66</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-35"><span class="linenos" data-linenos="35 "></span><span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">received_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span><span id="__span-16-36"><span class="linenos" data-linenos="36 "></span>
+</span><span id="__span-16-37"><span class="linenos" data-linenos="37 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">check_crc</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bytes_received</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-16-38"><span class="linenos" data-linenos="38 "></span><span class="w">            </span><span class="n">received_count</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">packet_num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-39"><span class="linenos" data-linenos="39 "></span><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-16-40"><span class="linenos" data-linenos="40 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-16-41"><span class="linenos" data-linenos="41 "></span>
+</span><span id="__span-16-42"><span class="linenos" data-linenos="42 "></span><span class="w">        </span><span class="n">resetOtaActivity</span><span class="p">();</span>
+</span><span id="__span-16-43"><span class="linenos" data-linenos="43 "></span><span class="w">        </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-16-44"><span class="linenos" data-linenos="44 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-16-45"><span class="linenos" data-linenos="45 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>上面把 <code>buffer + 4</code> 直接作为固件数据指针传给 <code>esp_ota_write()</code>，与原实现先复制到临时数组再写入的效果相同，也更容易看清每个字段的关系。</p>
+<h2 id="_4">八、结束写入并切换启动分区</h2>
+<p>收到合法的 <code>0x0066</code> 结束帧后，固件数据已经全部写入备用分区。接下来调用 <code>esp_ota_end()</code> 结束本次 OTA：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_end</span><span class="p">(</span><span class="n">ota_handle</span><span class="p">);</span>
+</span><span id="__span-17-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;esp_ota_end failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">esp_err_to_name</span><span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span><span id="__span-17-4"><span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-17-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p><code>esp_ota_end()</code> 不只是关闭写入句柄，还会检查写入的应用镜像是否合法。只有它返回 <code>ESP_OK</code>，才继续切换启动分区：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_set_boot_partition</span><span class="p">(</span><span class="n">ota_partition</span><span class="p">);</span>
+</span><span id="__span-18-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">DEBUG_PRINT</span><span class="p">(</span>
+</span><span id="__span-18-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">        </span><span class="s">&quot;esp_ota_set_boot_partition failed: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+</span><span id="__span-18-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="n">esp_err_to_name</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+</span><span id="__span-18-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="p">);</span>
+</span><span id="__span-18-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-18-8"><span class="linenos" data-linenos=" 8 "></span><span class="p">}</span>
+</span><span id="__span-18-9"><span class="linenos" data-linenos=" 9 "></span>
+</span><span id="__span-18-10"><span class="linenos" data-linenos="10 "></span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;Restarting...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-18-11"><span class="linenos" data-linenos="11 "></span><span class="n">esp_restart</span><span class="p">();</span>
+</span></code></pre></div>
+<p>重启后，ESP32 Bootloader 会从刚写入的 OTA 分区启动，新固件正式生效。</p>
+<h2 id="ota_4">九、增加 OTA 超时恢复</h2>
+<p>串口线可能被拔掉，上位机也可能在传输过程中退出。如果接收循环一直等待，设备就会长期停留在 OTA 模式。</p>
+<p>为此，我增加了一个 FreeRTOS 监控任务。每次成功处理数据帧时更新活动时间；如果 60 秒没有有效 OTA 数据，就自动重启设备：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#define OTA_TIMEOUT_MS        60000</span>
+</span><span id="__span-19-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#define OTA_CHECK_INTERVAL_MS 1000</span>
+</span><span id="__span-19-3"><span class="linenos" data-linenos=" 3 "></span>
+</span><span id="__span-19-4"><span class="linenos" data-linenos=" 4 "></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">otaInProgress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-19-5"><span class="linenos" data-linenos=" 5 "></span><span class="k">static</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lastOtaActivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-19-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-19-7"><span class="linenos" data-linenos=" 7 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">resetOtaActivity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">lastOtaActivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
+</span><span id="__span-19-9"><span class="linenos" data-linenos=" 9 "></span><span class="p">}</span>
+</span><span id="__span-19-10"><span class="linenos" data-linenos="10 "></span>
+</span><span id="__span-19-11"><span class="linenos" data-linenos="11 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">checkOtaActivity</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">parameter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-12"><span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">otaInProgress</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-13"><span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">lastOtaActivity</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">OTA_TIMEOUT_MS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-14"><span class="linenos" data-linenos="14 "></span><span class="w">            </span><span class="n">DEBUG_PRINT</span><span class="p">(</span><span class="s">&quot;OTA activity timeout, restart...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-19-15"><span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="n">SerialDebug</span><span class="p">.</span><span class="n">flush</span><span class="p">();</span>
+</span><span id="__span-19-16"><span class="linenos" data-linenos="16 "></span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span><span id="__span-19-17"><span class="linenos" data-linenos="17 "></span><span class="w">            </span><span class="n">ESP</span><span class="p">.</span><span class="n">restart</span><span class="p">();</span>
+</span><span id="__span-19-18"><span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-19-19"><span class="linenos" data-linenos="19 "></span>
+</span><span id="__span-19-20"><span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="n">OTA_CHECK_INTERVAL_MS</span><span class="p">));</span>
+</span><span id="__span-19-21"><span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-19-22"><span class="linenos" data-linenos="22 "></span>
+</span><span id="__span-19-23"><span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="n">vTaskDelete</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-19-24"><span class="linenos" data-linenos="24 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>进入 <code>perform_OTA()</code> 时启动监控：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">otaInProgress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-20-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">lastOtaActivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
+</span><span id="__span-20-3"><span class="linenos" data-linenos=" 3 "></span>
+</span><span id="__span-20-4"><span class="linenos" data-linenos=" 4 "></span><span class="n">xTaskCreate</span><span class="p">(</span>
+</span><span id="__span-20-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">checkOtaActivity</span><span class="p">,</span>
+</span><span id="__span-20-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="s">&quot;otaCheck&quot;</span><span class="p">,</span>
+</span><span id="__span-20-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="mi">2048</span><span class="p">,</span>
+</span><span id="__span-20-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nb">NULL</span><span class="p">,</span>
+</span><span id="__span-20-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-20-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="nb">NULL</span>
+</span><span id="__span-20-11"><span class="linenos" data-linenos="11 "></span><span class="p">);</span>
+</span></code></pre></div>
+<p>接收失败后还需要短暂调用 <code>delay()</code>，让 FreeRTOS 调度其他任务：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-21-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bytes_received</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-21-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-21-3"><span class="linenos" data-linenos="3 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>这样即使传输被意外中断，设备也能在超时后通过重启回到正常工作状态。</p>
+<h2 id="perform_ota">十、<code>perform_OTA()</code> 的完整结构</h2>
+<p>把前面的步骤组合起来，ESP32 端的 OTA 主函数可以概括为：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-22-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">perform_OTA</span><span class="p">(</span><span class="n">HardwareSerial</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nowSerial</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">wantsize</span><span class="p">)</span>
+</span><span id="__span-22-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
+</span><span id="__span-22-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">otaInProgress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-22-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">lastOtaActivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span>
+</span><span id="__span-22-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">xTaskCreate</span><span class="p">(</span><span class="n">checkOtaActivity</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;otaCheck&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-22-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-22-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">esp_partition_t</span><span class="w"> </span><span class="o">*</span><span class="n">ota_partition</span><span class="w"> </span><span class="o">=</span>
+</span><span id="__span-22-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="n">esp_ota_get_next_update_partition</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-22-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ota_partition</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-10"><span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-22-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-22-12"><span class="linenos" data-linenos="12 "></span>
+</span><span id="__span-22-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">esp_ota_handle_t</span><span class="w"> </span><span class="n">ota_handle</span><span class="p">;</span>
+</span><span id="__span-22-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_begin</span><span class="p">(</span>
+</span><span id="__span-22-15"><span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="n">ota_partition</span><span class="p">,</span>
+</span><span id="__span-22-16"><span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="n">OTA_SIZE_UNKNOWN</span><span class="p">,</span>
+</span><span id="__span-22-17"><span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="o">&amp;</span><span class="n">ota_handle</span>
+</span><span id="__span-22-18"><span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="p">);</span>
+</span><span id="__span-22-19"><span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-20"><span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-22-21"><span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-22-22"><span class="linenos" data-linenos="22 "></span>
+</span><span id="__span-22-23"><span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">wantsize</span><span class="p">);</span>
+</span><span id="__span-22-24"><span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-25"><span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-22-26"><span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-22-27"><span class="linenos" data-linenos="27 "></span>
+</span><span id="__span-22-28"><span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">packet_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-22-29"><span class="linenos" data-linenos="29 "></span>
+</span><span id="__span-22-30"><span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-31"><span class="linenos" data-linenos="31 "></span><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">bytes_received</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OTArecv</span><span class="p">(</span><span class="n">nowSerial</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">wantsize</span><span class="p">);</span>
+</span><span id="__span-22-32"><span class="linenos" data-linenos="32 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bytes_received</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-33"><span class="linenos" data-linenos="33 "></span><span class="w">            </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-22-34"><span class="linenos" data-linenos="34 "></span><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-22-35"><span class="linenos" data-linenos="35 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-22-36"><span class="linenos" data-linenos="36 "></span>
+</span><span id="__span-22-37"><span class="linenos" data-linenos="37 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x65</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-38"><span class="linenos" data-linenos="38 "></span><span class="w">            </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">now_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span><span id="__span-22-39"><span class="linenos" data-linenos="39 "></span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">now_num</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">packet_num</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-22-40"><span class="linenos" data-linenos="40 "></span><span class="w">                </span><span class="o">!</span><span class="n">check_crc</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bytes_received</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-41"><span class="linenos" data-linenos="41 "></span><span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-22-42"><span class="linenos" data-linenos="42 "></span><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-22-43"><span class="linenos" data-linenos="43 "></span>
+</span><span id="__span-22-44"><span class="linenos" data-linenos="44 "></span><span class="w">            </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_write</span><span class="p">(</span>
+</span><span id="__span-22-45"><span class="linenos" data-linenos="45 "></span><span class="w">                </span><span class="n">ota_handle</span><span class="p">,</span>
+</span><span id="__span-22-46"><span class="linenos" data-linenos="46 "></span><span class="w">                </span><span class="n">buffer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+</span><span id="__span-22-47"><span class="linenos" data-linenos="47 "></span><span class="w">                </span><span class="n">bytes_received</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">6</span>
+</span><span id="__span-22-48"><span class="linenos" data-linenos="48 "></span><span class="w">            </span><span class="p">);</span>
+</span><span id="__span-22-49"><span class="linenos" data-linenos="49 "></span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-50"><span class="linenos" data-linenos="50 "></span><span class="w">                </span><span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span><span id="__span-22-51"><span class="linenos" data-linenos="51 "></span><span class="w">                </span><span class="n">esp_ota_end</span><span class="p">(</span><span class="n">ota_handle</span><span class="p">);</span>
+</span><span id="__span-22-52"><span class="linenos" data-linenos="52 "></span><span class="w">                </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-22-53"><span class="linenos" data-linenos="53 "></span><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-22-54"><span class="linenos" data-linenos="54 "></span>
+</span><span id="__span-22-55"><span class="linenos" data-linenos="55 "></span><span class="w">            </span><span class="n">packet_num</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-22-56"><span class="linenos" data-linenos="56 "></span><span class="w">            </span><span class="n">resetOtaActivity</span><span class="p">();</span>
+</span><span id="__span-22-57"><span class="linenos" data-linenos="57 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-22-58"><span class="linenos" data-linenos="58 "></span><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x00</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x66</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-59"><span class="linenos" data-linenos="59 "></span><span class="w">            </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">received_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">buffer</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span><span id="__span-22-60"><span class="linenos" data-linenos="60 "></span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">check_crc</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bytes_received</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+</span><span id="__span-22-61"><span class="linenos" data-linenos="61 "></span><span class="w">                </span><span class="n">received_count</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">packet_num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-62"><span class="linenos" data-linenos="62 "></span><span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-22-63"><span class="linenos" data-linenos="63 "></span><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-22-64"><span class="linenos" data-linenos="64 "></span>
+</span><span id="__span-22-65"><span class="linenos" data-linenos="65 "></span><span class="w">            </span><span class="n">resetOtaActivity</span><span class="p">();</span>
+</span><span id="__span-22-66"><span class="linenos" data-linenos="66 "></span><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+</span><span id="__span-22-67"><span class="linenos" data-linenos="67 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-22-68"><span class="linenos" data-linenos="68 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-22-69"><span class="linenos" data-linenos="69 "></span>
+</span><span id="__span-22-70"><span class="linenos" data-linenos="70 "></span><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span><span id="__span-22-71"><span class="linenos" data-linenos="71 "></span>
+</span><span id="__span-22-72"><span class="linenos" data-linenos="72 "></span><span class="w">    </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_end</span><span class="p">(</span><span class="n">ota_handle</span><span class="p">);</span>
+</span><span id="__span-22-73"><span class="linenos" data-linenos="73 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-74"><span class="linenos" data-linenos="74 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-22-75"><span class="linenos" data-linenos="75 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-22-76"><span class="linenos" data-linenos="76 "></span>
+</span><span id="__span-22-77"><span class="linenos" data-linenos="77 "></span><span class="w">    </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">esp_ota_set_boot_partition</span><span class="p">(</span><span class="n">ota_partition</span><span class="p">);</span>
+</span><span id="__span-22-78"><span class="linenos" data-linenos="78 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ESP_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-22-79"><span class="linenos" data-linenos="79 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-22-80"><span class="linenos" data-linenos="80 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-22-81"><span class="linenos" data-linenos="81 "></span>
+</span><span id="__span-22-82"><span class="linenos" data-linenos="82 "></span><span class="w">    </span><span class="n">esp_restart</span><span class="p">();</span>
+</span><span id="__span-22-83"><span class="linenos" data-linenos="83 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>这段代码展示的是主干流程。实际工程中的日志输出和错误处理可以根据项目需要保留。</p>
+<h2 id="_5">十一、上位机需要做什么</h2>
+<p>上位机逻辑并不复杂，只需要完成以下工作：</p>
+<ol>
+<li>以 <code>115200</code> 波特率打开串口。</li>
+<li>发送 <code>0x0064</code> OTA 启动帧。</li>
+<li>读取 <code>.bin</code> 文件，并按 256 字节分包。</li>
+<li>为每包添加 <code>0x0065</code> 帧头、递增序号和 CRC16。</li>
+<li>全部发送完成后，发送 <code>0x0066</code> 结束帧和总包数。</li>
+</ol>
+<p>项目中使用 Python 和 <code>pyserial</code> 实现了命令行与 GUI 两个版本。上位机本质上只是固件数据源，真正的 OTA 逻辑都在 ESP32 端完成。</p>
+<h2 id="_6">十二、当前方案的边界</h2>
+<p>这套实现已经可以完成基本的串口有线 OTA，但它仍是一套简单协议：</p>
+<ul>
+<li>当前没有逐包 ACK/NACK 和自动重传；某包校验失败后，上位机不会自动补发。</li>
+<li>OTA 启动检测目前只检查帧头和设备 ID，没有在 <code>is_OTA_header()</code> 中检查启动帧 CRC。</li>
+<li>上位机最后一包使用 <code>0x00</code> 补齐，协议没有单独携带固件真实字节数。</li>
+<li>CRC 用于发现传输错误，不等于固件签名或身份认证。</li>
+</ul>
+<p>如果用于现场批量升级或对可靠性要求较高的产品，下一步应补充应答重传、固件真实长度、整包哈希或签名校验等机制。不过对于受控环境下通过数据线升级设备，这套方案已经完成了从串口接收固件到 OTA 分区启动的完整闭环。</p>
+<h2 id="_7">总结</h2>
+<p>ESP32 的 OTA 并不依赖 Wi-Fi。只要能把新的应用镜像可靠地送到设备端，就可以利用 ESP-IDF 的 OTA API 完成升级。</p>
+<p>这次修改的关键点可以归纳为四步：</p>
+<ol>
+<li>在原有串口协议中增加 OTA 启动命令。</li>
+<li>将固件拆成带序号和 CRC 的固定长度数据帧。</li>
+<li>ESP32 校验数据后调用 <code>esp_ota_write()</code> 逐包写入备用分区。</li>
+<li>接收完成后调用 <code>esp_ota_end()</code>、<code>esp_ota_set_boot_partition()</code> 和 <code>esp_restart()</code> 让新固件生效。</li>
+</ol>
+<p>通过这种方式，即使设备没有连接网络，也可以直接通过 USB 串口线完成固件更新，这就是串口有线 OTA 的基本实现思路。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ESP32%E4%BC%A0%E8%BE%93%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B9%B1%E7%A0%81/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ESP32传输大图片乱码.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                ESP32传输大图片乱码.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%BB%99esptool%E5%8C%85%E8%A3%85GUI/" class="md-footer__link md-footer__link--next" aria-label="Next: 给 esptool 包装 GUI.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                给 esptool 包装 GUI.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../javascripts/copy.js"></script>
+      
+        <script src="../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

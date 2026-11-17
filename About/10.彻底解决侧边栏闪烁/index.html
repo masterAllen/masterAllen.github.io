@@ -1,0 +1,1270 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/About/10.%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3%E4%BE%A7%E8%BE%B9%E6%A0%8F%E9%97%AA%E7%83%81/">
+      
+      
+        <link rel="prev" href="../09.%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%8C%82%E8%BD%BD%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%BA%90/">
+      
+      
+        <link rel="next" href="../11.%E4%B8%93%E9%97%A8%E7%94%A8%E4%BA%8E%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%96%87%E7%AB%A0/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>彻底解决侧边栏闪烁 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              彻底解决侧边栏闪烁
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../navigation/shared/group-9-623cc78a2f1a.html" data-site-root="../../" aria-busy="true">
+  <a href="../..">加载栏目目录…</a>
+</div>
+<script src="../../javascripts/shared-navigation.js"></script>
+
+<script src="../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../navigation/shared/group-9-623cc78a2f1a.html"
+         data-site-root="../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 目标与结论
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sessionstorage" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 以前有 sessionStorage，侧边栏仍会闪烁
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 以前有 sessionStorage，侧边栏仍会闪烁">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-html-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.1 缓存 HTML 与保留 DOM 是两件事
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2.2 当前正常切换流程
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 页面结构：左侧栏在外，文章容器在内
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 浏览器运行阶段：如何判断目录是否相同
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 浏览器运行阶段：如何判断目录是否相同">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.1 打开文章 A
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.2 切换文章 B 时文章区域先被替换
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.3 切换文章 B 后目录的加载逻辑
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4.4 讨论
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. 其他繁琐细节
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 其他繁琐细节">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.1 同栏目滚动位置主要靠节点保留
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.2 整页加载时仍有滚动恢复脚本
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.3 未转义的 <code>&amp;</code> 导致策略失效
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    About
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="_1">彻底解决侧边栏闪烁</h1>
+<div class="file-actions" data-image-edit-revision="03a046c485dd19f14a5c4dea2ac42ec1337ba713ac2e25f4fa896cc2b256a0b5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CAbout%5C10.%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3%E4%BE%A7%E8%BE%B9%E6%A0%8F%E9%97%AA%E7%83%81.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CAbout" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\About\10.彻底解决侧边栏闪烁.md">复制路径</span></div>
+
+<p>AKA. 共享侧边栏与局部导航机制</p>
+<h2 id="1">1. 目标与结论</h2>
+<p>之前对侧边栏的更新已经有过一些<a href=".././08.优化侧边栏闪烁/">优化记录</a>，但是发现侧边栏还是会闪烁。</p>
+<p>总而言之，最终修改的逻辑是：同一顶部栏目内切换文章时，左侧栏和目录树应继续使用原来的 DOM 节点，只更新当前文章高亮，并展开所需的祖先目录。</p>
+<p>最终效果：</p>
+<p><img alt="最终效果" src="../../asset/image/46f05c202369a3182a6170171ddfaef0/PixPin_2026-10-19_10-59-26.gif" /></p>
+<h2 id="2-sessionstorage">2. 以前有 sessionStorage，侧边栏仍会闪烁</h2>
+<p>原因：即使命中缓存，只要重新创建了 DOM，仍然可能看到闪烁。</p>
+<h3 id="21-html-dom">2.1 缓存 HTML 与保留 DOM 是两件事</h3>
+<p>旧流程：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>点击另一篇文章
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>  → 浏览器加载新文档，卸载旧文档
+</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>  → 新文档出现侧栏占位内容
+</span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>  → 从 sessionStorage 读取目录 HTML 字符串
+</span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>  → innerHTML 创建一套新的目录节点
+</span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span>  → 设置高亮、展开目录、恢复滚动位置
+</span></code></pre></div>
+<p><strong>缓存能够减少目录文件的网络请求，但旧节点已经随着文档卸载而消失。浏览器仍需要解析 HTML、创建节点、绑定事件、计算布局和绘制；恢复宽度、展开状态或滚动位置的时机也可能晚于第一帧。</strong></p>
+<p>即使不刷新整个文档，在一个已有容器里再次执行下面的语句，也会替换其原有子节点：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cached</span><span class="p">.</span><span class="nx">html</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="22">2.2 当前正常切换流程</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>点击另一篇文章
+</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>  → 主题拦截符合条件的站内链接
+</span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>  → 获取并解析目标页面
+</span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>  → 只替换文章所属的页面容器
+</span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span>  → document$ 通知页面已更新
+</span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>  → 读取新页面要求的共享目录地址
+</span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span>  → 地址相同：保留目录节点，只调整高亮和必要的展开状态
+</span></code></pre></div>
+<p>左侧栏不需要先消失，再从缓存中恢复。</p>
+<h2 id="3">3. 页面结构：左侧栏在外，文章容器在内</h2>
+<p>源码 <code>base.html</code> 的页面结构简化后如下，省略了头部、部分嵌套容器和其他主题元素：</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">&lt;!-- 独立存在的左侧栏 --&gt;</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;custom-sidebar-shell custom-page-shell md-grid&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;md-sidebar md-sidebar--primary&quot;</span> <span class="na">data-md-type</span><span class="o">=</span><span class="s">&quot;navigation&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos=" 4 "></span>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;md-sidebar__scrollwrap&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-3-5"><span class="linenos" data-linenos=" 5 "></span>      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;md-sidebar__inner&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-3-6"><span class="linenos" data-linenos=" 6 "></span>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">data-shared-navigation</span><span class="o">=</span><span class="s">&quot;...&quot;</span> <span class="na">data-site-root</span><span class="o">=</span><span class="s">&quot;.../&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-3-7"><span class="linenos" data-linenos=" 7 "></span>          <span class="cm">&lt;!-- 目录树 --&gt;</span>
+</span><span id="__span-3-8"><span class="linenos" data-linenos=" 8 "></span>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-3-9"><span class="linenos" data-linenos=" 9 "></span>      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-3-12"><span class="linenos" data-linenos="12 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-3-13"><span class="linenos" data-linenos="13 "></span>
+</span><span id="__span-3-14"><span class="linenos" data-linenos="14 "></span><span class="cm">&lt;!-- 主题局部导航会替换的区域 --&gt;</span>
+</span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;md-container&quot;</span>
+</span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span>     <span class="na">data-md-component</span><span class="o">=</span><span class="s">&quot;container&quot;</span>
+</span><span id="__span-3-17"><span class="linenos" data-linenos="17 "></span>     <span class="na">data-shared-navigation-target</span><span class="o">=</span><span class="s">&quot;...&quot;</span>
+</span><span id="__span-3-18"><span class="linenos" data-linenos="18 "></span>     <span class="na">data-site-root</span><span class="o">=</span><span class="s">&quot;.../&quot;</span>
+</span><span id="__span-3-19"><span class="linenos" data-linenos="19 "></span>     <span class="na">data-navigation-hidden</span><span class="o">=</span><span class="s">&quot;false&quot;</span><span class="p">&gt;</span>
+</span><span id="__span-3-20"><span class="linenos" data-linenos="20 "></span>  <span class="cm">&lt;!-- 顶部栏目、正文、右侧目录、页脚等 --&gt;</span>
+</span><span id="__span-3-21"><span class="linenos" data-linenos="21 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>左侧栏不再是 <code>[data-md-component="container"]</code> 的后代。因此，主题替换目标页面容器时，不会连同左侧栏一起替换。</p>
+<p>左侧栏也去掉了原先的 <code>data-md-component="sidebar"</code>，不再参加主题对这类组件的每页重新初始化。主题原有侧栏初始化会设置尺寸、位置，并尝试滚动到当前文章；本项目已经用自己的固定布局和共享导航脚本管理左栏。</p>
+<p>右侧文章目录仍然属于可替换区域，并由主题管理，因为它需要随文章变化。</p>
+<h2 id="4">4. 浏览器运行阶段：如何判断目录是否相同</h2>
+<p>主要由 <code>shared-navigation.js</code> 实现，核心判断依据有三个属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data-shared-navigation-target</code></td>
+<td>新文章需要的共享目录资源地址</td>
+</tr>
+<tr>
+<td><code>data-site-root</code></td>
+<td>解析共享目录内部相对链接、图片地址时使用的站点根路径</td>
+</tr>
+<tr>
+<td><code>data-navigation-hidden</code></td>
+<td>表达目标页面是否通过元数据隐藏左侧导航</td>
+</tr>
+</tbody>
+</table>
+<p>假设 A 是 <code>/Main/one/</code>，B 是 <code>/Main/Nested/two/</code>，下面说明打开 A 和 B 的过程。</p>
+<h3 id="41-a">4.1 打开文章 A</h3>
+<p>此时浏览器地址栏是：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// &quot;http://127.0.0.1:8000/Main/one/&quot;</span>
+</span></code></pre></div>
+<p>A 页面 HTML 中的属性是：</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="p">&lt;</span><span class="nt">div</span>
+</span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>  <span class="na">data-md-component</span><span class="o">=</span><span class="s">&quot;container&quot;</span>
+</span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>  <span class="na">data-shared-navigation-target</span><span class="o">=</span><span class="s">&quot;../../navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
+</span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span><span class="p">&gt;</span>
+</span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span>  <span class="cm">&lt;!-- 文章 A --&gt;</span>
+</span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>脚本读取属性并计算完整地址：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[data-shared-navigation-target]&#39;</span><span class="p">);</span>
+</span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>
+</span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">sharedNavigationTarget</span>
+</span><span id="__span-6-4"><span class="linenos" data-linenos=" 4 "></span><span class="c1">// &quot;../../navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
+</span><span id="__span-6-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-6-6"><span class="linenos" data-linenos=" 6 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span>
+</span><span id="__span-6-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">sharedNavigationTarget</span><span class="p">,</span>
+</span><span id="__span-6-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
+</span><span id="__span-6-9"><span class="linenos" data-linenos=" 9 "></span><span class="p">).</span><span class="nx">href</span><span class="p">;</span>
+</span><span id="__span-6-10"><span class="linenos" data-linenos="10 "></span>
+</span><span id="__span-6-11"><span class="linenos" data-linenos="11 "></span><span class="c1">// 等价于：</span>
+</span><span id="__span-6-12"><span class="linenos" data-linenos="12 "></span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span>
+</span><span id="__span-6-13"><span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="s2">&quot;../../navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span><span class="p">,</span>
+</span><span id="__span-6-14"><span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="s2">&quot;http://127.0.0.1:8000/Main/one/&quot;</span>
+</span><span id="__span-6-15"><span class="linenos" data-linenos="15 "></span><span class="p">).</span><span class="nx">href</span><span class="p">;</span>
+</span><span id="__span-6-16"><span class="linenos" data-linenos="16 "></span>
+</span><span id="__span-6-17"><span class="linenos" data-linenos="17 "></span><span class="c1">// 结果：</span>
+</span><span id="__span-6-18"><span class="linenos" data-linenos="18 "></span><span class="c1">// &quot;http://127.0.0.1:8000/navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
+</span></code></pre></div>
+<p>首次加载时，目录容器还没有记录加载地址：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span>
+</span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// undefined</span>
+</span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>
+</span><span id="__span-7-4"><span class="linenos" data-linenos="4 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">url</span>
+</span><span id="__span-7-5"><span class="linenos" data-linenos="5 "></span><span class="c1">// false</span>
+</span></code></pre></div>
+<p>因此需要加载目录。加载成功后执行 <code>render()</code>，装入左侧目录：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">;</span>
+</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>
+</span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">;</span>
+</span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span><span class="c1">// &quot;http://127.0.0.1:8000/navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
+</span></code></pre></div>
+<h3 id="42-b">4.2 切换文章 B 时文章区域先被替换</h3>
+<p>设置中开启了 <code>navigation.instant</code> 后，此时主题会先获取新页面 HTML，找到其中的页面容器并替换，最后会通过 <code>document$</code> 发出页面更新通知。简化后的代码如下：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 获取 B 的完整页面 HTML</span>
+</span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">B的地址</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">());</span>
+</span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span>
+</span><span id="__span-9-4"><span class="linenos" data-linenos=" 4 "></span><span class="c1">// 解析成一个暂时没有显示在页面上的文档</span>
+</span><span id="__span-9-5"><span class="linenos" data-linenos=" 5 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">nextDocument</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DOMParser</span><span class="p">().</span><span class="nx">parseFromString</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text/html&quot;</span><span class="p">);</span>
+</span><span id="__span-9-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-9-7"><span class="linenos" data-linenos=" 7 "></span><span class="c1">// 找到当前页面中的容器</span>
+</span><span id="__span-9-8"><span class="linenos" data-linenos=" 8 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">oldContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span>
+</span><span id="__span-9-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="s1">&#39;[data-md-component=&quot;container&quot;]&#39;</span>
+</span><span id="__span-9-10"><span class="linenos" data-linenos="10 "></span><span class="p">);</span>
+</span><span id="__span-9-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-9-12"><span class="linenos" data-linenos="12 "></span><span class="c1">// 找到 B 页面中的对应容器</span>
+</span><span id="__span-9-13"><span class="linenos" data-linenos="13 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">newContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">nextDocument</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span>
+</span><span id="__span-9-14"><span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="s1">&#39;[data-md-component=&quot;container&quot;]&#39;</span>
+</span><span id="__span-9-15"><span class="linenos" data-linenos="15 "></span><span class="p">);</span>
+</span><span id="__span-9-16"><span class="linenos" data-linenos="16 "></span>
+</span><span id="__span-9-17"><span class="linenos" data-linenos="17 "></span><span class="c1">// 用 B 的整个容器替换 A 的容器</span>
+</span><span id="__span-9-18"><span class="linenos" data-linenos="18 "></span><span class="nx">oldContainer</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="nx">newContainer</span><span class="p">);</span>
+</span></code></pre></div>
+<p>替换后，主题接着通过 <code>document$</code> 发出页面更新通知。我们的脚本已经订阅了它：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="nb">document</span><span class="nx">$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">init</span><span class="p">);</span>
+</span></code></pre></div>
+<p>PS: <code>document$</code> 是<strong>主题提供的“页面更新通知流”</strong>，技术上叫 RxJS Observable。它不是 JavaScript 或浏览器自带的对象。我们通过 <code>subscribe()</code> 告诉主题：“页面更新后，运行这个函数。” 名字末尾的 <code>$</code> 只是常见命名习惯，表示“这是一个通知流”，没有特殊语法含义。</p>
+<p>于是此时运行目录的 <code>init()</code>：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="kd">function</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="c1">// 此时读到的已经是 B 的容器</span>
+</span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span>
+</span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="s1">&#39;[data-shared-navigation-target]&#39;</span>
+</span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="p">);</span>
+</span><span id="__span-11-6"><span class="linenos" data-linenos="6 "></span>
+</span><span id="__span-11-7"><span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="c1">// 后面是目录的加载逻辑</span>
+</span><span id="__span-11-8"><span class="linenos" data-linenos="8 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>外面的 <code>custom-sidebar-shell</code> 没被碰到，原目录仍留在页面上。</p>
+<h3 id="43-b">4.3 切换文章 B 后目录的加载逻辑</h3>
+<p>地址变成：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
+</span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// &quot;http://127.0.0.1:8000/Main/Nested/two/&quot;</span>
+</span></code></pre></div>
+<p>文章区域被替换为 B 的 HTML，其属性也随之更新：</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="p">&lt;</span><span class="nt">div</span>
+</span><span id="__span-13-2"><span class="linenos" data-linenos="2 "></span>  <span class="na">data-md-component</span><span class="o">=</span><span class="s">&quot;container&quot;</span>
+</span><span id="__span-13-3"><span class="linenos" data-linenos="3 "></span>  <span class="na">data-shared-navigation-target</span><span class="o">=</span><span class="s">&quot;../../../navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
+</span><span id="__span-13-4"><span class="linenos" data-linenos="4 "></span><span class="p">&gt;</span>
+</span><span id="__span-13-5"><span class="linenos" data-linenos="5 "></span>  <span class="cm">&lt;!-- 文章 B --&gt;</span>
+</span><span id="__span-13-6"><span class="linenos" data-linenos="6 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>和 4.1 一样，脚本会计算目标目录的完整地址：</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos=" 1 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[data-shared-navigation-target]&#39;</span><span class="p">);</span>
+</span><span id="__span-14-2"><span class="linenos" data-linenos=" 2 "></span>
+</span><span id="__span-14-3"><span class="linenos" data-linenos=" 3 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span>
+</span><span id="__span-14-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">sharedNavigationTarget</span><span class="p">,</span>
+</span><span id="__span-14-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
+</span><span id="__span-14-6"><span class="linenos" data-linenos=" 6 "></span><span class="p">).</span><span class="nx">href</span><span class="p">;</span>
+</span><span id="__span-14-7"><span class="linenos" data-linenos=" 7 "></span>
+</span><span id="__span-14-8"><span class="linenos" data-linenos=" 8 "></span><span class="c1">// 等价于：</span>
+</span><span id="__span-14-9"><span class="linenos" data-linenos=" 9 "></span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span>
+</span><span id="__span-14-10"><span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="s2">&quot;../../../navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span><span class="p">,</span>
+</span><span id="__span-14-11"><span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="s2">&quot;http://127.0.0.1:8000/Main/Nested/two/&quot;</span>
+</span><span id="__span-14-12"><span class="linenos" data-linenos="12 "></span><span class="p">).</span><span class="nx">href</span><span class="p">;</span>
+</span><span id="__span-14-13"><span class="linenos" data-linenos="13 "></span>
+</span><span id="__span-14-14"><span class="linenos" data-linenos="14 "></span><span class="c1">// 结果仍然是：</span>
+</span><span id="__span-14-15"><span class="linenos" data-linenos="15 "></span><span class="c1">// &quot;http://127.0.0.1:8000/navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
+</span></code></pre></div>
+<p><strong>左侧目录容器没有被替换，所以还记着打开 A 时写入的值：</strong></p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="ow">delete</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoading</span><span class="p">;</span>
+</span><span id="__span-15-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">activate</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="nx">root</span><span class="p">);</span><span class="w"> </span><span class="c1">// 高亮从 A 移到 B，展开 B 的祖先目录</span>
+</span><span id="__span-15-4"><span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="k">return</span><span class="p">;</span><span class="w">                   </span><span class="c1">// 跳过目录加载与 innerHTML 替换</span>
+</span><span id="__span-15-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="44">4.4 讨论</h3>
+<p>一共三种状态：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>已加载地址等于目标地址</td>
+<td>复用目录树，运行 <code>activate()</code> 后返回</td>
+</tr>
+<tr>
+<td>目标地址已经在加载中</td>
+<td>不重复发起同一请求</td>
+</tr>
+<tr>
+<td>目标地址与已加载地址不同</td>
+<td>尝试缓存，未命中再请求目录 HTML</td>
+</tr>
+</tbody>
+</table>
+<p><code>activate()</code> 的主要工作是：</p>
+<ol>
+<li>将目录中的链接和图片地址相对于站点根路径解析为绝对地址。</li>
+<li>清除旧的 <code>.md-nav__link--active</code>、<code>.md-nav__item--active</code> 和对应的 <code>aria-current</code>。</li>
+<li>找到与当前页面同源、路径匹配的文章链接。</li>
+<li>给它添加 <code>.md-nav__link--active</code> 与 <code>aria-current="page"</code>。</li>
+<li>沿祖先导航项向上设置活动状态，并勾选尚未展开的祖先开关。</li>
+<li>对程序修改的展开开关触发 <code>change</code>，同步展开按钮和导航的辅助属性。</li>
+</ol>
+<p>页面路径匹配会进行 URL 解码、把末尾 <code>/index.html</code> 视为目录首页，并忽略末尾多余斜杠。当前实现按路径匹配，不把查询参数和文章锚点作为独立目录项。</p>
+<h2 id="5">5. 其他繁琐细节</h2>
+<h3 id="51">5.1 同栏目滚动位置主要靠节点保留</h3>
+<p>同栏目切换时，<code>.md-sidebar__scrollwrap</code> 没有被替换，<code>scrollTop</code> 随同一个元素继续存在，无需先归零再从缓存恢复。</p>
+<p>这不意味着数值在所有操作下绝对不变。例如浏览器为了把被点击的链接滚动到可见区域，或者某个目录展开后内容高度改变，都可能调整滚动位置。验收重点是避免切页额外引入一次重建和重置。</p>
+<h3 id="52">5.2 整页加载时仍有滚动恢复脚本</h3>
+<p><code>sidebar-scroll-position.js</code> 使用 <code>CUSTOM_SIDEBAR_SCROLL_TOP</code>：</p>
+<ul>
+<li>在 <code>pagehide</code> 保存滚动位置。</li>
+<li>首次执行及 <code>shared-navigation-ready</code> 后尝试恢复。</li>
+<li>在 <code>DOMContentLoaded</code> 后通过两次动画帧再次恢复，以等待初始布局。</li>
+</ul>
+<p>这是整页加载或目录重建时的补充。当前保存的是一个位置值，没有按栏目分别保存滚动历史；普通同栏目局部切换也不会触发 <code>pagehide</code>。</p>
+<h3 id="53">5.3 未转义的 <code>&amp;</code> 导致策略失效</h3>
+<p>有一个目录是 <code>code&amp;report/</code>，结果这个目录导致上面整个策略失效了。</p>
+<p>因为 <strong>XML 把 <code>&amp;</code> 当作特殊引用的开头</strong>，比如 <code>&amp;lt;</code> 表示 <code>&lt;</code>，比如 <code>&amp;amp;</code> 表示 <code>&amp;</code>。</p>
+<p>主题会先把所有站内地址解析到 <code>sitemap.xml</code> 中，如果不做特殊处理，那这个目录对应的地址是：</p>
+<div class="language-xml highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span><span class="nt">&lt;loc&gt;</span>https://masterallen.github.io/.../code<span class="err">&amp;</span>report/<span class="nt">&lt;/loc&gt;</span>
+</span></code></pre></div>
+<p>XML 解析器读到 <code>&amp;</code> 时，会尝试把后面的内容识别为 <code>&amp;名称;</code> 这样的引用。但 <code>&amp;report/</code> 不是合法引用，因此报语法错误。</p>
+<p>一旦有错误，那整个站点地图解析失败，得到一张空表。最终影响整个网站导航，因为主题需要先解析完整的站点地图：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span>sitemap.xml
+</span><span id="__span-17-2"><span class="linenos" data-linenos="2 "></span>  → XML 解析
+</span><span id="__span-17-3"><span class="linenos" data-linenos="3 "></span>  → 获得所有站内页面的 URL 清单 → 解析失败，得到空表
+</span><span id="__span-17-4"><span class="linenos" data-linenos="4 "></span>  → 点击链接时，判断它是否在清单中
+</span><span id="__span-17-5"><span class="linenos" data-linenos="5 "></span>  → 在清单中才使用局部导航
+</span></code></pre></div>
+<p>所以最终用一个新的 <code>overrides/sitemap.xml</code> 来解决这个问题，<strong>新的 XML 文件里写的是 <code>&amp;amp;</code>，对应 <code>&amp;</code> 的转义。</strong></p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../09.%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%8C%82%E8%BD%BD%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%BA%90/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 09.实现本地服务挂载原始资源.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                09.实现本地服务挂载原始资源.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../11.%E4%B8%93%E9%97%A8%E7%94%A8%E4%BA%8E%E5%AE%9E%E9%AA%8C%E7%9A%84%E6%96%87%E7%AB%A0/" class="md-footer__link md-footer__link--next" aria-label="Next: 11.专门用于实验的文章.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                11.专门用于实验的文章.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../javascripts/copy.js"></script>
+      
+        <script src="../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../javascripts/archive-filter.js"></script>
+      <script defer src="../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

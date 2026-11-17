@@ -1,0 +1,1300 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/Deep-Learning/%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86/RDMA%E5%AD%A6%E4%B9%A0/">
+      
+      
+        <link rel="prev" href="../NVLink%E5%92%8CNVSwitch/">
+      
+      
+        <link rel="next" href="../%E6%98%BE%E5%8D%A1%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>硬件学习：RDMA - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rdma" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              硬件学习：RDMA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+  <a href="../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        DMA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rdma_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RDMA
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        具体优势
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        具体分析
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具体分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        核心流程
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l_key-r_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        L_Key 和 R_Key 说明
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-l_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        场景 1：普通的双边操作：只用 L_Key
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="场景 1：普通的双边操作：只用 L_Key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-l_key_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 1：两边都先注册内存，拿到各自的 L_Key
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-b-recv-wr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 2：节点 B 先提交“接收请求（Recv WR）”
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-a-send-wr" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 3：节点 A 提交“发送请求（Send WR）”
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4rnic-l_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 4：RNIC 硬件校验 L_Key，执行零拷贝收发
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        关键问题
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-r_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        场景 2：单边操作：必须用 R_Key
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="场景 2：单边操作：必须用 R_Key">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-b-r_key-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 1：节点 B 注册，把 R_Key 传给节点 A
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-a-l_key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 2：节点 A 注册，拿到 L_Key
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-a-rdma-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 3：节点 A 提交 RDMA WRITE 请求”
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4rnic" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        步骤 4：RNIC 硬件完成跨节点零拷贝写，对端完全无感知
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        总结
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        协议
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="协议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infiniband" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Infiniband
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roce" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        RoCE
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iwarp" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        iWARP
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Deep-Learning
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../Learning-NCCL/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    硬件知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="rdma">硬件学习：RDMA</h1>
+<div class="file-actions" data-image-edit-revision="e028016d2fbec8cc25feae222d1c440104589970d2a135a0c2ddb8a85a8a8a27" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86%5CRDMA%E5%AD%A6%E4%B9%A0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\硬件知识\RDMA学习.md">复制路径</span></div>
+
+<blockquote>
+<p>结合豆包学习，参考文章：<a href="https://zhuanlan.zhihu.com/p/648805252">https://zhuanlan.zhihu.com/p/648805252</a></p>
+</blockquote>
+<h2 id="dma">DMA</h2>
+<p>DMA 相比不用多说，外设对内存的读写过程可以不用CPU参与而直接进行，有了它以后，当我们的网卡想要从内存中拷贝数据时，除了一些必要的控制命令外，整个数据复制过程都是由DMA控制器完成的。</p>
+<p>过程跟CPU复制是一样的，只不过这次是把内存中的数据通过总线复制到DMA控制器内部的寄存器中，再复制到I/O设备的存储空间中。CPU除了关注一下这个过程的开始和结束以外，其他时间可以去做其他事情。</p>
+<figure class="img-center"><img src="../../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512184158.png" alt="左边是无 DMA，右边是有 DMA"><figcaption> 左边是无 DMA，右边是有 DMA </figcaption></figure>
+
+<h2 id="rdma_1">RDMA</h2>
+<p>RDMA（ Remote Direct Memory Access ）意为远程直接地址访问，通过RDMA，本端节点可以“直接”访问远端节点的内存。重点在于可以绕过 TCP/IP网络协议栈，大部分工作有硬件来去完成。</p>
+<p>下图是传统网络中，左边的节点在内存用户空间中的数据，需要经过CPU拷贝到内核空间的缓冲区中，然后才可以被网卡访问，这期间数据会经过软件实现的TCP/IP协议栈，加上各层头部和校验码，比如TCP头，IP头等。网卡通过DMA拷贝内核中的数据到网卡内部的缓冲区中，进行处理后通过物理链路发送给对端。</p>
+<p>对端收到数据后，会进行相反的过程：从网卡内部存储空间，将数据通过DMA拷贝到内存内核空间的缓冲区中，然后CPU会通过TCP/IP协议栈对其进行解析，将数据取出来拷贝到用户空间中。</p>
+<figure class="img-center"><img src="../../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512173822.png" alt="无 RDMA"><figcaption> 无 RDMA </figcaption></figure>
+
+<p>而有了 RDMA 之后，两端的CPU几乎不用参与数据传输过程（只参与控制面）。本端的网卡直接从内存的用户空间DMA拷贝数据到内部存储空间，然后硬件进行各层报文的组装后，通过物理链路发送到对端网卡。对端的RDMA网卡收到数据后，剥离各层报文头和校验码，通过DMA将数据直接拷贝到用户空间内存中。</p>
+<figure class="img-center"><img src="../../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512173845.png" alt="有 RMDA"><figcaption> 有 RMDA </figcaption></figure>
+
+<h2 id="_1">具体优势</h2>
+<p>RDMA主要应用在高性能计算（HPC）领域和大型数据中心当中，并且设备相对普通以太网卡要昂贵不少（比如Mellanox公司的Connext-X 5 100Gb PCIe网卡市价在4000元以上）。由于使用场景和价格的原因，RDMA与普通开发者和消费者的距离较远，目前主要是一些大型互联网企业在部署和使用。</p>
+<p>RDMA 的核心优势（后面会分析），主要是直接用户层传递，减少了来回数据拷贝、系统调用（导致上下文切换）等过程。</p>
+<p><img alt="" src="../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512174503.png" /></p>
+<ol>
+<li>0拷贝：指的是不需要在用户空间和内核空间中来回复制数据。</li>
+<li>内核Bypass：指的是IO（数据）流程可以绕过内核，即在用户层就可以把数据准备好并通知硬件准备发送和接收。避免了系统调用和上下文切换的开销。</li>
+</ol>
+<h2 id="_2">具体分析</h2>
+<p>上面大部分内容是复制参考文章。读到这里时，我就困惑了：这是怎么做到的？这样也太危险了？下面进行说明。</p>
+<h3 id="_3">核心流程</h3>
+<p><strong>RDMA 零拷贝的核心：内存注册（MR, Memory Region）+ 硬件内核旁路</strong>，使用 RDMA 流程：</p>
+<ol>
+<li>
+<p>前置授权：用户进程发起内存注册</p>
+<!-- blog-edit-end:385d440546cd4263:b22 -->
+<!-- blog-edit-start:385d440546cd4263:b23 -->
+<p>应用程序在收发数据前，先通过 RDMA 用户态驱动（libibverbs），向内核态的 RDMA 驱动，申请注册一段自己的用户空间内存，作为收发缓冲区。这也是回答了我之前担心直接用户态发送很危险，事实上相当于是用户要同意这样做，划分出一段空间给 RDMA 手法才可以。</p>
+<!-- blog-edit-end:385d440546cd4263:b23 -->
+<!-- blog-edit-start:385d440546cd4263:b24 -->
+</li>
+<li>
+<p>内核完成 2 个核心动作，给 RNIC 放行权限</p>
+<ul>
+<li><strong>页锁定（Memory Pinning）</strong>：将这段用户虚拟地址对应的物理内存页锁定，禁止操作系统将其换出到 swap 分区，保证 RNIC 的 DMA 访问时，物理地址始终有效。</li>
+<li><strong>地址映射与权限同步</strong>：将这段内存的「用户虚拟地址 → 物理地址」完整映射关系，同步给 RNIC 硬件；同时为这段内存分配<strong>本地密钥 L_Key、远程密钥 R_Key</strong>，并设置精细的访问权限（本地读 / 写、远程读 / 写等）。<strong>暂时看不懂可以忽略，后续进行说明。</strong></li>
+</ul>
+</li>
+<li>
+<p>数据路径：完全旁路内核，零拷贝收发</p>
+</li>
+</ol>
+<p><strong>下面这段也可以暂时不用管，后续说明</strong>。注册完成后，应用拿到注册内存的句柄和密钥，后续的报文收发，直接通过用户态 verbs 接口，把用户缓冲区的虚拟地址 + 密钥提交给 RNIC 的硬件队列：</p>
+<ul>
+<li>发送时：RNIC 硬件直接通过内置的地址翻译引擎，把用户虚拟地址转为物理地址，直接从用户空间内存读取数据、打包、发送，全程不需要内核参与，无任何内存拷贝。</li>
+<li>接收时：应用提前把注册好的用户缓冲区地址 + L_Key 提交到接收队列，RNIC 收到报文后，直接把数据写入对应的用户空间内存，再通过完成队列（CQ）通知应用，全程不经过内核，无拷贝。</li>
+</ul>
+<h3 id="l_key-r_key">L_Key 和 R_Key 说明</h3>
+<p>这两个 Key 是在第一步调用 <code>ibv_reg_mr</code>（注册内存区域）时，由 <strong>RDMA 内核驱动 + RNIC 硬件联合生成</strong>的随机/唯一值，直接绑定到刚注册的那段 Memory Region 上。</p>
+<p>注册完成后，驱动会返回给你一个 <code>struct ibv_mr</code> 结构体，里面就包含了：</p>
+<ul>
+<li><code>addr</code>：你注册的用户空间虚拟地址起始</li>
+<li><code>length</code>：注册的内存长度</li>
+<li><code>lkey</code>：<strong>本地密钥（Local Key）</strong></li>
+<li><code>rkey</code>：<strong>远程密钥（Remote Key）</strong></li>
+</ul>
+<h3 id="1-l_key">场景 1：普通的双边操作：只用 L_Key</h3>
+<p>双边操作是最像传统 Socket 的收发：<strong>本地发，对端必须提前发一个 Recv 请求“占位”</strong>，数据才能发过去。这种场景下，<strong>全程只用到 L_Key</strong>，R_Key 没用。</p>
+<p>以本地节点 A 给对端节点 B 发数据为例，说明 L_Key 怎么用：</p>
+<h4 id="1-l_key_1">步骤 1：两边都先注册内存，拿到各自的 L_Key</h4>
+<ul>
+<li>节点 A（发送方）：注册一段发送缓冲区 <code>buf_A</code>，拿到 <code>lkey_A</code>。</li>
+<li>节点 B（接收方）：注册一段接收缓冲区 <code>buf_B</code>，拿到 <code>lkey_B</code>。</li>
+</ul>
+<h4 id="2-b-recv-wr">步骤 2：节点 B 先提交“接收请求（Recv WR）”</h4>
+<p>节点 B 要构造一些信息：我准备好收数据了，放到用户空间 <code>buf_B</code> 里，这是我的门票 <code>lkey_B</code>。随后把这个请求提交到节点 B 的 RNIC 的<strong>接收队列（RQ）</strong>。</p>
+<p>这种操作可以提前批量进行。也就是一次性批量Post几百、几千个Recv请求到RQ里，相当于提前给硬件准备好一大堆空的“收件箱”，之后可以持续接收数据，不需要每次收数据前再重复操作。</p>
+<h4 id="3-a-send-wr">步骤 3：节点 A 提交“发送请求（Send WR）”</h4>
+<p>节点 A 类似，提交要发送的数据在哪段用户空间 <code>buf_A</code>，还有我的门票 <code>leky_A</code>，提交到节点 A 的 RNIC 的<strong>发送队列（SQ）</strong>。</p>
+<h4 id="4rnic-l_key">步骤 4：RNIC 硬件校验 L_Key，执行零拷贝收发</h4>
+<ul>
+<li>
+<p>节点 A 的 RNIC 从 SQ 拿到 Send WR：</p>
+<ol>
+<li>先查 <code>lkey_A</code>：是不是和 <code>buf_A</code> 这段 MR 绑定的？权限对不对（有没有本地读权限）？</li>
+<li>校验通过：直接用内置的地址翻译引擎，把 <code>buf_A</code> 的虚拟地址转成物理地址，<strong>直接从用户空间 <code>buf_A</code> 读数据</strong>，打包发往网络。</li>
+</ol>
+</li>
+<li>
+<p>节点 B 的 RNIC 收到数据，从 RQ 拿到之前的 Recv WR：</p>
+<ol>
+<li>查 <code>lkey_B</code>：是不是和 <code>buf_B</code> 绑定的？有没有本地写权限？</li>
+<li>校验通过：直接把数据<strong>写入用户空间 <code>buf_B</code></strong>，然后往<strong>完成队列（CQ）</strong>里塞一个“完成通知”。</li>
+</ol>
+</li>
+<li>
+<p>节点 B 的应用轮询 CQ，看到 wr_id=123 的通知，就知道数据已经到 <code>buf_B</code> 里了，直接读就行——全程没有内核参与，没有拷贝。</p>
+</li>
+</ul>
+<h4 id="_4">关键问题</h4>
+<details class="question">
+<summary>这样的步骤，节点A 需要先向节点B发一个发送请求才可以？这样节点B才知道有人要发我数据了。</summary>
+<p>不是这样，你把传统 TCP Socket 的逻辑套到了 RDMA 上，在 RDMA 中：<strong>B 可以在完全不知道谁要发、什么时候发、发什么内容的前提下，提前做好接收准备，之后随时可以接收任何匹配的Send数据，全程不需要A提前打招呼。</strong></p>
+<p>整个过程，接收方硬件只看自己本地有没有提前准备好的缓冲区，完全不关心“发送方有没有提前打招呼”。<strong>RDMA 报文是带着「目标唯一身份标识」的，B 的网卡硬件看到不是发给自己的包，直接硬件丢弃，根本不会往内存放、也不会进队列。</strong></p>
+<p>就类似 UDP 中的包头，只不过这个直接是 RDMA 网卡来做这个事情，不需要 CPU 操作。</p>
+</details>
+<h3 id="2-r_key">场景 2：单边操作：必须用 R_Key</h3>
+<p>单边操作是 RDMA 最“狠”的地方：<strong>本地节点直接读写对端节点的内存，对端的 CPU、内核完全不知道，也不需要参与</strong>。这种场景下，<strong>发起端要用自己的 L_Key，同时必须拿到对端的 R_Key</strong>。</p>
+<p>我们以“节点 A 直接往节点 B 的内存里写数据（RDMA WRITE）”为例，看 R_Key 怎么用：</p>
+<h4 id="1-b-r_key-a">步骤 1：节点 B 注册，把 R_Key 传给节点 A</h4>
+<p>节点 B 注册一段允许远程写入的缓冲区 <code>buf_B</code>，拿到 <code>lkey_B</code> 和 <code>rkey_B</code>。</p>
+<p><strong>关键一步</strong>：节点 B 需要通过<strong>带外通道</strong>（比如传统 Socket，或者先跑一次 Send/Recv），把三个信息告诉节点 A：</p>
+<ol>
+<li><code>buf_B</code> 的<strong>虚拟地址</strong></li>
+<li><code>buf_B</code> 的<strong>长度</strong></li>
+<li><code>rkey_B</code>（<strong>远程密钥</strong>）</li>
+</ol>
+<p>这就好比节点 B 给节点 A 寄了一张“专属门票”，说：“你拿这张票，可以直接来我家 <code>buf_B</code> 这个位置放东西，不用敲门。”</p>
+<h4 id="2-a-l_key">步骤 2：节点 A 注册，拿到 L_Key</h4>
+<p>节点 A 注册 <code>buf_A</code>（里面放要写的数据），拿到 <code>lkey_A</code>。</p>
+<h4 id="3-a-rdma-write">步骤 3：节点 A 提交 RDMA WRITE 请求”</h4>
+<p>节点 A 填的 Send WR 里，操作类型换成 <code>IBV_WR_RDMA_WRITE</code>，并且<strong>必须加上对端的信息</strong>：<br />
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">send_wr</span><span class="p">.</span><span class="n">opcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IBV_WR_RDMA_WRITE</span><span class="p">;</span><span class="w">  </span><span class="c1">// 操作类型：RDMA 写</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">send_wr</span><span class="p">.</span><span class="n">sg_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sg_entry</span><span class="p">;</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">sg_entry</span><span class="p">.</span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf_A</span><span class="p">;</span><span class="w">               </span><span class="c1">// 本地要发送的数据地址</span>
+</span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">sg_entry</span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
+</span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">sg_entry</span><span class="p">.</span><span class="n">lkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lkey_A</span><span class="p">;</span><span class="w">              </span><span class="c1">// 【关键1】本地的 L_Key（读本地用）</span>
+</span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span>
+</span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="c1">// 【关键2】对端的信息：远程虚拟地址 + 远程 R_Key</span>
+</span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span><span class="n">send_wr</span><span class="p">.</span><span class="n">wr</span><span class="p">.</span><span class="n">rdma</span><span class="p">.</span><span class="n">remote_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf_B_virtual_addr</span><span class="p">;</span><span class="w">  </span><span class="c1">// 节点 B 告诉它的远程地址</span>
+</span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span><span class="n">send_wr</span><span class="p">.</span><span class="n">wr</span><span class="p">.</span><span class="n">rdma</span><span class="p">.</span><span class="n">rkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rkey_B</span><span class="p">;</span><span class="w">                      </span><span class="c1">// 节点 B 给它的远程密钥</span>
+</span></code></pre></div></p>
+<p>调用 <code>ibv_post_send</code> 提交到 SQ。</p>
+<h4 id="4rnic">步骤 4：RNIC 硬件完成跨节点零拷贝写，对端完全无感知</h4>
+<ul>
+<li>
+<p>节点 A 的 RNIC 从 SQ 拿到请求：</p>
+<ol>
+<li>先校验 <code>lkey_A</code>：没问题，直接从本地 <code>buf_A</code> 读数据。</li>
+<li>把数据、<code>buf_B</code> 的远程地址、<code>rkey_B</code> 打包成 RDMA 报文，发往节点 B。</li>
+</ol>
+</li>
+<li>
+<p>节点 B 的 RNIC 收到报文：</p>
+<ol>
+<li><strong>硬件直接校验 <code>rkey_B</code></strong>：是不是和 <code>buf_B</code> 这段 MR 绑定的？有没有远程写权限？</li>
+<li>校验通过：直接把数据<strong>写入节点 B 的用户空间 <code>buf_B</code></strong>，<strong>不产生任何中断，不通知节点 B 的内核或应用</strong>。</li>
+<li>节点 B 的 RNIC 确认数据写入内存之后，会发送硬件确认</li>
+</ol>
+</li>
+<li>
+<p>节点 A 的 RNIC 收到 ACK 消息后，往自己的 CQ 里塞一个完成通知；如果没等到，那就重传。</p>
+</li>
+</ul>
+<h3 id="_5">总结</h3>
+<p>写这个文章我才感觉，其实 RDMA 也没啥，他也要加包头之类，和 UDP 协议很像，只不过是专门的 RDMA 网卡在做，而不是 CPU 重度参与了。</p>
+<h2 id="_6">协议</h2>
+<p><strong>以下直接是复制参考文章内容。</strong></p>
+<p>RDMA本身指的是一种技术，具体协议层面，包含Infiniband（IB），RDMA over Converged Ethernet（RoCE）和internet Wide Area RDMA Protocol（iWARP）。三种协议都符合RDMA标准，使用相同的上层接口，在不同层次上有一些差别。</p>
+<h3 id="infiniband">Infiniband</h3>
+<p>2000年由IBTA（InfiniBand Trade Association）提出的IB协议是当之无愧的核心，其规定了一整套完整的链路层到传输层（非传统OSI七层模型的传输层，而是位于其之上）规范，但是其无法兼容现有以太网，除了需要支持IB的网卡之外，企业如果想部署的话还要重新购买配套的交换设备。</p>
+<h3 id="roce">RoCE</h3>
+<p>RoCE从英文全称就可以看出它是基于以太网链路层的协议，v1版本网络层仍然使用了IB规范，而v2使用了UDP+IP作为网络层，使得数据包也可以被路由。RoCE可以被认为是IB的“低成本解决方案”，将IB的报文封装成以太网包进行收发。由于RoCE v2可以使用以太网的交换设备，所以现在在企业中应用也比较多，但是相同场景下相比IB性能要有一些损失。</p>
+<h3 id="iwarp">iWARP</h3>
+<p>iWARP协议是IETF基于TCP提出的，因为TCP是面向连接的可靠协议，这使得iWARP在面对有损网络场景（可以理解为网络环境中可能经常出现丢包）时相比于RoCE v2和IB具有更好的可靠性，在大规模组网时也有明显的优势。但是大量的TCP连接会耗费很多的内存资源，另外TCP复杂的流控等机制会导致性能问题，所以从性能上看iWARP要比UDP的RoCE v2和IB差。</p>
+<p>需要注意的是，虽然有软件实现的RoCE和iWARP协议，但是真正商用时上述几种协议都需要专门的硬件（网卡）支持。</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../NVLink%E5%92%8CNVSwitch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NVLink 和 NVSwitch.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                NVLink 和 NVSwitch.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E6%98%BE%E5%8D%A1%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/" class="md-footer__link md-footer__link--next" aria-label="Next: 显卡通信方式.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                显卡通信方式.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

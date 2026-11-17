@@ -1,0 +1,1018 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/07.%E5%90%8C%E5%BC%82%E7%AD%96%E7%95%A5%E5%92%8C%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7/">
+      
+      
+        <link rel="prev" href="../06.Actor-Critic/">
+      
+      
+        <link rel="next" href="../08.TRPO%E5%92%8CPPO/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>同异策略和重要性采样 - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              同异策略和重要性采样
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+  <a href="../../..">加载栏目目录…</a>
+</div>
+<script src="../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        同策略和异策略
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        重要性采样
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="重要性采样">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        重要性采样存在的原因
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        重要性采样正式说明
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        重要性采样的使用
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../01.%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E6%A8%A1%E5%9E%8B/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    强化学习
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="_1">同异策略和重要性采样</h1>
+<div class="file-actions" data-image-edit-revision="9604a8b13b4df550f86967c7950f5ac4d38accb4be8ef8bee72aebef9d8de7d5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5C07.%E5%90%8C%E5%BC%82%E7%AD%96%E7%95%A5%E5%92%8C%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\强化学习\07.同异策略和重要性采样.md">复制路径</span></div>
+
+<h2 id="_2">同策略和异策略</h2>
+<p>强化学习中经常会见到的词：同策略（on-policy）和异策略（off-policy）。本质其实就是用来训练/计算的数据是不是在当前这个策略下得出来的。</p>
+<p>回顾以前的方法，比如 REINFORCE、Actor-Critic，这些方法都是确定好当前的策略，然后采样数据进行训练/计算，再去更新策略。等策略更新完之后，以前的数据用完就扔，不能拿来反复训。所以这些方法都是同策略的。</p>
+<p>再比如最经典的例子，就是时序差分 TD 的两种方法：SARSA 和 Q-Learning，前者是同策略，后者是异策略。</p>
+<details class="note" open="open">
+<summary>注意事项</summary>
+<p>一定要注意了：同策略/异策略和在线/离线学习是两码事情！！</p>
+<p>在线/离线是指，能否可以使用预先收集好的、固定的静态数据集中学习。</p>
+<p>同策略/异策略是指，用来更新智能体策略的数据，是不是由当前智能体自己（目标策略）生成的。</p>
+<p><strong>一定要注意的是：异策略和离线学习不是一码事情！！</strong> 后续一定要始终记住这句话。</p>
+</details>
+<p>来看 SASAR，它的迭代公式为:</p>
+<div class="arithmatex">\[
+Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t))
+\]</div>
+<p>可以看出，这里的 <span class="arithmatex">\(a_{t+1}\)</span> 是完全依照当前策略 <span class="arithmatex">\(\pi\)</span> 的。所以 SASAR 是同策略的。换句话说，学的是「整条连贯轨迹」，动作之间强绑定。以前在旧的策略下采集的数据，就没有用了。</p>
+<p>再看 Q-learning，它的迭代公式为：</p>
+<div class="arithmatex">\[
+Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t))
+\]</div>
+<p>这里的 <span class="arithmatex">\(a_{t+1}\)</span> 和当前策略并没有关系，它假设下一步直接走全局最优动作，所以它采集的数据不一定就是按照现有策略，只要这样，那么就是异策略的。</p>
+<h2 id="_3">重要性采样</h2>
+<h3 id="_4">重要性采样存在的原因</h3>
+<p>回顾 REINFORCE 的公式和它的流程：</p>
+<div class="arithmatex">\[
+\nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (G_{t}^{n}) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
+\]</div>
+<p><img alt="策略梯度" src="../../../asset/image/5b31549c1cb5546a6165cff909ac3f4f/20260424184226.png" /></p>
+<p>很尴尬的一点是：样本只是用一次，只要 <span class="arithmatex">\(\theta\)</span> 发生变化，旧的策略 <span class="arithmatex">\(\pi_\theta\)</span> 下采集的数据，就不能用了。采集数据可是一个要花费大量时间的工作，所以导致整个算法效率很低。</p>
+<p>所以能否找到旧策略 <span class="arithmatex">\(\theta\)</span> 下采集的数据和新策略 <span class="arithmatex">\(\theta^{'}\)</span> 之间的关系，把数据转换一下，可以用在新策略上？这就是重要性采样想做的事情。</p>
+<h3 id="_5">重要性采样正式说明</h3>
+<p>下面开始正式说明，主要参考以下链接，大部分内容直接摘抄，添加一些自己的看法：</p>
+<ul>
+<li><a href="https://datawhalechina.github.io/easy-rl/#/chapter5/chapter5">https://datawhalechina.github.io/easy-rl/#/chapter5/chapter5</a></li>
+</ul>
+<p>假设我们有一个函数 <span class="arithmatex">\(f(x)\)</span>，要计算从分布 <span class="arithmatex">\(p\)</span> 采样 <span class="arithmatex">\(x\)</span>，再把 <span class="arithmatex">\(x\)</span> 代入 <span class="arithmatex">\(f\)</span> ，得到 <span class="arithmatex">\(f(x)\)</span>。我们该怎么计算 <span class="arithmatex">\(f(x)\)</span> 的期望值呢？假设我们不能对分布 <span class="arithmatex">\(p\)</span> 做积分，但可以从分布 <span class="arithmatex">\(p\)</span> 采样一些数据 <span class="arithmatex">\(x^i\)</span>。把 <span class="arithmatex">\(x^i\)</span> 代入 <span class="arithmatex">\(f(x)\)</span>，取它的平均值，就可以近似 <span class="arithmatex">\(f(x)\)</span> 的期望值。</p>
+<p>但现在假设我们不能从分布 <span class="arithmatex">\(p\)</span> 采样数据，只能从另外一个分布 <span class="arithmatex">\(q\)</span> 采样数据。</p>
+<blockquote>
+<p>个人注解：这里的分布就可以理解成策略 <span class="arithmatex">\(\pi\)</span>，不同策略有不同分布。</p>
+</blockquote>
+<p>但如果我们从 <span class="arithmatex">\(q\)</span> 采样 <span class="arithmatex">\(x^i\)</span>，就直接平均，因为我们要求的是 <span class="arithmatex">\(x\)</span> 从 <span class="arithmatex">\(p\)</span> 采样出来的期望。所以我们做一个修正：</p>
+<div class="arithmatex">\[
+    \mathbb{E}_{x \sim p}[f(x)] = \int f(x) p(x) \mathrm{d}x=\int f(x) \frac{p(x)}{q(x)} q(x) \mathrm{d}x=\mathbb{E}_{x \sim q}[f(x){\frac{p(x)}{q(x)}}]
+\]</div>
+<p>就可得</p>
+<div class="arithmatex">\[
+\mathbb{E}_{x \sim p}[f(x)]=\mathbb{E}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]
+\]</div>
+<p>我们就可以写成对 <span class="arithmatex">\(q\)</span> 里面所采样出来的 <span class="arithmatex">\(x\)</span> 取期望值。我们从 <span class="arithmatex">\(q\)</span> 里面采样 <span class="arithmatex">\(x\)</span>，再计算 <span class="arithmatex">\(f(x) \frac{p(x)}{q(x)}\)</span>，再取期望值。</p>
+<p>其中 <span class="arithmatex">\(\frac{p(x)}{q(x)}\)</span> 是<strong>重要性权重（importance weight）</strong>，需要乘一个来修正这两个分布的差异。<span class="arithmatex">\(q(x)\)</span> 可以是任何分布，唯一的限制就是 <span class="arithmatex">\(q(x)\)</span> 的概率是 0 的时候，<span class="arithmatex">\(p(x)\)</span> 的概率不为 0，不然会没有定义。</p>
+<p>重要性采样有一些问题。虽然我们可以把 <span class="arithmatex">\(p\)</span> 换成任何的 <span class="arithmatex">\(q\)</span>。但是在实现上， <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span> 的差距不能太大。差距太大，会导致方差过大。两个随机变量的平均值相同，并不代表它们的方差相同。</p>
+<p>方差计算如下，将 <span class="arithmatex">\(f(x)\)</span> 和 <span class="arithmatex">\(f(x) \frac{p(x)}{q(x)}\)</span> 代入方差的公式 <span class="arithmatex">\(\operatorname{Var}[X]=E\left[X^{2}\right]-(E[X])^{2}\)</span>，可得</p>
+<div class="arithmatex">\[
+    \operatorname{Var}_{x \sim p}[f(x)]=\mathbb{E}_{x \sim p}\left[f(x)^{2}\right]-\left(\mathbb{E}_{x \sim p}[f(x)]\right)^{2}
+\]</div>
+<div class="arithmatex">\[
+    \begin{aligned}
+        \operatorname{Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right] &amp;=\mathbb{E}_{x \sim q}\left[\left(f(x) \frac{p(x)}{q(x)}\right)^{2}\right]-\left(\mathbb{E}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]\right)^{2} \\
+        &amp;=\mathbb{E}_{x \sim p}\left[f(x)^{2} \frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x \sim p}[f(x)]\right)^{2}
+        \end{aligned}
+\]</div>
+<p>差别在于第一项， 多乘了<span class="arithmatex">\(\frac{p(x)}{q(x)}\)</span>，如果 <span class="arithmatex">\(\frac{p(x)}{q(x)}\)</span> 差距很大，<span class="arithmatex">\(f(x)\frac{p(x)}{q(x)}\)</span> 的方差就会很大。所以理论上它们的期望值一样，但是如果我们采样的次数不够多，因为它们的方差差距是很大的，所以我们还是有可能得到差别非常大的结果。</p>
+<h3 id="_6">重要性采样的使用</h3>
+<p>现在要做的就是把重要性采样用在异策略的情况中，把同策略训练的算法改成异策略训练的算法。</p>
+<p>怎么改呢？如下所示，我们有新策略 <span class="arithmatex">\(\pi_{\theta}\)</span> 与环境交互，采样出轨迹 <span class="arithmatex">\(\tau\)</span>，计算 <span class="arithmatex">\(G(\tau) \nabla \log p_{\theta}(\tau)\)</span>。现在我们有旧策略 <span class="arithmatex">\(\pi_{\theta'}\)</span>，采样的数据，之前不能用，现在可以进行如下调整：</p>
+<div class="arithmatex">\[
+    \nabla J_{\theta} = \mathbb{E}_{\tau \sim p_{\theta^{\prime}(\tau)}}\left[\frac{p_{\theta}(\tau)}{p_{\theta^{\prime}}(\tau)} G(\tau) \nabla \log p_{\theta}(\tau)\right]
+\]</div>
+<p>这里的公式中 <span class="arithmatex">\(p_\theta(\tau)\)</span> 和 <span class="arithmatex">\(p_{\theta'}(\tau)\)</span> 分别表示轨迹 <span class="arithmatex">\(\tau\)</span> 用策略 <span class="arithmatex">\(\pi_\theta\)</span> 和 <span class="arithmatex">\(\pi_{\theta'}\)</span> 采样出来的概率。这个可以用直接采样的数据去算占比，所以是可以算出来的。</p>
+<p>实际在做策略梯度的时候，我们并不是给整个轨迹 <span class="arithmatex">\(\tau\)</span> 一样的分数，而是将每一个状态-动作对分开计算。实际更新梯度的过程可写为（现在换成 Advantage Actor-Critic 的形式）：</p>
+<div class="arithmatex">\[
+    \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}}\left[A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]
+\]</div>
+<p>同理，可以使用：</p>
+<div class="arithmatex">\[
+    \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(s_{t}, a_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right] 
+\]</div>
+<p>拆解 <span class="arithmatex">\(p_{\theta}\left(s_{t}, a_{t}\right)\)</span> 和 <span class="arithmatex">\(p_{\theta'}\left(s_{t}, a_{t}\right)\)</span>，即</p>
+<div class="arithmatex">\[
+    \begin{aligned}
+        p_{\theta}\left(s_{t}, a_{t}\right)&amp;=p_{\theta}\left(a_{t}|s_{t}\right) p_{\theta}(s_t) \\
+        p_{\theta'}\left(s_{t}, a_{t}\right)&amp;=p_{\theta'}\left(a_{t}|s_{t}\right) p_{\theta'}(s_t) 
+        \end{aligned}
+\]</div>
+<p>于是我们可得</p>
+<div class="arithmatex">\[
+    \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} \frac{p_{\theta}\left(s_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]
+\]</div>
+<p>这里需要做的一件事情是，假设模型是 <span class="arithmatex">\(\theta\)</span> 的时候，我们看到 <span class="arithmatex">\(s_t\)</span> 的概率，与模型是 <span class="arithmatex">\(\theta'\)</span>  的时候，我们看到 <span class="arithmatex">\(s_t\)</span> 的概率是一样的，即 <span class="arithmatex">\(p_{\theta}(s_t)=p_{\theta'}(s_t)\)</span>。因为<span class="arithmatex">\(p_{\theta}(s_t)\)</span>和<span class="arithmatex">\(p_{\theta'}(s_t)\)</span>是一样的，所以我们可得</p>
+<div class="arithmatex">\[
+    \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]
+\]</div>
+<p><span class="arithmatex">\(p_{\theta}(a_t|s_t)\)</span> 很好算，我们有参数 <span class="arithmatex">\(\theta\)</span> ，它就是一个策略网络。我们输入状态 <span class="arithmatex">\(s_t\)</span> 到策略网络中，它会输出每一个 <span class="arithmatex">\(a_t\)</span> 的概率。所以我们只要知道<span class="arithmatex">\(\theta\)</span> 和 <span class="arithmatex">\(\theta'\)</span> 的参数就可以计算 <span class="arithmatex">\(\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)}\)</span>。因此就可以用旧策略了。</p>
+<p>另外，从梯度计算反推回原函数，得出如下公式，这个在下一章节会用到：</p>
+<div class="arithmatex">\[
+    J^{\theta^{\prime}}(\theta)=\mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]
+\]</div>
+<details class="question">
+<summary>为什么我们可以假设 <span class="arithmatex">\(p_{\theta}(s_t)\)</span> 和 <span class="arithmatex">\(p_{\theta'}(s_t)\)</span> 是一样的？</summary>
+<p>因为状态往往与采取的动作是没有太大的关系的。比如我们玩不同的雅达利游戏，其实看到的游戏画面都是差不多的，所以也许不同的 <span class="arithmatex">\(\theta\)</span>  对 <span class="arithmatex">\(s_t\)</span> 是没有影响的。但更直接的理由就是 <span class="arithmatex">\(p_{\theta}(s_t)\)</span> 很难算，<span class="arithmatex">\(p_{\theta}(s_t)\)</span>有一个参数 <span class="arithmatex">\(\theta\)</span>，它表示的是我们用 <span class="arithmatex">\(\theta\)</span> 去与环境交互，计算 <span class="arithmatex">\(s_t\)</span> 出现的概率，而这个概率很难算。尤其是如果输入的是图片，同样的 <span class="arithmatex">\(s_t\)</span> 可能根本就不会出现第二次。我们根本没有办法估计<span class="arithmatex">\(p_{\theta}(s_t)\)</span>，所以干脆就无视这个问题。</p>
+<blockquote>
+<p>个人注解，意会即可，不理解也就算了，没必要在这上面花费时间。</p>
+</blockquote>
+</details>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../06.Actor-Critic/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 06.Actor-Critic.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                06.Actor-Critic.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08.TRPO%E5%92%8CPPO/" class="md-footer__link md-footer__link--next" aria-label="Next: 08.TRPO 和 PPO.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                08.TRPO 和 PPO.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../javascripts/copy.js"></script>
+      
+        <script src="../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>

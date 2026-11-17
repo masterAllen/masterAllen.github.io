@@ -1,0 +1,1138 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Welcome to Allen Hong's Notes. This site records some of my notes. Hope it can help you a bit. You're also welcome to discuss with me and help point out some of this site's issues.">
+      
+      
+        <meta name="author" content="Allen Hong">
+      
+      
+        <link rel="canonical" href="https://masterallen.github.io/%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/wiki/03.heap/05.large/01.large_bin_attack/">
+      
+      
+        <link rel="prev" href="../../04.unsorted/02.house_of_storm/">
+      
+      
+        <link rel="next" href="../../06.consolidate/01.house_of_einherjar/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.40">
+    
+    
+      
+        <title>large bin attack - Allen Hong's Notes</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/modern/main.fba56155.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WSXPFTNRTD"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WSXPFTNRTD",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WSXPFTNRTD",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#large-bin-attack" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../../.." title="Allen Hong&#x27;s Notes" class="md-header__button md-logo" aria-label="Allen Hong's Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Allen Hong's Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              large bin attack
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/masterAllen" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    My Github Link
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    
+    <div class="custom-sidebar-shell custom-page-shell md-grid">
+        
+          
+            
+            <div class="md-sidebar md-sidebar--primary" data-md-type="navigation" >
+              <div class="md-sidebar__scrollwrap">
+                <div class="md-sidebar__inner">
+                  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+  <a href="../../../../../..">加载栏目目录…</a>
+</div>
+<script src="../../../../../../javascripts/shared-navigation.js"></script>
+
+<script src="../../../../../../javascripts/sidebar-title-tooltip.js"></script>
+<script src="../../../../../../javascripts/sidebar-scroll-position.js"></script>
+                </div>
+              </div>
+            </div>
+          
+        
+    </div>
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    <div class="md-container" data-md-component="container"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-site-root="../../../../../../"
+         data-navigation-hidden="false">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../Main/" class="md-tabs__link">
+          
+  
+  Main
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../../" class="md-tabs__link">
+          
+  
+  系统性知识
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  书籍记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95/" class="md-tabs__link">
+          
+  
+  算法记录
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../CheatSheet/" class="md-tabs__link">
+          
+  
+  CheatSheet
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../Language/" class="md-tabs__link">
+          
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../Vision/CMOS%E7%9A%84%E7%90%86%E8%A7%A3/01.CMOS%E5%92%8CCCD%E7%A9%B6%E7%AB%9F%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA%E9%87%8C/" class="md-tabs__link">
+          
+  
+  Vision
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../IP%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/%E6%95%B4%E4%BD%93%E7%9B%AE%E5%BD%95%E6%A0%91/" class="md-tabs__link">
+          
+  
+  IP 地理定位
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../About/" class="md-tabs__link">
+          
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E5%BD%92%E6%A1%A3/%E4%BF%AE%E6%94%B9%E6%97%B6%E9%97%B4/" class="md-tabs__link">
+          
+  
+  归档
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <div class="custom-page-shell md-grid">
+        <div class="custom-main-area">
+          <main class="md-main" data-md-component="main">
+            <div class="md-main__inner md-grid">
+              
+                
+                  
+                  <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                    <div class="md-sidebar__scrollwrap">
+                      
+                        
+                        
+                        
+                          
+                        
+                        
+                          <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                          <div class="md-sidebar-button__wrapper">
+                            <label class="md-sidebar-button" for="__toc"></label>
+                          </div>
+                        
+                      
+                      <div class="md-sidebar__inner">
+                        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fd_nextsize-bk_nextsize" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        理解 fd_nextsize 和 bk_nextsize
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        原理
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#glibc230" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        glibc2.30 前的攻击
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glibc229" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        glibc2.29 后的攻击
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        攻击后续
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        参考资料
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              
+                <div class="md-content" data-md-component="content">
+                  
+                    
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    欢迎
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    系统性知识
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../../compilebackdoor/%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    信息安全
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    wiki
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    03.heap
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    05.large
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+                  
+                  <article class="md-content__inner md-typeset">
+                    
+                      
+                        
+  
+  
+
+
+<h1 id="large-bin-attack">large bin attack</h1>
+<div class="file-actions" data-image-edit-revision="1b92d0b60ef84bc492cc7367e11a1268b90d46720a4cb9c1cd911363dc653aa2" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C05.large%5C01.large_bin_attack.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C05.large" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\05.large\01.large_bin_attack.md">复制路径</span></div>
+
+<p>建议先看一下 unsorted bin attack（<a href="../../04.unsorted/01.unsorted_bin_attack/">个人笔记</a>），然后也要了解 large bin，他除了 fd 和 bk 指针，还有一个叫 fd_nextsize 和 bk_nextsize 指针。</p>
+<h2 id="fd_nextsize-bk_nextsize">理解 fd_nextsize 和 bk_nextsize</h2>
+<div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/*</span>
+</span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="cm">  This struct declaration is misleading (but accurate and necessary).</span>
+</span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="cm">  It declares a &quot;view&quot; into memory allowing access to necessary</span>
+</span><span id="__span-0-4"><span class="linenos" data-linenos=" 4 "></span><span class="cm">  fields at known offsets from a given base. See explanation below.</span>
+</span><span id="__span-0-5"><span class="linenos" data-linenos=" 5 "></span><span class="cm">*/</span>
+</span><span id="__span-0-6"><span class="linenos" data-linenos=" 6 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">malloc_chunk</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="n">INTERNAL_SIZE_T</span><span class="w">      </span><span class="n">prev_size</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Size of previous chunk (if free).  */</span>
+</span><span id="__span-0-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="n">INTERNAL_SIZE_T</span><span class="w">      </span><span class="n">size</span><span class="p">;</span><span class="w">       </span><span class="cm">/* Size in bytes, including overhead. */</span>
+</span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">malloc_chunk</span><span class="o">*</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span><span class="w">         </span><span class="cm">/* double links -- used only if free. */</span>
+</span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">malloc_chunk</span><span class="o">*</span><span class="w"> </span><span class="n">bk</span><span class="p">;</span>
+</span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="cm">/* Only used for large blocks: pointer to next larger size.  */</span>
+</span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">malloc_chunk</span><span class="o">*</span><span class="w"> </span><span class="n">fd_nextsize</span><span class="p">;</span><span class="w"> </span><span class="cm">/* double links -- used only if free. */</span>
+</span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">malloc_chunk</span><span class="o">*</span><span class="w"> </span><span class="n">bk_nextsize</span><span class="p">;</span>
+</span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span><span class="p">};</span>
+</span></code></pre></div>
+<p>要理解这两个指针，<strong>首先要明白 large bin 的大小属于是一个范围</strong>，即一个 index 下的块大小不是唯一的，large bin 从 64 开始：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>index   块的范围
+</span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>64  [0x400,0x440) 0x40
+</span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>65  [0x440,0x480) 0x40
+</span></code></pre></div>
+<p>所以这里的 fd_next_size 相当于是跨度大的链表指针，fd 用于跨度小的链表指针。</p>
+<h2 id="_1">原理</h2>
+<p>unsorted bin 的攻击是某个块脱链的时候，我们进行攻击。而 large bin 则相反，<strong>是某个块被插入的时候，有可能被攻击</strong>。</p>
+<p>这个是具体的插入代码，不同的 size 有不同的处理（比如假设比所有 large bin 都要写，有一个单独的插入逻辑）：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">in_smallbin_range</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
+</span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
+</span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">victim_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smallbin_index</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+</span><span id="__span-2-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">bck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bin_at</span><span class="p">(</span><span class="n">av</span><span class="p">,</span><span class="w"> </span><span class="n">victim_index</span><span class="p">);</span>
+</span><span id="__span-2-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">fwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span><span id="__span-2-6"><span class="linenos" data-linenos=" 6 "></span><span class="p">}</span>
+</span><span id="__span-2-7"><span class="linenos" data-linenos=" 7 "></span><span class="k">else</span>
+</span><span id="__span-2-8"><span class="linenos" data-linenos=" 8 "></span><span class="p">{</span>
+</span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="c1">// 如果不再smallbin的范围，也就是说在large bin 的范围</span>
+</span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span>
+</span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">victim_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">largebin_index</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+</span><span id="__span-2-12"><span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">bck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bin_at</span><span class="p">(</span><span class="n">av</span><span class="p">,</span><span class="w"> </span><span class="n">victim_index</span><span class="p">);</span>
+</span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">fwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span>
+</span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="c1">// 如果large bin 非空，在largbin进行按顺序插入</span>
+</span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fwd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">bck</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-17"><span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="n">size</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">PREV_INUSE</span><span class="p">;</span>
+</span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">-&gt;</span><span class="n">size</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">NON_MAIN_ARENA</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-19"><span class="linenos" data-linenos="19 "></span>
+</span><span id="__span-2-20"><span class="linenos" data-linenos="20 "></span><span class="w">        </span><span class="c1">// large bin 从大到小排列</span>
+</span><span id="__span-2-21"><span class="linenos" data-linenos="21 "></span><span class="w">        </span><span class="c1">// 如果进入 if，说明要插入的 size 是 largebin 最小，需要加入到尾部</span>
+</span><span id="__span-2-22"><span class="linenos" data-linenos="22 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-23"><span class="linenos" data-linenos="23 "></span><span class="w">            </span><span class="n">fwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="p">;</span>
+</span><span id="__span-2-24"><span class="linenos" data-linenos="24 "></span><span class="w">            </span><span class="n">bck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>
+</span><span id="__span-2-25"><span class="linenos" data-linenos="25 "></span>
+</span><span id="__span-2-26"><span class="linenos" data-linenos="26 "></span><span class="w">            </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span><span id="__span-2-27"><span class="linenos" data-linenos="27 "></span><span class="w">            </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="p">;</span>
+</span><span id="__span-2-28"><span class="linenos" data-linenos="28 "></span><span class="w">            </span><span class="c1">//最大 size 的 chunk 的 bk_nextsize，和原来最小 chunk 的 bk_nextsize 都指向 victim</span>
+</span><span id="__span-2-29"><span class="linenos" data-linenos="29 "></span><span class="w">            </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-2-30"><span class="linenos" data-linenos="30 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-31"><span class="linenos" data-linenos="31 "></span><span class="w">        </span><span class="k">else</span><span class="w"> </span>
+</span><span id="__span-2-32"><span class="linenos" data-linenos="32 "></span><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-2-33"><span class="linenos" data-linenos="33 "></span><span class="w">            </span><span class="n">assert</span><span class="p">((</span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">size</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">NON_MAIN_ARENA</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-34"><span class="linenos" data-linenos="34 "></span>
+</span><span id="__span-2-35"><span class="linenos" data-linenos="35 "></span><span class="w">            </span><span class="c1">// 从大到小（从头到尾）找到合适的位置</span>
+</span><span id="__span-2-36"><span class="linenos" data-linenos="36 "></span><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-37"><span class="linenos" data-linenos="37 "></span><span class="w">                </span><span class="n">fwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="p">;</span>
+</span><span id="__span-2-38"><span class="linenos" data-linenos="38 "></span><span class="w">                </span><span class="n">assert</span><span class="p">((</span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">size</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">NON_MAIN_ARENA</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</span><span id="__span-2-39"><span class="linenos" data-linenos="39 "></span><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-40"><span class="linenos" data-linenos="40 "></span><span class="w">            </span><span class="c1">// 如果size刚好相等，就直接加入到其后面省的改fd_nextsize和bk_nextsize了</span>
+</span><span id="__span-2-41"><span class="linenos" data-linenos="41 "></span><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span>
+</span><span id="__span-2-42"><span class="linenos" data-linenos="42 "></span><span class="w">                </span><span class="n">fwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span><span id="__span-2-43"><span class="linenos" data-linenos="43 "></span><span class="w">            </span><span class="k">else</span>
+</span><span id="__span-2-44"><span class="linenos" data-linenos="44 "></span><span class="w">            </span><span class="p">{</span>
+</span><span id="__span-2-45"><span class="linenos" data-linenos="45 "></span><span class="w">                </span><span class="c1">// size不相等，即size&gt;fwd-&gt;size，把victim加入到纵向链表中</span>
+</span><span id="__span-2-46"><span class="linenos" data-linenos="46 "></span><span class="w">                </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="p">;</span>
+</span><span id="__span-2-47"><span class="linenos" data-linenos="47 "></span><span class="w">                </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="p">;</span>
+</span><span id="__span-2-48"><span class="linenos" data-linenos="48 "></span>
+</span><span id="__span-2-49"><span class="linenos" data-linenos="49 "></span><span class="w">                </span><span class="c1">// glibc2.30 后增加</span>
+</span><span id="__span-2-50"><span class="linenos" data-linenos="50 "></span><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__glibc_unlikely</span><span class="p">(</span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">fwd</span><span class="p">))</span>
+</span><span id="__span-2-51"><span class="linenos" data-linenos="51 "></span><span class="w">                    </span><span class="n">malloc_printerr</span><span class="p">(</span><span class="s">&quot;malloc(): largebin double linked list corrupted (nextsize)&quot;</span><span class="p">);</span>
+</span><span id="__span-2-52"><span class="linenos" data-linenos="52 "></span>
+</span><span id="__span-2-53"><span class="linenos" data-linenos="53 "></span><span class="w">                </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-2-54"><span class="linenos" data-linenos="54 "></span><span class="w">                </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-2-55"><span class="linenos" data-linenos="55 "></span><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-2-56"><span class="linenos" data-linenos="56 "></span><span class="w">            </span><span class="n">bck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>
+</span><span id="__span-2-57"><span class="linenos" data-linenos="57 "></span><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-2-58"><span class="linenos" data-linenos="58 "></span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-59"><span class="linenos" data-linenos="59 "></span><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="c1">//如果large bin 为空，将victim加入到纵向列表</span>
+</span><span id="__span-2-60"><span class="linenos" data-linenos="60 "></span><span class="w">        </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-2-61"><span class="linenos" data-linenos="61 "></span><span class="p">}</span>
+</span><span id="__span-2-62"><span class="linenos" data-linenos="62 "></span><span class="c1">//#define mark_bin(m, i)    ((m)-&gt;binmap[idx2block (i)] |= idx2bit (i))</span>
+</span><span id="__span-2-63"><span class="linenos" data-linenos="63 "></span><span class="n">mark_bin</span><span class="p">(</span><span class="n">av</span><span class="p">,</span><span class="w"> </span><span class="n">victim_index</span><span class="p">);</span><span class="w"> </span><span class="c1">//把victim加入到的bin的表示为非空</span>
+</span><span id="__span-2-64"><span class="linenos" data-linenos="64 "></span><span class="c1">//把victim加入到large bin的链表中</span>
+</span><span id="__span-2-65"><span class="linenos" data-linenos="65 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="p">;</span>
+</span><span id="__span-2-66"><span class="linenos" data-linenos="66 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="p">;</span>
+</span><span id="__span-2-67"><span class="linenos" data-linenos="67 "></span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-2-68"><span class="linenos" data-linenos="68 "></span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="glibc230">glibc2.30 前的攻击</h3>
+<p>unsorted chunk 中原来有一个块，我们叫做 X，然后让 X 脱链，它进入 large bin 的时候，根据不同的 size 情况有不同的插入操作。</p>
+<p>总之有一个控制流能进行如下的攻击，这里的 <code>victim</code> 就是 X，我们不用控制它，这里的 <code>fwd</code> 是原来就在 large bin 的块，<strong>我们需要控制 <code>fwd</code>。</strong></p>
+<p><img alt="" src="../../../../../../asset/image/3607e4d3285530ddc041da2c1034550c/20260128112057.png" /></p>
+<p>从上图看，我们可以在<strong>两个 target 地址上写入 <code>victim</code>，即写入堆的某个地址。</strong></p>
+<h3 id="glibc229">glibc2.29 后的攻击</h3>
+<p>glibc2.29 做了检查，也就是我们不能随便修改 <code>fwd</code> 里面的内容了：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="p">;</span>
+</span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="p">;</span>
+</span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>
+</span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span><span class="c1">// glibc2.30 后增加</span>
+</span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__glibc_unlikely</span><span class="p">(</span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">fwd</span><span class="p">))</span>
+</span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">malloc_printerr</span><span class="p">(</span><span class="s">&quot;malloc(): largebin double linked list corrupted (nextsize)&quot;</span><span class="p">);</span>
+</span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span>
+</span><span id="__span-3-8"><span class="linenos" data-linenos="8 "></span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-3-9"><span class="linenos" data-linenos="9 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span></code></pre></div>
+<p>但是回看原理这一节最开始给的大段代码，如果要插入的块比 largebin 所有的块都要小，那么代码是：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// large bin 从大到小排列</span>
+</span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="c1">// 如果进入 if，说明要插入的 size 是 largebin 最小，需要加入到尾部</span>
+</span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">fwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="p">;</span>
+</span><span id="__span-4-5"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">bck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>
+</span><span id="__span-4-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-4-7"><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">;</span>
+</span><span id="__span-4-8"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="p">;</span>
+</span><span id="__span-4-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="c1">//最大 size 的 chunk 的 bk_nextsize，和原来最小 chunk 的 bk_nextsize 都指向 victim</span>
+</span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span><span class="p">}</span>
+</span></code></pre></div>
+<p>这里的 <code>fwd-&gt;fd</code> 也是 largebin 中的块，我们要控制它：</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="nl">do</span><span class="p">:</span>
+</span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">==&gt;</span><span class="w"> </span><span class="n">target_addr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x20</span><span class="p">;</span>
+</span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>
+</span><span id="__span-5-4"><span class="linenos" data-linenos=" 4 "></span><span class="nl">then</span><span class="p">:</span>
+</span><span id="__span-5-5"><span class="linenos" data-linenos=" 5 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target_addr</span><span class="p">;</span>
+</span><span id="__span-5-6"><span class="linenos" data-linenos=" 6 "></span>
+</span><span id="__span-5-7"><span class="linenos" data-linenos=" 7 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-5-8"><span class="linenos" data-linenos=" 8 "></span><span class="o">&lt;==&gt;</span>
+</span><span id="__span-5-9"><span class="linenos" data-linenos=" 9 "></span><span class="p">(</span><span class="n">target_addr</span><span class="mh">-0x20</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
+</span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span><span class="o">&lt;===&gt;</span>
+</span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span><span class="n">target_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span>
+</span></code></pre></div>
+<p>所以这里我们是控制 <code>fwd-&gt;fd</code>，达到<strong>在一个 target 地址上</strong>写入某个 libc 地址的目的。</p>
+<h2 id="_2">攻击后续</h2>
+<p>总结而言，达到的效果是：</p>
+<ol>
+<li>glibc2.30 前，控制 largebin 中的某一个块，实现对两个 target 地址写入 libc 地址</li>
+<li>glibc2.30 后，控制 largebin 中的某一个块，实现对一个 target 地址写入 libc 地址</li>
+</ol>
+<p>都是写入内容，至于这种方式如何用，可以参考 unsorted bin attack 文章（<a href="../../04.unsorted/01.unsorted_bin_attack/">个人笔记</a>）中的内容。</p>
+<h2 id="_3">参考资料</h2>
+<ol>
+<li><a href="https://blog.wjhwjhn.com/posts/large-bin-attack-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">https://blog.wjhwjhn.com/posts/large-bin-attack-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95</a></li>
+<li><a href="https://www.cnblogs.com/tolele/p/16728502.html">https://www.cnblogs.com/tolele/p/16728502.html</a> （虽然是讲 house of storm，但刚开始提到了 largebin attack）</li>
+</ol>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks! You can leave some advices in the comment section below. 
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+              
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+
+<script src="https://giscus.app/client.js"
+    data-repo="masterAllen/masterAllen.github.io"
+    data-repo-id="R_kgDOM_LyMQ"
+    data-category="General"
+    data-category-id="DIC_kwDOM_LyMc4Cl7rg"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+</script>
+
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+        var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+        // Instruct Giscus to set theme
+        giscus.setAttribute("data-theme", theme)
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function () {
+        var ref = document.querySelector("[data-md-component=palette]")
+        ref.addEventListener("change", function () {
+            var palette = __md_get("__palette")
+            if (palette && typeof palette.color === "object") {
+                var theme = palette.color.scheme === "slate"
+                    ? "transparent_dark"
+                    : "light"
+
+                // Instruct Giscus to change theme
+                var frame = document.querySelector(".giscus-frame")
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme } } },
+                    "https://giscus.app"
+                )
+            }
+        })
+    })
+</script>
+
+                      
+                    
+                  </article>
+                  
+                    <div class="vercount-stats md-typeset" aria-label="网站访问统计">
+                      <span>本文阅读 <span id="vercount_value_page_pv">Loading</span> 次</span>
+                      <span>本站访问 <span id="vercount_value_site_pv">Loading</span> 次</span>
+                      <span>访客 <span id="vercount_value_site_uv">Loading</span> 人</span>
+                    </div>
+                  
+                </div>
+              
+              
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+            </div>
+            
+          </main>
+          
+            <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../04.unsorted/02.house_of_storm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 02.house_of_storm.md">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                02.house_of_storm.md
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../06.consolidate/01.house_of_einherjar/" class="md-footer__link md-footer__link--next" aria-label="Next: 01.house_of_einherjar.md">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                01.house_of_einherjar.md
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 ~ now | 🚀 HONG Anlun (allen hong)
+    </div>
+  
+  
+    <div class="md-copyright__generator">
+      Made with
+      <a href="https://zensical.org/" target="_blank" rel="noopener">
+        Zensical
+      </a>
+    </div>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+          
+        </div>
+      </div>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../../..","features":["navigation.instant","navigation.prune","navigation.tabs","navigation.path","navigation.indexes","header.autohide","navigation.footer"],"search":"../../../../../../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      
+      <script src="../../../../../../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      
+        <script src="../../../../../../javascripts/copy.js"></script>
+      
+        <script src="../../../../../../javascripts/code-blocks.js"></script>
+      
+        <script src="../../../../../../javascripts/collapsible-headings.js"></script>
+      
+        <script src="../../../../../../javascripts/hide-details-toc.js"></script>
+      
+        <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
+      
+        <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
+      
+        <script src="../../../../../../javascripts/review-tracker.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+      <script defer src="../../../../../../javascripts/archive-filter.js"></script>
+      <script defer src="../../../../../../javascripts/pdf-inline.js"></script>
+      <script defer src="../../../../../../javascripts/html-inline.js" data-resource-origin=""></script>
+      <script defer src="../../../../../../javascripts/media-notes.js?v=20261021"></script>
+      
+      
+      
+        <script defer src="https://events.vercount.one/js"></script>
+      
+    
+  </body>
+</html>
