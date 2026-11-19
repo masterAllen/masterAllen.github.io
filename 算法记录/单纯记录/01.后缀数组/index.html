@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -655,20 +655,50 @@
   
 
 
+<!-- blog-edit-start:765c0418c4023b19:b0 -->
+
 <h1 id="_1">后缀数组</h1>
+<!-- blog-edit-end:765c0418c4023b19:b0 -->
+
 <div class="file-actions" data-image-edit-revision="765c0418c4023b19238bddc7b92e8395b953a809313763fd7490b51a52880c3b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%8D%95%E7%BA%AF%E8%AE%B0%E5%BD%95%5C01.%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%8D%95%E7%BA%AF%E8%AE%B0%E5%BD%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\单纯记录\01.后缀数组.md">复制路径</span></div>
 
+<!-- blog-edit-start:765c0418c4023b19:b1 -->
+
 <p>重要的是使用场景，而非原理（不过原理也很简单）。</p>
+<!-- blog-edit-end:765c0418c4023b19:b1 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b2 -->
+
 <h2 id="_2">简介</h2>
+<!-- blog-edit-end:765c0418c4023b19:b2 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b3 -->
+
 <p>设字符串：<code>S = ababa</code></p>
+<!-- blog-edit-end:765c0418c4023b19:b3 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b4 -->
+
 <h3 id="_3">构造结构</h3>
+<!-- blog-edit-end:765c0418c4023b19:b4 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b5 -->
+
 <p>所有后缀为：</p>
+<!-- blog-edit-end:765c0418c4023b19:b5 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b6 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>0: ababa
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>1: baba
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>2: aba
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>3: ba
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>4: a
 </span></code></pre></div>
+<!-- blog-edit-end:765c0418c4023b19:b6 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b7 -->
+
 <p>按字典序排序（得到后缀数组 SA），字典序从小到大排：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>4: a
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>2: aba
@@ -676,34 +706,101 @@
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span>3: ba
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span>1: baba
 </span></code></pre></div></p>
+<!-- blog-edit-end:765c0418c4023b19:b7 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b8 -->
+
 <p>所以<strong>后缀数组 SA</strong> 就是这些后缀的<strong>起始下标</strong>：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>SA = [4, 2, 0, 3, 1]
 </span></code></pre></div></p>
+<!-- blog-edit-end:765c0418c4023b19:b8 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b9 -->
+
 <h3 id="_4">字符串匹配</h3>
+<!-- blog-edit-end:765c0418c4023b19:b9 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b10 -->
+
 <p>假设我们要查找模式串：<code>P = aba</code></p>
+<!-- blog-edit-end:765c0418c4023b19:b10 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b11 -->
+
 <p><strong>关键性质</strong>：如果 <code>P</code> 在 <code>S</code> 中出现，那么 <code>P</code> 一定是<strong>某个后缀的前缀</strong>。<strong>务必理解这句话，这是核心思想。</strong></p>
+<!-- blog-edit-end:765c0418c4023b19:b11 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b12 -->
+
 <p>使用二分查找，根据 <code>SA</code> 找出字典序排序之后的字符串，每次比较 <code>P</code> 和字符串前缀：</p>
+<!-- blog-edit-end:765c0418c4023b19:b12 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b13 -->
+
 <ul>
 <li>下界：第一个 ≥ <code>aba</code> 的后缀 → 下标 2</li>
 <li>上界：最后一个 ≤ <code>aba</code> 的后缀 → 下标 0</li>
 </ul>
+<!-- blog-edit-end:765c0418c4023b19:b13 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b14 -->
+
 <p>所以匹配位置是： <strong>2 和 0</strong></p>
+<!-- blog-edit-end:765c0418c4023b19:b14 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b15 -->
+
 <h3 id="_5">总结</h3>
+<!-- blog-edit-end:765c0418c4023b19:b15 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b16 -->
+
 <p><strong>二分查找 + 前缀比较</strong></p>
+<!-- blog-edit-end:765c0418c4023b19:b16 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b17 -->
+
 <p>时间复杂度：</p>
 <ul>
 <li>预处理 SA：O(n) 或 O(n log n)</li>
 <li>单次匹配：O(|P| log n)</li>
 </ul>
+<!-- blog-edit-end:765c0418c4023b19:b17 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b18 -->
+
 <p>适合：<strong>多次查询、大数据量、多模式匹配</strong>。</p>
+<!-- blog-edit-end:765c0418c4023b19:b18 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b19 -->
+
 <h2 id="_6">场景</h2>
+<!-- blog-edit-end:765c0418c4023b19:b19 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b20 -->
+
 <p>更重要的是使用场景，重点在于他和普通的字符串匹配优势在哪里：</p>
+<!-- blog-edit-end:765c0418c4023b19:b20 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b21 -->
+
 <ol>
 <li><strong>多次查询</strong>：预处理 <code>S</code> 之后，每次查询时间复杂度为 O(|P| log n)，而普通字符串匹配每次查询时间复杂度为 O(n)。</li>
 <li>匹配最长前缀：这个需要再加一个数组记录，不过不细谈了。</li>
 </ol>
+<!-- blog-edit-end:765c0418c4023b19:b21 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b22 -->
+
 <p>那很显然了，这种结构很适合在大数据上使用，相当于空间换时间。一次预处理之后，以后查询都会很快。比如生物信息学中：</p>
+<!-- blog-edit-end:765c0418c4023b19:b22 -->
+
+<!-- blog-edit-start:765c0418c4023b19:b23 -->
+
 <p><strong>基因组快速匹配</strong>。实验测得的基因序列，匹配人类基因组中哪个位置。由于人类基因组很大，所以普通的字符串匹配，每次都会耗时。所以大家就对人类基因组建立一个后缀数组，以后用的时候就下载这个文件，然后用它进行匹配。</p>
+<!-- blog-edit-end:765c0418c4023b19:b23 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\单纯记录\01.后缀数组.md" data-text-edit-revision="765c0418c4023b19238bddc7b92e8395b953a809313763fd7490b51a52880c3b" data-text-edit-marker="765c0418c4023b19" data-text-edit-schema="1"></div>
 
 
 
@@ -935,8 +1032,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -695,34 +695,95 @@
   
 
 
+<!-- blog-edit-start:c9952fa73e2e9f61:b0 -->
+
 <h1 id="tcache-double-free">tcache double free</h1>
+<!-- blog-edit-end:c9952fa73e2e9f61:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b33aec42493ba33c53ea65d05487c05576f5493ca0ba8b172a867167513d18d1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache%5C01.double_free.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\01.double_free.md">复制路径</span></div>
 
+<!-- blog-edit-start:c9952fa73e2e9f61:b1 -->
+
 <h2 id="_1">攻击方式</h2>
+<!-- blog-edit-end:c9952fa73e2e9f61:b1 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b2 -->
+
 <p>和 fastbin double free 一样，这里就直接放 fastbin 的图。一开始甚至不需要中间间隔，即 <code>free(A); free(A)</code> 都可以。</p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b2 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b3 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260104124153.png" /></p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b3 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b4 -->
+
 <h2 id="key">防御：增加 <code>key</code> 字段</h2>
+<!-- blog-edit-end:c9952fa73e2e9f61:b4 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b5 -->
+
 <p>在 glibc-2.33 之后，多加了一个 <code>key</code> 字段：</p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b5 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b6 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">tcache_entry</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">tcache_entry</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="p">}</span><span class="w"> </span><span class="n">tcache_entry</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c9952fa73e2e9f61:b6 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b7 -->
+
 <p>有这个全局变量<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">static</span><span class="w"> </span><span class="kt">uintptr_t</span><span class="w"> </span><span class="n">tcache_key</span><span class="p">;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b7 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b8 -->
+
 <ul>
 <li>进程级全局随机值</li>
 <li>初始化于 <code>ptmalloc_init</code></li>
 <li>通常来自 <code>getrandom()</code> 或 ASLR entropy</li>
 </ul>
+<!-- blog-edit-end:c9952fa73e2e9f61:b8 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b9 -->
+
 <p>在 <code>free</code> 的时候，进行 <code>e-&gt;key = tcache_key;</code>，在 <code>malloc</code> 的时候，会进行置 0 的操作。每次 <code>free</code> 的时候都会检查：</p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b9 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b10 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__glibc_unlikely</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">tcache_key</span><span class="p">))</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c9952fa73e2e9f61:b10 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b11 -->
+
 <p>通过这样的 <code>O(1)</code> 操作，只要被 <code>free</code> 掉，下次再 <code>free</code> 就会报错。</p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b11 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b12 -->
+
 <h3 id="key_1">问题：可不可以泄露 <code>key</code></h3>
+<!-- blog-edit-end:c9952fa73e2e9f61:b12 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b13 -->
+
 <p>可以，但知道 <code>key</code> 也没办法绕过检查呀... <code>free</code> 的时候会检查是否相等，所以知道 <code>key</code> 也没啥用。</p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b13 -->
+
+<!-- blog-edit-start:c9952fa73e2e9f61:b14 -->
+
 <p>除非是能把 <code>free</code> 掉的内存对于的 <code>key</code> 改写（不需要清空），这样才能过掉检查，但这个有点太难了，因为能这样做说明已经有 <strong>UAF 写</strong> 能力了。</p>
+<!-- blog-edit-end:c9952fa73e2e9f61:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\01.double_free.md" data-text-edit-revision="b33aec42493ba33c53ea65d05487c05576f5493ca0ba8b172a867167513d18d1" data-text-edit-marker="c9952fa73e2e9f61" data-text-edit-schema="1"></div>
 
 
 
@@ -954,8 +1015,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -644,27 +644,73 @@
   
 
 
+<!-- blog-edit-start:c409c2c9aaf1d408:b0 -->
+
 <h1 id="feature-basedregecc">整体配准一：feature-based（reg、ecc）</h1>
+<!-- blog-edit-end:c409c2c9aaf1d408:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4636f223f561dbead9eb38b96e346eb3f13b02f4f83b79129d87417e8d64f93a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5%5C01.%E6%95%B4%E4%BD%93%E9%85%8D%E5%87%86%E4%B8%80%EF%BC%9Afeature-based%EF%BC%88reg%E3%80%81ecc%EF%BC%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\01.整体配准一：feature-based（reg、ecc）.md">复制路径</span></div>
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.1.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.1.md</a></p>
 </blockquote>
+<!-- blog-edit-end:c409c2c9aaf1d408:b1 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b2 -->
+
 <p>整体配准就是指：求出前后两张图片变换矩阵，然后去做一个矩阵变换就行。而整体配准又可以分为两个部分：</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b2 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b3 -->
+
 <ul>
 <li>pixel-based: 按照像素来比较两张图片，计算用什么矩阵变换后，让这两张图片各个位置像素差距最小。</li>
 <li>feature-based: 找两张图片上一些对应点，即找出一些点在前后两张图片的各自位置。然后用它们反算出矩阵。</li>
 </ul>
+<!-- blog-edit-end:c409c2c9aaf1d408:b3 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b4 -->
+
 <p>推荐看这篇文章，写的很好: <a href="https://helios2.mi.parisdescartes.fr/~lomn/Cours/CV/SeqVideo/registration_tutorial.pdf">https://helios2.mi.parisdescartes.fr/~lomn/Cours/CV/SeqVideo/registration_tutorial.pdf</a></p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b4 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b5 -->
+
 <hr />
+<!-- blog-edit-end:c409c2c9aaf1d408:b5 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b6 -->
+
 <p>从第一段可以看出，pixel-based 尽量让两张图片各个位置像素差距最小，所以关键在差距是指什么差距、如何最小。OpenCV 有两种:</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b6 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b7 -->
+
 <ol>
 <li>专门的 reg 模块，它用的差距是 gradient；计算两张图片的 graident 和 different 后，可以直接根据公式一下子算出矩阵，具体可查阅源码的 mappergrad 开头的 cpp 文件中的 calculate 方法（如 mappergradaffine 或 mappergradeuclid）。</li>
 <li>main module 的 ecc 方法。它用的差距是专门叫 ECC Criteria；这个方法不是直接算出矩阵，而是迭代。给出一个初始矩阵，然后计算矩阵变换后两张图片之间的 ECC 差异指标。根据这个差异对矩阵进行修改，直到最后的差异满足要求，就退出这样的迭代。</li>
 </ol>
+<!-- blog-edit-end:c409c2c9aaf1d408:b7 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b8 -->
+
 <h3 id="reg">reg 模块（梯度）</h3>
+<!-- blog-edit-end:c409c2c9aaf1d408:b8 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b9 -->
+
 <p>Opencv 专门的 reg 模块，这个模块下都是用梯度来求矩阵的。</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b9 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b10 -->
+
 <p>使用逻辑是：</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b10 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b11 -->
+
 <ol>
 <li>创建 Mapper 具体类，类名为 MapperGradXXX(XXX=[Shift, Eculid, Similar, Affine, Proj])</li>
 <li>使用 MapperPyramid 类包装这个 mapper（可选）</li>
@@ -672,8 +718,20 @@
 <li>用 MapperTypeCaster 将 Map 基类转为具体的 Map 类（要根据第一步中的 mapper 用对应方法，对应关系看下面代码）</li>
 <li>使用 Map 类的 inverseWarp 或 warp 转换图片（Map 类还有 compose 等方法，这个自行查文档）</li>
 </ol>
+<!-- blog-edit-end:c409c2c9aaf1d408:b11 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b12 -->
+
 <p>其中第二步的用 MapperPyramid 类是可选方法，从名字也看出这是相当于加了多层金字塔下的处理。按照 OpenCV 文档的话来说：如果差异很小那就不需要，但如果差异大最好要用。</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b12 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b13 -->
+
 <p>看这下面的代码就够了，真的很简单：</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b13 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b14 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># reg 模块</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">mappers</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="p">(</span><span class="s1">&#39;Shift&#39;</span><span class="p">,</span>   <span class="n">cv2</span><span class="o">.</span><span class="n">reg</span><span class="o">.</span><span class="n">MapperGradShift</span><span class="p">(),</span>   <span class="n">cv2</span><span class="o">.</span><span class="n">reg</span><span class="o">.</span><span class="n">MapTypeCaster</span><span class="o">.</span><span class="n">toShift</span><span class="p">),</span>
@@ -712,9 +770,25 @@
 </span><span id="__span-0-36"><span class="linenos" data-linenos="36 "></span>
 </span><span id="__span-0-37"><span class="linenos" data-linenos="37 "></span><span class="n">show_images</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">colnum</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c409c2c9aaf1d408:b14 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b15 -->
+
 <h3 id="ecc">ECC（迭代求差异）</h3>
+<!-- blog-edit-end:c409c2c9aaf1d408:b15 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b16 -->
+
 <p>Main Module 中的 Image Processing 的 Geometric Image Transformations。</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b16 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b17 -->
+
 <p>如开头所述，指标是自定义的叫做 ECC 差异(Enhanced Correlation Coefficient value)。用的话主要是 <code>findTransformECC</code> 这个函数来直接进行上面的全部迭代操作，最后得出一个矩阵；还有一个 <code>computeECC</code> 是计算两张图片的 ECC 差异值，比较少用。</p>
+<!-- blog-edit-end:c409c2c9aaf1d408:b17 -->
+
+<!-- blog-edit-start:c409c2c9aaf1d408:b18 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 默认是 50, 0.001；实测这种指标不太够</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">iter_</span> <span class="o">=</span> <span class="mi">800</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">eps_</span> <span class="o">=</span> <span class="mf">1e-5</span>
@@ -740,6 +814,9 @@
 </span><span id="__span-1-23"><span class="linenos" data-linenos="23 "></span><span class="n">ecc_matrix</span> <span class="o">=</span> <span class="n">getECCTransform</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">800</span><span class="p">)</span>
 </span><span id="__span-1-24"><span class="linenos" data-linenos="24 "></span><span class="n">newimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">warpPerspective</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">warp_matrix</span><span class="p">,</span> <span class="p">(</span><span class="n">img2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">img2</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">INTER_LINEAR</span> <span class="o">+</span> <span class="n">cv2</span><span class="o">.</span><span class="n">WARP_INVERSE_MAP</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c409c2c9aaf1d408:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\01.整体配准一：feature-based（reg、ecc）.md" data-text-edit-revision="4636f223f561dbead9eb38b96e346eb3f13b02f4f83b79129d87417e8d64f93a" data-text-edit-marker="c409c2c9aaf1d408" data-text-edit-schema="1"></div>
 
 
 
@@ -971,8 +1048,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

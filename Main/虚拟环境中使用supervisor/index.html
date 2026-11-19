@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -648,13 +648,30 @@
   
 
 
+<!-- blog-edit-start:c0f26ee124ab9523:b0 -->
+
 <h1 id="supervisor">在虚拟环境中使用 supervisor</h1>
+<!-- blog-edit-end:c0f26ee124ab9523:b0 -->
+
 <div class="file-actions" data-image-edit-revision="578ef15b9faeb5a13b379006737a85ef45b1cda5591312c4d61f92120040d8bd" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E4%B8%AD%E4%BD%BF%E7%94%A8supervisor.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\虚拟环境中使用supervisor.md">复制路径</span></div>
 
+<!-- blog-edit-start:c0f26ee124ab9523:b1 -->
+
 <p>大概四个月前搞的东西, 今天可算是记录一下了... </p>
+<!-- blog-edit-end:c0f26ee124ab9523:b1 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b2 -->
+
 <p>使用 supervisor 来托管 python 程序, 类似于 systemd 的感觉, 不过似乎它是针对 python 程序??(待求证)<br />
 但是 supervisor 在虚拟环境中有问题, 特此来记录一下解决过程.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b2 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b3 -->
+
 <h2 id="supervisor-systemd">安装 supervisor 并将其作为 systemd 服务</h2>
+<!-- blog-edit-end:c0f26ee124ab9523:b3 -->
+<!-- blog-edit-start:c0f26ee124ab9523:b4 -->
+
 <p>这个网上基本有, 这里照抄了, 在 <code>/etc/systemd/system</code> 中新建 <code>supervisor.service</code>. 内容如下, 其中 <code>$SUPERVISORD_PATH</code> 和 <code>$SUPERVISORCTL_PATH</code> 分别用各自真实的路径替换 (使用<code>which supervisord</code> 和 <code>which supervisorctl</code> 查看).<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>[Unit]
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>Description=Supervisor process control system for UNIX
@@ -672,25 +689,75 @@
 </span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span>[Install]
 </span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span>WantedBy=multi-user.target
 </span></code></pre></div></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b4 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b5 -->
+
 <p>上面涉及到 <code>supervisord.conf</code>, 这个应该安装时默认有, 注意看一下路径是否是上面的路径.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b5 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b6 -->
+
 <p><strong>2021.12.23 更新: 如果是 root 用户, 很正常. 但是! 如果是普通的用户, 就会出现问题!!!</strong></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b6 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b7 -->
+
 <p>一般会出现几个权限的错误<br />
 1. <code>IOError: [Errno 13] Permission denied: '/var/log/supervisor/supervisord.log'</code><br />
 2. <code>Error: Cannot open an HTTP server: socket.error reported errno.EACCES (13)</code></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b7 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b8 -->
+
 <p>参考: <a href="https://binkzhao.github.io/2019/04/30/supervisor-%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E9%9B%86%E5%90%88/">https://binkzhao.github.io/2019/04/30/supervisor-%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E9%9B%86%E5%90%88/</a></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b8 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b9 -->
+
 <p>但是这个链接是直接把目录的权限变成了 777, 这样很不合理. 因此解决方法方法如下.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b9 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b10 -->
+
 <p>1. 使用 root 新建 <code>/var/log/supervisor</code> 和 <code>/var/run/supervisor</code>, 然后把该目录权限转为普通用户.<br />
 2. 修改 <code>/etc/supervisor/supervisord.conf</code>, 也就是 <code>supervisor</code> 配置文件, 把里面的 <code>/var/run</code> 变成 <code>/var/run/supervisor</code>, 因为这个目录在上一步中已经变成普通用户的权限了, 所以普通用户可以在这个目录中建文件, 不会报出权限错误.<br />
 3. 修改 <code>/etc/systemd/system/supervisor.service</code>, 也就是这篇文章刚开始给出的文件, 在 <code>[Service]</code> 下面新加 <code>User=xxx</code> 和 <code>Group=xxx</code>.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b10 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b11 -->
+
 <p>最后重新启动, 应该是没有问题的.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b11 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b12 -->
+
 <h2 id="supervisor-python">supervisor 管理虚拟环境下的 Python 程序</h2>
+<!-- blog-edit-end:c0f26ee124ab9523:b12 -->
+<!-- blog-edit-start:c0f26ee124ab9523:b13 -->
+
 <p>如果 Python 程序是在虚拟环境下, 直接 <code>python xx.py</code> 是有问题的, 大概率会报 ImportError 的错误. 折腾了很久很久, 解决方式有两个.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b13 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b14 -->
+
 <h3 id="_1">方法一</h3>
+<!-- blog-edit-end:c0f26ee124ab9523:b14 -->
+<!-- blog-edit-start:c0f26ee124ab9523:b15 -->
+
 <p>这个是我比较喜欢的, 利用了 shell 脚本作为跳板来完成.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b15 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b16 -->
+
 <p>假设项目是 <code>demo</code> 目录, 想要执行的文件是 <code>python main.py</code>. 需要在项目里新建一个 shell 脚本, 里面的内容是用 Python 的绝对路径来执行文件! 例子:<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># init.sh</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>/root/.pyenv/shims/python<span class="w"> </span><span class="nv">$1</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b16 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b17 -->
+
 <p>然后 supervisor 中的设置去执行这个脚本. 下面是一个示例配置, 注意不要直接复制, 其中的路径需要根据自己的来进行调整.<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>[program:demo]
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span># 必须指定 directory 为要执行的项目目录
@@ -700,8 +767,19 @@
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>stdout_logfile=/root/demo/log/demo.log
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span>stderr_logfile=/root/demo/log/demo.log
 </span></code></pre></div></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b17 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b18 -->
+
 <p>这个方法好处是, 以后如果换了一个虚拟环境, 那么只需要修改项目里的 <code>init.sh</code> 即可.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b18 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b19 -->
+
 <h3 id="_2">方法二</h3>
+<!-- blog-edit-end:c0f26ee124ab9523:b19 -->
+<!-- blog-edit-start:c0f26ee124ab9523:b20 -->
+
 <p>该方法不需要新建一个脚本, 直接在 supervisor 配置文件里指定 python 的绝对路径, 下面是一个示例配置.<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>[program:demo]
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span># 仍然必须指定 directory 为要执行的项目目录
@@ -711,20 +789,61 @@
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>stdout_logfile=/root/demo/log/demo.log
 </span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span>stderr_logfile=/root/demo/log/demo.log
 </span></code></pre></div></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b20 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b21 -->
+
 <p>但是这个 python 绝对路径改变的话, 要改 supervisor 的配置文件, 而不是像方法一中直接修改项目中的文件.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b21 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b22 -->
+
 <h3 id="_3">原因分析</h3>
+<!-- blog-edit-end:c0f26ee124ab9523:b22 -->
+<!-- blog-edit-start:c0f26ee124ab9523:b23 -->
+
 <p>这一块是记录一下我当时是如何排除原因的, 排除方法还是让我比较得意的.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b23 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b24 -->
+
 <p>首先在项目建立一个新文件, 来输出 <code>python</code> 是如何找模块的.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># test.py</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">site</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="o">.</span><span class="n">getsitepackages</span><span class="p">())</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b24 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b25 -->
+
 <p>假如我在 supervisor 配置文件中的 <code>command</code> 就简单的是 <code>python test.py</code>, 我发现输出是: <code>[/usr/lib/python2.7/xxxx]</code>, 所以如果在 supervisor 中直接用 python 的话, 默认使用系统的版本, 而不是虚拟版本.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b25 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b26 -->
+
 <p>那么我如果使用方法一的脚本, 脚本中为 <code>python test.py</code>, 而不是 python 绝对路径呢? 同样! 输出仍然是系统使用的版本! 所以必须要指定绝对路径, 这样才能得到正确的路径.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b26 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b27 -->
+
 <p>此外, 网上的解答大部分说用 PYTHONPATH, 这个我只有在使用 pyenv 并且设置为全局时才成功, 不清楚如果设置为全局变量时是否有用, 但我觉得在启动脚本中添加绝对路径比指定 PYTHONPATH 更好.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b27 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b28 -->
+
 <h2 id="_4">结尾</h2>
+<!-- blog-edit-end:c0f26ee124ab9523:b28 -->
+<!-- blog-edit-start:c0f26ee124ab9523:b29 -->
+
 <p>四个月后再写总结, 发现了一个很重要的问题: Why use supervisor? 可以先使用 systemd 来完成, 如果它完成不了再来用 supervisor 来做吧. 我的要求其实就完全可以用 systemd 来完成.</p>
+<!-- blog-edit-end:c0f26ee124ab9523:b29 -->
+
+<!-- blog-edit-start:c0f26ee124ab9523:b30 -->
+
 <p>参考: systemd vs supervisord → <a href="https://liqiang.io/post/systemd-vs-supervisord">https://liqiang.io/post/systemd-vs-supervisord</a></p>
+<!-- blog-edit-end:c0f26ee124ab9523:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\虚拟环境中使用supervisor.md" data-text-edit-revision="578ef15b9faeb5a13b379006737a85ef45b1cda5591312c4d61f92120040d8bd" data-text-edit-marker="c0f26ee124ab9523" data-text-edit-schema="1"></div>
 
 
 
@@ -956,8 +1075,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

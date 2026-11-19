@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -677,23 +677,77 @@
   
 
 
+<!-- blog-edit-start:05d2e2e6b56990cc:b0 -->
+
 <h1 id="edge-drawing">边缘检测方法：Edge Drawing</h1>
+<!-- blog-edit-end:05d2e2e6b56990cc:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a8e798bb871396c7b0d20897cd04813fe4254645d14a28f18cb78023ce5a7678" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%5C10.%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%EF%BC%9AEdgeDrawing.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\10.边缘检测方法：EdgeDrawing.md">复制路径</span></div>
 
+<!-- blog-edit-start:05d2e2e6b56990cc:b1 -->
+
 <p>介绍一种边缘检测方法：Edge Drawing，来自以下文章，它可以在 OpenCV 中使用，具体用法在<a href=".././07.特别的特征：直线特征/">另一篇笔记</a>中。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b1 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b2 -->
+
 <ul>
 <li>Edge drawing: a combined real-time edge and segment detector</li>
 </ul>
+<!-- blog-edit-end:05d2e2e6b56990cc:b2 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b3 -->
+
 <h3 id="_1">总体流程</h3>
+<!-- blog-edit-end:05d2e2e6b56990cc:b3 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b4 -->
+
 <p>总体逻辑先过一遍，先不纠结各个步骤具体是如何做的。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b4 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b5 -->
+
 <p>流程一：模糊图片，对图像求梯度，得到大小、方向，然后进行简单的分类，得到初始粗糙的边。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b5 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b6 -->
+
 <p>流程二：挑选出一些比较值得信任（即很有可能在边上）的像素，这些像素称为锚（anchor）。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b6 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b7 -->
+
 <p>流程三：从一个锚出发，逐步地去连接其他的锚点（连接方式先不谈）。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b7 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b8 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250111001330.png" /></p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b8 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b9 -->
+
 <h3 id="_2">流程一：求解梯度并获取初始边</h3>
+<!-- blog-edit-end:05d2e2e6b56990cc:b9 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b10 -->
+
 <p>这一步太简单经典了。论文用的是 5x5 标准差为 1 的高斯模糊，梯度是 3x3 的 Sobel 算子，即 [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]] 这种形状。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b10 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b11 -->
+
 <p>横列方向都做一次梯度，梯度大小就是<strong>绝对值</strong>之和，方向这里是<strong>梯度方向转90度</strong>，梯度方向就是比较<strong>绝对值</strong>大小，横方向梯度大那就说明是竖线，作者在论文也说了两个方向就够用了。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b11 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b12 -->
+
 <p>此外，有一个梯度阈值，如果小于这个阈值，就说明这个点是平滑区域，后续计算直接忽略掉，这一部分的代码如下：</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b12 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b13 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 1\. Blur Image</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">blursize</span> <span class="o">=</span> <span class="mi">5</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">blursigma</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -712,11 +766,35 @@
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span><span class="n">Gradient_direction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">Gradient_direction</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="n">EDGE_IMPOSSIBLE</span><span class="p">)</span>
 </span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span><span class="n">Gradient_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">Gradient_value</span><span class="p">,</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:05d2e2e6b56990cc:b13 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b14 -->
+
 <p>上面代码的最后部分，我们在四周加了边界，方面后面的代码编写。这些边界和平滑区域一样，设置为 <code>EDGE_IMPOSSIBLE</code>，后续如果遍历到这些点就知道如何做了。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b14 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b15 -->
+
 <h3 id="_3">流程二：获取可靠的锚点</h3>
+<!-- blog-edit-end:05d2e2e6b56990cc:b15 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b16 -->
+
 <p>这一步是获取锚点，即我们认为一定在边上的一些点。这里其实很简单，就是拿梯度值和相邻的点比较，如果一个点上一步得到是水平边（上一步的方向不是梯度而是梯度转90度），想象一条黑白边，此时就要判断该点和上下的点的梯度值大小，如果大于一个阈值那么就认为该点在边上。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b16 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b17 -->
+
 <p>注意这里不要乱掉了，我一开始想当然了，认为检测出是水平边就应该和左右比，但其实应该和上下比，竖直边同理。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b17 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b18 -->
+
 <p>此外，这里不需要全部遍历，这个流程只是为了挑选出一些可靠点出来，论文默认横竖步长是 4，阈值（即该点大于比较的点多少）是 8。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b18 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b19 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 3\. Get Anchor Points</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">anchor_thresh</span> <span class="o">=</span> <span class="mi">8</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">anchor_step</span> <span class="o">=</span> <span class="mi">4</span>
@@ -740,11 +818,35 @@
 </span><span id="__span-1-21"><span class="linenos" data-linenos="21 "></span>
 </span><span id="__span-1-22"><span class="linenos" data-linenos="22 "></span><span class="n">anchors</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">anchors</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Gradient_value</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:05d2e2e6b56990cc:b19 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b20 -->
+
 <h3 id="_4">流程三：连接锚点</h3>
+<!-- blog-edit-end:05d2e2e6b56990cc:b20 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b21 -->
+
 <p>这里其实看下面的图就理解了，其实就梯度从大到小遍历所有的锚点，从每个锚点出发，去按照每个点计算的方向进行探索。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b21 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b22 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250111002715.png" /></p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b22 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b23 -->
+
 <p>其实就是 DFS，只不过这里每次要看当前的点的方向，如果是横向就只能左右走，竖向就只能上下走。每次走的时候有三个选项，选择梯度最大的点。比如向左边走，就要比较左上、左中、左下三个点，选择梯度最大的点。遇到边界、平滑区域、访问过的点就停止。</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b23 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b24 -->
+
 <p>代码如下，其实很简单：</p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b24 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b25 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 4\. Trace Edges from anchors</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">visited</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -814,8 +916,19 @@
 </span><span id="__span-2-67"><span class="linenos" data-linenos="67 "></span><span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-2-68"><span class="linenos" data-linenos="68 "></span><span class="n">edges</span><span class="p">[</span><span class="n">visited</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 </span></code></pre></div>
+<!-- blog-edit-end:05d2e2e6b56990cc:b25 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b26 -->
+
 <h2 id="_5">结果</h2>
+<!-- blog-edit-end:05d2e2e6b56990cc:b26 -->
+
+<!-- blog-edit-start:05d2e2e6b56990cc:b27 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250111003153.png" /></p>
+<!-- blog-edit-end:05d2e2e6b56990cc:b27 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\10.边缘检测方法：EdgeDrawing.md" data-text-edit-revision="a8e798bb871396c7b0d20897cd04813fe4254645d14a28f18cb78023ce5a7678" data-text-edit-marker="05d2e2e6b56990cc" data-text-edit-schema="1"></div>
 
 
 
@@ -1047,8 +1160,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -716,67 +716,240 @@
   
 
 
+<!-- blog-edit-start:a6f7760dee80275b:b0 -->
+
 <h1 id="dqn">DQN</h1>
+<!-- blog-edit-end:a6f7760dee80275b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d0ff3590698afc2d70099ec384a3e37ff4f3f10fa53de107a48e54aa04c931c7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5C04.DQN.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\强化学习\04.DQN.md">复制路径</span></div>
 
+<!-- blog-edit-start:a6f7760dee80275b:b1 -->
+
 <h2 id="_1">引言</h2>
+<!-- blog-edit-end:a6f7760dee80275b:b1 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b2 -->
+
 <p>上一章节我们算出各个 <span class="arithmatex">\(Q(s, a)\)</span> 的值，这样我们可以从 <span class="arithmatex">\(s_0\)</span> 开始逐步推出动作。这些方法都叫做表格法。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b2 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b3 -->
+
 <p>表格法有什么局限呢？比如 Q-Learning，使用一个 Q 表格来存储每一个状态-动作对对应的 Q 值。当状态空间或动作空间很大，甚至连续时，Q 表格会变得非常庞大，具体的缺点想必我就不用说了，存储、时间等等等。而现实生活中往往是这样的，比如下围棋。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b3 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b4 -->
+
 <h2 id="_2">神经网络的引入</h2>
+<!-- blog-edit-end:a6f7760dee80275b:b4 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b5 -->
+
 <p>那在如今这个时代，很显然了，使用神经网络去模拟这个 Q 表格，这样 Q 函数就变成了一个由神经网络参数所定义的函数：<span class="arithmatex">\(Q_\omega(s, a)\)</span>，其中 <span class="arithmatex">\(\omega\)</span> 是神经网络的权重。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b5 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b6 -->
+
 <h3 id="_3">损失函数设计</h3>
+<!-- blog-edit-end:a6f7760dee80275b:b6 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b7 -->
+
 <p>那么如何去设计神经网络的损失函数，这样才能训练呀。我们希望这个 Q 函数和 Q 表格类似，那么 Q 表格有什么特点？回顾 Q-learning 的核心思想，是通过以下公式更新 Q 值：</p>
+<!-- blog-edit-end:a6f7760dee80275b:b7 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b8 -->
+
 <div class="arithmatex">\[
 Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t))
 \]</div>
+<!-- blog-edit-end:a6f7760dee80275b:b8 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b9 -->
+
 <p>所以最终收敛的时候：</p>
+<!-- blog-edit-end:a6f7760dee80275b:b9 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b10 -->
+
 <div class="arithmatex">\[
 (r_{t} + \gamma \max_{a'} Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t)) \approx 0
 \]</div>
+<!-- blog-edit-end:a6f7760dee80275b:b10 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b11 -->
+
 <p>我们希望设计的 Q 函数也有这个特点，自然而然地，想到设计他的损失函数为：</p>
+<!-- blog-edit-end:a6f7760dee80275b:b11 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b12 -->
+
 <div class="arithmatex">\[
 L(\omega) = (r + \gamma \max_{a'} Q_\omega(s', a') - Q_\omega(s, a))^2
 \]</div>
+<!-- blog-edit-end:a6f7760dee80275b:b12 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b13 -->
+
 <h3 id="_4">半梯度训练</h3>
+<!-- blog-edit-end:a6f7760dee80275b:b13 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b14 -->
+
 <p>我们如果给上面那个损失函数求导，会遇到一个问题，「估计值」和「目标值」都是神经网络计算出来的，这个和「监督学习」是有差别的：在监督学习中，目标值是固定的标签；而在这里，我们发现，「目标值」竟然是个「移动靶」？</p>
+<!-- blog-edit-end:a6f7760dee80275b:b14 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b15 -->
+
 <p>这会带来训练的不稳定的偏差。为了解决这个问题，我们可以「假装」目标值是固定的，也就是说，在给损失函数求梯度时，我们认为 <span class="arithmatex">\(r + \gamma \max_{a'} Q_\omega(s', a')\)</span> 是个常数，而只给 <span class="arithmatex">\(Q_\omega(s, a)\)</span> 求导，然后像标准梯度下降一样对当前估计值计算梯度，然后更新参数。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b15 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b16 -->
+
 <p>因为我们只计算了函数的一部分梯度，而不是整个函数的梯度，所以这种方法称为「半梯度法」（semi-gradient）。当然这种妥协不是没有代价的，由于忽略了目标值对参数的依赖性，这种更新方式可能导致收敛性问题。但好消息是，我们终于可以愉快地训练这个神经网络了。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b16 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b17 -->
+
 <h2 id="dqn_1">DQN 的技巧</h2>
+<!-- blog-edit-end:a6f7760dee80275b:b17 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b18 -->
+
 <h3 id="_5">经验回放</h3>
+<!-- blog-edit-end:a6f7760dee80275b:b18 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b19 -->
+
 <p>第一个问题就是「数据相关性」。在传统的监督学习中，我们通常假设数据之间是「独立同分布」的，样本之间没有依赖性。但是，在Q-Learning 这种，数据是智能体与环境进行交互，这些样本之间存在很强的「相关性」。例如，智能体连续向左移动几次，则这些经验样本在状态、动作和奖励上都非常相似。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b19 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b20 -->
+
 <p>高度相关的样本会使得模型在短时间内接触到相似的输入模式，导致模型参数更新的方向单一且不稳定。如果连续的样本都指向同一个方向的梯度，模型很容易陷入局部最优解。另外，这可能还会让算法的泛化性降低。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b20 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b21 -->
+
 <p>解决方式是使用 <strong>经验回放</strong>，将智能体与环境交互的经验存储到一个缓冲区中，然后从缓冲区中随机采样一批经验来更新 Q 网络。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b21 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b22 -->
+
 <p>这样有什么好处呢？随机采样打破了样本之间的时间相关性，使得模型在训练时接触到的样本不再是连续的序列，而是来自不同时间点的样本，从而降低了样本之间的时间相关性。同时，回放缓存中存储了过去多个时间步的经验，这使得每次训练使用的样本具有更高的多样性，有助于模型学习到更稳健的特征。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b22 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b23 -->
+
 <h3 id="_6">目标网络</h3>
+<!-- blog-edit-end:a6f7760dee80275b:b23 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b24 -->
+
 <p>我们前面介绍了「半梯度法」，但只是一种妥协之举，他只是权且让神经网络「可以」被训练而已，但这种方式仍然很不稳定、也容易导致误差累积。为了进一步缓解这个问题，DQN还会采用的一个技巧是「目标网络」（Target Network），其核心思想是使用两个不同的神经网络 ：</p>
+<!-- blog-edit-end:a6f7760dee80275b:b24 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b25 -->
+
 <ol>
 <li>主网络（Online Network） ：用于估计当前状态动作的 Q 值，并根据梯度下降进行参数更新。</li>
 <li>目标网络（Target Network） ：用于计算 TD 目标，它的参数会滞后于主网络，从而提供更稳定的目标值。</li>
 </ol>
+<!-- blog-edit-end:a6f7760dee80275b:b25 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b26 -->
+
 <p>目标网络的参数在一定时间内是固定的，从而避免目标 Q 值频繁变化，从而提高训练的稳定性。但又不是一直固定的，它隔一段时间会从主网络那里「同步」最新的参数，让目标值不要偏差太多。这在一定程度上打破了「Q值更新和Q值估计」的强关联性，降低了「自己追逐自己」的现象。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b26 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b27 -->
+
 <p><img alt="" src="../../../asset/image/5b31549c1cb5546a6165cff909ac3f4f/20260424154103.png" /></p>
+<!-- blog-edit-end:a6f7760dee80275b:b27 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b28 -->
+
 <h3 id="_7">探索</h3>
+<!-- blog-edit-end:a6f7760dee80275b:b28 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b29 -->
+
 <p>这个和之前说的 <span class="arithmatex">\(\epsilon\)</span>-greedy 方法类似，就是故意有概率走一些其他路径。这个和 Dropout 也有点像，总之具体细节就不谈了，当前我也没细究。这里引用一下别人的说法：</p>
+<!-- blog-edit-end:a6f7760dee80275b:b29 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b30 -->
+
 <p>如果我们没有好的探索，在训练的时候就会遇到这种问题。例如， 假设我们用 深度 Q 网络 来玩贪吃蛇。我们有一条蛇，它在环境里面走来走去，吃到星星，就加分。假设游戏一开始，蛇往上走，然后吃到星星，就可以得到分数，它就知道往上走可以得到奖励。接下来它就再也不会采取往上走以外的动作了，以后就会变成每次游戏一开始，它就往上走，然后游戏结束。所以需要有探索的机制，让智能体知道，虽然根据之前采样的结果，a1 ​好像是不错的，但我们至少偶尔也试一下 a2 和 a3，说不定它们更好。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b30 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b31 -->
+
 <p><img alt="" src="../../../asset/image/5b31549c1cb5546a6165cff909ac3f4f/20260424154628.png" /></p>
+<!-- blog-edit-end:a6f7760dee80275b:b31 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b32 -->
+
 <h3 id="q-ddqn">双 Q 学习（DDQN）</h3>
+<!-- blog-edit-end:a6f7760dee80275b:b32 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b33 -->
+
 <p>实际表现中，Q 值往往是被高估的，即 Q 网络得出的值比实际正确的值要大很多。原因：</p>
+<!-- blog-edit-end:a6f7760dee80275b:b33 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b34 -->
+
 <p>神经网络存在随机性，假设在状态 A 选择左动作最好，但是训练的时候，恰好向右走遇到了一个较大的正向噪声，那么它可能会认为向右走更好久而久之，算法可能会错误地认为在状态 A 选择右动作更优，从而陷入次优策略。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b34 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b35 -->
+
 <p>双 Q 学习（Double Q-learning）是一种解决最大化偏差问题的有效方法。它的核心思想是将选择动作的 Q 值和评估动作价值的 Q 值分离开来。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b35 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b36 -->
+
 <p>在原来时，在状态 s 的时候，我们穷举所有的 a，把每一个 a 都代入 Q 函数，看哪一个 a 可以得到的 Q 值最高，那就选择这个动作 a，并且就把那个 Q 值进行更新。但是在 DDQN 里面有两个 Q 网络，第一个 Q 网络还是决定哪一个动作的 Q 值最大，但我们决定动作以后，Q 值是用 Q' 算出来的</p>
+<!-- blog-edit-end:a6f7760dee80275b:b36 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b37 -->
+
 <div class="arithmatex">\[
 Q(s, a) \leftarrow Q(s, a) + \eta \left[r + \gamma Q'(s', \argmax_{a'} Q(s', a')) - Q(s, a)\right]
 \]</div>
+<!-- blog-edit-end:a6f7760dee80275b:b37 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b38 -->
+
 <p>而且上面提到的目标网络技巧中，原来的 DQN 其实已经有两个 Q 网络，这里 DDQN 可以直接复用。会用会更新参数的 Q 网络去选动作，用目标网络（固定住的网络）计算值。DDQN 相较于原来的网络的更改是最少的，它几乎没有增加任何的运算量，也不需要新的网络，如果只选一个技巧，我们一般都会选 DDQN，因为其很容易实现。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b38 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b39 -->
+
 <p>具体细节就不赘述了，因为我也没怎么了解。</p>
+<!-- blog-edit-end:a6f7760dee80275b:b39 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b40 -->
+
 <h3 id="_8">其他</h3>
+<!-- blog-edit-end:a6f7760dee80275b:b40 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b41 -->
+
 <p>其他的都不去了解了，太过细节了：</p>
+<!-- blog-edit-end:a6f7760dee80275b:b41 -->
+
+<!-- blog-edit-start:a6f7760dee80275b:b42 -->
+
 <ol>
 <li>竞争深度 Q 网络（Dueling DQN）</li>
 <li>优先级经验回放</li>
 <li>分布 Q 式网络</li>
 <li>....</li>
 </ol>
+<!-- blog-edit-end:a6f7760dee80275b:b42 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\强化学习\04.DQN.md" data-text-edit-revision="d0ff3590698afc2d70099ec384a3e37ff4f3f10fa53de107a48e54aa04c931c7" data-text-edit-marker="a6f7760dee80275b" data-text-edit-schema="1"></div>
 
 
 
@@ -1008,8 +1181,6 @@ Q(s, a) \leftarrow Q(s, a) + \eta \left[r + \gamma Q'(s', \argmax_{a'} Q(s', a')
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

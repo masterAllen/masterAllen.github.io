@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -846,8 +846,14 @@
   
 
 
+<!-- blog-edit-start:a4c0294914c997a6:b0 -->
+
 <h1 id="overlapping-chunk">Overlapping chunk</h1>
+<!-- blog-edit-end:a4c0294914c997a6:b0 -->
+
 <div class="file-actions" data-image-edit-revision="76340aeb9c78f4d91bf05ef117564aeca61cfdba83542c0cb725cefb20361ea4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C06.consolidate%5C02.overlapping_chunk.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C06.consolidate" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\06.consolidate\02.overlapping_chunk.md">复制路径</span></div>
+
+<!-- blog-edit-start:a4c0294914c997a6:b1 -->
 
 <p>很建议先花上几分钟看一下 <a href=".././01.house_of_einherjar/">house of einherjar</a>，有如下的相似点：</p>
 <ol>
@@ -858,63 +864,207 @@
 <p>攻击要求：可以修改某个块的 size（这个块的大小要大于 fastbin）<br />
 最终效果：实现 Chunk Overlapping</p>
 </blockquote>
+<!-- blog-edit-end:a4c0294914c997a6:b1 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b2 -->
+
 <p><strong>PS:</strong> chunk overlapping 是一个现象，即 A 指向的内存和 B 指向的内存有重叠。而 overlapping chunk 是一种攻击手段，即本文介绍。（所以又是一个很失败的命名，二进制安全的起名确实不咋地）</p>
+<!-- blog-edit-end:a4c0294914c997a6:b2 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b3 -->
+
 <h2 id="_1">原理说明</h2>
+<!-- blog-edit-end:a4c0294914c997a6:b3 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b4 -->
+
 <p>下面结合 ChatGPT 对细节说明，<strong>这个攻击是在 glibc 2.29 做的，那个时候还没 tcache。</strong></p>
+<!-- blog-edit-end:a4c0294914c997a6:b4 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b5 -->
+
 <h3 id="1">1️⃣ 初始分配布局</h3>
+<!-- blog-edit-end:a4c0294914c997a6:b5 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b6 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">p3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">p4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">p5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b6 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b7 -->
+
 <h4 id="_2">内存布局（物理相邻）</h4>
+<!-- blog-edit-end:a4c0294914c997a6:b7 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b8 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>[p1][p2][p3][p4][p5][top]
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b8 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b9 -->
+
 <hr />
+<!-- blog-edit-end:a4c0294914c997a6:b9 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b10 -->
+
 <h3 id="2-freep4">2️⃣ free(p4)</h3>
+<!-- blog-edit-end:a4c0294914c997a6:b10 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b11 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">free</span><span class="p">(</span><span class="n">p4</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b11 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b12 -->
+
 <h4 id="_3">内存布局</h4>
+<!-- blog-edit-end:a4c0294914c997a6:b12 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b13 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>[p1][p2][p3][ FREE p4 ][p5][top]
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b13 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b14 -->
+
 <hr />
+<!-- blog-edit-end:a4c0294914c997a6:b14 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b15 -->
+
 <h3 id="3-p2size-p1">3️⃣ 核心漏洞：伪造 p2.size（从 p1 越界）</h3>
+<!-- blog-edit-end:a4c0294914c997a6:b15 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b16 -->
+
 <p>修改 p2 的 size 字段，此时 <strong>malloc 认为 p2 之后紧接着 p4</strong>：</p>
+<!-- blog-edit-end:a4c0294914c997a6:b16 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b17 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>p2.size = size(p2) + size(p3) + CHUNK_HDR
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b17 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b18 -->
+
 <h4 id="allocator">伪造后的逻辑布局（allocator 视角）</h4>
+<!-- blog-edit-end:a4c0294914c997a6:b18 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b19 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>[p1][ p2 + p3 ][ FREE p4 ][p5]
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b19 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b20 -->
+
 <p>⚠️ <strong>p3 被“吃进了” p2</strong></p>
+<!-- blog-edit-end:a4c0294914c997a6:b20 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b21 -->
+
 <hr />
+<!-- blog-edit-end:a4c0294914c997a6:b21 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b22 -->
+
 <h3 id="4-freevictim">4️⃣ free(victim) —— 攻击成立点</h3>
+<!-- blog-edit-end:a4c0294914c997a6:b22 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b23 -->
+
 <p>这里的 victim 是被我们修改 size 的块，即 p2：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="n">free</span><span class="p">(</span><span class="n">p2</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:a4c0294914c997a6:b23 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b24 -->
+
 <h4 id="glibc-223">glibc 2.23 内部逻辑（关键）</h4>
+<!-- blog-edit-end:a4c0294914c997a6:b24 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b25 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">nextchunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">chunksize</span><span class="p">(</span><span class="n">p2</span><span class="p">);</span><span class="w">   </span><span class="c1">// ← 被伪造</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b25 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b26 -->
+
 <ul>
 <li><code>nextchunk == p4</code></li>
 <li>p4 已 free</li>
 <li>触发 <strong>forward consolidation</strong></li>
 </ul>
+<!-- blog-edit-end:a4c0294914c997a6:b26 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b27 -->
+
 <h4 id="free-chunk">结果：一个巨大的 free chunk</h4>
+<!-- blog-edit-end:a4c0294914c997a6:b27 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b28 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>FREE chunk = p2 + p3 + p4
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b28 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b29 -->
+
 <p>真实布局却是：</p>
+<!-- blog-edit-end:a4c0294914c997a6:b29 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b30 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>[p1][ FREE (p2+p3+p4) ][p5]
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span>          ↑
 </span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span>        p3 仍在使用，但 allocator 不知道
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b30 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b31 -->
+
 <h4 id="_4">说明</h4>
+<!-- blog-edit-end:a4c0294914c997a6:b31 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b32 -->
+
 <p>所以这里有一个要求：p2 不能是 fastbin 大小，否则 <code>free(p2)</code> 不会进行合并，而是直接放到 fastbin 中去了。</p>
+<!-- blog-edit-end:a4c0294914c997a6:b32 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b33 -->
+
 <p>多说一句：如果不是 fastbin，这个块肯定是先放到 unsorted bin 中作为中转的，所以如果你把它当成 unsorted bin 的攻击，勉强也算。但我觉得还是归为 consolidate 的攻击更合理。</p>
+<!-- blog-edit-end:a4c0294914c997a6:b33 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b34 -->
+
 <h3 id="5-overlapping">5️⃣ 最终结果：造成 overlapping</h3>
+<!-- blog-edit-end:a4c0294914c997a6:b34 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b35 -->
+
 <p>其实上面这个布局已经很清晰了，即 p3 指向的部分，在 malloc 眼中已经是释放的。下面直接再 malloc 一个块，结果就更清晰明了。</p>
+<!-- blog-edit-end:a4c0294914c997a6:b35 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b36 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="n">p6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b36 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b37 -->
+
 <p>布局：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span>    p6
 </span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span>    ⬇
@@ -922,15 +1072,38 @@
 </span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span>          ↑
 </span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span>        p3 仍在使用，但 allocator 不知道
 </span></code></pre></div></p>
+<!-- blog-edit-end:a4c0294914c997a6:b37 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b38 -->
+
 <h4 id="_5">最终重叠关系</h4>
+<!-- blog-edit-end:a4c0294914c997a6:b38 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b39 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span>p6 covers:
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span>   [ p2 ][ p3 ][ part of p4 ]
 </span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-12-4"><span class="linenos" data-linenos="4 "></span>p3 still &quot;in use&quot; by program
 </span></code></pre></div>
+<!-- blog-edit-end:a4c0294914c997a6:b39 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b40 -->
+
 <p>很典型的 chunk overlapping</p>
+<!-- blog-edit-end:a4c0294914c997a6:b40 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b41 -->
+
 <h2 id="_6">攻击已经失效</h2>
+<!-- blog-edit-end:a4c0294914c997a6:b41 -->
+
+<!-- blog-edit-start:a4c0294914c997a6:b42 -->
+
 <p>glibc 已经做了一些检查，这种攻击已经失效了。</p>
+<!-- blog-edit-end:a4c0294914c997a6:b42 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\06.consolidate\02.overlapping_chunk.md" data-text-edit-revision="76340aeb9c78f4d91bf05ef117564aeca61cfdba83542c0cb725cefb20361ea4" data-text-edit-marker="a4c0294914c997a6" data-text-edit-schema="1"></div>
 
 
 
@@ -1162,8 +1335,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -727,16 +727,42 @@
   
 
 
+<!-- blog-edit-start:2f3da1a12862d836:b0 -->
+
 <h1 id="_1">形态学的应用</h1>
+<!-- blog-edit-end:2f3da1a12862d836:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1b42bc52fa37d9388e5fa5ed2044b6a23ecc379a3f7baf82c89f5ca0f25e7d4a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C05.%E5%BD%A2%E6%80%81%E5%AD%A6%E7%9A%84%E5%BA%94%E7%94%A8.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\05.形态学的应用.md">复制路径</span></div>
+
+<!-- blog-edit-start:2f3da1a12862d836:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.4.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.4.md</a></p>
 </blockquote>
+<!-- blog-edit-end:2f3da1a12862d836:b1 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b2 -->
+
 <p>这篇文章目的是讲解形态学函数的用处，具体 OpenCV 关于形态学相关的函数请看<a href="../04.形态学/">上一篇文章</a>。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b2 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b3 -->
+
 <h2 id="_2">最大值最小值滤波</h2>
+<!-- blog-edit-end:2f3da1a12862d836:b3 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b4 -->
+
 <p>OpenCV 没有最大值最小值滤波，但是其实可以用腐蚀膨胀来完成。以前没有理解腐蚀膨胀真正概念，网上资料也解释的不好。但其实他们就是最大值最小值滤波。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b4 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b5 -->
+
 <p><strong>按照大白话解释就是：腐蚀是赋值为其在 Kernel 上所有非零位置的最小值；膨胀是赋值其在 Kernel 上所有非零位置的最大值。</strong></p>
+<!-- blog-edit-end:2f3da1a12862d836:b5 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="c1"># 这里也可以用 getStructinElement 来配合构造</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
@@ -744,9 +770,25 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">erode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="n">dilate</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span>
 </span></code></pre></div>
+<!-- blog-edit-end:2f3da1a12862d836:b6 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b7 -->
+
 <h2 id="_3">寻找指定结构（如寻找中间白、四周黑的点）</h2>
+<!-- blog-edit-end:2f3da1a12862d836:b7 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b8 -->
+
 <p>这个专业术语叫做 Hit or Miss，官方的<a href="https://docs.opencv.org/4.x/db/d06/tutorial_hitOrMiss.html">文章</a>讲的不错，该操作<strong>对于在二值图像中寻找指定模式是很有用</strong>。它能发现那些邻域像素匹配第一个结构元素B1的形状而同时不匹配第二个结构元素B2的形状的像素。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b8 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b9 -->
+
 <p>举例其实就明白了，对于二值化图片，想找到这些像素：自身是白色、上下左右是黑色、其他无所谓；分为两个步骤：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b9 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b10 -->
+
 <ol>
 <li>先用 <code>[[0,1,0],[1,0,1],[0,1,0]]</code> 腐蚀原图，经过这个步骤，筛选出上下左右一定是黑色的值，这个滤波叫 B1。</li>
 <li>再用 <code>[[0,0,0],[0,1,0],[0,0,0]]</code> 腐蚀原图反相后的图，此时筛选出自身是白色，这个滤波叫 B2。</li>
@@ -755,18 +797,50 @@
 <blockquote>
 <p>PS: 其实我感觉暴力求（最朴素的，每个像素分别做五次检查）也可以...</p>
 </blockquote>
+<!-- blog-edit-end:2f3da1a12862d836:b10 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b11 -->
+
 <p>函数是 </p>
+<!-- blog-edit-end:2f3da1a12862d836:b11 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b12 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">MORPH_HITMISS</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:2f3da1a12862d836:b12 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b13 -->
+
 <p>要求：原图只能是 U8C1 二值化图，即只有0 和 255，最终的结果也是如此；而滤波核 <code>kernel</code> 就是 B1-B2，类型是 int，值只能是零和正负一。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b13 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b14 -->
+
 <p>下图就是上面例子的 B1, B2, 最终滤波核 <code>kernel</code>，最终滤波核中 -1 表示必须黑色、1 表示必须白色、0 表示无所谓：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b14 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b15 -->
+
 <p><img alt="1734948952636" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1734948952636.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b15 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b16 -->
+
 <blockquote>
 <p>多说一句，为什么只需要知道 B1-B2 就行了，而非 B1 和 B2 具体值呢？</p>
 <p>如果 B1-B2 某个元素为正负一，这个是可以得出 b1 和 b2 确定值的；但是如果某个元素是 0，那么可能是 1-1 或 0-0，但其实是这样的逻辑：<br />
 最终 <code>kernel</code> 为 0 时表示我们不在意这个地方的元素值，而 B1=0、B2=0 能达到这样的效果，那么既然可以，源码中遇到输入的最终 <code>kernel</code> 为 0 就让 B1=0、B2=0 即可，此时达到了不在意这个地方的元素值的目的。</p>
 </blockquote>
+<!-- blog-edit-end:2f3da1a12862d836:b16 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b17 -->
+
 <p>代码展示（官方文档也有）：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b17 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b18 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cv</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -784,8 +858,20 @@
 </span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span>
 </span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span><span class="n">output_image</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">input_image</span><span class="p">,</span> <span class="n">cv</span><span class="o">.</span><span class="n">MORPH_HITMISS</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:2f3da1a12862d836:b18 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b19 -->
+
 <h2 id="_4">提取前后景</h2>
+<!-- blog-edit-end:2f3da1a12862d836:b19 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b20 -->
+
 <p>可以用膨胀+腐蚀，也就是闭操作，要求前景的物体不要太大，一般都是一些细线之类的。其实就是相当于先求最大值然后求最小值（半径一般不是常规的 3 那么小，比如下面的图用的 21），然后拿原图相减。具体看<a href="../../04.图像分割和前后景分离/01.简单图像是分割：直接用形态学膨胀腐蚀/">这篇文章</a>和下面的图：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b20 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b21 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ndimage</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -802,9 +888,25 @@
 </span><span id="__span-3-14"><span class="linenos" data-linenos="14 "></span><span class="n">now</span> <span class="o">=</span> <span class="p">(</span><span class="n">now</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;./test.png&#39;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:2f3da1a12862d836:b21 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b22 -->
+
 <p><img alt="1734959014159" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1733648806883.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b22 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b23 -->
+
 <h2 id="_5">提取前景作为种子</h2>
+<!-- blog-edit-end:2f3da1a12862d836:b23 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b24 -->
+
 <p>这里的意思看下面的图就明白是什么意思了，使用 distanceTransform 方法，该方法具体的用法请查看<a href="https://github.com/masterAllen/LearnOpenCV/blob/main/details/distanceTransform.md">这篇文章</a></p>
+<!-- blog-edit-end:2f3da1a12862d836:b24 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b25 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./image/coins.jpg&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">src_gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -824,15 +926,55 @@
 </span><span id="__span-4-17"><span class="linenos" data-linenos="17 "></span><span class="n">ret</span><span class="p">,</span> <span class="n">sure_fg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dist</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">)</span>
 </span><span id="__span-4-18"><span class="linenos" data-linenos="18 "></span><span class="n">sure_fg</span> <span class="o">=</span> <span class="n">sure_fg</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>  
 </span></code></pre></div>
+<!-- blog-edit-end:2f3da1a12862d836:b25 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b26 -->
+
 <p><img alt="1734959795344" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1734959795344.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b26 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b27 -->
+
 <p>distanceTransform 方法相比膨胀腐蚀更健壮一些，因为腐蚀膨胀需要考虑半径和次数，不好把握。而且明显看出后者更保持了形状。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b27 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b28 -->
+
 <h2 id="_6">开闭运算</h2>
+<!-- blog-edit-end:2f3da1a12862d836:b28 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b29 -->
+
 <h3 id="_7">消除细小物体</h3>
+<!-- blog-edit-end:2f3da1a12862d836:b29 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b30 -->
+
 <p>开运算可以用来<strong>消除图像中的细小对象</strong>，在纤细点处分离物体和平滑较大物体的边界而又不明显改变其面积和形状。开运算本质是先腐蚀再膨胀。其实如果单纯的腐蚀也可以消除小块，但是呢，又会让物体变“瘦”。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b30 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b31 -->
+
 <h3 id="_8">填充孔洞、连接断开的线</h3>
+<!-- blog-edit-end:2f3da1a12862d836:b31 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b32 -->
+
 <p>闭运算可以用来<strong>填充目标内部的细小孔洞</strong>，将断开的邻近目标连接。其原理就是先膨胀再腐蚀。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b32 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b33 -->
+
 <h2 id="floodfill">Floodfill</h2>
+<!-- blog-edit-end:2f3da1a12862d836:b33 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b34 -->
+
 <p>这里就是指图上标记了几个点，然后把那些和种子在一块的区域显示出来。很简单，按理来说可以直接 BFS 即可。这里分享另一个方法：其实就是不断做膨胀操作，然后膨胀完的图去和原始图片做交集。直到最后交集后没变化为止。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b34 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b35 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">I</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;src1.png&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="n">J</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;src2.png&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>
@@ -841,16 +983,60 @@
 </span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span>    <span class="n">J</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dilate</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
 </span><span id="__span-5-7"><span class="linenos" data-linenos="7 "></span>    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:2f3da1a12862d836:b35 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b36 -->
+
 <p>原图：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b36 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b37 -->
+
 <p><img alt="1735003476800" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1735003476800.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b37 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b38 -->
+
 <p>种子文件：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b38 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b39 -->
+
 <p><img alt="1735003486109" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1735003486109.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b39 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b40 -->
+
 <p>结果：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b40 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b41 -->
+
 <p><img alt="1735003454469" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1735003454469.gif" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b41 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b42 -->
+
 <h2 id="_9">更健壮的填充孔洞</h2>
+<!-- blog-edit-end:2f3da1a12862d836:b42 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b43 -->
+
 <p>使用闭运算填充孔洞需要手动输入参数，比如半径、迭代次数等，有的时候不太好把控，现在分享一个新的方法。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b43 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b44 -->
+
 <p>本质和 floodfill 一样，只不过这里用上下左右的边界作为起始种子，然后执行 floodfill 即可。也就是每次执行膨胀操作，然后和原图相交。这种操作也叫形态学重构。</p>
+<!-- blog-edit-end:2f3da1a12862d836:b44 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b45 -->
+
 <p>一般是填充黑孔中的白洞，如果反过来把原始图片反相即可。<strong>注意这里只能填充第一层的空洞，也就是假如黑孔里有个白洞，白洞里再有个黑洞，最后最大的黑孔都会被填满。</strong></p>
+<!-- blog-edit-end:2f3da1a12862d836:b45 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b46 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">I</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./src.png&#39;</span><span class="p">)</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">I</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
@@ -863,12 +1049,39 @@
 </span><span id="__span-6-10"><span class="linenos" data-linenos="10 "></span>    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>
 </span><span id="__span-6-11"><span class="linenos" data-linenos="11 "></span>    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./result-2.png&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
 </span></code></pre></div>
+<!-- blog-edit-end:2f3da1a12862d836:b46 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b47 -->
+
 <p>原图：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b47 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b48 -->
+
 <p><img alt="1735004926038" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1735004926038.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b48 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b49 -->
+
 <p>起始种子（四周边界是白色的）：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b49 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b50 -->
+
 <p><img alt="1735004957009" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1735004957009.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b50 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b51 -->
+
 <p>结果：</p>
+<!-- blog-edit-end:2f3da1a12862d836:b51 -->
+
+<!-- blog-edit-start:2f3da1a12862d836:b52 -->
+
 <p><img alt="1735004868498" src="../../../../asset/image/b1a93851b95b8ab9c52b4faea51941e8/1735004868498.png" /></p>
+<!-- blog-edit-end:2f3da1a12862d836:b52 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\05.形态学的应用.md" data-text-edit-revision="1b42bc52fa37d9388e5fa5ed2044b6a23ecc379a3f7baf82c89f5ca0f25e7d4a" data-text-edit-marker="2f3da1a12862d836" data-text-edit-schema="1"></div>
 
 
 
@@ -1100,8 +1313,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

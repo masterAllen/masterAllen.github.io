@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -682,10 +682,19 @@
   
 
 
+<!-- blog-edit-start:c8e97cfdf9c16269:b0 -->
+
 <h1 id="pwanblekr-rookit">Pwanble.kr rookit</h1>
+<!-- blog-edit-end:c8e97cfdf9c16269:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c8e97cfdf9c16269180896052c457aaabba7f9b309b30fff442ac1a80eebbb3c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C38.rootkit.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\38.rootkit.md">复制路径</span></div>
 
+<!-- blog-edit-start:c8e97cfdf9c16269:b1 -->
+
 <h2 id="_1">基础杂项知识</h2>
+<!-- blog-edit-end:c8e97cfdf9c16269:b1 -->
+<!-- blog-edit-start:c8e97cfdf9c16269:b2 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>1. 什么是 QEMU ？
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>你现在可以理解成虚拟机，以前是 ssh 连接上正常的机器，现在就是 ssh 连接上 qemu 虚拟机
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -702,8 +711,20 @@
 </span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span>- xxd &amp;&amp; Vim !
 </span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span>- sed (on ssh) : 但是 busybox 实现的 sed 有 BUG，不能进行十六进制数替换
 </span></code></pre></div>
+<!-- blog-edit-end:c8e97cfdf9c16269:b2 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b3 -->
+
 <h2 id="_2">分析</h2>
+<!-- blog-edit-end:c8e97cfdf9c16269:b3 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b4 -->
+
 <p>查看源代码可知，一些诸如 <code>sys_open</code> 的函数被修改了：</p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b4 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">initmodule</span><span class="p">()</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="c1">// ....</span>
@@ -728,30 +749,80 @@
 </span><span id="__span-1-22"><span class="linenos" data-linenos="22 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 </span><span id="__span-1-23"><span class="linenos" data-linenos="23 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c8e97cfdf9c16269:b5 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b6 -->
+
 <p><code>sys_open_hooked</code> 就不贴了，它就是阻止打开 flag，如果文件名中包含 flag，那么就会拒绝，否则就正常打开。</p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b6 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b7 -->
+
 <p>我们现在有很高的权限，然而只要想打开 flag 文件，就会被拒绝。</p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b7 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b8 -->
+
 <h2 id="_3">思路</h2>
+<!-- blog-edit-end:c8e97cfdf9c16269:b8 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b9 -->
+
 <p>既然是这个 rootkit 捣鬼，那把它直接从内核删掉？但由于系统没有重启，最后执行 <code>open(flag)</code> 还是会调用修改后的 sys_open。</p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b9 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b10 -->
+
 <p>所以最终的方法是，重新加载另一个模块，这个模块把 sys_open 的地址写回到 sys_call[0x5] 中去。</p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b10 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b11 -->
+
 <p>具体做法也很简单，已经给我们提供了 <code>rootkis.ko</code> ，直接把里面涉及到赋值修改 <code>sys_open</code> 的汇编代码改一下就行了：</p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b11 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b12 -->
+
 <p>From:<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>mov     eax, dword ptr [0C15FA034h] ; syscall_table[5]
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>mov     ds:sys_open, eax
 </span></code></pre></div></p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b12 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b13 -->
+
 <p>To:<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span># 根据 kallsyms 获取 sys_open 的地址
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>mov     eax, 0xc1158d70     ;B8 70 8D 15 C1
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>mov     ds:sys_open, eax
 </span></code></pre></div></p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b13 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b14 -->
+
 <p>如何改？直接对二进制文件 <code>rootkis.ko</code> 进行修改，然后 <code>insmod rootkis.ko</code> 即可。<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>sed<span class="w"> </span><span class="s1">&#39;s/\xa1\x34\xa0\x5f\xc1/\xb8\x70\x8d\x15\xc1/g&#39;</span><span class="w"> </span>-i<span class="w"> </span>rootkit.ko
 </span></code></pre></div></p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b14 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b15 -->
+
 <h2 id="_4">其他问题</h2>
+<!-- blog-edit-end:c8e97cfdf9c16269:b15 -->
+<!-- blog-edit-start:c8e97cfdf9c16269:b16 -->
+
 <p>1. flag 乱码：使用 base64 ，之后到本机上转换，最后看看文件格式，有惊喜</p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b16 -->
+
+<!-- blog-edit-start:c8e97cfdf9c16269:b17 -->
+
 <p>2. 这个 <code>c15fa034</code> 是 sys_call[0x5] ，但是有个问题：它这个是物理地址吗？那为什么程序可以使用物理地址探测？<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>https://www.cnblogs.com/alantu2018/p/9002441.html
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>目前的理解：肯定是虚拟地址，不过应该所有程序内核区的虚拟地址都是固定的。
 </span></code></pre></div></p>
+<!-- blog-edit-end:c8e97cfdf9c16269:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\38.rootkit.md" data-text-edit-revision="c8e97cfdf9c16269180896052c457aaabba7f9b309b30fff442ac1a80eebbb3c" data-text-edit-marker="c8e97cfdf9c16269" data-text-edit-schema="1"></div>
 
 
 
@@ -983,8 +1054,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

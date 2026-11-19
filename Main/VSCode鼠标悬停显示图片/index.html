@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -642,18 +642,52 @@
   
 
 
+<!-- blog-edit-start:f8832f425173339a:b0 -->
+
 <h1 id="vs-code">VS Code 图片注释悬停预览实现说明</h1>
+<!-- blog-edit-end:f8832f425173339a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f8832f425173339a31d6dac39fd8544edbe7659174968fcb0630baa260a6b9ef" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CVSCode%E9%BC%A0%E6%A0%87%E6%82%AC%E5%81%9C%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\VSCode鼠标悬停显示图片.md">复制路径</span></div>
 
+<!-- blog-edit-start:f8832f425173339a:b1 -->
+
 <h2 id="_1">简介</h2>
+<!-- blog-edit-end:f8832f425173339a:b1 -->
+
+<!-- blog-edit-start:f8832f425173339a:b2 -->
+
 <p>插件：<a href="https://github.com/HEKEH/vscode-image-comment">vscode-image-comment</a></p>
+<!-- blog-edit-end:f8832f425173339a:b2 -->
+
+<!-- blog-edit-start:f8832f425173339a:b3 -->
+
 <p>这个插件可以在不同语言的代码注释中插入如 markdown 样式的图片格式，鼠标悬停后显示图片预览。</p>
+<!-- blog-edit-end:f8832f425173339a:b3 -->
+
+<!-- blog-edit-start:f8832f425173339a:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 在 python 中，鼠标悬停后会显示图片预览</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="c1"># ![image-comment](.image-comment/image-abc.png)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b4 -->
+
+<!-- blog-edit-start:f8832f425173339a:b5 -->
+
 <p>本文说明这个插件如何在代码注释中识别图片路径，并在鼠标悬停时显示图片预览。</p>
+<!-- blog-edit-end:f8832f425173339a:b5 -->
+
+<!-- blog-edit-start:f8832f425173339a:b6 -->
+
 <h2 id="_2">整体流程</h2>
+<!-- blog-edit-end:f8832f425173339a:b6 -->
+
+<!-- blog-edit-start:f8832f425173339a:b7 -->
+
 <p>插件的工作可以分为两步。本文只聚焦第二步：注释生成之后，插件如何扫描注释并实现悬停预览。</p>
+<!-- blog-edit-end:f8832f425173339a:b7 -->
+
+<!-- blog-edit-start:f8832f425173339a:b8 -->
+
 <ol>
 <li>生成注释。可以使用粘贴功能，插件会在当前位置插入规定的格式。</li>
 <li>
@@ -671,11 +705,31 @@
 <li>把图片路径解析成 VS Code 可用的 <code>vscode.Uri</code>。</li>
 <li>给该注释行添加 Decoration，并在 Decoration 的 <code>hoverMessage</code> 中显示图片。</li>
 </ol>
+<!-- blog-edit-end:f8832f425173339a:b10 -->
+
+<!-- blog-edit-start:f8832f425173339a:b11 -->
+
 <h2 id="1">1. 根据模板生成正则</h2>
+<!-- blog-edit-end:f8832f425173339a:b11 -->
+
+<!-- blog-edit-start:f8832f425173339a:b12 -->
+
 <p>默认模板是：</p>
+<!-- blog-edit-end:f8832f425173339a:b12 -->
+
+<!-- blog-edit-start:f8832f425173339a:b13 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="o">!</span><span class="p">[</span><span class="nx">image</span><span class="o">-</span><span class="nx">comment</span><span class="p">]({</span><span class="nx">path</span><span class="p">})</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b13 -->
+
+<!-- blog-edit-start:f8832f425173339a:b14 -->
+
 <p>相关代码在 <code>src/utils/preview.ts</code>：</p>
+<!-- blog-edit-end:f8832f425173339a:b14 -->
+
+<!-- blog-edit-start:f8832f425173339a:b15 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createPatternFromTemplate</span><span class="p">(</span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">RegExp</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">pathPlaceholder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{path}&#39;</span><span class="p">;</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">placeholderIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">pathPlaceholder</span><span class="p">);</span>
@@ -699,29 +753,89 @@
 </span><span id="__span-2-21"><span class="linenos" data-linenos="21 "></span><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-2-22"><span class="linenos" data-linenos="22 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b15 -->
+
+<!-- blog-edit-start:f8832f425173339a:b16 -->
+
 <p>以默认模板为例：</p>
+<!-- blog-edit-end:f8832f425173339a:b16 -->
+
+<!-- blog-edit-start:f8832f425173339a:b17 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;![image-comment]({path})&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b17 -->
+
+<!-- blog-edit-start:f8832f425173339a:b18 -->
+
 <p>插件会把它拆成三段：</p>
+<!-- blog-edit-end:f8832f425173339a:b18 -->
+
+<!-- blog-edit-start:f8832f425173339a:b19 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="nx">beforePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;![image-comment](&quot;</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="nx">pathPlaceholder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;{path}&quot;</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="nx">afterPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;)&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b19 -->
+
+<!-- blog-edit-start:f8832f425173339a:b20 -->
+
 <p>接着把 <code>beforePath</code> 和 <code>afterPath</code> 转义成正则安全字符串。因为 <code>[</code>、<code>]</code>、<code>(</code>、<code>)</code> 在正则中有特殊含义：</p>
+<!-- blog-edit-end:f8832f425173339a:b20 -->
+
+<!-- blog-edit-start:f8832f425173339a:b21 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="nx">escapedBefore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;!\[image-comment\]\(&quot;</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="nx">escapedAfter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;\)&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b21 -->
+
+<!-- blog-edit-start:f8832f425173339a:b22 -->
+
 <p>然后把 <code>{path}</code> 替换成路径捕获规则，意思是：捕获一段图片路径，直到遇到空白、引号等特殊字符。</p>
+<!-- blog-edit-end:f8832f425173339a:b22 -->
+
+<!-- blog-edit-start:f8832f425173339a:b23 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>([^\s&quot;&#39;\]\)\n]+?)
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b23 -->
+
+<!-- blog-edit-start:f8832f425173339a:b24 -->
+
 <p>最终得到的正则大致是：</p>
+<!-- blog-edit-end:f8832f425173339a:b24 -->
+
+<!-- blog-edit-start:f8832f425173339a:b25 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>!\[image-comment\]\(([^\s&quot;&#39;\]\)\n]+?)\)
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b25 -->
+
+<!-- blog-edit-start:f8832f425173339a:b26 -->
+
 <p>所以当插件扫描文档时，它可以匹配到规定的格式，并捕获出图片路径。</p>
+<!-- blog-edit-end:f8832f425173339a:b26 -->
+
+<!-- blog-edit-start:f8832f425173339a:b27 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// ![image-comment](.image-comment/image-abc.png)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b27 -->
+
+<!-- blog-edit-start:f8832f425173339a:b28 -->
+
 <h2 id="2">2. 扫描文档并提取图片路径</h2>
+<!-- blog-edit-end:f8832f425173339a:b28 -->
+
+<!-- blog-edit-start:f8832f425173339a:b29 -->
+
 <p>相关代码在 <code>src/utils/preview.ts</code>：</p>
+<!-- blog-edit-end:f8832f425173339a:b29 -->
+
+<!-- blog-edit-start:f8832f425173339a:b30 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findImageCommentsInDocument</span><span class="p">(</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nx">document</span><span class="o">:</span><span class="w"> </span><span class="kt">vscode.TextDocument</span><span class="p">,</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
@@ -743,16 +857,52 @@
 </span><span id="__span-9-19"><span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">results</span><span class="p">;</span>
 </span><span id="__span-9-20"><span class="linenos" data-linenos="20 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b30 -->
+
+<!-- blog-edit-start:f8832f425173339a:b31 -->
+
 <p>这一步没啥好说的，就是扫描文档，识别出规定的格式，解析出 <code>path</code> 字段。</p>
+<!-- blog-edit-end:f8832f425173339a:b31 -->
+
+<!-- blog-edit-start:f8832f425173339a:b32 -->
+
 <h2 id="3-uri">3. 把路径解析成 URI</h2>
+<!-- blog-edit-end:f8832f425173339a:b32 -->
+
+<!-- blog-edit-start:f8832f425173339a:b33 -->
+
 <p>URI 可以理解为 VS Code 内部用来表示资源位置的对象。</p>
+<!-- blog-edit-end:f8832f425173339a:b33 -->
+
+<!-- blog-edit-start:f8832f425173339a:b34 -->
+
 <p>注释里的路径只是普通字符串：</p>
+<!-- blog-edit-end:f8832f425173339a:b34 -->
+
+<!-- blog-edit-start:f8832f425173339a:b35 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="p">.</span><span class="nx">image</span><span class="o">-</span><span class="nx">comment</span><span class="o">/</span><span class="nx">image</span><span class="o">-</span><span class="nx">abc</span><span class="p">.</span><span class="nx">png</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b35 -->
+
+<!-- blog-edit-start:f8832f425173339a:b36 -->
+
 <p>但 VS Code API 更常使用 <code>vscode.Uri</code> 来表示资源：</p>
+<!-- blog-edit-end:f8832f425173339a:b36 -->
+
+<!-- blog-edit-start:f8832f425173339a:b37 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="nx">vscode</span><span class="p">.</span><span class="nx">Uri</span><span class="p">.</span><span class="nx">file</span><span class="p">(</span><span class="s2">&quot;D:\\MyCode\\vscode-image-comment\\.image-comment\\image-abc.png&quot;</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b37 -->
+
+<!-- blog-edit-start:f8832f425173339a:b38 -->
+
 <p>相关代码在 <code>src/utils/preview.ts</code>：</p>
+<!-- blog-edit-end:f8832f425173339a:b38 -->
+
+<!-- blog-edit-start:f8832f425173339a:b39 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">resolveImagePath</span><span class="p">(</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nx">commentPath</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
 </span><span id="__span-12-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">documentUri</span><span class="o">:</span><span class="w"> </span><span class="kt">vscode.Uri</span><span class="p">,</span>
@@ -782,21 +932,53 @@
 </span><span id="__span-12-27"><span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 </span><span id="__span-12-28"><span class="linenos" data-linenos="28 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b39 -->
+
+<!-- blog-edit-start:f8832f425173339a:b40 -->
+
 <p>它会按顺序尝试：</p>
+<!-- blog-edit-end:f8832f425173339a:b40 -->
+
+<!-- blog-edit-start:f8832f425173339a:b41 -->
+
 <ol>
 <li>如果注释里是绝对路径，就直接检查该文件是否存在。</li>
 <li>如果是相对路径，先按 workspace 根目录拼接。</li>
 <li>如果还找不到，再按当前文档所在目录拼接。</li>
 </ol>
+<!-- blog-edit-end:f8832f425173339a:b41 -->
+
+<!-- blog-edit-start:f8832f425173339a:b42 -->
+
 <p>后续显示 hover 图片和打开图片预览都依赖这个 URI。</p>
+<!-- blog-edit-end:f8832f425173339a:b42 -->
+
+<!-- blog-edit-start:f8832f425173339a:b43 -->
+
 <h2 id="4-decoration">4. 使用 Decoration 添加悬停预览</h2>
+<!-- blog-edit-end:f8832f425173339a:b43 -->
+
+<!-- blog-edit-start:f8832f425173339a:b44 -->
+
 <p><code>Decoration</code> 是 VS Code Extension API 的编辑器装饰能力，也就是 VS Code 支持的一种功能。它不会修改文件内容，只是在编辑器显示层增加视觉效果，例如在这个插件中使用了：</p>
+<!-- blog-edit-end:f8832f425173339a:b44 -->
+
+<!-- blog-edit-start:f8832f425173339a:b45 -->
+
 <ol>
 <li>给图片注释行加背景高亮</li>
 <li>在 gutter，也就是行号左侧区域，显示一个小图标</li>
 <li>给这一行绑定 hoverMessage，鼠标悬停时显示图片预览</li>
 </ol>
+<!-- blog-edit-end:f8832f425173339a:b45 -->
+
+<!-- blog-edit-start:f8832f425173339a:b46 -->
+
 <p>相关代码在 <code>src/handlers/imageDecoration.ts</code>：</p>
+<!-- blog-edit-end:f8832f425173339a:b46 -->
+
+<!-- blog-edit-start:f8832f425173339a:b47 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">private</span><span class="w"> </span><span class="nx">createDecorationType</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">vscode</span><span class="p">.</span><span class="nx">TextEditorDecorationType</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-13-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">vscode</span><span class="p">.</span><span class="nx">workspace</span><span class="p">.</span><span class="nx">getConfiguration</span><span class="p">(</span><span class="s1">&#39;imageComment&#39;</span><span class="p">);</span>
 </span><span id="__span-13-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">showGutterIcon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="p">(</span><span class="s1">&#39;showGutterIcon&#39;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
@@ -823,14 +1005,34 @@
 </span><span id="__span-13-24"><span class="linenos" data-linenos="24 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">vscode</span><span class="p">.</span><span class="nb">window</span><span class="p">.</span><span class="nx">createTextEditorDecorationType</span><span class="p">(</span><span class="nx">decorationOptions</span><span class="p">);</span>
 </span><span id="__span-13-25"><span class="linenos" data-linenos="25 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b47 -->
+
+<!-- blog-edit-start:f8832f425173339a:b48 -->
+
 <p>这段代码创建的是一种装饰样式。</p>
+<!-- blog-edit-end:f8832f425173339a:b48 -->
+
+<!-- blog-edit-start:f8832f425173339a:b49 -->
+
 <p>真正关键的是下面这行代码，里面的 <code>hoverMessage</code> 就是最后悬停显示的内容。代码在 <code>src/handlers/imageDecoration.ts</code> 的 <code>updateDecorations</code> 方法中：</p>
+<!-- blog-edit-end:f8832f425173339a:b49 -->
+
+<!-- blog-edit-start:f8832f425173339a:b50 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span><span class="nx">decorations</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
 </span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">range</span><span class="o">:</span><span class="w"> </span><span class="kt">decorationRange</span><span class="p">,</span>
 </span><span id="__span-14-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">hoverMessage</span><span class="o">:</span><span class="w"> </span><span class="kt">this.createEnhancedHoverMessage</span><span class="p">(</span><span class="nx">imageUri</span><span class="p">,</span><span class="w"> </span><span class="nx">match</span><span class="p">.</span><span class="nx">imagePath</span><span class="p">),</span>
 </span><span id="__span-14-4"><span class="linenos" data-linenos="4 "></span><span class="p">});</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b50 -->
+
+<!-- blog-edit-start:f8832f425173339a:b51 -->
+
 <p>悬停内容由 <code>createEnhancedHoverMessage</code> 生成。它返回的是一个 <code>vscode.MarkdownString</code>，其中包含 Markdown 图片语法，因此 VS Code 的 hover 弹窗可以渲染出图片。</p>
+<!-- blog-edit-end:f8832f425173339a:b51 -->
+
+<!-- blog-edit-start:f8832f425173339a:b52 -->
+
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">private</span><span class="w"> </span><span class="nx">createEnhancedHoverMessage</span><span class="p">(</span><span class="nx">imageUri</span><span class="o">:</span><span class="w"> </span><span class="kt">vscode.Uri</span><span class="p">,</span><span class="w"> </span><span class="nx">imagePath</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">vscode</span><span class="p">.</span><span class="nx">MarkdownString</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-15-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">markdown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">vscode</span><span class="p">.</span><span class="nx">MarkdownString</span><span class="p">();</span>
 </span><span id="__span-15-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">markdown</span><span class="p">.</span><span class="nx">isTrusted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
@@ -863,6 +1065,9 @@
 </span><span id="__span-15-30"><span class="linenos" data-linenos="30 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">markdown</span><span class="p">;</span>
 </span><span id="__span-15-31"><span class="linenos" data-linenos="31 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8832f425173339a:b52 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\VSCode鼠标悬停显示图片.md" data-text-edit-revision="f8832f425173339a31d6dac39fd8544edbe7659174968fcb0630baa260a6b9ef" data-text-edit-marker="f8832f425173339a" data-text-edit-schema="1"></div>
 
 
 
@@ -1094,8 +1299,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

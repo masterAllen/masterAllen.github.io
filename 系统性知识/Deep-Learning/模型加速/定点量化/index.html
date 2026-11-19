@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -645,42 +645,111 @@
   
 
 
+<!-- blog-edit-start:77554a5e4a34eb3f:b0 -->
+
 <h1 id="_1">定点量化</h1>
+<!-- blog-edit-end:77554a5e4a34eb3f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="028337b84a2b14fa20614694a09dd1e62d8f5e098374f7acd21284088526125b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E6%A8%A1%E5%9E%8B%E5%8A%A0%E9%80%9F%5C%E5%AE%9A%E7%82%B9%E9%87%8F%E5%8C%96.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E6%A8%A1%E5%9E%8B%E5%8A%A0%E9%80%9F" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\模型加速\定点量化.md">复制路径</span></div>
 
+<!-- blog-edit-start:77554a5e4a34eb3f:b1 -->
+
 <p>其实就是浮点数转成整数，最后再进行移位。其实本质上就是写如何把平常的浮点数转成整数，最后再进行移位。比如 1.5，可以转成 3，最后移一位就行。</p>
+<!-- blog-edit-end:77554a5e4a34eb3f:b1 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b2 -->
+
 <h2 id="_2">单个数值量化</h2>
+<!-- blog-edit-end:77554a5e4a34eb3f:b2 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b3 -->
+
 <p>假设是 <span class="arithmatex">\(r \rightarrow q\)</span> 的映射，其中 <span class="arithmatex">\(r\)</span> 是浮点数，<span class="arithmatex">\(q\)</span> 是整数，转换关系：</p>
+<!-- blog-edit-end:77554a5e4a34eb3f:b3 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b4 -->
+
 <div class="arithmatex">\[
 r = S(q-Z) \\[5px]
 q = \text{round}(r/S) + Z
 \]</div>
+<!-- blog-edit-end:77554a5e4a34eb3f:b4 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b5 -->
+
 <p>其中，<span class="arithmatex">\(S\)</span> 是缩放因子 scale，<span class="arithmatex">\(Z\)</span> 是偏移量，也叫零点 zero point：</p>
+<!-- blog-edit-end:77554a5e4a34eb3f:b5 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b6 -->
+
 <div class="arithmatex">\[
 S = (r_{\text{max}} - r_{\text{min}})/(q_{\text{max}} - q_{\text{min}}) \\[5px]
 Z = \text{round}(q_{\text{max}} - r_{\text{max}}/S)
 \]</div>
+<!-- blog-edit-end:77554a5e4a34eb3f:b6 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b7 -->
+
 <h2 id="_3">矩阵量化</h2>
+<!-- blog-edit-end:77554a5e4a34eb3f:b7 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b8 -->
+
 <p>矩阵中各个元素也无非是相乘累加：</p>
+<!-- blog-edit-end:77554a5e4a34eb3f:b8 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b9 -->
+
 <div class="arithmatex">\[
 r_3^{i,j} = \sum_{k=1}^{K} r_1^{i,k} \cdot r_2^{k,j}
 \]</div>
+<!-- blog-edit-end:77554a5e4a34eb3f:b9 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b10 -->
+
 <p>我们设定 <span class="arithmatex">\(S_1, S_2, S_3\)</span> 是 <span class="arithmatex">\(r_1, r_2, r_3\)</span> 的缩放因子，<span class="arithmatex">\(Z_1, Z_2, Z_3\)</span> 是 <span class="arithmatex">\(r_1, r_2, r_3\)</span> 的偏移量，那么有：</p>
+<!-- blog-edit-end:77554a5e4a34eb3f:b10 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b11 -->
+
 <div class="arithmatex">\[
 S_3(q_3^{i,j} - Z_3) = \sum_{k=1}^{K} S_1(q_1^{i,k} - Z_1) S_2(q_2^{k,j} - Z_2)
 \]</div>
+<!-- blog-edit-end:77554a5e4a34eb3f:b11 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b12 -->
+
 <p>整理得到</p>
+<!-- blog-edit-end:77554a5e4a34eb3f:b12 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b13 -->
+
 <div class="arithmatex">\[
 q_3^{i,j} = \frac{S_1S_2}{S_3} \sum_{k=1}^{K} (q_1^{i,k} - Z_1) (q_2^{k,j} - Z_2) + Z_3
 \]</div>
+<!-- blog-edit-end:77554a5e4a34eb3f:b13 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b14 -->
+
 <p>除了 <span class="arithmatex">\(\frac{S_1S_2}{S_3}\)</span> 是浮点数，其他都是整数，所以可以转成整数运算。</p>
+<!-- blog-edit-end:77554a5e4a34eb3f:b14 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b15 -->
+
 <h2 id="_4">系数实现</h2>
+<!-- blog-edit-end:77554a5e4a34eb3f:b15 -->
+
+<!-- blog-edit-start:77554a5e4a34eb3f:b16 -->
+
 <ol>
 <li>定点量化二<br />
 其实就是将如何将一个 0.xx 的数字转成定点数。比如二进制 0.001101，就可以转成 11 &gt;&gt; 4，虽然损失了一点精度。<br />
 只不过文章的意思是，先转成一个 0.5-1 的数，比如转成 0.11 &gt;&gt; 2。<br />
 实际中是转成 11，这样对于一个数字 x，就 x*11 &gt;&gt; 4 就行。</li>
 </ol>
+<!-- blog-edit-end:77554a5e4a34eb3f:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\模型加速\定点量化.md" data-text-edit-revision="028337b84a2b14fa20614694a09dd1e62d8f5e098374f7acd21284088526125b" data-text-edit-marker="77554a5e4a34eb3f" data-text-edit-schema="1"></div>
 
 
 
@@ -912,8 +981,6 @@ q_3^{i,j} = \frac{S_1S_2}{S_3} \sum_{k=1}^{K} (q_1^{i,k} - Z_1) (q_2^{k,j} - Z_2
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

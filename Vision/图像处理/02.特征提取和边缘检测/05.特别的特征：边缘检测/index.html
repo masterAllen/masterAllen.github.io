@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,20 +666,54 @@
   
 
 
+<!-- blog-edit-start:aa6fe3417424cd1e:b0 -->
+
 <h1 id="_1">特别的特征：边缘检测</h1>
+<!-- blog-edit-end:aa6fe3417424cd1e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b9de0ede71beae0e8c80df3cb95bb39db4335461ffdcc3ac274459a1f177ae6f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%5C05.%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9A%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\05.特别的特征：边缘检测.md">复制路径</span></div>
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.4.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.4.md</a></p>
 </blockquote>
+<!-- blog-edit-end:aa6fe3417424cd1e:b1 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b2 -->
+
 <p>边缘是一个独特的图像特征。</p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b2 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b3 -->
+
 <h3 id="canny">Canny</h3>
+<!-- blog-edit-end:aa6fe3417424cd1e:b3 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b4 -->
+
 <p>经典算法，无需多言。要么输入 8-bit 的 image，要么输入处理后的 16S1/16S3 的微分后的结果 dx 和 dy。</p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b4 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b5 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">cv</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">threshold1</span><span class="p">,</span> <span class="n">threshold2</span><span class="p">[,</span> <span class="n">edges</span><span class="p">[,</span> <span class="n">apertureSize</span><span class="p">[,</span> <span class="n">L2gradient</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="n">edges</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">cv</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">threshold1</span><span class="p">,</span> <span class="n">threshold2</span><span class="p">[,</span> <span class="n">edges</span><span class="p">[,</span> <span class="n">L2gradient</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">edges</span>
 </span></code></pre></div>
+<!-- blog-edit-end:aa6fe3417424cd1e:b5 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b6 -->
+
 <h3 id="structurededgedetection">StructuredEdgeDetection</h3>
+<!-- blog-edit-end:aa6fe3417424cd1e:b6 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b7 -->
+
 <p>来自 <a href="https://docs.opencv.org/4.x/de/d51/group__ximgproc__edge.html">ximgproc 的方法</a>，一共两个类：RFFeatureGetter 和 StructuredEdgeDetection。前者是训练时需要用到的，暂且不谈，可参考<a href="https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%2020/%E8%AE%AD%E7%BB%83%E7%BB%93%E6%9E%84%E5%8C%96%E6%A3%AE%E6%9E%97.md">该文章</a>。后者则是训练和使用都会用到的类，是核心内容。方法的原论文<a href="https://openaccess.thecvf.com/content_iccv_2013/papers/Dollar_Structured_Forests_for_2013_ICCV_paper.pdf">链接在此</a>，发表于 ICCV 2013。个人实验代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_edges.ipynb">test_edges.ipynb</a> 中，简洁版代码如下，总结而言使用方式就是导入模型 + 无脑调用，图片和模型文件都在 opencv extradata 那个仓库中：</p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b7 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b8 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">model_pth</span> <span class="o">=</span> <span class="s1">&#39;./image/edge/StructuredEdgeDetection.yml&#39;</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">pDollar</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">createStructuredEdgeDetection</span><span class="p">(</span><span class="n">model_pth</span><span class="p">)</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -696,12 +730,32 @@
 </span><span id="__span-1-14"><span class="linenos" data-linenos="14 "></span>    <span class="p">(</span><span class="s1">&#39;edges nms&#39;</span><span class="p">,</span> <span class="n">edges_nm</span><span class="p">)</span>
 </span><span id="__span-1-15"><span class="linenos" data-linenos="15 "></span><span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:aa6fe3417424cd1e:b8 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b9 -->
+
 <p><img alt="1727266186762" src="../../../../asset/image/c4704a814c36a78232e90ec5001276e3/1727266186762.png" /></p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b9 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b10 -->
+
 <h3 id="edgedrawing">EdgeDrawing</h3>
+<!-- blog-edit-end:aa6fe3417424cd1e:b10 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b11 -->
+
 <p><a href="https://docs.opencv.org/4.x/d4/d8b/group__ximgproc__edge__drawing.html">ximgproc 的方法</a>，不仅可以检测边缘，也可以检测边缘、检测椭圆。传入参数建立对象，然后调用方法。代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_edges.ipynb">test_edges.ipynb</a> 中。</p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b11 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b12 -->
+
 <p>原始论文：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>Cihan Topal and Cuneyt Akinlar. Edge drawing: a combined real-time edge and segment detector. Journal of Visual Communication and Image Representation, 23(6):862–872, 2012.
 </span></code></pre></div></p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b12 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b13 -->
+
 <p>代码：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">rgb_src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;image/edge/sources/06.png&#39;</span><span class="p">)</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">gray_src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">rgb_src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
@@ -730,7 +784,15 @@
 </span><span id="__span-3-25"><span class="linenos" data-linenos="25 "></span>    <span class="p">(</span><span class="s1">&#39;edges by ed&#39;</span><span class="p">,</span> <span class="n">edges_by_ed</span><span class="p">),</span>
 </span><span id="__span-3-26"><span class="linenos" data-linenos="26 "></span><span class="p">],</span> <span class="n">colnum</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b13 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b14 -->
+
 <h3 id="deriche-paillou">Deriche, Paillou</h3>
+<!-- blog-edit-end:aa6fe3417424cd1e:b14 -->
+
+<!-- blog-edit-start:aa6fe3417424cd1e:b15 -->
+
 <p>也是 ximgproc 的方法，Paillou 只能 cpp 调用。查了一下 Deriche，它其实就是在 Canny 上改进了一些东西，比如平滑的方式等等，基本的逻辑是差不多的。代码如下：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span>gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>
@@ -749,6 +811,9 @@
 </span><span id="__span-4-15"><span class="linenos" data-linenos="15 "></span>show_images(resultX, colnum=len(resultX))
 </span><span id="__span-4-16"><span class="linenos" data-linenos="16 "></span>show_images(result, colnum=len(result))
 </span></code></pre></div></p>
+<!-- blog-edit-end:aa6fe3417424cd1e:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\05.特别的特征：边缘检测.md" data-text-edit-revision="b9de0ede71beae0e8c80df3cb95bb39db4335461ffdcc3ac274459a1f177ae6f" data-text-edit-marker="aa6fe3417424cd1e" data-text-edit-schema="1"></div>
 
 
 
@@ -980,8 +1045,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

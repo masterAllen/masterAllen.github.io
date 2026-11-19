@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -671,10 +671,19 @@
   
 
 
+<!-- blog-edit-start:5398b267e41fbea8:b0 -->
+
 <h1 id="pwnablekr-passcode">Pwnable.kr Passcode 详解</h1>
+<!-- blog-edit-end:5398b267e41fbea8:b0 -->
+
 <div class="file-actions" data-image-edit-revision="5398b267e41fbea8542a8f68065dd21c4113d8e12deb55e834db3114ece9af46" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C05.passcode.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\05.passcode.md">复制路径</span></div>
 
+<!-- blog-edit-start:5398b267e41fbea8:b1 -->
+
 <h2 id="_1">源代码</h2>
+<!-- blog-edit-end:5398b267e41fbea8:b1 -->
+<!-- blog-edit-start:5398b267e41fbea8:b2 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -706,17 +715,46 @@
 </span><span id="__span-0-29"><span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-30"><span class="linenos" data-linenos="30 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5398b267e41fbea8:b2 -->
+
+<!-- blog-edit-start:5398b267e41fbea8:b3 -->
+
 <h2 id="_2">分析</h2>
+<!-- blog-edit-end:5398b267e41fbea8:b3 -->
+<!-- blog-edit-start:5398b267e41fbea8:b4 -->
+
 <p>很容易知道了，是<code>scanf</code>那里出了问题，应该是<code>scanf("%d", passcode1)</code>，结果题目用了<code>scanf("%d", passcode1)</code>，这个错误导致我们可以更改<code>passcode1</code>指向的地址块。(同理<code>passcode2</code>)</p>
+<!-- blog-edit-end:5398b267e41fbea8:b4 -->
+
+<!-- blog-edit-start:5398b267e41fbea8:b5 -->
+
 <p>但是怎么控制<code>passcode</code>这两个数？还是经验不够，明明以前做过这种类似的：<code>welcome()</code>和<code>login()</code>函数是并列关系，所以<code>welcome()</code>执行完成后可能会有残留东西放在了<code>login()</code>中。本题很明显，<code>welcome()</code>里面的<code>name</code>是我们可以输入的，所以可以控制这些残留东西。</p>
+<!-- blog-edit-end:5398b267e41fbea8:b5 -->
+
+<!-- blog-edit-start:5398b267e41fbea8:b6 -->
+
 <p>程序没开PIE，那这个真的太简单了。然而你以为就结束了？当然不是，否则我也不会单独写一篇文章了。首先第一点，好巧不巧，只能改掉<code>passcode1</code>，改不了<code>passcode2</code>。现在回头看看，真的太惯性思维了，老是想着怎么改<code>passcode2</code>。其实想想，我们现在不就是有了一次任意地址写的机会吗！所以只要把<code>printf_got</code>改成<code>system('/bin/sh')</code>就好了呀...</p>
+<!-- blog-edit-end:5398b267e41fbea8:b6 -->
+
+<!-- blog-edit-start:5398b267e41fbea8:b7 -->
+
 <p>第二个问题，我要传入的地址它不是可打印的，这怎么办？<br />
 用Python呀，最终<code>python -c "print 'A' * 96 + '\x00\xa0\x04\x08' + '134514147\n'" | ./passcode</code></p>
+<!-- blog-edit-end:5398b267e41fbea8:b7 -->
+
+<!-- blog-edit-start:5398b267e41fbea8:b8 -->
+
 <h2 id="_3">总结</h2>
+<!-- blog-edit-end:5398b267e41fbea8:b8 -->
+<!-- blog-edit-start:5398b267e41fbea8:b9 -->
+
 <ul>
 <li>并列函数一定要敏感，敏感，敏感！！</li>
 <li>本题整体看看吧</li>
 </ul>
+<!-- blog-edit-end:5398b267e41fbea8:b9 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\05.passcode.md" data-text-edit-revision="5398b267e41fbea8542a8f68065dd21c4113d8e12deb55e834db3114ece9af46" data-text-edit-marker="5398b267e41fbea8" data-text-edit-schema="1"></div>
 
 
 
@@ -948,8 +986,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

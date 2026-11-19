@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -705,14 +705,32 @@
   
 
 
+<!-- blog-edit-start:b4069a6aa5bad3ee:b0 -->
+
 <h1 id="bnr">BNR</h1>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b4069a6aa5bad3ee0530c52bcf284af9b75be125e599a1a3f86e910d17a037e0" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C06.RawDenoise%5CBNR.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C06.RawDenoise" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\06.RawDenoise\BNR.md">复制路径</span></div>
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b1 -->
 
 <blockquote>
 <p>转载文章，作者：<a href="https://space.bilibili.com/439454715/">https://space.bilibili.com/439454715/</a></p>
 </blockquote>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b1 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b2 -->
+
 <h2 id="bnr_1">为什么会有 BNR</h2>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b2 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b3 -->
+
 <p>RAW 图上的噪声模型通常用高斯 - 泊松模型进行描述，但是在 PIPELINE 中每经过一个处理模块，噪声都会发相应的变化，在经过一些列的线性和非线性变化后噪声模型会变得更加复杂，很难通过模型去降低噪声了。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b3 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b4 -->
+
 <ol>
 <li>
 <p>比如 BLC：下图是前面介绍 LSC 时标定得到的补偿 Gain 值，可以发现四周的 gain 值会比中间的大很多，这样就会导致原本均匀分布的噪声在不同的 gain 值作用下变得不均匀，切这种不均匀和镜头相关，噪声模型就会变得复杂。</p>
@@ -726,24 +744,100 @@
 <p>比如 Demosaic：如图去马赛克算法对噪声模型的影响，可以看出不同的去买塞克算法对噪声模型的改变成都和方式都会有所差异，倒是经过去马赛克后噪声模型无法确定。初次之外 pipeline 中还会经过 Gamma，CCM，AWB 等一系列线性和非线性的变换，会使得噪声模型更加复杂，后面再向去除噪声会变得更加困难，所以一种很理想的方式就是直接在 RAW 上就对噪声进行抑制，让噪声在一个合理的范围内。</p>
 </li>
 </ol>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b6 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b7 -->
+
 <p><img alt="desmasicWithNoise.png" src="../../../../asset/image/c5f8fdce611ebe98751e5006ce56319a/desmasicWithNoise.png" /></p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b7 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b8 -->
+
 <h2 id="_1">矫正方法</h2>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b8 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b9 -->
+
 <p><a href="https://zhuanlan.zhihu.com/p/425197766">除了上一篇文中讲到的一些简单滤波的变种方法外</a>，本文主要介绍三种 RAW 域的降噪算法，其中两种基于 PCA 的方式降噪，另一中是基于 HVS 的方式降噪，其中还涉及到的 PCA 的讲解和小波变换去噪的讲解可以通过文末连接去<a href="https://www.bilibili.com/video/BV15T4y1R76K?spm_id_from=333.999.0.0">B 站查看视频讲解</a>。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b9 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b10 -->
+
 <h3 id="pca-based-spatially-adaptive-denoising-of-cfa-images-for-single-sensor-digital-cameras">PCA-Based Spatially Adaptive Denoising of CFA Images for Single-Sensor Digital Cameras</h3>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b10 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b11 -->
+
 <p><img src="../../../../../asset/image/c5f8fdce611ebe98751e5006ce56319a/train.png" alt="train.png" style="zoom:50%;" /></p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b11 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b12 -->
+
 <p>PCA 降噪的主要依据就是噪声是均匀分布的，而图像的有用信息主要分布在主成的特征上，所以经过 PCA 降维后图像的主要信息得到了保留，而噪声随着减少的维度损失掉了，那么再经过反 PCA 变换后 SNR 就可以得到提升。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b12 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b13 -->
+
 <p>该算法的主要思路就是首先在整副图中选择一个区域，即图中最大的黑框（原文称之为 training block）。PCA 需要有特征，那么需要选择特征框（variable block），即图中小框。如图我们将特征框的尺寸定义为 6*6（这个可以根据情况自行选择效果好的），小框的像素组成一个长度为 36 的列向量。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b13 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b14 -->
+
 <p>假设有 255 个框，即一个 255*36 的矩阵，在这 255 个数据中挑选出 N 个数据。这 N 个数据（也就是块）认为是比较相似的，因为不相似区域的贡献度太高在后续的去马赛克算法中会使得图像容易出现伪彩。寻找 N 个数据的方式：作者通过求每个列向量与中心向量（图中绿色框）的曼哈顿距离来排序，选择距离相近的 N 个数据。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b14 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b15 -->
+
 <p>经过处理后数据就变为 36*N 维，再对这个二维数据进行 PCA，找出前 m 维个特征进行降维（这个 m 是对 36 个特征进行处理）。然后再对降维后的数据进行反 PCA 变换就可以起到降噪的功效。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b15 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b16 -->
+
 <p>除了这些简单的操作，原文中还有一些提升效果的操作，比如主成分的变换矩阵是通过模型求的没有噪声特性的图像的变换矩阵，这样在对图像进行 PCA 变换的时候就可以降低噪声对图像主成分的干扰，然后文中 PCA 之前会通过小波得到噪声模型的方差，用来分析噪声。<a href="https://gitee.com/wtzhu13/ISPAlgorithmStudy/tree/master/BNR">具体的代码和论文可以参考仓库中原文作者提供原文的配套代码加以理解。</a></p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b16 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b17 -->
+
 <h3 id="pseudo-four-channel-image-denoising-for-noisy-cfa-rawdata">PSEUDO FOUR-CHANNEL IMAGE DENOISING FOR NOISY CFA RAWDATA</h3>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b17 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b18 -->
+
 <p><img alt="PCA-4-C.png" src="../../../../asset/image/c5f8fdce611ebe98751e5006ce56319a/PCA-4-C.png" /></p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b18 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b19 -->
+
 <p>这种方法只是用来作为一个思路，因为需要的内存较大，还没验证在实际 PIPELINE 上的效果，所以这里不做过多的阐述，<a href="https://www.bilibili.com/video/BV12341187DE?spm_id_from=333.999.0.0">有兴趣的朋友可以参考 B 站相关视频。</a></p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b19 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b20 -->
+
 <p>主要思路就是将一个选择不同的起始点得四种不同的数据，然后对这四种数据进行 PCA 降噪，然后再次展开成四张 RAW 图，然后对四张 RAW 进行平均得到最终的 raw 图。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b20 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b21 -->
+
 <h3 id="noise-reduction-for-cfa-image-sensors-exploiting-hvs-behaviour">Noise Reduction for CFA Image Sensors Exploiting HVS Behaviour</h3>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b21 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b22 -->
+
 <p>方法主要是结合 HVS 进行 bayer 域的降噪。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b22 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b23 -->
+
 <p><img alt="HVS_NR.png" src="../../../../asset/image/c5f8fdce611ebe98751e5006ce56319a/HVS_NR.png" /></p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b23 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b24 -->
+
 <p>该算法主要是通过如图的几个模块进行降噪，通过像素值的差来作为判断依据。下面将通过每个模块的单独讲解来介绍该方法。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b24 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b25 -->
+
 <ul>
 <li>
 <p><strong>Signal Analyzer Block</strong></p>
@@ -789,8 +883,19 @@
 <p>最后通过上述公式完成滤波和归一化即可得到最终降噪后的像素值。</p>
 </li>
 </ul>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b25 -->
+<!-- blog-edit-start:b4069a6aa5bad3ee:b26 -->
+
 <h2 id="_2">算法实现</h2>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b26 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b27 -->
+
 <p>因为本文介绍的三种算法前两种都有论文作者提供的源代码作为参考，所以这里就不在重复提供，有兴趣的朋友可以去<a href="https://gitee.com/wtzhu13">gitee 仓库</a>下载论文和参考代码即可，这里主要提供第三种算法的代码。</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b27 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b28 -->
+
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="  1 "></span><span class="c">%% --------------------------------</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="  2 "></span><span class="c">%% author:wtzhu</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="  3 "></span><span class="c">%% email:wtzhu_13@163.com</span>
@@ -961,14 +1066,29 @@
 </span><span id="__span-0-168"><span class="linenos" data-linenos="168 "></span><span class="nb">figure</span><span class="p">();</span><span class="nb">imshow</span><span class="p">((</span><span class="n">noise_raw</span><span class="o">-</span><span class="n">rggb_raw</span><span class="p">),</span><span class="w"> </span><span class="p">[]);</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;noise&#39;</span><span class="p">);</span>
 </span><span id="__span-0-169"><span class="linenos" data-linenos="169 "></span><span class="nb">figure</span><span class="p">();</span><span class="nb">imshow</span><span class="p">((</span><span class="n">denoised_out</span><span class="o">-</span><span class="n">rggb_raw</span><span class="p">),</span><span class="w"> </span><span class="p">[]);</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;noise reduced&#39;</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b28 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b29 -->
+
 <h2 id="_3"><strong>相关链接</strong></h2>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b29 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b30 -->
+
 <p>本专栏所有的博客笔记和视频都可以从以下渠道获取：</p>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b30 -->
+
+<!-- blog-edit-start:b4069a6aa5bad3ee:b31 -->
+
 <ul>
 <li>zhihu： <a href="https://www.zhihu.com/column/c_1389227246742335488">ISP 图像处理 - 知乎 (zhihu.com)</a></li>
 <li>CSDN：<a href="https://blog.csdn.net/wtzhu_13/category_11144092.html?spm=1001.2014.3001.5482">ISP 图像处理_wtzhu_13 的博客-CSDN 博客</a></li>
 <li>Bilibili：<a href="https://space.bilibili.com/439454715/video">食鱼者的个人空间<em>哔哩哔哩</em>Bilibili</a></li>
 <li>Gitee：<a href="https://gitee.com/wtzhu13/ISPAlgorithmStudy">ISPAlgorithmStudy: ISP 算法学习汇总，主要是论文总结 (gitee.com)</a></li>
 </ul>
+<!-- blog-edit-end:b4069a6aa5bad3ee:b31 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\06.RawDenoise\BNR.md" data-text-edit-revision="b4069a6aa5bad3ee0530c52bcf284af9b75be125e599a1a3f86e910d17a037e0" data-text-edit-marker="b4069a6aa5bad3ee" data-text-edit-schema="1"></div>
 
 
 
@@ -1200,8 +1320,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

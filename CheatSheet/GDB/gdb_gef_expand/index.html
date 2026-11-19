@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -638,12 +638,28 @@
   
 
 
+<!-- blog-edit-start:9299149e1a6eab9b:b0 -->
+
 <h1 id="gdb-python-gef">GDB 利用 Python 扩展 GEF 插件</h1>
+<!-- blog-edit-end:9299149e1a6eab9b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8f85681aea4b8e66af212fadfc9a4fd977e42bc9061d16b3b0b845d27ed2e1f0" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CGDB%5Cgdb_gef_expand.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CGDB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\GDB\gdb_gef_expand.md">复制路径</span></div>
 
+<!-- blog-edit-start:9299149e1a6eab9b:b1 -->
+
 <h2 id="_1">前言</h2>
+<!-- blog-edit-end:9299149e1a6eab9b:b1 -->
+<!-- blog-edit-start:9299149e1a6eab9b:b2 -->
+
 <p>例子：在开了 PIE 的程序下，如何根据偏移量可以设置断点。每一次都要先用 vmmap 查找基址，然后加起来，然后开断点。往往要加很多断点，并且要调试很多遍，如果每次都是手动会非常麻烦，因此能否写一个命令，参数是偏移量，自动地寻找 PIE 基地址，然后在偏移位置加断点呢。</p>
+<!-- blog-edit-end:9299149e1a6eab9b:b2 -->
+
+<!-- blog-edit-start:9299149e1a6eab9b:b3 -->
+
 <h2 id="_2">步骤</h2>
+<!-- blog-edit-end:9299149e1a6eab9b:b3 -->
+<!-- blog-edit-start:9299149e1a6eab9b:b4 -->
+
 <ol>
 <li>
 <p>先熟悉GEF，了解是否有别人已经写好可以利用的方法。在这个例子中，我们要找基址，有两点思想。</p>
@@ -679,16 +695,33 @@
 </span></code></pre></div></p>
 </li>
 </ol>
+<!-- blog-edit-end:9299149e1a6eab9b:b4 -->
+
+<!-- blog-edit-start:9299149e1a6eab9b:b5 -->
+
 <h2 id="_3">细节</h2>
+<!-- blog-edit-end:9299149e1a6eab9b:b5 -->
+<!-- blog-edit-start:9299149e1a6eab9b:b6 -->
+
 <ul>
 <li>利用GEF，要利用写好的命令，里面写好的方法也是可以利用的</li>
 <li>参数列表就是 <code>do_invoke(self, argv)</code> 的 argv</li>
 </ul>
+<!-- blog-edit-end:9299149e1a6eab9b:b6 -->
+
+<!-- blog-edit-start:9299149e1a6eab9b:b7 -->
+
 <h2 id="_4">参考文档</h2>
+<!-- blog-edit-end:9299149e1a6eab9b:b7 -->
+<!-- blog-edit-start:9299149e1a6eab9b:b8 -->
+
 <ol>
 <li><a href="https://segmentfault.com/a/1190000005718889">Python 扩展 GDB</a></li>
 <li><a href="https://gef.readthedocs.io/en/master/api">GEF 官方文档</a></li>
 </ol>
+<!-- blog-edit-end:9299149e1a6eab9b:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\GDB\gdb_gef_expand.md" data-text-edit-revision="8f85681aea4b8e66af212fadfc9a4fd977e42bc9061d16b3b0b845d27ed2e1f0" data-text-edit-marker="9299149e1a6eab9b" data-text-edit-schema="1"></div>
 
 
 
@@ -920,8 +953,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

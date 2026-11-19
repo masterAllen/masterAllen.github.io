@@ -1302,6 +1302,11 @@
 }
 
 /* 小字、低对比度；hover 时 opacity 拉满 */
+html:not([data-local-preview="true"]) .file-actions,
+html:not([data-local-preview="true"]) .floating-file-actions {
+  display: none;
+}
+
 .md-typeset .file-actions {
   font-size: 0.75rem;
   color: #999;

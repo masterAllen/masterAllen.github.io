@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -677,33 +677,113 @@
   
 
 
+<!-- blog-edit-start:455b26f5838569f6:b0 -->
+
 <h1 id="_1">联合双边滤波融合闪光非闪光</h1>
+<!-- blog-edit-end:455b26f5838569f6:b0 -->
+
 <div class="file-actions" data-image-edit-revision="eb26396b0922376e92d4fa480798f957a29bdb1a28af1552c96f71571d842adc" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%5C%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%EF%BC%9A%E8%81%94%E5%90%88%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%E8%9E%8D%E5%90%88%E9%97%AA%E5%85%89%E9%9D%9E%E9%97%AA%E5%85%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\06.图像融合\图像融合：联合双边滤波融合闪光非闪光.md">复制路径</span></div>
 
+<!-- blog-edit-start:455b26f5838569f6:b1 -->
+
 <p>用联合双边滤波融合闪光非闪光，来自 Wang Hawk 老师在深蓝学院开设的《计算摄影学进阶》课程，质量蛮好的。</p>
+<!-- blog-edit-end:455b26f5838569f6:b1 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b2 -->
+
 <p>现在有同一场景的闪光和非闪光图片，目标是合并，既可以有闪光图片的低噪声，也能避免在闪光图片的高光。是代码我自己实现了，放在 code 目录中。</p>
+<!-- blog-edit-end:455b26f5838569f6:b2 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b3 -->
+
 <p>写给我自己：看录制的视频，很快就能看懂。</p>
+<!-- blog-edit-end:455b26f5838569f6:b3 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b4 -->
+
 <h2 id="_2">联合双边滤波</h2>
+<!-- blog-edit-end:455b26f5838569f6:b4 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b5 -->
+
 <p>如下图，其实就是对非闪光的图片进行滤波时，用闪光的图片作为双边滤波的颜色依据。</p>
+<!-- blog-edit-end:455b26f5838569f6:b5 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b6 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111180516.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b6 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b7 -->
+
 <p>结果：</p>
+<!-- blog-edit-end:455b26f5838569f6:b7 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b8 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111181321.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b8 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b9 -->
+
 <h2 id="_3">细节融合</h2>
+<!-- blog-edit-end:455b26f5838569f6:b9 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b10 -->
+
 <p><strong>这一步没有太理解，添加这一个细节层的依据和作用究竟时什么，希望有理解的大佬可以帮忙解答。</strong></p>
+<!-- blog-edit-end:455b26f5838569f6:b10 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b11 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111182308.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b11 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b12 -->
+
 <h2 id="_4">检测高光和阴影</h2>
+<!-- blog-edit-end:455b26f5838569f6:b12 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b13 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111181759.png" /><br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111181943.png" /><br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111182104.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b13 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b14 -->
+
 <h2 id="_5">合并</h2>
+<!-- blog-edit-end:455b26f5838569f6:b14 -->
+<!-- blog-edit-start:455b26f5838569f6:b15 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111182156.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b15 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b16 -->
+
 <h2 id="_6">缺点</h2>
+<!-- blog-edit-end:455b26f5838569f6:b16 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b17 -->
+
 <p>1. 高光不容易检测，比如下图中大的红圈是高光阈值较低时检测出的结果，小红圈时正确的高光检测结果，所以很容易阈值不对检测就不对。<br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111185605.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b17 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b18 -->
+
 <p>2. 闪光会导致反射，这样融合后并不好。<br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111185800.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b18 -->
+
+<!-- blog-edit-start:455b26f5838569f6:b19 -->
+
 <p>3. 有的时候反而无闪光会有反射，这样融合后也不好。<br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111185910.png" /></p>
+<!-- blog-edit-end:455b26f5838569f6:b19 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\06.图像融合\图像融合：联合双边滤波融合闪光非闪光.md" data-text-edit-revision="eb26396b0922376e92d4fa480798f957a29bdb1a28af1552c96f71571d842adc" data-text-edit-marker="455b26f5838569f6" data-text-edit-schema="1"></div>
 
 
 
@@ -935,8 +1015,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

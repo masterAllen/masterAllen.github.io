@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -1067,14 +1067,47 @@
 <h1 id="jyy">JYY操作系统课程总结</h1>
 <div class="file-actions" data-image-edit-revision="2be616172fd79d8668dac69e320888e7b86f3fb284dac85a0aa29a7ae1590641" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5CJiang-OS%5CJYY%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5CJiang-OS" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Operating-System\Jiang-OS\JYY操作系统课程总结.md">复制路径</span></div>
 
+<!-- blog-edit-start:6205f27b8f2af828:b0 -->
+
 <h2 id="_1">前言</h2>
+<!-- blog-edit-end:6205f27b8f2af828:b0 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b1 -->
+
 <p>享誉盛名的操作系统课程，个人看了已经三遍了。收获颇丰，合适的时间看到了合适的课程，真是一件幸运的事情啊。</p>
+<!-- blog-edit-end:6205f27b8f2af828:b1 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b2 -->
+
 <p>第一次看到这门课是在 2022 年暑假，那个版本也是我感觉最完美的，当时因为疫情课程是屏幕录制，这给了 jyy 很大的施展空间。当时我是研二结束，开始秋招了。在这个时候看到本科的操作系统课程，似乎可能会有点太简单了。但看这门课，我觉得这个时间点特别合适，一方面帮我顺带很好地复习了操作系统课程，另一方面又由于本身这门课难度对于大三大四的我，可能有很多都不是特别理解。比如有一些操作命令如 pivot 如果不经历过很难共鸣，而且由于基础知识了解相对多了一些之后，也能把那些细节给忽略，专注于背后的思想，而这也是 JYY 这门课最与众不同的地方。</p>
+<!-- blog-edit-end:6205f27b8f2af828:b2 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b3 -->
+
 <p>所以在研究生快要毕业，经历了那么多年计算机专业知识的洗礼之后，再来看这门课，真的刚刚好。既不想传统的本科操作系统课程会得太简单没有营养，也不像研究生专门的高级操作系统直接看 Paper 这种太专业太窄。</p>
+<!-- blog-edit-end:6205f27b8f2af828:b3 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b4 -->
+
 <p>后来我就决定每一年都会追新的版本，但截止目前，2022 年的网课版本我觉得还是最完美的。现在看新的，也是因为这门课也在与时俱进，会讲一些最新的东西。另一方面也是想看看 JYY 老师对这门课教学的理解的变化。</p>
+<!-- blog-edit-end:6205f27b8f2af828:b4 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b5 -->
+
 <p>多的不说了，直接备忘录一下自己看课的收获：</p>
+<!-- blog-edit-end:6205f27b8f2af828:b5 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b6 -->
+
 <h2 id="_2">课程记录</h2>
+<!-- blog-edit-end:6205f27b8f2af828:b6 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b7 -->
+
 <h3 id="_3">并发控制</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b7 -->
+<!-- blog-edit-start:6205f27b8f2af828:b8 -->
+
 <ol>
 <li>自旋锁的互斥：互斥软件层面有 Peterson 算法，当时刚学操作系统的时候也是学了半天。但现在回过头来看，完全没有必要。知道硬件的方式实现原子性即可。而锁又分为乐观和悲观。[P5, 2022, 0:27:00-1:00:00]</li>
 <li>细节之处：中断需要考虑互斥的影响，要保证中断前后上锁状态是一致的。具体位置为 [P9, 2024, 18:00-40:00]</li>
@@ -1092,187 +1125,446 @@
 <p>可以看到，有一个方法是直接用总管理进程，或许这个进程是瓶颈。但一个重要思想是要看 workload，要看应用场景，事实上很多时候用这个总管理进程就是足够的。我觉得这里也体现了工程性的魅力。</p>
 </li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b8 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b9 -->
+
 <h3 id="_4">进程相关</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b9 -->
+<!-- blog-edit-start:6205f27b8f2af828:b10 -->
+
 <ol>
 <li>模拟 Linux 内核启动：这里太棒了，用 QEMU 做了一个例子来讲解操作系统的第一个 init 程序。[P11, 2022, 0:00:00-0:30:00]</li>
 <li>fork 讲解：举了几个例子，我觉得对理解很有帮助。其他几个如 syscall 等我觉得没有特别新鲜的。[P11, 2022, 0:50:00-1:10:00]</li>
 <li>细节。VDSO 机制。[P12, 2022, 0:30:00-0:45:00]</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b10 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b11 -->
+
 <h3 id="_5">处理器调度</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b11 -->
+<!-- blog-edit-start:6205f27b8f2af828:b12 -->
+
 <p>就如老师所言，这方面教科书真是讲太多了。我记得考研时候学了起码六个方法... 重点不在细节，而是知道：没有万能的处理器调度方法！</p>
 <ol>
 <li>多级队列很棒，但会有什么问题: [P29, 2024]</li>
 <li>Linux 目前的调度策略 CFS 我觉得很有意思</li>
 <li>优先级翻转现象是什么</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b12 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b13 -->
+
 <h3 id="io">IO 设备</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b13 -->
+<!-- blog-edit-start:6205f27b8f2af828:b14 -->
+
 <ol>
 <li>这个不用看了，没有什么特别的新花样。需要知道 ioctl，去了解它是干什么的，这个可以看专门的相关视频。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b14 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b15 -->
+
 <h3 id="_6">文件和磁盘</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b15 -->
+<!-- blog-edit-start:6205f27b8f2af828:b16 -->
+
 <ol>
 <li>持久数据的可靠性：这里直接看 [P29, 2024] 最后一部分内容，即如何用日志来实现这一功能。本质上还是因为磁盘没法做到原子性，但我们接收这一现实并妥协，使用日志的方式来保证出事之后可以再处理回去，这个思想很重要。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b16 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b17 -->
+
 <h2 id="_7">按照课程来</h2>
+<!-- blog-edit-end:6205f27b8f2af828:b17 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b18 -->
+
 <h3 id="1">1. 操作系统概述统概述 (为什么要学操作系统)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b18 -->
+<!-- blog-edit-start:6205f27b8f2af828:b19 -->
+
 <ol>
 <li>无，后面讲了一下操作系统的发展历史，但比较正经，讲的也不是很多很八卦。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b19 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b20 -->
+
 <h3 id="2">2. 操作系统上的程序 (什么是程序和编译器)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b20 -->
+<!-- blog-edit-start:6205f27b8f2af828:b21 -->
+
 <ol>
 <li>对于我而言无较大收获。初步讲了状态机的思想。然后演示了一个最小的 Hello World，其实就是用汇编写，用 <code>_start</code> 作为入口。</li>
 <li>并且在最后基于此引申：<code>main</code> 执行前后发生了什么，但没有讲具体的细节。</li>
 <li>中间还讲了编译优化这个东西，没什么特别的。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b21 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b22 -->
+
 <h3 id="3">3. 多处理器编程：从入门到放弃 (线程库；现代处理器和宽松内存模型)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b22 -->
+<!-- blog-edit-start:6205f27b8f2af828:b23 -->
+
 <ol>
 <li>就是演示了并发的困难，本质上就是状态机的顺序不是我们所想的那样。。包括简单的 <code>sum++</code> 其实不是原子，还有<strong>编译优化</strong>也会带来顺序问题。甚至 <strong>CPU 自己也会优化执行流</strong>，更复杂了。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b23 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b24 -->
+
 <h3 id="4-peterson">4. 理解并发程序执行 (Peterson算法、模型检验与软件自动化工具)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b24 -->
+<!-- blog-edit-start:6205f27b8f2af828:b25 -->
+
 <ol>
 <li>先讲了 Peterson 算法，太过细节了，不需要去了解。</li>
 <li><strong>后面演示了 ModelChecker 检测程序，非常惊艳，尤其是再结合了另一个可视化程序</strong>，状态机转换显示在一个网页文件上，非常非常惊艳，对应的程序文件我觉得可以去学习一波。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b25 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b26 -->
+
 <h3 id="5-futex">5. 并发控制：互斥 (自旋锁、互斥锁和 futex)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b26 -->
+<!-- blog-edit-start:6205f27b8f2af828:b27 -->
+
 <ol>
 <li><strong>值得完整看的一课</strong>，也因为我本身对这一块不是很熟。软件难办，让硬件来实现原子性。互斥锁讲了 X86 和 RSIC-V 的两种方式，分别是悲观锁(lock)和乐观锁(CAS)。</li>
 <li>[P9, 2024, 18:00-40:00] 多讲了一些细节之处：中断需要考虑互斥的影响，要保证中断前后上锁状态是一致的。那门课最后还讲到了 Ready-copy-update，其实没有太看懂。后来查阅一些文章，这个机制本质上就是只有 Writer 之间进行互斥，Reader 不去管。相当于牺牲了一些同步性。</li>
 <li>因为互斥锁频繁等待，所以给了另一种实现：睡眠锁，相当于是操作系统来管理，一旦发现资源被别人上锁了，操作系统会到锁释放的时候通知这个进程。</li>
 <li>最后提到了 futex 这一 Linux 下的系统调用，也很值得一看，重要的是理解其结合了两种锁来加快速度。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b27 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b28 -->
+
 <h3 id="6-">6. 并发控制：同步 (条件变量、信号量、生产者-消费者和哲♂学家吃饭问题)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b28 -->
+<!-- blog-edit-start:6205f27b8f2af828:b29 -->
+
 <ol>
 <li><strong>也是非常完整看的一课</strong>。同步问题用左右括号问题来替代生产者消费者，其中讲了万能的条件变量方法，这相当于是一道算法题，充满了逻辑的魅力。这个更推荐看 2024 年的视频。</li>
 <li>后面哲学家吃饭中又提到有时甚至经常使用一个总管理进程来进行同步，虽然这个进程可能会是系统瓶颈，但现实中往往不会，这里又充满了工程的魅力。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b29 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b30 -->
+
 <h3 id="7">7. 真实世界的并发编程 (高性能计算/数据中心/人机交互中的并发编程)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b30 -->
+<!-- blog-edit-start:6205f27b8f2af828:b31 -->
+
 <ol>
 <li>当成一个讲座、科普、休闲视频来看。里面讲到 Web 异步编程的方式，我觉得很有魅力。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b31 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b32 -->
+
 <h3 id="8-bug">8. 并发 bug 和应对 (死锁/数据竞争/原子性违反；防御性编程和动态分析)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b32 -->
+<!-- blog-edit-start:6205f27b8f2af828:b33 -->
+
 <ol>
 <li>可以不用看，感觉只有这个方向的人看才会有意思。但是这节课讲了一个很重要思想：永远认为自己是错的。因此要防御性变成，多写检查语句。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b33 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b34 -->
+
 <h3 id="9-thread-os">9.  操作系统的状态机模型 (操作系统的加载; thread-os 代码讲解)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b34 -->
+<!-- blog-edit-start:6205f27b8f2af828:b35 -->
+
 <ol>
 <li>前面讲的是经典老生常谈的<strong>CPU Reset 后如何加载了操作系统</strong>，里面讲了 BIOS 和 UEFI 挺清晰的。</li>
 <li>后面带着看了一下 Demo 演示，有时间可以迅速看看，我觉得比起具体知识，JYY 的手速和工具链使用才是亮点。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b35 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b36 -->
+
 <h3 id="10-gdbrrperf">10. 状态机模型的应用 (细胞自动机; gdb/rr/perf; 代码验证工具)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b36 -->
+<!-- blog-edit-start:6205f27b8f2af828:b37 -->
+
 <ol>
 <li>前面讲经典的生命游戏，感觉没什么新意。</li>
 <li>后面大部分时间讲的 GDB 的高级特性，<strong>待看</strong></li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b37 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b38 -->
+
 <h3 id="11-linux-fork-execve-exit">11. 操作系统上的进程 (最小 Linux; fork, execve 和 exit)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b38 -->
+<!-- blog-edit-start:6205f27b8f2af828:b39 -->
+
 <ol>
 <li>开始<strong>演示了一个加载最小 Linux 的例子</strong>，其实有点唬人，是用 QEMU 加载自己写的 init 脚本程序。但非常值得一看，虽然理论知识了解，但看到实践中运用还是收获颇丰。</li>
 <li>后面三个调用，fork 比较值得看，用了几个例子讲了一下，很不错。其他两个感觉没什么可看的。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b39 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b40 -->
+
 <h3 id="12-pmap-vdso-mmap">12. 进程的地址空间 (pmap; vdso; mmap; 游戏修改器/外挂)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b40 -->
+<!-- blog-edit-start:6205f27b8f2af828:b41 -->
+
 <ol>
 <li>讲了 pmap 查看进程的地址空间，这个是基础知识了。</li>
 <li>因为 pmap 输出内容里有个 vdso 段，讲了一下 vdso，讲的很清晰。</li>
 <li>在之后是 mmap 的细节知识，稍微有些细节。</li>
 <li><strong>最后面讲的几个修改器太精彩了，尤其是第一个游戏外挂</strong>。思想我觉得都应该了解：一个是游戏外挂，故意减少血量来筛选出地址；一个是变速齿轮，修改 vdso 中的调用；一个是按键精灵，<strong>带看</strong></li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b41 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b42 -->
+
 <h3 id="13-shell-freestanding-shell-job-control">13. 系统调用和 Shell (freestanding shell, 终端和 job control)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b42 -->
+<!-- blog-edit-start:6205f27b8f2af828:b43 -->
+
 <ol>
 <li>前面介绍 Shell，没什么可以看的。</li>
 <li>然后讲了 xv6 实现 shell 的代码，没什么可看的，其实就是读取输入，然后执行系统调用。但里面的管道值得一看，利用 fork 去实现的。</li>
 <li>最后的 job control 没什么可看的。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b43 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b44 -->
+
 <h3 id="14-c">14. C 标准库的实现 (系统调用的封装；内存空间管理)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b44 -->
+<!-- blog-edit-start:6205f27b8f2af828:b45 -->
+
 <ol>
 <li>大部分都是带着讲了 C 标准库，有点太细节。后面的 malloc 和 free 也是比较细致的介绍。</li>
 <li>但我感觉其中讲了一个很重要的思想：脱离 workload 做优化就是耍流氓。这真是充满了工程魅力。内存空间管理就是基于思想：空间块越小申请释放频率越大，所以我们看到 glibc 实现时不同大小的 bin，如 tcachebin, smallbin 等，这下我是理解为什么了。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b45 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b46 -->
+
 <h3 id="15-fork">15. fork 的应用 (文件描述符的复制；写时复制；创建平行宇宙的魔法)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b46 -->
+<!-- blog-edit-start:6205f27b8f2af828:b47 -->
+
 <ol>
 <li>前面讲的例子，fork 创建的父子进程共同向一个文件描述符写文件会怎么样，这个问题给的非常非常好。这个在第 26 节课给了回答。</li>
 <li>后面写时复制就是老生常谈的话题了。最后利用 fork 进行多进程的 DFS，即每次走子分支会创建一个子线程，这样子分支如果返回那就可以直接销毁。有点意思，觉资源消耗会很大，而且如果子进程过多也会有问题。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b47 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b48 -->
+
 <h3 id="16-stack-unwinding">16. 什么是可执行文件 (调试信息；Stack Unwinding；静态链接中的重定位)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b48 -->
+<!-- blog-edit-start:6205f27b8f2af828:b49 -->
+
 <ol>
 <li>双击启动为什么会启动，调用 execve 呗，接着后面就是传统的栈的分配机制，没有可看的。</li>
 <li>中间还提了一个问题：GDB 为什么能调试，为什么知道当前在第几行。回答：因为编译的时候加了 debug 信息，可以通过选项去除。</li>
 <li>最后重定位感觉讲的有点乱，可以看一些别的视频。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b49 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b50 -->
+
 <h3 id="17-elf-linux">17. 动态链接和加载 (静态 ELF 加载器实现；调试 Linux 内核；动态链接和加载)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b50 -->
+<!-- blog-edit-start:6205f27b8f2af828:b51 -->
+
 <ol>
 <li><strong>前面讲了自己编写的模拟加载器，惊艳到我了</strong>。我感觉其实很有必要自己实现一个。</li>
 <li><strong>中间演示了调试 Linux 内核，极其极其惊艳</strong>，属于是我认为必须要看的，使用 VSCode 进行 Debug，一个很重要的思想：善用工具。</li>
 <li>最后动态链接和加载，因为 ELF 太繁杂了，所以弄了一个简化版的格式，但我感觉没必要看了。直接硬啃 GOT 表，这个视频讲的不错：<a href="https://www.bilibili.com/video/BV17u4m1M7PN">https://www.bilibili.com/video/BV17u4m1M7PN</a></li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b51 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b52 -->
+
 <h3 id="18-xv6">18. Xv6 代码导读 (调试工具配置；调试系统调用执行)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b52 -->
+<!-- blog-edit-start:6205f27b8f2af828:b53 -->
+
 <ol>
 <li>前面讲的是八卦，UNix、Linux、Minix、Xv6 的那些事，不需要看。</li>
 <li><strong>中间演示调试流程，和上一节的中间部分一样，极其推荐看。</strong></li>
 <li>后面就是具体的实验细节了，不做实验不看。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b53 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b54 -->
+
 <h3 id="19-xv6">19. Xv6 上下文切换 (上下文切换的实现；状态机的封装与恢复)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b54 -->
+<!-- blog-edit-start:6205f27b8f2af828:b55 -->
+
 <ol>
 <li>这一节就是讲上下文切换，有时间再看，因为这一节主要是实践调代码多，但是理论知识其实就那些，而且比较碎，分散在视频全部中，要看就要一整节一口气看。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b55 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b56 -->
+
 <h3 id="20-rr-mlfq-cfs">20. 处理器调度 (RR, MLFQ 和 CFS；优先级翻转；多处理器调度)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b56 -->
+<!-- blog-edit-start:6205f27b8f2af828:b57 -->
+
 <ol>
 <li>传统教科书的一个超级重点，我记得考研时候学了起码六个方法... 但重点不在细节，而是知道：没有万能的处理器调度方法！</li>
 <li>讲了两种方式：MLFQ 和 CFS。都很不错，但也都不能覆盖完全场景。</li>
 <li>最后讲了一下优先级翻转，以及强调处理器调度方法是没有万能的。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b57 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b58 -->
+
 <h3 id="21-posix-windows-api-microexounikernel">21. 操作系统设计选讲 (POSIX; Windows API; Micro/Exo/Unikernel)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b58 -->
+<!-- blog-edit-start:6205f27b8f2af828:b59 -->
+
 <ol>
 <li>这一节内容其实就是许多大学操作系统课程的前面导论课讲的一些内容，讲了不同类型的操作系统设计方式，即微内核、外内核等等。</li>
 <li>后面讲的一个理论证明完备的微内核系统 sel4，但也是蜻蜓点水，没必要看。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b59 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b60 -->
+
 <h3 id="22-kputc-sleep-fork">22. 极限速通操作系统实验 (内存管理、线程和信号量、进程和 kputc, sleep, fork)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b60 -->
+<!-- blog-edit-start:6205f27b8f2af828:b61 -->
+
 <ol>
 <li>实验课</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b61 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b62 -->
+
 <h3 id="23-1-bit-dramsramflash-ssd">23. 1-Bit 数据的存储 (延迟线/磁芯/DRAM/SRAM/磁带/磁盘/光盘/Flash SSD)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b62 -->
+<!-- blog-edit-start:6205f27b8f2af828:b63 -->
+
 <ol>
 <li>就是讲的存储设备的那些事。分成磁、坑、电，这个划分方式真不错，一下让我直到软盘和光盘的区别了..</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b63 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b64 -->
+
 <h3 id="24-dma-gpu">24. 输入输出设备模型 (串口/键盘/磁盘/打印机/总线/中断控制器/DMA 和 GPU)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b64 -->
+<!-- blog-edit-start:6205f27b8f2af828:b65 -->
+
 <ol>
 <li>无，其他操作系统课也会讲的内容。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b65 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b66 -->
+
 <h3 id="25-linux-gpu-cuda">25. 设备驱动程序 (Linux 设备驱动; GPU 和 CUDA; 存储设备抽象)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b66 -->
+<!-- blog-edit-start:6205f27b8f2af828:b67 -->
+
 <ol>
 <li>无，中间演示了驱动程序加载到内核，即 <code>insmod</code> 那些命令，可看可不看，只能说难者不会、会者不难</li>
 <li>有两个问题：什么是设备驱动程序？为什么说 ioctl 造成了 Linux 庞大的屎山代码？为什么不问问神奇的大模型呢，回答的很棒。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b67 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b68 -->
+
 <h3 id="26-api-api">26. 文件系统 API (设备在应用间的共享；目录和文件 API)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b68 -->
+<!-- blog-edit-start:6205f27b8f2af828:b69 -->
+
 <ol>
 <li>前面绝大部分没什么看的，就是虚拟磁盘这类的，把磁盘分块之类的。</li>
 <li>从 49 分钟开始，<strong>讲了 Linux 启动流程中加载磁盘的方式</strong>，很有收获。即一开始文件系统是内存中的构建的一个虚拟系统，然后使用挂载将磁盘挂载，最后使用了 pivot 将根进行切换。</li>
 <li>后面就是简单的介绍 API，还有软链接硬链接之类的。</li>
 <li>最后回答了为什么父子进程同时向一个文件描述符写内容，不会覆盖。从 1:38:00 开始看。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b69 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b70 -->
+
 <h3 id="27-fat-unix-fat">27. FAT 和 UNIX 文件系统 (数据结构视角的文件系统; FAT 手册导读和目录树遍历)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b70 -->
+<!-- blog-edit-start:6205f27b8f2af828:b71 -->
+
 <ol>
 <li>讲了 FAT 的设计，讲的很好，是带着设计思路去讲的，FAT 设计的还是非常优雅的，非常适合当时容量很小的应用场景。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b71 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b72 -->
+
 <h3 id="28-raid-fsck">28. 持久数据的可靠性 (RAID; 崩溃一致性; FSCK 和日志)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b72 -->
+<!-- blog-edit-start:6205f27b8f2af828:b73 -->
+
 <ol>
 <li>前面讲的 RAID，老生常谈了。RAID5 我记得 CCF 有一年考试题目是这个，写的贼难受。</li>
 <li>从 1:30:00 开始，讲了磁盘崩溃的处理方式，最后用日志，那里真的是太优雅太惊人了。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b73 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b74 -->
+
 <h3 id="29-xv6-gdb-mkfs-buffer-cache-log">29. Xv6 文件系统实现 (gdb 追踪 mkfs; buffer cache 和 log)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b74 -->
+<!-- blog-edit-start:6205f27b8f2af828:b75 -->
+
 <ol>
 <li>实验课</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b75 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b76 -->
+
 <h3 id="30">30. 现代存储系统 (关系数据库和分布式存储系统)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b76 -->
+<!-- blog-edit-start:6205f27b8f2af828:b77 -->
+
 <ol>
 <li>可以跳过。前面就是介绍一些不同数据库，并且说明没有完美的数据库，可靠、速度、可扩展等不可能完全统一，后面讲了一点分布式系统。如果专门研究分布式这种可能应该看看。</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b77 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b78 -->
+
 <h3 id="31-android-android-app">31. Android 系统 (Android App 和系统架构；应用后台保活)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b78 -->
+<!-- blog-edit-start:6205f27b8f2af828:b79 -->
+
 <ol>
 <li>当成讲座、硬核视频去看</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b79 -->
+
+<!-- blog-edit-start:6205f27b8f2af828:b80 -->
+
 <h3 id="32">32. 课程总结 (从逻辑门到计算机系统)</h3>
+<!-- blog-edit-end:6205f27b8f2af828:b80 -->
+<!-- blog-edit-start:6205f27b8f2af828:b81 -->
+
 <ol>
 <li>无</li>
 </ol>
+<!-- blog-edit-end:6205f27b8f2af828:b81 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Operating-System\Jiang-OS\JYY操作系统课程总结.md" data-text-edit-revision="2be616172fd79d8668dac69e320888e7b86f3fb284dac85a0aa29a7ae1590641" data-text-edit-marker="6205f27b8f2af828" data-text-edit-schema="1"></div>
 
 
 
@@ -1504,8 +1796,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

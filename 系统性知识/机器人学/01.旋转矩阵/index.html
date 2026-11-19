@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -688,36 +688,110 @@
   
 
 
+<!-- blog-edit-start:b61a69ea77d84c5e:b0 -->
+
 <h1 id="_1">旋转矩阵和坐标系</h1>
+<!-- blog-edit-end:b61a69ea77d84c5e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b61a69ea77d84c5e819c350145360eee06c26707e23786337a3f796836108fde" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%5C01.%E6%97%8B%E8%BD%AC%E7%9F%A9%E9%98%B5.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\机器人学\01.旋转矩阵.md">复制路径</span></div>
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b1 -->
 
 <blockquote>
 <p>以台湾大学林沛群教授的机器人学课程为例，链接内容：<a href="https://www.bilibili.com/video/BV1v4411H7ez">https://www.bilibili.com/video/BV1v4411H7ez</a></p>
 </blockquote>
+<!-- blog-edit-end:b61a69ea77d84c5e:b1 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b2 -->
+
 <h2 id="_2">旋转矩阵</h2>
+<!-- blog-edit-end:b61a69ea77d84c5e:b2 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b3 -->
+
 <p>第一章可以跳过，第一章讲的啥，其实就是两个坐标系之间的旋转矩阵。没啥好说的，3x3 的矩阵，然后其实可以用三个角度来表示。如下图是绕着 Z 轴旋转 <span class="arithmatex">\(\theta\)</span> 角度的旋转矩阵。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b3 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b4 -->
+
 <p><img alt="" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/20260509200743.png#w65" /></p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b4 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b5 -->
+
 <blockquote>
 <p>如果非要看第一章的内容，记住一句话：课程里面的 frame 其实就是坐标系。</p>
 </blockquote>
+<!-- blog-edit-end:b61a69ea77d84c5e:b5 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b6 -->
+
 <h2 id="_3">旋转</h2>
+<!-- blog-edit-end:b61a69ea77d84c5e:b6 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b7 -->
+
 <p>第二章也可以跳过，第二章很重要，但是讲的不好。这篇<a href="https://zhuanlan.zhihu.com/p/128155013">文章</a>讲的很好，下面进行个人记录。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b7 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b8 -->
+
 <h3 id="_4">两种旋转方式</h3>
+<!-- blog-edit-end:b61a69ea77d84c5e:b8 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b9 -->
+
 <p>首先，旋转似乎很简单，几个坐标轴转呗。但其实有<strong>固定坐标系旋转</strong>和<strong>机体坐标系旋转</strong>两种方式。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b9 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b10 -->
+
 <ul>
 <li>固定坐标系旋转：就是绕着始终不动的固定轴。</li>
 <li>机体坐标系旋转：就是绕着机体本身的坐标轴。</li>
 </ul>
+<!-- blog-edit-end:b61a69ea77d84c5e:b10 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b11 -->
+
 <p>最最经典的例子：飞机旋转。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b11 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b12 -->
+
 <ul>
 <li>固定系：按照地面坐标系，正东正北为 X 和 Y 轴，Z 轴垂直于地面向上。无论飞机怎么绕这几个轴始终没动过。</li>
 <li>机体系：按照飞机自身，机头向前为 X 轴，机翼为 Y 轴，垂直于机翼向上为 Z 轴。此时飞机运动之后，坐标轴发生了变化。比如飞机绕着 Z 轴旋转之后，X 和 Y 轴就不再是之前的 X 轴和 Y 轴了。</li>
 </ul>
+<!-- blog-edit-end:b61a69ea77d84c5e:b12 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b13 -->
+
 <h3 id="_5">核心问题</h3>
+<!-- blog-edit-end:b61a69ea77d84c5e:b13 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b14 -->
+
 <p><strong>核心问题就是：某个向量绕 X 轴转一下、绕 Y 轴转一下、绕 Z 轴转一下，求最终的向量，或者说，求向量终端的点坐标</strong>。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b14 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b15 -->
+
 <p>由于有两种旋转方式，所以要分类讨论，如果按照固定坐标系怎么绕；如果按照机体坐标系怎么绕。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b15 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b16 -->
+
 <p>似乎很简单？我知道绕 X 轴旋转某个角度的旋转矩阵是 <span class="arithmatex">\(R_1\)</span>，绕 Y 轴旋转某个角度的旋转矩阵是 <span class="arithmatex">\(R_2\)</span>，绕 Z 轴旋转某个角度的旋转矩阵是 <span class="arithmatex">\(R_3\)</span>，那我直接相乘不就行了吗？</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b16 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b17 -->
+
 <p>这些矩阵很好求，比如：</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b17 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b18 -->
+
 <div class="arithmatex">\[
 R3(\theta) = \begin{bmatrix}
     cos(\theta) &amp; -sin(\theta) &amp; 0 \\
@@ -725,19 +799,59 @@ R3(\theta) = \begin{bmatrix}
     0 &amp; 0 &amp; 1
 \end{bmatrix}
 \]</div>
+<!-- blog-edit-end:b61a69ea77d84c5e:b18 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b19 -->
+
 <p>但是：<strong>左乘还是右乘？</strong> 也就是 <span class="arithmatex">\(R1*R2\)</span> 还是 <span class="arithmatex">\(R2*R1\)</span>？</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b19 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b20 -->
+
 <h3 id="_6">固定坐标系旋转的推导</h3>
+<!-- blog-edit-end:b61a69ea77d84c5e:b20 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b21 -->
+
 <p>下面第一种情况，假设我们按照固定坐标系转。我们就统一按照先 X 轴转，然后 Y 轴转，最后 Z 轴转。求这三次旋转的各自角度，矩阵符号就用 <span class="arithmatex">\(R1, R2, R3\)</span>。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b21 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b22 -->
+
 <p>上一小章节可以知道，核心是左乘还是右乘，先给出结论，是<strong>左乘</strong>：</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b22 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b23 -->
+
 <details class="question">
 <summary>定理一：固定坐标系旋转，应该是左乘</summary>
 <p>这个直接可以通过空间想象得到。旋转矩阵 <span class="arithmatex">\(R\)</span> 的意义，就是某个点 P 变成另一个点 P'，现在假设我已经绕 X 轴转动了，此时坐标是 <span class="arithmatex">\(R1 * p\)</span>，此时再绕 Y 轴转动，坐标就是 <span class="arithmatex">\(R2 * (R1 * p)\)</span>，很显然这是左乘。</p>
 <p>所以最终 <span class="arithmatex">\((R_3R_2R_1) * p\)</span> 就是最终的向量，或者说最终的点坐标。</p>
 </details>
+<!-- blog-edit-end:b61a69ea77d84c5e:b23 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b24 -->
+
 <h3 id="_7">机体坐标系旋转的推导</h3>
+<!-- blog-edit-end:b61a69ea77d84c5e:b24 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b25 -->
+
 <p>还是按照绕 X 轴转，然后 Y 轴转，最后 Z 轴转。求这三次旋转的各自角度，矩阵符号就用 <span class="arithmatex">\(R1, R2, R3\)</span>。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b25 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b26 -->
+
 <p><img alt="images" src="../../../asset/image/ee9e5812c55c93b9cf62a35d1cdd61e1/rotation.webp" /></p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b26 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b27 -->
+
 <p>一开始，<span class="arithmatex">\(R1\)</span> 是一样的，但是此时绕 Y 轴转，就和固定坐标系绕 Y 轴旋转不同了。这里给出结论，是<strong>右乘</strong>：</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b27 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b28 -->
+
 <details class="question">
 <summary>定理二：相机坐标系旋转，应该是右乘</summary>
 <p>首先坐标系 0 绕 X 轴转，转到了坐标系 1；此时坐标系 1 绕 Y 轴转，变成了坐标系 2。求出点 p 旋转之后，在坐标系 0 的坐标。</p>
@@ -773,14 +887,37 @@ q'_0 &amp;= R1 * q'_1 \tag{子问题 2} \\
 \]</div>
 <p>因此，最终可以得到，按照机体坐标系，应该是右乘。</p>
 </details>
+<!-- blog-edit-end:b61a69ea77d84c5e:b28 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b29 -->
+
 <h3 id="_8">扩展</h3>
+<!-- blog-edit-end:b61a69ea77d84c5e:b29 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b30 -->
+
 <ol>
 <li>机体坐标系中，不仅仅可以 X-Y-Z 这种旋转，其实还可以 X-Y-X 这样旋转，这种也是可以做到三维改变的效果</li>
 <li>由于机体坐标系是右乘，固定坐标系是左乘，所以显然：固定坐标系 X-Y-Z 旋转等价于机体坐标系按照同样的角度 Z-Y-X 旋转。</li>
 </ol>
+<!-- blog-edit-end:b61a69ea77d84c5e:b30 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b31 -->
+
 <h3 id="_9">总结</h3>
+<!-- blog-edit-end:b61a69ea77d84c5e:b31 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b32 -->
+
 <p>重点就是记住：旋转有两种方式，而且一个对应左乘，一个对应右乘。遇到旋转问题时，一定要弄清楚是哪种旋转方式，这样才理解方程。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b32 -->
+
+<!-- blog-edit-start:b61a69ea77d84c5e:b33 -->
+
 <p>但其实机器人这里好像大部分用机体坐标系。</p>
+<!-- blog-edit-end:b61a69ea77d84c5e:b33 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\机器人学\01.旋转矩阵.md" data-text-edit-revision="b61a69ea77d84c5e819c350145360eee06c26707e23786337a3f796836108fde" data-text-edit-marker="b61a69ea77d84c5e" data-text-edit-schema="1"></div>
 
 
 
@@ -1012,8 +1149,6 @@ q'_0 &amp;= R1 * q'_1 \tag{子问题 2} \\
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

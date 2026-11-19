@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -682,22 +682,60 @@
   
 
 
+<!-- blog-edit-start:d693ab79895b4b3e:b0 -->
+
 <h1 id="pwnablekr-wtf">Pwnable.kr wtf 题目总结</h1>
+<!-- blog-edit-end:d693ab79895b4b3e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="700d44ac3374b56977b604a5cf176f17e51a34ba5150d2959dddc5aa92a92b4a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C44.wtf.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\44.wtf.md">复制路径</span></div>
 
+<!-- blog-edit-start:d693ab79895b4b3e:b1 -->
+
 <p>题目很简单很简单，但是 Python 中父子进程的这个 pipe buffer 让我卡了很久。所以就直接讲父子进程的 pipe buffer 问题。</p>
+<!-- blog-edit-end:d693ab79895b4b3e:b1 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b2 -->
+
 <h2 id="_1">问题描述</h2>
+<!-- blog-edit-end:d693ab79895b4b3e:b2 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b3 -->
+
 <p>使用 subprocess 并且使用 stdin 后，进程就卡死了:</p>
+<!-- blog-edit-end:d693ab79895b4b3e:b3 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>p = Popen(&#39;./wtf&#39;, stdin=PIPE, stdout=PIPE)
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span># payload = &#39;a&#39; * 10
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>p.stdin.write( payload )
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span># hang, no response...
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>output = p.stdout.readline()
 </span></code></pre></div>
+<!-- blog-edit-end:d693ab79895b4b3e:b4 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b5 -->
+
 <h2 id="_2">问题原因</h2>
+<!-- blog-edit-end:d693ab79895b4b3e:b5 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b6 -->
+
 <p>Python 的 subprocess 在使用的过程中需要注意参数 stdin/stdout/stderr </p>
+<!-- blog-edit-end:d693ab79895b4b3e:b6 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b7 -->
+
 <p>使用 subprocess.PIPE 的情况，主进程向子进程写入内容，除非写满否则会阻塞在 PIPE 上，所以子进程一直等待主进程写入，即等待这个 PIPE 有改动的消息，结果一直没有，就不会返回给主进程结果。</p>
+<!-- blog-edit-end:d693ab79895b4b3e:b7 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b8 -->
+
 <h2 id="_3">问题解决</h2>
+<!-- blog-edit-end:d693ab79895b4b3e:b8 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b9 -->
+
 <ol>
 <li>
 <p>主进程写入时发送换行符，以及使用 <code>flush()</code> 来告知本次写入完毕<br />
@@ -723,9 +761,24 @@
 </span></code></pre></div></p>
 </li>
 </ol>
+<!-- blog-edit-end:d693ab79895b4b3e:b9 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b10 -->
+
 <h2 id="_4">其他事项</h2>
+<!-- blog-edit-end:d693ab79895b4b3e:b10 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b11 -->
+
 <p>从结果看，最后需要 <code>decode('hex')</code>，所以如果输入 <code>11</code>，那么实际上输入是 <code>3131</code>。</p>
+<!-- blog-edit-end:d693ab79895b4b3e:b11 -->
+
+<!-- blog-edit-start:d693ab79895b4b3e:b12 -->
+
 <p>对于 Python3，我们现在有 <code>b'11'</code>，遍历每个字节用 <code>hex(i)[2:]</code> 转换为 16 进制到 payload，最后作为输入。</p>
+<!-- blog-edit-end:d693ab79895b4b3e:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\44.wtf.md" data-text-edit-revision="700d44ac3374b56977b604a5cf176f17e51a34ba5150d2959dddc5aa92a92b4a" data-text-edit-marker="d693ab79895b4b3e" data-text-edit-schema="1"></div>
 
 
 
@@ -957,8 +1010,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

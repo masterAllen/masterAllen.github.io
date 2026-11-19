@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -635,13 +635,27 @@
   
 
 
+<!-- blog-edit-start:21bec7dfe4a420bb:b0 -->
+
 <h1 id="walboost-xobject">WalBoost 分类器（xobject 模块）（未成功）</h1>
+<!-- blog-edit-end:21bec7dfe4a420bb:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c6a601b7d42eb10b27a4e921200423b1f98e8d127438fdf9526fe6ae0a4139c1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%5C04.WalBoost+%E5%88%86%E7%B1%BB%E5%99%A8%EF%BC%88xobject+%E6%A8%A1%E5%9D%97%EF%BC%89%EF%BC%88%E6%9C%AA%E6%88%90%E5%8A%9F%EF%BC%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\04.WalBoost 分类器（xobject 模块）（未成功）.md">复制路径</span></div>
+
+<!-- blog-edit-start:21bec7dfe4a420bb:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.8.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.8.md</a></p>
 </blockquote>
+<!-- blog-edit-end:21bec7dfe4a420bb:b1 -->
+
+<!-- blog-edit-start:21bec7dfe4a420bb:b2 -->
+
 <p>xobjectdetect 只有一个检测器，叫做 WaldBoost Detector，但是试了一下训练之后根本检测不了图片，网上也没找到用的代码，所以暂时就把 sample 代码放在这里，以后再考虑，原始 sample 代码在：<code>opencv_contrib-4.x\modules\xobjdetect\tools\waldboost_detector</code> 中。</p>
+<!-- blog-edit-end:21bec7dfe4a420bb:b2 -->
+
+<!-- blog-edit-start:21bec7dfe4a420bb:b3 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;opencv2/xobjdetect.hpp&quot;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;opencv2/imgcodecs.hpp&quot;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;opencv2/imgproc.hpp&quot;</span>
@@ -689,7 +703,15 @@
 </span><span id="__span-0-45"><span class="linenos" data-linenos="45 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-46"><span class="linenos" data-linenos="46 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:21bec7dfe4a420bb:b3 -->
+
+<!-- blog-edit-start:21bec7dfe4a420bb:b4 -->
+
 <p>其中 train 中说 pos 需要是 crop 后的图片，neg 无所谓，但是也没说 crop 多大，看代码又感觉无所谓，但 neg 是按照 (24, 24) 大小来裁剪的... 实现代码在 wbdetector.cpp 中:</p>
+<!-- blog-edit-end:21bec7dfe4a420bb:b4 -->
+
+<!-- blog-edit-start:21bec7dfe4a420bb:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">WBDetectorImpl::train</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">pos_samples_path</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">string</span><span class="o">&amp;</span><span class="w"> </span><span class="n">neg_imgs_path</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="c1">// pos 读取图片，没啥特殊的，就 for 循环读取，没有任何处理</span>
@@ -710,6 +732,9 @@
 </span><span id="__span-1-18"><span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="c1">// ...</span>
 </span><span id="__span-1-19"><span class="linenos" data-linenos="19 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:21bec7dfe4a420bb:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\04.WalBoost 分类器（xobject 模块）（未成功）.md" data-text-edit-revision="c6a601b7d42eb10b27a4e921200423b1f98e8d127438fdf9526fe6ae0a4139c1" data-text-edit-marker="21bec7dfe4a420bb" data-text-edit-schema="1"></div>
 
 
 
@@ -941,8 +966,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

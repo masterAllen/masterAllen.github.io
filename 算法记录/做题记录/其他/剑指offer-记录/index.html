@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -645,29 +645,74 @@
   
 
 
+<!-- blog-edit-start:651d27972b34be92:b0 -->
+
 <h1 id="offer">剑指 Offer 记录</h1>
+<!-- blog-edit-end:651d27972b34be92:b0 -->
+
 <div class="file-actions" data-image-edit-revision="6860ff93df74a155aff04c65fce5960c11fe353586712aef1aa2cd3feb28ba04" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%85%B6%E4%BB%96%5C%E5%89%91%E6%8C%87offer-%E8%AE%B0%E5%BD%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%85%B6%E4%BB%96" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\做题记录\其他\剑指offer-记录.md">复制路径</span></div>
 
+<!-- blog-edit-start:651d27972b34be92:b1 -->
+
 <p>这是毕业找工作时看《剑指 Offer》的记录，记录一下有帮助的题目。</p>
+<!-- blog-edit-end:651d27972b34be92:b1 -->
+
+<!-- blog-edit-start:651d27972b34be92:b2 -->
+
 <h2 id="11">面试题11:旋转数组的最小数字</h2>
+<!-- blog-edit-end:651d27972b34be92:b2 -->
+
+<!-- blog-edit-start:651d27972b34be92:b3 -->
+
 <p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如,数组｛3,4,5, 1,2｝为｛1,2, 3, 4, 5｝的一个旋转,该数组的最小值为1。 </p>
+<!-- blog-edit-end:651d27972b34be92:b3 -->
+
+<!-- blog-edit-start:651d27972b34be92:b4 -->
+
 <details class="note">
 <summary>思路</summary>
 <p>二分。如何判断是否要继续看子数组，看首尾的大小关系。</p>
 </details>
+<!-- blog-edit-end:651d27972b34be92:b4 -->
+
+<!-- blog-edit-start:651d27972b34be92:b5 -->
+
 <h2 id="49">面试题49:丑数</h2>
+<!-- blog-edit-end:651d27972b34be92:b5 -->
+
+<!-- blog-edit-start:651d27972b34be92:b6 -->
+
 <p>我们把只包含因子2、3和5的数称作丑数(Ugly Number)。求按从小到大的顺序的第1500个丑数。例如，6、8都是丑数，但14不是，因为它包含因子7。</p>
+<!-- blog-edit-end:651d27972b34be92:b6 -->
+
+<!-- blog-edit-start:651d27972b34be92:b7 -->
+
 <details class="note">
 <summary>思路</summary>
 <p>我感觉非常好的题目，这本书印象最深的题目。这个视频讲的很好：<a href="https://b23.tv/oVSKYjM">https://b23.tv/oVSKYjM</a></p>
 <p>文字说明：定义数组 <span class="arithmatex">\(dp\)</span>，其中 <span class="arithmatex">\(dp[i-1]\)</span> 表示第 <span class="arithmatex">\(i\)</span> 个丑数，定义 <span class="arithmatex">\(3\)</span> 个指针 <span class="arithmatex">\(p_2\)</span>, <span class="arithmatex">\(p_3\)</span> 和 <span class="arithmatex">\(p_5\)</span>，表示下一个丑数是当前指针指向的丑数乘以对应的质因数。初始时，三个指针的值都指向 <span class="arithmatex">\(dp[0]\)</span>。更新 <span class="arithmatex">\(dp[i]=\min(dp[p_2] \times 2, dp[p_3] \times 3, dp[p_5] \times 5)\)</span>，然后分别比较 <span class="arithmatex">\(dp[i]\)</span> 与 <span class="arithmatex">\(dp[p_2] \times 2\)</span>, <span class="arithmatex">\(dp[p_3] \times 3\)</span>, <span class="arithmatex">\(dp[p_5] \times 5\)</span> 是否相等，若是，则对应的指针加 <span class="arithmatex">\(1\)</span>。</p>
 </details>
+<!-- blog-edit-end:651d27972b34be92:b7 -->
+
+<!-- blog-edit-start:651d27972b34be92:b8 -->
+
 <h2 id="23">面试题23：链表中环的入口节点</h2>
+<!-- blog-edit-end:651d27972b34be92:b8 -->
+
+<!-- blog-edit-start:651d27972b34be92:b9 -->
+
 <p>如果一个链表中包含环，如何找出环的入口节点。</p>
+<!-- blog-edit-end:651d27972b34be92:b9 -->
+
+<!-- blog-edit-start:651d27972b34be92:b10 -->
+
 <details class="note">
 <summary>思路</summary>
 <p>标准的快慢指针应用。放在这里也是提醒一下快慢指针这个东西。设置快慢指针，快指针每次走一步，慢指针每次走两步，假如链表中有环，它们一定在环中相遇。</p>
 </details>
+<!-- blog-edit-end:651d27972b34be92:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\做题记录\其他\剑指offer-记录.md" data-text-edit-revision="6860ff93df74a155aff04c65fce5960c11fe353586712aef1aa2cd3feb28ba04" data-text-edit-marker="651d27972b34be92" data-text-edit-schema="1"></div>
 
 
 
@@ -899,8 +944,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

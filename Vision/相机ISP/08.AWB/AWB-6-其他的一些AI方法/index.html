@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -644,20 +644,69 @@
   
 
 
+<!-- blog-edit-start:da1aa5689b02eb7d:b0 -->
+
 <h1 id="awb-ai">AWB 算法五：一些其他的 AI 方法</h1>
+<!-- blog-edit-end:da1aa5689b02eb7d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c62a25d535e5cdf76b30713080f644c44eaa8e545dfee72711c65c1f16eb6fb4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB%5CAWB-6-%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%80%E4%BA%9BAI%E6%96%B9%E6%B3%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\08.AWB\AWB-6-其他的一些AI方法.md">复制路径</span></div>
 
+<!-- blog-edit-start:da1aa5689b02eb7d:b1 -->
+
 <h2 id="fc4-fully-convolutional-color-constancy-with-confidence-weighted-pooling">FC4: Fully Convolutional Color Constancy with Confidence-Weighted Pooling</h2>
+<!-- blog-edit-end:da1aa5689b02eb7d:b1 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b2 -->
+
 <p>作者是胡鸣渊，很厉害，图形学大佬，清本 MIT 博士，很标准的清华发展方向。有一段时间出圈了，非常火（就是用一行代码实现冰雪奇缘的那个作者）</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b2 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b3 -->
+
 <p>具体原理不谈了，人的精力是有限的，暂时还没有 AWB 这方面的需求。Github 也有一个很棒的开源：<a href="https://github.com/matteo-rizzo/fc4-pytorch">https://github.com/matteo-rizzo/fc4-pytorch</a>；感觉代码写的很好，以后有时间要研究学习一下。</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b3 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b4 -->
+
 <h2 id="_1">整理总结</h2>
+<!-- blog-edit-end:da1aa5689b02eb7d:b4 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b5 -->
+
 <p>AWB 的痛点：大量单色、多光源、Cross-Sensor</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b5 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b6 -->
+
 <p>1. 大量单色：</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b6 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b7 -->
+
 <p>看这篇文章，很简单的思路，有遇到这个问题时可以看看行不行：<a href="https://zhuanlan.zhihu.com/p/719563225">https://zhuanlan.zhihu.com/p/719563225</a>；顺便一提，这个作者分享了很多关于颜色的文章，非常感谢有这样的人存在</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b7 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b8 -->
+
 <p>2. 多光源：</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b8 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b9 -->
+
 <p>同样是上面作者文章：<a href="https://zhuanlan.zhihu.com/p/719967190">https://zhuanlan.zhihu.com/p/719967190</a>；感觉很复杂，真正遇到问题再说吧。这里说一下多光源的几种解决方案：第一种是前后背景分割，分别做 AWB 再融合；第二种是直接分成 patch，分别做 AWB 再融合（之前传统方法也有）；第三种是 pixel-wise，就是根据每个像素点做 AWB 再融合，感觉第三种方法有点匪夷所思。</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b9 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b10 -->
+
 <p>3. Cross-Sensor</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b10 -->
+
+<!-- blog-edit-start:da1aa5689b02eb7d:b11 -->
+
 <p>这个就是跨传感器。也就是我在芯片 A 上训练的模型，能否再芯片 B 上直接使用，或者做些简单的处理就能使用。一般而言芯片的光谱响应不同，再加上镜头等因素，所以是不能直接挪用的。还是上面的作者的自己文章分享：<a href="https://zhuanlan.zhihu.com/p/719669060">https://zhuanlan.zhihu.com/p/719669060</a>；很简单，就是发现 RAW 图做一个 3x3 矩阵变换就可以了，甚至只要对角矩阵即可。上面这个链接里，作者还有一些其他的相关文章分享，感兴趣也可以看看。</p>
+<!-- blog-edit-end:da1aa5689b02eb7d:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\08.AWB\AWB-6-其他的一些AI方法.md" data-text-edit-revision="c62a25d535e5cdf76b30713080f644c44eaa8e545dfee72711c65c1f16eb6fb4" data-text-edit-marker="da1aa5689b02eb7d" data-text-edit-schema="1"></div>
 
 
 
@@ -889,8 +938,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

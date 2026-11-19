@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -660,28 +660,109 @@
   
 
 
+<!-- blog-edit-start:7c29525f9b6fa59d:b0 -->
+
 <h1 id="nas">NAS 浏览器访问安装的迅雷</h1>
+<!-- blog-edit-end:7c29525f9b6fa59d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7c29525f9b6fa59da2358c0fd4909bae3d65a5ece2595286d5cb4507d1ceedba" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CNAS%5Cnas_xunlei.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CNAS" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\NAS\nas_xunlei.md">复制路径</span></div>
 
+<!-- blog-edit-start:7c29525f9b6fa59d:b1 -->
+
 <p>下文中的 QTS 指 NAS 管理系统，也就是通过默认的 5000 端口登录的界面，即通过 5000 端口提供 HTTP 服务。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b1 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b2 -->
+
 <h2 id="_1">场景</h2>
+<!-- blog-edit-end:7c29525f9b6fa59d:b2 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b3 -->
+
 <p>威联通 NAS 安装官方版迅雷后，每次都要先进入 QTS 桌面，再点击迅雷，太麻烦了。所以想着，能不能像 qBittorrent 一样，通过独立端口直接在浏览器中访问。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b3 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b4 -->
+
 <p>经过 AI 调研，发现除了使用第三方容器，NAS 上安装的官方版迅雷其实也可以通过 <code>http://192.168.110.110:5000/cgi-bin/xunlei-pan/index.cgi/</code> 直接访问，只是需要事先登录 QTS 桌面。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b4 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b5 -->
+
 <p>于是就想着，用一个简单的程序提供独立端口：浏览器访问时，如果已有有效的入口登录状态，就直接进入迅雷；如果没有，就显示登录页面。这个入口使用 NAS 账号验证，但登录状态独立于 QTS 桌面。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b5 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b6 -->
+
 <h2 id="_2">基本原理</h2>
+<!-- blog-edit-end:7c29525f9b6fa59d:b6 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b7 -->
+
 <p>访问流程：<strong>浏览器 → 网关 → QTS／迅雷</strong>。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b7 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b8 -->
+
 <p>首次访问并提交账号密码时，网关调用 <strong>QTS 的 <code>/cgi-bin/authLogin.cgi</code> 接口</strong>，由本机 QTS 验证。成功后，网关保存 QTS 登录凭证，并给浏览器一张独立“通行证”。之后浏览器自动出示它，网关代为访问原有迅雷，无需加载 QTS 桌面。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b8 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b9 -->
+
 <h2 id="https-http">为什么用 HTTPS，不能用 HTTP？</h2>
+<!-- blog-edit-end:7c29525f9b6fa59d:b9 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b10 -->
+
 <p>HTTP 能实现功能，但密码和登录凭证会明文传输。HTTPS 加密浏览器与网关之间的通信。当前使用自签名证书，所以首次访问会有证书提示。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b10 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b11 -->
+
 <h2 id="_3">网关是谁？</h2>
+<!-- blog-edit-end:7c29525f9b6fa59d:b11 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b12 -->
+
 <p>就是 NAS 上新增的 Python 程序，运行在 <code>xunlei-gateway</code> 容器里，提供 <code>8443</code> 端口。它负责登录验证和转发迅雷请求。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b12 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b13 -->
+
 <h2 id="cookie">Cookie 干什么的？</h2>
+<!-- blog-edit-end:7c29525f9b6fa59d:b13 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b14 -->
+
 <p>Cookie 是浏览器保存并自动发送的“通行证”，里面存的是随机编号，不是 NAS 密码。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b14 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b15 -->
+
 <p>例如：登录成功后，网关发给浏览器编号 <code>abc123</code>，并记住它对应哪个登录会话。之后刷新页面、查看任务或下载时，浏览器自动带上这个编号，网关就知道你已经登录，无需反复输入密码。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b15 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b16 -->
+
 <p>本方案中，QTS Session ID 是网关访问 QTS 的凭证，只保存在网关内存；浏览器持有的是另一张独立通行证。网关重启后记录消失，需要重新登录；会话最长 8 小时，也可能因 QTS 会话失效而提前结束。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b16 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b17 -->
+
 <h2 id="python">为什么用容器，而不是 Python 代码？</h2>
+<!-- blog-edit-end:7c29525f9b6fa59d:b17 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b18 -->
+
 <p>运行的就是 Python 代码，容器只是提供独立运行环境。它把 Python 和依赖打包在一起，避免修改 NAS 原有环境，也方便启动、停止、异常重启和移除。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b18 -->
+
+<!-- blog-edit-start:7c29525f9b6fa59d:b19 -->
+
 <p>直接运行 Python 也可以，但需要另外管理依赖、后台运行和开机启动；这台 NAS 已有 Container Station，用容器更方便维护。</p>
+<!-- blog-edit-end:7c29525f9b6fa59d:b19 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\NAS\nas_xunlei.md" data-text-edit-revision="7c29525f9b6fa59da2358c0fd4909bae3d65a5ece2595286d5cb4507d1ceedba" data-text-edit-marker="7c29525f9b6fa59d" data-text-edit-schema="1"></div>
 
 
 
@@ -913,8 +994,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

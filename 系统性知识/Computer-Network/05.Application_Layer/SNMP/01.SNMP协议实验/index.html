@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -768,21 +768,67 @@
   
 
 
+<!-- blog-edit-start:f7910c6e1ff45a65:b0 -->
+
 <h1 id="snmp-snmp">SNMP 协议实验一：配置 SNMP 基础通信</h1>
+<!-- blog-edit-end:f7910c6e1ff45a65:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ea690e88a9166e5ad8c25bd8477b62f131af73726faab71032878a87330afca5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CSNMP%5C01.SNMP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E9%AA%8C.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CSNMP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\SNMP\01.SNMP协议实验.md">复制路径</span></div>
 
+<!-- blog-edit-start:f7910c6e1ff45a65:b1 -->
+
 <p>这是我研一期间导师教的课程《计算机网络管理》中的一个选做实验，当时弄了将近一天，结果一直没有通，后来就放弃了。五年之后了，居然闲着没事想起来这个事情，再试试之后完成了。时间过得真是快，感觉五年前就在昨天一样。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b1 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b2 -->
+
 <h2 id="_1">准备</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b2 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b3 -->
+
 <h3 id="_2">两台机器选择</h3>
+<!-- blog-edit-end:f7910c6e1ff45a65:b3 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b4 -->
+
 <p>推荐还是直接临时买两个云服务器，反正也不是很贵，这样也不会破坏环境，而且还有公网 IP，很适合做实验。防火墙记得弄好。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b4 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b5 -->
+
 <p>这里我就直接参考<a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04#step-4-setting-up-a-basic-firewall">这篇文章</a>，其实里面的新建用户不用做，直接 root 反而更加方便，毕竟只是实验。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b5 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b6 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>ufw<span class="w"> </span>allow<span class="w"> </span>OpenSSH
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>ufw<span class="w"> </span><span class="nb">enable</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b6 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b7 -->
+
 <h3 id="_3">上层管理开放端口</h3>
+<!-- blog-edit-end:f7910c6e1ff45a65:b7 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b8 -->
+
 <p>不仅如此，云服务器上面的管理设置也要开端口。我一开始没开端口结果一直连不上。可以直接无脑开 UDP 就行，这就是临时买两台服务器的好处，不用担心安全问题。或者就只开 161 和 162 端口。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b8 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b9 -->
+
 <p><img alt="" src="../../../../../asset/image/63008c4faeba9b7b802acb6b67c4da63/20260328214003.png" /></p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b9 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b10 -->
+
 <h3 id="_4">其他辅助</h3>
+<!-- blog-edit-end:f7910c6e1ff45a65:b10 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b11 -->
+
 <p>一些做实验之后的善意提醒：</p>
 <ol>
 <li>最好买国内的服务器，我一开始用的 Digital Ocean，实在太卡了，太影响效率和心情了，越影响心情效率越低，恶性循环。</li>
@@ -795,14 +841,46 @@
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span>make<span class="w"> </span>-C<span class="w"> </span>ble.sh<span class="w"> </span>install<span class="w"> </span><span class="nv">PREFIX</span><span class="o">=</span>~/.local
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source -- ~/.local/share/blesh/ble.sh&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b11 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b12 -->
+
 <h2 id="snmp">SNMP 简要说明</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b12 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b13 -->
+
 <p>这里还是简短说一下 SNMP 协议，就把他理解成管理员和被管理机器就行了。管理员叫 manager，被管理员叫 agent，平时都是 manager 向 agent 问东西，比如你启动多久了等等。偶尔 agent 如果发现自己报错，也会主动上报给 manager，这个叫做 trap，这个配置实现在另外一篇文章单独写。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b13 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b14 -->
+
 <p>其实就是一层规范化的应用协议而已，没有什么特别之处。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b14 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b15 -->
+
 <h2 id="snmp-manager">配置 SNMP manager</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b15 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b16 -->
+
 <p>安装软件</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b16 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b17 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>snmp<span class="w"> </span>snmp-mibs-downloader
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b17 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b18 -->
+
 <p>修改配置文件，这里的 MIB 就是按照 SNMP 协议的规范翻译一些名词，比如原来发送 <code>1.3.6.1.2.1.1.5.0</code> 这种奇怪的数字，现在可以替代为 <code>sysName.0</code>。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b18 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b19 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># /etc/snmp/snmp.conf</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># As the snmp packages come without MIB files due to license reasons, loading</span>
@@ -811,6 +889,10 @@
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span><span class="c1"># 这里注释掉</span>
 </span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span><span class="c1">#mibs :</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b19 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b20 -->
+
 <details class="note">
 <summary>为什么是注释掉，才是启用 MIBS，通常来说不都是不注释才启用吗</summary>
 <p><code>mibs:</code> 它的意思不是“启用 MIB”，而是：把 MIB 列表设为空（= 不加载任何 MIB）；所以注释掉之后，程序就会回到默认行为：</p>
@@ -818,8 +900,20 @@
 </span></code></pre></div>
 <p>所以变成<strong>启用状态</strong>，即使用了 <code>snmp-mibs-downloader</code> 这个工具。</p>
 </details>
+<!-- blog-edit-end:f7910c6e1ff45a65:b20 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b21 -->
+
 <p>然后就弄好了，什么也不用动。因为 SNMP 中 manager 向 agent 发消息，所以后面 manager 使用 <code>snmpget</code> 等等命令发消息的时候，命令执行时才加载配置文件，所以这里没有什么后台要运行的任务。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b21 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b22 -->
+
 <h2 id="snmp-agent">配置 SNMP Agent</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b22 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b23 -->
+
 <p>首先配置中修改为监听任意地址<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>
@@ -828,67 +922,219 @@
 </span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span>#  Listen for connections on all interfaces (both IPv4 *and* IPv6)
 </span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span>agentAddress udp:161,udp6:[::1]:161
 </span></code></pre></div></p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b23 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b24 -->
+
 <p>然后建立一个 snmp user，snmp 通信要求通信的时候要有一个用户，而不是简单的指定 IP 和端口，就理解成当前的各个通信软件就行了。这里我们创立一个临时用户 <code>bootstrap</code>，密码就叫 <code>temp_password</code>，密码这里可以自行修改。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b24 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b25 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>createUser bootstrap MD5 temp_password DES
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b25 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b26 -->
+
 <p><strong>这里为什么使用临时用户，继续往下看一直到结尾就知道了</strong></p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b26 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b27 -->
+
 <p>然后配置用户权限，我们临时用户叫 <code>bootstrap</code>，假设我们最终用的名字叫 <code>demo</code>：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b27 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b28 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>rwuser bootstrap priv
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>rwuser demo priv
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b28 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b29 -->
+
 <p>最后重启服务，然后防火墙打开 161 端口，即允许 <strong>manager server</strong> 的 161 端口访问这台机器。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b29 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b30 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>snmpd
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>from<span class="w"> </span>manager_server_ip_address<span class="w"> </span>to<span class="w"> </span>any<span class="w"> </span>port<span class="w"> </span><span class="m">161</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b30 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b31 -->
+
 <h2 id="_5">测试通信</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b31 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b32 -->
+
 <p>现在已经配置完毕了，测试通信，即 manager 向 agent 发送信息：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b32 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b33 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>bootstrap<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span><span class="m">1</span>.3.6.1.2.1.1.1.0
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b33 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b34 -->
+
 <p>这里的 <code>1.3.6.1.2.1.1.1.0</code> 就是 SNMP 协议的 OID，就是管理员要获取的信息，这个意思是 <code>displaying system information</code>，正确的结果类似：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b34 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b35 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>SNMPv2-MIB::sysDescr.0<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span>Linux<span class="w"> </span>agent<span class="w"> </span><span class="m">4</span>.15.0-66-generic<span class="w"> </span><span class="c1">#75-Ubuntu SMP Tue Oct 1 05:24:09 UTC 2019 x86_64</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b35 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b36 -->
+
 <p>上面 <code>配置 SNMP Manager</code> 中提到我们有 MIBS 的支持，所以这里可以直接使用 <code>sysDescr.0</code> 这个 MIB 来获取系统信息：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b36 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b37 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>bootstrap<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b37 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b38 -->
+
 <p>得到类似结果：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b38 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b39 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span>DISMAN-EVENT-MIB::sysUpTimeInstance<span class="w"> </span><span class="o">=</span><span class="w"> </span>Timeticks:<span class="w"> </span><span class="o">(</span><span class="m">53309</span><span class="o">)</span><span class="w"> </span><span class="m">0</span>:08:53.09
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b39 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b40 -->
+
 <h2 id="_6">设置正常用户</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b40 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b41 -->
+
 <p>前面提到 <code>bootstrap</code> 是临时用户，现在来演示正常应该如何操作，我们通过 <code>bootstrap</code> 用户通信，通信内容是：建立一个 <code>demo</code> 用户：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b41 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b42 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span>snmpusm<span class="w"> </span>-u<span class="w"> </span>bootstrap<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>create<span class="w"> </span>demo<span class="w"> </span>bootstrap
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b42 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b43 -->
+
 <p>得到结果：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b43 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b44 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span>User successfully created.
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b44 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b45 -->
+
 <p>现在我们有了 <code>demo</code> 用户，它的密码也是 <code>temp_password</code>，我们可以修改掉，修改成 <code>new_password</code>：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b45 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b46 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span>snmpusm<span class="w"> </span>-u<span class="w"> </span>demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>temp_password<span class="w"> </span>-X<span class="w"> </span>temp_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>passwd<span class="w"> </span>temp_password<span class="w"> </span>new_password
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b46 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b47 -->
+
 <p>得到结果：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b47 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b48 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span>SNMPv3 Key(s) successfully changed.
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b48 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b49 -->
+
 <p>测试一下通信，就是上面一章节中的 <code>bootstrap</code> 替换成 <code>demo</code>：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b49 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b50 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>new_password<span class="w"> </span>-X<span class="w"> </span>new_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b50 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b51 -->
+
 <p>然后我们就可以删除 <code>bootstrap</code> 这个临时用户了，具体操作在最后再谈。现在我们来评估这种安全性。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b51 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b52 -->
+
 <h2 id="_7">回顾及安全性分析</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b52 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b53 -->
+
 <p>还是强调，这些通信<strong>都是由 manager 发起</strong>，即 manager 是我们的管理器，安全性很高。agent 是路由器之类的，它被人任意使用没有关系。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b53 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b54 -->
+
 <ol>
 <li>manager 首先使用 <code>bootstrap</code> 和对应的密码连接 agent，让他建立一个 <code>demo</code> 用户；</li>
 <li>manager 使用 <code>demo</code> 修改密码；</li>
 <li>manager 使用 <code>demo</code> 和对应的密码连接 agent，删除 <code>bootstrap</code> 用户；</li>
 <li>manager 使用 <code>demo</code> 和对应的密码连接 agent，进行通信。</li>
 </ol>
+<!-- blog-edit-end:f7910c6e1ff45a65:b54 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b55 -->
+
 <p>agent 里面只有 <code>bootstrap</code> 和它的明文密码，agent 是怎么知道 <code>demo</code> 用户的？在 <code>/var/lib/snmp/snmpd.conf</code> 中：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b55 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b56 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><span class="linenos" data-linenos="1 "></span>usmUser 1 3 0x80001f8880e13a533c7d6cc76900000000 &quot;demo&quot; &quot;demo&quot; NULL .1.3.6.1.6.3.10.1.1.2 0x018ea09d0b4caa6f7707d5f44774036d .1.3.6.1.6.3.10.1.2.2 0x018ea09d0b4caa6f7707d5f44774036d 0x
 </span><span id="__span-18-2"><span class="linenos" data-linenos="2 "></span>usmUser 1 3 0x80001f8880e13a533c7d6cc76900000000 &quot;bootstrap&quot; &quot;bootstrap&quot; NULL .1.3.6.1.6.3.10.1.1.2 0x697b326cd929726752a592fba5de1cd6 .1.3.6.1.6.3.10.1.2.2 0x697b326cd929726752a592fba5de1cd6 0x
 </span><span id="__span-18-3"><span class="linenos" data-linenos="3 "></span>setserialno 490637702
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b56 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b57 -->
+
 <p>只不过这是加密后的密码，所以当我们删除掉 <code>bootstrap</code> 之后，agent 上并没有什么可以被攻击的信息了（只有加密的密码），这就是安全性的保证。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b57 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b58 -->
+
 <p><strong>这也是临时用户 <code>bootstrap</code> 存在的意义</strong></p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b58 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b59 -->
+
 <h2 id="_8">其他</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b59 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b60 -->
+
 <p>如果为了方便，我们可以在 manager 中配置文件：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b60 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b61 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># ~/.snmp/snmp.conf</span>
 </span><span id="__span-19-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-19-3"><span class="linenos" data-linenos="3 "></span>defSecurityName<span class="w"> </span>demo
@@ -898,31 +1144,94 @@
 </span><span id="__span-19-7"><span class="linenos" data-linenos="7 "></span>defAuthPassphrase<span class="w"> </span>new_password
 </span><span id="__span-19-8"><span class="linenos" data-linenos="8 "></span>defPrivPassphrase<span class="w"> </span>new_password
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b61 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b62 -->
+
 <p>原来的方式：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b62 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b63 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-u<span class="w"> </span>demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-A<span class="w"> </span>new_password<span class="w"> </span>-X<span class="w"> </span>new_password<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b63 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b64 -->
+
 <p>现在的方式，比较方便了：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b64 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b65 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>agent_server_ip_address<span class="w"> </span>sysUpTime.0
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b65 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b66 -->
+
 <p>删除 <code>bootstrap</code> 用户的做法：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b66 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b67 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><span class="linenos" data-linenos="1 "></span># /etc/snmp/snmpd.conf
 </span><span id="__span-22-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-22-3"><span class="linenos" data-linenos="3 "></span># comment or remove the following lines
 </span><span id="__span-22-4"><span class="linenos" data-linenos="4 "></span>#createUser bootstrap MD5 temp_password DES
 </span><span id="__span-22-5"><span class="linenos" data-linenos="5 "></span>#rwuser bootstrap priv
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b67 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b68 -->
+
 <p>然后重启 snmp：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b68 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b69 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>snmpd
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b69 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b70 -->
+
 <p>如果想要完全删除：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b70 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b71 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><span class="linenos" data-linenos="1 "></span>snmpusm<span class="w"> </span>agent_server_ip_address<span class="w"> </span>delete<span class="w"> </span>bootstrap
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b71 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b72 -->
+
 <p>得到：</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b72 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b73 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><span class="linenos" data-linenos="1 "></span>User successfully deleted.
 </span></code></pre></div>
+<!-- blog-edit-end:f7910c6e1ff45a65:b73 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b74 -->
+
 <h2 id="_9">总结</h2>
+<!-- blog-edit-end:f7910c6e1ff45a65:b74 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b75 -->
+
 <p>这就是第一部分的内容。五年前，我用自己笔记本 ArchLinux 系统和实验室配的台式机 Windows 系统尝试做实验，结果折腾了快一天，差了很多资料，各种千奇百怪的论坛，但还是没有成功。五年之后直接两台云服务器，然后非常非常顺利地就完成了，用时不到一小时。我觉得这就是更加务实了吧，没有什么奇奇怪怪的技术洁癖（当时可能觉得一定要用身边的机器才算完美）。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b75 -->
+
+<!-- blog-edit-start:f7910c6e1ff45a65:b76 -->
+
 <p>下一篇介绍如何进行 SNMP Trap 通信，这个是反过来的，是 agent 向 manager 发送信息。</p>
+<!-- blog-edit-end:f7910c6e1ff45a65:b76 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\SNMP\01.SNMP协议实验.md" data-text-edit-revision="ea690e88a9166e5ad8c25bd8477b62f131af73726faab71032878a87330afca5" data-text-edit-marker="f7910c6e1ff45a65" data-text-edit-schema="1"></div>
 
 
 
@@ -1154,8 +1463,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

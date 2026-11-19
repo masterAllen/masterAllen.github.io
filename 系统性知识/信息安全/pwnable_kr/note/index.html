@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -660,12 +660,30 @@
   
 
 
+<!-- blog-edit-start:e76dfbece4829c4d:b0 -->
+
 <h1 id="pwnablekr">Pwnable.kr 题目总结记录</h1>
+<!-- blog-edit-end:e76dfbece4829c4d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e76dfbece4829c4d4531d6f73d4a2c5bc1de527989bcd902609632f443acbe4a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5Creadme.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\readme.md">复制路径</span></div>
 
+<!-- blog-edit-start:e76dfbece4829c4d:b1 -->
+
 <p>这是我之前做 pwnable.kr 的一些题目记录，当时是本科快毕业前，疫情在家做了一些，然后读研的时候，上半学期也做了不少，后面就没太做了。</p>
+<!-- blog-edit-end:e76dfbece4829c4d:b1 -->
+
+<!-- blog-edit-start:e76dfbece4829c4d:b2 -->
+
 <h2 id="_1">简单题目摘要</h2>
+<!-- blog-edit-end:e76dfbece4829c4d:b2 -->
+
+<!-- blog-edit-start:e76dfbece4829c4d:b3 -->
+
 <p>大部分是[Toddle's Bottle]的题目，也有一些[Rookiss]里我感觉比较简单可以用一两句话总结的题目。</p>
+<!-- blog-edit-end:e76dfbece4829c4d:b3 -->
+
+<!-- blog-edit-start:e76dfbece4829c4d:b4 -->
+
 <ol>
 <li>知道加壳的程序是长什么样：完全很乱，没有<code>main</code>方法，去壳加壳命令： <code>upx</code></li>
 <li><code>rand()</code>随机数如果没有<code>srand()</code>，默认种子为 1，所以会被直接暴力破解</li>
@@ -674,7 +692,15 @@
 <li>遇到<code>fopen</code>，<code>fclose</code> 返回值没有处理的，尝试使用<code>ulimit -f 0</code>，这样会使文件写入大小为 0，无法写入内容</li>
 <li>一般来说，一个程序的<code>canary</code>是始终一致的，也就是其各个函数的<code>canary</code>都是一样的。</li>
 </ol>
+<!-- blog-edit-end:e76dfbece4829c4d:b4 -->
+
+<!-- blog-edit-start:e76dfbece4829c4d:b5 -->
+
 <h2 id="_2">题目总结</h2>
+<!-- blog-edit-end:e76dfbece4829c4d:b5 -->
+
+<!-- blog-edit-start:e76dfbece4829c4d:b6 -->
+
 <table>
 <thead>
 <tr>
@@ -951,12 +977,23 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:e76dfbece4829c4d:b6 -->
+
+<!-- blog-edit-start:e76dfbece4829c4d:b7 -->
+
 <p>目前的问题</p>
+<!-- blog-edit-end:e76dfbece4829c4d:b7 -->
+
+<!-- blog-edit-start:e76dfbece4829c4d:b8 -->
+
 <ol>
 <li>dos4fun 这个就相当于没做出来</li>
 <li>如何输入不可见字符</li>
 <li><code>STDIN@GLIBC2.0</code> 是什么</li>
 </ol>
+<!-- blog-edit-end:e76dfbece4829c4d:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\readme.md" data-text-edit-revision="e76dfbece4829c4d4531d6f73d4a2c5bc1de527989bcd902609632f443acbe4a" data-text-edit-marker="e76dfbece4829c4d" data-text-edit-schema="1"></div>
 
 
 
@@ -1188,8 +1225,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

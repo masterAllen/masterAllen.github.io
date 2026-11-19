@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,14 +609,32 @@
   
 
 
+<!-- blog-edit-start:9192fc925a80d88f:b0 -->
+
 <h1 id="graphsegmentximgproc">GraphSegment（ximgproc 模块）</h1>
+<!-- blog-edit-end:9192fc925a80d88f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e06190c5e0beac9e23b4b1fceb48fcce7803188bcd8e196a2c1e27a1e1b08bc6" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB%5C05.GraphSegment%EF%BC%88ximgproc+%E6%A8%A1%E5%9D%97%EF%BC%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\05.GraphSegment（ximgproc 模块）.md">复制路径</span></div>
+
+<!-- blog-edit-start:9192fc925a80d88f:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.4.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.4.md</a></p>
 </blockquote>
+<!-- blog-edit-end:9192fc925a80d88f:b1 -->
+
+<!-- blog-edit-start:9192fc925a80d88f:b2 -->
+
 <p>ximgproc 里面的 GraphSegmentation 类，在 [ximgproc 的 Image Segementation 页面]（<a href="https://docs.opencv.org/4.x/d5/df0/group__ximgproc__segmentation.html">https://docs.opencv.org/4.x/d5/df0/group__ximgproc__segmentation.html</a>）中，你会看到有两大类。除了前面这个，还有一个叫 SelectiveSearchSegmentation，这个其实我认为更偏向于目标检测，只不过背后原理用到了分割。</p>
+<!-- blog-edit-end:9192fc925a80d88f:b2 -->
+
+<!-- blog-edit-start:9192fc925a80d88f:b3 -->
+
 <p>那就只专注 GraphSegmentation，也是那种简单无脑调用的方式，看代码即可：</p>
+<!-- blog-edit-end:9192fc925a80d88f:b3 -->
+
+<!-- blog-edit-start:9192fc925a80d88f:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">rgb_src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;image/edge/sources/06.png&#39;</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">gs</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">createGraphSegmentation</span><span class="p">()</span>
@@ -637,7 +655,14 @@
 </span><span id="__span-0-18"><span class="linenos" data-linenos="18 "></span>    <span class="p">(</span><span class="s1">&#39;rgb out&#39;</span><span class="p">,</span> <span class="n">rgb_out</span><span class="p">)</span>
 </span><span id="__span-0-19"><span class="linenos" data-linenos="19 "></span><span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:9192fc925a80d88f:b4 -->
+
+<!-- blog-edit-start:9192fc925a80d88f:b5 -->
+
 <p><img alt="1727317009130" src="../../../../asset/image/b3376b4538121e344bf9f0b9b4d44306/1727317009130.png" /></p>
+<!-- blog-edit-end:9192fc925a80d88f:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\05.GraphSegment（ximgproc 模块）.md" data-text-edit-revision="e06190c5e0beac9e23b4b1fceb48fcce7803188bcd8e196a2c1e27a1e1b08bc6" data-text-edit-marker="9192fc925a80d88f" data-text-edit-schema="1"></div>
 
 
 
@@ -869,8 +894,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

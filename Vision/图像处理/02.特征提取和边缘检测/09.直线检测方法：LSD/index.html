@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -688,51 +688,216 @@
   
 
 
+<!-- blog-edit-start:80a9221c212eb5d2:b0 -->
+
 <h1 id="lsd">边缘检测方法：LSD</h1>
+<!-- blog-edit-end:80a9221c212eb5d2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="23735d1674f6af9865e1643ed492926ef2833036023b0679a01ba99f5e934128" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%5C09.%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%EF%BC%9ALSD.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\09.直线检测方法：LSD.md">复制路径</span></div>
 
+<!-- blog-edit-start:80a9221c212eb5d2:b1 -->
+
 <p>介绍一种边缘检测方法：LSD，来自以下文章，它可以在 OpenCV 中使用，具体用法在<a href=".././07.特别的特征：直线特征/">另一篇笔记</a>中。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b1 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b2 -->
+
 <ul>
 <li>LSD: a Line Segment Detector</li>
 </ul>
+<!-- blog-edit-end:80a9221c212eb5d2:b2 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b3 -->
+
 <p>首先是总体逻辑先过一遍，先不纠结各个步骤具体是如何做的。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b3 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b4 -->
+
 <h2 id="_1">总体流程</h2>
+<!-- blog-edit-end:80a9221c212eb5d2:b4 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b5 -->
+
 <p>流程一：先对图像求梯度，得到方向，然后把大致接近的方向组合在一起。如下图所示（先不纠结如何实现），便于讲述，每一组叫做 Line Support Region。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b5 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b6 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250106234911.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b6 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b7 -->
+
 <p>流程二：然后对每个组合求一个最小外接矩形，看看里面的点有多少是和矩形的方向一致的，比如下图，就只有 8 个点是和矩形的方向一致的，这些点叫做 aligned points。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b7 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b8 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250106235243.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b8 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b9 -->
+
 <p>流程三：判断上面说的符合矩形方向的点数量够不够，即这个矩形是否可以作为最终直线。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b9 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b10 -->
+
 <p>流程四：如果不够则把矩形删掉一个点，继续上述操作。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b10 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b11 -->
+
 <h2 id="line-support-region">流程一：求解 Line Support Region</h2>
+<!-- blog-edit-end:80a9221c212eb5d2:b11 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b12 -->
+
 <p>每个点梯度计算，有大小和方向。梯度小的点往往出现在平滑区域，或者仅仅是噪声。即不是我们想要的直线，为了避免干扰，梯度值小于 <span class="arithmatex">\(\rho\)</span> 的像素会被标记，不参与后面的计算。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b12 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b13 -->
+
 <p>然后开始依次遍历那些未标记的点，遍历顺序是梯度从大到小，其中作者用的桶排序，也符合常规做法。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b13 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b14 -->
+
 <p>假设现在从像素点 <span class="arithmatex">\(p\)</span> 开始找新的 Line Support Region，先计算 <span class="arithmatex">\(p\)</span> 的八联通这个八个点的梯度方向是否和 <strong>当前 Line Support Region 的方向</strong> 在容忍度 <span class="arithmatex">\(\tau\)</span> 内，其中论文中 <span class="arithmatex">\(\tau = 22.5 \degree = \pi / 8\)</span>。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b14 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b15 -->
+
 <p>当前 Line Support Region 的方向计算如下，即把里面的像素点各自 <span class="arithmatex">\(\sin\)</span> 和 <span class="arithmatex">\(\cos\)</span> 求和，然后求 <span class="arithmatex">\(\arctan\)</span>。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b15 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b16 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250107000321.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b16 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b17 -->
+
 <p>如果符合条件，就加入那个点，并且做一个标记，然后重复上面步骤。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b17 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b18 -->
+
 <h2 id="aligned-points">流程二：求解最小矩形及其 aligned points 数量</h2>
+<!-- blog-edit-end:80a9221c212eb5d2:b18 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b19 -->
+
 <p>求最小外接矩形这是经典问题，这里不赘述。这里快速提一下，如下图是矩阵中心：</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b19 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b20 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250107000910.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b20 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b21 -->
+
 <p>这个矩形的方向则是用轮廓的矩，求下面的矩阵的最小特征值对应的特征向量，就是矩形的方向：</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b21 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b22 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250107001310.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b22 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b23 -->
+
 <p>然后 aligned points 数量也很朴素：遍历比较呗，比较当前遍历的点的梯度方向和上面的矩形方向是否在容忍度 <span class="arithmatex">\(\tau\)</span> 内。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b23 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b24 -->
+
 <p>虽然我们在流程一中加入点的时候，考虑的容忍度也是 <span class="arithmatex">\(\tau\)</span>，但是这里比较的是最终矩形的方向，而不是流程一中逐渐更新的 Line Support Region 的方向（流程一中用 <span class="arithmatex">\(\arctan\)</span> 计算的公式）。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b24 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b25 -->
+
 <h2 id="_2">流程三：判断矩形是否可以作为最终直线</h2>
+<!-- blog-edit-end:80a9221c212eb5d2:b25 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b26 -->
+
 <p>作者用了一个叫做 <strong>NFA</strong> 的指标，这个指标在另一个方法 <a href=".././11.直线检测方法：EDLines/">EDLines</a> 中也会用到。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b26 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b27 -->
+
 <p>NFA, the Number of False Alarms，假阳性率，计算公式如下：</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b27 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b28 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250107002503.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b28 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b29 -->
+
 <p>其中 <span class="arithmatex">\(N\)</span> 和 <span class="arithmatex">\(M\)</span> 是<strong>图片</strong>的大小，<span class="arithmatex">\(n\)</span> 是当前矩形的像素数量，<span class="arithmatex">\(p\)</span> 叫做精确度，默认值设为 <span class="arithmatex">\(\tau / \pi\)</span>，<span class="arithmatex">\(k\)</span> 是符合条件的像素点数量，而这个条件阈值就是 <span class="arithmatex">\(p\pi\)</span>。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b29 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b30 -->
+
 <p>这个方法也叫做 Helmholtz principle，从上面公式也能看出是否能作为最终直线甚至和图像大小有关系。确实，同样长度的直线，在小图中可作为直线，但大图中可能还是偏短。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b30 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b31 -->
+
 <p>最后如果 <span class="arithmatex">\(NFA(r) \leq \epsilon\)</span>，则认为这个矩形可以作为最终直线。论文中参数 <span class="arithmatex">\(\epsilon = 1\)</span>。其参考了 2008 年的一篇文章：From Gestalt Theory to Image Analysis。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b31 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b32 -->
+
 <h2 id="_3">流程三番外：进一步判断矩形是否可以作为最终直线</h2>
+<!-- blog-edit-end:80a9221c212eb5d2:b32 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b33 -->
+
 <p>作者提出用 NFA 进行评估有一个问题，如下图所示，如果前半部分是一个合理误差内的方向，后半部分是另一个相反的合理误差方向，最后会通过 NFA 检测：</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b33 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b34 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250107125938.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b34 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b35 -->
+
 <p>然后作者就提出进一步判断，用符合常规的数量占比来判断，如下图所示，论文使用的阈值是 <span class="arithmatex">\(D = 0.7\)</span>，即需要 <span class="arithmatex">\(d &gt; 0.7\)</span>。<strong>但说实话我感觉好像还是没有解决问题啊，暂时跳过去吧，这些都是细节中的细节，实在不行看 OpenCV 源码...</strong></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b35 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b36 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250107130122.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b36 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b37 -->
+
 <h2 id="_4">流程四：不符条件则分割矩形</h2>
+<!-- blog-edit-end:80a9221c212eb5d2:b37 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b38 -->
+
 <p>如果矩阵不符合要求，则按照如下步骤进行，一旦有一个步骤发现 NFA 值满足要求，那么就停止：缩小精确度 <span class="arithmatex">\(p\)</span>、减小矩形宽度、减小矩形一边的长度、减小另一边的程度、进一步缩小精确度 <span class="arithmatex">\(p\)</span>。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b38 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b39 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250107095934.png" /></p>
+<!-- blog-edit-end:80a9221c212eb5d2:b39 -->
+
+<!-- blog-edit-start:80a9221c212eb5d2:b40 -->
+
 <p>如果最后矩形过小也会被丢弃。</p>
+<!-- blog-edit-end:80a9221c212eb5d2:b40 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\09.直线检测方法：LSD.md" data-text-edit-revision="23735d1674f6af9865e1643ed492926ef2833036023b0679a01ba99f5e934128" data-text-edit-marker="80a9221c212eb5d2" data-text-edit-schema="1"></div>
 
 
 
@@ -964,8 +1129,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

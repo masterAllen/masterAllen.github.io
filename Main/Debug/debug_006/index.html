@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -666,16 +666,40 @@
   
 
 
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b0 -->
+
 <h1 id="openssl_100not-found">解决 <code>OPENSSL_1.0.0</code>not found 报错问题</h1>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1b9093ad6336f090334a5a80f8285f1f68963d07626def808b2b58c3d0bde1a8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug%5Cdebug_006.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Debug\debug_006.md">复制路径</span></div>
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b1 -->
 
 <p>情况问题如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>./starbound: /usr/lib32/libcrypto.so.1.1: version `OPENSSL_1.0.0&#39; not found (required by ./starbound)
 </span></code></pre></div></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b1 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b2 -->
+
 <h2 id="_1">问题原因解析</h2>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b2 -->
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b3 -->
+
 <p>发生原因现在来解释一下(感谢<em>链接1</em>帮了我理解了这个)</p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b3 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b4 -->
+
 <p><code>starbound</code> 这个程序需要用到 <code>libcrypto</code> 这个动态库，然后这个动态库使用 <code>OPENSSL</code> 的某些符号版本。但是程序里面用到的是 <code>OPENSSL_1.0.0</code> 符号版本，而 <code>libcrypto</code> 这个动态库没有这个 <code>OPENSSL_1.0.0</code></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b4 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b5 -->
+
 <h2 id="_2">问题原因确认</h2>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b5 -->
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b6 -->
+
 <ul>
 <li>
 <p>首先来看 <code>starbound</code> 使用了 <code>libcrypto</code><br />
@@ -714,14 +738,36 @@
 </span></code></pre></div></p>
 </li>
 </ul>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b6 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b7 -->
+
 <h4 id="_3">问题解决方案</h4>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b7 -->
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b8 -->
+
 <ul>
 <li>方案一： 我系统的<code>openssl</code>版本是1.1.2, 重新编译<code>openssl</code>，编译时候需要加上1.0.0的符号版本。</li>
 <li>方案二： 编译<code>openssl</code>的1.0.0版本，但不把他作为系统的版本。仅仅让<code>starbound</code>使用这个1.0.0版本即可。</li>
 </ul>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b8 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b9 -->
+
 <p>我用了方案二，方案一编译加上符号版本好像有点问题，但我先写下来，以后再说吧。</p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b9 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b10 -->
+
 <h4 id="_4">方案一</h4>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b10 -->
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b11 -->
+
 <p>1. 去官网下载，解压</p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b11 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b12 -->
+
 <p>2. 创建一个链接脚本文件，添加OPENSSL_1.0.0的信息。<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span>cat<span class="w"> </span>&gt;<span class="w"> </span>openssl.ld<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="s">OPENSSL_1.0.0 {</span>
@@ -742,12 +788,24 @@
 </span><span id="__span-4-17"><span class="linenos" data-linenos="17 "></span><span class="s">};</span>
 </span><span id="__span-4-18"><span class="linenos" data-linenos="18 "></span><span class="s">EOF</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b12 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b13 -->
+
 <p>3. 使用config的时候需要附加上刚才创建的链接脚本文件，该文件可使编译后生成的动态库文件中包含该版本信息<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>./config<span class="w"> </span>--prefix<span class="o">=(</span>下载OPENSSL的目录<span class="o">)</span><span class="w"> </span>--openssldir<span class="o">=(</span>你想要安装到的目录<span class="o">)</span><span class="w"> </span>shared<span class="w"> </span>-Wl,--version-script<span class="o">=</span>openssl.ld<span class="w"> </span>-Wl,-Bsymbolic-functions
 </span></code></pre></div></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b13 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b14 -->
+
 <p>4. 编译<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>make<span class="w"> </span>-j4
 </span></code></pre></div></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b14 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b15 -->
+
 <p>5. 编译结束后，会生成一个libcrypto.so.1.0.0动态库文件，查看它是否包含“OPENSSL_1.0.0”信息<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>strings libcrypto.so.1.0.0 | grep OPENSSL_1
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>OPENSSL_1.0.0
@@ -759,11 +817,26 @@
 </span><span id="__span-7-8"><span class="linenos" data-linenos="8 "></span>OPENSSL_1.0.0
 </span><span id="__span-7-9"><span class="linenos" data-linenos="9 "></span>OPENSSL_1.0.2
 </span></code></pre></div></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b15 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b16 -->
+
 <p>6. 已经包含该版本,可以单独将libcrypto.so.1.0.0文件放置到系统库目录下了。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>cp libcrypto.so.1.0.0 /usr/lib64/
 </span></code></pre></div></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b16 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b17 -->
+
 <p>7.  如果只是需要该so库的话，就不一定非要执行"make install"操作了</p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b17 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b18 -->
+
 <h3 id="_5">方案二</h3>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b18 -->
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b19 -->
+
 <p>1. 去官网下载旧版本，解压<br />
 2. 假设我下载的是 /home/linux/openssl-1.0.0，那么接下的命令如下<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 编译32位(starbound是32位程序)</span>
@@ -772,10 +845,20 @@
 </span><span id="__span-9-4"><span class="linenos" data-linenos="4 "></span><span class="nb">cd</span><span class="w"> </span>/path/to/starbound
 </span><span id="__span-9-5"><span class="linenos" data-linenos="5 "></span>patchelf<span class="w"> </span>--replace-needed<span class="w"> </span>/usr/lib32/libcrypto.so.1.1<span class="w"> </span>./openssl-1.0.0/libcrypto.so.1.0.0<span class="w"> </span>starbound
 </span></code></pre></div></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b19 -->
+
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b20 -->
+
 <h2 id="_6">参考文章</h2>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b20 -->
+<!-- blog-edit-start:e9a6f6a9cc4d0034:b21 -->
+
 <p>1. OPENSSL编译增加符号版本: <a href="http://www.khcloud.net:4082/?thread-429.htm">http://www.khcloud.net:4082/?thread-429.htm</a><br />
 2. OPENSSL编译: <a href="https://blog.csdn.net/andylauren/article/details/53456340">https://blog.csdn.net/andylauren/article/details/53456340</a><br />
 3. OPENSSL编译32位: <a href="https://blog.csdn.net/whatday/article/details/96995767">https://blog.csdn.net/whatday/article/details/96995767</a></p>
+<!-- blog-edit-end:e9a6f6a9cc4d0034:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Debug\debug_006.md" data-text-edit-revision="1b9093ad6336f090334a5a80f8285f1f68963d07626def808b2b58c3d0bde1a8" data-text-edit-marker="e9a6f6a9cc4d0034" data-text-edit-schema="1"></div>
 
 
 
@@ -1007,8 +1090,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

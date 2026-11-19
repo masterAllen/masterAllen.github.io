@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -633,22 +633,59 @@
   
 
 
+<!-- blog-edit-start:4a0295b7c1603220:b0 -->
+
 <h1 id="backgroundsubtractor">视频帧前后背景分离：BackGroundSubtractor</h1>
+<!-- blog-edit-end:4a0295b7c1603220:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a26edc67362c7f5275021b45aa4fc37b77afbe71d21c8d0150da47cd590f140e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB%5C03.%E8%A7%86%E9%A2%91%E5%B8%A7%E5%89%8D%E5%90%8E%E8%83%8C%E6%99%AF%E5%88%86%E7%A6%BB%EF%BC%9ABackGroundSubtractor.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\03.视频帧前后背景分离：BackGroundSubtractor.md">复制路径</span></div>
+
+<!-- blog-edit-start:4a0295b7c1603220:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.2.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.2.md</a></p>
 </blockquote>
+<!-- blog-edit-end:4a0295b7c1603220:b1 -->
+
+<!-- blog-edit-start:4a0295b7c1603220:b2 -->
+
 <p>有一些针对视频的前后景分离方法。其实本质原理就是视频每一帧之间差的不大，这样可以用一些简单的方法来判断变化情况，变化的就是前景，不变的就是背景。</p>
+<!-- blog-edit-end:4a0295b7c1603220:b2 -->
+
+<!-- blog-edit-start:4a0295b7c1603220:b3 -->
+
 <p>能想到最简单的方法就是前后帧相减，但肯定不够好。后续有一些其他的方法，比如用的混合高斯模型等等，这个就没有细致去了解了。</p>
+<!-- blog-edit-end:4a0295b7c1603220:b3 -->
+
+<!-- blog-edit-start:4a0295b7c1603220:b4 -->
+
 <p>OpenCV 里面提供了不少这种视频前后背景分离的类：</p>
+<!-- blog-edit-end:4a0295b7c1603220:b4 -->
+
+<!-- blog-edit-start:4a0295b7c1603220:b5 -->
+
 <ul>
 <li><a href="https://docs.opencv.org/4.x/de/de1/group__video__motion.html">https://docs.opencv.org/4.x/de/de1/group__video__motion.html</a></li>
 <li><a href="https://docs.opencv.org/4.x/d2/d55/group__bgsegm.html">https://docs.opencv.org/4.x/d2/d55/group__bgsegm.html</a></li>
 </ul>
+<!-- blog-edit-end:4a0295b7c1603220:b5 -->
+
+<!-- blog-edit-start:4a0295b7c1603220:b6 -->
+
 <p>这篇文章记录了一些方法的优缺点：<a href="https://www.cnblogs.com/pipecat/p/13224352.html">https://www.cnblogs.com/pipecat/p/13224352.html</a></p>
+<!-- blog-edit-end:4a0295b7c1603220:b6 -->
+
+<!-- blog-edit-start:4a0295b7c1603220:b7 -->
+
 <h3 id="_1">函数说明：</h3>
+<!-- blog-edit-end:4a0295b7c1603220:b7 -->
+
+<!-- blog-edit-start:4a0295b7c1603220:b8 -->
+
 <p>都是创建一个类，然后类里面直接调用 apply 函数就好，具体还是看代码。具体查看<a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_backsub.ipynb">代码</a>，我觉得执行一遍就明白了。</p>
+<!-- blog-edit-end:4a0295b7c1603220:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\03.视频帧前后背景分离：BackGroundSubtractor.md" data-text-edit-revision="a26edc67362c7f5275021b45aa4fc37b77afbe71d21c8d0150da47cd590f140e" data-text-edit-marker="4a0295b7c1603220" data-text-edit-schema="1"></div>
 
 
 
@@ -880,8 +917,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

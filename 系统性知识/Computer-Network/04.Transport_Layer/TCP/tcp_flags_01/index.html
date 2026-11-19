@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -668,16 +668,39 @@
 
 <hr />
 <h2 id="title-tcp-psh-and-urg-flag">title: TCP 学习一：PSH and URG Flag</h2>
+<!-- blog-edit-start:ee1e3e1cd23a50c2:b0 -->
+
 <p>TCP 有六个 Flag，分别是 SYN, ACK, FIN, RST, PSH, URG。<br />
 前面四个都在握手和挥手阶段中或多或少接触过，所以本篇文章主要是讲讲后面两个 Flag。</p>
 <!--more-->
 
+<!-- blog-edit-end:ee1e3e1cd23a50c2:b0 -->
+
+<!-- blog-edit-start:ee1e3e1cd23a50c2:b1 -->
+
 <h2 id="psh-flag">PSH Flag</h2>
+<!-- blog-edit-end:ee1e3e1cd23a50c2:b1 -->
+<!-- blog-edit-start:ee1e3e1cd23a50c2:b2 -->
+
 <p>TCP 发送方和接收方都有缓冲区，这个相信都知道。但是缓冲区有一个问题: 比如聊天软件这种即使软件，如果缓冲区塞满后接收方才能处理，那么很不现实(想象一下每次要打一千个字符，然后才可以被对方那边处理...)。<br />
 这就是 PSH Flag 所做的，如果为 1，发送方立刻发，接收方收到之后将立刻处理。</p>
+<!-- blog-edit-end:ee1e3e1cd23a50c2:b2 -->
+
+<!-- blog-edit-start:ee1e3e1cd23a50c2:b3 -->
+
 <h2 id="urg-flag">URG Flag</h2>
+<!-- blog-edit-end:ee1e3e1cd23a50c2:b3 -->
+<!-- blog-edit-start:ee1e3e1cd23a50c2:b4 -->
+
 <p>URG Flag 用于通知接收方，段中的某些数据是紧急数据，应优先处理。如果设置为 1，接收方将处理紧急指针(TCP 头中的一个16位字段，该指针指示从第一个字节开始计算该段中有多少数据是紧急数据)。 </p>
+<!-- blog-edit-end:ee1e3e1cd23a50c2:b4 -->
+
+<!-- blog-edit-start:ee1e3e1cd23a50c2:b5 -->
+
 <p>PS: URG Flag 在现代协议中使用不多。</p>
+<!-- blog-edit-end:ee1e3e1cd23a50c2:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\04.Transport_Layer\TCP\tcp_flags_01.md" data-text-edit-revision="ee1e3e1cd23a50c279f6086c760b73538d08bf601abba1ca9d083bc720c37ec7" data-text-edit-marker="ee1e3e1cd23a50c2" data-text-edit-schema="1"></div>
 
 
 
@@ -909,8 +932,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

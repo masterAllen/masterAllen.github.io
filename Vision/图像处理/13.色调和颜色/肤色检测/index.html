@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -633,30 +633,91 @@
   
 
 
+<!-- blog-edit-start:6ea86ae5ac419678:b0 -->
+
 <h1 id="_1">肤色检测的一些算法记录</h1>
+<!-- blog-edit-end:6ea86ae5ac419678:b0 -->
+
 <div class="file-actions" data-image-edit-revision="154df2a665c831df83f59e560130e4567bf8f281a87bd2b15d6ffba066ae2e8f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C13.%E8%89%B2%E8%B0%83%E5%92%8C%E9%A2%9C%E8%89%B2%5C%E8%82%A4%E8%89%B2%E6%A3%80%E6%B5%8B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C13.%E8%89%B2%E8%B0%83%E5%92%8C%E9%A2%9C%E8%89%B2" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\13.色调和颜色\肤色检测.md">复制路径</span></div>
+
+<!-- blog-edit-start:6ea86ae5ac419678:b1 -->
 
 <p>参考：</p>
 <ul>
 <li><a href="https://www.cnblogs.com/Imageshop/p/3264238.html">https://www.cnblogs.com/Imageshop/p/3264238.html</a></li>
 <li><a href="https://www.cnblogs.com/Imageshop/p/3265353.html">https://www.cnblogs.com/Imageshop/p/3265353.html</a></li>
 </ul>
+<!-- blog-edit-end:6ea86ae5ac419678:b1 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b2 -->
+
 <h2 id="_2">基于经验阈值</h2>
+<!-- blog-edit-end:6ea86ae5ac419678:b2 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b3 -->
+
 <p>大部分方法都是基于经验来做的</p>
+<!-- blog-edit-end:6ea86ae5ac419678:b3 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b4 -->
+
 <p>1. 方法一</p>
+<!-- blog-edit-end:6ea86ae5ac419678:b4 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b5 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">R</span><span class="o">&gt;</span><span class="mi">95</span> <span class="ow">and</span> <span class="n">G</span><span class="o">&gt;</span><span class="mi">40</span> <span class="ow">and</span> <span class="n">B</span><span class="o">&gt;</span><span class="mi">20</span> <span class="ow">and</span> <span class="n">R</span><span class="o">&gt;</span><span class="n">G</span> <span class="ow">and</span> <span class="n">R</span><span class="o">&gt;</span><span class="n">B</span> <span class="ow">and</span> <span class="nb">max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">B</span><span class="p">)</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">B</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">15</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">R</span><span class="o">-</span><span class="n">G</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">15</span> 
 </span></code></pre></div>
+<!-- blog-edit-end:6ea86ae5ac419678:b5 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b6 -->
+
 <p>2. 方法二</p>
+<!-- blog-edit-end:6ea86ae5ac419678:b6 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b7 -->
+
 <p>转到 YCbCr 空间再去做</p>
+<!-- blog-edit-end:6ea86ae5ac419678:b7 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b8 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="p">(</span><span class="n">Cb</span> <span class="o">&gt;</span> <span class="mi">77</span> <span class="ow">and</span> <span class="n">Cb</span> <span class="o">&lt;</span> <span class="mi">127</span><span class="p">)</span>  <span class="n">And</span> <span class="p">(</span><span class="n">Cr</span> <span class="o">&gt;</span> <span class="mi">133</span> <span class="ow">and</span> <span class="n">Cr</span> <span class="o">&lt;</span> <span class="mi">173</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6ea86ae5ac419678:b8 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b9 -->
+
 <p>3. 方法三：基于二次混合多项式</p>
+<!-- blog-edit-end:6ea86ae5ac419678:b9 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b10 -->
+
 <p>二次多项式混合模型首先有SORIANO提出，此后CHIANG对此进行了改进。改进后的模型由两个R-G平面的二次多项式和一个圆方程构成：</p>
+<!-- blog-edit-end:6ea86ae5ac419678:b10 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b11 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">R</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">G</span><span class="o">+</span><span class="n">B</span><span class="p">),</span> <span class="n">G</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">G</span><span class="o">+</span><span class="n">B</span><span class="p">),</span> <span class="n">B</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">G</span><span class="o">+</span><span class="n">B</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6ea86ae5ac419678:b11 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b12 -->
+
 <p><img alt="" src="../../../../asset/image/c51f96e06f640cb8e343686fdf61b68d/20241204221349.png" /></p>
+<!-- blog-edit-end:6ea86ae5ac419678:b12 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b13 -->
+
 <p>在以上三个方程的基础上，肤色区域可以通过一下规则实现：</p>
+<!-- blog-edit-end:6ea86ae5ac419678:b13 -->
+
+<!-- blog-edit-start:6ea86ae5ac419678:b14 -->
+
 <p><img alt="" src="../../../../asset/image/c51f96e06f640cb8e343686fdf61b68d/20241204221411.png" /></p>
+<!-- blog-edit-end:6ea86ae5ac419678:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\13.色调和颜色\肤色检测.md" data-text-edit-revision="154df2a665c831df83f59e560130e4567bf8f281a87bd2b15d6ffba066ae2e8f" data-text-edit-marker="6ea86ae5ac419678" data-text-edit-schema="1"></div>
 
 
 
@@ -888,8 +949,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -710,13 +710,33 @@
   
 
 
+<!-- blog-edit-start:c81fc0100e634153:b0 -->
+
 <h1 id="pwnablekr-leg">Pwnable.kr leg</h1>
+<!-- blog-edit-end:c81fc0100e634153:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c81fc0100e634153bf8d120e0e75d71ed79b1a4c20c972e6652f4c27f92f54fb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C08.leg.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\08.leg.md">复制路径</span></div>
 
+<!-- blog-edit-start:c81fc0100e634153:b1 -->
+
 <p>本题可以给帮助我们进行 ARM 汇编初探</p>
+<!-- blog-edit-end:c81fc0100e634153:b1 -->
+
+<!-- blog-edit-start:c81fc0100e634153:b2 -->
+
 <h2 id="_1">前言</h2>
+<!-- blog-edit-end:c81fc0100e634153:b2 -->
+<!-- blog-edit-start:c81fc0100e634153:b3 -->
+
 <p>要有<code>x86</code>和<code>i386</code>汇编基础，主要就是谈一下<code>ARM</code>汇编一些很"奇怪"的特点。</p>
+<!-- blog-edit-end:c81fc0100e634153:b3 -->
+
+<!-- blog-edit-start:c81fc0100e634153:b4 -->
+
 <h2 id="_2">状态</h2>
+<!-- blog-edit-end:c81fc0100e634153:b4 -->
+<!-- blog-edit-start:c81fc0100e634153:b5 -->
+
 <p><code>ARM</code>汇编有两种状态: <code>arm</code> &amp;&amp; <code>thumb</code>，前者状态下字节长度为4，后者状态下字节长度为2。因此不同状态下同一个指令会有不同动作。</p>
 <ul>
 <li>
@@ -728,16 +748,44 @@
     这个下面会详细将跳转指令，反正时刻注意<code>ARM</code>汇编他要根据不同状态来做不同操作</p>
 </li>
 </ul>
+<!-- blog-edit-end:c81fc0100e634153:b5 -->
+
+<!-- blog-edit-start:c81fc0100e634153:b6 -->
+
 <h2 id="bjmp">跳转指令(B，对应<code>jmp</code>)</h2>
+<!-- blog-edit-end:c81fc0100e634153:b6 -->
+
+<!-- blog-edit-start:c81fc0100e634153:b7 -->
+
 <h3 id="bl-offset"><code>BL offset</code></h3>
+<!-- blog-edit-end:c81fc0100e634153:b7 -->
+<!-- blog-edit-start:c81fc0100e634153:b8 -->
+
 <p>这个<code>offset</code>是一个立即数，直接偏移地址为这个立即数的地方执行代码，返回地址会保存在<code>lr</code>中！</p>
+<!-- blog-edit-end:c81fc0100e634153:b8 -->
+
+<!-- blog-edit-start:c81fc0100e634153:b9 -->
+
 <h3 id="bx-reg"><code>BX reg</code></h3>
+<!-- blog-edit-end:c81fc0100e634153:b9 -->
+<!-- blog-edit-start:c81fc0100e634153:b10 -->
+
 <p>我起初以为是比如<code>bx r0</code>，那就跳到<code>[r0]</code>处。不过有两点要注意的地方！<br />
 第一点，跳转地址并不是<code>[r0]</code>，而是<code>[r0] &amp; 0xFFFE</code>，也就是<strong>最后一位要先置0，再去跳转到对应位置</strong>。<br />
 第二点，<strong>这个命令可能会改变寄存器状态！！</strong><br />
 第一点可以看到，最后一位没有用，所以用来作标志位。如果是0，那么状态变为<code>arm</code>；如果是1，那么状态变为<code>thumb</code>。</p>
+<!-- blog-edit-end:c81fc0100e634153:b10 -->
+
+<!-- blog-edit-start:c81fc0100e634153:b11 -->
+
 <h3 id="bx-lr"><code>BX lr</code></h3>
+<!-- blog-edit-end:c81fc0100e634153:b11 -->
+<!-- blog-edit-start:c81fc0100e634153:b12 -->
+
 <p>为什么单独将这个呢，明明不就是上面的一个特例吗。的确如此，不过我想说的是，<code>ARM</code>是严格指令对齐，所以地址一定是4的倍数，所以很显然，当<code>bx lr</code>执行完成后，一定会变成<code>arm</code>状态！</p>
+<!-- blog-edit-end:c81fc0100e634153:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\08.leg.md" data-text-edit-revision="c81fc0100e634153bf8d120e0e75d71ed79b1a4c20c972e6652f4c27f92f54fb" data-text-edit-marker="c81fc0100e634153" data-text-edit-schema="1"></div>
 
 
 
@@ -969,8 +1017,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

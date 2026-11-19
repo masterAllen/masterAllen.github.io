@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -672,8 +672,14 @@
   
 
 
+<!-- blog-edit-start:f517bf5878b682fa:b0 -->
+
 <h1 id="bwt">BWT 编码</h1>
+<!-- blog-edit-end:f517bf5878b682fa:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f517bf5878b682fa809bbda4a2d5d54e6d918f8c9a4eba8152fc03d970955398" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%8D%95%E7%BA%AF%E8%AE%B0%E5%BD%95%5C02.BWT.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%8D%95%E7%BA%AF%E8%AE%B0%E5%BD%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\单纯记录\02.BWT.md">复制路径</span></div>
+
+<!-- blog-edit-start:f517bf5878b682fa:b1 -->
 
 <blockquote>
 <ol>
@@ -681,28 +687,103 @@
 <li><a href="https://www.cnblogs.com/MTandHJ/p/17795994.html">https://www.cnblogs.com/MTandHJ/p/17795994.html</a></li>
 </ol>
 </blockquote>
+<!-- blog-edit-end:f517bf5878b682fa:b1 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b2 -->
+
 <h2 id="_1">简介</h2>
+<!-- blog-edit-end:f517bf5878b682fa:b2 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b3 -->
+
 <p>直接找的参考资料一的图片，讲的很清晰。总之还是那句话：<strong>原理不是关键，用的时候再去看。</strong></p>
+<!-- blog-edit-end:f517bf5878b682fa:b3 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b4 -->
+
 <h3 id="_2">编码</h3>
+<!-- blog-edit-end:f517bf5878b682fa:b4 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b5 -->
+
 <p>如下图，编码过程如下，最终保存 L 列即可：</p>
+<!-- blog-edit-end:f517bf5878b682fa:b5 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b6 -->
+
 <p><img alt="" src="../../../asset/image/6480c05db956490941afc12d696b93a2/20260512123559.png" /></p>
+<!-- blog-edit-end:f517bf5878b682fa:b6 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b7 -->
+
 <h3 id="_3">解码</h3>
+<!-- blog-edit-end:f517bf5878b682fa:b7 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b8 -->
+
 <p>解码过程，直接看参考资料一吧，这里不写了。总之知道最终可以从 L 列恢复出原字符串。</p>
+<!-- blog-edit-end:f517bf5878b682fa:b8 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b9 -->
+
 <h2 id="_4">场景</h2>
+<!-- blog-edit-end:f517bf5878b682fa:b9 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b10 -->
+
 <h3 id="_5">压缩</h3>
+<!-- blog-edit-end:f517bf5878b682fa:b10 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b11 -->
+
 <p>为什么可以压缩，参考资料二给了很好的例子。原来字符串中频繁出现某个词，比如 'the'，则就会有很多的 't' 由于 'hexxxxxxxxt' 的排序聚在一块:</p>
+<!-- blog-edit-end:f517bf5878b682fa:b11 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b12 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>s = &#39;the_small_or_the_big_or_the_large_or_the_huge_man&#39;
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>l = &#39;neeeelegerrrmml_hhhgghiurtttt_bl_as_a___oooa____$h&#39;
 </span></code></pre></div>
+<!-- blog-edit-end:f517bf5878b682fa:b12 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b13 -->
+
 <p>这样重复的部分就可以压缩了。</p>
+<!-- blog-edit-end:f517bf5878b682fa:b13 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b14 -->
+
 <h3 id="_6">子字符串查找</h3>
+<!-- blog-edit-end:f517bf5878b682fa:b14 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b15 -->
+
 <p>这里还要用到 FM-Index 方法，但是这里就不细讲了（其实我也没怎么看）。反正知道结合这种方法，可以快速查找子字符串。</p>
+<!-- blog-edit-end:f517bf5878b682fa:b15 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b16 -->
+
 <p>他的好处就是构建完这个 BWT 编码之后，可以快速查找字符串了，多次查找比较适合这种场景。不想 KMP 这种每次都要重复比对。即：</p>
+<!-- blog-edit-end:f517bf5878b682fa:b16 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b17 -->
+
 <blockquote>
 <p><strong>BWT + FM-index 适合“对同一个超长文本做海量查询”，而 KMP / BM 适合“一次性匹配、无需建索引”的场景。</strong></p>
 </blockquote>
+<!-- blog-edit-end:f517bf5878b682fa:b17 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b18 -->
+
 <p>但其实 <a href="../01.后缀数组/">后缀数组</a> 也可以做到。两个比较是：后缀数组更快，但是内存消耗更大。一般而言，在这个时代下，时间比空间更重要。（来自 2026 年的呐喊：但是内存涨价好多啊）</p>
+<!-- blog-edit-end:f517bf5878b682fa:b18 -->
+
+<!-- blog-edit-start:f517bf5878b682fa:b19 -->
+
 <p>BWT + FM-Index 典型用途：DNA / RNA 测序，比如测得一个小片段，去匹配人类基因组哪个位置。当然也有用后缀数组做的。</p>
+<!-- blog-edit-end:f517bf5878b682fa:b19 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\单纯记录\02.BWT.md" data-text-edit-revision="f517bf5878b682fa809bbda4a2d5d54e6d918f8c9a4eba8152fc03d970955398" data-text-edit-marker="f517bf5878b682fa" data-text-edit-schema="1"></div>
 
 
 
@@ -934,8 +1015,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

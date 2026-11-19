@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -770,23 +770,71 @@
 <h1 id="start">start</h1>
 <div class="file-actions" data-image-edit-revision="b8d4fc89e9ef805a10b6c81271e006bb46e970f86d27c508489bd5addcc9c704" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C01_start%5Cstart.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C01_start" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\01_start\start.md">复制路径</span></div>
 
+<!-- blog-edit-start:8d0883d15433a308:b0 -->
+
 <h2 id="pwnabletw-start">Pwnable.tw start</h2>
+<!-- blog-edit-end:8d0883d15433a308:b0 -->
+<!-- blog-edit-start:8d0883d15433a308:b1 -->
+
 <h4 id="_1">需要掌握的知识点</h4>
+<!-- blog-edit-end:8d0883d15433a308:b1 -->
+<!-- blog-edit-start:8d0883d15433a308:b2 -->
+
 <ul>
 <li>Linux 32Bit System Call in Assembly</li>
 </ul>
+<!-- blog-edit-end:8d0883d15433a308:b2 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b3 -->
+
 <h4 id="_2">代码分析</h4>
+<!-- blog-edit-end:8d0883d15433a308:b3 -->
+<!-- blog-edit-start:8d0883d15433a308:b4 -->
+
 <p><img alt="test" src="../../../../../../asset/image/779e35ebf393fae8d9ab4e42a1e28d6e/code.png" /></p>
+<!-- blog-edit-end:8d0883d15433a308:b4 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b5 -->
+
 <p>汇编代码，现在回过头再看确实很简单。</p>
+<!-- blog-edit-end:8d0883d15433a308:b5 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b6 -->
+
 <p>分为三个部分: 初始化、调用Write来进行输出、调用Read读取输入</p>
+<!-- blog-edit-end:8d0883d15433a308:b6 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b7 -->
+
 <h4 id="_3">漏洞分析</h4>
+<!-- blog-edit-end:8d0883d15433a308:b7 -->
+<!-- blog-edit-start:8d0883d15433a308:b8 -->
+
 <h5 id="stage-1">Stage 1</h5>
+<!-- blog-edit-end:8d0883d15433a308:b8 -->
+<!-- blog-edit-start:8d0883d15433a308:b9 -->
+
 <p>很明显是缓冲区溢出，这题没有其他的东西，应该是自己要写shellcode</p>
+<!-- blog-edit-end:8d0883d15433a308:b9 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b10 -->
+
 <p>根据: <a href="http://shell-storm.org/shellcode/files/syscalls.html">Linux 32Bit SystemCall Table</a><br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>eax = 0, ebx = &#39;/bin/sh&#39;, ecx = 0, edx = 0
 </span></code></pre></div></p>
+<!-- blog-edit-end:8d0883d15433a308:b10 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b11 -->
+
 <h5 id="stage-2">Stage 2</h5>
+<!-- blog-edit-end:8d0883d15433a308:b11 -->
+<!-- blog-edit-start:8d0883d15433a308:b12 -->
+
 <p>第二阶段就是确定返回地址，转到我们写的shellcode上面，返回地址很显然是在栈上面，现在的目标就是获取ESP地址。</p>
+<!-- blog-edit-end:8d0883d15433a308:b12 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b13 -->
+
 <p>这里就是积攒经验了。方式如下：缓冲区溢出重新定位到Write()函数，此时会把旧EBP输出，如此就可以获取ESP。<br />
 溢出到Write函数时，栈空间如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span>                  +---------------------+
@@ -807,12 +855,37 @@
 </span><span id="__span-1-16"><span class="linenos" data-linenos="16 "></span>                  +   retq(shellcode)   +
 </span><span id="__span-1-17"><span class="linenos" data-linenos="17 "></span>                  +---------------------+
 </span></code></pre></div></p>
+<!-- blog-edit-end:8d0883d15433a308:b13 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b14 -->
+
 <h5 id="stage-3">Stage 3</h5>
+<!-- blog-edit-end:8d0883d15433a308:b14 -->
+<!-- blog-edit-start:8d0883d15433a308:b15 -->
+
 <p>流程为Write→Read溢出→Write→Read溢出→ShellCode </p>
+<!-- blog-edit-end:8d0883d15433a308:b15 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b16 -->
+
 <p>这里就是我强行提高难度了，假设缓冲区中返回地址下方空间不够。那就要使用JUMP指令</p>
+<!-- blog-edit-end:8d0883d15433a308:b16 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b17 -->
+
 <h4 id="_4">坑点</h4>
+<!-- blog-edit-end:8d0883d15433a308:b17 -->
+<!-- blog-edit-start:8d0883d15433a308:b18 -->
+
 <p>小白，栈空间是变化的，没得说了。</p>
+<!-- blog-edit-end:8d0883d15433a308:b18 -->
+
+<!-- blog-edit-start:8d0883d15433a308:b19 -->
+
 <h4 id="_5">总结反思</h4>
+<!-- blog-edit-end:8d0883d15433a308:b19 -->
+<!-- blog-edit-start:8d0883d15433a308:b20 -->
+
 <ul>
 <li>
 <p>经验</p>
@@ -827,6 +900,9 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:8d0883d15433a308:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\01_start\start.md" data-text-edit-revision="b8d4fc89e9ef805a10b6c81271e006bb46e970f86d27c508489bd5addcc9c704" data-text-edit-marker="8d0883d15433a308" data-text-edit-schema="1"></div>
 
 
 
@@ -1058,8 +1134,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

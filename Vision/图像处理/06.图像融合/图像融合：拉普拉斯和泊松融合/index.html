@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,30 +655,116 @@
   
 
 
+<!-- blog-edit-start:5a87d7f71f8b2515:b0 -->
+
 <h1 id="_1">图像融合学习记录</h1>
+<!-- blog-edit-end:5a87d7f71f8b2515:b0 -->
+
 <div class="file-actions" data-image-edit-revision="62d9dfd7a39050eaf24126e550e0304965680f837efd92969b2f27d35f595b98" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%5C%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%EF%BC%9A%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%92%8C%E6%B3%8A%E6%9D%BE%E8%9E%8D%E5%90%88.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\06.图像融合\图像融合：拉普拉斯和泊松融合.md">复制路径</span></div>
 
+<!-- blog-edit-start:5a87d7f71f8b2515:b1 -->
+
 <p>主要就是 拉普拉斯融合 和 泊松融合。图像融合就是两张图和一个 mask 图，根据 mask 图进行融合。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b1 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b2 -->
+
 <h2 id="_2">拉普拉斯融合</h2>
+<!-- blog-edit-end:5a87d7f71f8b2515:b2 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b3 -->
+
 <p><a href="https://www.cnblogs.com/riddick/p/8922381.html">https://www.cnblogs.com/riddick/p/8922381.html</a></p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b3 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b4 -->
+
 <p>原理太简单了，就是拉普拉斯金字塔分层，三张图都要进行金字塔分层（即两张图和一张掩模图），然后每一层都进行融合，最后再还原。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b4 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b5 -->
+
 <h2 id="_3">泊松融合</h2>
+<!-- blog-edit-end:5a87d7f71f8b2515:b5 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b6 -->
+
 <p><a href="https://zhuanlan.zhihu.com/p/58867397">https://zhuanlan.zhihu.com/p/58867397</a></p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b6 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b7 -->
+
 <p>问题建模，<span class="arithmatex">\(g\)</span> 是图一，<span class="arithmatex">\(s\)</span> 是图二，<span class="arithmatex">\(\Omega\)</span> 是融合区域。<span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(f^*\)</span> 都可以理解成一个函数，自变量是像素位置，因变量是像素值；<span class="arithmatex">\(f^*\)</span> 是原来的图，<span class="arithmatex">\(f\)</span> 是融合后的图。<span class="arithmatex">\(\partial \Omega\)</span> 是融合区域的边界。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b7 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b8 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250105140325.jpg" /></p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b8 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b9 -->
+
 <p>泊松融合作者认为，遵守两个规则时融合效果最好：第一是融合前后融合区的边界不变，第二是融合前后融合区域的内部梯度不变。然后可以当成一个变分问题，如下所示，理解即可，不用过于纠结数学公式：</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b9 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b10 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250105140854.jpg" /></p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b10 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b11 -->
+
 <p>其中 <span class="arithmatex">\(v\)</span> 是融合前融合区的梯度，<span class="arithmatex">\(\nabla f\)</span> 是融合后融合区的梯度，相当于都是 <span class="arithmatex">\(n \times 2\)</span> 的矩阵。其实公式的含义就是上一行所说的意思。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b11 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b12 -->
+
 <p>然后这个公式的解如下：</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b12 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b13 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250105141336.png" /><br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250105141341.jpg" /></p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b13 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b14 -->
+
 <p>其实就是融合前后边界一样、融合前后内部拉普拉斯一样... 然而即使知道这个公式，求解也不好求，这里的求解方式我感觉还是非常值得学习的。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b14 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b15 -->
+
 <p>先考虑内部的点，内部的点融合前后拉普拉斯一样，公式如下，其中 <span class="arithmatex">\(f\)</span> 都是未知、<span class="arithmatex">\(g\)</span> 都是已知：</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b15 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b16 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250105142014.png" /></p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b16 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b17 -->
+
 <p>刚才说了，先考虑内部的点，即图上的 <span class="arithmatex">\(f\)</span> 都是内部的点，对于每个特定的 <span class="arithmatex">\(f_i\)</span> 而言，其前面的那个系数中，有一个 4、四个 -1，其余全是 0，合并起来，可以得到矩阵 <span class="arithmatex">\(A\)</span>。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b17 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b18 -->
+
 <p>现在考虑边界，边界的点融合前后保持一样，那么公式即为 <span class="arithmatex">\(f_i = g_i\)</span>，因此他们对应的系数中，有一个 1，其余全是 0。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b18 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b19 -->
+
 <p>边界和内部的点都考虑进来，构造出 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(b\)</span>，然后用最小二乘法求解 <span class="arithmatex">\(f\)</span> 即可。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b19 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b20 -->
+
 <p>有几个额外的小点：第一，这种方法不能完全保证边界是一样的，也大差不差了；第二，也可以不用最小二乘法求解，这种 <span class="arithmatex">\(Ax=b\)</span> 形式实在太典型了，比如用共轭梯度下降法也可以，但这就是最优化方面的细节了，这里不谈；第三，<span class="arithmatex">\(A\)</span> 是稀疏矩阵，所以要用稀疏矩阵相关的包，而不是普通矩阵，否则空间浪费严重。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b20 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b21 -->
+
 <p>代码如下：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># A 是稀疏矩阵，所以用 scipy.sparse 包</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sps</span>
@@ -730,8 +816,18 @@
 </span><span id="__span-0-48"><span class="linenos" data-linenos="48 "></span>    <span class="n">f</span> <span class="o">=</span> <span class="n">sps</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">tocsr</span><span class="p">(),</span> <span class="n">b</span><span class="p">[:,</span> <span class="n">c</span><span class="p">])</span>
 </span><span id="__span-0-49"><span class="linenos" data-linenos="49 "></span>    <span class="c1"># ...</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b21 -->
+
+<!-- blog-edit-start:5a87d7f71f8b2515:b22 -->
+
 <h2 id="_4">代码</h2>
+<!-- blog-edit-end:5a87d7f71f8b2515:b22 -->
+<!-- blog-edit-start:5a87d7f71f8b2515:b23 -->
+
 <p>完整的代码在 code 文件夹中。</p>
+<!-- blog-edit-end:5a87d7f71f8b2515:b23 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\06.图像融合\图像融合：拉普拉斯和泊松融合.md" data-text-edit-revision="62d9dfd7a39050eaf24126e550e0304965680f837efd92969b2f27d35f595b98" data-text-edit-marker="5a87d7f71f8b2515" data-text-edit-schema="1"></div>
 
 
 
@@ -963,8 +1059,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

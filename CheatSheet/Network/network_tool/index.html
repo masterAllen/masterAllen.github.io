@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -649,23 +649,71 @@
   
 
 
+<!-- blog-edit-start:f15187b673776961:b0 -->
+
 <h1 id="linux">Linux 中的网络工具</h1>
+<!-- blog-edit-end:f15187b673776961:b0 -->
+
 <div class="file-actions" data-image-edit-revision="6ac67b9631d08d6955d51457a3317136e208018dbacea5035ccf74bb27f0272b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNetwork%5Cnetwork_tool.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNetwork" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\Network\network_tool.md">复制路径</span></div>
 
+<!-- blog-edit-start:f15187b673776961:b1 -->
+
 <h2 id="ifupifdown"><code>ifup/ifdown</code></h2>
+<!-- blog-edit-end:f15187b673776961:b1 -->
+<!-- blog-edit-start:f15187b673776961:b2 -->
+
 <p>首先就要从这个最基本的命令开始说起，它会读取 /etc/network/interfaces 文件，然后使 interface 达到 up/down。<br />
 此外，它会执行 /etc/network 下面的各个脚本，这些脚本就负责 DHCP 等等许多事情。</p>
+<!-- blog-edit-end:f15187b673776961:b2 -->
+
+<!-- blog-edit-start:f15187b673776961:b3 -->
+
 <p>如果说这个指令不起作用的话，说明系统没有使用经典的 /etc/network/interface 这个方式，比如 <code>systemctl</code> 现在使用别的方式管理网络。</p>
+<!-- blog-edit-end:f15187b673776961:b3 -->
+
+<!-- blog-edit-start:f15187b673776961:b4 -->
+
 <h2 id="net-tools-and-iproute2"><code>net-tools</code> and <code>iproute2</code></h2>
+<!-- blog-edit-end:f15187b673776961:b4 -->
+<!-- blog-edit-start:f15187b673776961:b5 -->
+
 <p>可以看到上面这个通过各个脚本好像不是很直观，所以很显然有网络工具包。以前的是 <code>net-tools</code>，现在的是 <code>iproute2</code>，以前的是 <code>ifconfig</code> 等等指令，现在变成了 <code>ip</code> 指令，通过不同参数可以干许多事情，比如查看网关、查看 ARP 表等等。<br />
 而 <code>ip</code> 有个命令 <code>ip link set .. up/down</code> , 和上文提到的 <code>ifup/ifdown</code> 不同, 这条命令就是仅仅负责把 interface 变为 up/down，不去干其他的事情(比如 interface up 之后要干什么，它不会去做，仅仅就是让他 up 而已)。</p>
+<!-- blog-edit-end:f15187b673776961:b5 -->
+
+<!-- blog-edit-start:f15187b673776961:b6 -->
+
 <h2 id="networkmanager-and-system-networkd"><code>NetworkManager</code> and <code>system-networkd</code></h2>
+<!-- blog-edit-end:f15187b673776961:b6 -->
+<!-- blog-edit-start:f15187b673776961:b7 -->
+
 <p><code>ip</code> 指令同样很麻烦，所以有专门的网络工具。<code>systemctl</code> 默认的是 <code>system-networkd</code>，而另一个热门的就是 <code>NetworkManager</code>。</p>
+<!-- blog-edit-end:f15187b673776961:b7 -->
+
+<!-- blog-edit-start:f15187b673776961:b8 -->
+
 <h2 id="netplan"><code>netplan</code></h2>
+<!-- blog-edit-end:f15187b673776961:b8 -->
+<!-- blog-edit-start:f15187b673776961:b9 -->
+
 <p>最后就是 netplan 了，这个是更上一层的。通过它就只需用一个 YAML 文件描述每个网络接口需要配置成啥样即可。 根据这个配置描述， netplan 便可帮你生成所有需要的配置，不管你选用的底层管理工具是啥。可以看下面的图。</p>
+<!-- blog-edit-end:f15187b673776961:b9 -->
+
+<!-- blog-edit-start:f15187b673776961:b10 -->
+
 <p><img alt="image" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20210817001.webp" /></p>
+<!-- blog-edit-end:f15187b673776961:b10 -->
+
+<!-- blog-edit-start:f15187b673776961:b11 -->
+
 <h2 id="_1">参考</h2>
+<!-- blog-edit-end:f15187b673776961:b11 -->
+<!-- blog-edit-start:f15187b673776961:b12 -->
+
 <p>1. <a href="https://unix.stackexchange.com/questions/475146/how-exactly-are-networkmanager-networkd-netplan-ifupdown2-and-iproute2-inter">https://unix.stackexchange.com/questions/475146/how-exactly-are-networkmanager-networkd-netplan-ifupdown2-and-iproute2-inter</a></p>
+<!-- blog-edit-end:f15187b673776961:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\Network\network_tool.md" data-text-edit-revision="6ac67b9631d08d6955d51457a3317136e208018dbacea5035ccf74bb27f0272b" data-text-edit-marker="f15187b673776961" data-text-edit-schema="1"></div>
 
 
 
@@ -897,8 +945,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

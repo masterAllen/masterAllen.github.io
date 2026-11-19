@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,36 +581,81 @@
   
 
 
+<!-- blog-edit-start:1cfb2baad15c6e41:b0 -->
+
 <h1 id="python">Python 语法糖备忘录</h1>
+<!-- blog-edit-end:1cfb2baad15c6e41:b0 -->
+
 <div class="file-actions" data-image-edit-revision="5c300c6cacb76fa4f819d8bf58357908300eff008dc82c6bdb9423c9ce1d738f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5CPython%E8%AF%AD%E6%B3%95%E7%B3%96%E5%A4%87%E5%BF%98%E5%BD%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\Python语法糖备忘录.md">复制路径</span></div>
 
+<!-- blog-edit-start:1cfb2baad15c6e41:b1 -->
+
 <p>记录一些不太熟悉的语法糖</p>
+<!-- blog-edit-end:1cfb2baad15c6e41:b1 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b2 -->
+
 <p>1. <code>print</code> 打印列表，合成一个字符串，而且可以指定分隔符</p>
+<!-- blog-edit-end:1cfb2baad15c6e41:b2 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b3 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">foods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apples&#39;</span><span class="p">,</span> <span class="s1">&#39;Bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;Orange&#39;</span><span class="p">]</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">foods</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:1cfb2baad15c6e41:b3 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>Apples, Bananas, Orange
 </span></code></pre></div>
+<!-- blog-edit-end:1cfb2baad15c6e41:b4 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b5 -->
+
 <p>2. 用 <code>_</code> 进行大数分割，平时为了数字显示，都是用逗号风格，如 <code>1,000,000</code>，在 python 中用的是 <code>_</code>；打印时可以用格式化字符串指定分隔符号</p>
+<!-- blog-edit-end:1cfb2baad15c6e41:b5 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">big_num</span> <span class="o">=</span> <span class="mi">1_000_000</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s1">_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:1cfb2baad15c6e41:b6 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b7 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>1000000
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>1,000,000
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>1_000_000
 </span></code></pre></div>
+<!-- blog-edit-end:1cfb2baad15c6e41:b7 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b8 -->
+
 <p>3. 指定 <code>for</code> 循环从几开始</p>
+<!-- blog-edit-end:1cfb2baad15c6e41:b8 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="n">letters</span> <span class="o">=</span> <span class="s1">&#39;abcd&#39;</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">letter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">letters</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">letter</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:1cfb2baad15c6e41:b9 -->
+
+<!-- blog-edit-start:1cfb2baad15c6e41:b10 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>1 a
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>2 b
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>3 c
 </span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span>4 d
 </span></code></pre></div>
+<!-- blog-edit-end:1cfb2baad15c6e41:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\Python语法糖备忘录.md" data-text-edit-revision="5c300c6cacb76fa4f819d8bf58357908300eff008dc82c6bdb9423c9ce1d738f" data-text-edit-marker="1cfb2baad15c6e41" data-text-edit-schema="1"></div>
 
 
 
@@ -842,8 +887,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

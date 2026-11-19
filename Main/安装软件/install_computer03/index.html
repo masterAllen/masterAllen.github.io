@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -627,18 +627,38 @@
   
 
 
+<!-- blog-edit-start:f7f517183379073f:b0 -->
+
 <h1 id="_1">装机记三：杂项设置</h1>
+<!-- blog-edit-end:f7f517183379073f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f7f517183379073f34797e19f28b2dbf14cb777dd9d96790b18894017037dca5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%5Cinstall_computer03.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\安装软件\install_computer03.md">复制路径</span></div>
+
+<!-- blog-edit-start:f7f517183379073f:b1 -->
 
 <p>软件遇到的问题: Ranger, Thunar, Feh...</p>
 <!--more-->
 
+<!-- blog-edit-end:f7f517183379073f:b1 -->
+
+<!-- blog-edit-start:f7f517183379073f:b2 -->
+
 <h2 id="ranger">Ranger 配置</h2>
+<!-- blog-edit-end:f7f517183379073f:b2 -->
+<!-- blog-edit-start:f7f517183379073f:b3 -->
+
 <p>1. ranger 退出时能够留在当前目录<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>touch<span class="w"> </span><span class="nv">$HOME</span>/.rangerdir
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>.zshrc<span class="w"> </span>--&gt;<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">ranger</span><span class="o">=</span><span class="s1">&#39;ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd &quot;$LASTDIR&quot;&#39;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:f7f517183379073f:b3 -->
+
+<!-- blog-edit-start:f7f517183379073f:b4 -->
+
 <h2 id="thunar-u-windows">Thunar 自动挂载 U 盘 / 显示 Windows 盘</h2>
+<!-- blog-edit-end:f7f517183379073f:b4 -->
+<!-- blog-edit-start:f7f517183379073f:b5 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>- Wiki 最重要，多看，基本步骤就是按照这个来的
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>- 首先把(thunar)设置为(dameon)进程，我直接在(i3)中加了(thunar --dameon)
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>- 需要安装的包：gvfs
@@ -649,20 +669,38 @@
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span>------- mount removable drives
 </span><span id="__span-1-9"><span class="linenos" data-linenos="9 "></span>------- mount removable media
 </span></code></pre></div>
+<!-- blog-edit-end:f7f517183379073f:b5 -->
+
+<!-- blog-edit-start:f7f517183379073f:b6 -->
+
 <h2 id="feh">Feh 配置文件更改</h2>
+<!-- blog-edit-end:f7f517183379073f:b6 -->
+<!-- blog-edit-start:f7f517183379073f:b7 -->
+
 <p>1. 修改按键<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>- 先查阅(Arch Wiki)，上面说了可以(configure)，然后给了链接，是(MAN)手册里面
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>- 那就查阅(MAN)手册好了，按照步骤进行即可(配置文件：.config/feh/keys, 键位命令通过 man 查找)
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>- 刚开始配置无效，在网上查阅一份样本，照葫芦画瓢就行
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>- 最后设置成和(zathura)一致的快捷键，具体看装机记二最后的配置文件
 </span></code></pre></div></p>
+<!-- blog-edit-end:f7f517183379073f:b7 -->
+
+<!-- blog-edit-start:f7f517183379073f:b8 -->
+
 <p>2. 命令行输入某图片名称，只能看这个图片，看不了其他图片<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>https://wiki.archlinux.org/index.php/Feh
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>Archwiki 已经给出解决方法了，把这个脚本放到你喜欢的位置就行
 </span></code></pre></div></p>
+<!-- blog-edit-end:f7f517183379073f:b8 -->
+
+<!-- blog-edit-start:f7f517183379073f:b9 -->
+
 <p>3. 调整大小之后，切换另外图片然后在切换回来，之前调整的大小就失效了<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>原来命令行有这样的选项(--keep-zoom-vp)
 </span></code></pre></div></p>
+<!-- blog-edit-end:f7f517183379073f:b9 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\安装软件\install_computer03.md" data-text-edit-revision="f7f517183379073f34797e19f28b2dbf14cb777dd9d96790b18894017037dca5" data-text-edit-marker="f7f517183379073f" data-text-edit-schema="1"></div>
 
 
 
@@ -894,8 +932,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -711,49 +711,202 @@
   
 
 
+<!-- blog-edit-start:98eb1f09aff9b779:b0 -->
+
 <h1 id="_1">去除纹理的几篇文章学习</h1>
+<!-- blog-edit-end:98eb1f09aff9b779:b0 -->
+
 <div class="file-actions" data-image-edit-revision="576e40ded6293697f939d4689a1e9bd3050da5f7272d5c9fd8fa207b2eb41e45" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C15.%E7%BA%B9%E7%90%86%E7%9B%B8%E5%85%B3%5C%E7%BA%B9%E7%90%86%E5%8E%BB%E9%99%A4.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C15.%E7%BA%B9%E7%90%86%E7%9B%B8%E5%85%B3" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\15.纹理相关\纹理去除.md">复制路径</span></div>
 
+<!-- blog-edit-start:98eb1f09aff9b779:b1 -->
+
 <p>去除纹理，其实就是去除噪声。也就是平滑图片的时候尽量保边，即保留结构信息，尽量去除纹理信息，如下图所示：</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b1 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b2 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106181556.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b2 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b3 -->
+
 <p>记录下以下论文：<br />
 1. Structure Extraction from Texture via Relative Total Variation, SIGGRAPH Asia 2012<br />
 2. Bilateral Texture Filtering, SIGGRAPH 2014</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b3 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b4 -->
+
 <h2 id="structure-extraction-from-texture-via-relative-total-variation">Structure Extraction from Texture via Relative Total Variation</h2>
+<!-- blog-edit-end:98eb1f09aff9b779:b4 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b5 -->
+
 <p>文章提出纹理和结构的区分方式，首先定义一个<strong>窗口总变化值</strong>，定义如下，其中 <span class="arithmatex">\(\partial_x\)</span> 表示 x 方向梯度，<span class="arithmatex">\(g\)</span> 表示高斯分布的系数，其实就是窗口内每个像素的梯度绝对值之和：</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b5 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b6 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106182111.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b6 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b7 -->
+
 <p>然后新颖的点是，又定一个<strong>窗口内部变化值</strong>，定义如下，其实就是每个像素的梯度不做绝对值了：</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b7 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b8 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106182227.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b8 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b9 -->
+
 <p>关键发现是：<strong>仅包含纹理的窗口中 L 通常小于同时包含结构边缘的窗口中的 L</strong>，如下图所示。直观的解释是，局部窗口中的主要边缘比具有复杂图案的纹理贡献了更多相似方向的梯度。说实话，这里完全没懂，也花了很长时间尝试去理解，并且尝试了好多次，但还是没懂。<strong>设定一个时间，如果这个时间内不懂就跳过这个，当成定理来看待，不要在这里浪费太多时间！！。</strong></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b9 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b10 -->
+
 <p><strong>不理解就当成定理！！</strong></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b10 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b11 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106203823.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b11 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b12 -->
+
 <p>然后利用这个发现，进行去噪，最小化公式如下：</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b12 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b13 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106204819.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b13 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b14 -->
+
 <p>具体从这个公式推出最小化求解，参考论文 3.2 节。上面公式最后一块就是论文提到的 <strong>Relative Total Variation(RTV)</strong>。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b14 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b15 -->
+
 <h3 id="rtv">收获: 区别纹理和结构的一个指标 RTV</h3>
+<!-- blog-edit-end:98eb1f09aff9b779:b15 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b16 -->
+
 <p>总结本文，即有一个关键发现是提出了一个窗口内部变化值，其能有效区分纹理和结构。更进一步，提出 RTV 指标（即窗口总变化除以窗口内部变化），其能有效区分纹理和结构。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b16 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b17 -->
+
 <p>还是那句话：<strong>定好时间尝试理解，但不要花太长时间，如果不能直观感觉为什么这个指标有效，那么就当成定理</strong>。下图是论文的实验结果：</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b17 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b18 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106205339.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b18 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b19 -->
+
 <h2 id="bilateral-texture-filtering">Bilateral Texture Filtering</h2>
+<!-- blog-edit-end:98eb1f09aff9b779:b19 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b20 -->
+
 <p>总结一下这篇文章的流程，因为不属于我的方向，所以就快速写一点，还是看原文更好，而且原文写的还可以：</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b20 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b21 -->
+
 <h3 id="mrtv">mRTV</h3>
+<!-- blog-edit-end:98eb1f09aff9b779:b21 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b22 -->
+
 <p>第一个，modified RTV，其实就是利用上文的 RTV 指标，进行了一些修改。其中 <span class="arithmatex">\(\Omega_q\)</span> 是以像素 <span class="arithmatex">\(q\)</span> 为中心的窗口，<span class="arithmatex">\(\partial I\)</span> 是标准的梯度大小计算。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b22 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b23 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106221453.png" /><br />
 <img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106221509.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b23 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b24 -->
+
 <p>作者就是说在平滑区域中，mRTV（多尺度相对总变差）值倾向于非常小。在包含少数边缘的结构块中，mRTV 值相对较大，而在具有频繁振荡的纹理块中，mRTV 值则相对较小。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b24 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b25 -->
+
 <p>至于为啥，就不详细去了解了。如果不是这个方向的人，感觉可以直接当成定理看待吧。<strong>也希望能有人帮忙直观解释一下。</strong></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b25 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b26 -->
+
 <h3 id="patch-shifted">Patch Shifted</h3>
+<!-- blog-edit-end:98eb1f09aff9b779:b26 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b27 -->
+
 <p>第二个，作者提出去噪的时候用一种 Patch Shifted 方式，如下图，即如果像素点是结构边缘，那么就在其附近中一个平坦的点，用那个点为中心的窗口来代替：</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b27 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b28 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106221922.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b28 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b29 -->
+
 <h3 id="mrtv-patch-shifted">mRTV + Patch Shifted</h3>
+<!-- blog-edit-end:98eb1f09aff9b779:b29 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b30 -->
+
 <p>前面提到 mRTV 在平坦区域值小，所以 Patch Shifted 找附近平坦的点，那么就用 mRTV 来作为指导去找平坦点。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b30 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b31 -->
+
 <p>但是作者提到 mRTV 在平坦区域虽然小，但对噪声很敏感。作者提了一个场景：一个平滑区域，强度逐渐变化（即类似灰卡）。此时某个点加入是噪点，那么做 Patched Shifted 发现它的 mRTV 很大，所以会用附近平坦点的窗口。但区域是平滑变化的，所以这个噪点最后恢复后还是会和周围点格格不入。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b31 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b32 -->
+
 <p>因此作者就提到，不应该完全依赖 Patch Shifted 后的窗口，也要考虑原窗口，即加权求和。如下图公式，G 是 Patch Shifted 后的窗口，B 是原窗口（其实也不是原窗口，图片一开始会做高斯模糊，具体看下面算法流程）。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b32 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b33 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106223003.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b33 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b34 -->
+
 <p>上面的公式中如果 p 的 mRTV 比 q 越大，那么就越会使用 q 窗口进行平滑。<strong>其实这里感觉还是没有解决上面的平滑过渡例子，不是很理解。</strong></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b34 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b35 -->
+
 <h3 id="_2">算法流程</h3>
+<!-- blog-edit-end:98eb1f09aff9b779:b35 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b36 -->
+
 <p>算法流程如下，感觉很清晰，其中 Joint Bilateral Filter 忽略掉，就当成一种去噪方法就行。</p>
+<!-- blog-edit-end:98eb1f09aff9b779:b36 -->
+
+<!-- blog-edit-start:98eb1f09aff9b779:b37 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250106223125.png" /></p>
+<!-- blog-edit-end:98eb1f09aff9b779:b37 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\15.纹理相关\纹理去除.md" data-text-edit-revision="576e40ded6293697f939d4689a1e9bd3050da5f7272d5c9fd8fa207b2eb41e45" data-text-edit-marker="98eb1f09aff9b779" data-text-edit-schema="1"></div>
 
 
 
@@ -985,8 +1138,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

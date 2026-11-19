@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -627,14 +627,32 @@
   
 
 
+<!-- blog-edit-start:da425d85690ca63d:b0 -->
+
 <h1 id="opencv">OpenCV 中使用对比度增强</h1>
+<!-- blog-edit-end:da425d85690ca63d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a128369eb409370973bc76f9365112d6e83a06309fe43394e4f35b37694a7e2e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C11.%E9%94%90%E5%8C%96%E5%92%8C%E4%BD%8E%E5%85%89%E7%85%A7%E5%92%8C%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA%5C%E4%BD%8E%E5%85%89%E7%85%A7_%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA%5C01.%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA-OpenCV.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C11.%E9%94%90%E5%8C%96%E5%92%8C%E4%BD%8E%E5%85%89%E7%85%A7%E5%92%8C%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA%5C%E4%BD%8E%E5%85%89%E7%85%A7_%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\11.锐化和低光照和对比度增强\低光照_对比度增强\01.对比度增强-OpenCV.md">复制路径</span></div>
+
+<!-- blog-edit-start:da425d85690ca63d:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/8.2.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/8.2.md</a></p>
 </blockquote>
+<!-- blog-edit-end:da425d85690ca63d:b1 -->
+
+<!-- blog-edit-start:da425d85690ca63d:b2 -->
+
 <p>Opencv 有一个专门的 superres 模块，稍微浏览了一下，用的是光流做的。只能用 cpp 调用，无法 python。这个模板不再总结，因为主流做法都是用 AI 了，传统的超分又速度慢又效果差。</p>
+<!-- blog-edit-end:da425d85690ca63d:b2 -->
+
+<!-- blog-edit-start:da425d85690ca63d:b3 -->
+
 <p>AI 的方法，那就不推荐用 Opencv 的接口，虽然 Opencv 有一些方法的接口，但都很老了...</p>
+<!-- blog-edit-end:da425d85690ca63d:b3 -->
+
+<!-- blog-edit-start:da425d85690ca63d:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="sd">&#39;&#39;&#39;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="sd">DNN Super_Resoultion</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="sd">&#39;&#39;&#39;</span>
@@ -652,6 +670,9 @@
 </span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span>    <span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span><span class="p">],</span> <span class="n">colnum</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:da425d85690ca63d:b4 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\11.锐化和低光照和对比度增强\低光照_对比度增强\01.对比度增强-OpenCV.md" data-text-edit-revision="a128369eb409370973bc76f9365112d6e83a06309fe43394e4f35b37694a7e2e" data-text-edit-marker="da425d85690ca63d" data-text-edit-schema="1"></div>
 
 
 
@@ -883,8 +904,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

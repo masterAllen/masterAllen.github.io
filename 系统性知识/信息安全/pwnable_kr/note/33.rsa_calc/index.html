@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -782,18 +782,57 @@
   
 
 
+<!-- blog-edit-start:749ae35ca11d2016:b0 -->
+
 <h1 id="pwnable-kr-rsa_calculator">Pwnable kr rsa_calculator</h1>
+<!-- blog-edit-end:749ae35ca11d2016:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7258480376bd6693c1fa372ec1be3085edbd7aab885995e4e8f4bd7bd40918b4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C33.rsa_calc.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\33.rsa_calc.md">复制路径</span></div>
 
+<!-- blog-edit-start:749ae35ca11d2016:b1 -->
+
 <p>首先需要了解程序所用到的全局变量： <code>g_ebuf</code> 和 <code>g_pbuf</code> ，分别对于加密内容和原文内容。我们假设加密就相当于没有加密，现在来讲一下加密解密这两个变量是什么内容。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b1 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b2 -->
+
 <p>首先要知道输入输出是什么，加密过程中，如果输入 <code>AAAA</code> ，最终输出为 <code>4100000041000000...</code>；解密过程中，如果想要输出 <code>AAAA</code>，输入需要为 <code>4100000041000000..</code> 。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b2 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b3 -->
+
 <p>现在来看这两个变量，还是以 <code>AAAA</code> 为例子。加密过程中，那么 <code>g_pbuf</code> 为 <code>0x41414141</code>，<code>g_ebuf</code> 为 <code>0x00000041, 0x00000041, 0x00000041..</code>. 解密过程中，如果想要得到 <code>AAAA</code> ，此时 <code>g_pbuf</code> 和 <code>g_ebuf</code> 和上述一样。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b3 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b4 -->
+
 <h2 id="_1">漏洞点分析</h2>
+<!-- blog-edit-end:749ae35ca11d2016:b4 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b5 -->
+
 <h3 id="1">漏洞点 1</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b5 -->
+<!-- blog-edit-start:749ae35ca11d2016:b6 -->
+
 <p>首先是 <code>set_key</code> ，模拟的是 RSA 选择秘钥，所以用到的 p 和 q 都是我们自己选的，所以我们就是上帝，即知道公钥也知道私钥。另外它的算法实现有点问题，他有些地方没有设置检测，所以我们可以设置公钥中的 e 和私钥中的 d 都是 1 ，这样相当于就没有加密解密。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b6 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b7 -->
+
 <h3 id="2">漏洞点 2</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b7 -->
+<!-- blog-edit-start:749ae35ca11d2016:b8 -->
+
 <p>然后是 <code>RSA_decrypt</code> ，里面有一个格式化输出漏洞，该语句是 <code>printf(g_pbuf)</code> 。根据开头的描述，我们构造好 <code>g_pbuf</code> 内容，可以推出解密函数的输入是什么。当然其实不需要那么麻烦，加入我们想要 <code>g_pbuf</code> 为 <code>AAAA</code> ，那我们把这个放到加密函数里面，得到它的输出，再放回解密函数，这样不就相当于最终能构造出想要的 <code>g_pbuf</code> 内容吗。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b8 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b9 -->
+
 <h3 id="3">漏洞点 3</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b9 -->
+<!-- blog-edit-start:749ae35ca11d2016:b10 -->
+
 <p>然后就是 <code>RSA_decrypt</code> 存在溢出了，代码如下。它的逻辑是这样的，对于输入 <code>41000000</code> ，首先读取 <code>41</code> ，此时 <code>v10='4', v11='1'</code> ，然后利用 <code>sscanf</code> 将 <code>src[0]</code> 转换为 <code>0x41</code> ，之后按照这样的逻辑处理 <code>src[1]..</code> 。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// len == 1024, data[1024], src[520]</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -802,8 +841,19 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="n">i</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:749ae35ca11d2016:b10 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b11 -->
+
 <p>但是它却让 <code>i &lt; 2*len</code> ，看看最大可以到哪里，最大可以 <code>data[2*1024-1]</code>，显然超过 <code>data[1024]</code> 的限制。最大可以进行多少轮？算一下： <code>2*1024 / 2 = 1024</code> ，而 <code>src</code> 为 520 字节，所以可以修改 <code>src</code> 后面的内容。其后面内容就是 <code>canary</code> 和 <code>返回地址</code> 了。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b11 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b12 -->
+
 <h3 id="4">漏洞点 4</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b12 -->
+<!-- blog-edit-start:749ae35ca11d2016:b13 -->
+
 <p>然后 <code>RSA_encrypt</code> 也有比较离谱的溢出。简化后的代码如下。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// src[1030]</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;how long is your data?(max=1024) : &quot;</span><span class="p">);</span>
@@ -817,32 +867,92 @@
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">g_pbuf</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">v5</span><span class="p">);</span>
 </span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:749ae35ca11d2016:b13 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b14 -->
+
 <p>比较离谱的就是它说了不要超过 1024 ，然后它不去检测是否超过 1024 ，你只要说你小于 1024 就行，就离谱...<br />
 <strong>这个比 <code>RSA_decrypt</code> 更加强的是，它不仅可以修改 <code>src</code> 之后的内容，而且可以修改 <code>g_pbuf</code> 之后的内容( 最后一句 <code>memcpy(g_pbuf, src)</code> )，而且可以修改 <code>g_ebuf</code> 之后的内容( 之后会将 <code>g_pbuf</code> 转换后存储到 <code>g_ebuf</code> 中 )。</strong></p>
+<!-- blog-edit-end:749ae35ca11d2016:b14 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b15 -->
+
 <p>其中 <code>g_pbuf</code> 之后内容是 <code>pri</code> ，存储公钥的地方。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b15 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b16 -->
+
 <p>其中 <code>g_ebuf</code> 之后内容是 <code>func[0-3]</code> ，也就是选择菜单各项函数的地址</p>
+<!-- blog-edit-end:749ae35ca11d2016:b16 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b17 -->
+
 <h2 id="_2"><a href="https://r00tnb.github.io/2018/03/14/pwnable.kr-rsa_calculator/">做法一</a></h2>
+<!-- blog-edit-end:749ae35ca11d2016:b17 -->
+<!-- blog-edit-start:749ae35ca11d2016:b18 -->
+
 <ol>
 <li>首先要设置公钥私钥，这里就不用 1 了，而是让公钥为 58623 (<code>asm(jmp rsp)=58623</code>)</li>
 <li>利用漏洞点 2 的格式化字符串漏洞，可以输出 canary</li>
 <li>利用漏洞点 3 的溢出漏洞，将返回地址改为之前所设置的公钥的地址上，后面是 shellcode </li>
 <li>这样就会执行 <code>jmp rsp</code> ，然后 <code>rsp</code> 之后是我们的 shellcode (注意我们修改(返回地址, 旧 <code>ebp</code>)改变的是 <code>ebp</code> ，而不会改变 <code>esp</code>)</li>
 </ol>
+<!-- blog-edit-end:749ae35ca11d2016:b18 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b19 -->
+
 <p>PS: 我觉得可能用 <code>RSA_encrypt</code> 的溢出漏洞也是可以，这点没去实现。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b19 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b20 -->
+
 <h2 id="_3"><a href="https://ainevsia.xyz/2020/07/14/rsa-calculator/">做法二</a></h2>
+<!-- blog-edit-end:749ae35ca11d2016:b20 -->
+<!-- blog-edit-start:749ae35ca11d2016:b21 -->
+
 <ol>
 <li>首先设置公钥私钥，这里如果设置 1 后面就做不了，设置的是 1898009 ，为什么看后面</li>
 <li>利用漏洞点 4 的溢出漏洞，溢出的是 <code>g_pbuf</code> ，改变后面的 <code>func[0]</code> ，改变方法是输入溢出 29，因为 <code>pow(29, 1898009) = 0x602560</code> ，所以最后 <code>func[0] = 0x602560</code></li>
 <li>溢出的同时，保证 <code>g_pbuf</code> 前面是 shellcode ，即此时 <code>g_pbuf = shellcode + xxx + 0x602560</code></li>
 <li>这个 <code>0x602560</code> 地址就是 <code>g_pbuf</code> 地址，所以溢出后，选择 <code>func[0]</code> ，就会导致执行 <code>g_pbuf</code> ，即 shellcode</li>
 </ol>
+<!-- blog-edit-end:749ae35ca11d2016:b21 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b22 -->
+
 <h2 id="_4">做法三</h2>
+<!-- blog-edit-end:749ae35ca11d2016:b22 -->
+<!-- blog-edit-start:749ae35ca11d2016:b23 -->
+
 <p>这是我自己的做法，很不好，但是又很意外，因为就只用到了字符串漏洞，别的没用，HAHAHA...</p>
+<!-- blog-edit-end:749ae35ca11d2016:b23 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b24 -->
+
 <p>首先看到字符串格式化漏洞，肯定是想要触发写漏洞。首先是改变哪里，选择的是改变 GOT 表，改变 <code>sscanf</code> 为 <code>system</code> ，这样如果成功改变，那么我们在选择菜单选择 3 ，然后有一段会执行 <code>sscanf</code> ，这个输入我们可以控制，所以能成功。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b24 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b25 -->
+
 <p>例外我做法公钥和私钥都是 1。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b25 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b26 -->
+
 <h3 id="_5">常规方式的失败</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b26 -->
+<!-- blog-edit-start:749ae35ca11d2016:b27 -->
+
 <p>利用漏洞点 3， 漏洞原因是 <code>g_pbuf</code> ，变量在堆上，所以要想到需要使用跳板。以前做过类似题目，要始终牢记：格式化字符串写漏洞改变的是栈上内容所指向的内容！！</p>
+<!-- blog-edit-end:749ae35ca11d2016:b27 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b28 -->
+
 <p>以前方式跳板是使用当前函数的旧 <code>ebp</code> ，因为这个旧 <code>ebp</code> 指向 main 函数的旧 <code>ebp</code> ，所以算出偏移量，可以先通过它将 <code>sscanf@plt</code> 的地址写到了 main 函数的 <code>ebp</code> 上。然后也可以算出 main 函数旧 <code>ebp</code> 的偏移，从而通过它改变了 <code>sscanf@plt</code> 值。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b28 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b29 -->
+
 <p>但是这道题目不行，原因找了很久很久！原因处在 <code>set_key()</code> 设置公钥私钥这个方法里，看下面精简的代码。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">int16</span><span class="w"> </span><span class="n">p</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+2Ch] [rbp-4h]</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">int16</span><span class="w"> </span><span class="n">q</span><span class="p">;</span><span class="w"> </span><span class="c1">// [rsp+2Eh] [rbp-2h]</span>
@@ -851,19 +961,72 @@
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="n">scanf</span><span class="p">((</span><span class="kr">__int64</span><span class="p">)</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kr">__int64</span><span class="p">)</span><span class="o">&amp;</span><span class="n">p</span><span class="p">);</span>
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span><span class="n">scanf</span><span class="p">((</span><span class="kr">__int64</span><span class="p">)</span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kr">__int64</span><span class="p">)</span><span class="o">&amp;</span><span class="n">q</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:749ae35ca11d2016:b29 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b30 -->
+
 <p>可以看到原来 p 和 q 是 16 bit ，但是它却按照 64 bit 输入，而它们下面就是 <code>ebp</code> ，所以这样回到 main 函数后， <code>ebp</code> 就跑到别的地方了，这样我们第一次写的是改变后的 <code>ebp</code> ，但是第二次算偏移量是原来的 <code>ebp</code> 。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b30 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b31 -->
+
 <p>看例子：如果原来 <code>set_key</code> 函数的旧 <code>ebp</code> 是 <code>0xffffffd4</code> ，然后因为上面的问题被改成了 <code>0xffffff00</code> ，所以返回到 main 函数后 <code>ebp</code> 指向 <code>0xffffff00</code> ，所以进入到 <code>RSA_decrypt</code> 后存储的旧 <code>ebp</code> 为 <code>0xffffff00</code> 。现在我们第一次修改，是将 <code>0xffffff00</code> 地址写入了 <code>sscanf</code> 地址，但是第二次我们算的偏移量是 <code>0xffffffd4</code> 离我们输入的偏移多少，所以就出错了。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b31 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b32 -->
+
 <h3 id="_6">寻找新的方法</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b32 -->
+<!-- blog-edit-start:749ae35ca11d2016:b33 -->
+
 <p>所以利用 <code>ebp</code> 失败，我就看看栈中有哪些地方可以利用。我发现 <code>RSA_decrypt</code> 函数返回地址下面的那一块(即 <code>old ebp + 0x10</code>) ，好像指向某个固定偏移位置。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b33 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b34 -->
+
 <p>所以利用这个我们第一次偏移量修改后，第二次的偏移量也是固定的，这样就可以修改成功了。但是本机成功后，远程失败了。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b34 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b35 -->
+
 <p>那个内容是什么时候加上的？是在加载的时候就已经栈上有这个内容了，这也是为什么本机可以，但是远程不行的原因，版本不一样，所以加载的偏移位置不一样。比如本机偏移是 240 ，但是远程偏移不是。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b35 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b36 -->
+
 <h3 id="_7">意外的成功</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b36 -->
+<!-- blog-edit-start:749ae35ca11d2016:b37 -->
+
 <p>于是我看我本机使用 <code>glibc2.32</code>，那个位置差距是 0x100 ，换成缓冲区溢出格式应该是 <code>240$lln</code> 。我又看 <code>glibc2.29</code> 那个位置差距是 0x90，换成缓冲区溢出格式应该是 <code>238$lln</code>。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b37 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b38 -->
+
 <p>所以我就想着应该就在 0x50--0x200 之间了，那就爆破吧。每次试一下，失败就重新启动程序。结果我尝试了 <code>238$lln</code>，结果一下就好了...哈哈，太尴尬了[捂脸]</p>
+<!-- blog-edit-end:749ae35ca11d2016:b38 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b39 -->
+
 <h3 id="_8">成功后的反思</h3>
+<!-- blog-edit-end:749ae35ca11d2016:b39 -->
+<!-- blog-edit-start:749ae35ca11d2016:b40 -->
+
 <p>为什么偏移值是固定的？下面来分析分析</p>
+<!-- blog-edit-end:749ae35ca11d2016:b40 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b41 -->
+
 <p>虽然说栈的地址是随机的，但是你不管怎么变，刚开始 loader 肯定是以这个栈的起始值开始执行程序。所以只要知道 loader 的版本，我们也就基本能获得程序每条语句执行时 <code>rsp</code> 的后四位。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b41 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b42 -->
+
 <p>loader 执行执行，会开始执行 rsa_calculator 程序的 <code>_start</code> 函数，这个函数也是程序的挂载点。然后它会触发 glibc 的 <code>__libc_start_main</code> 函数，然后这会触发程序自身的 <code>_libc_csu_main</code> 函数，最后执行 <code>main</code> 函数。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b42 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b43 -->
+
 <p>这道题执行流程及 <code>rsp</code> 寄存器如下。假设栈的起始地址为 xxxxxx00。<br />
 | 函数               | 语句                  | 备注                                             |<br />
 |--------------------|-----------------------|--------------------------------------------------|<br />
@@ -874,7 +1037,14 @@
 | <code>main</code>             | ....                  | rsp = xxxxxx00 + 0x009??                         |<br />
 | <code>set_key</code>          | 输入 p,q 后           | rsp = xxxxxx00 + 0x00900                         |<br />
 | <code>RSA_decrypt</code>      | 开始利用前            | rbp = xxxxxx00 + 0x00940                         |</p>
+<!-- blog-edit-end:749ae35ca11d2016:b43 -->
+
+<!-- blog-edit-start:749ae35ca11d2016:b44 -->
+
 <p>所以我们可以明确知道 [rbp + 0x10] == xxxxxx00 + 0x10040 ，而这个值的偏移值也是固定的。</p>
+<!-- blog-edit-end:749ae35ca11d2016:b44 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\33.rsa_calc.md" data-text-edit-revision="7258480376bd6693c1fa372ec1be3085edbd7aab885995e4e8f4bd7bd40918b4" data-text-edit-marker="749ae35ca11d2016" data-text-edit-schema="1"></div>
 
 
 
@@ -1106,8 +1276,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

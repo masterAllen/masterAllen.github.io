@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -732,10 +732,19 @@
   
 
 
+<!-- blog-edit-start:39dab9a662956195:b0 -->
+
 <h1 id="pwnablekr-cmd">处理命令行过滤(Pwnable.kr cmd 系列)</h1>
+<!-- blog-edit-end:39dab9a662956195:b0 -->
+
 <div class="file-actions" data-image-edit-revision="410ae1342103ce548fe0a4b23cde0d044ef9645684cfb0d1153f12b8a099b99b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C14.cmd1.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\14.cmd1.md">复制路径</span></div>
 
+<!-- blog-edit-start:39dab9a662956195:b1 -->
+
 <h2 id="cmd1">cmd1</h2>
+<!-- blog-edit-end:39dab9a662956195:b1 -->
+<!-- blog-edit-start:39dab9a662956195:b2 -->
+
 <p><strong>题目规定需要绝对路径</strong>，简化的源代码如下<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">bool</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">cmd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="c1">// strstr()，0 表示没有找到子字符串</span>
@@ -747,9 +756,24 @@
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:39dab9a662956195:b2 -->
+
+<!-- blog-edit-start:39dab9a662956195:b3 -->
+
 <p>可以看到，如果单纯地使用<code>/bin/sh</code>会失败，使用<code>/bin/cat flag</code>也会失败，所以怎么办呢？</p>
+<!-- blog-edit-end:39dab9a662956195:b3 -->
+
+<!-- blog-edit-start:39dab9a662956195:b4 -->
+
 <p>解决方法: <code>/bin/cat fla*</code> 或者 <code>/bin/cat 'f'lag</code></p>
+<!-- blog-edit-end:39dab9a662956195:b4 -->
+
+<!-- blog-edit-start:39dab9a662956195:b5 -->
+
 <h2 id="cmd2">cmd2</h2>
+<!-- blog-edit-end:39dab9a662956195:b5 -->
+<!-- blog-edit-start:39dab9a662956195:b6 -->
+
 <p><strong>题目规定需要绝对路径</strong>，简化的源代码如下<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">cmd</span><span class="p">){</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;=&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PATH&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">strstr</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;export&quot;</span><span class="p">)</span><span class="o">!=</span><span class="mi">0</span>
@@ -762,9 +786,25 @@
 </span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:39dab9a662956195:b6 -->
+
+<!-- blog-edit-start:39dab9a662956195:b7 -->
+
 <p>首先一个问题：需要使用绝对路径，那么<code>cd</code> 和 <code>pwd</code>需要绝对路径吗？</p>
+<!-- blog-edit-end:39dab9a662956195:b7 -->
+
+<!-- blog-edit-start:39dab9a662956195:b8 -->
+
 <p>答案：不需要，因为<code>pwd</code>是<code>shell built-in command</code>. 使用<code>which pwd</code>，输出就是<code>shell built-in command</code>。</p>
+<!-- blog-edit-end:39dab9a662956195:b8 -->
+
+<!-- blog-edit-start:39dab9a662956195:b9 -->
+
 <p>现在坏了，直接不能输入<code>/</code>了，这可怎么办？解决办法如下</p>
+<!-- blog-edit-end:39dab9a662956195:b9 -->
+
+<!-- blog-edit-start:39dab9a662956195:b10 -->
+
 <ol>
 <li>
 <p>使用<code>pwd</code>命令，执行<code>./cmd2 'cd .. &amp;&amp; pwd'</code>，结果为<code>/home</code>；执行<code>./cmd2 'cd .. &amp;&amp; cd .. &amp;&amp; pwd'</code>，结果为<code>/</code>，此时我们就可以用<code>$(pwd)</code>来代替<code>/</code>了。</p>
@@ -775,11 +815,34 @@
 <p>所以最后我们的输入为<code>/home/cmd2/cmd2 '$(pwd)tmp$(pwd)allen'</code>，其中当前目录为<code>/</code></p>
 </li>
 </ol>
+<!-- blog-edit-end:39dab9a662956195:b10 -->
+
+<!-- blog-edit-start:39dab9a662956195:b11 -->
+
 <h2 id="cmd3">cmd3</h2>
+<!-- blog-edit-end:39dab9a662956195:b11 -->
+<!-- blog-edit-start:39dab9a662956195:b12 -->
+
 <p>源代码是很长的 python 文件，这里就简单说一下。</p>
+<!-- blog-edit-end:39dab9a662956195:b12 -->
+
+<!-- blog-edit-start:39dab9a662956195:b13 -->
+
 <p>首先是文件存储情况，有两个文件夹，<code>flagbox</code>和<code>jail</code>，<code>jail</code>中提供三个执行文件: <code>ls</code>, <code>cat</code>, <code>id</code>，<code>flagbox</code>中在程序运行是会存储一个随机命名文件，如<code>KG3TSCVOPHSPINJD1N3MOD3T637CLX5L</code>，程序运行时会告诉我们，然后我们要输出这个文件里的内容，然后会得到flag。</p>
+<!-- blog-edit-end:39dab9a662956195:b13 -->
+
+<!-- blog-edit-start:39dab9a662956195:b14 -->
+
 <p>要求只可以使用以下字符：<code>()[]{}&lt;&gt;#$%,?;_</code>。不要求绝对路径，但是在<code>rbash</code>这个 shell 下执行的，关于这个 shell，可以参考[1]，比较重要的一点，是不允许执行带有<code>/</code>的命令，但是除了命令是可以的。也即是说<code>/bin/ls</code>不可以，但是<code>cat test/test.txt</code>是可以的！</p>
+<!-- blog-edit-end:39dab9a662956195:b14 -->
+
+<!-- blog-edit-start:39dab9a662956195:b15 -->
+
 <p>乍一看这道题，这怎么做嘛，就这几个破字符，连字母数字都不能输入，这怎么搞？所以，要慢慢来。下面都是利用 shell 的特性。</p>
+<!-- blog-edit-end:39dab9a662956195:b15 -->
+
+<!-- blog-edit-start:39dab9a662956195:b16 -->
+
 <ol>
 <li>
 <p>第一要解决<code>cat</code>。<br></p>
@@ -799,8 +862,19 @@
 <p>第二要解决空格。<br></p>
 </li>
 </ol>
+<!-- blog-edit-end:39dab9a662956195:b20 -->
+
+<!-- blog-edit-start:39dab9a662956195:b21 -->
+
 <p><strong>知识点四：shell 中有好几种方式可以代替空格</strong>。参考[2]，现在我们可以用<code>&lt;&gt;</code>或者<code>&gt;</code>来代替空格。但是，对于<code>rbash</code>，应该只能使用<code>&lt;</code>而不能使用<code>&lt;&gt;</code>！</p>
+<!-- blog-edit-end:39dab9a662956195:b21 -->
+
+<!-- blog-edit-start:39dab9a662956195:b22 -->
+
 <h3 id="_1">答案一</h3>
+<!-- blog-edit-end:39dab9a662956195:b22 -->
+<!-- blog-edit-start:39dab9a662956195:b23 -->
+
 <p>刚开始告诉我们存储密码的文件: <code>flag/xxx(32bits)</code>, 此时我们新建 <code>/tmp/__/1</code> 文件, 其中内容即为 <code>flag/xxx(32bits)</code>.</p>
 <ul>
 <li>
@@ -820,17 +894,42 @@
 由于上一条执行了 <code>flag/xxx</code> 命令, 所以 <code>$_</code> 等于 <code>flag/xxx</code>, 所以最终相当于 <code>cat flag/xxxx</code>.</p>
 </li>
 </ul>
+<!-- blog-edit-end:39dab9a662956195:b23 -->
+
+<!-- blog-edit-start:39dab9a662956195:b24 -->
+
 <h3 id="_2">答案二</h3>
+<!-- blog-edit-end:39dab9a662956195:b24 -->
+<!-- blog-edit-start:39dab9a662956195:b25 -->
+
 <p>唯一的不同点是第三条, 干脆直接输入 <code>? * 7 / ? * 32</code>, 我在这里用 <code>* 7</code> 缩写, 实际情况要全部写上, 最后同样会匹配到文件 <code>flagbox/xxx(32bits)</code>.</p>
+<!-- blog-edit-end:39dab9a662956195:b25 -->
+
+<!-- blog-edit-start:39dab9a662956195:b26 -->
+
 <h3 id="_3">重要说明</h3>
+<!-- blog-edit-end:39dab9a662956195:b26 -->
+<!-- blog-edit-start:39dab9a662956195:b27 -->
+
 <p>上面的两个答案, 一定要一起执行, 即最终输入为 <code>cmd1; cmd2; cmd3; cmd4</code>, 分开写是错的.</p>
+<!-- blog-edit-end:39dab9a662956195:b27 -->
+
+<!-- blog-edit-start:39dab9a662956195:b28 -->
+
 <blockquote>
 <p><strong>为什么是错的?</strong></p>
 <p>以第一句和第二句为例. 第一句 <code>????/???</code> 想匹配 <code>jail/cat</code>, 此时命令行最后会输出错误信息: <code>/bin/rbash: line 1: jail/cat: ...</code>.</p>
 <p>如果单独写这一句后回车, 此时的 <code>$_</code> 为 <code>/bin/rbash</code>!!! 但如果不是单独一句, 比如 <code>cmd1; cmd2</code>, 在执行 <code>cmd2</code> 的时候, <code>$_</code> 为 <code>jail/cat</code>!!!</p>
 <p>仔细体会这之间的差异, 原因就是由于回车后, <code>rbash</code> 发现错误后相当于执行了 <code>rbash</code> 命令, 导致 <code>$_</code> 成了 <code>/bin/rbash</code>.</p>
 </blockquote>
+<!-- blog-edit-end:39dab9a662956195:b28 -->
+
+<!-- blog-edit-start:39dab9a662956195:b29 -->
+
 <h2 id="_4">总结</h2>
+<!-- blog-edit-end:39dab9a662956195:b29 -->
+<!-- blog-edit-start:39dab9a662956195:b30 -->
+
 <ul>
 <li>
 <p>有一些命令是自带命令，这些并不是执行 <code>/bin</code> 目录中的可执行文件, 比如<code>pwd</code>，不确定的话可以使用<code>which</code>命令查看一下</p>
@@ -845,10 +944,25 @@
 <p><code>cmd3</code> 可以好好看看, 以及一定要注意 <code>$_</code> 可能会被最后的报警产生意外的错误</p>
 </li>
 </ul>
+<!-- blog-edit-end:39dab9a662956195:b30 -->
+
+<!-- blog-edit-start:39dab9a662956195:b31 -->
+
 <h2 id="_5">参考</h2>
+<!-- blog-edit-end:39dab9a662956195:b31 -->
+<!-- blog-edit-start:39dab9a662956195:b32 -->
+
 <p>[1] <a href="https://xz.aliyun.com/t/7642">https://xz.aliyun.com/t/7642</a></p>
+<!-- blog-edit-end:39dab9a662956195:b32 -->
+
+<!-- blog-edit-start:39dab9a662956195:b33 -->
+
 <p>[2] <a href="https://www.cnblogs.com/sevck/p/6072721.html">https://www.cnblogs.com/sevck/p/6072721.html</a></p>
+<!-- blog-edit-end:39dab9a662956195:b33 -->
+
 <!-- flagbox/EIFBJAJKNULDNVO8T2RCCWCME0SB1V1O -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\14.cmd1.md" data-text-edit-revision="410ae1342103ce548fe0a4b23cde0d044ef9645684cfb0d1153f12b8a099b99b" data-text-edit-marker="39dab9a662956195" data-text-edit-schema="1"></div>
 
 
 
@@ -1080,8 +1194,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

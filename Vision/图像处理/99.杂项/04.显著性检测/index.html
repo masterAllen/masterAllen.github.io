@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,28 +655,81 @@
   
 
 
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b0 -->
+
 <h1 id="_1">显著性检测</h1>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4595eee01a03609590464dff9f009e80e54301ccb29de7a38d902faa5af4b8b8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C99.%E6%9D%82%E9%A1%B9%5C04.%E6%98%BE%E8%91%97%E6%80%A7%E6%A3%80%E6%B5%8B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C99.%E6%9D%82%E9%A1%B9" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\99.杂项\04.显著性检测.md">复制路径</span></div>
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.6.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.6.md</a></p>
 </blockquote>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b1 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b2 -->
+
 <p><strong>大部分是摘抄，建议直接看这篇文章，足够了：<a href="https://blog.csdn.net/LuohenYJ/article/details/108607926">https://blog.csdn.net/LuohenYJ/article/details/108607926</a></strong></p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b2 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b3 -->
+
 <p>而且 OpenCV 里面的显著性检测其实效果很烂，没有必要多深究。</p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b3 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b4 -->
+
 <h3 id="_2">显著性检测是什么</h3>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b4 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b5 -->
+
 <p>人类具有一种视觉注意机制，即当面对一个场景时，会选择性地忽略不感兴趣的区域，聚焦于感兴趣的区域。这些感兴趣的区域称为显著性区域。视觉显著性检测（Visual Saliency Detection，VSD）则是一种模拟人类视觉并从图像中提取显著性区域的智能算法。如下面左边的图所示，人眼在观看该图片时会首先注意其中的小狗，自动忽略背景区域，小狗所在区域就是显著性区域。通过计算机视觉算法对左边的图像进行视觉显著性检测能够得到下图右边的结果，其中黑色区域为不显著区域，白色为显著区域，显著性检测在机器人领域、目标检测领域和图像识别领域有大量应用。</p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b5 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b6 -->
+
 <p><img alt="1724682235800" src="../../../../asset/image/cdbd1d56764476135bf8c639752d6590/1724682235800.png" /></p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b6 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b7 -->
+
 <p>显著性检测算法与目标检测算法大大不同。显著性检测算法，只是判断图中有显著目标的区域，这些区域可能包含目标也可能不包含目标，因方法而异。类比人眼的观察方式，显著性检测算法是许多计算机视觉任务的第一步，检测出显著性区域后，对这些显著性区域进行进一步判断和预测。显著性检测算法通常检测速度较快，某些计算量大的算法如深度学习图像分类算法，可以只在显著性区域上运行，以缩小检测范围，加快检测速度，提高检测精度。</p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b7 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b8 -->
+
 <h3 id="opencv">OpenCV 中的显著性检测</h3>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b8 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b9 -->
+
 <p>OpenCV saliency模块提供了四种不同的显著性检测方法，但是按方法类别只有三种。OpenCV saliency模块的类关系如下图所示：</p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b9 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b10 -->
+
 <p><img alt="1724682346746" src="../../../../asset/image/cdbd1d56764476135bf8c639752d6590/1724682346746.png" /></p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b10 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b11 -->
+
 <p>其中 MotionSaliencyBinWang 只能输入视频，其他三种可以处理图片。方法评价（总之都是一般...）：</p>
 <ul>
 <li>Motion saliency：输入为连续的图像帧，通过运动检测算法对连续图像帧进行处理，然后对运动目标进行跟踪，最终将运动目标设置为显著区域。算法容易出现丢帧和鬼影情况，运动检测效果不如主流的运动检测算法，实际图像显著性检测效果一般。</li>
 <li>Objectness：算法输入为单帧图像，通过计算得到大量的建议区域，并将这些建议区域作为显著性区域。该类算法检测速度较慢，实际检测出来的建议区域可能上万个，需要进行筛选，总体效果一般。</li>
 <li>Static saliency：输入为单帧图像，通过图像特征和统计量来定位图像中的显著性区域。该类算法检测速度非常快，不过效果总体一般。</li>
 </ul>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b11 -->
+
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b12 -->
+
 <h3 id="_3">代码</h3>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b12 -->
+<!-- blog-edit-start:1a1a94ba4c50b7fb:b13 -->
+
 <p>实验代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_saliency.ipynb">test_saliency.ipynb</a> 中，只写了处理图片的三种，这里也写一下，便于快速查阅：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -698,6 +751,9 @@
 </span><span id="__span-0-18"><span class="linenos" data-linenos="18 "></span>    <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,))]</span>
 </span><span id="__span-0-19"><span class="linenos" data-linenos="19 "></span>    <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">saliencyMap</span><span class="p">,</span> <span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">startY</span><span class="p">),</span> <span class="p">(</span><span class="n">endX</span><span class="p">,</span> <span class="n">endY</span><span class="p">),</span> <span class="n">color</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:1a1a94ba4c50b7fb:b13 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\99.杂项\04.显著性检测.md" data-text-edit-revision="4595eee01a03609590464dff9f009e80e54301ccb29de7a38d902faa5af4b8b8" data-text-edit-marker="1a1a94ba4c50b7fb" data-text-edit-schema="1"></div>
 
 
 
@@ -929,8 +985,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

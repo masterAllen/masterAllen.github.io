@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -749,23 +749,69 @@
   
 
 
+<!-- blog-edit-start:6dadc8bf5092718d:b0 -->
+
 <h1 id="_1">投机推理</h1>
+<!-- blog-edit-end:6dadc8bf5092718d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="6dadc8bf5092718d68fc5e7c4855d2232f5fc9abbfb23ad31c4ff2709fec9883" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5C%E6%8A%95%E6%9C%BA%E6%8E%A8%E7%90%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\投机推理.md">复制路径</span></div>
+
+<!-- blog-edit-start:6dadc8bf5092718d:b1 -->
 
 <blockquote>
 <p>参考文章：<a href="https://www.cnblogs.com/zrq96/p/19201639">https://www.cnblogs.com/zrq96/p/19201639</a></p>
 </blockquote>
+<!-- blog-edit-end:6dadc8bf5092718d:b1 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b2 -->
+
 <h2 id="_2">背景介绍</h2>
+<!-- blog-edit-end:6dadc8bf5092718d:b2 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b3 -->
+
 <p>投机推理的核心思想是所谓的“草稿-验证”范式：用小模型快速生成多个草稿token，然后用大模型去验证。如果验证通过率高就好办，低的话反而速度降低。</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b3 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b4 -->
+
 <p>比如小模型生成了8个token，假设前5个token都没问题，到了第6个的时候发现与大模型的预测不一致，那旧舍弃第6到第8个，再利用大模型再去生成一个新的token。如此一来，我们利用8次小模型前向和一次大模型前向生成了6个token。</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b4 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b5 -->
+
 <p>这在现实中确实存在这样的场景，有些token的预测就是简单任务，比如<code>&lt;bos&gt;床前明月光，疑</code>这个prompot后面大概率跟着是<code>地上霜&lt;eos&gt;</code>，这完全不需要大参数模型就能预测准确。</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b5 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b6 -->
+
 <h2 id="_3">起草阶段</h2>
+<!-- blog-edit-end:6dadc8bf5092718d:b6 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b7 -->
+
 <p>最早的时候，草稿模型就像在上面说的那样就是用一个跟目标模型同架构但参数规模小很多的模型，比如用T5-Large(800M)做T5-XXL(11B)的草稿模型，或者用Llama-2-7B作为LLaMA-2-70B的草稿模型。后来，人们得承认，想要又快又好地生成草稿token，那么训练一个专门的草稿模型才是是更好的方法，尽管训练过程并不简单，还需要不小的算力。</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b7 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b8 -->
+
 <blockquote>
 <p>具体细节不谈，看参考文章，也都是一些模型的介绍和罗列。</p>
 </blockquote>
+<!-- blog-edit-end:6dadc8bf5092718d:b8 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b9 -->
+
 <h2 id="_4">验证阶段</h2>
+<!-- blog-edit-end:6dadc8bf5092718d:b9 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b10 -->
+
 <p>一个非常关键的知识点：llm的一次forward不仅仅是预测下一个token，而是预测输入序列的每一个前缀子序列的下一个token。当我调用llm.forward(tok("床前明月"))的时候，llm不仅在预测床前明月的下一个token，它还同时在预测[床]、[床前]、床前明这些所有前缀子序列的下一个token</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b10 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b11 -->
+
 <details class="question">
 <summary>为什么</summary>
 <h4 id="_5">一句话核心原因</h4>
@@ -818,11 +864,34 @@
 <li>为了不重复跑多次前向，直接一次forward全包所有前缀的预测和损失，<strong>训练效率几十倍提升</strong>。</li>
 </ol>
 </details>
+<!-- blog-edit-end:6dadc8bf5092718d:b11 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b12 -->
+
 <p>所以我们可以利用这个特效，让小模型去生成多个草稿token，然后让大模型一口气去验证。这个操作通常也叫做<strong>贪婪解码</strong>，表示大模型是一口气验证所有 token 前缀。</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b12 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b13 -->
+
 <p>下面是简单讲一下改进，概率值越大的token越可能被选为下一个token，但不一定总会是概率最大的token。有方法就是有概率性选择：</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b13 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b14 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513203302.png" /></p>
+<!-- blog-edit-end:6dadc8bf5092718d:b14 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b15 -->
+
 <p>评价如下，互有高低（不想打字了，直接看图吧，还是来自参考文章）：</p>
+<!-- blog-edit-end:6dadc8bf5092718d:b15 -->
+
+<!-- blog-edit-start:6dadc8bf5092718d:b16 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513203405.png" /></p>
+<!-- blog-edit-end:6dadc8bf5092718d:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\投机推理.md" data-text-edit-revision="6dadc8bf5092718d68fc5e7c4855d2232f5fc9abbfb23ad31c4ff2709fec9883" data-text-edit-marker="6dadc8bf5092718d" data-text-edit-schema="1"></div>
 
 
 
@@ -1054,8 +1123,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

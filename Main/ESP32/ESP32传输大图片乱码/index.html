@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,10 +581,20 @@
   
 
 
+<!-- blog-edit-start:0c45c2c8b0f8f70c:b0 -->
+
 <h1 id="esp32">ESP32 传输大图片会乱码</h1>
+<!-- blog-edit-end:0c45c2c8b0f8f70c:b0 -->
+
 <div class="file-actions" data-image-edit-revision="085f24a99ee74072a093686627eed9bd9cc53af78f8058f3be1b01e5db59e4f7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32%5CESP32%E4%BC%A0%E8%BE%93%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B9%B1%E7%A0%81.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\ESP32\ESP32传输大图片乱码.md">复制路径</span></div>
 
+<!-- blog-edit-start:0c45c2c8b0f8f70c:b1 -->
+
 <p>做一个项目的时候，之前一直用降采样的图片粗略查看情况。有一次为了演示换成了不降采样，结果发现图片传输经常会乱码。</p>
+<!-- blog-edit-end:0c45c2c8b0f8f70c:b1 -->
+
+<!-- blog-edit-start:0c45c2c8b0f8f70c:b2 -->
+
 <p>直接说结论，原因是因为传输的数据量大了，所以串口传输可能会错乱掉... 所以解决方式就是分块发送，每个块之间延迟一些时间：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">jpgbuf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">size_t</span><span class="w"> </span><span class="n">jpglen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -605,7 +615,15 @@
 </span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span><span class="p">}</span>
 </span><span id="__span-0-18"><span class="linenos" data-linenos="18 "></span><span class="n">free</span><span class="p">(</span><span class="n">jpgbuf</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:0c45c2c8b0f8f70c:b2 -->
+
+<!-- blog-edit-start:0c45c2c8b0f8f70c:b3 -->
+
 <p>当时排查了大概一天多，周五下午+周六上午，中午去资料馆看了电影，五点多回来突然想到了这一点，非常奇妙的经历...排查了半天，问了 AI 半天，一直在走偏路，如果不是突然想到这一点估计要猴年马月了。</p>
+<!-- blog-edit-end:0c45c2c8b0f8f70c:b3 -->
+
+<!-- blog-edit-start:0c45c2c8b0f8f70c:b4 -->
+
 <p>当时的排查思路：</p>
 <ol>
 <li>刚开始只是带着排查的，当时是发现图片乱码了，怀疑是因为芯片的 setting 不对？改了一会发现还是有，后来专门检查才发现只有不降采样才会有，那肯定不是图像芯片的问题，因为降采样我是在 ESP32 主程序里面做的。</li>
@@ -626,6 +644,9 @@
 <li>本来打算是用无损压缩，但既然我们是临时这样做，所以就反复多次输出原图，并且是一行一行打印内容，每行之前做个标记。</li>
 <li>这样如果某次有一行的数据量不对，那就直接丢弃，多次循环总有一次这一行的数据是正常的。最后是三次循环出图，大部分行的数据都有了。</li>
 </ol>
+<!-- blog-edit-end:0c45c2c8b0f8f70c:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\ESP32\ESP32传输大图片乱码.md" data-text-edit-revision="085f24a99ee74072a093686627eed9bd9cc53af78f8058f3be1b01e5db59e4f7" data-text-edit-marker="0c45c2c8b0f8f70c" data-text-edit-schema="1"></div>
 
 
 
@@ -857,8 +878,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

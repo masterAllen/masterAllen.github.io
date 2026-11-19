@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -655,13 +655,35 @@
   
 
 
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b0 -->
+
 <h1 id="_1">同异策略和重要性采样</h1>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b0 -->
+
 <div class="file-actions" data-image-edit-revision="9604a8b13b4df550f86967c7950f5ac4d38accb4be8ef8bee72aebef9d8de7d5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5C07.%E5%90%8C%E5%BC%82%E7%AD%96%E7%95%A5%E5%92%8C%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\强化学习\07.同异策略和重要性采样.md">复制路径</span></div>
 
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b1 -->
+
 <h2 id="_2">同策略和异策略</h2>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b1 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b2 -->
+
 <p>强化学习中经常会见到的词：同策略（on-policy）和异策略（off-policy）。本质其实就是用来训练/计算的数据是不是在当前这个策略下得出来的。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b2 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b3 -->
+
 <p>回顾以前的方法，比如 REINFORCE、Actor-Critic，这些方法都是确定好当前的策略，然后采样数据进行训练/计算，再去更新策略。等策略更新完之后，以前的数据用完就扔，不能拿来反复训。所以这些方法都是同策略的。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b3 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b4 -->
+
 <p>再比如最经典的例子，就是时序差分 TD 的两种方法：SARSA 和 Q-Learning，前者是同策略，后者是异策略。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b4 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b5 -->
+
 <details class="note" open="open">
 <summary>注意事项</summary>
 <p>一定要注意了：同策略/异策略和在线/离线学习是两码事情！！</p>
@@ -669,72 +691,224 @@
 <p>同策略/异策略是指，用来更新智能体策略的数据，是不是由当前智能体自己（目标策略）生成的。</p>
 <p><strong>一定要注意的是：异策略和离线学习不是一码事情！！</strong> 后续一定要始终记住这句话。</p>
 </details>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b5 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b6 -->
+
 <p>来看 SASAR，它的迭代公式为:</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b6 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b7 -->
+
 <div class="arithmatex">\[
 Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t))
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b7 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b8 -->
+
 <p>可以看出，这里的 <span class="arithmatex">\(a_{t+1}\)</span> 是完全依照当前策略 <span class="arithmatex">\(\pi\)</span> 的。所以 SASAR 是同策略的。换句话说，学的是「整条连贯轨迹」，动作之间强绑定。以前在旧的策略下采集的数据，就没有用了。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b8 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b9 -->
+
 <p>再看 Q-learning，它的迭代公式为：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b9 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b10 -->
+
 <div class="arithmatex">\[
 Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t))
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b10 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b11 -->
+
 <p>这里的 <span class="arithmatex">\(a_{t+1}\)</span> 和当前策略并没有关系，它假设下一步直接走全局最优动作，所以它采集的数据不一定就是按照现有策略，只要这样，那么就是异策略的。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b11 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b12 -->
+
 <h2 id="_3">重要性采样</h2>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b12 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b13 -->
+
 <h3 id="_4">重要性采样存在的原因</h3>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b13 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b14 -->
+
 <p>回顾 REINFORCE 的公式和它的流程：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b14 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b15 -->
+
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (G_{t}^{n}) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b15 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b16 -->
+
 <p><img alt="策略梯度" src="../../../asset/image/5b31549c1cb5546a6165cff909ac3f4f/20260424184226.png" /></p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b16 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b17 -->
+
 <p>很尴尬的一点是：样本只是用一次，只要 <span class="arithmatex">\(\theta\)</span> 发生变化，旧的策略 <span class="arithmatex">\(\pi_\theta\)</span> 下采集的数据，就不能用了。采集数据可是一个要花费大量时间的工作，所以导致整个算法效率很低。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b17 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b18 -->
+
 <p>所以能否找到旧策略 <span class="arithmatex">\(\theta\)</span> 下采集的数据和新策略 <span class="arithmatex">\(\theta^{'}\)</span> 之间的关系，把数据转换一下，可以用在新策略上？这就是重要性采样想做的事情。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b18 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b19 -->
+
 <h3 id="_5">重要性采样正式说明</h3>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b19 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b20 -->
+
 <p>下面开始正式说明，主要参考以下链接，大部分内容直接摘抄，添加一些自己的看法：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b20 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b21 -->
+
 <ul>
 <li><a href="https://datawhalechina.github.io/easy-rl/#/chapter5/chapter5">https://datawhalechina.github.io/easy-rl/#/chapter5/chapter5</a></li>
 </ul>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b21 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b22 -->
+
 <p>假设我们有一个函数 <span class="arithmatex">\(f(x)\)</span>，要计算从分布 <span class="arithmatex">\(p\)</span> 采样 <span class="arithmatex">\(x\)</span>，再把 <span class="arithmatex">\(x\)</span> 代入 <span class="arithmatex">\(f\)</span> ，得到 <span class="arithmatex">\(f(x)\)</span>。我们该怎么计算 <span class="arithmatex">\(f(x)\)</span> 的期望值呢？假设我们不能对分布 <span class="arithmatex">\(p\)</span> 做积分，但可以从分布 <span class="arithmatex">\(p\)</span> 采样一些数据 <span class="arithmatex">\(x^i\)</span>。把 <span class="arithmatex">\(x^i\)</span> 代入 <span class="arithmatex">\(f(x)\)</span>，取它的平均值，就可以近似 <span class="arithmatex">\(f(x)\)</span> 的期望值。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b22 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b23 -->
+
 <p>但现在假设我们不能从分布 <span class="arithmatex">\(p\)</span> 采样数据，只能从另外一个分布 <span class="arithmatex">\(q\)</span> 采样数据。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b23 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b24 -->
+
 <blockquote>
 <p>个人注解：这里的分布就可以理解成策略 <span class="arithmatex">\(\pi\)</span>，不同策略有不同分布。</p>
 </blockquote>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b24 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b25 -->
+
 <p>但如果我们从 <span class="arithmatex">\(q\)</span> 采样 <span class="arithmatex">\(x^i\)</span>，就直接平均，因为我们要求的是 <span class="arithmatex">\(x\)</span> 从 <span class="arithmatex">\(p\)</span> 采样出来的期望。所以我们做一个修正：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b25 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b26 -->
+
 <div class="arithmatex">\[
     \mathbb{E}_{x \sim p}[f(x)] = \int f(x) p(x) \mathrm{d}x=\int f(x) \frac{p(x)}{q(x)} q(x) \mathrm{d}x=\mathbb{E}_{x \sim q}[f(x){\frac{p(x)}{q(x)}}]
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b26 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b27 -->
+
 <p>就可得</p>
 <div class="arithmatex">\[
 \mathbb{E}_{x \sim p}[f(x)]=\mathbb{E}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b27 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b28 -->
+
 <p>我们就可以写成对 <span class="arithmatex">\(q\)</span> 里面所采样出来的 <span class="arithmatex">\(x\)</span> 取期望值。我们从 <span class="arithmatex">\(q\)</span> 里面采样 <span class="arithmatex">\(x\)</span>，再计算 <span class="arithmatex">\(f(x) \frac{p(x)}{q(x)}\)</span>，再取期望值。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b28 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b29 -->
+
 <p>其中 <span class="arithmatex">\(\frac{p(x)}{q(x)}\)</span> 是<strong>重要性权重（importance weight）</strong>，需要乘一个来修正这两个分布的差异。<span class="arithmatex">\(q(x)\)</span> 可以是任何分布，唯一的限制就是 <span class="arithmatex">\(q(x)\)</span> 的概率是 0 的时候，<span class="arithmatex">\(p(x)\)</span> 的概率不为 0，不然会没有定义。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b29 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b30 -->
+
 <p>重要性采样有一些问题。虽然我们可以把 <span class="arithmatex">\(p\)</span> 换成任何的 <span class="arithmatex">\(q\)</span>。但是在实现上， <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span> 的差距不能太大。差距太大，会导致方差过大。两个随机变量的平均值相同，并不代表它们的方差相同。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b30 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b31 -->
+
 <p>方差计算如下，将 <span class="arithmatex">\(f(x)\)</span> 和 <span class="arithmatex">\(f(x) \frac{p(x)}{q(x)}\)</span> 代入方差的公式 <span class="arithmatex">\(\operatorname{Var}[X]=E\left[X^{2}\right]-(E[X])^{2}\)</span>，可得</p>
 <div class="arithmatex">\[
     \operatorname{Var}_{x \sim p}[f(x)]=\mathbb{E}_{x \sim p}\left[f(x)^{2}\right]-\left(\mathbb{E}_{x \sim p}[f(x)]\right)^{2}
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b31 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b32 -->
+
 <div class="arithmatex">\[
     \begin{aligned}
         \operatorname{Var}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right] &amp;=\mathbb{E}_{x \sim q}\left[\left(f(x) \frac{p(x)}{q(x)}\right)^{2}\right]-\left(\mathbb{E}_{x \sim q}\left[f(x) \frac{p(x)}{q(x)}\right]\right)^{2} \\
         &amp;=\mathbb{E}_{x \sim p}\left[f(x)^{2} \frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x \sim p}[f(x)]\right)^{2}
         \end{aligned}
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b32 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b33 -->
+
 <p>差别在于第一项， 多乘了<span class="arithmatex">\(\frac{p(x)}{q(x)}\)</span>，如果 <span class="arithmatex">\(\frac{p(x)}{q(x)}\)</span> 差距很大，<span class="arithmatex">\(f(x)\frac{p(x)}{q(x)}\)</span> 的方差就会很大。所以理论上它们的期望值一样，但是如果我们采样的次数不够多，因为它们的方差差距是很大的，所以我们还是有可能得到差别非常大的结果。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b33 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b34 -->
+
 <h3 id="_6">重要性采样的使用</h3>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b34 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b35 -->
+
 <p>现在要做的就是把重要性采样用在异策略的情况中，把同策略训练的算法改成异策略训练的算法。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b35 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b36 -->
+
 <p>怎么改呢？如下所示，我们有新策略 <span class="arithmatex">\(\pi_{\theta}\)</span> 与环境交互，采样出轨迹 <span class="arithmatex">\(\tau\)</span>，计算 <span class="arithmatex">\(G(\tau) \nabla \log p_{\theta}(\tau)\)</span>。现在我们有旧策略 <span class="arithmatex">\(\pi_{\theta'}\)</span>，采样的数据，之前不能用，现在可以进行如下调整：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b36 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b37 -->
+
 <div class="arithmatex">\[
     \nabla J_{\theta} = \mathbb{E}_{\tau \sim p_{\theta^{\prime}(\tau)}}\left[\frac{p_{\theta}(\tau)}{p_{\theta^{\prime}}(\tau)} G(\tau) \nabla \log p_{\theta}(\tau)\right]
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b37 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b38 -->
+
 <p>这里的公式中 <span class="arithmatex">\(p_\theta(\tau)\)</span> 和 <span class="arithmatex">\(p_{\theta'}(\tau)\)</span> 分别表示轨迹 <span class="arithmatex">\(\tau\)</span> 用策略 <span class="arithmatex">\(\pi_\theta\)</span> 和 <span class="arithmatex">\(\pi_{\theta'}\)</span> 采样出来的概率。这个可以用直接采样的数据去算占比，所以是可以算出来的。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b38 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b39 -->
+
 <p>实际在做策略梯度的时候，我们并不是给整个轨迹 <span class="arithmatex">\(\tau\)</span> 一样的分数，而是将每一个状态-动作对分开计算。实际更新梯度的过程可写为（现在换成 Advantage Actor-Critic 的形式）：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b39 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b40 -->
+
 <div class="arithmatex">\[
     \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta}}\left[A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b40 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b41 -->
+
 <p>同理，可以使用：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b41 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b42 -->
+
 <div class="arithmatex">\[
     \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(s_{t}, a_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}, a_{t}\right)} A^{\theta}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right] 
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b42 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b43 -->
+
 <p>拆解 <span class="arithmatex">\(p_{\theta}\left(s_{t}, a_{t}\right)\)</span> 和 <span class="arithmatex">\(p_{\theta'}\left(s_{t}, a_{t}\right)\)</span>，即</p>
 <div class="arithmatex">\[
     \begin{aligned}
@@ -742,19 +916,43 @@ Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\p
         p_{\theta'}\left(s_{t}, a_{t}\right)&amp;=p_{\theta'}\left(a_{t}|s_{t}\right) p_{\theta'}(s_t) 
         \end{aligned}
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b43 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b44 -->
+
 <p>于是我们可得</p>
 <div class="arithmatex">\[
     \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} \frac{p_{\theta}\left(s_{t}\right)}{p_{\theta^{\prime}}\left(s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b44 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b45 -->
+
 <p>这里需要做的一件事情是，假设模型是 <span class="arithmatex">\(\theta\)</span> 的时候，我们看到 <span class="arithmatex">\(s_t\)</span> 的概率，与模型是 <span class="arithmatex">\(\theta'\)</span>  的时候，我们看到 <span class="arithmatex">\(s_t\)</span> 的概率是一样的，即 <span class="arithmatex">\(p_{\theta}(s_t)=p_{\theta'}(s_t)\)</span>。因为<span class="arithmatex">\(p_{\theta}(s_t)\)</span>和<span class="arithmatex">\(p_{\theta'}(s_t)\)</span>是一样的，所以我们可得</p>
 <div class="arithmatex">\[
     \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b45 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b46 -->
+
 <p><span class="arithmatex">\(p_{\theta}(a_t|s_t)\)</span> 很好算，我们有参数 <span class="arithmatex">\(\theta\)</span> ，它就是一个策略网络。我们输入状态 <span class="arithmatex">\(s_t\)</span> 到策略网络中，它会输出每一个 <span class="arithmatex">\(a_t\)</span> 的概率。所以我们只要知道<span class="arithmatex">\(\theta\)</span> 和 <span class="arithmatex">\(\theta'\)</span> 的参数就可以计算 <span class="arithmatex">\(\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)}\)</span>。因此就可以用旧策略了。</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b46 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b47 -->
+
 <p>另外，从梯度计算反推回原函数，得出如下公式，这个在下一章节会用到：</p>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b47 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b48 -->
+
 <div class="arithmatex">\[
     J^{\theta^{\prime}}(\theta)=\mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]
 \]</div>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b48 -->
+
+<!-- blog-edit-start:62f21e1ebdc1a7ad:b49 -->
+
 <details class="question">
 <summary>为什么我们可以假设 <span class="arithmatex">\(p_{\theta}(s_t)\)</span> 和 <span class="arithmatex">\(p_{\theta'}(s_t)\)</span> 是一样的？</summary>
 <p>因为状态往往与采取的动作是没有太大的关系的。比如我们玩不同的雅达利游戏，其实看到的游戏画面都是差不多的，所以也许不同的 <span class="arithmatex">\(\theta\)</span>  对 <span class="arithmatex">\(s_t\)</span> 是没有影响的。但更直接的理由就是 <span class="arithmatex">\(p_{\theta}(s_t)\)</span> 很难算，<span class="arithmatex">\(p_{\theta}(s_t)\)</span>有一个参数 <span class="arithmatex">\(\theta\)</span>，它表示的是我们用 <span class="arithmatex">\(\theta\)</span> 去与环境交互，计算 <span class="arithmatex">\(s_t\)</span> 出现的概率，而这个概率很难算。尤其是如果输入的是图片，同样的 <span class="arithmatex">\(s_t\)</span> 可能根本就不会出现第二次。我们根本没有办法估计<span class="arithmatex">\(p_{\theta}(s_t)\)</span>，所以干脆就无视这个问题。</p>
@@ -762,6 +960,9 @@ Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\p
 <p>个人注解，意会即可，不理解也就算了，没必要在这上面花费时间。</p>
 </blockquote>
 </details>
+<!-- blog-edit-end:62f21e1ebdc1a7ad:b49 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\强化学习\07.同异策略和重要性采样.md" data-text-edit-revision="9604a8b13b4df550f86967c7950f5ac4d38accb4be8ef8bee72aebef9d8de7d5" data-text-edit-marker="62f21e1ebdc1a7ad" data-text-edit-schema="1"></div>
 
 
 
@@ -993,8 +1194,6 @@ Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\p
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

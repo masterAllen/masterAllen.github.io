@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -643,12 +643,30 @@
   
 
 
+<!-- blog-edit-start:0d55887b146ec2f9:b0 -->
+
 <h1 id="fin_array">修改 fin_array</h1>
+<!-- blog-edit-end:0d55887b146ec2f9:b0 -->
+
 <div class="file-actions" data-image-edit-revision="3437a46817b02c0bf615aa56fc3ca1bc843d2bb7cae50e35c86f308014050668" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C00.basic%5C%E5%8A%AB%E6%8C%81%E9%80%80%E5%87%BA%E6%B5%81%5Cchange_finarray.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C00.basic%5C%E5%8A%AB%E6%8C%81%E9%80%80%E5%87%BA%E6%B5%81" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\00.basic\劫持退出流\change_finarray.md">复制路径</span></div>
 
+<!-- blog-edit-start:0d55887b146ec2f9:b1 -->
+
 <p>有时我们有一次任意写的机会, 但总会感觉似乎威力不够, 此时可以通过修改 fin_array 来实现任意写.</p>
+<!-- blog-edit-end:0d55887b146ec2f9:b1 -->
+
+<!-- blog-edit-start:0d55887b146ec2f9:b2 -->
+
 <p><code>fin_array</code> 在 <code>_libc_csu_fini</code> 中, 这个函数会在 <code>main</code> 函数结束后执行.</p>
+<!-- blog-edit-end:0d55887b146ec2f9:b2 -->
+
+<!-- blog-edit-start:0d55887b146ec2f9:b3 -->
+
 <p>下面以 pwnable.tw 的 3x17 题目为例.</p>
+<!-- blog-edit-end:0d55887b146ec2f9:b3 -->
+
+<!-- blog-edit-start:0d55887b146ec2f9:b4 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kr">__int64</span><span class="w"> </span><span class="nf">_libc_csu_fini</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">signed</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"> </span><span class="c1">// rbx</span>
@@ -667,6 +685,10 @@
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sub_48E32C</span><span class="p">();</span>
 </span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0d55887b146ec2f9:b4 -->
+
+<!-- blog-edit-start:0d55887b146ec2f9:b5 -->
+
 <p>注意 <code>fin_array</code> 是逆序执行, 由于 <code>main</code> 函数中我们有一次任意写的机会, 所以采用如下方法:</p>
 <ul>
 <li>程序执行 <code>main</code>, 需要把 <code>fin_array[1]</code> 更改为 <code>main</code> 函数, <code>fin_array[0]</code> 改为 <code>libc_csu_fin</code> 函数.</li>
@@ -675,7 +697,14 @@
 <li>执行完 <code>fin_array[1]</code> 后又执行 <code>fin_array[0]</code> 即 <code>libc_csu_fin</code>, 程序不断循环, 每一次都可以修改一次内存.</li>
 <li>当内存全部修改完毕, 在 <code>main</code> 函数中将 <code>fin_array[0]</code> 修改为退出函数.</li>
 </ul>
+<!-- blog-edit-end:0d55887b146ec2f9:b5 -->
+
+<!-- blog-edit-start:0d55887b146ec2f9:b6 -->
+
 <p><strong>需要注意的是, 我们的任意写机会要能够一次性将 <code>fin_array[1]</code> 和 <code>fin_array[0]</code> 都修改掉, 否则无法进入上面的循环.</strong></p>
+<!-- blog-edit-end:0d55887b146ec2f9:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\00.basic\劫持退出流\change_finarray.md" data-text-edit-revision="3437a46817b02c0bf615aa56fc3ca1bc843d2bb7cae50e35c86f308014050668" data-text-edit-marker="0d55887b146ec2f9" data-text-edit-schema="1"></div>
 
 
 
@@ -907,8 +936,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

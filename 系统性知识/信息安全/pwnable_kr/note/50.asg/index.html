@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -682,36 +682,121 @@
   
 
 
+<!-- blog-edit-start:bfce0a08c42e027a:b0 -->
+
 <h1 id="pwnable-kr-asg">Pwnable kr asg 题解</h1>
+<!-- blog-edit-end:bfce0a08c42e027a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8d21b80c7ab302bc95d14b9826e0705b2c849c5a7ba4c85ddbe1114c5999eb84" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C50.asg.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\50.asg.md">复制路径</span></div>
 
+<!-- blog-edit-start:bfce0a08c42e027a:b1 -->
+
 <p>花了好几天终于完成了，自己独立完成的，NICE！好吧，有一个思想是被提示的...</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b1 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b2 -->
+
 <p>这题在自己写 shellcode 基础上增加了点难度，最最主要的就是有一半的 ASCII 码会不让用，这些都是随机产生的，每次执行时会知道。</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b2 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b3 -->
+
 <h2 id="_1">做完后的思考</h2>
+<!-- blog-edit-end:bfce0a08c42e027a:b3 -->
+<!-- blog-edit-start:bfce0a08c42e027a:b4 -->
+
 <p><strong>所以肯定是要尝试先执行前面代码，然后执行时会修改后面代码</strong></p>
+<!-- blog-edit-end:bfce0a08c42e027a:b4 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b5 -->
+
 <p>在 ascii 这道题目中，我用的 <code>sub [reg+num], al</code> 这样语句，但是那道题目是要求可打印字符，这道题是尽可能少字符，要求不一样。<br />
 但只是看起来不一样，因为都是要尝试先写上，然后执行代码时改掉，所以很有可能是一样的情况！！</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b5 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b6 -->
+
 <p>PS：这也是我写这总结文章时才发现了这一点</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b6 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b7 -->
+
 <p>而在 asg 这道题，用的是 <code>add [rax], ok</code> 这条语句(ok 指的是不被过滤器过滤的立即数，后面会提到)。</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b7 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b8 -->
+
 <p>整体代码为: <code>{ 前面代码，改后面的代码 | 后面代码，被前面的代码改完后就是 shellcode }</code></p>
+<!-- blog-edit-end:bfce0a08c42e027a:b8 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b9 -->
+
 <h2 id="_2">阶段一: 某条语句绕过过滤器</h2>
+<!-- blog-edit-end:bfce0a08c42e027a:b9 -->
+<!-- blog-edit-start:bfce0a08c42e027a:b10 -->
+
 <p>首先就是有一半 ASCII 不让用，代码怎么绕过？首先前面代码是固定的，听天由命。后面代码是灵活调整的。</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b10 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b11 -->
+
 <p>下面举例来说明如何布置后面代码：比如 shellcode 假设有一条语句是 0xdeadbeff，我们就会一个字节一个字节来看。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>对于第一个字节，0xde 和 0x00 在不在过滤范围内？
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>只要有一个在，就看 0xdd 和 0x01 在不在？
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>如果有一个在，就继续再看 0xdc 和 0x02 在不在？一直这样直到不在过滤器范围中
 </span></code></pre></div></p>
+<!-- blog-edit-end:bfce0a08c42e027a:b11 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b12 -->
+
 <p>假设我们遍历后，这几个分别是 (0xdc,0x02) (0xad,0x00) (0xbd,0x01) (0xff,0x00)</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b12 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b13 -->
+
 <p>那么后面代码就是 0xdcadbdff，而前面代码就是 <code>add [rax], 0x02000100</code>，那么如果 <code>rax</code> 指向 <code>0xdcadbdff</code>，那么就会把它改成 <code>0xdeadbeef</code>，这样执行完前面代码，后面代码就是我们要的样子。</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b13 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b14 -->
+
 <h2 id="_3">阶段二: 整体构想</h2>
+<!-- blog-edit-end:bfce0a08c42e027a:b14 -->
+<!-- blog-edit-start:bfce0a08c42e027a:b15 -->
+
 <p>如果 <code>rax</code> 指向后面代码刚开始那里，然后前面代码每一条语句都是 <code>add [rax], ok; add rax, 0x4</code>，这样就相当于遍历改掉后面代码的每条语句，最终达成效果！</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b15 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b16 -->
+
 <h2 id="_4">阶段三: 修改寄存器</h2>
+<!-- blog-edit-end:bfce0a08c42e027a:b16 -->
+<!-- blog-edit-start:bfce0a08c42e027a:b17 -->
+
 <p>怎么让 <code>rax</code> 指向后面代码刚刚开始那里？</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b17 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b18 -->
+
 <p>在 ascii 那道题我们也是需要把 <code>ebx</code> 变成 <code>0x80000000</code>，当时我们利用到了栈，<a href=".././40.ascii/">非常推荐去看一下</a>。</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b18 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b19 -->
+
 <p>但这里我们的地址不是固定的，因此不能用那个套路了。我们这里利用的是 <code>rip</code> 的偏移。</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b19 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b20 -->
+
 <p>试想一下我们执行第一条代码，<code>rip</code> 是指向它的，而我们要 <code>rax</code> 指向第一条后面语句，所以偏移是固定的。所以刚开始加一条语句就搞定了: <code>lea rax, [rip+len(before_code)]</code>，NICE！</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b20 -->
+
+<!-- blog-edit-start:bfce0a08c42e027a:b21 -->
+
 <p>Q: <strong>为什么要用 <code>lea</code> 呢</strong><br />
 A: 刚开始我是直接打算用 <code>sub [rip+offset], ok</code>，但是它不是四个字节，所以会导致执行下条语句，<code>offset</code> 又不一样，所以用了 <code>rax</code> 来替代，然后发现 <code>rip</code> 赋值其他寄存器非常简单嘛，就用 <code>lea</code> 就可以。</p>
+<!-- blog-edit-end:bfce0a08c42e027a:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\50.asg.md" data-text-edit-revision="8d21b80c7ab302bc95d14b9826e0705b2c849c5a7ba4c85ddbe1114c5999eb84" data-text-edit-marker="bfce0a08c42e027a" data-text-edit-schema="1"></div>
 
 
 
@@ -943,8 +1028,6 @@ A: 刚开始我是直接打算用 <code>sub [rip+offset], ok</code>，但是它�
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

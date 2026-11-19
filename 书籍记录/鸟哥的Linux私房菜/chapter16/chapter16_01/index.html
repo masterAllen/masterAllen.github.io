@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -645,15 +645,37 @@
   
 
 
+<!-- blog-edit-start:9249aaf8fd3f9a32:b0 -->
+
 <h1 id="_1">第十六章: 例行性工作（只执行一次）</h1>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b0 -->
+
 <div class="file-actions" data-image-edit-revision="17a7a16f8acaab43a0dc82ab8508b6008a898dd06c46728f90acbae22340f679" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter16%5Cchapter16_01.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter16" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter16\chapter16_01.md">复制路径</span></div>
 
+<!-- blog-edit-start:9249aaf8fd3f9a32:b1 -->
+
 <h2 id="at">at 命令详解</h2>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b1 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b2 -->
+
 <p>1. 命令行输入 : at + 时间</p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b2 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b3 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- at now + 5 minutes
 <span class="linenos" data-linenos="2 "></span>- at 23:00 2018-12-12
 </code></pre></div>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b3 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b4 -->
+
 <p>2. 对话窗口 : 输入要执行的命令（建议绝对路径）</p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b4 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b5 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- `/bin/mail root -s &quot;testing&quot; &lt; /root/.bashrc`
 <span class="linenos" data-linenos="2 "></span>- 不加绝对路径的后果
 <span class="linenos" data-linenos="3 "></span>
@@ -661,28 +683,69 @@
 <span class="linenos" data-linenos="5 "></span>    - 输入 : `/bin/mail root -s &quot;test&quot; &lt; .bashrc`
 <span class="linenos" data-linenos="6 "></span>    - - 结果 : `.bashrc == /tmp/.bashrc`，凉凉
 </code></pre></div>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b5 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b6 -->
+
 <p>3. 结束标志 : 按下<C-D></p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b6 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b7 -->
+
 <p>4. 最终结果 </p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b7 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b8 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 小白可能会发现
 </code></pre></div>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b8 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b9 -->
+
 <h2 id="_2">命令过程详细解释</h2>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b9 -->
+<!-- blog-edit-start:9249aaf8fd3f9a32:b10 -->
+
 <p>atd 其实是一种服务</p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b10 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b11 -->
+
 <p>1. 用户执行 at 命令<br />
 2. 用户输入工作命令</p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b11 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b12 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- /etc/at.allow 查找该用户，如果没有，凉凉 --- 不会告诉你不行，只是最后你输入的命令根本就不起作用了
 <span class="linenos" data-linenos="2 "></span>- /etc/at.deny  查找该用户，如果有，凉凉 --- 不会告诉你不行，只是最后你输入的命令根本就不起作用了
 <span class="linenos" data-linenos="3 "></span>- 如果上面都通过，将工作命令 /var/spool/at
 <span class="linenos" data-linenos="4 "></span>- PS: 不同系统 不一样!! 一定要 man at 查看
 </code></pre></div>
 <p>3. atd 服务会取用并执行</p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b12 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b13 -->
+
 <h2 id="at_1">at 服务管理</h2>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b13 -->
+<!-- blog-edit-start:9249aaf8fd3f9a32:b14 -->
+
 <p>1. atq : 查看目前主机有多少 at 工作调度<br />
 2. atrm n : 删除第n个工作<br />
 3. batch : 系统有空才就行后台任务</p>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b14 -->
+
+<!-- blog-edit-start:9249aaf8fd3f9a32:b15 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 命令操作 : 和at一模一样
 <span class="linenos" data-linenos="2 "></span>- 命令说明 : 但是他可以 当 CPU 工作负载 小于 0.8 时才会执行命令
 <span class="linenos" data-linenos="3 "></span>- 命令补充 : batch 完之后，atd服务增加一个batch 语句服务，到了对应时间，详细执行batch里面语句。如果大于0.8不执行的功能是由batch语句完成的
 </code></pre></div>
+<!-- blog-edit-end:9249aaf8fd3f9a32:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter16\chapter16_01.md" data-text-edit-revision="17a7a16f8acaab43a0dc82ab8508b6008a898dd06c46728f90acbae22340f679" data-text-edit-marker="9249aaf8fd3f9a32" data-text-edit-schema="1"></div>
 
 
 
@@ -914,8 +977,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

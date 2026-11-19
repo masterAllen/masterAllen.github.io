@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -717,24 +717,69 @@
   
 
 
+<!-- blog-edit-start:17ec3e5399b93c5f:b0 -->
+
 <h1 id="pwnable-tw-silver_bullet">Pwnable tw Silver_Bullet</h1>
+<!-- blog-edit-end:17ec3e5399b93c5f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="17ec3e5399b93c5f09481133437c47ce3b7dcb00f0c7324e983d0c43f0950df4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C08_silver_bullet%5Csilver_bullet.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C08_silver_bullet" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\08_silver_bullet\silver_bullet.md">复制路径</span></div>
 
+<!-- blog-edit-start:17ec3e5399b93c5f:b1 -->
+
 <h2 id="_1">代码分析</h2>
+<!-- blog-edit-end:17ec3e5399b93c5f:b1 -->
+<!-- blog-edit-start:17ec3e5399b93c5f:b2 -->
+
 <p>嗯，流程还是很简单的。</p>
 <ul>
 <li>Create: 创建一个 <code>Bullet</code> 对象, 有 <code>name</code>, <code>power</code>, 其中 <code>power</code> 紧挨着 <code>name</code>.</li>
 <li>Powerup: 往 <code>name</code> 里面添加内容, 并且增加 <code>power</code>, 保证 <code>power</code> 始终代表 <code>name</code> 的长度。</li>
 </ul>
+<!-- blog-edit-end:17ec3e5399b93c5f:b2 -->
+
+<!-- blog-edit-start:17ec3e5399b93c5f:b3 -->
+
 <h2 id="_2">漏洞分析</h2>
+<!-- blog-edit-end:17ec3e5399b93c5f:b3 -->
+<!-- blog-edit-start:17ec3e5399b93c5f:b4 -->
+
 <h3 id="stage-1">Stage 1</h3>
+<!-- blog-edit-end:17ec3e5399b93c5f:b4 -->
+<!-- blog-edit-start:17ec3e5399b93c5f:b5 -->
+
 <p>直接说漏洞在哪吧: <code>Powerup-&gt;strncat</code>, 有 Off-by-one 风险. <code>strncat</code> 每次会在后面加个 <code>\x00</code>, 所以可能会让 <code>bullet.name</code> 后面的一个字节覆盖为 0. 而 <code>bullet.name</code> 后面四个字节正好表示 <code>bullet.power</code>, 所以我们可以利用 off-by-one 把 <code>power</code> 变为 0.</p>
+<!-- blog-edit-end:17ec3e5399b93c5f:b5 -->
+
+<!-- blog-edit-start:17ec3e5399b93c5f:b6 -->
+
 <p>在 powerup 函数中, 通过判断 <code>power</code> 是否大于 0x2f 来决定能否继续在 <code>name</code> 后面写入数据. 这个逻辑很正常，就是为了防止 <code>name</code> 覆盖掉 <code>power</code>, 没想到最后因为不太熟悉 <code>strncat</code> 导致被利用。</p>
+<!-- blog-edit-end:17ec3e5399b93c5f:b6 -->
+
+<!-- blog-edit-start:17ec3e5399b93c5f:b7 -->
+
 <p>所以我们把 <code>power</code> 变为 0，然后可以再一次写入，所以可以栈溢出</p>
+<!-- blog-edit-end:17ec3e5399b93c5f:b7 -->
+
+<!-- blog-edit-start:17ec3e5399b93c5f:b8 -->
+
 <h3 id="stage-2">Stage 2</h3>
+<!-- blog-edit-end:17ec3e5399b93c5f:b8 -->
+<!-- blog-edit-start:17ec3e5399b93c5f:b9 -->
+
 <p>栈溢出，要找 libc 基址，很简单了，和 dubblesort 一样，利用 got &amp;&amp; plt，就可以，所以构造栈空间如下。</p>
+<!-- blog-edit-end:17ec3e5399b93c5f:b9 -->
+
+<!-- blog-edit-start:17ec3e5399b93c5f:b10 -->
+
 <p><img alt="test" src="../../../../../../asset/image/f65ec84868e52270db81783dadc74fc3/test.png" /></p>
+<!-- blog-edit-end:17ec3e5399b93c5f:b10 -->
+
+<!-- blog-edit-start:17ec3e5399b93c5f:b11 -->
+
 <h2 id="_3">总结反思</h2>
+<!-- blog-edit-end:17ec3e5399b93c5f:b11 -->
+<!-- blog-edit-start:17ec3e5399b93c5f:b12 -->
+
 <ul>
 <li>
 <p>知识</p>
@@ -749,6 +794,9 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:17ec3e5399b93c5f:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\08_silver_bullet\silver_bullet.md" data-text-edit-revision="17ec3e5399b93c5f09481133437c47ce3b7dcb00f0c7324e983d0c43f0950df4" data-text-edit-marker="17ec3e5399b93c5f" data-text-edit-schema="1"></div>
 
 
 
@@ -980,8 +1028,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

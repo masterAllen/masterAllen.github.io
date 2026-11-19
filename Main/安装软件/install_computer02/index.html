@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -649,17 +649,37 @@
   
 
 
+<!-- blog-edit-start:c2696d222886c265:b0 -->
+
 <h1 id="_1">装机记二：常用软件安装</h1>
+<!-- blog-edit-end:c2696d222886c265:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c2696d222886c265673f9919116ef0d984ebce50cbad8778d02bfe04ecc6cf23" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%5Cinstall_computer02.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\安装软件\install_computer02.md">复制路径</span></div>
+
+<!-- blog-edit-start:c2696d222886c265:b1 -->
 
 <p>安装后要做的事情...</p>
 <!--more-->
+
+<!-- blog-edit-end:c2696d222886c265:b1 -->
+<!-- blog-edit-start:c2696d222886c265:b2 -->
+
 <h2 id="pacman">Pacman 设置</h2>
+<!-- blog-edit-end:c2696d222886c265:b2 -->
+<!-- blog-edit-start:c2696d222886c265:b3 -->
+
 <p><code>vim etc/pacman.conf</code><br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>[archlinuxcn]
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>Server = https://repo.archlinuxcn.org/$arch
 </span></code></pre></div></p>
+<!-- blog-edit-end:c2696d222886c265:b3 -->
+
+<!-- blog-edit-start:c2696d222886c265:b4 -->
+
 <h2 id="_2">基本安装</h2>
+<!-- blog-edit-end:c2696d222886c265:b4 -->
+<!-- blog-edit-start:c2696d222886c265:b5 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 图形基本支持包</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>xorg
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="c1"># git</span>
@@ -697,7 +717,14 @@
 </span><span id="__span-1-35"><span class="linenos" data-linenos="35 "></span><span class="c1"># BaiduNetdisk</span>
 </span><span id="__span-1-36"><span class="linenos" data-linenos="36 "></span>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>baidunetdisk-bin
 </span></code></pre></div>
+<!-- blog-edit-end:c2696d222886c265:b5 -->
+
+<!-- blog-edit-start:c2696d222886c265:b6 -->
+
 <h2 id="_3">手动设置</h2>
+<!-- blog-edit-end:c2696d222886c265:b6 -->
+<!-- blog-edit-start:c2696d222886c265:b7 -->
+
 <ul>
 <li>
 <p>polybar<br />
@@ -756,9 +783,20 @@
 </span></code></pre></div></p>
 </li>
 </ul>
+<!-- blog-edit-end:c2696d222886c265:b7 -->
+
+<!-- blog-edit-start:c2696d222886c265:b8 -->
+
 <p>在<code>Exec</code>的一行添加<code>--force-device-scale-factor=2.0</code>，意思为扩大两倍。<br />
 例如更改后为<code>Exec=/usr/lib/baidunetdisk/baidunetdisk --no-sandbox --force-device-scale-factor=2.0 %U</code></p>
+<!-- blog-edit-end:c2696d222886c265:b8 -->
+
+<!-- blog-edit-start:c2696d222886c265:b9 -->
+
 <h2 id="_4">登录界面</h2>
+<!-- blog-edit-end:c2696d222886c265:b9 -->
+<!-- blog-edit-start:c2696d222886c265:b10 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># /etc/lightdm/lightdm.conf</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="c1"># [Seat:*] 下面</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span>greeter-session<span class="o">=</span>lightdm-webkit2-greeter
@@ -770,7 +808,14 @@
 </span><span id="__span-9-9"><span class="linenos" data-linenos=" 9 "></span><span class="c1"># /etc/lightdm</span>
 </span><span id="__span-9-10"><span class="linenos" data-linenos="10 "></span>修改<span class="w"> </span>lightdm-webkit2-greeter.conf<span class="w"> </span>:<span class="w"> </span>theme
 </span></code></pre></div>
+<!-- blog-edit-end:c2696d222886c265:b10 -->
+
+<!-- blog-edit-start:c2696d222886c265:b11 -->
+
 <h2 id="_5">配置表</h2>
+<!-- blog-edit-end:c2696d222886c265:b11 -->
+<!-- blog-edit-start:c2696d222886c265:b12 -->
+
 <table>
 <thead>
 <tr>
@@ -813,6 +858,9 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:c2696d222886c265:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\安装软件\install_computer02.md" data-text-edit-revision="c2696d222886c265673f9919116ef0d984ebce50cbad8778d02bfe04ecc6cf23" data-text-edit-marker="c2696d222886c265" data-text-edit-schema="1"></div>
 
 
 
@@ -1044,8 +1092,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -777,16 +777,42 @@
   
 
 
+<!-- blog-edit-start:5fb0ca8caa2f060a:b0 -->
+
 <h1 id="_1">形态学</h1>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="33446e6b8b2274e746107b3fe47140c9ed7beeb08e3cccfecb91eb2c6f429c3d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C04.%E5%BD%A2%E6%80%81%E5%AD%A6.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\04.形态学.md">复制路径</span></div>
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.3.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.3.md</a></p>
 </blockquote>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b1 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b2 -->
+
 <p>知道形态学是干什么的，这个任何一本基本的图像处理书肯定会讲的，而且在网上搜一下实战即可；<strong>重点是什么时候想到用形态学：涉及到极大极小都可以去往这方面想</strong>。其实形态学也可以归类为滤波。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b2 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b3 -->
+
 <p>一些经典的操作：<strong>提取确定前景、背景，涉及到轮廓等操作</strong>，都可以去想形态学。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b3 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b4 -->
+
 <p>形态学中还有一个叫做 RunLength Encode 的技术，这个不是图形处理方法，而是用于加快速度和节省空间，具体看最后的章节。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b4 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b5 -->
+
 <h2 id="_2">函数说明</h2>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b5 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b6 -->
+
 <ul>
 <li><a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gac342a1bb6eabf6f55c803b09268e36dc">getStructingElement</a>：构造形态学的<mark class="term-highlight">滤波核</mark></li>
 <li><a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga67493776e3ad1a3df63883829375201f">morphologyEx</a>: 形态学的通用函数</li>
@@ -794,45 +820,135 @@
 <li><a href="https://docs.opencv.org/3.4/d7/d1b/group__imgproc__misc.html#ga8a0b7fdfcb7a13dde018988ba3a43042">distanceTransform</a>: 距离变换函数，通常用于提取确定前景</li>
 <li><a href="https://docs.opencv.org/4.x/df/d2d/group__ximgproc.html#ga37002c6ca80c978edb6ead5d6b39740c">thinning</a>: 细化图片，最终会得到特别细的图片</li>
 </ul>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b6 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b7 -->
+
 <h2 id="_3">具体细节</h2>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b7 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b8 -->
+
 <h3 id="getstructingelement">getStructingElement</h3>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b8 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b9 -->
+
 <p>shape: 形状，有三种：矩形、十字架、椭圆；如果 shape 不满足的话，比如需要菱形，可以不用这个函数，自己构造 ndarray</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b9 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b10 -->
+
 <h3 id="morphologyex">morphologyEx</h3>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b10 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b11 -->
+
 <p><img alt="1720770456919" src="../../../../asset/image/632e5bf7aeea145afa1c6bc631e3460b/1720770456919.png" /></p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b11 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b12 -->
+
 <ul>
 <li>滤波核是 uint8，但本质其实是 bool，值分为 0 和 非0；输入块可以是 uint8, uint16 等，最后结果和输入块一样类型</li>
 <li>op: 形态学操作，包括膨胀腐蚀、开闭等等，具体请参考<a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga7be549266bad7b2e6a04db49827f9f32">文档</a></li>
 <li>iterations: 遍历次数；注意这里的顺序是按照膨胀腐蚀的粒度来进行的。例子：an opening operation (MORPH_OPEN) with two iterations is equivalent to apply successively: erode → erode → dilate → dilate (and not erode → dilate → erode → dilate).</li>
 </ul>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b12 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b13 -->
+
 <h3 id="erode-dilate">erode, dilate</h3>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b13 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b14 -->
+
 <p>膨胀腐蚀操作，完全可以被上面的函数替代（即赋值 op 为相对应的操作）</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b14 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b15 -->
+
 <p>腐蚀，膨胀的概念要知道，这方面以前一直没有注意，老是觉得只是分别用来扩大黑白块的，而且网上大部分资料其实很差：要么过于学术了，用集合去定义，非常绕口；要么过于错误，如前所述，认为是扩充或减小边界的。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b15 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b16 -->
+
 <p><strong>按照大白话解释就是：腐蚀是赋值为其在 Kernel 上所有非零位置的最小值；膨胀是赋值其在 Kernel 上所有非零位置的最大值。</strong></p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b16 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b17 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">erode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">dilate</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">k</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">8</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b17 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b18 -->
+
 <h3 id="distancetransform">distanceTransform</h3>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b18 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b19 -->
+
 <p><strong>函数常见作用：细化轮廓、提取前景</strong>，可以在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_moro.ipynb">test_moro.ipynb</a> 中查看其应用和表现。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b19 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b20 -->
+
 <p>点击<a href="https://docs.opencv.org/3.4/d7/d1b/group__imgproc__misc.html#ga8a0b7fdfcb7a13dde018988ba3a43042">链接</a>去看 OpenCV 的说明，但其实官方链接写的很绕口，下面进一步说明。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b20 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b21 -->
+
 <p>首先必须明确函数是干什么的：给原图的<strong>每一个像素</strong>，计算它到<strong>最近的 0 像素</strong>的距离。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b21 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b22 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">distanceTransform</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">distanceType</span><span class="p">,</span> <span class="n">maskSize</span><span class="p">[,</span> <span class="n">dst</span><span class="p">[,</span> <span class="n">dstType</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">dst</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">distanceTransformWithLabels</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">distanceType</span><span class="p">,</span> <span class="n">maskSize</span><span class="p">[,</span> <span class="n">dst</span><span class="p">[,</span> <span class="n">labels</span><span class="p">[,</span> <span class="n">labelType</span><span class="p">]]])</span> <span class="o">-&gt;</span>   <span class="n">dst</span><span class="p">,</span> <span class="n">labels</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b22 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b23 -->
+
 <h4 id="1">1. 函数作用</h4>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b23 -->
+<!-- blog-edit-start:5fb0ca8caa2f060a:b24 -->
+
 <blockquote>
 <p>Calculates the distance to the closest zero pixel for each pixel of the source image.<br />
 The function cv::distanceTransform calculates the approximate or precise distance from every binary image pixel to the nearest zero pixel. For zero image pixels, the distance will obviously be zero.</p>
 </blockquote>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b24 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b25 -->
+
 <p>给原图的<strong>每一个像素</strong>，计算它到<strong>最近的 0 像素</strong>的距离。原图是二值图，0 和 非 0，其中 0 像素的距离为 0，非 0 像素的距离为它到最近的 0 像素的距离。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b25 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b26 -->
+
 <h4 id="2">2. 两种计算算法</h4>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b26 -->
+<!-- blog-edit-start:5fb0ca8caa2f060a:b27 -->
+
 <blockquote>
 <p>When maskSize == DIST_MASK_PRECISE and distanceType == DIST_L2 , the function runs the algorithm described in [89] . This algorithm is parallelized with the TBB library.<br />
 In other cases, the algorithm [36] is used.</p>
 </blockquote>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b27 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b28 -->
+
 <p>函数有两种计算方式：</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b28 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b29 -->
+
 <ol>
 <li>
 <p><strong>精确算法</strong></p>
@@ -856,19 +972,42 @@ In other cases, the algorithm [36] is used.</p>
 <p>用论文[36]的快速近似算法</p>
 </li>
 </ol>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b29 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b30 -->
+
 <h4 id="3">3. 近似算法的原理（非常重要）</h4>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b30 -->
+<!-- blog-edit-start:5fb0ca8caa2f060a:b31 -->
+
 <blockquote>
 <p>This means that for a pixel the function finds the shortest path to the nearest zero pixel consisting of basic shifts: horizontal, vertical, diagonal, or knight's move (the latest is available for a 5x5 mask).<br />
 The overall distance is calculated as a sum of these basic distances.</p>
 </blockquote>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b31 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b32 -->
+
 <p>近似算法不是直接算直线距离，而是<strong>按“走路步数”算总距离</strong>，这个时候和参数 <code>distanceType</code> 和 <code>maskSize</code> 很有关系，具体如下：</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b32 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b33 -->
+
 <p>对于 <code>distanceType</code> 而言，定义距离类型，可以为 DIST_L1、DIST_L2、DIST_C：</p>
 <ul>
 <li>DIST_L1: <code>|x1 - x2| + |y1 - y2|</code></li>
 <li>DIST_L2: <code>sqrt((x1 - x2)^2 + (y1 - x2)^2)</code>，欧式距离</li>
 <li>DIST_C: <code>max(|x1 - x2|, |y1 - y2|)</code>，曼哈顿距离</li>
 </ul>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b33 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b34 -->
+
 <p>对于 <code>maskSize</code> 而言，定义步长范围，可以为 3 或 5：</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b34 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b35 -->
+
 <ol>
 <li>对于 3x3 而言，那只有横竖走和斜着走两种情况；</li>
 <li>
@@ -894,8 +1033,19 @@ The overall distance is calculated as a sum of these basic distances.</p>
 </li>
 <li>对于 5x5 的 (3, 3) 点，由于范围是 5x5，所以它只用走一步就到了 (1, 2)，即走一个马步即可，这样代价为 2.1969</li>
 </ol>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b39 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b40 -->
+
 <p><img alt="1727347970240" src="../../../../asset/image/632e5bf7aeea145afa1c6bc631e3460b/1727347970240.png" /></p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b40 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b41 -->
+
 <h4 id="4">4. 实际使用建议</h4>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b41 -->
+<!-- blog-edit-start:5fb0ca8caa2f060a:b42 -->
+
 <blockquote>
 <p>Typically, for a fast, coarse distance estimation DIST_L2, a 3x3 mask is used. For a more accurate distance estimation DIST_L2, a 5x5 mask or the precise algorithm is used.</p>
 </blockquote>
@@ -904,26 +1054,77 @@ The overall distance is calculated as a sum of these basic distances.</p>
 <li>要<strong>准 + 稍慢</strong>：<code>DIST_L2 + 5×5</code></li>
 <li>要<strong>最精准</strong>：<code>DIST_MASK_PRECISE</code></li>
 </ul>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b42 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b43 -->
+
 <p>两种算法速度都是 <strong>O(n)</strong>（和像素数量成正比），都非常快。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b43 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b44 -->
+
 <h4 id="5-voronoi">5. 带标签的扩展功能（Voronoi 图）</h4>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b44 -->
+<!-- blog-edit-start:5fb0ca8caa2f060a:b45 -->
+
 <blockquote>
 <p>This variant of the function does not only compute the minimum distance for each pixel (x, y) but also identifies the nearest connected component consisting of zero pixels (labelType == DIST_LABEL_CCOMP) or the nearest zero pixel (labelType == DIST_LABEL_PIXEL).</p>
 </blockquote>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b45 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b46 -->
+
 <p>这个函数还能<strong>同时输出标签图</strong>，告诉你：每个像素<strong>属于哪一个 0 像素区域</strong>。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b46 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b47 -->
+
 <p>参数 <code>labelType</code> 定义了标签模式，有两种：</p>
 <ol>
 <li><code>DIST_LABEL_CCOMP</code>：标记离当前像素最近的<strong>连通的 0 像素区域</strong></li>
 <li><code>DIST_LABEL_PIXEL</code>：标记离当前像素最近的<strong>0 像素</strong></li>
 </ol>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b47 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b48 -->
+
 <p>这个功能本质就是<strong>快速计算二值图像的 Voronoi 图</strong>。注意：<strong>带标签模式只能用近似算法，不支持精确模式。</strong></p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b48 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b49 -->
+
 <h3 id="thinning">thinning</h3>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b49 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b50 -->
+
 <p>ximgproc 实现的函数，如名字所述，函数作用是彻底细化，最后每条粗线细化成一条线的程度。可以在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_moro.ipynb">test_moro.ipynb</a> 中看其表现情况，这里给出简单代码：</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b50 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b51 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">thin1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">thinning</span><span class="p">(</span><span class="n">binary_img</span><span class="p">,</span> <span class="n">thinningType</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">THINNING_ZHANGSUEN</span><span class="p">)</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">thin2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">thinning</span><span class="p">(</span><span class="n">binary_img</span><span class="p">,</span> <span class="n">thinningType</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">THINNING_GUOHALL</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b51 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b52 -->
+
 <h2 id="run-length-encode">Run-Length Encode</h2>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b52 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b53 -->
+
 <p>这是在 <a href="https://docs.opencv.org/4.x/df/def/group__ximgproc__run__length__morphology.html">ximgproc 里面实现的一个功能</a>，这种编码方式将连续的 "on" 像素序列组合在一个叫做 "run" 的结构中。也容易想到，每个 "run" 记录了这些连续 "on" 的第一个像素的位置和最后一个像素的位置。对于一些连续 on 或 off 的图像（如棋盘格），这种表示非常紧凑；而对于从随机噪声图像或其他相邻像素之间相关性很小的图像创建的二值图像不太适用。</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b53 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b54 -->
+
 <p>对于这种表示方法，支持的形态学操作与常规模块支持的操作基本相同。通常情况下这种更快，但注意是通常，也有慢的时候。看代码即可，只能用 CPP，前面加个 rl 这个 namespace 就表示用的是 Run-Length Encode 这种编码，用法基本是一样的...</p>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b54 -->
+
+<!-- blog-edit-start:5fb0ca8caa2f060a:b55 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;opencv2/imgproc.hpp&quot;</span>
@@ -1001,6 +1202,9 @@ The overall distance is calculated as a sum of these basic distances.</p>
 </span><span id="__span-3-75"><span class="linenos" data-linenos="75 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-3-76"><span class="linenos" data-linenos="76 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5fb0ca8caa2f060a:b55 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\04.形态学.md" data-text-edit-revision="33446e6b8b2274e746107b3fe47140c9ed7beeb08e3cccfecb91eb2c6f429c3d" data-text-edit-marker="5fb0ca8caa2f060a" data-text-edit-schema="1"></div>
 
 
 
@@ -1232,8 +1436,6 @@ The overall distance is calculated as a sum of these basic distances.</p>
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

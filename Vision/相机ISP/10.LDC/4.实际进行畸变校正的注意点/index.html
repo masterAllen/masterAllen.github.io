@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,18 +666,60 @@
   
 
 
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b0 -->
+
 <h1 id="_1">实际进行畸变校正的注意点</h1>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c2b33f131789cc78898d13b1c1a4e64b919d85b0ef1efe7643e80cd0266bd8d7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C10.LDC%5C4.%E5%AE%9E%E9%99%85%E8%BF%9B%E8%A1%8C%E7%95%B8%E5%8F%98%E6%A0%A1%E6%AD%A3%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C10.LDC" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\10.LDC\4.实际进行畸变校正的注意点.md">复制路径</span></div>
 
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b1 -->
+
 <p>有一个项目用到了畸变校正，总结一下注意点</p>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b1 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b2 -->
+
 <h2 id="_2">实验图多大于少</h2>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b2 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b3 -->
+
 <p>项目采图比较麻烦，所以一开始只用了十二张，但效果很不好。建议还是老老实实多采一些图，三十张吧，然后可以从中进行采样以此来比较健壮性。不然只用十几张，风险很大，不好确定是否这十几张就是完美的。</p>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b3 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b4 -->
+
 <h2 id="_3">对校正的图进行反求来验证结果</h2>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b4 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b5 -->
+
 <p>实际使用的过程中，我发现我经常会弄混畸变和反畸变。所以建议两个程序都做，这样不会乱掉，即流程是：采畸变图 → 畸变校正得到一张图 → 对这个图再进行反求回到畸变的图。</p>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b5 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b6 -->
+
 <h2 id="_4">进行常规畸变和鱼眼镜头畸变</h2>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b6 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b7 -->
+
 <p>最好做两种模型的畸变，一个常规的张正友畸变，另一个是鱼眼镜头畸变。具体做法问 AI，用两个才能比较出效果。我一开始就用的正常的畸变校正，看了一下结果以为还可以，但实际过了一段时间才发现原来应该用鱼眼镜头畸变的模型。</p>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b7 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b8 -->
+
 <h2 id="_5">简单的代码展示</h2>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b8 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b9 -->
+
 <p>如下是简单的一个代码展示，具体的做法在同目录的 code 文件夹中。</p>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b9 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b10 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="  1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="  2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="  3 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
@@ -805,10 +847,17 @@
 </span><span id="__span-0-125"><span class="linenos" data-linenos="125 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-0-126"><span class="linenos" data-linenos="126 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b10 -->
+
+<!-- blog-edit-start:a38e3f1c24c5f7b5:b11 -->
+
 <p>结果如图（原始畸变图→畸变校正图→还原畸变图）：<br />
 <img alt="img1" src="../../../../asset/image/f267c5d49f5d185094ee43eed5990a56/cap_image_3.jpg" /><br />
 <img alt="img2" src="../../../../asset/image/5a4764570161e0eeee30001b0e3db1b8/undistorted_manual.jpg" /><br />
 <img alt="img3" src="../../../../asset/image/5a4764570161e0eeee30001b0e3db1b8/undistorted_manual_again.jpg" /></p>
+<!-- blog-edit-end:a38e3f1c24c5f7b5:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\10.LDC\4.实际进行畸变校正的注意点.md" data-text-edit-revision="c2b33f131789cc78898d13b1c1a4e64b919d85b0ef1efe7643e80cd0266bd8d7" data-text-edit-marker="a38e3f1c24c5f7b5" data-text-edit-schema="1"></div>
 
 
 
@@ -1040,8 +1089,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

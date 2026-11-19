@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -626,23 +626,84 @@
   
 
 
+<!-- blog-edit-start:408d248b44a4f1a5:b0 -->
+
 <h1 id="_1">远程连接方式记录</h1>
+<!-- blog-edit-end:408d248b44a4f1a5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2fda0580629e6ea6609b59ae9a06c5073626d3d54faff39d2d37248799ade1e9" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\远程连接方法记录.md">复制路径</span></div>
 
+<!-- blog-edit-start:408d248b44a4f1a5:b1 -->
+
 <p>当前这个社会，远程连接已经是愈发重要了。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b1 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b2 -->
+
 <h2 id="windows-ip">远程电脑是 Windows 并且有公网 IP</h2>
+<!-- blog-edit-end:408d248b44a4f1a5:b2 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b3 -->
+
 <p>无脑 RDP 完事，本地如果是 Windows，那直接用自带的远程桌面连接；如果是 Linux，推荐用 Remmina。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b3 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b4 -->
+
 <h2 id="linux">远程电脑是 Linux</h2>
+<!-- blog-edit-end:408d248b44a4f1a5:b4 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b5 -->
+
 <p><strong>不要用 VNC！不要用 VNC！不要用 VNC！</strong></p>
+<!-- blog-edit-end:408d248b44a4f1a5:b5 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b6 -->
+
 <p>即使购买服务器，搭建端口转发，也不要用 VNC，血的教训。不仅卡，而且会重复传输，极大影响心情和效率。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b6 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b7 -->
+
 <h3 id="_2">使用远程工具</h3>
+<!-- blog-edit-end:408d248b44a4f1a5:b7 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b8 -->
+
 <p>最简单的，就安装向日葵或者 todesk，这种商业软件是做过适配的，所以体验比 VNC 好很多。不仅如此，商业软件自己用的服务器肯定质量好很多，比自己购买服务器做端口转发其实要很多的。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b8 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b9 -->
+
 <p>所以说，开源的东西只能做到好，但是做到很好的，还是要有商业来推动。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b9 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b10 -->
+
 <h3 id="_3">传输数据后本地渲染</h3>
+<!-- blog-edit-end:408d248b44a4f1a5:b10 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b11 -->
+
 <p>我只是一个程序需要 GUI，而且是很小的程序，其实可以直接把数据传输给本地后渲染。我当时一个项目就是这样做的，体验非常好，而且现在有 AI 辅助，可以很好地写传输逻辑和渲染程序。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b11 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b12 -->
+
 <p>传输协议使用的 websocket，而且如果为了安全，可以使用 SSH 隧道，只要开了 SSH 的 22 端口就可以了，甚至不需要额外的端口，避免被扫，即 <code>localhost:9000</code> → <code>server:22</code> → <code>server:5000</code> 这种方式。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b12 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b13 -->
+
 <p>此外，可以进行数据压缩，但其实我当时没有压缩都已经足够了；进行一些规定，比如图片和文字的区别，图片开头加入如 <code>0xAA 0xAA ...</code> 这些固定结构。但其实我当时甚至没有规定，因为我用的是 JPG，所以直接判断是否 JPG 开头的标识，如果是，那就接受到图片缓存中，直到接收到 JPG 结尾的标识。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b13 -->
+
+<!-- blog-edit-start:408d248b44a4f1a5:b14 -->
+
 <p>如果项目是不太庞大的，<strong>推荐这种方式</strong>，而且这个用起来真的很顺滑，远程一直挂载 <code>do_in_server.py</code> 就行，本地什么时候想看了，直接本地启动 <code>do_in_client.py</code> 进行通讯即可。</p>
+<!-- blog-edit-end:408d248b44a4f1a5:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\远程连接方法记录.md" data-text-edit-revision="2fda0580629e6ea6609b59ae9a06c5073626d3d54faff39d2d37248799ade1e9" data-text-edit-marker="408d248b44a4f1a5" data-text-edit-schema="1"></div>
 
 
 
@@ -874,8 +935,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

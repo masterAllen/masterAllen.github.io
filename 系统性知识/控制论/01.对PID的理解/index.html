@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -738,67 +738,240 @@
   
 
 
+<!-- blog-edit-start:9be6f517457cbc0e:b0 -->
+
 <h1 id="pid">对 PID 的一些理解</h1>
+<!-- blog-edit-end:9be6f517457cbc0e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="172b49faab737d9b61a495b0ffaa4e8b80b34b77fa63a0e6f30397ddde19dda6" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%8E%A7%E5%88%B6%E8%AE%BA%5C01.%E5%AF%B9PID%E7%9A%84%E7%90%86%E8%A7%A3.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%8E%A7%E5%88%B6%E8%AE%BA" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\控制论\01.对PID的理解.md">复制路径</span></div>
 
+<!-- blog-edit-start:9be6f517457cbc0e:b1 -->
+
 <h2 id="_1">经典问题的引入</h2>
+<!-- blog-edit-end:9be6f517457cbc0e:b1 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b2 -->
+
 <p>首先是一个经典的小车问题，为了简单，假设是 <strong>一维</strong> 的移动。现在需要把小车移动到目标位置，该如何编程？每次移动控制的是什么变量，该如何控制？</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b2 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b3 -->
+
 <h3 id="_2">最开始的逻辑</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b3 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b4 -->
+
 <p>对于没有学控制论的人而言（比如一开始的我），很自然去想到是控制时间：<strong>每一次给定时间，然后计算这个时间运动的距离，从而算出速度；下一次计算到目标的距离，然后用上一次的速度算出时间。</strong></p>
+<!-- blog-edit-end:9be6f517457cbc0e:b4 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b5 -->
+
 <p>虽然这个也算是一个负反馈，但其实这样操作并不好，其实他本质上是这样的逻辑：每秒钟进行判断，判断是否运动；如果动那么按照默认速度运行。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b5 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b6 -->
+
 <p>我完全可以拆分成时间切片处理：比如拆分为每隔 1 秒进行判断，每次判断是否需要继续运动。这个好处就是可以更快的调整，比如由于有误差，其实 9 秒就可以了，这样在第 9 秒的时候，就可以及时停止。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b6 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b7 -->
+
 <h3 id="_3">修改一：时间切片</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b7 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b8 -->
+
 <p>从上面的时间切片可以看出，最开始的逻辑太粗暴了：就只是动、不动。所以更好的其实是<strong>按照时间切片，然后控制速度</strong>：</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b8 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b9 -->
+
 <ul>
 <li>比如这一秒钟我发现距离目标是 3m，那么控制速度是 3m/s</li>
 <li>下一秒钟要到目的了，发现还剩 1m，那么控制速度是 1m/s</li>
 </ul>
+<!-- blog-edit-end:9be6f517457cbc0e:b9 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b10 -->
+
 <p>这样整体的收敛速度会快很多。<strong>其实这个逻辑，就是 PID 中只用 P！</strong> 可以看 PID 的公式：</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b10 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b11 -->
+
 <div class="arithmatex">\[
 u(t) = K_p e(t) + K_i \int_0^t e(\tau), d\tau + K_d \frac{de(t)}{dt}
 \]</div>
+<!-- blog-edit-end:9be6f517457cbc0e:b11 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b12 -->
+
 <p>其实就是 <span class="arithmatex">\(K_p = 1\)</span>，其中 <span class="arithmatex">\(e(t)\)</span> 表示离目标的距离（用位置传感器实现），<span class="arithmatex">\(u(t)\)</span> 就是速度。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b12 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b13 -->
+
 <h3 id="p">修改二：纯 P 控制的问题</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b13 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b14 -->
+
 <p>然后就是第二个疑惑：<strong>这样纯 P 控制，感觉很完美呀。</strong> 但纯 P 有一个致命问题，会有稳态误差：</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b14 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b15 -->
+
 <blockquote>
 <p>假设小车在运动中会受到地面的恒定摩擦力，为了克服摩擦力保持运动，小车至少需要 1 m/s 的速度。低于这个速度，摩擦力会使小车减速并停止。当 <span class="arithmatex">\(K_p = 1\)</span> 并且距目标还有 1m 时，此时小车会静止不动。此时系统的稳态误差为 1m。</p>
 </blockquote>
+<!-- blog-edit-end:9be6f517457cbc0e:b15 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b16 -->
+
 <p>所以我们需要引入积分项，来消除这个稳态误差。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b16 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b17 -->
+
 <h3 id="pid_1">系统学习 PID</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b17 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b18 -->
+
 <p>通过上面的例子就可以看出 PID 的合理性了，一开始我们是控制时间，后来发现时间可以分片，再后来发现本质上就是纯 P 控制，再后来发现这种纯 P 控制其实有稳态误差。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b18 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b19 -->
+
 <p>之后就是系统、理论的分析了。可以看 DR_CAN 的视频（强推该 UP 主），从 P3 一直看到 P5:</p>
 <ol>
 <li>P3: <a href="https://www.bilibili.com/video/BV1W441167qn">https://www.bilibili.com/video/BV1W441167qn</a></li>
 <li>P4: <a href="https://www.bilibili.com/video/BV16441117hJ">https://www.bilibili.com/video/BV16441117hJ</a></li>
 <li>P5: <a href="https://www.bilibili.com/video/BV14J411A7M2">https://www.bilibili.com/video/BV14J411A7M2</a></li>
 </ol>
+<!-- blog-edit-end:9be6f517457cbc0e:b19 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b20 -->
+
 <h2 id="_4">结合图像进行负反馈</h2>
+<!-- blog-edit-end:9be6f517457cbc0e:b20 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b21 -->
+
 <p>现在开始引入了新的东西：相机。我们的目标不再是把小车移动到物理上的位置，而是把<strong>小车移动到图像上的目标位置</strong>。那么现在控制什么变量？该如何控制。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b21 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b22 -->
+
 <h3 id="_5">位置或角度作为输入</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b22 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b23 -->
+
 <p>我们第一个问题中是控制速度，但一般情况下小车、机械臂给我们控制的是<strong>位置或者角度</strong>，也就是小车移动到物理位置哪里，机械臂转到多少角度。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b23 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b24 -->
+
 <p>其实这里面内置了一套速度转为位置的逻辑。这个是小车、机械臂内部自己电机做的，其实就是用 PID 来实现控制速度的。用户买了之后，一般没有调整速度的接口（或者说也没有必要）。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b24 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b25 -->
+
 <h3 id="_6">解决方案一：图像和物理位置映射</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b25 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b26 -->
+
 <p>最顺畅的逻辑就是，每次移动一个位置之后，计算物理位置改变量和图片位置改变量的映射。然后下次移动，就计算图片位置改变量，转换为物理位置改变量，下发指令即可。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b26 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b27 -->
+
 <p>这个思路没有问题，后续我们还会提到这个。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b27 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b28 -->
+
 <h3 id="pid_2">解决方案二：使用 PID 控制</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b28 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b29 -->
+
 <p>那如果是 PID 方案呢？如下是工业中常用的离散 PID，输入 <span class="arithmatex">\(e[k]\)</span> 是图像上的误差，输出 <span class="arithmatex">\(\Delta u[k]\)</span> 是位置传感器的改变量：</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b29 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b30 -->
+
 <div class="arithmatex">\[
 \Delta u[k] = K_p (e[k]-e[k-1]) + K_i e[k] + K_d (e[k]-2e[k-1]+e[k-2])
 \]</div>
+<!-- blog-edit-end:9be6f517457cbc0e:b30 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b31 -->
+
 <h3 id="_7">回到第一个方案</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b31 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b32 -->
+
 <p>其实上面第一个方法中，计算物理改变量和图片位置改变的映射，再去计算现在的物理改变量，它的公式为：</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b32 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b33 -->
+
 <div class="arithmatex">\[
 \Delta u[k] = \frac{\Delta u[k-1]}{e[k] - e[k-1]} * e[k]
 \]</div>
+<!-- blog-edit-end:9be6f517457cbc0e:b33 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b34 -->
+
 <p>这个方法要注意就是改变量小的时候，噪声比较大。因此要收敛的时候往往会有很大的震动，这个也叫做 <strong>死区</strong>。如果处理线性系统，工业一般都是使用 PID，毕竟实在是简单有效。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b34 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b35 -->
+
 <h3 id="_8">视觉伺服和雅可比矩阵</h3>
+<!-- blog-edit-end:9be6f517457cbc0e:b35 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b36 -->
+
 <p>但是为什么还有这个方案？很简单：<a href="#r">有很多非线性系统，其实这个方案就是 <strong>视觉伺服</strong> 中的雅可比矩阵</a>。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b36 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b37 -->
+
 <p>最常见的，现在不是一维，而是有俯仰角和方位角的 <strong>二维云台</strong>，这样相机上改变俯仰角时，图像的横纵坐标都是改变的，所以不能就简单做两个 PID，因为：<a href="#r">控制一个之后会影响另一个</a>。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b37 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b38 -->
+
 <p>有对应的方法叫做解耦，如果能解耦成功，那么就可以用两个 PID 了；但比如像上面所说的云台操控，比较难解耦，所以就有了新的方法。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b38 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b39 -->
+
 <p>雅可比矩阵本质上就理解成物理运动量和图像运动量的映射关系。比如我们所说的二维云台、图像横纵坐标，所以就是一个 <span class="arithmatex">\(2 \times 2\)</span> 的矩阵。它里面的每个元素就是物理运动量和图像运动量的映射关系，即俯仰或者方位变化 1 度的时候，图像横纵坐标变化了多少。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b39 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b40 -->
+
 <h2 id="pid_3">PID 动态调整</h2>
+<!-- blog-edit-end:9be6f517457cbc0e:b40 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b41 -->
+
 <p>工程实践中，很多时候一个 PID 无法满足所有控制。比如负载变化、摩擦变化、外部干扰等，距离目标远和距离目标近，需要不同的 PID 参数。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b41 -->
+
+<!-- blog-edit-start:9be6f517457cbc0e:b42 -->
+
 <p>那么我们是否可以动态学习 PID 参数，然后实时改进。可以是可以，但是非常冒险和不稳定；这种情况下，最推荐也是最简单的方法就是<strong>多段 PID</strong>，也就是多段采用不同的 PID 参数。</p>
+<!-- blog-edit-end:9be6f517457cbc0e:b42 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\控制论\01.对PID的理解.md" data-text-edit-revision="172b49faab737d9b61a495b0ffaa4e8b80b34b77fa63a0e6f30397ddde19dda6" data-text-edit-marker="9be6f517457cbc0e" data-text-edit-schema="1"></div>
 
 
 
@@ -1030,8 +1203,6 @@ u(t) = K_p e(t) + K_i \int_0^t e(\tau), d\tau + K_d \frac{de(t)}{dt}
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

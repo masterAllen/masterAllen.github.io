@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,10 +581,20 @@
   
 
 
+<!-- blog-edit-start:4fb9e0fc30caa522:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录三：字典和集合</h1>
+<!-- blog-edit-end:4fb9e0fc30caa522:b0 -->
+
 <div class="file-actions" data-image-edit-revision="256e6448a5e7dcf604afe5d4befb91b9fa12b1f86fec75dc9a5b8711a146ef04" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_03.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_03.md">复制路径</span></div>
 
+<!-- blog-edit-start:4fb9e0fc30caa522:b1 -->
+
 <p>主要是 dict &amp;&amp; set 的一些知识</p>
+<!-- blog-edit-end:4fb9e0fc30caa522:b1 -->
+
+<!-- blog-edit-start:4fb9e0fc30caa522:b2 -->
+
 <p>1. 向 dict 添加内容, 担心没有 key<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 做法一, 最普通的</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">my_dict</span><span class="p">:</span>
@@ -598,7 +608,15 @@
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span><span class="c1"># 做法三, 自创一个继承 dict 的类, 然后重载 __missing__ 方法</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4fb9e0fc30caa522:b2 -->
+
+<!-- blog-edit-start:4fb9e0fc30caa522:b3 -->
+
 <p>2. 什么时候应该用 set ?</p>
+<!-- blog-edit-end:4fb9e0fc30caa522:b3 -->
+
+<!-- blog-edit-start:4fb9e0fc30caa522:b4 -->
+
 <ul>
 <li>
 <p>找出两个对象中重合元素<br />
@@ -615,11 +633,22 @@
 <p>去重, 因为 set 会默认去重~</p>
 </li>
 </ul>
+<!-- blog-edit-end:4fb9e0fc30caa522:b4 -->
+
+<!-- blog-edit-start:4fb9e0fc30caa522:b5 -->
+
 <p>3. dict 和 set 的特点分析</p>
+<!-- blog-edit-end:4fb9e0fc30caa522:b5 -->
+
+<!-- blog-edit-start:4fb9e0fc30caa522:b6 -->
+
 <ul>
 <li>使用了散列表, 所以速度非常快, 然而代价是空间消耗内存大</li>
 <li>输出顺序和插入的顺序可能不一致, 因为可能某次插入导致散列表需要重新扩大, 导致顺序发生了改变</li>
 </ul>
+<!-- blog-edit-end:4fb9e0fc30caa522:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_03.md" data-text-edit-revision="256e6448a5e7dcf604afe5d4befb91b9fa12b1f86fec75dc9a5b8711a146ef04" data-text-edit-marker="4fb9e0fc30caa522" data-text-edit-schema="1"></div>
 
 
 
@@ -851,8 +880,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

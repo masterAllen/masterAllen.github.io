@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -711,28 +711,74 @@
   
 
 
+<!-- blog-edit-start:1cd69819c99845ed:b0 -->
+
 <h1 id="arena">arena</h1>
+<!-- blog-edit-end:1cd69819c99845ed:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ef991a5bc6f4d316e4785c3d866847e4499a7a2505b6bc6dcff2e0d84080f94c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C00.basic%5C05.arena.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C00.basic" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\00.basic\05.arena.md">复制路径</span></div>
 
+<!-- blog-edit-start:1cd69819c99845ed:b1 -->
+
 <p>arena 就是多个 Heap 组成的区域，每次 Heap 不够用了，然后就会申请下一个 Heap，而这多个 Heap 组成的区域就是 arena。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b1 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b2 -->
+
 <p>对于单线程而言，heap 的管理很简单，此时用的是全局变量 <code>main_arena</code>，即通过这个变量去找 fastbin 在哪里等等操作。但是对于多线程而言，heap 的管理就复杂了，下面进行详细介绍。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b2 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b3 -->
+
 <h2 id="heap">多线程下共用单 heap 问题</h2>
+<!-- blog-edit-end:1cd69819c99845ed:b3 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b4 -->
+
 <p>在以前，glibc 多线程也是使用一个堆空间，但这个效率会很低。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b4 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b5 -->
+
 <p>首先：多线程并不意味着轮流执行，同一时刻只有一个线程运行。在现代多核 CPU 中，真的有可能是在同时运行。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b5 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b6 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>CPU Core 0 → Thread A
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>CPU Core 1 → Thread B
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>CPU Core 2 → Thread C
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>CPU Core 3 → Thread D
 </span></code></pre></div>
+<!-- blog-edit-end:1cd69819c99845ed:b6 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b7 -->
+
 <p>其次：多线程意味着要上锁，而 <code>malloc</code> 和 <code>free</code> 不是原子操作，所以如果在中途退出，那么会大大降低效率。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b7 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b8 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>Thread A -&gt; malloc 
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>Thread A -&gt; lock heap
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>Thread A -&gt; malloc 还未结束时退出
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span>Thread B -&gt; malloc
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span>Thread B -&gt; lock heap -&gt; 被占用，等待 heap 被释放
 </span></code></pre></div>
+<!-- blog-edit-end:1cd69819c99845ed:b8 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b9 -->
+
 <h2 id="heap_1">解决思路：各线程都有各自 heap</h2>
+<!-- blog-edit-end:1cd69819c99845ed:b9 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b10 -->
+
 <p>那么如何改善，显然让各个线程都有各自的 heap，这个就非常好，各个线程各自进行 <code>malloc</code> 和 <code>free</code> 的时候，不用担心上锁的问题。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b10 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b11 -->
+
 <blockquote>
 <p>当时我的一个疑问：教科书上不是说多线程中共享栈、共享堆的吗？如果各个线程自己有各自堆，那还是共享吗？<br />
 回答：还是共享。因为这里的各自的堆不是说看不见的，举例而言：<br />
@@ -740,10 +786,30 @@
 2. Thread B 依然可以访问或者修改 <code>data</code>，只不过这个时候就触发了访问 Heap A，此时需要加把锁才行，那看来还是需要有锁机制。<br />
 3. 总结而言，Thread 访问 Heap(即便是自己的)依然需要锁机制，只不过这种的资源竞争概率比共用一个 Heap 大幅度降低。</p>
 </blockquote>
+<!-- blog-edit-end:1cd69819c99845ed:b11 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b12 -->
+
 <h2 id="heap_2">实际情况：线程和 heap 不是一对一</h2>
+<!-- blog-edit-end:1cd69819c99845ed:b12 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b13 -->
+
 <p>但实际情况不是这样的，一个程序可能会开好多个线程，这样要好多 heap 空间，我们知道 heap 大小一般是固定的，比如 132KB，可想而知这样有多可怕。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b13 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b14 -->
+
 <p>所以其实是线程共用一个 heap 池，即 heap 有最大数量。对于 32-bit 系统，是 <code>1+2*CoreNum</code>；对于 64-bit 系统，是 <code>1+8*CoreNum</code>。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b14 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b15 -->
+
 <p>举例而言，假设一个多线程应用，是主线程 + 3 个用户线程，而系统上限是只能创建 3 个 Heap，共享过程如下：</p>
+<!-- blog-edit-end:1cd69819c99845ed:b15 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b16 -->
+
 <ol>
 <li>主线程第一次调用 malloc：使用已存在的 main arena，无竞争。</li>
 <li>线程 1 和线程 2 第一次调用 malloc：各自创建新的 arena 并使用，仍然无竞争。到这里为止，线程与 arena 仍是 一对一 的关系。</li>
@@ -758,26 +824,85 @@
 <p>假如线程 3 成功锁住某个 arena，那么线程 3 以后就默认用这个 arena 了。（这是我的个人理解）</p>
 </li>
 </ol>
+<!-- blog-edit-end:1cd69819c99845ed:b16 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b17 -->
+
 <p>其实上面的过程，就是每个 Heap 加上锁机制。还是要强调一个观点：多个线程共用 heap 没有关系，只要上锁解锁能弄好就行。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b17 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b18 -->
+
 <p>对于上面第 4 小点，为什么我会个人认为会默认尽量让线程和 arena 绑定关系不动呢？因为我认为线程大部分都是操控自己申请的变量，比如线程 A 申请了 <code>pa=malloc(0x100)</code>、线程 B 申请了 <code>pb=malloc(0x100)</code>，那么线程 A 大部分时候是对 <code>pa</code> 进行操作，而不是操作别人申请的变量。所以默认不动 arena，这样大概率不会要等待锁。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b18 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b19 -->
+
 <h2 id="arena-heap">实际情况：arena 和 heap</h2>
+<!-- blog-edit-end:1cd69819c99845ed:b19 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b20 -->
+
 <p>上面的讲解中，都认为是对 Heap 进行和线程的绑定，其实是 arena，它是多个 Heap 组成的区域。一开始的时候 arena 里面只有一个 Heap（如默认的 132KB），当 Heap 用完之后，系统就会再申请一个 Heap，如此反复。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b20 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b21 -->
+
 <p>这个会给上面的多线程带来一个问题：arena 里面管理了 fastbin 等等链表，这个肯定是放在头部的，当有多个 Heap 的时候，释放某个块时，如何知道他是哪一个 arena？</p>
+<!-- blog-edit-end:1cd69819c99845ed:b21 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b22 -->
+
 <p>如下图所示，蓝色和粉色是不同的 arena，他们各自有三个和两个 Heap。现在释放某个块的时候，肯定要更新 fastbin 等链表，那么怎么去找到蓝色 arena 头部的管理结构？即如何找到 arena 的基地址？</p>
+<!-- blog-edit-end:1cd69819c99845ed:b22 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b23 -->
+
 <p><img alt="" src="../../../../../../asset/image/7f119f336bfb4cca237e1da88daf740d/20260131112808.png" /></p>
+<!-- blog-edit-end:1cd69819c99845ed:b23 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b24 -->
+
 <p>当 arena 只有一个 heap 的时候，其实很好知道基地址，即 <code>(ptr) &amp; ~(HEAP_MAX_SIZE - 1)</code> 就行了。但是多个 heap 就不可以了，这里脑洞一下，看到这里我感觉这个很像磁盘管理，所以可以使用 FAT 等文件系统的做法：</p>
+<!-- blog-edit-end:1cd69819c99845ed:b24 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b25 -->
+
 <ul>
 <li>如果 heap 是连续的，我们可以在每个 heap 的开头标上自己属于 arena 第几个 heap 了，这样可以迅速找到第一个 heap 的地址。</li>
 <li>如果 heap 不是连续的，我们可以在每个 heap 的开头标上 <code>prev</code> 和 <code>next</code> 指针。</li>
 </ul>
+<!-- blog-edit-end:1cd69819c99845ed:b25 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b26 -->
+
 <p>这里说一下 glibc 的做法，其实它有点像第二小点，在开头标上指针。这里的管理内容叫 <code>heap_info</code>，只不过 <code>heap_info</code> 里面其中一项存的是 <code>ar_ptr</code>，即管理 fastbin 链表等数据结构的地方。如下图所示：</p>
+<!-- blog-edit-end:1cd69819c99845ed:b26 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b27 -->
+
 <p><img alt="" src="../../../../../../asset/image/7f119f336bfb4cca237e1da88daf740d/20260131114147.png" /></p>
+<!-- blog-edit-end:1cd69819c99845ed:b27 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b28 -->
+
 <blockquote>
 <p>当时的疑问：为什么需要这么麻烦？每个线程中保存一个 arena 的变量不就可以了？<br />
 回答：当前操作的块不一定就是自己 arena 中的。比如在 Thread A 是生产者，它不断申请了块 <code>p=malloc(0x20)</code>；而 Thread B 是消费者，它不断的 <code>free(p)</code>。对于 Thread B 来说，此时 <code>p</code> 不在 arena b 中，所以只能通过这种方式进行。</p>
 </blockquote>
+<!-- blog-edit-end:1cd69819c99845ed:b28 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b29 -->
+
 <h2 id="_1">其他说明</h2>
+<!-- blog-edit-end:1cd69819c99845ed:b29 -->
+
+<!-- blog-edit-start:1cd69819c99845ed:b30 -->
+
 <p>在 chunk 的 <code>size</code> 中，末尾三位用于一些特殊含义，比如最后一位是 <code>prev_in_use</code>，而倒数第三位就是 <code>NON_MAIN_ARENA</code>，这个就是用于表示 chunk 是否是 main arena 中的。如果是的，直接用全局变量 <code>main_arena</code> 即可；如果不是，则需要按照上面的规则，先找 <code>heap_info</code>，再找 <code>ar_ptr</code>。</p>
+<!-- blog-edit-end:1cd69819c99845ed:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\00.basic\05.arena.md" data-text-edit-revision="ef991a5bc6f4d316e4785c3d866847e4499a7a2505b6bc6dcff2e0d84080f94c" data-text-edit-marker="1cd69819c99845ed" data-text-edit-schema="1"></div>
 
 
 
@@ -1009,8 +1134,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

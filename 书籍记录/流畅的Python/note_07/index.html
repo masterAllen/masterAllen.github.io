@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -666,17 +666,34 @@
   
 
 
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录七：成员属性</h1>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b0 -->
+
 <div class="file-actions" data-image-edit-revision="75f6d8bb999549cf6b402a23f0e95126263cc84099832d0c9fa062b9bbfe6381" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_07.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_07.md">复制路径</span></div>
 
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b1 -->
+
 <p>Python 中的成员变量(也有说法叫属性)和 C++ 有点不同, 下面是对 <strong>Python 的属性</strong> 的一些记录.</p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b1 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b2 -->
+
 <h2 id="_1">类属性和成员属性</h2>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b2 -->
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b3 -->
+
 <p>Python 中的类也是有属性的, 看如下代码.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;student&#39;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b3 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b4 -->
+
 <p>这里的 <code>name</code> 就是类属性, 而 <code>age</code> 则是成员属性, 这个只能通过某个具体实例访问, 而类属性却可以所有实例都可以访问.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">allen</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="nb">print</span><span class="p">(</span><span class="n">Student</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="c1"># 类属性可以通过类直接访问</span>
@@ -684,7 +701,14 @@
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="c1"># print(Student.age) # 成员属性不可以通过类直接访问!</span>
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="nb">print</span><span class="p">(</span><span class="n">allen</span><span class="o">.</span><span class="n">age</span><span class="p">)</span> <span class="c1"># 成员属性可以通过实例进行访问</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b4 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b5 -->
+
 <h2 id="_2">类属性和成员属性相同名字</h2>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b5 -->
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b6 -->
+
 <p>上个例子中类属性是 <code>name</code>, 成员属性是 <code>age</code>, 名字不一样, 但是如果它们名字是一样呢?<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;student&#39;</span>
@@ -702,11 +726,32 @@
 </span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span><span class="sd">Student</span>
 </span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span><span class="sd">&#39;&#39;&#39;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b6 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b7 -->
+
 <h2 id="_3">如何防止成员属性被修改</h2>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b7 -->
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b8 -->
+
 <p>有的时候不想要让某些成员属性被修改, 在 C++ 中可以设置 private 变量, 但是在 Python 中如何做?</p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b8 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b9 -->
+
 <h3 id="_4">单下划线</h3>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b9 -->
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b10 -->
+
 <p>有一种有些人使用的约定( <strong>不是官方规范</strong> ), 是变量名前面加一个下划线, 表示这个变量是只读, 不可以修改它, 比如 <code>_x</code> 这种形式</p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b10 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b11 -->
+
 <h3 id="property">property</h3>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b11 -->
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b12 -->
+
 <p>使用 <code>@property</code> 将变量标为只读属性, 使用如下.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">:</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
@@ -718,8 +763,16 @@
 </span><span id="__span-3-8"><span class="linenos" data-linenos="8 "></span><span class="c1"># 不可运行, 见下面解释</span>
 </span><span id="__span-3-9"><span class="linenos" data-linenos="9 "></span><span class="n">allen</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="s1">&#39;allen&#39;</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b12 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b13 -->
+
 <p>上面这里并不能运行, 因为 <code>name</code> 已经被设置为只读属性了, 所以在 <code>__init__</code> 中的赋值 (<code>self.name = name</code>) 就会失败.<br />
 所以使用刚才所说的单下划线方式, 变化如下. 当然可以不用下划线, 使用自己规定的方式, 比如在前面加 private_xx.</p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b13 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b14 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">:</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>   <span class="c1"># name --&gt; _name</span>
@@ -728,9 +781,25 @@
 </span><span id="__span-4-6"><span class="linenos" data-linenos="6 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-4-7"><span class="linenos" data-linenos="7 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>   <span class="c1"># name --&gt; _name</span>
 </span></code></pre></div>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b14 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b15 -->
+
 <p><strong>此外, 在类的内部, 可以直接使用 <code>self.name</code>, 当然 <code>self._name</code> 也是可以的.</strong></p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b15 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b16 -->
+
 <h3 id="getattr-setattr"><code>getattr</code> 和 <code>setattr</code></h3>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b16 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b17 -->
+
 <p>如果不仅仅是只有一个属性需要只读呢? 如果有一大波属性要为只读, 那么上一种方式就要用好多的 <code>@property</code>.</p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b17 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b18 -->
+
 <p>使用 <code>__setattr__</code> 来解决这个问题, 这个方法是解释器如果找不到某个属性后调用的方法, 使用方法如下.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">:</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">readonly</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span>
@@ -747,7 +816,15 @@
 </span><span id="__span-5-13"><span class="linenos" data-linenos="13 "></span>
 </span><span id="__span-5-14"><span class="linenos" data-linenos="14 "></span><span class="n">allen</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b18 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b19 -->
+
 <p>可以看到, 只要添加一个 <code>readonly</code> 数组, 然后在 <code>__setattr__</code> 中进行判断就可以了. 然后我们还可以添加 <code>__getattr__</code> 这个方法, 通过它就可以使用 <code>self.score</code> 进行访问, 否则每次都要 <code>self._score</code> 太麻烦了.</p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b19 -->
+
+<!-- blog-edit-start:3d0eb2ecbc5f0015:b20 -->
+
 <p>下面是实现的代码, 注意 <code>__getattr__</code> 和 <code>__setattr__</code> 最后的一行有所区别.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">:</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">readonly</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span>
@@ -768,6 +845,9 @@
 </span><span id="__span-6-17"><span class="linenos" data-linenos="17 "></span>        <span class="k">else</span><span class="p">:</span>
 </span><span id="__span-6-18"><span class="linenos" data-linenos="18 "></span>            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3d0eb2ecbc5f0015:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_07.md" data-text-edit-revision="75f6d8bb999549cf6b402a23f0e95126263cc84099832d0c9fa062b9bbfe6381" data-text-edit-marker="3d0eb2ecbc5f0015" data-text-edit-schema="1"></div>
 
 
 
@@ -999,8 +1079,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

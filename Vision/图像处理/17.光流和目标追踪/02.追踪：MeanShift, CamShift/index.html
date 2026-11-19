@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,22 +609,64 @@
   
 
 
+<!-- blog-edit-start:5acab1bedbfa7c37:b0 -->
+
 <h1 id="meanshift-camshift">追踪：MeanShift, CamShift</h1>
+<!-- blog-edit-end:5acab1bedbfa7c37:b0 -->
+
 <div class="file-actions" data-image-edit-revision="6eb071b323e0f1008728b3e0e7bdf756cb737949b0bb51024179b08bdd93f958" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C17.%E5%85%89%E6%B5%81%E5%92%8C%E7%9B%AE%E6%A0%87%E8%BF%BD%E8%B8%AA%5C02.%E8%BF%BD%E8%B8%AA%EF%BC%9AMeanShift%2C+CamShift.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C17.%E5%85%89%E6%B5%81%E5%92%8C%E7%9B%AE%E6%A0%87%E8%BF%BD%E8%B8%AA" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\17.光流和目标追踪\02.追踪：MeanShift, CamShift.md">复制路径</span></div>
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/6.1.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/6.1.md</a></p>
 </blockquote>
+<!-- blog-edit-end:5acab1bedbfa7c37:b1 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b2 -->
+
 <p>代码很好写，重点是知道这一类方法的大致逻辑是什么样的。主要步骤：计算目标区域的直方图，用目标区域的直方图进行反向投影，匹配出反向投影最密集的部分。计算直方图不谈，后面两步很关键。</p>
+<!-- blog-edit-end:5acab1bedbfa7c37:b2 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b3 -->
+
 <p>还是先说反向投影，反向投影定义：</p>
+<!-- blog-edit-end:5acab1bedbfa7c37:b3 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b4 -->
+
 <p><img alt="1727191781675" src="../../../../asset/image/c18687c308110ae84a59d0d0dc5ab0ff/1727191781675.png" /></p>
+<!-- blog-edit-end:5acab1bedbfa7c37:b4 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b5 -->
+
 <p>当时就疑惑，这个反向投影的作用究竟有什么用，这不就来了：找模板。即用<strong>模板的直方图</strong>去在另外一张图上进行反向投影，由于计算反向投影时只用的是<strong>模板直方图</strong>，所以可以想象反向投影结果：和模板接近的部分基本上大部分像素在模板出现过，所以对应的反向投影上都有值；而和模板不像的地方，出现了模板没出现的像素，反射投影后为 0，所以和模板不像的地方往往会有比较多的 0。</p>
+<!-- blog-edit-end:5acab1bedbfa7c37:b5 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b6 -->
+
 <p>所以反向投影后，匹配出反向投影最密集的部分，很大概率是模板。而怎么找到最密集的部分，那就是 MeanShift 和 CamShift 负责的了，具体的数学原理就要细看了。老算法了，用 <mark class="term-highlight">MeanShift 原理</mark>关键词能搜到太多文章了，搜了一下<a href="https://www.cnblogs.com/ydxt/archive/2012/04/27/2472974.html">这篇文章</a>看起来不错。</p>
+<!-- blog-edit-end:5acab1bedbfa7c37:b6 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b7 -->
+
 <hr />
+<!-- blog-edit-end:5acab1bedbfa7c37:b7 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b8 -->
+
 <p>还有一个问题，基本上所有代码都会将 RGB 转为 HSV，然后用其中的 H 来算直方图，用这样的直方图来计算反向投影，这种直方图也被叫做颜色直方图。为什么偏偏要用色调（H），他有什么神奇的地方吗？终于在 <a href="https://stackoverflow.com/questions/72417908/opencv-meanshift-tracking-hsv">StackOverflow 上看到了回答</a>，答案很简单：原始论文里面是做人脸追踪的，而作者认为对于人脸，无论白黑黄，色调都是在很稳定的数值范围内...</p>
+<!-- blog-edit-end:5acab1bedbfa7c37:b8 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b9 -->
+
 <blockquote>
 <p>Except for albinos, humans are all the same color (hue). Dark- skinned people simply have greater flesh color saturation than light-skinned people, and this is separated out in the HSV color system and ignored in our flesh-tracking color model.</p>
 </blockquote>
+<!-- blog-edit-end:5acab1bedbfa7c37:b9 -->
+
+<!-- blog-edit-start:5acab1bedbfa7c37:b10 -->
+
 <p>最后给出 python 代码，其实基本上是从 <a href="https://docs.opencv.org/4.x/d7/d00/tutorial_meanshift.html">Opencv Turtorials</a> 上复制来的，用到的视频文件链接<a href="https://www.bogotobogo.com/python/OpenCV_Python/images/mean_shift_tracking/slow_traffic_small.mp4">在此</a>：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
@@ -681,6 +723,9 @@
 </span><span id="__span-0-53"><span class="linenos" data-linenos="53 "></span>        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
 </span><span id="__span-0-54"><span class="linenos" data-linenos="54 "></span>            <span class="k">break</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:5acab1bedbfa7c37:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\17.光流和目标追踪\02.追踪：MeanShift, CamShift.md" data-text-edit-revision="6eb071b323e0f1008728b3e0e7bdf756cb737949b0bb51024179b08bdd93f958" data-text-edit-marker="5acab1bedbfa7c37" data-text-edit-schema="1"></div>
 
 
 
@@ -912,8 +957,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -722,19 +722,56 @@
   
 
 
+<!-- blog-edit-start:9aa79a2bd50a51fc:b0 -->
+
 <h1 id="_1">轮廓匹配</h1>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b0 -->
+
 <div class="file-actions" data-image-edit-revision="af54cd22574b63902fac87b99233dad7f3526346b751ecbc6543ba1b6785cff1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C10.%E8%BD%AE%E5%BB%93%E5%8C%B9%E9%85%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\10.轮廓匹配.md">复制路径</span></div>
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.9.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.9.md</a></p>
 </blockquote>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b1 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b2 -->
+
 <p>轮廓匹配的方法比较多，一个是 main module 的 matchShapes 方法，这个是用的是形状的 HuMoments；还有一个 shape 模块是专门做这个的，用的是其他方法；还有一个是 ximgproc 模块里面的 transformFD，它使用傅里叶描述子来做的。</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b2 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b3 -->
+
 <h3 id="matchshapes">matchShapes</h3>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b3 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b4 -->
+
 <p><a href="https://docs.opencv.org/3.4/d3/dc0/group__imgproc__shape.html#gaadc90cb16e2362c9bd6e7363e6e4c317">matchShapes</a> 很简单，<code>cv.matchShapes(contour1, contour2, method, parameter)</code>。<strong>contour 参数要求是一个轮廓，即 (n, 1, 2) 或 (1, n, 2) 大小的 ndarray，两种形状都可以，结果是一样的</strong>；method 如下图所示，从图上也能看出这是通过 HuMoments 来进行匹配的；parameter 是无用参数，固定为 0。需要注意的是，<strong>它适用于旋转但不适用于缩放</strong>。</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b4 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b5 -->
+
 <p><img alt="1725357911942" src="../../../../asset/image/633d711d0814d7c8c39cc9fe98fe2fbf/1725357911942.png" /></p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b5 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b6 -->
+
 <p>返回值是相似程度，越小表示越可能。</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b6 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b7 -->
+
 <h3 id="ximgproctransformfd">ximgproc.transformFD</h3>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b7 -->
+<!-- blog-edit-start:9aa79a2bd50a51fc:b8 -->
+
 <p><a href="https://docs.opencv.org/4.x/dd/ddc/group__ximgproc__fourier.html">ximgproc Fourier Descriptors</a> 的方法，用的是傅里叶描述子，直接看代码即可</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b8 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">img1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./image/shape/13.png&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">contours1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RETR_TREE</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_NONE</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -757,8 +794,20 @@
 </span><span id="__span-0-20"><span class="linenos" data-linenos="20 "></span>    <span class="p">(</span><span class="s1">&#39;Use Fourier Descriptors&#39;</span><span class="p">,</span> <span class="n">draw_points</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">)),</span>
 </span><span id="__span-0-21"><span class="linenos" data-linenos="21 "></span><span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b9 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b10 -->
+
 <h3 id="shape">shape 模块</h3>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b10 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b11 -->
+
 <p><a href="https://docs.opencv.org/4.x/d1/d85/group__shape.html">shape 模块</a>是专门用于比较两个轮廓的，他的类可以分为三个部分：</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b11 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b12 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span># class     cv::ShapeTransformer
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>    # class     cv::AffineTransformer
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>    # class     cv::ThinPlateSplineShapeTransformer
@@ -773,9 +822,25 @@
 </span><span id="__span-1-12"><span class="linenos" data-linenos="12 "></span>    # class     cv::HausdorffDistanceExtractor
 </span><span id="__span-1-13"><span class="linenos" data-linenos="13 "></span>    # class     cv::ShapeContextDistanceExtractor
 </span></code></pre></div>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b12 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b13 -->
+
 <h4 id="extractor">Extractor</h4>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b13 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b14 -->
+
 <p>两个 Extractor 基类都是用来计算两个轮廓的差距的，代表着两类不同方向的方法；其中 ShapeDistanceExtractor 调用 computeDistance 方法、HistogramCostExtractor 调用 buildCost 方法。</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b14 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b15 -->
+
 <p>示例代码如下，详细的代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_shape.ipynb">test_shape.ipynb</a> 中：</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b15 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b16 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="sd">&#39;&#39;&#39;</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="sd">Shape Distance Extractor 使用说明</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="sd">&#39;&#39;&#39;</span>
@@ -799,24 +864,88 @@
 </span><span id="__span-2-21"><span class="linenos" data-linenos="21 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">imgname</span><span class="p">,</span> <span class="n">result1</span><span class="p">,</span> <span class="n">result2</span><span class="p">)</span>
 </span><span id="__span-2-22"><span class="linenos" data-linenos="22 "></span>    <span class="k">break</span>
 </span></code></pre></div>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b16 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b17 -->
+
 <h4 id="shapetransformer">ShapeTransformer</h4>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b17 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b18 -->
+
 <h5 id="_2">子类说明</h5>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b18 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b19 -->
+
 <p>cv::AffineTransformer，这个无需多言，就是最传统的仿射变换。</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b19 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b20 -->
+
 <p>cv::ThinPlateSplineShapeTransformer，这是薄板样条插值变换，会根据每个点的前后变换进行各个点插值拟合，最终效果类似于扭曲。可以用于脸部变形，或者把一个成弧度的形状拉直便于处理（比如硬币上的中国人民银行）。如下图所示：</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b20 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b21 -->
+
 <p><img alt="1725415168132" src="../../../../asset/image/633d711d0814d7c8c39cc9fe98fe2fbf/1725415168132.png" /></p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b21 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b22 -->
+
 <h5 id="_3">使用场景</h5>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b22 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b23 -->
+
 <p>ShapeTransformer 基类用于变换轮廓形状，有两种使用场景（便于讲述，假设当前有一个变量 transformer）：</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b23 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b24 -->
+
 <ol>
 <li>单独使用，需要调用 <code>estimateTransformation(shape1, shape2, matches)</code> 来计算出内部的转换方式。其中 shape1 和 shape2 是 vector <code>&lt;point2d&gt;</code>，长度要一样；而 matches 则是同 vector 长度一样的列表，里面的元素是 cv2.DMatch(i,i,x)，这个和普通的 DMatch 是一样的，i 表示索引，x 表示距离。一般而言用 estimate 都把 x 设为 0，即前后变换的点是对应的关系。执行 estimate 后，transformer 内部的转换方式就确定了，可以调用 <code>applyTransformation</code> 或 <code>warpImage</code> 了。</li>
 <li>配合 ShapeDistanceExtractor 使用，extractor 调用 <code>setTransformAlgorithm(transformer)</code>。当 extractor 调用 <code>computeDistance(contour1, contour2)</code> 后，此时 transformer 内部的转换方式就确定了，就可以调用 <code>applyTransformation</code> 或者 <code>warpImage</code> 这样的方法把输入的轮廓/图片进行变换了。<strong>但是实验发现不行，所以还是要用上面第一种方法，即使用到了 computeDistance，也要在 applyTransformation 前多写一句 estimateTransformation。</strong></li>
 </ol>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b24 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b25 -->
+
 <p>关于单独使用，我还想多说几句。刚开始的时候我看到有 matches，以为是调用 SIFT 之类的特征点，然后进行匹配。但这样是不对的，要牢记 ShapeTransformer 针对的是形状，他要传入的点必须是可控的。下面通过两个例子说明：</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b25 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b26 -->
+
 <p>例子一，如下图，我希望 img2 变为 img1 的形状。此时是我已经正确做法是：img2 找轮廓，获取轮廓上的一些点；计算这些点应该变换为什么位置，当然由于已经有了 img1，所以只要在 img1 上找轮廓，采同样的点就可以了。</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b26 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b27 -->
+
 <p><img alt="1725421368096" src="../../../../asset/image/633d711d0814d7c8c39cc9fe98fe2fbf/1725421368096.png" /></p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b27 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b28 -->
+
 <p>例子二，如下图，我希望把文字拉直。正确做法就是先算出一开始弯曲的文字的大致轮廓，然后计算出包住这个轮廓的矩形框，之后在弯曲的轮廓上采点后，能计算出其在矩形框上对应的点：</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b28 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b29 -->
+
 <p><img alt="1725421368096" src="../../../../asset/image/633d711d0814d7c8c39cc9fe98fe2fbf/1725431324843.png" /></p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b29 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b30 -->
+
 <p>总而言之，本质是因为 SIFT 得到的点不可控：一方面是 SIFT 得到的点很可能不在轮廓上，即使强制在轮廓上，也很少；另一方面更重要的是我们现在的目的是为了变换轮廓，即需要精细控制两个点变换前后的位置，而不是为了去匹配两张图。比如例子一，我们通过等间距采样 100 个点达到了上面的变换效果，而采用特征点根本不知道特征点的位置，根本做不到上面的效果。</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b30 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b31 -->
+
 <p>强烈建议，看一下 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_shape.ipynb">test_shape.ipynb</a> 这个代码最后的两个 code 部分，看完就理解了。这里摘抄一下</p>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b31 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b32 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="sd">&#39;&#39;&#39;</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="sd">ShapeTransformer 单独使用</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="sd">&#39;&#39;&#39;</span>
@@ -855,12 +984,23 @@
 </span><span id="__span-3-36"><span class="linenos" data-linenos="36 "></span>    <span class="p">(</span><span class="s1">&#39;ApplyTransformation&#39;</span><span class="p">,</span> <span class="n">draw_points</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">points3</span><span class="p">)),</span>
 </span><span id="__span-3-37"><span class="linenos" data-linenos="37 "></span><span class="p">],</span> <span class="n">colnum</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b32 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b33 -->
+
 <h4 id="_4">使用的几个注意点（重要）</h4>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b33 -->
+
+<!-- blog-edit-start:9aa79a2bd50a51fc:b34 -->
+
 <ol>
 <li><strong>python 中 estimateTransformation、applyTransformation 必须要传入 (1,n,2) 大小、float32 类型的 ndarry！！！</strong></li>
 <li>cpp 中 estimateTransformation、applyTransformation 同样要是 float32，大小由于 CPP 中不是 numpy，所以没啥，就普通的 vector，即参数类型是 vector<code>&lt;point2f&gt;</code> 类型。</li>
 <li>applyTransformation 和 warpImage 对 estimateTransformation 的要求是反过来的；具体看上面的代码。</li>
 </ol>
+<!-- blog-edit-end:9aa79a2bd50a51fc:b34 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\10.轮廓匹配.md" data-text-edit-revision="af54cd22574b63902fac87b99233dad7f3526346b751ecbc6543ba1b6785cff1" data-text-edit-marker="9aa79a2bd50a51fc" data-text-edit-schema="1"></div>
 
 
 
@@ -1092,8 +1232,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

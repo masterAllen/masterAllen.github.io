@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -563,12 +563,30 @@
   
 
 
+<!-- blog-edit-start:8ba7bbb862049f11:b0 -->
+
 <h1 id="vscode">VSCode 无法同步插件</h1>
+<!-- blog-edit-end:8ba7bbb862049f11:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ed4791b3aefa8ee349b4fedb5f01c60dd3aae9bfab4ae8caf12d8a81829cc641" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CVSCode%E5%90%8C%E6%AD%A5%E6%97%A0%E6%B3%95%E5%90%8C%E6%AD%A5%E6%8F%92%E4%BB%B6.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\VSCode同步无法同步插件.md">复制路径</span></div>
 
+<!-- blog-edit-start:8ba7bbb862049f11:b1 -->
+
 <p>用新电脑登录 VSCode，明明已经登录成功了，同步也可以了，但结果就是无法同步好插件，问了 AI 半天也没得出个所以然，所以这个问题还是值得记录的。</p>
+<!-- blog-edit-end:8ba7bbb862049f11:b1 -->
+
+<!-- blog-edit-start:8ba7bbb862049f11:b2 -->
+
 <p>我的原因很简单，就是之前设置 settings 中的 <code>http.proxy</code> 是 VPN 出口，同步的时候如果有这个会影响出错，所以把它删掉然后再去同步就可以了，最好先退出账号再登录，具体原因排查是看到同步的日志输出，在 AI 辅助下找原因，下面是具体分析。</p>
+<!-- blog-edit-end:8ba7bbb862049f11:b2 -->
+
+<!-- blog-edit-start:8ba7bbb862049f11:b3 -->
+
 <p>首先是新电脑的同步检查，结果显示说是同步成功了，但其实没有。</p>
+<!-- blog-edit-end:8ba7bbb862049f11:b3 -->
+
+<!-- blog-edit-start:8ba7bbb862049f11:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>2026-03-13 13:48:21.042 [info] Settings: No changes found during synchronizing settings. 
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>2026-03-13 13:48:21.047 [info] Keybindings: No changes found during synchronizing keybindings. 
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>2026-03-13 13:48:21.051 [info] Snippets: No changes found during synchronizing snippets. 
@@ -580,7 +598,15 @@
 </span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>2026-03-13 13:48:21.103 [info] Profiles: No changes found during synchronizing profiles. 
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>2026-03-13 13:48:21.104 [info] Sync done. Took 205ms
 </span></code></pre></div>
+<!-- blog-edit-end:8ba7bbb862049f11:b4 -->
+
+<!-- blog-edit-start:8ba7bbb862049f11:b5 -->
+
 <p>怀疑是云端就是没有数据，然后在 Settings Sync 中进行 Show Synced Data，查看其中 extensions，结果显示是有许多内容的。</p>
+<!-- blog-edit-end:8ba7bbb862049f11:b5 -->
+
+<!-- blog-edit-start:8ba7bbb862049f11:b6 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span>{ 
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>    &quot;identifier&quot;: 
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>    { 
@@ -604,12 +630,23 @@
 </span><span id="__span-1-21"><span class="linenos" data-linenos="21 "></span>    &quot;installed&quot;: true 
 </span><span id="__span-1-22"><span class="linenos" data-linenos="22 "></span>},
 </span></code></pre></div>
+<!-- blog-edit-end:8ba7bbb862049f11:b6 -->
+
+<!-- blog-edit-start:8ba7bbb862049f11:b7 -->
+
 <p>之后重新退出再登录，然后同步，发现日志输出是如下的，就能分析出是网络的问题，那就可能是代理的问题了。</p>
+<!-- blog-edit-end:8ba7bbb862049f11:b7 -->
+
+<!-- blog-edit-start:8ba7bbb862049f11:b8 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>2026-03-13 13:55:49.073 [info] Extensions: Skipped synchronizing extension ESLint 
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>2026-03-13 13:55:49.074 [error] Error: net::ERR_CONNECTION_CLOSED at SimpleURLLoaderWrapper.&lt;anonymous&gt; (node:electron/js2c/utility_init:2:10684) at SimpleURLLoaderWrapper.emit (node:events:519:28) 
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>2026-03-13 13:55:49.074 [info] Extensions: Skipped synchronizing extension Office Viewer 
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>2026-03-13 13:55:49.074 [error] Error: net::ERR_SOCKET_NOT_CONNECTED at SimpleURLLoaderWrapper.&lt;anonymous&gt; (node:electron/js2c/utility_init:2:10684) at SimpleURLLoaderWrapper.emit (node:events:519:28)
 </span></code></pre></div>
+<!-- blog-edit-end:8ba7bbb862049f11:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\VSCode同步无法同步插件.md" data-text-edit-revision="ed4791b3aefa8ee349b4fedb5f01c60dd3aae9bfab4ae8caf12d8a81829cc641" data-text-edit-marker="8ba7bbb862049f11" data-text-edit-schema="1"></div>
 
 
 
@@ -841,8 +878,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

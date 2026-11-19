@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -620,35 +620,108 @@
   
 
 
+<!-- blog-edit-start:7ea70e1a2afc4d03:b0 -->
+
 <h1 id="_1">如何修改动态链接优先级</h1>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b0 -->
+
 <div class="file-actions" data-image-edit-revision="9a51336e0aa3f694031b612f9f9903bacf0a9c09ed3bc88eb2bc281b9598c7a5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E4%BF%AE%E6%94%B9%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\修改动态链接库.md">复制路径</span></div>
 
+<!-- blog-edit-start:7ea70e1a2afc4d03:b1 -->
+
 <p>关键词: RUN_PATH, R_PATH, LD_LIBRARY_PATH</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b1 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b2 -->
+
 <p>understand 是一个代码阅读器，偶然在知乎上看到有好几个人推荐，据说比 <code>Vim+Ctag</code> 还要好。想尝尝看，结果就安装了一个下午。</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b2 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b3 -->
+
 <h2 id="version-xxx-not-found">version <code>xxx</code> not found</h2>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b3 -->
+<!-- blog-edit-start:7ea70e1a2afc4d03:b4 -->
+
 <p>从官网中下载后，解压后是一个已经编译好的文件夹，里面有一些 <code>libxxx.so</code> 文件和最终运行的 understand 程序。</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b4 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b5 -->
+
 <p>understand 已经动态链接到这些 <code>libxxx.so</code> 了，程序还依赖这里面没有的库文件，如 <code>libc.so</code>，这些程序是动态链接到 <code>/usr/lib/libyyy.so</code> 中。understand 运行出了如下错误。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>./understand: /home/allen/understand/bin/linux64/libQt5Core.so.5: version `Qt_5.15&#39; not found (required by /usr/lib/libQt5Test.so.5)
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>./understand: /home/allen/understand/bin/linux64/libQt5Core.so.5: version `Qt_5.15&#39; not found (required by /usr/lib/libQt5QuickWidgets.so.5)
 </span></code></pre></div></p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b5 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b6 -->
+
 <p>这个以前遇过，当时是 openssl 有问题，解决方法是下载旧版本，然后用 <code>patchelf</code> 链接到那个旧版本。也就是上述的 <code>/usr/lib</code> 中的库文件比 <code>understand</code> 中的库文件要新.</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b6 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b7 -->
+
 <h2 id="patchelf">patchelf 失效原因</h2>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b7 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b8 -->
+
 <p>问题好像很容易, 但是上面的错误中, 引发问题的 <code>libQt5Test</code> 这个文件明明在 <code>understand</code> 文件夹中, 但动态链接却在 <code>/usr/lib</code> 中, 非常奇怪.</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b8 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b9 -->
+
 <p>尝试 <code>patchelf --replace-needed libQt5Test.so.5 xxx/libQt5Test.so.5 understand</code>，但是发现这条语句没有效果！</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b9 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b10 -->
+
 <p>这是为什么？？这里就是<mark class="term-highlight">第一个知识点</mark>: <mark class="term-highlight">ldd 和 readelf 区别</mark>。</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b10 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b11 -->
+
 <blockquote>
 <p>假设程序需要 <code>A.so</code>，而加载 <code>A.so</code> 需要 <code>B.so</code>。<br><br />
 <code>ldd</code> 输出的是这个程序<mark class="term-highlight">所有需要</mark>的动态链接文件，例子中为 <code>A.so</code> 和 <code>B.so</code>。<br><br />
 <code>readelf -d xxx | grep NEED</code> 输出的是这个程序<mark class="term-highlight">直接需要</mark>的动态链接文件，例子中为 <code>A.so</code>。</p>
 </blockquote>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b11 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b12 -->
+
 <p>所以这里不行的原因是 <code>libQt5Test.so</code> 不是直接需要的动态链接文件。<code>patchelf</code> 本质上修改的是 .dynsym 表，所以它查找发现没有 <code>libQt5Test</code>，就没有任何操作。</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b12 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b13 -->
+
 <h2 id="r_path-run_path">利用 R_PATH 和 RUN_PATH 指定程序查找的动态链接路径</h2>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b13 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b14 -->
+
 <p>所以现在情况是需要让程序动态链接到 <code>understand</code> 的 <code>libQt5Test</code>, 而不是 <code>/usr/lib</code> 中. 由于上述原因, 直接利用 <code>patchelf</code> 修改 <code>understand</code> 的库文件路径是无效的, 所以需要找到 <code>understand</code> 动态链接中所有需要的库文件, 都去把他们的路径修改.</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b14 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b15 -->
+
 <p>但是这个问题是, 每一个库文件都要找到那些依赖的文件, 然后再 <code>patchelf</code> 修改. 能否直接修改他们的<mark class="term-highlight">动态链接路径</mark>呢? 也就是查找动态链接库时, 让 <code>./understand</code> 文件夹比 <code>/usr/lib</code> 文件夹更高.</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b15 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b16 -->
+
 <p>这里就是<mark class="term-highlight">第二个知识点</mark>: <code>R_PATH</code> 和 <code>RUN_PATH</code> 的作用, 以及 <code>patchelf</code> 修改它们的注意点</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b16 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b17 -->
+
 <blockquote>
 <p><code>R_PATH</code> 和 <code>RUN_PATH</code> 就是指明动态链接文件夹的位置，前者比后者优先级更高，即前者如果存在就不用找后者了。</p>
 </blockquote>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b17 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b18 -->
+
 <p><code>patchelf</code> 修改两者有细微区别。<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 查看 R_PATH 和 RUN_PATH</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>readelf<span class="w"> </span>-d<span class="w"> </span>understand<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;R*PATH&#39;</span>
@@ -657,27 +730,58 @@
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="c1"># 设置 R_PATH</span>
 </span><span id="__span-1-6"><span class="linenos" data-linenos="6 "></span>patchelf<span class="w"> </span>--force-rpath<span class="w"> </span>--set-rpath<span class="w"> </span>xxxx/lib<span class="w"> </span>understand
 </span></code></pre></div></p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b18 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b19 -->
+
 <p>但还是修改 <code>understand</code> 的 <code>R_PATH</code> 还是不行, 为什么? 实际上还是之前那个原因: 虽然 <code>understand</code> 需要 <code>libA.so</code> 时确实从我设置的 <code>R_PATH</code> 中找, 但是如果 <code>libA.so</code> 还需要 <code>libB.so</code> 时, 此时是从 <code>libA.so</code> 的 <code>R_PATH</code> 中去找了, 所以失败。</p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b19 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b20 -->
+
 <p>因此强制所有涉及到的动态库文件的 <code>RPATH</code> 都改变, 这样就 OK 了, 具体实现看下面, 不过还有更好的做法.<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 解压后的文件夹有些 libxxx.so 是不需要使用的</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>mkdir<span class="w"> </span>libQt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span>libQt*.so<span class="w"> </span>libQt
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="nb">cd</span><span class="w"> </span>libQt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>patchelf<span class="w"> </span>--force-rpath<span class="w"> </span>--set-rpath<span class="w"> </span>xxxx/libQt<span class="w"> </span>*
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>patchelf<span class="w"> </span>--force-rpath<span class="w"> </span>--set-rpath<span class="w"> </span>xxxx/libQt<span class="w"> </span>understand
 </span></code></pre></div></p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b20 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b21 -->
+
 <h2 id="ld_library_path">利用 LD_LIBRARY_PATH 指定程序查找的动态链接路径</h2>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b21 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b22 -->
+
 <p>实际上根本不要这么麻烦, Linux 中已经有了 <code>LD_LIBRARY_PATH</code> 来负责这个问题.<mark class="term-highlight">第三个知识点</mark></p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b22 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b23 -->
+
 <blockquote>
 <p><code>LD_LIBRARY_PATH</code>这个变量是由多个路径组成, 表示动态链接去哪个文件夹找 <br><br />
 <code>LD_LIBRARY_PATH</code>, <code>RPATH</code>, <code>RUNPATH</code> 优先级是什么呢？<mark class="term-highlight">非常重要</mark><br />
 - 如果 <code>RUNPATH</code> 为空，那么为 <code>RPATH</code>, <code>LD_LIBRARY_PATH</code><br />
 - 如果 <code>RUNPATH</code> 不空，那么为 <code>LD_LIBRARY_PATH</code>, <code>RUNPATH</code>，此时 <code>RPATH</code> 相当于没有用了</p>
 </blockquote>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b23 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b24 -->
+
 <p>所以解决方法就很清楚，只要让 <code>LD_LIBRARY_PATH</code> 中 <code>understand</code> 文件夹在 <code>/usr/lib</code> 文件夹前面就行<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 为了清晰一点，我把 understand 中的 libxxx.so 放到 libQt 文件夹中</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>mkdir<span class="w"> </span>libQt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span>libQt*.so<span class="w"> </span>libQt
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>./libQt:<span class="nv">$LD_LIBRARY_PATH</span><span class="w"> </span>./understand
 </span></code></pre></div></p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b24 -->
+
+<!-- blog-edit-start:7ea70e1a2afc4d03:b25 -->
+
 <p>[1] <a href="https://blog.csdn.net/zhanghm1995/article/details/106474505">https://blog.csdn.net/zhanghm1995/article/details/106474505</a></p>
+<!-- blog-edit-end:7ea70e1a2afc4d03:b25 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\修改动态链接库.md" data-text-edit-revision="9a51336e0aa3f694031b612f9f9903bacf0a9c09ed3bc88eb2bc281b9598c7a5" data-text-edit-marker="7ea70e1a2afc4d03" data-text-edit-schema="1"></div>
 
 
 
@@ -909,8 +1013,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

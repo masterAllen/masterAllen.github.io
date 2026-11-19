@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -768,97 +768,330 @@
   
 
 
+<!-- blog-edit-start:5bc9a91a30e43c60:b0 -->
+
 <h1 id="snmp-snmp-trap">SNMP 协议实验二：配置 SNMP Trap 通信</h1>
+<!-- blog-edit-end:5bc9a91a30e43c60:b0 -->
+
 <div class="file-actions" data-image-edit-revision="90904b9064d5b4e3fecbb3c865de31ef66ef8fef5e8469e7a495da24bf82b367" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CSNMP%5C02.SNMP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E9%AA%8C%E4%BA%8C.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CSNMP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\SNMP\02.SNMP协议实验二.md">复制路径</span></div>
 
+<!-- blog-edit-start:5bc9a91a30e43c60:b1 -->
+
 <p>这篇文章介绍 SNMP Trap 通信，即 agent 向 manager 发送信息。<a href=".././01.SNMP协议实验/">第一篇文章</a>讲的是 manager 向 agent 发送消息。本来以为会很轻松的，结果折腾了好久。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b1 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b2 -->
+
 <h2 id="_1">介绍</h2>
+<!-- blog-edit-end:5bc9a91a30e43c60:b2 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b3 -->
+
 <p>在 SNMP 协议中，当 agent 发现自己可能有问题时，可以向 manager 发送信息。这个信息就是 SNMP Trap。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b3 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b4 -->
+
 <h2 id="snmp-manager">配置 SNMP manager</h2>
+<!-- blog-edit-end:5bc9a91a30e43c60:b4 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b5 -->
+
 <p>下载 <code>snmptrapd</code>，然后修改配置文件：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b5 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b6 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># /etc/snmp/snmptrapd.conf</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>createUser<span class="w"> </span>test_demo<span class="w"> </span>MD5<span class="w"> </span>test_password<span class="w"> </span>DES<span class="w"> </span>test_password
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>authUser<span class="w"> </span>log,execute,net<span class="w"> </span>test_demo
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b6 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b7 -->
+
 <p>首先 <code>createUser</code> 是创建一个用户，上一篇中我们配置 manager 向 agent 发送消息也是需要一个用户。这里我是故意用的 <code>test_demo</code>，表明和上一篇文章不一样，即 agent 发送 manager trap 消息，和 manager 向 agent 发送查询/操作指令，这两个通信所用的用户不强求要一样。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b7 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b8 -->
+
 <blockquote>
 <p>上一篇中使用了临时用户，然后再去创建真正用户，这里没有。因为现在配置这是在我们的 manager 中，也就是我们是保证 manager 这个管理员是绝对安全的。上一篇的 createUser 是在 agent 上，无法完全保证所有设备（即 agent）安全，所以用了临时用户。</p>
 </blockquote>
+<!-- blog-edit-end:5bc9a91a30e43c60:b8 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b9 -->
+
 <p><code>authUser</code> 是对用户进行一些授权，这个没有什么好说的。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b9 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b10 -->
+
 <p>配置修改完成后，然后可以直接关闭 <code>snmptrapd</code>，因为我们这里直接命令行启动 <code>snmptrapd</code>。这样它是一直监听，并且会把结果输出到标准输出上：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b10 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b11 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>systemctl<span class="w"> </span>stop<span class="w"> </span>snmptrapd.socket
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>snmptrapd<span class="w"> </span>-C<span class="w"> </span>-c<span class="w"> </span>/etc/snmp/snmptrapd.conf<span class="w"> </span>-f<span class="w"> </span>-Lo
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b11 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b12 -->
+
 <h2 id="snmp-agent">配置 SNMP agent</h2>
+<!-- blog-edit-end:5bc9a91a30e43c60:b12 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b13 -->
+
 <p>直接使用 <code>snmptrap</code> 指令发送消息：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b13 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b14 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>snmptrap<span class="w"> </span>-v3<span class="w"> </span>-u<span class="w"> </span>test_demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span>-a<span class="w"> </span>MD5<span class="w"> </span>-A<span class="w"> </span>test_password<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-X<span class="w"> </span>test_password<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span>manager_ip<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="m">1</span>.3.6.1.6.3.1.1.5.1
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b14 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b15 -->
+
 <h2 id="_2">继续配置</h2>
+<!-- blog-edit-end:5bc9a91a30e43c60:b15 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b16 -->
+
 <p>但是并没有输出，这里我就一直在拷打 AI，结果它越说越乱，有跟我说是 <code>snmptrapd</code> 的指令，有跟我说是权限，有跟说是什么 <code>agentX</code> 的原因，越说越离谱了。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b16 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b17 -->
+
 <p>当时服务器又是 Digital Ocean，外网速度太慢了，卡的要死，烦躁的很。后来第二天冷静下来，然后买了阿里云，重新开始，再阅读官方文档，终于最终搞定了。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b17 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b18 -->
+
 <h3 id="_3">确认防火墙</h3>
+<!-- blog-edit-end:5bc9a91a30e43c60:b18 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b19 -->
+
 <p>在 manager 上监听，然后 agent 使用上面的 <code>snmptrap</code> 指令发一个消息，确保包到达了：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b19 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b20 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>tcpdump<span class="w"> </span>-i<span class="w"> </span>any<span class="w"> </span>udp<span class="w"> </span>port<span class="w"> </span><span class="m">162</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b20 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b21 -->
+
 <p>如果没有输出，那最好还是看看云服务器管理界面上是不是被禁止了。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b21 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b22 -->
+
 <h3 id="engineid">EngineID</h3>
+<!-- blog-edit-end:5bc9a91a30e43c60:b22 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b23 -->
+
 <p>首先官方文档的链接如下：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b23 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b24 -->
+
 <ul>
 <li><a href="https://net-snmp.sourceforge.io/wiki/index.php/TUT:Configuring_snmptrapd_to_receive_SNMPv3_notifications">https://net-snmp.sourceforge.io/wiki/index.php/TUT:Configuring_snmptrapd_to_receive_SNMPv3_notifications</a></li>
 <li><a href="https://net-snmp.sourceforge.io/wiki/index.php/TUT:snmptrap_SNMPv3">https://net-snmp.sourceforge.io/wiki/index.php/TUT:snmptrap_SNMPv3</a></li>
 </ul>
+<!-- blog-edit-end:5bc9a91a30e43c60:b24 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b25 -->
+
 <p>其实官方文档讲的很好：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b25 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b26 -->
+
 <blockquote>
 <p>TRAPs and INFORMs get a little more complex with respect to SNMPv3. The reason behind it is how the user database is maintained. SNMPv1 and SNMPv2c community based messages merely always display the message to the end user. SNMPv3 mandates that the message is rejected unless the SNMPv3 user sending the trap already exists in the user database. Sounds simple enough, right? Except for one small problem: the user database in a SNMPv3 application is actually referenced by a combination of the user's name (called a "security Name") and an identifier for the given SNMP application you're talking to (called an "engineID"). Normally when you use the rest of the SNMP applications (snmpget, snmpwalk, ...) the application "discovers" the remote engineID for you and then inserts the username, engineID and passwords into the user database based on this remote engineID. Makes things all nice and simple when talking to a remote agent.</p>
 </blockquote>
+<!-- blog-edit-end:5bc9a91a30e43c60:b26 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b27 -->
+
 <p>这段话告诉我们：在 SNMPv3 中，判定一个用户实际上是由 username 和所通信的特定 SNMP 应用的标识符（engineID）组合来引用的。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b27 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b28 -->
+
 <blockquote>
 <p>SNMPv3 TRAPs are a bit more complicated in some ways, but it makes sense the protocol works this way if you spend a long time thinking about it. The difference is that SNMPv3 TRAPs use the engineID of the local application sending the trap rather than the engineID of the remote application. This means that you have to create users in your remote user database with a bit more care and need to create one for every engineID you wish to send traps from. This means that if you want to have 100 snmp agents send snmpv3 traps to your trap receiver, you need 100 createUser directives in your /var/net-snmp/snmptrapd.conf file.</p>
 </blockquote>
+<!-- blog-edit-end:5bc9a91a30e43c60:b28 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b29 -->
+
 <p>上面这段话中 local application 其实就是 agent，remote application 其实就是 manager。总之意思就是说我们要在 remote 即 manager 上创建我们的用户数据库，其每个条目是 <code>(username, engineID)</code> 这种组合。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b29 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b30 -->
+
 <h3 id="engineid_1">获取 engineID</h3>
+<!-- blog-edit-end:5bc9a91a30e43c60:b30 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b31 -->
+
 <p>所以我们要知道 agent 的 engineID，才能在 manager 上创建用户数据库。怎么获取，这个<a href="https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClfFCAS">链接</a>帮了忙，如下：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b31 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b32 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-v<span class="w"> </span><span class="m">3</span><span class="w"> </span>-u<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>SHA<span class="w"> </span>-A<span class="w"> </span>paloalto<span class="w"> </span>-x<span class="w"> </span>AES<span class="w"> </span>-X<span class="w"> </span>paloalto<span class="w"> </span><span class="m">172</span>.17.128.23<span class="w"> </span><span class="m">1</span>.3.6.1.6.3.10.2.1.1.0
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b32 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b33 -->
+
 <p>这个命令是直接从对应链接上复制的，按照我们上一篇文章的配置，我们是可以直接使用：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b33 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b34 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>snmpget<span class="w"> </span>-v<span class="w"> </span><span class="m">3</span><span class="w"> </span>agent_ip<span class="w"> </span><span class="m">1</span>.3.6.1.6.3.10.2.1.1.0
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b34 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b35 -->
+
 <p>得到：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b35 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b36 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>SNMP-FRAMEWORK-MIB::snmpEngineID.0 = Hex-STRING: 80 00 1F 88 80 E1 3A 53 3C 7D 6C C7 69 00 00 00
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b36 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b37 -->
+
 <p>即 <code>0x80001F8880E13A533C7D6CC769000000</code>。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b37 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b38 -->
+
 <h3 id="manager">重新配置 manager</h3>
+<!-- blog-edit-end:5bc9a91a30e43c60:b38 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b39 -->
+
 <p>现在我们修改 manager 的配置，在 manager 上创建用户数据库：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b39 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b40 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># /etc/snmp/snmptrapd.conf</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="c1"># update this:</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>createUser<span class="w"> </span>-e<span class="w"> </span>0x80001F8880E13A533C7D6CC769000000<span class="w"> </span>test_demo<span class="w"> </span>MD5<span class="w"> </span>test_password<span class="w"> </span>DES<span class="w"> </span>test_password
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b40 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b41 -->
+
 <p>即 <code>createUser</code> 的参数中，多了一个 <code>-e</code> 参数，表示 engineID。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b41 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b42 -->
+
 <h3 id="_4">尝试连接</h3>
+<!-- blog-edit-end:5bc9a91a30e43c60:b42 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b43 -->
+
 <p>在 agent 上尝试连接：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b43 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b44 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>snmptrap<span class="w"> </span>-e<span class="w"> </span>0x80001F8880E13A533C7D6CC769000000<span class="w"> </span>-v3<span class="w"> </span>-u<span class="w"> </span>test_demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-A<span class="w"> </span>test_password<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-X<span class="w"> </span>test_password<span class="w"> </span>manager_ip<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="m">1</span>.3.6.1.6.3.1.1.5.1
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b44 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b45 -->
+
 <h2 id="_5">如果还是不行</h2>
+<!-- blog-edit-end:5bc9a91a30e43c60:b45 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b46 -->
+
 <p>没错，我那天做了很久还是不行，因为这个折腾了好久好久。问 AI 也是回答各种千奇百怪的原因。后来我突然发现我在 manager 自己执行 <code>snmptrap</code> 时，如果把 <code>manager_ip</code> 改成 <code>localhost</code> 就可以了：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b46 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b47 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># do this in manager</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span>snmptrap<span class="w"> </span>-e<span class="w"> </span>0x80001F8880E13A533C7D6CC769000000<span class="w"> </span>-v3<span class="w"> </span>-u<span class="w"> </span>test_demo<span class="w"> </span>-l<span class="w"> </span>authPriv<span class="w"> </span>-a<span class="w"> </span>MD5<span class="w"> </span>-A<span class="w"> </span>test_password<span class="w"> </span>-x<span class="w"> </span>DES<span class="w"> </span>-X<span class="w"> </span>test_password<span class="w"> </span>localhost<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="m">1</span>.3.6.1.6.3.1.1.5.1
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b47 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b48 -->
+
 <p>那答案就很明显了，它只接受 localhost 的包？防火墙有问题，果然一看，我们的 manager 居然没有进行设置 ufw，上一篇文章中我们只设置了 agent 的防火墙... 这里要开放 162 端口：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b48 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b49 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span>proto<span class="w"> </span>udp<span class="w"> </span>to<span class="w"> </span>any<span class="w"> </span>port<span class="w"> </span><span class="m">162</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>ufw<span class="w"> </span>reload
 </span></code></pre></div>
+<!-- blog-edit-end:5bc9a91a30e43c60:b49 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b50 -->
+
 <p>之后再次测试，终于搞定了。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b50 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b51 -->
+
 <h2 id="_6">其他</h2>
+<!-- blog-edit-end:5bc9a91a30e43c60:b51 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b52 -->
+
 <p>其实现在还有一个安全问题，就是 agent 发送的时候用的明文密码。这个貌似是通过 <code>trapsess</code> 这个关键字来完成的，具体的我就不继续往下尝试了。做到这里也已经算是完成了我当时的预期目标，下面这个链接或许有帮助：</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b52 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b53 -->
+
 <ul>
 <li><a href="https://access.redhat.com/solutions/969183">https://access.redhat.com/solutions/969183</a></li>
 </ul>
+<!-- blog-edit-end:5bc9a91a30e43c60:b53 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b54 -->
+
 <h2 id="_7">总结</h2>
+<!-- blog-edit-end:5bc9a91a30e43c60:b54 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b55 -->
+
 <p>可算是完成了当时的目标。本来以为会很轻松的，结果折腾了好久。中间各种拷打 AI，还是没搞出来，算下来当天下午+晚上五个小时没搞定。然后第二天去的自习室，下午一点半开始，搞到三点多，终于好了。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b55 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b56 -->
+
 <p>当时也是折腾了半天，然后放弃了。当时没有 AI 这么好的工具，回顾以前的大学生活，天啊，真不知道自己是咋在没有 AI 辅助下学下去的。遇到难一点的问题，就是在互联网上搜索，在犄角旮旯的地方发现类似的苦命人。</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b56 -->
+
+<!-- blog-edit-start:5bc9a91a30e43c60:b57 -->
+
 <p>所以现在的我们是多么幸福，学习知识的效率提高那么多。上大学我没有珍惜时间，现在我真的太想过好每一分钟了，想多多吸取知识。虽然说这些对我现在没有什么用，但完成这个实验是大学补全计划的一部分，经历了操作系统等等补全后，至少我可以自信说我的大学课程实验都体验过了；更重要的是，这种不断探索、解决问题的过程，真的很有趣。这就是过好每一分钟，按照当下的想法大胆去做！</p>
+<!-- blog-edit-end:5bc9a91a30e43c60:b57 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\SNMP\02.SNMP协议实验二.md" data-text-edit-revision="90904b9064d5b4e3fecbb3c865de31ef66ef8fef5e8469e7a495da24bf82b367" data-text-edit-marker="5bc9a91a30e43c60" data-text-edit-schema="1"></div>
 
 
 
@@ -1090,8 +1323,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -626,16 +626,49 @@
   
 
 
+<!-- blog-edit-start:d31e17665686840d:b0 -->
+
 <h1 id="_1">多帧平均时偶有异常的处理方案</h1>
+<!-- blog-edit-end:d31e17665686840d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d31e17665686840d87f4c4f5979a3ba1d046bf3c0daa9c934b4c567e9fe5f257" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95%5C06.%E5%A4%9A%E5%B8%A7%E5%B9%B3%E5%9D%87%E6%97%B6%E5%81%B6%E6%9C%89%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\个人记录\06.多帧平均时偶有异常的处理.md">复制路径</span></div>
 
+<!-- blog-edit-start:d31e17665686840d:b1 -->
+
 <p>有一个项目需要多帧平均，但是传感器有偶发横纹的毛病，所以多帧平均的时候对于那些出现横纹的帧要丢弃掉。</p>
+<!-- blog-edit-end:d31e17665686840d:b1 -->
+
+<!-- blog-edit-start:d31e17665686840d:b2 -->
+
 <p>但是横纹出现的位置是随机的，而且差别并不是很大，所以不好直接判断，下面是解决方法。</p>
+<!-- blog-edit-end:d31e17665686840d:b2 -->
+
+<!-- blog-edit-start:d31e17665686840d:b3 -->
+
 <h2 id="_2">使用中值</h2>
+<!-- blog-edit-end:d31e17665686840d:b3 -->
+
+<!-- blog-edit-start:d31e17665686840d:b4 -->
+
 <p>在多帧的这个维度上用中值即可，这种确实很保险。但是缺点就是信噪比提高效果没有多帧平均好，mean 比 median 进度高约 25% 左右。</p>
+<!-- blog-edit-end:d31e17665686840d:b4 -->
+
+<!-- blog-edit-start:d31e17665686840d:b5 -->
+
 <h2 id="trimmed-mean">trimmed mean</h2>
+<!-- blog-edit-end:d31e17665686840d:b5 -->
+
+<!-- blog-edit-start:d31e17665686840d:b6 -->
+
 <p>截断平均。其实就是去掉最大值、最小值，然后求平均。这里的截断，是指每一行各自独立进行截断平均，或者说是每个像素进行各自独立的截断平均。</p>
+<!-- blog-edit-end:d31e17665686840d:b6 -->
+
+<!-- blog-edit-start:d31e17665686840d:b7 -->
+
 <p>也不局限于最大值、最小值，可以根据异常现象发生的频率，实际计算丢弃 N 个帧。</p>
+<!-- blog-edit-end:d31e17665686840d:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\个人记录\06.多帧平均时偶有异常的处理.md" data-text-edit-revision="d31e17665686840d87f4c4f5979a3ba1d046bf3c0daa9c934b4c567e9fe5f257" data-text-edit-marker="d31e17665686840d" data-text-edit-schema="1"></div>
 
 
 
@@ -867,8 +900,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

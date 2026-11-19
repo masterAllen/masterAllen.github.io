@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -591,14 +591,32 @@
   
 
 
+<!-- blog-edit-start:4fbe4abe993f0326:b0 -->
+
 <h1 id="imagej">ImageJ 命名处理</h1>
+<!-- blog-edit-end:4fbe4abe993f0326:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4fbe4abe993f0326b4f6861c7378a8dbb1c2957bf7d60bbe1c2ba6a1deeb421d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95%5C01.ImageJ%E5%91%BD%E5%90%8D%E5%A4%84%E7%90%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\个人记录\01.ImageJ命名处理.md">复制路径</span></div>
+
+<!-- blog-edit-start:4fbe4abe993f0326:b1 -->
 
 <blockquote>
 <p>大模型暂时没有回答正确，特此记录。</p>
 </blockquote>
+<!-- blog-edit-end:4fbe4abe993f0326:b1 -->
+
+<!-- blog-edit-start:4fbe4abe993f0326:b2 -->
+
 <p>将 raw 文件拖进 ImageJ 的时候，需要在弹窗输入对应的参数，非常的麻烦。好在 ImageJ 中会尝试自动解析，如果我们重命名 raw 文件为合适的名字，可以让 ImageJ 试图自动解析时能解析正确的尺寸和类型信息。</p>
+<!-- blog-edit-end:4fbe4abe993f0326:b2 -->
+
+<!-- blog-edit-start:4fbe4abe993f0326:b3 -->
+
 <p>ImageJ (<a href="https://github.com/imagej/ImageJ">https://github.com/imagej/ImageJ</a>) 自动解析，即猜测图片信息的代码在 <code>ij/io/ImportDialog.java</code> 文件的 <code>getDimensionsFromName</code> 和 <code>guessFormat</code> 函数中：</p>
+<!-- blog-edit-end:4fbe4abe993f0326:b3 -->
+
+<!-- blog-edit-start:4fbe4abe993f0326:b4 -->
+
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">getDimensionsFromName</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="o">==</span><span class="kc">null</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="k">return</span><span class="p">;</span>
@@ -649,15 +667,34 @@
 </span><span id="__span-0-48"><span class="linenos" data-linenos="48 "></span><span class="w">        </span><span class="n">intelByteOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 </span><span id="__span-0-49"><span class="linenos" data-linenos="49 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4fbe4abe993f0326:b4 -->
+
+<!-- blog-edit-start:4fbe4abe993f0326:b5 -->
+
 <p>从 <code>getDimensionsFromName</code> 可以看出，我们应该在名字中带上 <code>width x height x nframes</code> 这种格式，这样可以解析出帧数和长宽，注意顺序不要颠倒了。</p>
+<!-- blog-edit-end:4fbe4abe993f0326:b5 -->
+
+<!-- blog-edit-start:4fbe4abe993f0326:b6 -->
+
 <p>解析完尺寸后，ImageJ 会使用 <code>guessFormat</code> 来猜测类型，逻辑是根据像素大小。因为上面已经解析完了尺寸，所以用文件大小除以像素数目，这样得到一个像素的大小。然后根据像素大小来推断。具体对应看上面的代码，比如像素大小是 32bit 时，它会认为是 32bit-real，而不是 32bit-unsigned。</p>
+<!-- blog-edit-end:4fbe4abe993f0326:b6 -->
+
+<!-- blog-edit-start:4fbe4abe993f0326:b7 -->
+
 <p>最后几句话中也可以知道大小端是根据名字的结尾来判断的，比如结尾是 <code>be.raw</code> 结果就是 big-endian。</p>
+<!-- blog-edit-end:4fbe4abe993f0326:b7 -->
+
+<!-- blog-edit-start:4fbe4abe993f0326:b8 -->
+
 <p>从 <code>guessFormat</code> 看出，保存 Raw 文件的时候，对于非 8bit 的黑白图，最好保存 32bit-real 和 16bit-unsigned，而不是 32bit-unsigned 和 64bit-real。这样如果尺寸信息也在名字中，Imagej 能正确解析出格式，从而不用每次导入 raw 文件时都要选择格式。所以我一般保存最后 raw 文件都是下面这种格式：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 格式为 32bit-float</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># 重命名为 width x height x nframe</span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="n">result</span><span class="o">.</span><span class="n">tofile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;result_</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">x</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">x</span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">.raw&#39;</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4fbe4abe993f0326:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\个人记录\01.ImageJ命名处理.md" data-text-edit-revision="4fbe4abe993f0326b4f6861c7378a8dbb1c2957bf7d60bbe1c2ba6a1deeb421d" data-text-edit-marker="4fbe4abe993f0326" data-text-edit-schema="1"></div>
 
 
 
@@ -889,8 +926,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

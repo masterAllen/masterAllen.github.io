@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -751,16 +751,42 @@
   
 
 
+<!-- blog-edit-start:6200cf07a88c0d8b:b0 -->
+
 <h1 id="settings">settings 模块导入最佳实践</h1>
+<!-- blog-edit-end:6200cf07a88c0d8b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e73ee83ad520d34a7e2134f4cdab80cd5462d2bb9b32cea34fb69ebcd7b8c624" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0%5C04.%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\python导入包学习\04.如何导入多个变量.md">复制路径</span></div>
 
+<!-- blog-edit-start:6200cf07a88c0d8b:b1 -->
+
 <h2 id="_1">问题描述</h2>
+<!-- blog-edit-end:6200cf07a88c0d8b:b1 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b2 -->
+
 <h3 id="_2">场景</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b2 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b3 -->
+
 <p><code>captureThread0.py</code> 文件位于 <code>src/tools/capture/</code> 目录下，需要使用 <code>settings.py</code>（位于 <code>src/tools/</code> 目录）中的多个变量。比如：</p>
+<!-- blog-edit-end:6200cf07a88c0d8b:b3 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 使用：直接访问 settings 中的变量</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">full_cols</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">full_rows</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6200cf07a88c0d8b:b4 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b5 -->
+
 <h3 id="_3">面临的困惑</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b5 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b6 -->
+
 <ol>
 <li>
 <p><strong>是否要一个个导入？</strong><br />
@@ -787,16 +813,40 @@
 <p>如何平衡代码简洁性和清晰性？</p>
 </li>
 </ol>
+<!-- blog-edit-end:6200cf07a88c0d8b:b6 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b7 -->
+
 <h3 id="_4">问题核心</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b7 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b8 -->
+
 <p><strong>如何在包结构中使用相对导入，优雅地访问 <code>settings</code> 模块中的多个变量？</strong></p>
+<!-- blog-edit-end:6200cf07a88c0d8b:b8 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b9 -->
+
 <h2 id="_5">方案对比</h2>
+<!-- blog-edit-end:6200cf07a88c0d8b:b9 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b10 -->
+
 <h3 id="1">方案 1：导入整个模块（推荐）⭐</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b10 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b11 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># 使用：直接访问 settings 中的变量</span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">full_cols</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">full_rows</span><span class="p">)</span>
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="n">config_path</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">CONFIGS_DIR</span> <span class="o">/</span> <span class="s1">&#39;LDP_AP.txt&#39;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6200cf07a88c0d8b:b11 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b12 -->
+
 <p><strong>优点：</strong></p>
 <ul>
 <li>✅ <strong>简单</strong>：只需要一行导入</li>
@@ -805,22 +855,46 @@
 <li>✅ <strong>易于维护</strong>：如果 <code>settings</code> 添加新变量，不需要修改导入</li>
 <li>✅ <strong>符合最佳实践</strong>：Python 官方推荐的方式</li>
 </ul>
+<!-- blog-edit-end:6200cf07a88c0d8b:b12 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b13 -->
+
 <p><strong>缺点：</strong></p>
 <ul>
 <li>⚠️ 需要写 <code>settings.</code> 前缀（但这其实是优点，因为更清晰）</li>
 </ul>
+<!-- blog-edit-end:6200cf07a88c0d8b:b13 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b14 -->
+
 <hr />
+<!-- blog-edit-end:6200cf07a88c0d8b:b14 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b15 -->
+
 <h3 id="2">方案 2：导入特定变量</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b15 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b16 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">..settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">full_cols</span><span class="p">,</span> <span class="n">full_rows</span><span class="p">,</span> <span class="n">full_offsetx</span><span class="p">,</span> <span class="n">full_offsety</span><span class="p">,</span> <span class="n">full_reversex</span><span class="p">,</span> <span class="n">full_reversey</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># 使用：直接使用变量名（不需要前缀）</span>
 </span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span><span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">full_cols</span><span class="p">,</span> <span class="n">full_rows</span><span class="p">)</span>
 </span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span><span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="n">full_offsetx</span><span class="p">,</span> <span class="n">full_offsety</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6200cf07a88c0d8b:b16 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b17 -->
+
 <p><strong>优点：</strong></p>
 <ul>
 <li>✅ 使用时不需前缀，代码更简洁</li>
 </ul>
+<!-- blog-edit-end:6200cf07a88c0d8b:b17 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b18 -->
+
 <p><strong>缺点：</strong></p>
 <ul>
 <li>❌ <strong>麻烦</strong>：需要列出所有要用的变量</li>
@@ -828,14 +902,34 @@
 <li>❌ <strong>污染命名空间</strong>：引入大量变量</li>
 <li>❌ <strong>不够清晰</strong>：不知道变量来自哪里</li>
 </ul>
+<!-- blog-edit-end:6200cf07a88c0d8b:b18 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b19 -->
+
 <hr />
+<!-- blog-edit-end:6200cf07a88c0d8b:b19 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b20 -->
+
 <h3 id="3">方案 3：导入所有变量（不推荐）❌</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b20 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b21 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">..settings</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6200cf07a88c0d8b:b21 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b22 -->
+
 <p><strong>优点：</strong></p>
 <ul>
 <li>✅ 最简单</li>
 </ul>
+<!-- blog-edit-end:6200cf07a88c0d8b:b22 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b23 -->
+
 <p><strong>缺点：</strong></p>
 <ul>
 <li>❌ <strong>非常不推荐</strong>：污染命名空间</li>
@@ -843,9 +937,25 @@
 <li>❌ <strong>容易冲突</strong>：如果变量名冲突，难以调试</li>
 <li>❌ <strong>不符合最佳实践</strong>：Python 官方不推荐</li>
 </ul>
+<!-- blog-edit-end:6200cf07a88c0d8b:b23 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b24 -->
+
 <hr />
+<!-- blog-edit-end:6200cf07a88c0d8b:b24 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b25 -->
+
 <h2 id="_6">推荐方案：导入整个模块</h2>
+<!-- blog-edit-end:6200cf07a88c0d8b:b25 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b26 -->
+
 <h3 id="1_1">为什么推荐方案 1？</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b26 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b27 -->
+
 <ol>
 <li>
 <p><strong>Python 官方推荐</strong></p>
@@ -884,9 +994,24 @@
 <p>如果当前文件也有 <code>full_cols</code> 变量，不会冲突</p>
 </li>
 </ol>
+<!-- blog-edit-end:6200cf07a88c0d8b:b27 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b28 -->
+
 <hr />
+<!-- blog-edit-end:6200cf07a88c0d8b:b28 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b29 -->
+
 <h3 id="_7">结论</h3>
+<!-- blog-edit-end:6200cf07a88c0d8b:b29 -->
+
+<!-- blog-edit-start:6200cf07a88c0d8b:b30 -->
+
 <p><strong>不需要一个个导入变量！</strong> 导入整个模块是最佳实践，既简单又清晰。</p>
+<!-- blog-edit-end:6200cf07a88c0d8b:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\python导入包学习\04.如何导入多个变量.md" data-text-edit-revision="e73ee83ad520d34a7e2134f4cdab80cd5462d2bb9b32cea34fb69ebcd7b8c624" data-text-edit-marker="6200cf07a88c0d8b" data-text-edit-schema="1"></div>
 
 
 
@@ -1118,8 +1243,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

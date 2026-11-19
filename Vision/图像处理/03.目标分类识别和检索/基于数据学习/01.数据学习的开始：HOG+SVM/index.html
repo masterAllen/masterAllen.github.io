@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -635,14 +635,32 @@
   
 
 
+<!-- blog-edit-start:78239ee1cf0c4c71:b0 -->
+
 <h1 id="hogsvm">数据学习的开始：HOG+SVM</h1>
+<!-- blog-edit-end:78239ee1cf0c4c71:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7516daa4a9fc79bbfd6dbb68211f4bd5e786b9e4d9c993bf00f005931bb00f14" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%5C01.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BC%80%E5%A7%8B%EF%BC%9AHOG%2BSVM.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\01.数据学习的开始：HOG+SVM.md">复制路径</span></div>
+
+<!-- blog-edit-start:78239ee1cf0c4c71:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.3.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.3.md</a></p>
 </blockquote>
+<!-- blog-edit-end:78239ee1cf0c4c71:b1 -->
+
+<!-- blog-edit-start:78239ee1cf0c4c71:b2 -->
+
 <p>在 <a href="../../../02.特征提取和边缘检测/03.HOG 特征/">HOG</a> 中，里面提到 SVM+HOG 是一种非常经典的图像分类或识别方法。其实又何止 HOG 呢，任何一个特征提取方法（如SIFT等），都可以和 SVM 结合起来，形成一种分类器。至于 SVM 原理，我想不用多写了，现在估计已经成了那群小孩大一大二就要学习的基础知识了。</p>
+<!-- blog-edit-end:78239ee1cf0c4c71:b2 -->
+
+<!-- blog-edit-start:78239ee1cf0c4c71:b3 -->
+
 <p><a href="../../../02.特征提取和边缘检测/03.HOG 特征/">介绍 HOG 的文章</a> 中的代码是用 OpenCV 自带的行人检测模型实现检测，那么这里就着重来进行 SVM 训练。图片、代码和学习记录参考了两篇文章，特此感谢（<a href="https://blog.csdn.net/qq_43328040/article/details/109299478">文章一</a>、<a href="https://machinelearningmastery.com/opencv_object_detection/">文章二</a>，整体代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_hog_svm.ipynb">test_hog_svm.ipynb</a> 中。</p>
+<!-- blog-edit-end:78239ee1cf0c4c71:b3 -->
+
+<!-- blog-edit-start:78239ee1cf0c4c71:b4 -->
+
 <ol>
 <li>整体出训练集和测试集，这个其实就是每次读一张图片，然后存储 HOG 特征 和 正负标签。</li>
 </ol>
@@ -680,6 +698,9 @@
 </span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:78239ee1cf0c4c71:b4 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\01.数据学习的开始：HOG+SVM.md" data-text-edit-revision="7516daa4a9fc79bbfd6dbb68211f4bd5e786b9e4d9c993bf00f005931bb00f14" data-text-edit-marker="78239ee1cf0c4c71" data-text-edit-schema="1"></div>
 
 
 
@@ -911,8 +932,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -750,24 +750,62 @@
   
 
 
+<!-- blog-edit-start:13d49deb1acf5d14:b0 -->
+
 <h1 id="posion-null-byte">Posion Null Byte</h1>
+<!-- blog-edit-end:13d49deb1acf5d14:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2e2763490b0b273889eb1585fbf2dea85c9695bae646201c878a03900f154803" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C06.consolidate%5C03.poison_null_byte.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C06.consolidate" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\06.consolidate\03.poison_null_byte.md">复制路径</span></div>
 
+<!-- blog-edit-start:13d49deb1acf5d14:b1 -->
+
 <p>how2heap 中的 <code>poison_null_byte.c</code> 的记录，但看来看去，其实就是 House of einherjar 的一个变体，而且属于是费尽心思最后绕半天路...</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b1 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b2 -->
+
 <blockquote>
 <p>要求：<br />
   1. 只需 off by one，即可以复写某块下一个块的 <code>size</code>，其中 <code>size</code> 只用改最后一位就可以了。<br />
   2. 知道 heap 地址</p>
 <p>效果：变体版的 Doube Reference，是一个指针指向内存 A，另一个指针指向内存 B，而 A 包含了 B</p>
 </blockquote>
+<!-- blog-edit-end:13d49deb1acf5d14:b2 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b3 -->
+
 <h2 id="_1">前置知识</h2>
+<!-- blog-edit-end:13d49deb1acf5d14:b3 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b4 -->
+
 <p>务必要懂：</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b4 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b5 -->
+
 <ol>
 <li><a href=".././01.house_of_einherjar/">house of einherjar</a></li>
 </ol>
+<!-- blog-edit-end:13d49deb1acf5d14:b5 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b6 -->
+
 <p>如下图所示，这是从 house of einherjar 拿来的图。我们构造了 <code>size</code>、<code>fd</code> 等数据，然后我们 <code>free(c)</code> 就会把红色框的部分合并。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b6 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b7 -->
+
 <p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260106121934.png" /></p>
+<!-- blog-edit-end:13d49deb1acf5d14:b7 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b8 -->
+
 <p>重点就是要绕过检查 <code>fd</code> 和 <code>bk</code> 指针，如上图所示，我们设置成了 <code>fd = bk = p</code>，巧妙地顺利通过。因此这里隐含了一个要求：<strong>我们需要知道 heap 地址</strong>。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b8 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b9 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/* Take a chunk off a bin list.  */</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">unlink_chunk</span><span class="p">(</span><span class="n">mstate</span><span class="w"> </span><span class="n">av</span><span class="p">,</span><span class="w"> </span><span class="n">mchunkptr</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
@@ -784,10 +822,30 @@
 </span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="c1">// ....</span>
 </span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b9 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b10 -->
+
 <h2 id="_2">细节说明</h2>
+<!-- blog-edit-end:13d49deb1acf5d14:b10 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b11 -->
+
 <p>然后 posion null byte 本质上也是费尽心思绕过 <code>fd</code> 和 <code>bk</code> 的检查..</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b11 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b12 -->
+
 <h3 id="step-1">Step 1</h3>
+<!-- blog-edit-end:13d49deb1acf5d14:b12 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b13 -->
+
 <p>构造如下的结构。其中 <code>barrier</code> 表示防止合并的块。<code>prev</code> 就是上面的 chunkA，<code>victim</code> 就是上面的 chunkC，我们其实完全可以按照 house of einherjar 的方法去做就行了...</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b13 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b14 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>    ... ...
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>padding
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>    prev Chunk(addr=0x??0010, size=0x510)
@@ -798,14 +856,34 @@
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span>       b Chunk(addr=0x??0f60, size=0x520)
 </span><span id="__span-1-9"><span class="linenos" data-linenos="9 "></span> barrier Chunk(addr=0x??1480, size=0x20)
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b14 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b15 -->
+
 <p>其实这里有一个要求，就是强行让 <code>prev</code> 从 <code>0000</code> 开始，这个是后面要用到的。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b15 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b16 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x1</span><span class="p">);</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">heap_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)((</span><span class="kt">long</span><span class="p">)</span><span class="n">tmp</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="mh">0xfff</span><span class="p">));</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x10000</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">tmp</span><span class="o">&amp;</span><span class="mh">0xffff</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x20</span><span class="p">;</span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">padding</span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b16 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b17 -->
+
 <h3 id="step-2">Step 2</h3>
+<!-- blog-edit-end:13d49deb1acf5d14:b17 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b18 -->
+
 <p>但是这里的方法是利用 <code>a</code> 和 <code>b</code> 两个新的块，按照下面的方式，把 <code>prev</code> 和这两个块都放在 large bin 中。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b18 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b19 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 前三个 free 之后，放入到 unsorted bin 中</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="n">free</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="n">free</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
@@ -814,25 +892,85 @@
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span><span class="c1">// 申请一个大块，会把上面三个都放到 large bin 中</span>
 </span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x1000</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b19 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b20 -->
+
 <p>此时结构是：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>current large_bin:  header &lt;-&gt; [b, size=0x520] &lt;-&gt; [prev, size=0x510] &lt;-&gt; [a, size=0x500]
 </span></code></pre></div></p>
+<!-- blog-edit-end:13d49deb1acf5d14:b20 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b21 -->
+
 <p><strong>此时 <code>prev-&gt;fd_nextsize == prev-&gt;fd == a</code>，<code>prev-&gt;bk_nextsize == prev-&gt;bk == b</code>。记住这，这个后面会大用处。</strong></p>
+<!-- blog-edit-end:13d49deb1acf5d14:b21 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b22 -->
+
 <h3 id="step-3">Step 3</h3>
+<!-- blog-edit-end:13d49deb1acf5d14:b22 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b23 -->
+
 <p>重新申请得到这个 <code>prev</code>：</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b23 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b24 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">prev2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">prev</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b24 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b25 -->
+
 <p>和 house of einherjar 一模一样，我们溢出 victim 的 <code>prev_in_use</code>。这样 <code>free(victim)</code> 的时候，把 <code>prev</code> 合并了。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b25 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b26 -->
+
 <p><img alt="" src="../../../../../../asset/image/ccaf30fc3911ad7607f494ca5f613905/20260114063352.png" /></p>
+<!-- blog-edit-end:13d49deb1acf5d14:b26 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b27 -->
+
 <p>但是这里就有区别了：<strong>house of einherjar 需要构造 fake_chunk 的 <code>fd</code> 和 <code>bk</code> 指针，而这里不需要。</strong></p>
+<!-- blog-edit-end:13d49deb1acf5d14:b27 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b28 -->
+
 <p>注意看我们这里 fake_chunk 的 <code>fd</code>，因为 fakechunk 就是 <code>prev+0x10</code>，所以它其实是 <code>prev</code> 的 <code>fd_nextsize</code>，而上一步中 <code>prev</code> 之前是在 largebin 中，而且<strong>从 largebin 中拿出来的时候 <code>fd_nextsize</code> 是不会修改的！！</strong></p>
+<!-- blog-edit-end:13d49deb1acf5d14:b28 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b29 -->
+
 <blockquote>
 <p>PS: 从 largebin 拿出来之后的 <code>fd</code> 也没被修改</p>
 </blockquote>
+<!-- blog-edit-end:13d49deb1acf5d14:b29 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b30 -->
+
 <p>所以此时 <code>fake_chunk-&gt;fd = prev-&gt;fd_nextsize = a</code> 和 <code>fake_chunk-&gt;bk = prev-&gt;bk_nextsize = b</code>，如果 <code>a-&gt;bk == fake_chunk</code>，那我们就绕过了对 <code>fd</code> 和 <code>bk</code> 的检查。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b30 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b31 -->
+
 <h3 id="step-4">Step 4</h3>
+<!-- blog-edit-end:13d49deb1acf5d14:b31 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b32 -->
+
 <p>但问题是 <code>a-&gt;bk != fake_chunk</code> 呀... 当 <code>prev</code> 在 largebin 的时候，<code>a-&gt;bk == prev</code>；当 <code>prev</code> 从 largebin 拿出来之后，此时 largebin 只有 <code>b &lt;--&gt; a</code>，即 <code>a-&gt;bk == b</code> 了。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b32 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b33 -->
+
 <p>但回顾 Step 1 的构造，我们有一个要求是：强制 <code>prev</code> 从 <code>0x??0000</code> 开始的（下面的 <code>addr</code> 是数据区）。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b33 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b34 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>    ... ...
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>padding
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>    prev Chunk(addr=0x??0010, size=0x510)
@@ -843,8 +981,20 @@
 </span><span id="__span-6-8"><span class="linenos" data-linenos="8 "></span>       b Chunk(addr=0x??0f60, size=0x520)
 </span><span id="__span-6-9"><span class="linenos" data-linenos="9 "></span> barrier Chunk(addr=0x??1480, size=0x20)
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b34 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b35 -->
+
 <p><strong>一个关键信息：所以块的偏移量我们是知道的，即低两位字节是已知的。</strong> 举例而言，由于 <code>a-&gt;bk == b</code>，那么 <code>a-&gt;bk</code> 最后就是 <code>0x??0f60</code>，我们把 <code>a-&gt;bk</code> 修改成 <code>0x??0010</code> 就可以了，这里的 <code>0x??0010</code> 就是 fake_chunk 的头部... </p>
+<!-- blog-edit-end:13d49deb1acf5d14:b35 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b36 -->
+
 <p>所以我们把 <code>a</code> 和 <code>b</code> 也申请出来，然后进行修改即可，而且只用修改最后两个字节。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b36 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b37 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">b2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">b2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\x10&#39;</span><span class="p">;</span>
@@ -855,28 +1005,71 @@
 </span><span id="__span-7-8"><span class="linenos" data-linenos="8 "></span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">a2</span><span class="p">)[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\x10&#39;</span><span class="p">;</span>
 </span><span id="__span-7-9"><span class="linenos" data-linenos="9 "></span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">a2</span><span class="p">)[</span><span class="mi">9</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\x00&#39;</span><span class="p">;</span><span class="w">  </span><span class="c1">// a-&gt;bk -&gt; fake_chunk</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b37 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b38 -->
+
 <p>这里有个 Trick，当 <code>b</code> 取出来的时候，此时 <code>large_bin &lt;--&gt; a</code>，高地址被改变了。所以可以先把 <code>a</code> 放入到 unsorted 中，再把 <code>victim</code> 放入 unsorted 中。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b38 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b39 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="n">free</span><span class="p">(</span><span class="n">a2</span><span class="p">);</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="n">free</span><span class="p">(</span><span class="n">victim</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b39 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b40 -->
+
 <p>此时 unsorted 是 <code>unsorted &lt;--&gt; victim &lt;--&gt; a</code>，然后再拿出来就行了...</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b40 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b41 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">a3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">a3</span><span class="p">)[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\x10&#39;</span><span class="p">;</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">a3</span><span class="p">)[</span><span class="mi">9</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;\x00&#39;</span><span class="p">;</span>
 </span><span id="__span-9-4"><span class="linenos" data-linenos="4 "></span>
 </span><span id="__span-9-5"><span class="linenos" data-linenos="5 "></span><span class="n">victim2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">victim</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b41 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b42 -->
+
 <h3 id="step-5">Step 5</h3>
+<!-- blog-edit-end:13d49deb1acf5d14:b42 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b43 -->
+
 <p>之后就修改 victim 的 <code>prev_in_use</code> 和 <code>prev_size</code>，还有构造 fake_chunk 的 <code>size</code>，然后 <code>free(victim)</code> 即可，达到和 House of einherjar 一样的效果。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b43 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b44 -->
+
 <h2 id="_3">评价</h2>
+<!-- blog-edit-end:13d49deb1acf5d14:b44 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b45 -->
+
 <p>整体上感觉就是好忙... 忙活大半天最后终于实现了 house of einherjar 的效果。</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b45 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b46 -->
+
 <p>好处是不用知道 heap 地址，但这一点存疑：在最开始的时候需要 <code>prev</code> 从 <code>0x??0000</code> 开始，我感觉就很苛刻了，这一步可能就需要知道 heap 上变量的地址才行。how2heap 示例中关于这一步的代码：</p>
+<!-- blog-edit-end:13d49deb1acf5d14:b46 -->
+
+<!-- blog-edit-start:13d49deb1acf5d14:b47 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x1</span><span class="p">);</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">heap_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)((</span><span class="kt">long</span><span class="p">)</span><span class="n">tmp</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">~</span><span class="mh">0xfff</span><span class="p">));</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x10000</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">tmp</span><span class="o">&amp;</span><span class="mh">0xffff</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x20</span><span class="p">;</span>
 </span><span id="__span-10-4"><span class="linenos" data-linenos="4 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">padding</span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:13d49deb1acf5d14:b47 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\06.consolidate\03.poison_null_byte.md" data-text-edit-revision="2e2763490b0b273889eb1585fbf2dea85c9695bae646201c878a03900f154803" data-text-edit-marker="13d49deb1acf5d14" data-text-edit-schema="1"></div>
 
 
 
@@ -1108,8 +1301,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

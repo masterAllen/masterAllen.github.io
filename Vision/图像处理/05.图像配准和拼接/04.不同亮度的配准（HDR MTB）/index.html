@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,28 +609,77 @@
   
 
 
+<!-- blog-edit-start:f8313ec52fc9ca79:b0 -->
+
 <h1 id="hdr-mtb">不同亮度的配准（HDR MTB）</h1>
+<!-- blog-edit-end:f8313ec52fc9ca79:b0 -->
+
 <div class="file-actions" data-image-edit-revision="03ca4303f4a0b8ba51ceea5eef39727903a5a8d216aafd31e16c8773a2015c6e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5%5C04.%E4%B8%8D%E5%90%8C%E4%BA%AE%E5%BA%A6%E7%9A%84%E9%85%8D%E5%87%86%EF%BC%88HDR+MTB%EF%BC%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\04.不同亮度的配准（HDR MTB）.md">复制路径</span></div>
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.3.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.3.md</a></p>
 </blockquote>
+<!-- blog-edit-end:f8313ec52fc9ca79:b1 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b2 -->
+
 <p>配准是图像处理中许多地方都及其重要有效的操作。在长短曝光下 HDR 中也需要配准（<a href="../../12.HDR/01.使用OpenCV进行长短帧HDR/">个人学习记录文章</a>），如下图所示。</p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b2 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b3 -->
+
 <p><img alt="1727174077069" src="../../../../asset/image/2f4ce5a67995fe7189ec1c71174daa76/1727174077069.png" /></p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b3 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b4 -->
+
 <p>但是特别之处是<strong>要配准的图片的亮度是非常不同的，有些图片有过曝或欠曝</strong>。常用方法可能错误，如利用特征点：短曝光和长曝光可能两张图片各自能被人眼轻易看出的区域都不一样，所以找的特征点也是不一样，比如短曝光只能找到A区域的特征点，结果长曝光只能找到B区域的特征点。</p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b4 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b5 -->
+
 <p>在 HDR 配准这里有一个经典的配准方法 MTB（median threshold bitmap），原文来自：Fast, Robust Image Registration for Compositing High Dynamic Range Photographs from Handheld Exposures.</p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b5 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b6 -->
+
 <p>其实思想很简单，就是相机感光基本是线性的，所以虽然是不同曝光，但要是拍没太大变换的同一场景时，得到的图片各个像素的像素值顺序是基本一致的，如下图所示，左边是边缘检测结果，右边是各个像素和所有像素的中位数进行比较的结果。对于 HDR 长短曝光这种特殊场景，边缘检测或者特征点检测，很显然每张图片有比较大的不同（如左图），花了大力气反而是没有右边直接和中位数比较的效果好的。</p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b6 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b7 -->
+
 <p><img alt="1724324044974" src="../../../../asset/image/2f4ce5a67995fe7189ec1c71174daa76/1724324044974.png" /></p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b7 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b8 -->
+
 <p>得到上图中右边图之后，就可以对这个阈值图进行配准了。补充说明三点：</p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b8 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b9 -->
+
 <ol>
 <li>老生常谈，可以用金字塔加速；</li>
 <li>不局限于和中位数比较，可以和任一个指定的百分比的值进行比较；</li>
 <li>事先可剔除掉前后百分之多少的像素点，来防止这些极端点的干扰，这个前后的依据可以是根据像素值或者根据直方图（即数量），这也是图像处理常见方法了。</li>
 </ol>
+<!-- blog-edit-end:f8313ec52fc9ca79:b9 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b10 -->
+
 <p>附上代码，两句话... 直接从 HDR 那边当时写的<a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_hdr.ipynb">代码</a> copy 过来的：</p>
+<!-- blog-edit-end:f8313ec52fc9ca79:b10 -->
+
+<!-- blog-edit-start:f8313ec52fc9ca79:b11 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">alignMTB</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">createAlignMTB</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">alignMTB</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">images</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f8313ec52fc9ca79:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\04.不同亮度的配准（HDR MTB）.md" data-text-edit-revision="03ca4303f4a0b8ba51ceea5eef39727903a5a8d216aafd31e16c8773a2015c6e" data-text-edit-marker="f8313ec52fc9ca79" data-text-edit-schema="1"></div>
 
 
 
@@ -862,8 +911,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

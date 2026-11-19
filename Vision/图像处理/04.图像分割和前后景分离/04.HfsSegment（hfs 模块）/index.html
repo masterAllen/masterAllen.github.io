@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -683,13 +683,27 @@
   
 
 
+<!-- blog-edit-start:922848ee9ae790e1:b0 -->
+
 <h1 id="hfssegmenthfs">HfsSegment（hfs 模块）</h1>
+<!-- blog-edit-end:922848ee9ae790e1:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8a10d2e6f5d02da567cd5b052b30bd4404940fcffd621ef1d9267f5d6e82bd17" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB%5C04.HfsSegment%EF%BC%88hfs+%E6%A8%A1%E5%9D%97%EF%BC%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\04.HfsSegment（hfs 模块）.md">复制路径</span></div>
+
+<!-- blog-edit-start:922848ee9ae790e1:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.3.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.3.md</a></p>
 </blockquote>
+<!-- blog-edit-end:922848ee9ae790e1:b1 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b2 -->
+
 <p>ECCV 2016 的一篇文章，OpenCV 其中一个 extra 模块专门就是它。这里直接复制 OpenCV 的官方介绍：</p>
+<!-- blog-edit-end:922848ee9ae790e1:b2 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b3 -->
+
 <blockquote>
 <p>This algorithm is executed in 3 stages:</p>
 <p>In the first stage, the algorithm uses SLIC (simple linear iterative clustering) algorithm to obtain the superpixel of the input image.</p>
@@ -697,10 +711,30 @@
 <p>In the third stage, the algorithm exploits the similar mechanism to further merge the small regions obtained in the second stage into even coarser segmentation.</p>
 <p>After these three stages, we can obtain the final segmentation of the image. For further details about the algorithm, please refer to the original paper: Hierarchical Feature Selection for Efficient Image Segmentation, ECCV 2016</p>
 </blockquote>
+<!-- blog-edit-end:922848ee9ae790e1:b3 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b4 -->
+
 <h3 id="_1">如何用</h3>
+<!-- blog-edit-end:922848ee9ae790e1:b4 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b5 -->
+
 <p>这个才是关键，相关的使用全在 <a href="https://docs.opencv.org/4.x/d2/de0/classcv_1_1hfs_1_1HfsSegment.html">HfsSegment</a> 类里面了。</p>
+<!-- blog-edit-end:922848ee9ae790e1:b5 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b6 -->
+
 <p>还是老一套 <code>create</code> → <code>setParm</code> → <code>process</code> 这三步，即创建对象、设置参数、执行。</p>
+<!-- blog-edit-end:922848ee9ae790e1:b6 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b7 -->
+
 <h4 id="1-create">1. create</h4>
+<!-- blog-edit-end:922848ee9ae790e1:b7 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b8 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">static</span><span class="w"> </span><span class="n">Ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">HfsSegment</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cv</span><span class="o">::</span><span class="n">hfs</span><span class="o">::</span><span class="n">HfsSegment</span><span class="o">::</span><span class="n">create</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">int</span><span class="w">     </span><span class="n">height</span><span class="p">,</span><span class="w">    </span><span class="kt">int</span><span class="w">  </span><span class="n">width</span><span class="p">,</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">float</span><span class="w">   </span><span class="n">segEgbThresholdI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.08f</span><span class="p">,</span>
@@ -712,9 +746,25 @@
 </span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="kt">int</span><span class="w">     </span><span class="n">numSlicIter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span>
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:922848ee9ae790e1:b8 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b9 -->
+
 <p>前面两个参数就是要处理图片的高和宽，后面一大堆就是算法的参数。要么在 <code>create</code> 里面设好，也有对应的 <code>set</code> 方法。</p>
+<!-- blog-edit-end:922848ee9ae790e1:b9 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b10 -->
+
 <h4 id="2-set-get">2. set / get</h4>
+<!-- blog-edit-end:922848ee9ae790e1:b10 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b11 -->
+
 <p>直接复制了<a href="https://docs.opencv.org/4.x/d2/de0/classcv_1_1hfs_1_1HfsSegment.html">官方的说明</a>了，每一个 setXXX 也有对应的 getXXX 函数。</p>
+<!-- blog-edit-end:922848ee9ae790e1:b11 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b12 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w">    </span><span class="n">setMinRegionSizeI</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="n">minRegionSizeI</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="n">mentioned</span><span class="w"> </span><span class="n">above</span><span class="p">.</span><span class="w"> </span><span class="n">After</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">EGB</span><span class="w"> </span><span class="n">segmentation</span><span class="p">,</span><span class="w"> </span><span class="n">regions</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">fewer</span><span class="w"> </span><span class="n">pixels</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">merged</span><span class="w"> </span><span class="n">into</span><span class="w"> </span><span class="n">it</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">adjacent</span><span class="w"> </span><span class="n">region</span><span class="p">.</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -736,15 +786,35 @@
 </span><span id="__span-1-19"><span class="linenos" data-linenos="19 "></span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w">    </span><span class="n">setSpatialWeight</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">w</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span>
 </span><span id="__span-1-20"><span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="n">spatialWeight</span><span class="p">.</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">parameter</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="n">stage</span><span class="w"> </span><span class="n">mentioned</span><span class="w"> </span><span class="n">above</span><span class="p">(</span><span class="n">the</span><span class="w"> </span><span class="n">SLIC</span><span class="w"> </span><span class="n">stage</span><span class="p">).</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="n">describes</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="n">important</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">role</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">calculating</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">each</span><span class="w"> </span><span class="n">pixel</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">it</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">center</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">exact</span><span class="w"> </span><span class="n">formula</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">calculate</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">colorDistance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">spatialWeight</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">spatialDisgtance</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">segmentation</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="n">tends</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">more</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="n">consistency</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">larger</span><span class="p">.</span>
 </span></code></pre></div>
+<!-- blog-edit-end:922848ee9ae790e1:b12 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b13 -->
+
 <h4 id="3-process">3. process</h4>
+<!-- blog-edit-end:922848ee9ae790e1:b13 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b14 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>virtual Mat     performSegmentCpu (InputArray src, bool ifDraw=true)=0
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>    do segmentation with cpu This method is only implemented for reference. It is highly NOT recommanded to use it.
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>virtual Mat     performSegmentGpu (InputArray src, bool ifDraw=true)=0
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span>    do segmentation gpu
 </span></code></pre></div>
+<!-- blog-edit-end:922848ee9ae790e1:b14 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b15 -->
+
 <p>如上所述，直接使用 <code>performSegmentGpu</code> 就行了。</p>
+<!-- blog-edit-end:922848ee9ae790e1:b15 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b16 -->
+
 <h4 id="example">Example</h4>
+<!-- blog-edit-end:922848ee9ae790e1:b16 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b17 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./image/messi5.jpg&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">hfs_member</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">hfs</span><span class="o">.</span><span class="n">HfsSegment</span><span class="p">()</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -757,7 +827,14 @@
 </span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span><span class="n">hfs_member</span><span class="o">.</span><span class="n">setSegEgbThresholdI</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
 </span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span><span class="n">out3</span> <span class="o">=</span> <span class="n">hfs_member</span><span class="o">.</span><span class="n">performSegmentGpu</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:922848ee9ae790e1:b17 -->
+
+<!-- blog-edit-start:922848ee9ae790e1:b18 -->
+
 <p><img alt="1723647233424" src="../../../../asset/image/b0652d603add93cf54619e5adac05823/1723647233424.png" /></p>
+<!-- blog-edit-end:922848ee9ae790e1:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\04.HfsSegment（hfs 模块）.md" data-text-edit-revision="8a10d2e6f5d02da567cd5b052b30bd4404940fcffd621ef1d9267f5d6e82bd17" data-text-edit-marker="922848ee9ae790e1" data-text-edit-schema="1"></div>
 
 
 
@@ -989,8 +1066,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

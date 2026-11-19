@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -623,12 +623,30 @@
   
 
 
+<!-- blog-edit-start:104317ce88593296:b0 -->
+
 <h1 id="acl">第六章: ACL 的使用</h1>
+<!-- blog-edit-end:104317ce88593296:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2a25531f1cf9ec1b8a3de8c8a26f6d58147ce7bb2b104a7ef2bb5cdfd7dac1e0" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter06%5Cchapter06_03.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter06" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter06\chapter06_03.md">复制路径</span></div>
 
+<!-- blog-edit-start:104317ce88593296:b1 -->
+
 <p>ACL: 可以针对单一用户/文件 进行权限设置</p>
+<!-- blog-edit-end:104317ce88593296:b1 -->
+
+<!-- blog-edit-start:104317ce88593296:b2 -->
+
 <p>1. <code>getfacl</code> 说明: 取得某个文件/目录的 ACL 设置项目。例子: <code>getfacl acl_demo_test</code></p>
+<!-- blog-edit-end:104317ce88593296:b2 -->
+
+<!-- blog-edit-start:104317ce88593296:b3 -->
+
 <p>2. <code>setfacl</code> 说明: 设置...</p>
+<!-- blog-edit-end:104317ce88593296:b3 -->
+
+<!-- blog-edit-start:104317ce88593296:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>- 常用命令
 <span class="linenos" data-linenos=" 2 "></span>
 <span class="linenos" data-linenos=" 3 "></span>    - -m : 设置后续的acl参数
@@ -641,7 +659,14 @@
 <span class="linenos" data-linenos="10 "></span>    - `setfacl -m d:u:user_demo:rx acl_demo_test`: 对于demo_test文件，如果是目录，那么里面的子目录/子文件的权限都会被继承
 <span class="linenos" data-linenos="11 "></span>    - `setfacl -m g:group_demo:rx acl_demo_test`
 </code></pre></div>
+<!-- blog-edit-end:104317ce88593296:b4 -->
+
+<!-- blog-edit-start:104317ce88593296:b5 -->
+
 <h2 id="mask">mask</h2>
+<!-- blog-edit-end:104317ce88593296:b5 -->
+<!-- blog-edit-start:104317ce88593296:b6 -->
+
 <p>getfacl 输出结果一览<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>----------------------
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>|# file: temp.txt    | 
@@ -654,11 +679,22 @@
 </span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>|other::r--          |
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>----------------------
 </span></code></pre></div></p>
+<!-- blog-edit-end:104317ce88593296:b6 -->
+
+<!-- blog-edit-start:104317ce88593296:b7 -->
+
 <p>mask 是什么呢?</p>
+<!-- blog-edit-end:104317ce88593296:b7 -->
+
+<!-- blog-edit-start:104317ce88593296:b8 -->
+
 <ul>
 <li>mask 相当于一种有效权限，<code>setfacl</code> 设置的 用户或者组 的权限 一定是 mask 的子集</li>
 <li>当然文件的 owner 是不受这种限制滴</li>
 </ul>
+<!-- blog-edit-end:104317ce88593296:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter06\chapter06_03.md" data-text-edit-revision="2a25531f1cf9ec1b8a3de8c8a26f6d58147ce7bb2b104a7ef2bb5cdfd7dac1e0" data-text-edit-marker="104317ce88593296" data-text-edit-schema="1"></div>
 
 
 
@@ -890,8 +926,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

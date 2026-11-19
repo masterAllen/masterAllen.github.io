@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -563,13 +563,23 @@
   
 
 
+<!-- blog-edit-start:ebe7be2d401525d7:b0 -->
+
 <h1 id="zsh">ZSH 速度太慢原因排查</h1>
+<!-- blog-edit-end:ebe7be2d401525d7:b0 -->
+
 <div class="file-actions" data-image-edit-revision="692b49539c9176d96cf1f410bacca164259a2fbbb4bdee64ff24fa4b4a0f09db" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CZSH%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E5%8E%9F%E5%9B%A0%E6%8E%92%E6%9F%A5.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\ZSH速度太慢原因排查.md">复制路径</span></div>
+
+<!-- blog-edit-start:ebe7be2d401525d7:b1 -->
 
 <p>1. 检查速度<br />
 平时的启动: <code>hyperfine "zsh -i -c exit"</code><br />
 不启动脚本: <code>hyperfine "zsh --no-rcs -i -c exit"</code></p>
+<!-- blog-edit-end:ebe7be2d401525d7:b1 -->
+
 <!--more-->
+
+<!-- blog-edit-start:ebe7be2d401525d7:b2 -->
 
 <p>2. 排查原因<br />
 在 <code>.zshrc</code> 开头加入 <code>zmodload zsh/zprof</code>，末尾加入 <code>zprof</code>，运行 <code>zsh</code><br />
@@ -583,12 +593,31 @@
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span> 5)    3          30.63    10.21    5.06%     30.63    10.21    5.06%  compaudit
 </span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span> ...
 </span></code></pre></div></p>
+<!-- blog-edit-end:ebe7be2d401525d7:b2 -->
+
+<!-- blog-edit-start:ebe7be2d401525d7:b3 -->
+
 <p>发现是因为加载了 <code>nvm</code> 的原因，平时也用不到 <code>nvm</code>，所以我把 <code>.zshrc</code> 加载 <code>nvm</code> 的语句都注释掉了</p>
+<!-- blog-edit-end:ebe7be2d401525d7:b3 -->
+
+<!-- blog-edit-start:ebe7be2d401525d7:b4 -->
+
 <p><strong>2021/09/29 更新</strong></p>
+<!-- blog-edit-end:ebe7be2d401525d7:b4 -->
+
+<!-- blog-edit-start:ebe7be2d401525d7:b5 -->
+
 <p>加入 <code>alias load_nvm="source /usr/share/nvm/init-nvm.sh</code>, 需要时执行命令. 在我 ArchLinux 上是可以的, 但是在别的系统可能会有问题, 具体看 <code>.zshrc</code> 中如何导入 <code>nvm</code> 就行了.</p>
+<!-- blog-edit-end:ebe7be2d401525d7:b5 -->
+
+<!-- blog-edit-start:ebe7be2d401525d7:b6 -->
+
 <ol>
 <li><a href="https://stevenvanbael.com/profiling-zsh-startup">https://stevenvanbael.com/profiling-zsh-startup</a></li>
 </ol>
+<!-- blog-edit-end:ebe7be2d401525d7:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\ZSH速度太慢原因排查.md" data-text-edit-revision="692b49539c9176d96cf1f410bacca164259a2fbbb4bdee64ff24fa4b4a0f09db" data-text-edit-marker="ebe7be2d401525d7" data-text-edit-schema="1"></div>
 
 
 
@@ -820,8 +849,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

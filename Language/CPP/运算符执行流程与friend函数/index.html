@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -939,35 +939,89 @@
   
 
 
+<!-- blog-edit-start:c6bf542cde29ea65:b0 -->
+
 <h1 id="c-friend">C++ 运算符执行流程与 friend 函数</h1>
+<!-- blog-edit-end:c6bf542cde29ea65:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1e5e1803889aef4bf6f4e298fa967468fd33ae918cd3d40935cdc0455694bb84" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP%5C%E8%BF%90%E7%AE%97%E7%AC%A6%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E4%B8%8Efriend%E5%87%BD%E6%95%B0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\CPP\运算符执行流程与friend函数.md">复制路径</span></div>
 
+<!-- blog-edit-start:c6bf542cde29ea65:b1 -->
+
 <h2 id="_1">问题背景</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b1 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b2 -->
+
 <p>在 C++ 中，当使用运算符（如 <code>-</code>、<code>+</code>、<code>*</code> 等）时，需要理解代码的执行流程，特别是涉及临时对象和 friend 函数的情况。</p>
+<!-- blog-edit-end:c6bf542cde29ea65:b2 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b3 -->
+
 <h2 id="_2">示例代码</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b3 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b4 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">Xc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">meanX</span><span class="p">;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">Yc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="n">Ys</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">meanY</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b4 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b5 -->
+
 <h2 id="_3">执行流程详解</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b5 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b6 -->
+
 <h3 id="141-vec3-xc-vec3xsi-meanx">第 141 行：<code>Vec3 Xc = Vec3(Xs[i]) - meanX;</code></h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b6 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b7 -->
+
 <h4 id="1-vec3xsi">步骤 1：创建临时对象 <code>Vec3(Xs[i])</code></h4>
+<!-- blog-edit-end:c6bf542cde29ea65:b7 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b8 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">array</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="n">z</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="p">{}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b8 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b9 -->
+
 <ul>
 <li><strong>作用</strong>：从 <code>std::array&lt;double, 3&gt;</code> 创建临时 Vec3 对象</li>
 <li><strong>类型</strong>：临时对象（rvalue）</li>
 <li><strong>生命周期</strong>：表达式结束后销毁</li>
 </ul>
+<!-- blog-edit-end:c6bf542cde29ea65:b9 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b10 -->
+
 <h4 id="2-operator-">步骤 2：调用 <code>operator-</code> 运算符</h4>
+<!-- blog-edit-end:c6bf542cde29ea65:b10 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b11 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="k">friend</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Vec3</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b11 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b12 -->
+
 <p><strong>参数说明</strong>：</p>
 <ul>
 <li><code>a</code>：绑定到临时对象 <code>Vec3(Xs[i])</code>（const 引用可以绑定临时对象）</li>
 <li><code>b</code>：绑定到 <code>meanX</code>（命名对象）</li>
 </ul>
+<!-- blog-edit-end:c6bf542cde29ea65:b12 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b13 -->
+
 <p><strong>函数内部</strong>：</p>
 <ul>
 <li>第 50 行：<code>return Vec3(a.x - b.x, a.y - b.y, a.z - b.z);</code></li>
@@ -975,21 +1029,57 @@
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </span></code></pre></div></li>
 </ul>
+<!-- blog-edit-end:c6bf542cde29ea65:b13 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b14 -->
+
 <p><strong>返回</strong>：一个新的临时 Vec3 对象（包含差值结果）</p>
+<!-- blog-edit-end:c6bf542cde29ea65:b14 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b15 -->
+
 <h4 id="3-xc">步骤 3：初始化 <code>Xc</code></h4>
+<!-- blog-edit-end:c6bf542cde29ea65:b15 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b16 -->
+
 <p><strong>情况 A：无优化（调用拷贝构造函数）</strong></p>
+<!-- blog-edit-end:c6bf542cde29ea65:b16 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b17 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">y</span><span class="p">),</span><span class="w"> </span><span class="n">z</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b17 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b18 -->
+
 <ul>
 <li>将 <code>operator-</code> 返回的临时对象拷贝到 <code>Xc</code></li>
 <li>临时对象在表达式结束后销毁</li>
 </ul>
+<!-- blog-edit-end:c6bf542cde29ea65:b18 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b19 -->
+
 <p><strong>情况 B：RVO（返回值优化）</strong></p>
+<!-- blog-edit-end:c6bf542cde29ea65:b19 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b20 -->
+
 <ul>
 <li>编译器优化，直接在 <code>Xc</code> 的位置构造对象</li>
 <li>跳过拷贝构造，提高性能</li>
 </ul>
+<!-- blog-edit-end:c6bf542cde29ea65:b20 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b21 -->
+
 <h3 id="_4">完整执行顺序总结</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b21 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b22 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span>Vec3 Xc = Vec3(Xs[i]) - meanX;
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>  ↓
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>1. 构造函数：Vec3(const std::array&lt;double, 3&gt;&amp; data)
@@ -1006,11 +1096,35 @@
 </span><span id="__span-5-14"><span class="linenos" data-linenos="14 "></span>   - 将 temp2 拷贝到 Xc
 </span><span id="__span-5-15"><span class="linenos" data-linenos="15 "></span>   - temp1 和 temp2 在表达式结束后销毁
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b22 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b23 -->
+
 <h2 id="friend">Friend 函数详解</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b23 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b24 -->
+
 <h3 id="friend_1">什么是 Friend 函数？</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b24 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b25 -->
+
 <p>Friend 函数是类的友元函数，可以访问类的私有成员，但不是类的成员函数。</p>
+<!-- blog-edit-end:c6bf542cde29ea65:b25 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b26 -->
+
 <h3 id="friend_2">为什么使用 Friend 函数？</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b26 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b27 -->
+
 <h4 id="1">1. 对称性</h4>
+<!-- blog-edit-end:c6bf542cde29ea65:b27 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b28 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 使用 friend 函数，左右操作数对称</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">meanX</span><span class="p">;</span><span class="w">  </span><span class="c1">// 临时对象在左侧 ✅</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">meanX</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w">  </span><span class="c1">// 临时对象在右侧 ✅</span>
@@ -1019,7 +1133,15 @@
 </span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">).</span><span class="n">sub</span><span class="p">(</span><span class="n">meanX</span><span class="p">);</span><span class="w">  </span><span class="c1">// 临时对象必须调用方法 ❌</span>
 </span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span><span class="c1">// meanX.sub(Vec3(1,2,3))  // 不能这样，因为 meanX 不能修改自己</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b28 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b29 -->
+
 <h4 id="2">2. 支持临时对象</h4>
+<!-- blog-edit-end:c6bf542cde29ea65:b29 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b30 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="k">friend</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Vec3</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="c1">// const 引用可以绑定临时对象</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
@@ -1028,7 +1150,15 @@
 </span><span id="__span-7-6"><span class="linenos" data-linenos="6 "></span><span class="c1">// 可以这样使用：</span>
 </span><span id="__span-7-7"><span class="linenos" data-linenos="7 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span><span class="w">  </span><span class="c1">// ✅ 两个临时对象</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b30 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b31 -->
+
 <h4 id="3">3. 访问私有成员</h4>
+<!-- blog-edit-end:c6bf542cde29ea65:b31 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b32 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Vec3</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">private</span><span class="o">:</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w">  </span><span class="c1">// 私有成员</span>
@@ -1040,7 +1170,15 @@
 </span><span id="__span-8-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-8-10"><span class="linenos" data-linenos="10 "></span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b32 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b33 -->
+
 <h3 id="friend-vs">Friend vs 成员函数</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b33 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b34 -->
+
 <table>
 <thead>
 <tr>
@@ -1077,8 +1215,20 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:c6bf542cde29ea65:b34 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b35 -->
+
 <h2 id="const">Const 引用的重要性</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b35 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b36 -->
+
 <h3 id="const-vec3">为什么参数必须是 <code>const Vec3&amp;</code>？</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b36 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b37 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// ❌ 错误：非 const 引用</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">friend</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Vec3</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
@@ -1095,15 +1245,35 @@
 </span><span id="__span-9-14"><span class="linenos" data-linenos="14 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">meanX</span><span class="p">;</span><span class="w">  </span>
 </span><span id="__span-9-15"><span class="linenos" data-linenos="15 "></span><span class="c1">// 可以编译：临时对象可以绑定到 const 引用</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b37 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b38 -->
+
 <h3 id="const_1">Const 引用的优势</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b38 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b39 -->
+
 <ol>
 <li><strong>接受临时对象</strong>：<code>const T&amp;</code> 可以绑定到临时对象</li>
 <li><strong>接受命名对象</strong>：<code>const T&amp;</code> 可以绑定到命名对象</li>
 <li><strong>语义明确</strong>：表示不会修改参数</li>
 <li><strong>性能优化</strong>：避免不必要的拷贝</li>
 </ol>
+<!-- blog-edit-end:c6bf542cde29ea65:b39 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b40 -->
+
 <h2 id="_5">实际应用示例</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b40 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b41 -->
+
 <h3 id="vec3">Vec3 类的运算符定义</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b41 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b42 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Vec3</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">private</span><span class="o">:</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
@@ -1122,7 +1292,15 @@
 </span><span id="__span-10-16"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">friend</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">double</span><span class="p">;</span>
 </span><span id="__span-10-17"><span class="linenos" data-linenos="17 "></span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b42 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b43 -->
+
 <h3 id="_6">使用示例</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b43 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b44 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 示例 1：临时对象 + 命名对象</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">Vec3</span><span class="w"> </span><span class="nf">meanX</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 </span><span id="__span-11-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">meanX</span><span class="p">;</span><span class="w">  </span><span class="c1">// ✅</span>
@@ -1138,24 +1316,64 @@
 </span><span id="__span-11-13"><span class="linenos" data-linenos="13 "></span><span class="c1">// 示例 4：链式调用</span>
 </span><span id="__span-11-14"><span class="linenos" data-linenos="14 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span><span class="w">  </span><span class="c1">// ✅</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b44 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b45 -->
+
 <h2 id="_7">性能考虑</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b45 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b46 -->
+
 <h3 id="rvo">返回值优化（RVO）</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b46 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b47 -->
+
 <p>现代编译器会自动进行返回值优化，避免不必要的拷贝：</p>
+<!-- blog-edit-end:c6bf542cde29ea65:b47 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b48 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="w"> </span><span class="nf">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">  </span><span class="c1">// 编译器可能直接在调用者位置构造</span>
 </span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span><span class="p">}</span>
 </span><span id="__span-12-4"><span class="linenos" data-linenos="4 "></span>
 </span><span id="__span-12-5"><span class="linenos" data-linenos="5 "></span><span class="n">Vec3</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">func</span><span class="p">();</span><span class="w">  </span><span class="c1">// 可能不调用拷贝构造函数</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b48 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b49 -->
+
 <h3 id="c11">移动语义（C++11）</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b49 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b50 -->
+
 <p>对于 C++11 及以后，可以使用移动语义进一步优化：</p>
+<!-- blog-edit-end:c6bf542cde29ea65:b50 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b51 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="k">friend</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="k">operator</span><span class="o">-</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Vec3</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-13-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Vec3</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
 </span><span id="__span-13-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="c1">// 编译器可能使用移动构造函数而不是拷贝构造函数</span>
 </span><span id="__span-13-4"><span class="linenos" data-linenos="4 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6bf542cde29ea65:b51 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b52 -->
+
 <h2 id="_8">总结</h2>
+<!-- blog-edit-end:c6bf542cde29ea65:b52 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b53 -->
+
 <h3 id="_9">关键要点</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b53 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b54 -->
+
 <ol>
 <li>
 <p><strong>运算符执行流程</strong>：</p>
@@ -1206,12 +1424,23 @@
 <li>返回新对象而不是修改现有对象</li>
 <li>依赖编译器优化（RVO）</li>
 </ol>
+<!-- blog-edit-end:c6bf542cde29ea65:b54 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b55 -->
+
 <h3 id="_10">记忆口诀</h3>
+<!-- blog-edit-end:c6bf542cde29ea65:b55 -->
+
+<!-- blog-edit-start:c6bf542cde29ea65:b56 -->
+
 <ul>
 <li><strong>Friend 函数</strong>：对称、临时、私有访问</li>
 <li><strong>Const 引用</strong>：临时、命名、都不改</li>
 <li><strong>运算符</strong>：返回新对象，不修改原对象</li>
 </ul>
+<!-- blog-edit-end:c6bf542cde29ea65:b56 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\CPP\运算符执行流程与friend函数.md" data-text-edit-revision="1e5e1803889aef4bf6f4e298fa967468fd33ae918cd3d40935cdc0455694bb84" data-text-edit-marker="c6bf542cde29ea65" data-text-edit-schema="1"></div>
 
 
 
@@ -1443,8 +1672,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

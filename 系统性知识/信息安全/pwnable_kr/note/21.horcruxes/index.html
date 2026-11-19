@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -625,8 +625,14 @@
   
 
 
+<!-- blog-edit-start:37184e78655ff441:b0 -->
+
 <h1 id="pwnablekr-horcruxes">Pwnable.kr horcruxes</h1>
+<!-- blog-edit-end:37184e78655ff441:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8a1e343b66851ee2f53bede44675b4736538d40ab1336d226ba5585275894d50" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C21.horcruxes.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\21.horcruxes.md">复制路径</span></div>
+
+<!-- blog-edit-start:37184e78655ff441:b1 -->
 
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">ropme</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -660,8 +666,20 @@
 </span><span id="__span-0-30"><span class="linenos" data-linenos="30 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-31"><span class="linenos" data-linenos="31 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:37184e78655ff441:b1 -->
+
+<!-- blog-edit-start:37184e78655ff441:b2 -->
+
 <p>很明显，<code>ropme</code> 函数中 <code>gets</code> 存在栈溢出漏洞，但直接返回地址修改为 <code>fd=open("flag", 0)</code> 无法执行，<strong>测试发现 <code>ropme</code> 函数任何位置都无法作为篡改的返回地址</strong>。</p>
+<!-- blog-edit-end:37184e78655ff441:b2 -->
+
+<!-- blog-edit-start:37184e78655ff441:b3 -->
+
 <p>所以还是要老老实实让 <code>atoi(s) == sum</code> 成立。<code>sum</code> 是在 <code>init_ABCDEFG()</code> 这个一开始程序就执行的函数中计算的：</p>
+<!-- blog-edit-end:37184e78655ff441:b3 -->
+
+<!-- blog-edit-start:37184e78655ff441:b4 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">init_ABCDEFG</span><span class="p">()</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">v0</span><span class="p">;</span><span class="w"> </span><span class="c1">// eax</span>
@@ -690,15 +708,42 @@
 </span><span id="__span-1-26"><span class="linenos" data-linenos="26 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 </span><span id="__span-1-27"><span class="linenos" data-linenos="27 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:37184e78655ff441:b4 -->
+
+<!-- blog-edit-start:37184e78655ff441:b5 -->
+
 <p>可以看出要知道 <code>a-g</code> 这些随机数的值，而回到 <code>ropme</code> 函数，可以看到有 <code>A-G</code> 这些函数，他们会打印 <code>a-g</code> 的值。</p>
+<!-- blog-edit-end:37184e78655ff441:b5 -->
+
+<!-- blog-edit-start:37184e78655ff441:b6 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">A</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;You found </span><span class="se">\&quot;</span><span class="s">Tom Riddle&#39;s Diary</span><span class="se">\&quot;</span><span class="s"> (EXP +%d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:37184e78655ff441:b6 -->
+
+<!-- blog-edit-start:37184e78655ff441:b7 -->
+
 <p>但 <code>ropme</code> 只执行一次，所以利用上面的 <code>gets</code> 漏洞，把栈里面的返回地址修改为 <code>A()</code> + <code>B()</code> + ... + <code>G()</code> + <code>ropme()</code>。</p>
+<!-- blog-edit-end:37184e78655ff441:b7 -->
+
+<!-- blog-edit-start:37184e78655ff441:b8 -->
+
 <p>这样第一次执行 <code>ropme</code> 的时候，返回地址被篡改，最后会执行 <code>A()</code>。由于 A 函数没有用到栈，A 执行完后，此时栈中的返回地址就是之前 <code>ropme</code> 函数执行时栈的返回地址下一个地址，也就是我们篡改的 <code>B()</code>，所以就会跳转到 <code>B()</code> 函数执行。</p>
+<!-- blog-edit-end:37184e78655ff441:b8 -->
+
+<!-- blog-edit-start:37184e78655ff441:b9 -->
+
 <p>反复之后，最后一次执行 <code>ropme</code>，我们已经算出了 <code>a+..+g</code> 的值，所以 <code>atoi(s) == sum</code> 成立，最终会输出 <code>flag</code>。</p>
+<!-- blog-edit-end:37184e78655ff441:b9 -->
+
+<!-- blog-edit-start:37184e78655ff441:b10 -->
+
 <p>关键点其实是 <code>gets</code> 栈溢出漏洞的时候，返回地址无法修改成 <code>ropme</code> 函数的任意地方，只能修改成 <code>A-G</code> 和 <code>main</code> 函数中调用 <code>ropme</code> 的地方（即 <code>call ropme</code>）。</p>
+<!-- blog-edit-end:37184e78655ff441:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\21.horcruxes.md" data-text-edit-revision="8a1e343b66851ee2f53bede44675b4736538d40ab1336d226ba5585275894d50" data-text-edit-marker="37184e78655ff441" data-text-edit-schema="1"></div>
 
 
 
@@ -930,8 +975,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,24 +581,61 @@
   
 
 
+<!-- blog-edit-start:0edb0783f4ad6d10:b0 -->
+
 <h1 id="cpp-friend">CPP 学习思考一： friend</h1>
+<!-- blog-edit-end:0edb0783f4ad6d10:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1c838b57391f57bda54b48a7a494bf690cc5cb7cbc618f5aff55f4d3d96ce50b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP%5Ccpp_friend.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\CPP\cpp_friend.md">复制路径</span></div>
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b1 -->
 
 <p>分为 friend 函数和 friend 类。一个类的 friend 函数/类可以访问这个类的私有变量。实际上仔细想想，他这个感觉破坏了类之间的严格关系，这篇文章主要记录一下我觉得 friend 比较有用的地方。</p>
 <!--more-->
 
+<!-- blog-edit-end:0edb0783f4ad6d10:b1 -->
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b2 -->
+
 <p>1. 用途一: 迭代器</p>
+<!-- blog-edit-end:0edb0783f4ad6d10:b2 -->
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b3 -->
+
 <p>迭代器是一个容器的 friend，迭代器要接触到容器中的私有变量，实现方式使用 friend 比较方便。</p>
+<!-- blog-edit-end:0edb0783f4ad6d10:b3 -->
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b4 -->
+
 <p>2. 用途二: 单元测试</p>
+<!-- blog-edit-end:0edb0783f4ad6d10:b4 -->
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b5 -->
+
 <p>有时写了一个类，需要进行单元测试方法，那难免要去访问私有变量。让单元测试方法作为被测试的类的 friend，这样方便多了。也可以在编译时添加选项 <code>-Dprivate=public</code> 或者 测试时写入 <code>#define private public</code>。</p>
+<!-- blog-edit-end:0edb0783f4ad6d10:b5 -->
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b6 -->
+
 <p>3. 用途三: 运算符重载</p>
+<!-- blog-edit-end:0edb0783f4ad6d10:b6 -->
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b7 -->
+
 <p>比如一个变量 <code>A a</code>，现在进行一个运算符重载 <code>A operator+(int n)</code>，那么我们确实可以 <code>a = a+5</code>。<strong>但是 <code>a = 5+a</code> 却不可以!</strong><br />
 所以要重载一个函数，即 <code>A operator+(int n, const A&amp; a)</code>，这样可以。但是万一这个函数里面要访问 <code>a</code> 的私有变量，所以要把这个重载函数变成 <code>friend A operator+(int n, const A&amp;a)</code>。</p>
+<!-- blog-edit-end:0edb0783f4ad6d10:b7 -->
+
+<!-- blog-edit-start:0edb0783f4ad6d10:b8 -->
+
 <p>比较常见的就是输出符号重载了，<code>ostream</code> 要访问类的私有变量，使用 friend 比较方便。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">friend</span><span class="w"> </span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="w"> </span><span class="o">&amp;</span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Demo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">private_value</span><span class="p">;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:0edb0783f4ad6d10:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\CPP\cpp_friend.md" data-text-edit-revision="1c838b57391f57bda54b48a7a494bf690cc5cb7cbc618f5aff55f4d3d96ce50b" data-text-edit-marker="0edb0783f4ad6d10" data-text-edit-schema="1"></div>
 
 
 
@@ -830,8 +867,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

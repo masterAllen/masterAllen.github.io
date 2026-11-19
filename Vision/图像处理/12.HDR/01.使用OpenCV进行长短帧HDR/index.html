@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,17 +666,47 @@
   
 
 
+<!-- blog-edit-start:83f7dd9dcc13b089:b0 -->
+
 <h1 id="opencv-hdr">使用 OpenCV 进行长短帧 HDR</h1>
+<!-- blog-edit-end:83f7dd9dcc13b089:b0 -->
+
 <div class="file-actions" data-image-edit-revision="cfb0ac063f5db46ad48021eec2ac6be76d768b21568fc7e1e8531de89ef7d916" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C12.HDR%5C01.%E4%BD%BF%E7%94%A8OpenCV%E8%BF%9B%E8%A1%8C%E9%95%BF%E7%9F%AD%E5%B8%A7HDR.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C12.HDR" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\12.HDR\01.使用OpenCV进行长短帧HDR.md">复制路径</span></div>
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.1.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.1.md</a></p>
 </blockquote>
+<!-- blog-edit-end:83f7dd9dcc13b089:b1 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b2 -->
+
 <p>不同曝光的图片融合，文章不讲具体原理，这个也是经典方法了，搜一下很容易搜到资料，我当时是深蓝学院的计算摄影学上学到的，授课老师 Wang Hawk 在知乎上也有专栏分享，非常值得一看。</p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b2 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b3 -->
+
 <p>下面主要是走一遍代码流程吧，整体代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_hdr.ipynb">test_hdr.ipynb</a>，基本就是对 LearnOpenCV 的复制粘贴：<a href="https://learnopencv.com/high-dynamic-range-hdr-imaging-using-opencv-cpp-python/">https://learnopencv.com/high-dynamic-range-hdr-imaging-using-opencv-cpp-python/</a></p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b3 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b4 -->
+
 <p>原始数据：三个不同曝光的图片；目标输出：三张图片融合为一张。</p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b4 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b5 -->
+
 <h3 id="1">1. 对齐图片</h3>
+<!-- blog-edit-end:83f7dd9dcc13b089:b5 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b6 -->
+
 <p>对齐，无需多言，这里对齐不常用特征点+变换矩阵的方法，而是使用一个叫做 MTB(Median Threshold Bitmap) 的一个方法，具体可以看图像配准那个部分写的<a href="../../05.图像配准和拼接/04.不同亮度的配准（HDR MTB）/">文章</a></p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b6 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b7 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 对齐和不对齐显示</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -690,22 +720,66 @@
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span>
 </span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span><span class="n">show_images</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:83f7dd9dcc13b089:b7 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b8 -->
+
 <p><img alt="1722265203968" src="../../../../asset/image/979554ff116650bc07162768e97d8586/1722265203968.png" /></p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b8 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b9 -->
+
 <h3 id="2">2. 获取响应曲线</h3>
+<!-- blog-edit-end:83f7dd9dcc13b089:b9 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b10 -->
+
 <p>这个要写一下简单的原因，之后再补。</p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b10 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b11 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 返回值: (256, 1, 3)，即 0-256 下 RGB 各自响应值</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">calibrateDebevec</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">createCalibrateDebevec</span><span class="p">()</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="n">responseDebevec</span> <span class="o">=</span> <span class="n">calibrateDebevec</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">exp_times</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:83f7dd9dcc13b089:b11 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b12 -->
+
 <p><img alt="1722265203968" src="../../../../asset/image/979554ff116650bc07162768e97d8586/responseCurve.png" /></p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b12 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b13 -->
+
 <h3 id="3">3. 融合</h3>
+<!-- blog-edit-end:83f7dd9dcc13b089:b13 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b14 -->
+
 <p>最后得到一个 hdr 图片，hdr 图片每个像素是 np.float32，不过范围可以任意（这就是 HDR 的含义），可以很大。</p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b14 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">mergeDebevec</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">createMergeDebevec</span><span class="p">()</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">hdrDebevec</span> <span class="o">=</span> <span class="n">mergeDebevec</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">exp_times</span><span class="p">,</span> <span class="n">responseDebevec</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># cv2.imwrite(&quot;hdrDebevec.hdr&quot;, hdrDebevec)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:83f7dd9dcc13b089:b15 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b16 -->
+
 <h3 id="4-tonemap">4. Tonemap</h3>
+<!-- blog-edit-end:83f7dd9dcc13b089:b16 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b17 -->
+
 <p>这其实是一个单独的话题了，就是把高动态转为可以显示器显示，即所谓的低动态。四种方法：</p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b17 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b18 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># Tonemap methods</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">def</span><span class="w"> </span><span class="nf">to_ldr</span><span class="p">(</span><span class="n">now_method</span><span class="p">,</span> <span class="n">hdr_img</span><span class="p">):</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">ldr_img</span> <span class="o">=</span> <span class="n">now_method</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">hdr_img</span><span class="p">)</span>
@@ -757,7 +831,14 @@
 </span><span id="__span-3-49"><span class="linenos" data-linenos="49 "></span>    <span class="p">(</span><span class="s1">&#39;Durand My&#39;</span><span class="p">,</span> <span class="n">ldrDurand1</span><span class="p">),</span> 
 </span><span id="__span-3-50"><span class="linenos" data-linenos="50 "></span><span class="p">],</span> <span class="n">colnum</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:83f7dd9dcc13b089:b18 -->
+
+<!-- blog-edit-start:83f7dd9dcc13b089:b19 -->
+
 <p><img alt="1726137515752" src="../../../../asset/image/979554ff116650bc07162768e97d8586/1726137515752.png" /></p>
+<!-- blog-edit-end:83f7dd9dcc13b089:b19 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\12.HDR\01.使用OpenCV进行长短帧HDR.md" data-text-edit-revision="cfb0ac063f5db46ad48021eec2ac6be76d768b21568fc7e1e8531de89ef7d916" data-text-edit-marker="83f7dd9dcc13b089" data-text-edit-schema="1"></div>
 
 
 
@@ -989,8 +1070,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

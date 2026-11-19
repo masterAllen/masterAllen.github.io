@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -627,26 +627,67 @@
   
 
 
+<!-- blog-edit-start:60491f949cab0186:b0 -->
+
 <h1 id="clahe">CLAHE 改编</h1>
+<!-- blog-edit-end:60491f949cab0186:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2b8e84bf327f149c64ec50bcf41c5f10f566d0e0166aea6e5012620471159d59" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C11.%E9%94%90%E5%8C%96%E5%92%8C%E4%BD%8E%E5%85%89%E7%85%A7%E5%92%8C%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA%5C%E4%BD%8E%E5%85%89%E7%85%A7_%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA%5CCLAHE+%E6%94%B9%E8%BF%9B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C11.%E9%94%90%E5%8C%96%E5%92%8C%E4%BD%8E%E5%85%89%E7%85%A7%E5%92%8C%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA%5C%E4%BD%8E%E5%85%89%E7%85%A7_%E5%AF%B9%E6%AF%94%E5%BA%A6%E5%A2%9E%E5%BC%BA" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\11.锐化和低光照和对比度增强\低光照_对比度增强\CLAHE 改进.md">复制路径</span></div>
 
+<!-- blog-edit-start:60491f949cab0186:b1 -->
+
 <p>来源：<a href="https://cloud.tencent.com/developer/article/1011944">https://cloud.tencent.com/developer/article/1011944</a></p>
+<!-- blog-edit-end:60491f949cab0186:b1 -->
+
+<!-- blog-edit-start:60491f949cab0186:b2 -->
+
 <p>链接的文章对 CLAHE 有以下改进：</p>
+<!-- blog-edit-end:60491f949cab0186:b2 -->
+
+<!-- blog-edit-start:60491f949cab0186:b3 -->
+
 <p>1. 子块直方图和全局直方图融合：</p>
+<!-- blog-edit-end:60491f949cab0186:b3 -->
+
+<!-- blog-edit-start:60491f949cab0186:b4 -->
+
 <p>做子块直方图之后，加一步：</p>
+<!-- blog-edit-end:60491f949cab0186:b4 -->
+
+<!-- blog-edit-start:60491f949cab0186:b5 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># HistB 是子块直方图，HistgramB 是全局直方图；L 是 RGB 转的亮度</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">HistB</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HistB</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">Adaptation</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">Adaptation</span><span class="p">)</span> <span class="o">*</span> <span class="n">HistgramB</span><span class="p">[</span><span class="n">Index</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">HistG</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HistG</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">Adaptation</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">Adaptation</span><span class="p">)</span> <span class="o">*</span> <span class="n">HistgramG</span><span class="p">[</span><span class="n">Index</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">HistR</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HistR</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">Adaptation</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">Adaptation</span><span class="p">)</span> <span class="o">*</span> <span class="n">HistgramR</span><span class="p">[</span><span class="n">Index</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">HistL</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HistL</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">Adaptation</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">Adaptation</span><span class="p">)</span> <span class="o">*</span> <span class="n">HistgramL</span><span class="p">[</span><span class="n">Index</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:60491f949cab0186:b5 -->
+
+<!-- blog-edit-start:60491f949cab0186:b6 -->
+
 <p>其中 Adaptation 为融合因子，其有效范围为[0,100]，当取值越小时，全局直方图其主导作用，效果越接近普通的直方图均衡。</p>
+<!-- blog-edit-end:60491f949cab0186:b6 -->
+
+<!-- blog-edit-start:60491f949cab0186:b7 -->
+
 <p>2. 如果是彩色图像，可以单独做也可以一起做，链接的文章是这样改进的：</p>
+<!-- blog-edit-end:60491f949cab0186:b7 -->
+
+<!-- blog-edit-start:60491f949cab0186:b8 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">HistB</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HistB</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">Correction</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">Correction</span><span class="p">)</span> <span class="o">*</span> <span class="n">HistL</span><span class="p">[</span><span class="n">Index</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">HistG</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HistG</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">Correction</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">Correction</span><span class="p">)</span> <span class="o">*</span> <span class="n">HistL</span><span class="p">[</span><span class="n">Index</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="n">HistR</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">HistR</span><span class="p">[</span><span class="n">Index</span><span class="p">]</span> <span class="o">*</span> <span class="n">Correction</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">Correction</span><span class="p">)</span> <span class="o">*</span> <span class="n">HistL</span><span class="p">[</span><span class="n">Index</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:60491f949cab0186:b8 -->
+
+<!-- blog-edit-start:60491f949cab0186:b9 -->
+
 <p>其中 Correction 为颜色校正因子，其有效范围为[0,100]，当取值越大时，各通道之间越独立，效果越接近普通的直方图均衡。</p>
+<!-- blog-edit-end:60491f949cab0186:b9 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\11.锐化和低光照和对比度增强\低光照_对比度增强\CLAHE 改进.md" data-text-edit-revision="2b8e84bf327f149c64ec50bcf41c5f10f566d0e0166aea6e5012620471159d59" data-text-edit-marker="60491f949cab0186" data-text-edit-schema="1"></div>
 
 
 
@@ -878,8 +919,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

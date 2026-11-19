@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -747,10 +747,20 @@
   
 
 
+<!-- blog-edit-start:902d676e8bafbc77:b0 -->
+
 <h1 id="isp-pipeline">图像信号处理流程 (ISP Pipeline)</h1>
+<!-- blog-edit-end:902d676e8bafbc77:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e957eb867f8c65ee50ca106e4b6c5703e0d160ff12f0e5fdcc24f5a9b0bc0eb8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5Creadme.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\readme.md">复制路径</span></div>
 
+<!-- blog-edit-start:902d676e8bafbc77:b1 -->
+
 <p>这是我总结的流程，不同 ISP 可能会有差异，但大致上是类似的。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b1 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b2 -->
+
 <ol>
 <li>DPC: Dead Pixel Correction</li>
 <li>BLC: Black Level Correction</li>
@@ -775,8 +785,20 @@
 </ul>
 </li>
 </ol>
+<!-- blog-edit-end:902d676e8bafbc77:b2 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b3 -->
+
 <h2 id="_1">表格说明</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b3 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b4 -->
+
 <p>这是简单的表格说明，更具体的在下方说明，并且对应文件夹有更细节的说明。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b4 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b5 -->
+
 <table>
 <thead>
 <tr>
@@ -858,44 +880,183 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:902d676e8bafbc77:b5 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b6 -->
+
 <h2 id="01-dpc-dead-pixel-correction">01. DPC: Dead Pixel Correction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b6 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b7 -->
+
 <p>坏点校正。坏点一般分为<strong>两种类型</strong>：像素值固定比较大/小，或者像素值感光线性度和其他像素差异很大。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b7 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b8 -->
+
 <p>算法有 SDPC（静态校正）和 DPC；算法主要是两个重点：<strong>检测</strong>和<strong>修复</strong>；其中检测是比较重要的，修复则没啥特别标新立异的方法，因为 DPC 一般都是独立点或者很小的点簇（如果有一个 4x4 的坏点，厂商就有极大可能作为不良品不出货了），所以很小的点一般都是用周围点均值或者中值替代，无非是有的方法<strong>简单判断边缘，只用对应方向的点来修复。</strong></p>
+<!-- blog-edit-end:902d676e8bafbc77:b8 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b9 -->
+
 <h2 id="02-blc-black-level-correction">02. BLC: Black Level Correction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b9 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b10 -->
+
 <p>这里的黑电平是统一减去一个固定值，如果是 Bayer 那么就 RGGB 四种类型的像素各自减去不同的固定值，和 DSNU 不一样，这一定要明白。这个<strong>也通常叫做 OB</strong>。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b10 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b11 -->
+
 <h2 id="03-dsnu-dark-signal-non-uniformity-correction">03. DSNU: Dark-Signal Non-Uniformity Correction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b11 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b12 -->
+
 <p>暗场非均匀性校正，很重要的一个步骤。做 DSNU 标定就是遮黑采图就可以了。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b12 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b13 -->
+
 <p>上面的 BLC 来源是 ADC 偏置、模拟前端偏置等造成的<strong>全局偏移</strong>，而 DSNU 则是每个像素点的<strong>局部偏移</strong>，所以 DSNU 是每个像素点减去一个对应的值。而且 DSNU 减去的值不同曝光时间不同，比如标定是在 100ms 曝光下做的，那么在 10ms 下拍摄的图像就需要把 DSNU 值乘以 0.1 再去减。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b13 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b14 -->
+
 <p>有的相机甚至是温度也是作为一个参数，不同温度下减去不同的 DSNU 值。我做过一个项目就是这样的，温度插值。很不容易，写自动化脚本、让温度更加精准等，但是最后的确效果卓群，很不错的一个产品。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b14 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b15 -->
+
 <h2 id="04-prnu-photo-response-non-uniformity-correction">04. PRNU: Photo-Response Non-Uniformity Correction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b15 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b16 -->
+
 <p>也是很重要的一个步骤，也是之前搞过很长时间的一个项目.... 项目细节暂时就不说了，最后效果非常好，甚至有点出乎意料的好。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b16 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b17 -->
+
 <h2 id="05-lsc-lens-shading-correction">05. LSC: Lens Shading Correction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b17 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b18 -->
+
 <p>PRNU 和 LSC 在工程上都是合并在一起的。这个乍一想听困惑的：LSC 和镜头强相关，PRNU 和芯片强相关，为什么要合并？</p>
+<!-- blog-edit-end:902d676e8bafbc77:b18 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b19 -->
+
 <p>好处不用多说，省资源；坏处是灵活性下降。但其实细细想想，并不会牺牲灵活性。首先对于手机而言，镜头基本不换，所以两个绑在一起也无妨；那如果是相机呢？其实也没问题，如果 LSC 和 PRNU 分开：我们换镜头的时候，还是要重新标定 LSC 生成一组新的参数。如果不分开也是一样的，换镜头重新标定的时候，顺带着把 PRNU 参数乘上就行了，和分开时候的步骤是一样的。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b19 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b20 -->
+
 <h2 id="06-raw-denoise-raw-noise-reduction">06. Raw Denoise: Raw Noise Reduction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b20 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b21 -->
+
 <p>Raw 域上的降噪，没啥好说的。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b21 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b22 -->
+
 <h2 id="07-cac-chromatic-aberration-correction">07. CAC: Chromatic Aberration Correction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b22 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b23 -->
+
 <p>色差校正，通常是在 RAW 阶段进行，原因是此时 RGB 通道是分开的，可以更精确地进行校正。而如果 Demosaic 之后再做：通道已经混合，校正精度则下降。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b23 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b24 -->
+
 <p>而与之相反，畸变校正，通常是 RGB 阶段才做，因为在 RAW 上做会导致马赛克错位，验证影响 Demosaic 效果。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b24 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b25 -->
+
 <h2 id="08-awb-auto-white-balance">08. AWB: Auto White Balance</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b25 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b26 -->
+
 <blockquote>
 <p>AWB 在 RAW 阶段做还是 RGB 阶段做？</p>
 </blockquote>
+<!-- blog-edit-end:902d676e8bafbc77:b26 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b27 -->
+
 <p>白平衡校正，做的时候是在 RAW 阶段，此时 RGB 通道是分开的，而 AWB 本来要做的事情就是把 RGB 三个通道拉到同一水平线上，所以在 RAW 阶段做更合适。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b27 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b28 -->
+
 <p>但是用来白平衡校正的系数可能会在 RGB 阶段去计算。如果是简单的白平衡算法，比如统计 RGB 平均值等等，这个直接在 RAW 上算也能算出来。但是现在很多都是基于 AI 来判断场景从而给出 AWB 系数的，这种在 RGB 去算系数会更准确一些。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b28 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b29 -->
+
 <blockquote>
 <p>AWB 和 CAC 的顺序</p>
 </blockquote>
+<!-- blog-edit-end:902d676e8bafbc77:b29 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b30 -->
+
 <p>AWB 和 CAC 其实顺序并不严格，通常是先做 CAC 再做 AWB，因为 CAC 如果校正完美了，那对 AWB 模块也有好处。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b30 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b31 -->
+
 <h2 id="09-demosaic-demosaicing">09. Demosaic: Demosaicing</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b31 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b32 -->
+
 <p>从 Bayer 格式转换为 RGB 格式，之前花了很长很长时间在这个上面...</p>
+<!-- blog-edit-end:902d676e8bafbc77:b32 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b33 -->
+
 <h2 id="10-ldc-lens-distortion-correction">10. LDC: Lens Distortion Correction</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b33 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b34 -->
+
 <p>畸变校正，在 Demosaic 之后就可以做了，也就是得到了完整的 RGB 图，就可以做畸变校正了，因为本质上就是 <code>(x,y)-&gt;(x',y')</code> 的坐标变换。至于究竟在哪个模块之后做，不同 ISP 有不同的实现。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b34 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b35 -->
+
 <p>而且做的时候可以尝试不同的模型，之前用过鱼眼镜头，那是另一种畸变模型，和普通的广角镜头的畸变模型不太一样。做的时候也要弄清楚转换前后的坐标，不要搞反了。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b35 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b36 -->
+
 <h2 id="11-rgb-denoise-denoising">11. RGB Denoise: Denoising</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b36 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b37 -->
+
 <p>转到 RGB 阶段之后的降噪，可以用更复杂的算法，因为此时三个通道信息都齐全了。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b37 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b38 -->
+
 <h2 id="12-ccm-color-correction-matrix">12. CCM: Color Correction Matrix</h2>
+<!-- blog-edit-end:902d676e8bafbc77:b38 -->
+
+<!-- blog-edit-start:902d676e8bafbc77:b39 -->
+
 <p>颜色校正矩阵，把 RGB 空间映射到另一个 RGB 空间，通常是为了让颜色更加准确。一般就是拍色卡，然后用 Imatest 标定就行。</p>
+<!-- blog-edit-end:902d676e8bafbc77:b39 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\readme.md" data-text-edit-revision="e957eb867f8c65ee50ca106e4b6c5703e0d160ff12f0e5fdcc24f5a9b0bc0eb8" data-text-edit-marker="902d676e8bafbc77" data-text-edit-schema="1"></div>
 
 
 
@@ -1127,8 +1288,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

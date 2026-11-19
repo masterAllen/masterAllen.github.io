@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -722,88 +722,248 @@
   
 
 
+<!-- blog-edit-start:a02dcab896c0ec85:b0 -->
+
 <h1 id="_1">饱和度调整</h1>
+<!-- blog-edit-end:a02dcab896c0ec85:b0 -->
+
 <div class="file-actions" data-image-edit-revision="cd8e91c0e577cbb3276927bb4b9c9c7c2d3197ceabfbbacb06aaf91446d4a303" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C13.%E8%89%B2%E8%B0%83%E5%92%8C%E9%A2%9C%E8%89%B2%5C%E9%A5%B1%E5%92%8C%E5%BA%A6%E8%B0%83%E6%95%B4.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C13.%E8%89%B2%E8%B0%83%E5%92%8C%E9%A2%9C%E8%89%B2" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\13.色调和颜色\饱和度调整.md">复制路径</span></div>
+
+<!-- blog-edit-start:a02dcab896c0ec85:b1 -->
 
 <p>RGB 和 HSV、HSL 转换中：<br />
 1. 饱和度 S 的计算方式：<span class="arithmatex">\((max-min) / max\)</span><br />
 2. HSL 中表示亮度的 L 的计算方式为：<span class="arithmatex">\((max+min) / 2\)</span><br />
 3. HSV 中表示亮度的 V 的计算方式为：<span class="arithmatex">\(max\)</span></p>
+<!-- blog-edit-end:a02dcab896c0ec85:b1 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b2 -->
+
 <h2 id="_2">普通调整</h2>
+<!-- blog-edit-end:a02dcab896c0ec85:b2 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b3 -->
+
 <h3 id="rgb">RGB 调整</h3>
+<!-- blog-edit-end:a02dcab896c0ec85:b3 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b4 -->
+
 <div class="arithmatex">\[
 r = r + (avg - r) * k
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b4 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b5 -->
+
 <p>这里的 k 就是调整强度，范围是 0 到 1；其中如果是 1 的话，最后就成了灰度图。这里的 <code>avg</code> 也可以用 YUV 中 Y 来替代，感觉更好，因为这里选哪一个决定了灰度图最后的情况，显然 Y 比 avg 更好。</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b5 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b6 -->
+
 <p>我们计算这种调整方式下 HSL 的变换情况，由于是线性变换，所以 RGB 大小顺序不会变。我们假定 R 最大，B 最小。</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b6 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b7 -->
+
 <div class="arithmatex">\[
 L = newmax = (1 - k) * oldmax + avg * k
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b7 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b8 -->
+
 <div class="arithmatex">\[
 S = \frac{newmax - newmin}{newmax} = \frac{newr - newb}{newr} = \frac{(1-k)*(oldr - oldb)}{(1-k)*oldr + k*avg}
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b8 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b9 -->
+
 <div class="arithmatex">\[
 H = \frac{newg - newb}{newmax - newmin} * 60 = \frac{(1 - k) * (oldg - newb)}{(1 - k) * (oldmax - oldmin)} * 60 = oldH
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b9 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b10 -->
+
 <p>可以看到，这种调整方式，色调 H 没有变化，亮度 L 发生变化并且非线性，不符合只调整饱和度的期望；而饱和度 S 虽然变化了，但也是非线性的变化，也不好。</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b10 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b11 -->
+
 <h3 id="hsl">HSL 空间调整</h3>
+<!-- blog-edit-end:a02dcab896c0ec85:b11 -->
+<!-- blog-edit-start:a02dcab896c0ec85:b12 -->
+
 <p>Photoshop 中的调整就是在 HSL 中做的，因此改变饱和度不会改变其他两项：</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b12 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b13 -->
+
 <div class="arithmatex">\[
 newS=\left\{ \begin{array}{c}
     1 / (1-addS)\,\,* srcS\,\,    if\,\,addS\geqslant 0\\
     \left( 1+addS \right) \,\,* srcS\,\,   if\,\,addS&lt;0\\
 \end{array} \right. 
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b13 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b14 -->
+
 <h2 id="_3">自然饱和度调整</h2>
+<!-- blog-edit-end:a02dcab896c0ec85:b14 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b15 -->
+
 <h3 id="rgb_1">RGB 直接调</h3>
+<!-- blog-edit-end:a02dcab896c0ec85:b15 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b16 -->
+
 <div class="arithmatex">\[
 k = (abs(max - avg) / 0.5) \\
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b16 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b17 -->
+
 <div class="arithmatex">\[
 k = k * vibrance \\
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b17 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b18 -->
+
 <div class="arithmatex">\[
 r = (max - r) * k + r = (1 - k) * r + k * max
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b18 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b19 -->
+
 <p>第一步的 k 的取值范围是 [0, 1.338]（取 0 是 RGB 都为 0，取最大是 RGB 只有一个是 255 另外两个是 0）</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b19 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b20 -->
+
 <p>第二步的 vibrance 是输入的参数强度，最好要保证 1 - k * vibrance 大于 0。因为 k 的范围每张图片不一样，所以这里的强度限制也不同，但前提都是要保证 1 - k * vibrance 大于 0。</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b20 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b21 -->
+
 <p>再来看第三步，我们算一下变换后的饱和度变换：</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b21 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b22 -->
+
 <div class="arithmatex">\[
 S = \frac{(newmax - newmin)}{newmax}
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b22 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b23 -->
+
 <div class="arithmatex">\[
 S = \frac{(1 - k) * (oldmax + oldmin)}{(1 - k) * oldmax + k * oldmax} 
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b23 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b24 -->
+
 <div class="arithmatex">\[
 S = \frac{(1 - k) * (oldmax + oldmin)}{oldmax} = (1-k) * oldS
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b24 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b25 -->
+
 <p>亮度变化：</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b25 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b26 -->
+
 <div class="arithmatex">\[
 L = (1 - k) * oldmax + k * oldmax = oldmax = oldL
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b26 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b27 -->
+
 <p>色调变化，如果 1 - k 大于 0，则 RGB 大小的顺序不会发生变化，因此我们假定 max = r 和 g &gt; b 时：</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b27 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b28 -->
+
 <div class="arithmatex">\[
 H = \frac{newg - newb}{newmax - newmin} * 60 = \frac{(1 - k) * (oldg - newb)}{(1 - k) * (oldmax - oldg)} * 60 = oldH
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b28 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b29 -->
+
 <p>所以这样调整，<strong>只有 S 发生了 <span class="arithmatex">\((1-k)\)</span> 的缩放变化</strong>。这也说明了为什么第二步中要保证 <span class="arithmatex">\(1-k\)</span> 大于 0，否则 色调会发生变化。而且这里的 <span class="arithmatex">\(k\)</span> 是根据每个像素自己算出来的，也就是每个像素不一样，如果一个像素饱和度过大，那么 <span class="arithmatex">\(k\)</span> 也就大，这样缩放的程度就会小，因此也不会类似普通的调整那么夸张。</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b29 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b30 -->
+
 <h3 id="_4">另一种方式</h3>
+<!-- blog-edit-end:a02dcab896c0ec85:b30 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b31 -->
+
 <div class="arithmatex">\[
 Y = 0.2125 * r + 0.7152 * g + 0.0722 * b
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b31 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b32 -->
+
 <div class="arithmatex">\[
 S = max - min
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b32 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b33 -->
+
 <div class="arithmatex">\[
 k = 1 + (1 - S) * vibrance
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b33 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b34 -->
+
 <div class="arithmatex">\[
 r = (1 - k) * Y + k * r
 \]</div>
+<!-- blog-edit-end:a02dcab896c0ec85:b34 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b35 -->
+
 <p>这个就不分析了，和上面也都类似。</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b35 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b36 -->
+
 <h2 id="lch">Lch 空间调整</h2>
+<!-- blog-edit-end:a02dcab896c0ec85:b36 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b37 -->
+
 <p>HSL 可能不太能完全反应颜色的情况，因此处理后可能偏色，所以 GIMP 用的是 Lch 空间，具体调整请看链接一的文章，也是很简单的调整方式，用到的时候再去细细看吧。</p>
+<!-- blog-edit-end:a02dcab896c0ec85:b37 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b38 -->
+
 <h2 id="_5">参考链接</h2>
+<!-- blog-edit-end:a02dcab896c0ec85:b38 -->
+
+<!-- blog-edit-start:a02dcab896c0ec85:b39 -->
+
 <p>1. <a href="https://www.rtcdeveloper.cn/cn/community/blog/23855">https://www.rtcdeveloper.cn/cn/community/blog/23855</a></p>
+<!-- blog-edit-end:a02dcab896c0ec85:b39 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\13.色调和颜色\饱和度调整.md" data-text-edit-revision="cd8e91c0e577cbb3276927bb4b9c9c7c2d3197ceabfbbacb06aaf91446d4a303" data-text-edit-marker="a02dcab896c0ec85" data-text-edit-schema="1"></div>
 
 
 
@@ -1035,8 +1195,6 @@ r = (1 - k) * Y + k * r
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

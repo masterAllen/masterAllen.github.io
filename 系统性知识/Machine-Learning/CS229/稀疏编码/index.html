@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -634,10 +634,20 @@
   
 
 
+<!-- blog-edit-start:2e4052228c22cf6c:b0 -->
+
 <h1 id="_1">稀疏编码</h1>
+<!-- blog-edit-end:2e4052228c22cf6c:b0 -->
+
 <div class="file-actions" data-image-edit-revision="15e3177f71ce84486d4ecdb20382d6876f3c2ef6b1353e56d827df9a88a3c7f0" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CMachine-Learning%5CCS229%5C%E7%A8%80%E7%96%8F%E7%BC%96%E7%A0%81.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CMachine-Learning%5CCS229" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Machine-Learning\CS229\稀疏编码.md">复制路径</span></div>
 
+<!-- blog-edit-start:2e4052228c22cf6c:b1 -->
+
 <p>什么是稀疏编码：就是比如一大堆数据，用一些基向量去表示他们，相当于坐标转换呗。但是呢，要求转换后的坐标尽可能的稀疏，也就是其中的 0 尽可能的多。</p>
+<!-- blog-edit-end:2e4052228c22cf6c:b1 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b2 -->
+
 <blockquote>
 <p>举例而言，有数据 [1, 2, 3]、[2, 4, 6]、[3, 6, 8]。</p>
 <ul>
@@ -645,12 +655,40 @@
 <li>选择 [1, 2, 3] 和 [0, 1, 0] 和 [0, 0, 1]，转换后的坐标位 [1, 0, 0]、[2, 0, 0]、[3, 0, 0]，这个很稀疏。</li>
 </ul>
 </blockquote>
+<!-- blog-edit-end:2e4052228c22cf6c:b2 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b3 -->
+
 <p>选择的基就叫做字典。那么如何构造字典呢？朴素的想法肯定是，我每个数据对应一个基，这样每个数据表示就只有一个 1，其他全是 0，这多稀疏！但是过犹不及，字典一般都有规模限制。</p>
+<!-- blog-edit-end:2e4052228c22cf6c:b3 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b4 -->
+
 <p><strong>因此构造字典往往是这样的问题：给了 n 个数据，要求你构建大小为 m 的字典。</strong></p>
+<!-- blog-edit-end:2e4052228c22cf6c:b4 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b5 -->
+
 <p>常用的方法：K-SVD</p>
+<!-- blog-edit-end:2e4052228c22cf6c:b5 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b6 -->
+
 <h2 id="_2">坏的字典举例</h2>
+<!-- blog-edit-end:2e4052228c22cf6c:b6 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b7 -->
+
 <p>下面给一个用随机数构成的字典，来看看它表示一张图片的情况。</p>
+<!-- blog-edit-end:2e4052228c22cf6c:b7 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b8 -->
+
 <p>转载自：<a href="https://zhuanlan.zhihu.com/p/45964374">https://zhuanlan.zhihu.com/p/45964374</a></p>
+<!-- blog-edit-end:2e4052228c22cf6c:b8 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># coding:UTF-8</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">linear_model</span>
@@ -671,11 +709,35 @@
 </span><span id="__span-0-18"><span class="linenos" data-linenos="18 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;OMP&quot;</span><span class="p">,</span> <span class="n">OMP</span><span class="p">)</span>
 </span><span id="__span-0-19"><span class="linenos" data-linenos="19 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:2e4052228c22cf6c:b9 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b10 -->
+
 <p>原图是 lena，就不放了，这是结果，相当糟糕：</p>
+<!-- blog-edit-end:2e4052228c22cf6c:b10 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b11 -->
+
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20231016001.webp" /></p>
+<!-- blog-edit-end:2e4052228c22cf6c:b11 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b12 -->
+
 <h2 id="k-svd">K-SVD 方法</h2>
+<!-- blog-edit-end:2e4052228c22cf6c:b12 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b13 -->
+
 <p>设训练集为 Y，字典为 D。流程如下：</p>
+<!-- blog-edit-end:2e4052228c22cf6c:b13 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b14 -->
+
 <p><strong>阶段一</strong>：初始化字典，并且将其二阶范数归一化（其实想想不就是变成坐标系的基向量吗）。构建方式文章使用了 DCT 字典，有人用随机数，效果都差不多，只不过迭代可能会久。然后用字典去表示训练集 Y，得到 X，这里一般用的是 OMP 算法，就是相当于是求 <span class="arithmatex">\(DX=Y\)</span> 这个方程。</p>
+<!-- blog-edit-end:2e4052228c22cf6c:b14 -->
+
+<!-- blog-edit-start:2e4052228c22cf6c:b15 -->
+
 <p>将矩阵用向量表示，其中行数表示的是维度</p>
 <div class="arithmatex">\[
 Y_{M*N} = [y_1, y_2, ..., y_{N-1}, y_N] \\
@@ -686,6 +748,9 @@ X_{K*N} = [x_1, x_2, ..., x_{N-1}, x_N]
 <div class="arithmatex">\[
 ||Y - DX||_2^2 = ||Y - \sum_{i=1}^{K} d_i * x_i^T||_2^2
 \]</div>
+<!-- blog-edit-end:2e4052228c22cf6c:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Machine-Learning\CS229\稀疏编码.md" data-text-edit-revision="15e3177f71ce84486d4ecdb20382d6876f3c2ef6b1353e56d827df9a88a3c7f0" data-text-edit-marker="2e4052228c22cf6c" data-text-edit-schema="1"></div>
 
 
 
@@ -917,8 +982,6 @@ X_{K*N} = [x_1, x_2, ..., x_{N-1}, x_N]
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

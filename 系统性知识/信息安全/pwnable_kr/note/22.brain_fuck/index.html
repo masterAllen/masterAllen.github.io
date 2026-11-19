@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -671,12 +671,29 @@
   
 
 
+<!-- blog-edit-start:be81611c6976477e:b0 -->
+
 <h1 id="pwnablekr-brain_fuck">Pwnable.kr brain_fuck</h1>
+<!-- blog-edit-end:be81611c6976477e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="be81611c6976477edba73e866061362a83d67518c9963de1cf2e8ea26e24f696" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C22.brain_fuck.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\22.brain_fuck.md">复制路径</span></div>
 
+<!-- blog-edit-start:be81611c6976477e:b1 -->
+
 <h2 id="_1">程序分析</h2>
+<!-- blog-edit-end:be81611c6976477e:b1 -->
+<!-- blog-edit-start:be81611c6976477e:b2 -->
+
 <p>就是一个 <a href="https://zh.wikipedia.org/zh-hans/Brainfuck">Brainfuck语言</a> 的模拟器(这名字有点搞的...)</p>
+<!-- blog-edit-end:be81611c6976477e:b2 -->
+
+<!-- blog-edit-start:be81611c6976477e:b3 -->
+
 <p>首先是 <code>main</code> 方法，就是读取用户输入，然后根据输入一个字符一个字符进行处理。然后处理方法就是 <code>do_brainfuck</code> 函数。</p>
+<!-- blog-edit-end:be81611c6976477e:b3 -->
+
+<!-- blog-edit-start:be81611c6976477e:b4 -->
+
 <p>程序一个全局指针 <code>p</code>，即它不是栈上的变量，每次执行时都是固定的。漏洞点很简单，就是可以移动指针往负方向移动，并且可以写入内容。也就是我们可以控制全局指针前面的一段内存。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="p">...</span>
@@ -727,16 +744,59 @@
 </span><span id="__span-0-47"><span class="linenos" data-linenos="47 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 </span><span id="__span-0-48"><span class="linenos" data-linenos="48 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:be81611c6976477e:b4 -->
+
+<!-- blog-edit-start:be81611c6976477e:b5 -->
+
 <h2 id="_2">具体做法</h2>
+<!-- blog-edit-end:be81611c6976477e:b5 -->
+<!-- blog-edit-start:be81611c6976477e:b6 -->
+
 <p>现在我们可以写入一部分内存内容，观察发现竟然可以写入 GOT 表。首先要泄露 <code>libc</code> 地址，这个比较简单，因为我们现在相当于对于指针指向的内容可读可写，有两种方法。通过泄露 <code>STDIN@GLIBC2.0</code> 或者通过泄露 GOT 表的某个函数。</p>
+<!-- blog-edit-end:be81611c6976477e:b6 -->
+
+<!-- blog-edit-start:be81611c6976477e:b7 -->
+
 <p>现在常规做法是我们把 GOT 表的某个函数改成 <code>system</code>，但是有个严重问题：<strong>我们要传入参数( <code>/bin/sh</code> )，但没啥好方法能在执行篡改的 <code>system</code> 时也能控制参数为 <code>/bin/sh</code></strong></p>
+<!-- blog-edit-end:be81611c6976477e:b7 -->
+
+<!-- blog-edit-start:be81611c6976477e:b8 -->
+
 <p>所以这就是这道题值得写的地方：利用 <code>main</code> 函数。比如把 GOT 表的某个函数改成 <code>main</code> 方法，看看是否可以通过修改 <code>main</code> 方法来控制参数。</p>
+<!-- blog-edit-end:be81611c6976477e:b8 -->
+
+<!-- blog-edit-start:be81611c6976477e:b9 -->
+
 <p>可以发现 <code>main</code> 最开始有 <code>memset(s, 0, 1024u)</code> 和 <code>fgets(s, 1024, stdin)</code>，这两个似乎可以使用，但是又似乎不能使用，因为我们还是控制不了 <code>s</code> 这个变量，<code>s</code> 是栈上变量，<code>memset</code> 无法控制它。</p>
+<!-- blog-edit-end:be81611c6976477e:b9 -->
+
+<!-- blog-edit-start:be81611c6976477e:b10 -->
+
 <p>而 <code>fgets</code> 只有一个，要是 <code>fgets</code> 后面再来一个被修改成 <code>system</code> 的函数多好。该死，要是先 <code>fgets</code> 再 <code>memset</code> 多好！！这样就可以先通过 <code>fgets</code> 把 <code>s</code> 变为 <code>/bin/sh</code>, 然后由于 <code>memset</code> 的 GOT 事先已经改为了 <code>system</code>, 所以执行 <code>memset(s)</code> 就相当于 <code>system('/bin/sh')</code> 了.</p>
+<!-- blog-edit-end:be81611c6976477e:b10 -->
+
+<!-- blog-edit-start:be81611c6976477e:b11 -->
+
 <p>为什么不能这样呢？对啊，为什么不能这样呢！！既然不给我们这个，那我们就去创造这个！！</p>
+<!-- blog-edit-end:be81611c6976477e:b11 -->
+
+<!-- blog-edit-start:be81611c6976477e:b12 -->
+
 <p>我们反正可以修改 GOT 表内容，那么这就简单了，把 <code>memset</code> 改成 <code>gets</code>，把 <code>fgets</code> 改成 <code>system</code> ！注意要改的是 <code>gets</code> 而不是 <code>fgets</code>，如果改成 <code>fgets</code>，那么就是 <code>fgets(s, 0, 1024u)</code>，显然这不符合 <code>fgets</code> 的用法，无法读取输入（正确的是 <code>fgets(s, 1024, stdin)</code>）。</p>
+<!-- blog-edit-end:be81611c6976477e:b12 -->
+
+<!-- blog-edit-start:be81611c6976477e:b13 -->
+
 <p>最后因为我们要重新执行一次 <code>main</code> 方法，所以随便改个 GOT 表里的函数，我选的是把 <code>putchar</code> 改成 <code>main_addr</code>。</p>
+<!-- blog-edit-end:be81611c6976477e:b13 -->
+
+<!-- blog-edit-start:be81611c6976477e:b14 -->
+
 <h2 id="_3">总结知识</h2>
+<!-- blog-edit-end:be81611c6976477e:b14 -->
+
+<!-- blog-edit-start:be81611c6976477e:b15 -->
+
 <ul>
 <li>
 <p>STDIN@GLIBC2.0 是什么<br />
@@ -748,6 +808,9 @@
   第二，程序执行逻辑 <code>memset -&gt; fgets</code>，强行修改成 <code>gets -&gt; memset</code>。</p>
 </li>
 </ul>
+<!-- blog-edit-end:be81611c6976477e:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\22.brain_fuck.md" data-text-edit-revision="be81611c6976477edba73e866061362a83d67518c9963de1cf2e8ea26e24f696" data-text-edit-marker="be81611c6976477e" data-text-edit-schema="1"></div>
 
 
 
@@ -979,8 +1042,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -727,54 +727,198 @@
   
 
 
+<!-- blog-edit-start:a23c0e902e9feff2:b0 -->
+
 <h1 id="_1">特别的特征：直线特征</h1>
+<!-- blog-edit-end:a23c0e902e9feff2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4ad8867b17a98c41f768ec187fd25b00b26d8397f7011c99579fb56c6e05f30b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%5C07.%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9A%E7%9B%B4%E7%BA%BF%E7%89%B9%E5%BE%81.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\07.特别的特征：直线特征.md">复制路径</span></div>
+
+<!-- blog-edit-start:a23c0e902e9feff2:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.5.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.5.md</a></p>
 </blockquote>
+<!-- blog-edit-end:a23c0e902e9feff2:b1 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b2 -->
+
 <p>对于直线这个特征，和普通的特征检测一样，分为三个部分：检测、描述、匹配。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b2 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b3 -->
+
 <h2 id="_2">直线检测</h2>
+<!-- blog-edit-end:a23c0e902e9feff2:b3 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b4 -->
+
 <p>直线检测，相当于输入一副图片，输出是一个包含各个线段的数组。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b4 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b5 -->
+
 <p>OpenCV 直线检测分为三种方法，这三种方法的代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_line.ipynb">test_line.ipynb</a> 中：</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b5 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b6 -->
+
 <h3 id="_3">霍尔变换找直线</h3>
+<!-- blog-edit-end:a23c0e902e9feff2:b6 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b7 -->
+
 <p>这个写在了<a href="../../03.目标分类识别和检索/针对特定物体/01.霍尔变换检测直线和圆/">另一篇文章</a>中；返回的是一个 ndarray，大小是 (n, 1, 4)，即各个线段的起始和终止点。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b7 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b8 -->
+
 <h3 id="lsd">LSD 直线检测</h3>
+<!-- blog-edit-end:a23c0e902e9feff2:b8 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b9 -->
+
 <p>来自文章 LSD：a Line Segment Detector，这个方法不需要调参，非常舒服。OpenCV 中 line_descritpor 模块的 LSDDetector 类来完成此方法。创建这个类的对象，然后使用 <code>detect</code> 即可完成。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b9 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b10 -->
+
 <p>虽然说 LSD 不需要调参，但其实也涉及到金字塔选几层等这个简单的参数，在创建对象时，不传参数就是使用默认参数，否则传入是一个 <a href="https://docs.opencv.org/4.x/d6/d03/structcv_1_1line__descriptor_1_1LSDParam.html">LSDParam</a> 对象，其本质也就是包含几个参数的数组。detect 同理，如果不传参数就使用对象的参数。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b10 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b11 -->
+
 <p>最后得到包含了一堆 KeyLines 对象的数组，每个 KeyLines 就是线段，遍历即可。其实也很直观，<code>getStartPoint</code> 和 <code>getEndPoint</code> 分别返回起始点。KeyLines 中 <code>octave</code> 表示在哪一层金字塔可以找到这条线段，所以遍历的时候通常会判断当前的 <code>octave</code> 是否为 0，以此确保这条线段在原图上可以找到。可以在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_line.ipynb">test_line.ipynb</a> 查看具体用法。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b11 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b12 -->
+
 <h3 id="edline">EDLine 直线检测</h3>
+<!-- blog-edit-end:a23c0e902e9feff2:b12 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b13 -->
+
 <p>方法来自 2011 年的文章 EDLines: A real-time line segment detector with a false detection control，和 LSD 一样，不需要调参。这个方法本质上是从 LSD 方法发展而来的，速度更快。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b13 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b14 -->
+
 <p>OpenCV 中 line_descritpor 模块的 BinaryDescritpor 类来完成此方法。创建这个类的对象，然后使用 <code>detect</code> 即可完成。 </p>
+<!-- blog-edit-end:a23c0e902e9feff2:b14 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b15 -->
+
 <p>这里再细节说一下，这里虽然调用的类叫做 BinaryDescriptor，和 <code>EDLine</code> 好像完全没关系，不像上面的 LSD 方法调用的就叫做 LSDDetector。但其实这里源码中使用 <code>detect</code> 最后会用到一个函数：</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b15 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b16 -->
+
 <p><code>int BinaryDescriptor::EDLineDetector::EDline( cv::Mat &amp;image, LineChains &amp;lines )</code></p>
+<!-- blog-edit-end:a23c0e902e9feff2:b16 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b17 -->
+
 <p>没错，这里的 EDlineDetector 是 BinaryDescriptor 里面的一个子类，被封装起来了，而不是像 LSDDetector 直接暴露给 cv2.line_descriptor，那为什么二者选择了不同的方式呢，其实这就是开源项目不同分工的锅：</p>
 <ol>
 <li>有一些人看到有 LSD 直线检测方法，于是写了代码，被放在了 line_descriptor 这个 module 中。但是并没有人去实现 EDLines 这个方法的代码。</li>
 <li>有一天有人想实现 LBD 直线描述方法（见下面的那个大章节），这个 LBD 方法论文中用的都是 EDLines 检测的直线，所以他们需要先把 EDLines 实现，也很自然地把 EDLines 放在 LBD 直线描述方法中。最后 LBD 也被放在了 line_descriptor 这个 module 中，而 EDLines 则是 LBD 里面的一个方法。</li>
 </ol>
+<!-- blog-edit-end:a23c0e902e9feff2:b17 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b18 -->
+
 <p>其实本质还是<mark class="term-highlight">LSD 直线检测方法</mark>和<mark class="term-highlight">LBD 直线描述方法</mark>这两个不同类型的东西被放在 line_descriptor 当成同级来对待了。似乎用一个叫做 line 的 module，里面有 detector 和 descriptor 两个子 module 更合理一些。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b18 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b19 -->
+
 <p>最后结果和 LSD 类似，也是包了一堆 KeyLines 对象的数组。KeyLines 用法如上面 LSD 检测所述。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b19 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b20 -->
+
 <h3 id="fast-line-detector">Fast line Detector</h3>
+<!-- blog-edit-end:a23c0e902e9feff2:b20 -->
+<!-- blog-edit-start:a23c0e902e9feff2:b21 -->
+
 <p><a href="https://docs.opencv.org/4.x/df/ded/group__ximgproc__fast__line__detector.html">ximgproc 的方法</a>，传入参数建立对象，然后调用方法就行。代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_line.ipynb">test_line.ipynb 第二个 block</a> 中。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b21 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b22 -->
+
 <p>原始论文：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>Jin Han Lee, Sehyung Lee, Guoxuan Zhang, Jongwoo Lim, Wan Kyun Chung, and Il Hong Suh. Outdoor place recognition in urban environments using straight lines. In 2014 IEEE International Conference on Robotics and Automation (ICRA), pages 5550–5557. IEEE, 2014.
 </span></code></pre></div></p>
+<!-- blog-edit-end:a23c0e902e9feff2:b22 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b23 -->
+
 <h3 id="edgedrawing">EdgeDrawing</h3>
+<!-- blog-edit-end:a23c0e902e9feff2:b23 -->
+<!-- blog-edit-start:a23c0e902e9feff2:b24 -->
+
 <p><a href="https://docs.opencv.org/4.x/d4/d8b/group__ximgproc__edge__drawing.html">ximgproc 的方法</a>，不仅可以检测直线，也可以检测边缘。同样也是传入参数建立对象，然后调用方法。代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_line.ipynb">test_line.ipynb 第二个 block</a> 中。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b24 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b25 -->
+
 <p>这里再多说一点，上面的 EDLines 直线检测方法一开始会执行 EdgeDrawing 方法，但它调用的是它自己内部实现的方法：</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b25 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b26 -->
+
 <p><code>cv2.linedescriptor: int BinaryDescriptor::EDLineDetector::EdgeDrawing( cv::Mat &amp;image, EdgeChains &amp;edgeChains )</code></p>
+<!-- blog-edit-end:a23c0e902e9feff2:b26 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b27 -->
+
 <p>而这里说的 EdgeDrawing 调用的是 <code>cv2.ximgproc</code> 模块的方法，所以其实这里相当于重复劳动，即 OpenCV 项目中有冗余。但这也是一个大项目很难规避的事情。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b27 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b28 -->
+
 <p>原始论文：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>Cihan Topal and Cuneyt Akinlar. Edge drawing: a combined real-time edge and segment detector. Journal of Visual Communication and Image Representation, 23(6):862–872, 2012.
 </span></code></pre></div></p>
+<!-- blog-edit-end:a23c0e902e9feff2:b28 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b29 -->
+
 <h2 id="_4">直线描述</h2>
+<!-- blog-edit-end:a23c0e902e9feff2:b29 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b30 -->
+
 <p>直线描述是用到叫做 LBD 方法，这个就是 line_descriptor <a href="https://docs.opencv.org/4.x/dc/ddd/group__line__descriptor.html">介绍页</a>中大段介绍的内容，具体原理这里不谈。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b30 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b31 -->
+
 <p>OpenCV 中 line_descritpor 模块的 BinaryDescritpor 类来完成此方法。前面提到这个类可以用 <code>detect</code> 进行 EDLine 直线检测；而用 <code>compute</code> 则可以进行这里所说的直线描述。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b31 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b32 -->
+
 <h2 id="_5">直线匹配</h2>
+<!-- blog-edit-end:a23c0e902e9feff2:b32 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b33 -->
+
 <p>直线匹配和特征匹配类似，不过特征匹配是特征点，直线匹配是线段。OpenCV 中 line_descritpor 模块的 BinaryDescriptorMatcher 类来完成此方法。创建这个类的对象，然后使用 <code>match</code> 即可完成。和特征点匹配的 BruteForceMatcher 和 FlannBasedMatcher 一样，有三种 <code>match</code> 方法：<code>match</code>、<code>knnMatch</code>、<code>radiusMatch</code>，用法和特征点匹配一样。</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b33 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b34 -->
+
 <h2 id="_6">代码实现</h2>
+<!-- blog-edit-end:a23c0e902e9feff2:b34 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b35 -->
+
 <p>具体能跑的代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_line.ipynb">test_line.ipynb</a> 中，这里进行选择性摘抄：</p>
+<!-- blog-edit-end:a23c0e902e9feff2:b35 -->
+
+<!-- blog-edit-start:a23c0e902e9feff2:b36 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="sd">&#39;&#39;&#39;</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="sd">完整的 检测直线 -&gt; 描述直线 -&gt; 匹配直线 流程</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="sd">&#39;&#39;&#39;</span>
@@ -823,6 +967,9 @@
 </span><span id="__span-2-46"><span class="linenos" data-linenos="46 "></span>
 </span><span id="__span-2-47"><span class="linenos" data-linenos="47 "></span><span class="n">show_images</span><span class="p">([(</span><span class="s1">&#39;match&#39;</span><span class="p">,</span> <span class="n">matchimg1</span><span class="p">)])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a23c0e902e9feff2:b36 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\07.特别的特征：直线特征.md" data-text-edit-revision="4ad8867b17a98c41f768ec187fd25b00b26d8397f7011c99579fb56c6e05f30b" data-text-edit-marker="a23c0e902e9feff2" data-text-edit-schema="1"></div>
 
 
 
@@ -1054,8 +1201,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -729,33 +729,119 @@
   
 
 
+<!-- blog-edit-start:9647fbb33bcd7fe9:b0 -->
+
 <h1 id="wls">WLS 滤波的公式理解</h1>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a5c8fbd8e685eddd3f636a624f6f721c17a497dca4b8ff4007fc5b9c6103b963" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5CWLS_Filter%5CWLS+%E6%BB%A4%E6%B3%A2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5CWLS_Filter" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\01.各种滤波\WLS_Filter\WLS 滤波.md">复制路径</span></div>
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b1 -->
 
 <p>原文：</p>
 <ul>
 <li>Edge-Preserving Decompositions for Multi-Scale Tone and Detail Manipulation</li>
 <li>SIGGRAPH 2007, Zeev Farbman, The Hebrew University</li>
 </ul>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b1 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b2 -->
+
 <p>原文的目的是为了高动态范围图像更好的显示，但是无心插柳，其提出的 WLS 滤波有着更大的影响力，和双边、引导共同称为三大保边滤波器。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b2 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b3 -->
+
 <p>原理非常简单，但是原文中有一些太过简单，看的一头雾水，网上资料也不多，后来终于找到一篇文章（见参考链接），醍醐灌顶。现在写一下我的理解，可能有很多错误，欢迎大家讨论。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b3 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b4 -->
+
 <h2 id="_1">公式一</h2>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b4 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b5 -->
+
 <p>首先作者提出了目的，公式如下：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b5 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b6 -->
+
 <p><img alt="test" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20231011001.PNG" /></p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b6 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b7 -->
+
 <p>其中 u 是目标图，g 是原始图。<strong>a 是我们自己要给的参数，用来控制平滑程度</strong>。这个式子如何理解呢？前半段好理解，就是让目标和原始还是尽可能接近，后半段的意思是我们希望得到的目标能够比较好的保持边缘，而达到这一目的就是通过 a 来实现，这个请看下面的话（以横向为例子）：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b7 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b8 -->
+
 <p>忽略 <span class="arithmatex">\(\lambda\)</span>，现在假如某一点处横向的微分较大，说明这一点在横向中是边缘，后一项会有绝对支配权，那这样得出来的 u 就不管 <span class="arithmatex">\((u-g)^2\)</span>，而是尽可能让后一项小，这样就完全糊掉了，所以这时我们要 ax 在这一点的值设置的小，这样推测 u 时也会看前一项，不会让他糊。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b8 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b9 -->
+
 <p>忽略 <span class="arithmatex">\(\lambda\)</span>，现在假如某一点处横向的微分较小，说明这一点在横向中是光滑，前一项会有绝对支配权，那这样得出来的 u 尽可能 <span class="arithmatex">\((u-g)^2\)</span>，这样相当于等于原图，此时我们可以放心大胆的让 a 大一些，反正差别不大。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b9 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b10 -->
+
 <p>其实现在再来看， a 果然起到了控制平滑程度的效果，a 越大那么就越考虑后面的项，那么越平滑。而且 a 不是常数，我们可以让边缘和光滑的地方中 a 的值不一样，光滑的时候 a 大一些，边缘的时候 a 小一些。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b10 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b11 -->
+
 <p>那么 a 这么重要，取什么值？作者直接用了一篇数学相关的论文，给出了下面的公式：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b11 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b12 -->
+
 <p><img alt="test" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20231011002.PNG" /></p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b12 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b13 -->
+
 <p>参数的解释我就偷懒直接把原文 copy 过来，很好理解，其中：<span class="arithmatex">\(L\)</span> is the log-luminance channel of the input image g, the exponent <span class="arithmatex">\(\alpha\)</span> (typically between 1.2 and 2.0) determines the sensitivity to the gradients of g, while <span class="arithmatex">\(\epsilon\)</span> is a small constant.</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b13 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b14 -->
+
 <p>符合之前的设计：边缘 a 小，光滑 a 大。所以其实最开始我说的 a 是我们自己要给的参数，实际上是我们要调节 <span class="arithmatex">\(\alpha\)</span> 的大小，以此来生成 a。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b14 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b15 -->
+
 <h2 id="_2">公式二</h2>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b15 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b16 -->
+
 <p>现在最小化上面的公式，先转换为矩阵形式，看转成的结果：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b16 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b17 -->
+
 <p><img alt="test" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20231011003.PNG" /></p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b17 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b18 -->
+
 <p>重头戏来了！我当时卡在这里好久</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b18 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b19 -->
+
 <h3 id="u-g">u 和 g</h3>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b19 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b20 -->
+
 <p><strong>u 和 g 不是矩阵，是向量，一定要记住！！</strong>它们是图像每一列摞起来的向量，也就是假如图像大小为 <span class="arithmatex">\(m*n\)</span>，那么 ：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b20 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b21 -->
+
 <div class="arithmatex">\[
 \begin{array}{c}
 u[0]=img[0,0] \\
@@ -763,8 +849,20 @@ u[m-1]=img[m-1,0] \\
 u[m]=img[0,1]
 \end{array}
 \]</div>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b21 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b22 -->
+
 <h2 id="d">D</h2>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b22 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b23 -->
+
 <p><strong><span class="arithmatex">\(D\)</span> 叫做微分算子的矩阵形式（论文里叫做 discrete differentitaion operators）</strong>，下面给出 <span class="arithmatex">\(D_x\)</span> 和 <span class="arithmatex">\(D_y\)</span> 的格式：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b23 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b24 -->
+
 <div class="arithmatex">\[
 D_y = \begin{bmatrix}
 -1 &amp; 1 \\
@@ -777,6 +875,10 @@ D_y = \begin{bmatrix}
   &amp;&amp;&amp;&amp;     &amp;         &amp;   &amp; 0 &amp; 0 \\
 \end{bmatrix}
 \]</div>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b24 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b25 -->
+
 <div class="arithmatex">\[
 D_x = \begin{bmatrix}
 -1 &amp;&amp;1 \\
@@ -789,27 +891,86 @@ D_x = \begin{bmatrix}
   &amp;&amp;&amp;&amp;     &amp;         &amp;   &amp;  0 &amp;&amp; 0  \\
 \end{bmatrix}
 \]</div>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b25 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b26 -->
+
 <p>解释下 <span class="arithmatex">\(D_y\)</span>：假设图像大小是 <span class="arithmatex">\(m*n\)</span>，则 <span class="arithmatex">\(D_y\)</span> 的第 <span class="arithmatex">\(m-1, 2m-1, ..\)</span> 行全是0，其余的行都是有两个位置分别为 -1 和 1。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b26 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b27 -->
+
 <p>现在我们来分析 <span class="arithmatex">\(D_y * u\)</span>，要记住哈，<span class="arithmatex">\(u\)</span> 不是图像矩阵，而是图像每一列摞起来的值。令 $Y = D_y u $，那么 <span class="arithmatex">\(Y\)</span> 是一个 <span class="arithmatex">\(m*n\)</span> 大小的<strong>向量</strong>。对于 <span class="arithmatex">\(Y[i*m+j]\)</span> 而言，如果 j 不为 <span class="arithmatex">\(m-1\)</span>，那么：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b27 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b28 -->
+
 <div class="arithmatex">\[
 Y[i*m +j] = u[i*m + j+1] - u[i*m+j]
 \]</div>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b28 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b29 -->
+
 <p>现在看看，这个是不是就是图像关于纵轴的微分。另外为什么说 j 不为 <span class="arithmatex">\(m-1\)</span> 呢，因为这个特殊情况相当于是图像中的最下边一行，这个本来就不应该做纵轴的微分，因此这也是为什么 <span class="arithmatex">\(D_y\)</span> 的第 <span class="arithmatex">\(m-1, 2m-1, ..\)</span> 都是 0，这就是属于边界的特殊情况考虑了，没什么高大上的。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b29 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b30 -->
+
 <p>那么 <span class="arithmatex">\(D_x\)</span> 同理，还是先解释一下上面的矩阵形式，前面有值的行中，-1 和 1  中间都是有 <span class="arithmatex">\(m\)</span> 个 0，而从倒数第 <span class="arithmatex">\(m\)</span> 行开始到最后一行，每一行都是 0，这个对应的是最右边一列不应该有横轴微分。可以手动算一下，<span class="arithmatex">\(D_xu\)</span> 最后就是图像关于横轴的微分。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b30 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b31 -->
+
 <h3 id="a">A</h3>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b31 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b32 -->
+
 <p>这里的 <strong>A</strong> 是一个对角矩阵，就是由公式一最后计算出的 a 所得。这个很好理解，毕竟我们是要将 <span class="arithmatex">\(a_x * (\nabla_x u)\)</span> 转成了 <span class="arithmatex">\((D_xu)^T A (D_xu)\)</span> 的形式，就是线性代数中的二次型那边的知识，能够推演出 <strong>A</strong> 是由所有 a 组成的对角矩阵。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b32 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b33 -->
+
 <h2 id="_3">公式三</h2>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b33 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b34 -->
+
 <p>公式二是将公式一转成了矩阵形式，但别忘了我们的目的，最小化公式一或者叫最小化公式二。通过导数为 0（这个需要自己算，我也没推，也不是很复杂。但估计是一个很经典的问题，希望有人能告诉我这叫什么问题），可得其解满足方程：</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b34 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b35 -->
+
 <div class="arithmatex">\[
 \begin{array}{c}
 L_g = D_x^T A_x D_x + D_y^T A_y D_y \\
 (I + \lambda L_g)\,u = g
 \end{array}
 \]</div>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b35 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b36 -->
+
 <p>然后就可以计算了，求出 <span class="arithmatex">\(L_g\)</span>，然后就能求出 <span class="arithmatex">\(u\)</span>。</p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b36 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b37 -->
+
 <p><strong>以上就是我对 WLS 滤波的理解，代码就不贴了，这么经典的方法网上已经有代码了，很好找，比如参考链接中给出了 Matlab 代码。</strong></p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b37 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b38 -->
+
 <h2 id="_4">参考链接</h2>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b38 -->
+
+<!-- blog-edit-start:9647fbb33bcd7fe9:b39 -->
+
 <p><a href="https://www.blog.csdn.net/u014230360/article/details/107639764">https://www.blog.csdn.net/u014230360/article/details/107639764</a></p>
+<!-- blog-edit-end:9647fbb33bcd7fe9:b39 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\01.各种滤波\WLS_Filter\WLS 滤波.md" data-text-edit-revision="a5c8fbd8e685eddd3f636a624f6f721c17a497dca4b8ff4007fc5b9c6103b963" data-text-edit-marker="9647fbb33bcd7fe9" data-text-edit-schema="1"></div>
 
 
 
@@ -1041,8 +1202,6 @@ L_g = D_x^T A_x D_x + D_y^T A_y D_y \\
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

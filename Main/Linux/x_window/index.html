@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,8 +581,14 @@
   
 
 
+<!-- blog-edit-start:78494bb58f060c17:b0 -->
+
 <h1 id="linux-x-windows">Linux X Windows 的理解</h1>
+<!-- blog-edit-end:78494bb58f060c17:b0 -->
+
 <div class="file-actions" data-image-edit-revision="bfcbc2e8775092f88e7f0f398fd55b74b4013ece53e9d6a9b2a83d6f4a743124" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Cx_window.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\x_window.md">复制路径</span></div>
+
+<!-- blog-edit-start:78494bb58f060c17:b1 -->
 
 <p>主要是因为下面的一些词条产生的困惑，然后了解来一下 X Windows 机制。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>X, X11
@@ -591,25 +597,61 @@
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>I3
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>Gnome, KDE
 </span></code></pre></div></p>
+<!-- blog-edit-end:78494bb58f060c17:b1 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b2 -->
+
 <p>1. Linux 和图形界面的关系<br />
 Linux 只是个基于命令行的操作系统，本身没有图像界面，图像界面的实现只是 linux 下的应用程序实现的。Linux 内核为 linux 系统中的图形界面提供了显示设备驱动。</p>
+<!-- blog-edit-end:78494bb58f060c17:b2 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b3 -->
+
 <p>2. X 的概念<br />
 X 是协议，就像 HTTP 协议， IP 协议。一个基于 X 的应用程序需要运行并显示内容时，他就联接到 X 服务器，开始用 X 协议和服务器交谈。比如一个 X 应用程序( X client )要在屏幕上输出一个圆，那么他就用 X 协议对 X 服务器说: 喂，我需要在屏幕上画一个圆。<br />
 X 应用程序只负责告诉 X 服务器在屏幕的什么地方用什么，颜色画一个多大的圆，而具体的"画"的动作，比如这个圆怎样生成，用什么显卡的驱动程式去指挥显卡完成等等工作是由 X 服务器来完成的。<br />
 X Server 还负责捕获键盘和鼠标的动作。假设X Server 捕获到鼠标的左键被按下了，他就告诉X Client：我发现鼠标被按下了，您有什么指示吗。举个例子，X Client 就对 X Server 说：请再画一个正方形，当然他会告诉服务器在什么地方用什么颜色画多大的正方形，但不关心具体怎么画 -- 那是 Server 的事情。</p>
+<!-- blog-edit-end:78494bb58f060c17:b3 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b4 -->
+
 <p>3. X11 &amp;&amp; X11Rn<br />
 X11 表示 X 协议的第 11 版，X11Rn 是 X 协议第 11 版第 n 次发行。</p>
+<!-- blog-edit-end:78494bb58f060c17:b4 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b5 -->
+
 <p>4. Xorg &amp;&amp; XFree86<br />
 可以理解为这些都是 X Server 程序，有些甚至能够在 WINDOWS 上有 X Server 运行，这样能够在 linux 系统上运行一个 X Client，然后在另一台 windows 上显示。现在的 linux 大多用 Xorg 了。<br />
 当然上面说了可以理解为，其实并不全是这样，比如 XFree86 包括 X Server，字体，一个 X 下的终端程序(xterm)，一个简单的窗口管理器(twm)，很多有用的小工具，显示输出驱动和包括键盘鼠标在内的许多输入模块。</p>
+<!-- blog-edit-end:78494bb58f060c17:b5 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b6 -->
+
 <p>5. WM(window manager)(窗口管理器)<br />
 窗口管理器的作用就是最大化、最小化、移动、关闭窗口等。这些操作不是 X Server 来负责完成的，同样是有专门的程序来完成，比如平铺式管理器 i3wm。</p>
+<!-- blog-edit-end:78494bb58f060c17:b6 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b7 -->
+
 <p>6. KDE, GNOME<br />
 KDE 和GNOME是LINUX里最常用的图像界面操作环境，他们不但仅是个窗口管理器那么简单， KDE是K Desktop Environment 的缩写，他不但是个窗口管理器，更有很多配套的应用软件和方便使用的桌面环境，比如任务栏,开始菜单,桌面图标等等。GNOME是GNU Network Object Model Environment 的缩写，和KDE相同，也是个功能强大的综合环境。</p>
+<!-- blog-edit-end:78494bb58f060c17:b7 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b8 -->
+
 <p>7. GTK, GTK+, QT<br />
 是图形界面开发库(GUI Toolkit)，用户可以使用这些开发库编写 GUI 应用，其中 GTK+ 是 GTK 的升级版。</p>
+<!-- blog-edit-end:78494bb58f060c17:b8 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b9 -->
+
 <p>8. KDE, GNOME, Unity<br />
 是 Linux 下的桌面环境(Desktop Environment)，其中 KDE 使用 QT 开发，GNOME 使用 GTK+ 开发。桌面环境一般具有一组实用程序，窗口管理器和设计规范来创建统一的桌面。Unity 是 Canonical 公司基于 GNOME 开发的一个桌面环境，它使用了GNOME的一些实用程序(Nautilus, RhythmBox等)，并用于Ubuntu操作系统。</p>
+<!-- blog-edit-end:78494bb58f060c17:b9 -->
+
+<!-- blog-edit-start:78494bb58f060c17:b10 -->
+
 <details class="note">
 <summary>详情</summary>
 <p><summary> <br />
@@ -619,6 +661,9 @@ i3wm 既然是 WM，那么它的颜色、Bar 是怎么完成的，而且为什�
 2. i3wm 的 Bar 有两种，一种是自带的，当然也可以通过和 X Server 打交道画出来。另一种是使用别的程序，比如 Polybar，本质上都是一样的，通过和 X Server 打交道画出来。<br />
 3. 最后就是为什么在 i3 下对 GTK 有依赖关系的软件仍然可以正常显示？按理来说，只有下载来 GNOME，此时安装来 GTK 才可以呀。实际上你查看 firefox 的依赖，在安装 firefox 的时候就已经安装来 GTK 库，所以就没问题来。</p>
 </details>
+<!-- blog-edit-end:78494bb58f060c17:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\x_window.md" data-text-edit-revision="bfcbc2e8775092f88e7f0f398fd55b74b4013ece53e9d6a9b2a83d6f4a743124" data-text-edit-marker="78494bb58f060c17" data-text-edit-schema="1"></div>
 
 
 
@@ -850,8 +895,6 @@ i3wm 既然是 WM，那么它的颜色、Bar 是怎么完成的，而且为什�
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

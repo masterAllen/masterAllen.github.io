@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-9-623cc78a2f1a.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-9-eeec361aae32.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-9-623cc78a2f1a.html"
+         data-shared-navigation-target="../../navigation/shared/group-9-eeec361aae32.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -563,13 +563,35 @@
   
 
 
+<!-- blog-edit-start:387ce7d6236d78be:b0 -->
+
 <h1 id="_1">本地快速编辑实现</h1>
+<!-- blog-edit-end:387ce7d6236d78be:b0 -->
+
 <div class="file-actions" data-image-edit-revision="387ce7d6236d78be0a1910373376f0a237c585b2f08d597b7d72a3fa0a70c436" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CAbout%5C06.%E6%9C%AC%E5%9C%B0%E5%BF%AB%E9%80%9F%E7%BC%96%E8%BE%91.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CAbout" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\About\06.本地快速编辑.md">复制路径</span></div>
 
+<!-- blog-edit-start:387ce7d6236d78be:b1 -->
+
 <p>当前博客是把原始笔记通过脚本转为新的 markdown 笔记库，然后用 mkdocs 构建静态网站。这就有一个好处了：我的原始笔记是一份，但是我可以转成多个笔记库，用于不同的目的。</p>
+<!-- blog-edit-end:387ce7d6236d78be:b1 -->
+
+<!-- blog-edit-start:387ce7d6236d78be:b2 -->
+
 <p>比如我有一个转成后的笔记库就是专门用于本地电脑查看的，也就是 <code>127.0.0.1</code> 直接快速看。由于本地电脑，所以我可以肆无忌惮加一些功能，比如就是：本地快速编辑。每个文件上有一个按钮，点击后会打开 VSCode/Cursor 快速编辑该文件。</p>
+<!-- blog-edit-end:387ce7d6236d78be:b2 -->
+
+<!-- blog-edit-start:387ce7d6236d78be:b3 -->
+
 <p><img alt="" src="../../asset/image/981a270ea5a5ac1dc001ac0bab0b2720/PixPin_2026-10-12_19-30-45.gif" /></p>
+<!-- blog-edit-end:387ce7d6236d78be:b3 -->
+
+<!-- blog-edit-start:387ce7d6236d78be:b4 -->
+
 <p>实现这个有一些小技巧，因为如果简单的在本地启动一个 VSCode/Cursor 进程，然后打开文件，那么速度会非常慢，下面对这个功能的记录：</p>
+<!-- blog-edit-end:387ce7d6236d78be:b4 -->
+
+<!-- blog-edit-start:387ce7d6236d78be:b5 -->
+
 <ol>
 <li>
 <p><a href="../../Main/实现Cursor快速打开文件/">实现Cursor快速打开文件</a></p>
@@ -578,9 +600,24 @@
 <p><a href="../../Main/点击关闭按钮隐藏到托盘/">点击关闭按钮隐藏到托盘</a></p>
 </li>
 </ol>
+<!-- blog-edit-end:387ce7d6236d78be:b5 -->
+
+<!-- blog-edit-start:387ce7d6236d78be:b6 -->
+
 <p>这个还是花了一点时间的。大概半年前尝试过，但当时没有好的方法。当时想过专门把打开 blog 的 cursor 包装成一个程序，而且点击文件的时候，模拟键盘 <code>ctrl+p</code> 去做，很显然这种方式很不好。所以一直搁置了，没想到现在居然解决了，感觉主要是两方面：首先是 AI 能力的大提升；其次就是和 AI 的配合也更好了，这种更好也是有两方面：一方面是不再许愿式对话，而是能给出自己的想法和一些观察；另一方面也不在误导 AI，不让他只按照自己的思路去尝试。</p>
+<!-- blog-edit-end:387ce7d6236d78be:b6 -->
+
+<!-- blog-edit-start:387ce7d6236d78be:b7 -->
+
 <p>当时的一些记录：</p>
+<!-- blog-edit-end:387ce7d6236d78be:b7 -->
+
+<!-- blog-edit-start:387ce7d6236d78be:b8 -->
+
 <p><img alt="" src="../../asset/image/46f05c202369a3182a6170171ddfaef0/20261018093938.png#w80" /></p>
+<!-- blog-edit-end:387ce7d6236d78be:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\About\06.本地快速编辑.md" data-text-edit-revision="387ce7d6236d78be0a1910373376f0a237c585b2f08d597b7d72a3fa0a70c436" data-text-edit-marker="387ce7d6236d78be" data-text-edit-schema="1"></div>
 
 
 
@@ -812,8 +849,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -608,20 +608,41 @@
 <h1 id="network_gateway">network_gateway</h1>
 <div class="file-actions" data-image-edit-revision="3d3ba1a3cdce52e2105c4862e3663c8f66beb1ee22281752198b9a8c2834db45" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNetwork%5Cnetwork_gateway.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNetwork" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\Network\network_gateway.md">复制路径</span></div>
 
+<!-- blog-edit-start:f3c251e39cfcdadc:b0 -->
+
 <h2 id="_1">如何查看默认网关</h2>
+<!-- blog-edit-end:f3c251e39cfcdadc:b0 -->
+
+<!-- blog-edit-start:f3c251e39cfcdadc:b1 -->
+
 <p>命令如下<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>ip<span class="w"> </span>-4<span class="w"> </span>route
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>ip<span class="w"> </span>-6<span class="w"> </span>route
 </span></code></pre></div></p>
+<!-- blog-edit-end:f3c251e39cfcdadc:b1 -->
+
+<!-- blog-edit-start:f3c251e39cfcdadc:b2 -->
+
 <p>输出如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>default via 183.173.160.1 dev wlan0 proto dhcp metric 600 
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>183.173.160.0/21 dev wlan0 proto kernel scope link src 183.173.167.138 metric 600 
 </span></code></pre></div></p>
+<!-- blog-edit-end:f3c251e39cfcdadc:b2 -->
+
+<!-- blog-edit-start:f3c251e39cfcdadc:b3 -->
+
 <p>default 后面的地址是默认网关，如果有多个 default，会选 metric 较小的。另外输出格式应该这样看。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>default | via 183.173.160.1 | dev wlan0 | proto dhcp | metric 600 
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>183.173.160.0/21 | dev wlan0 | proto kernel | scope link | src 183.173.167.138 | metric 600 
 </span></code></pre></div></p>
+<!-- blog-edit-end:f3c251e39cfcdadc:b3 -->
+
+<!-- blog-edit-start:f3c251e39cfcdadc:b4 -->
+
 <p>v6 的默认网关一般是 fe80:xx，为什么会是这个地址？因为这就是默认网关的链路本地地址，用这个地址可以发给网关，然后网关也会进行处理。</p>
+<!-- blog-edit-end:f3c251e39cfcdadc:b4 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\Network\network_gateway.md" data-text-edit-revision="3d3ba1a3cdce52e2105c4862e3663c8f66beb1ee22281752198b9a8c2834db45" data-text-edit-marker="f3c251e39cfcdadc" data-text-edit-schema="1"></div>
 
 
 
@@ -853,8 +874,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

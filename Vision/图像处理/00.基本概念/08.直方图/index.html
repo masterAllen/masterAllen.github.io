@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -705,13 +705,27 @@
   
 
 
+<!-- blog-edit-start:a52003cf1d239f98:b0 -->
+
 <h1 id="_1">直方图</h1>
+<!-- blog-edit-end:a52003cf1d239f98:b0 -->
+
 <div class="file-actions" data-image-edit-revision="bafa7c13b0a0f168876906f5de7c84957aa680600b8b7cb34dfe45797e20c986" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C08.%E7%9B%B4%E6%96%B9%E5%9B%BE.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\08.直方图.md">复制路径</span></div>
+
+<!-- blog-edit-start:a52003cf1d239f98:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.7.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.7.md</a></p>
 </blockquote>
+<!-- blog-edit-end:a52003cf1d239f98:b1 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b2 -->
+
 <h3 id="_2">函数说明：</h3>
+<!-- blog-edit-end:a52003cf1d239f98:b2 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b3 -->
+
 <ul>
 <li><a href="https://docs.opencv.org/4.x/d6/dc7/group__imgproc__hist.html">calcHist</a>：计算直方图函数，基础函数</li>
 <li><a href="https://docs.opencv.org/4.x/d6/dc7/group__imgproc__hist.html#gaf4190090efa5c47cb367cf97a9a519bd">compareHist</a>：比较两个直方图，通常可以用于求解图片相似度</li>
@@ -720,9 +734,25 @@
 <li><a href="https://docs.opencv.org/4.x/d6/dc7/group__imgproc__hist.html#ga7e54091f0c937d49bf84152a16f76d6e">equalizeHist</a>: 直方图均衡算法，不谈（现在这个年代还需要这个算法吗？？）</li>
 <li><a href="https://docs.opencv.org/4.x/d6/dc7/group__imgproc__hist.html#gad3b7f72da85b821fda2bc41687573974">createCLAHE</a>: CLAHE 直方图均衡算法</li>
 </ul>
+<!-- blog-edit-end:a52003cf1d239f98:b3 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b4 -->
+
 <h3 id="_3">具体细节</h3>
+<!-- blog-edit-end:a52003cf1d239f98:b4 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b5 -->
+
 <h4 id="void-cvcalchist">void cv::calcHist</h4>
+<!-- blog-edit-end:a52003cf1d239f98:b5 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b6 -->
+
 <p>这是一个相当离谱的函数，非常反人类，下面讲一下具体的点</p>
+<!-- blog-edit-end:a52003cf1d239f98:b6 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b7 -->
+
 <ul>
 <li><strong>输入是数组，表示多张图片</strong>，格式为 8U, 16U, 32F，通道数不限；要用参数 nimages 指定数目（Python 不用）；chanel 参数表示处理的通道</li>
 <li><strong>虽然说可以处理多张图片、多个通道，但使用时尽量只用一张图片的一个通道！！</strong>，它的多图片多通道逻辑时很奇怪的。</li>
@@ -730,7 +760,15 @@
 <li>accumulate 在 Python 中好像不起作用，这个参数本意是做统计前不会清空输出列表，这样多次调用这个函数，相当于最后输出列表进行了累加</li>
 <li>Python 没有 <strong>uniform</strong> 参数，默认是非归一化的，即有多少数值结果就是多少。这个在 calcBackProject 中是个坑点，因为那个函数默认传入的直方图是归一化的，具体看那个函数的说明。</li>
 </ul>
+<!-- blog-edit-end:a52003cf1d239f98:b7 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b8 -->
+
 <p>测试代码，我感觉平时用这些就够了。可以看到，代码中就是只是用单图片单通道：</p>
+<!-- blog-edit-end:a52003cf1d239f98:b8 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">src</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
@@ -765,16 +803,44 @@
 </span><span id="__span-0-32"><span class="linenos" data-linenos="32 "></span><span class="n">result</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">src</span><span class="p">],</span> <span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="n">hist_</span><span class="p">,</span> <span class="n">histSize</span><span class="o">=</span><span class="p">[</span><span class="mi">256</span><span class="p">],</span> <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">],</span> <span class="n">accumulate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="__span-0-33"><span class="linenos" data-linenos="33 "></span><span class="nb">print</span><span class="p">(</span><span class="n">hist_</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a52003cf1d239f98:b9 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b10 -->
+
 <h4 id="double-cvcomparehist">double cv::compareHist</h4>
+<!-- blog-edit-end:a52003cf1d239f98:b10 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b11 -->
+
 <ul>
 <li>用于比较两张图片相似度；没有特别的奇怪参数，通过 method 参数传入比较指标</li>
 </ul>
+<!-- blog-edit-end:a52003cf1d239f98:b11 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b12 -->
+
 <h4 id="emdearth-movers-distance">EMD(Earth mover's distance)</h4>
+<!-- blog-edit-end:a52003cf1d239f98:b12 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b13 -->
+
 <ul>
 <li>EMD 具体细节需要进一步学习，目前只需要知道是什么即可（TODO）</li>
 </ul>
+<!-- blog-edit-end:a52003cf1d239f98:b13 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b14 -->
+
 <h4 id="void-cvcalcbackproject">void cv::calcBackProject</h4>
+<!-- blog-edit-end:a52003cf1d239f98:b14 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b15 -->
+
 <p><img alt="1721014598451" src="../../../../asset/image/cf4ae20fc63fcc8428f05fe661bbc181/1721014598451.png" /></p>
+<!-- blog-edit-end:a52003cf1d239f98:b15 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b16 -->
+
 <ul>
 <li>反向投影的原理和作用，如图所示，来自一篇很好的<a href="https://www.cnblogs.com/bjxqmy/p/12452420.html">文章</a></li>
 <li><strong>直方图归一化非常重要</strong>。因为 Python 中 calcHist 和 calcBackProject 都没有是否归一化选项，而这两一个是按照 False 处理，另一个是按照 True 处理....</li>
@@ -792,11 +858,22 @@
 </span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span><span class="c1"># 存储图片</span>
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;./backproject_result.png&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a52003cf1d239f98:b16 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b17 -->
+
 <h4 id="createclahe">createCLAHE</h4>
+<!-- blog-edit-end:a52003cf1d239f98:b17 -->
+
+<!-- blog-edit-start:a52003cf1d239f98:b18 -->
+
 <ul>
 <li>CLAHE 直方图均衡算法，这个原理网上一搜一大堆，函数本身没有奇怪参数，懂原理就立马知道代表什么意思</li>
 <li>使用方式需要先通过这个函数得到一个对象，然后这个对象使用 <code>apply</code> 方法即可</li>
 </ul>
+<!-- blog-edit-end:a52003cf1d239f98:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\08.直方图.md" data-text-edit-revision="bafa7c13b0a0f168876906f5de7c84957aa680600b8b7cb34dfe45797e20c986" data-text-edit-marker="a52003cf1d239f98" data-text-edit-schema="1"></div>
 
 
 
@@ -1028,8 +1105,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

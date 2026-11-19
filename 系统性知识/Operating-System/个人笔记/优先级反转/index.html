@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -634,15 +634,29 @@
   
 
 
+<!-- blog-edit-start:e52110e14e8c469b:b0 -->
+
 <h1 id="_1">优先级反转</h1>
+<!-- blog-edit-end:e52110e14e8c469b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e52110e14e8c469bbb31a9597feac672a1a15444955e41cf6adc631658022496" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5C%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0%5C%E4%BC%98%E5%85%88%E7%BA%A7%E5%8F%8D%E8%BD%AC.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5C%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Operating-System\个人笔记\优先级反转.md">复制路径</span></div>
 
+<!-- blog-edit-start:e52110e14e8c469b:b1 -->
+
 <h2 id="_2">场景</h2>
+<!-- blog-edit-end:e52110e14e8c469b:b1 -->
+
+<!-- blog-edit-start:e52110e14e8c469b:b2 -->
+
 <p>背景：</p>
 <ul>
 <li>背景1: 进程切换的时候，优先选择就绪队列中优先级高的进程</li>
 <li>背景2: 有三个进程A,B,C(优先级从高到低)，A和C共享信号量S</li>
 </ul>
+<!-- blog-edit-end:e52110e14e8c469b:b2 -->
+
+<!-- blog-edit-start:e52110e14e8c469b:b3 -->
+
 <p>场景：</p>
 <ul>
 <li>时间1: 进程C进入内存，开始执行，获得信号量S</li>
@@ -651,8 +665,20 @@
 <li>时间4: 进程A要求获取S，从而产生阻塞，进程开始切换，此时选择B开始执行</li>
 <li>时间5: 进程B一路通畅执行完毕，此时可以看到明明B的优先级比A低，却比A结束的早</li>
 </ul>
+<!-- blog-edit-end:e52110e14e8c469b:b3 -->
+
+<!-- blog-edit-start:e52110e14e8c469b:b4 -->
+
 <p>备注：比如系统执行抢占式优先级调度，所以要A执行；再比如可能因为等待另一个被别的进程占用的信号量而产生阻塞。</p>
+<!-- blog-edit-end:e52110e14e8c469b:b4 -->
+
+<!-- blog-edit-start:e52110e14e8c469b:b5 -->
+
 <h2 id="_3">解决方法</h2>
+<!-- blog-edit-end:e52110e14e8c469b:b5 -->
+
+<!-- blog-edit-start:e52110e14e8c469b:b6 -->
+
 <ul>
 <li>
 <p>优先级继承</p>
@@ -669,6 +695,9 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:e52110e14e8c469b:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Operating-System\个人笔记\优先级反转.md" data-text-edit-revision="e52110e14e8c469bbb31a9597feac672a1a15444955e41cf6adc631658022496" data-text-edit-marker="e52110e14e8c469b" data-text-edit-schema="1"></div>
 
 
 
@@ -900,8 +929,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

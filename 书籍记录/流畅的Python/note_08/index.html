@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,15 +581,44 @@
   
 
 
+<!-- blog-edit-start:d3f7eff835501d68:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录八：重载运算符</h1>
+<!-- blog-edit-end:d3f7eff835501d68:b0 -->
+
 <div class="file-actions" data-image-edit-revision="3d914e00f990dd7078885cddf422f5a12140ca3c350368effca1a8adf04e4fcb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_08.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_08.md">复制路径</span></div>
 
+<!-- blog-edit-start:d3f7eff835501d68:b1 -->
+
 <p>这篇主要讲一下重载运算符的事情, 其实没几个啦, 下面是记录.</p>
+<!-- blog-edit-end:d3f7eff835501d68:b1 -->
+
+<!-- blog-edit-start:d3f7eff835501d68:b2 -->
+
 <p>1. 重载运算符, 和 C++ 一样, 重新实现 <code>__add__</code>、<code>__mul__</code> 这些方法即可.</p>
+<!-- blog-edit-end:d3f7eff835501d68:b2 -->
+
+<!-- blog-edit-start:d3f7eff835501d68:b3 -->
+
 <p>2. 和 C++ 的不同: 重载 <code>__radd__</code> 和 <code>__rmul__</code>, 如果 <code>a+b</code> 中发现 <code>a</code> 没有 <code>__add__</code> 方法, 那么就会尝试调用 <code>b</code> 的 <code>__radd__</code> 方法, 流程如图所示.</p>
+<!-- blog-edit-end:d3f7eff835501d68:b3 -->
+
+<!-- blog-edit-start:d3f7eff835501d68:b4 -->
+
 <p><img alt="__radd__" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20211015001.png" /></p>
+<!-- blog-edit-end:d3f7eff835501d68:b4 -->
+
+<!-- blog-edit-start:d3f7eff835501d68:b5 -->
+
 <p>3. 和 C++ 的不同: 重载 <code>__iadd</code> 和 <code>__imul__</code>, 用于就地计算, 就是计算 <code>a+=b</code> 的时候会调用这些方法.</p>
+<!-- blog-edit-end:d3f7eff835501d68:b5 -->
+
+<!-- blog-edit-start:d3f7eff835501d68:b6 -->
+
 <p>4. 一个不重要的知识: 实现了 <code>__eq__</code> 而不实现 <code>__ne__</code> 没有问题, 需要后者的时候会自动对前者的结果取反.</p>
+<!-- blog-edit-end:d3f7eff835501d68:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_08.md" data-text-edit-revision="3d914e00f990dd7078885cddf422f5a12140ca3c350368effca1a8adf04e4fcb" data-text-edit-marker="d3f7eff835501d68" data-text-edit-schema="1"></div>
 
 
 
@@ -821,8 +850,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

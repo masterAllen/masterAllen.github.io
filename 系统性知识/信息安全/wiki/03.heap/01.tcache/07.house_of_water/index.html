@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -850,37 +850,107 @@
   
 
 
+<!-- blog-edit-start:79a8780d04848334:b0 -->
+
 <h1 id="house-of-water">house of water</h1>
+<!-- blog-edit-end:79a8780d04848334:b0 -->
+
 <div class="file-actions" data-image-edit-revision="14b78540312be1edf165c45cc8cf62e33bf42d3d110b4000ac48b1b5a7cf9211" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache%5C07.house_of_water.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\07.house_of_water.md">复制路径</span></div>
 
+<!-- blog-edit-start:79a8780d04848334:b1 -->
+
 <p>很有趣的一个攻击，本质上利用 <code>tcache_pethread_struct</code> 的结构去构造一个 fake chunk，最终效果：</p>
+<!-- blog-edit-end:79a8780d04848334:b1 -->
+
+<!-- blog-edit-start:79a8780d04848334:b2 -->
+
 <ol>
 <li>得到某个 libc 地址</li>
 <li>获取 <code>tcache_pethread_struct</code> 的控制权</li>
 </ol>
+<!-- blog-edit-end:79a8780d04848334:b2 -->
+
+<!-- blog-edit-start:79a8780d04848334:b3 -->
+
 <h2 id="_1">原理和目标</h2>
+<!-- blog-edit-end:79a8780d04848334:b3 -->
+
+<!-- blog-edit-start:79a8780d04848334:b4 -->
+
 <p>如下，<code>tcache_perthread_struct</code> 结构，我们发现可以利用它进行创建假的 fake chunk，如下图所示。</p>
+<!-- blog-edit-end:79a8780d04848334:b4 -->
+
+<!-- blog-edit-start:79a8780d04848334:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">tcache_perthread_struct</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">counts</span><span class="p">[</span><span class="n">TCACHE_MAX_BINS</span><span class="p">];</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">entries</span><span class="p">[</span><span class="n">TCACHE_MAX_BINS</span><span class="p">];</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b5 -->
+
+<!-- blog-edit-start:79a8780d04848334:b6 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260130115129.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b6 -->
+
+<!-- blog-edit-start:79a8780d04848334:b7 -->
+
 <p>这里的 <code>size</code> 的位置是最后 4 个 <code>counts</code>，那么我们应该赋值多少比较合适？只能分别是 <code>0x0000</code>, <code>0x0000</code>, <code>0x0001</code>, <code>0x0001</code>，即最后的 <code>size</code> 是 <code>0x10001</code>。当然如果是 <code>0x20001</code> 按道理也可以，但没必要。</p>
+<!-- blog-edit-end:79a8780d04848334:b7 -->
+
+<!-- blog-edit-start:79a8780d04848334:b8 -->
+
 <p>由于 <code>size</code> 是 <code>0x10001</code>，所以只能是 unsorted 或者 large，显然 unsorted 更好。最终我们希望把这个 fakechunk 放入到 unsorted 链表中，然后从中脱链。由于 unsorted 检查比较严格，这就要求各个块的 <code>fd</code> 和 <code>bk</code> 也要正确，如下图所示：</p>
+<!-- blog-edit-end:79a8780d04848334:b8 -->
+
+<!-- blog-edit-start:79a8780d04848334:b9 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260130115811.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b9 -->
+
+<!-- blog-edit-start:79a8780d04848334:b10 -->
+
 <h2 id="_2">实际操作</h2>
+<!-- blog-edit-end:79a8780d04848334:b10 -->
+
+<!-- blog-edit-start:79a8780d04848334:b11 -->
+
 <p>现在我们就奔着这个目标去构造</p>
+<!-- blog-edit-end:79a8780d04848334:b11 -->
+
+<!-- blog-edit-start:79a8780d04848334:b12 -->
+
 <h3 id="1-size">1. 构造 <code>size</code></h3>
+<!-- blog-edit-end:79a8780d04848334:b12 -->
+
+<!-- blog-edit-start:79a8780d04848334:b13 -->
+
 <p>这个没啥好说的，我们是希望 <code>size</code> 是 <code>0x00010001</code>，也就是最后两个 <code>count</code> 变为 1，申请对应大小的块呗：</p>
+<!-- blog-edit-end:79a8780d04848334:b13 -->
+
+<!-- blog-edit-start:79a8780d04848334:b14 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">fake_size_lsb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x3d8</span><span class="p">);</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">fake_size_msb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x3e8</span><span class="p">);</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="n">free</span><span class="p">(</span><span class="n">fake_size_lsb</span><span class="p">);</span>
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="n">free</span><span class="p">(</span><span class="n">fake_size_msb</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b14 -->
+
+<!-- blog-edit-start:79a8780d04848334:b15 -->
+
 <h3 id="2-unsorted">2. 准备 unsorted 块</h3>
+<!-- blog-edit-end:79a8780d04848334:b15 -->
+
+<!-- blog-edit-start:79a8780d04848334:b16 -->
+
 <p>我们需要准备三个 unsorted 块，之所以是三个，是中间的那个后面会被替换掉：</p>
+<!-- blog-edit-end:79a8780d04848334:b16 -->
+
+<!-- blog-edit-start:79a8780d04848334:b17 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unsorted_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x88</span><span class="p">);</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x18</span><span class="p">);</span><span class="w"> </span><span class="c1">// Guard chunk</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>
@@ -890,61 +960,209 @@
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unsorted_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x88</span><span class="p">);</span>
 </span><span id="__span-2-8"><span class="linenos" data-linenos="8 "></span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x18</span><span class="p">);</span><span class="w"> </span><span class="c1">// Guard chunk</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b17 -->
+
+<!-- blog-edit-start:79a8780d04848334:b18 -->
+
 <p>这三个现在还不在 unsorted 链表中，后续会用到。</p>
+<!-- blog-edit-end:79a8780d04848334:b18 -->
+
+<!-- blog-edit-start:79a8780d04848334:b19 -->
+
 <h3 id="3">3. 防止后向合并</h3>
+<!-- blog-edit-end:79a8780d04848334:b19 -->
+
+<!-- blog-edit-start:79a8780d04848334:b20 -->
+
 <p>我们还要防止最终 fake_chunk 脱链之后，系统会检查下面的块是否也是 free 的，而且也会利用下面的块的 <code>prev_size</code> 来进行检查是否有错误。所以我们要构造一个块避免检查错误。</p>
+<!-- blog-edit-end:79a8780d04848334:b20 -->
+
+<!-- blog-edit-start:79a8780d04848334:b21 -->
+
 <p>这里的 Padding 大小是 <code>0xf000</code>，这个是由于我们的 <code>size</code> 是 <code>0x10001</code>，上面有申请了一些块，所以 Padding 的大小通过 <code>0x10000</code> 减去上面申请的所有块的大小计算得来的。</p>
+<!-- blog-edit-end:79a8780d04848334:b21 -->
+
+<!-- blog-edit-start:79a8780d04848334:b22 -->
+
 <p>（PS: 不建议这里真的计算是不是 <code>0xf000</code>，原来脚本中事先申请了许多块，我这里都忽略了）</p>
+<!-- blog-edit-end:79a8780d04848334:b22 -->
+
+<!-- blog-edit-start:79a8780d04848334:b23 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0xf000</span><span class="p">);</span><span class="w">       </span><span class="c1">// Padding</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">end_of_fake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x18</span><span class="p">);</span><span class="w"> </span><span class="c1">// Metadata chunk</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b23 -->
+
+<!-- blog-edit-start:79a8780d04848334:b24 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131124050.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b24 -->
+
+<!-- blog-edit-start:79a8780d04848334:b25 -->
+
 <p>然后就像我们所说的，我们要确保这个下一块的 <code>prev_size</code> 要对，而且要说明这个块不是 freed：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">end_of_fake</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x10000</span><span class="p">;</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// 这里的 0x20 是 size，不太清楚是不是一定要 0x20 才行，没去测试，反正最后一位即 prev_inuse 要是 0</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="n">end_of_fake</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x20</span><span class="p">;</span><span class="w"> </span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:79a8780d04848334:b25 -->
+
+<!-- blog-edit-start:79a8780d04848334:b26 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131124202.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b26 -->
+
+<!-- blog-edit-start:79a8780d04848334:b27 -->
+
 <h3 id="4-fake_chunk-fd-bk">4. 构造 fake_chunk 的 <code>fd</code> 和 <code>bk</code></h3>
+<!-- blog-edit-end:79a8780d04848334:b27 -->
+
+<!-- blog-edit-start:79a8780d04848334:b28 -->
+
 <p>现在来构造 fake_chunk 的 <code>bk</code> 指向 <code>unsorted_1</code>，也就是 <code>unsorted_start</code>，这个挺麻烦的，感觉这也是这个攻击最难以应用的地方，下面进行介绍。</p>
+<!-- blog-edit-end:79a8780d04848334:b28 -->
+
+<!-- blog-edit-start:79a8780d04848334:b29 -->
+
 <p>现在我们来看 <code>unsorted_start</code>，他还没进入 unsorted 链，所以人家还是很正常的：</p>
+<!-- blog-edit-end:79a8780d04848334:b29 -->
+
+<!-- blog-edit-start:79a8780d04848334:b30 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131120804.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b30 -->
+
+<!-- blog-edit-start:79a8780d04848334:b31 -->
+
 <h4 id="_3">步骤一</h4>
+<!-- blog-edit-end:79a8780d04848334:b31 -->
+
+<!-- blog-edit-start:79a8780d04848334:b32 -->
+
 <p>现在我们进行如下的修改，当然这种修改其实挺苛刻的，要有修改 <code>unsorted_start-0x18</code> 的能力：</p>
+<!-- blog-edit-end:79a8780d04848334:b32 -->
+
+<!-- blog-edit-start:79a8780d04848334:b33 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)(</span><span class="n">unsorted_start</span><span class="mh">-0x18</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x31</span><span class="p">;</span><span class="w"> </span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b33 -->
+
+<!-- blog-edit-start:79a8780d04848334:b34 -->
+
 <p>此时 <code>unsorted_start</code> 附近的内容变为：</p>
+<!-- blog-edit-end:79a8780d04848334:b34 -->
+
+<!-- blog-edit-start:79a8780d04848334:b35 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131120917.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b35 -->
+
+<!-- blog-edit-start:79a8780d04848334:b36 -->
+
 <h4 id="_4">步骤二</h4>
+<!-- blog-edit-end:79a8780d04848334:b36 -->
+
+<!-- blog-edit-start:79a8780d04848334:b37 -->
+
 <p>看出我们要干啥来了吗，没错释放这个 <code>unsorted_start-0x20</code>，此时系统会把它当成是 <code>0x30</code> 大小的块，所以会释放到 tcache 中，系统会做的操作：</p>
+<!-- blog-edit-end:79a8780d04848334:b37 -->
+
+<!-- blog-edit-start:79a8780d04848334:b38 -->
+
 <ol>
 <li>修改这个虚假的块中的 <code>next</code> 指针和 <code>key</code> 字段。其中 <code>next</code> 应该修改为 <code>0x0</code>，但由于有 safe-linking 技术，所以最终修改的内容不是 <code>0x0</code>。</li>
 <li>当前 tcache 中 <code>0x30</code> 大小的链表为空，所以这个块是头一个，此时 tcache 中 <code>0x30</code> 大小的链表的内容改为 <code>0x55555555be50</code>（tcache 指向内容区）</li>
 </ol>
+<!-- blog-edit-end:79a8780d04848334:b38 -->
+
+<!-- blog-edit-start:79a8780d04848334:b39 -->
+
 <p>首先来看第一点，这个是最终效果，这个第一点对我们攻击没有用。<br />
 <img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131122225.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b39 -->
+
+<!-- blog-edit-start:79a8780d04848334:b40 -->
+
 <p>再来看第二点，这里的 tcache 中 <code>0x30</code> 的链表，就是 <code>tcache_perthread_struct</code> 的 <code>entries[1]</code>：</p>
+<!-- blog-edit-end:79a8780d04848334:b40 -->
+
+<!-- blog-edit-start:79a8780d04848334:b41 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">tcache_perthread_struct</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">counts</span><span class="p">[</span><span class="n">TCACHE_MAX_BINS</span><span class="p">];</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">entries</span><span class="p">[</span><span class="n">TCACHE_MAX_BINS</span><span class="p">];</span>
 </span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b41 -->
+
+<!-- blog-edit-start:79a8780d04848334:b42 -->
+
 <p><strong>而这个 <code>entries[1]</code> 就是我们最终 fake_chunk 的 <code>bk</code> 指针呀！</strong> 所以我们成功让 <code>bk</code> 指向了 <code>unsorted_start</code>。</p>
+<!-- blog-edit-end:79a8780d04848334:b42 -->
+
+<!-- blog-edit-start:79a8780d04848334:b43 -->
+
 <h4 id="_5">步骤三</h4>
+<!-- blog-edit-end:79a8780d04848334:b43 -->
+
+<!-- blog-edit-start:79a8780d04848334:b44 -->
+
 <p>由于步骤二中的释放块时，系统修改了 <code>next</code> 和 <code>key</code>，这里我们恢复好 <code>unsorted_start</code> 原来的 <code>size</code> 值：</p>
+<!-- blog-edit-end:79a8780d04848334:b44 -->
+
+<!-- blog-edit-start:79a8780d04848334:b45 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)(</span><span class="n">unsorted_start</span><span class="mh">-0x8</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x91</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b45 -->
+
+<!-- blog-edit-start:79a8780d04848334:b46 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131121640.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b46 -->
+
+<!-- blog-edit-start:79a8780d04848334:b47 -->
+
 <h4 id="_6">完成</h4>
+<!-- blog-edit-end:79a8780d04848334:b47 -->
+
+<!-- blog-edit-start:79a8780d04848334:b48 -->
+
 <p>通过上面的步骤，成功实现修改了 <code>fake_chunk-&gt;bk</code> 指向 <code>unsorted_start</code>，那么 <code>fake_chunk-&gt;fd</code> 指向 <code>unsorted_end</code> 则同理：</p>
+<!-- blog-edit-end:79a8780d04848334:b48 -->
+
+<!-- blog-edit-start:79a8780d04848334:b49 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)(</span><span class="n">unsorted_end</span><span class="mh">-0x18</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x21</span><span class="p">;</span><span class="w"> </span><span class="c1">// Write 0x21 above unsorted_end</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="n">free</span><span class="p">(</span><span class="n">unsorted_end</span><span class="mh">-0x10</span><span class="p">);</span><span class="w"> </span><span class="c1">// Create a fake bk for the fake chunk</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="o">*</span><span class="p">(</span><span class="kt">long</span><span class="o">*</span><span class="p">)(</span><span class="n">unsorted_end</span><span class="mh">-0x8</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x91</span><span class="p">;</span><span class="w">  </span><span class="c1">//recover the original header</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b49 -->
+
+<!-- blog-edit-start:79a8780d04848334:b50 -->
+
 <h3 id="5-unsorted-fd-bk">5. 构造 unsorted 的 <code>fd</code> 和 <code>bk</code></h3>
+<!-- blog-edit-end:79a8780d04848334:b50 -->
+
+<!-- blog-edit-start:79a8780d04848334:b51 -->
+
 <p>下面让 <code>unsorted_1-&gt;fd</code> 指向 <code>fake_chunk</code>，这里的要求也挺高的，所以这个攻击实用性感觉确实小，不过确实有意思。</p>
+<!-- blog-edit-end:79a8780d04848334:b51 -->
+
+<!-- blog-edit-start:79a8780d04848334:b52 -->
+
 <h4 id="_7">步骤一</h4>
+<!-- blog-edit-end:79a8780d04848334:b52 -->
+
+<!-- blog-edit-start:79a8780d04848334:b53 -->
+
 <p>先让之前准备的块都落入 unsorted 链表，当然别忘了事先塞满 tcache：</p>
+<!-- blog-edit-end:79a8780d04848334:b53 -->
+
+<!-- blog-edit-start:79a8780d04848334:b54 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 提前准备好的</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x88</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">free</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w"> </span><span class="p">}</span>
@@ -956,37 +1174,119 @@
 </span><span id="__span-9-9"><span class="linenos" data-linenos=" 9 "></span><span class="n">free</span><span class="p">(</span><span class="n">unsorted_middle</span><span class="p">);</span>
 </span><span id="__span-9-10"><span class="linenos" data-linenos="10 "></span><span class="n">free</span><span class="p">(</span><span class="n">unsorted_start</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b54 -->
+
+<!-- blog-edit-start:79a8780d04848334:b55 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131122957.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b55 -->
+
+<!-- blog-edit-start:79a8780d04848334:b56 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131123015.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b56 -->
+
+<!-- blog-edit-start:79a8780d04848334:b57 -->
+
 <h4 id="_8">步骤二</h4>
+<!-- blog-edit-end:79a8780d04848334:b57 -->
+
+<!-- blog-edit-start:79a8780d04848334:b58 -->
+
 <p>下面就是想要修改 <code>unsorted_start</code> 的 <code>fd</code> 内容了，之前一直没绕过来：其实我们完全就是事先知道 fake_chunk 的起始地址呀。假如 heap_base 不变的话，那刚开始的 <code>tcache_perthread_struct</code> 结构是固定的，所以我们能算出偏移量：</p>
+<!-- blog-edit-end:79a8780d04848334:b58 -->
+
+<!-- blog-edit-start:79a8780d04848334:b59 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131125358.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b59 -->
+
+<!-- blog-edit-start:79a8780d04848334:b60 -->
+
 <p>而且，在第三节，即防止向后合并的那里，我们对 <code>0x10000</code> 之后的块进行了修改，那里我们获取了变量叫做 <code>end_of_fake</code>，那么显然 <code>fake_chunk = end_of_fake - 0x10000</code>。</p>
+<!-- blog-edit-end:79a8780d04848334:b60 -->
+
+<!-- blog-edit-start:79a8780d04848334:b61 -->
+
 <p>所以这里就直接暴力写就完事了：</p>
+<!-- blog-edit-end:79a8780d04848334:b61 -->
+
+<!-- blog-edit-start:79a8780d04848334:b62 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="cm">/* VULNERABILITY */</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="o">*</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">unsorted_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)(</span><span class="n">end_of_fake</span><span class="mh">-0x10000</span><span class="p">);</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span><span class="o">*</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="n">unsorted_end</span><span class="o">+</span><span class="mh">0x8</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)(</span><span class="n">end_of_fake</span><span class="mh">-0x10000</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b62 -->
+
+<!-- blog-edit-start:79a8780d04848334:b63 -->
+
 <h4 id="_9">完成</h4>
+<!-- blog-edit-end:79a8780d04848334:b63 -->
+
+<!-- blog-edit-start:79a8780d04848334:b64 -->
+
 <p>成功把 <code>unsorted_start</code> 的 <code>fd</code> 进行了修改，那么 <code>unsorted_end</code> 的 <code>bk</code> 同理。就是一个简单的 UAF 写，所以这里的要求还挺高的。</p>
+<!-- blog-edit-end:79a8780d04848334:b64 -->
+
+<!-- blog-edit-start:79a8780d04848334:b65 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131125902.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b65 -->
+
+<!-- blog-edit-start:79a8780d04848334:b66 -->
+
 <h3 id="6">6. 最终攻击</h3>
+<!-- blog-edit-end:79a8780d04848334:b66 -->
+
+<!-- blog-edit-start:79a8780d04848334:b67 -->
+
 <p>最终我们申请一个块，那么系统会从 fake chunk 切割一部分给我们，而 fake chunk 就是 <code>tcache_perthread_struct</code> 的内容，所以我们可以控制这个数据结构了！更具体的，我们可以控制 <code>entries</code>：</p>
+<!-- blog-edit-end:79a8780d04848334:b67 -->
+
+<!-- blog-edit-start:79a8780d04848334:b68 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">tcache_perthread_struct</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">counts</span><span class="p">[</span><span class="n">TCACHE_MAX_BINS</span><span class="p">];</span>
 </span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">entries</span><span class="p">[</span><span class="n">TCACHE_MAX_BINS</span><span class="p">];</span>
 </span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b68 -->
+
+<!-- blog-edit-start:79a8780d04848334:b69 -->
+
 <p>除此以外，还有一个 unsorted bin 的传统泄露。malloc 为了防止 freed chunk 再次参与链表，防御 unsorted bin attack，会手动清除 <code>fd/bk</code>。glibc 的实现是用"自指向 main_arena 的方式”来标识：这个 chunk 已经被取出，不应该再进 bin。</p>
+<!-- blog-edit-end:79a8780d04848334:b69 -->
+
+<!-- blog-edit-start:79a8780d04848334:b70 -->
+
 <p>所以从 unsorted bin 取出的块，里面的 <code>fd/bk</code> 都是可以泄露 libc 地址的：</p>
+<!-- blog-edit-end:79a8780d04848334:b70 -->
+
+<!-- blog-edit-start:79a8780d04848334:b71 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">meta_chunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x288</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:79a8780d04848334:b71 -->
+
+<!-- blog-edit-start:79a8780d04848334:b72 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260131010647.png" /></p>
+<!-- blog-edit-end:79a8780d04848334:b72 -->
+
+<!-- blog-edit-start:79a8780d04848334:b73 -->
+
 <h2 id="_10">参考链接</h2>
+<!-- blog-edit-end:79a8780d04848334:b73 -->
+<!-- blog-edit-start:79a8780d04848334:b74 -->
+
 <ol>
 <li><a href="https://4xura.com/binex/house-of-water">https://4xura.com/binex/house-of-water</a> ：本文的大部分图都是来自本篇文章，写的极其好</li>
 <li><a href="https://khighl.github.io/2025/08/02/hosue%20of%20water">https://khighl.github.io/2025/08/02/hosue%20of%20water</a> ：一些让我理解的补充点</li>
 </ol>
+<!-- blog-edit-end:79a8780d04848334:b74 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\07.house_of_water.md" data-text-edit-revision="14b78540312be1edf165c45cc8cf62e33bf42d3d110b4000ac48b1b5a7cf9211" data-text-edit-marker="79a8780d04848334" data-text-edit-schema="1"></div>
 
 
 
@@ -1218,8 +1518,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

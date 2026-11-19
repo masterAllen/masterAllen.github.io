@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -667,14 +667,40 @@
   
 
 
+<!-- blog-edit-start:08e6d3b7ec614598:b0 -->
+
 <h1 id="srop">SROP</h1>
+<!-- blog-edit-end:08e6d3b7ec614598:b0 -->
+
 <div class="file-actions" data-image-edit-revision="08e6d3b7ec614598e3f7441fe4ea5667e0e838de12ef9336f4bd04b0d3be95a2" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C06.SROP%5Creadme.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C06.SROP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\06.SROP\readme.md">复制路径</span></div>
 
+<!-- blog-edit-start:08e6d3b7ec614598:b1 -->
+
 <p>SROP 是利用 <code>sigreturn</code> 这个系统调用，<code>sigreturn</code> 是用于恢复用户现场的。而恢复的现场（也就是执行系统调用的时候保存的结构）是放在用户栈上的。具体的结构细节自行搜索，叫做 sigframe。</p>
+<!-- blog-edit-end:08e6d3b7ec614598:b1 -->
+
+<!-- blog-edit-start:08e6d3b7ec614598:b2 -->
+
 <p>要理解的是 <code>sigreturn</code> 和 <code>read</code> 是类似的，就是一个系统调用。都是把对应的调用号写到 <code>rax</code> 中，然后执行 <code>syscall</code> 这条指令。系统会根据 <code>rax</code> 区分用哪一个系统调用。</p>
+<!-- blog-edit-end:08e6d3b7ec614598:b2 -->
+
+<!-- blog-edit-start:08e6d3b7ec614598:b3 -->
+
 <p>SROP 本质上就是构造一个假的 sigFrame，然后去触发 <code>sigreturn</code>。上一段已经说了，<code>sigreturn</code> 和其他系统调用本质都是一样的，所以触发 <code>sigreturn</code> 就是把 <code>rax</code> 修改为 <code>sigreturn</code> 在 <code>syscall</code> 对应的号，然后调用 <code>syscall</code> 就可以了。</p>
+<!-- blog-edit-end:08e6d3b7ec614598:b3 -->
+
+<!-- blog-edit-start:08e6d3b7ec614598:b4 -->
+
 <h2 id="_1">练习题</h2>
+<!-- blog-edit-end:08e6d3b7ec614598:b4 -->
+
+<!-- blog-edit-start:08e6d3b7ec614598:b5 -->
+
 <p>程序就是下面的汇编代码, 正常运行时 <code>syscall[rax](rdi, rsi, edx)</code>, 相当于执行 <code>read(0,$rsp,400)</code>：</p>
+<!-- blog-edit-end:08e6d3b7ec614598:b5 -->
+
+<!-- blog-edit-start:08e6d3b7ec614598:b6 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>xor     rax, rax
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>mov     edx, 400h
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>mov     rsi, rsp
@@ -682,7 +708,15 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>syscall
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span>retn
 </span></code></pre></div>
+<!-- blog-edit-end:08e6d3b7ec614598:b6 -->
+
+<!-- blog-edit-start:08e6d3b7ec614598:b7 -->
+
 <p>利用思路看 exp, 注释里说的很详细了</p>
+<!-- blog-edit-end:08e6d3b7ec614598:b7 -->
+
+<!-- blog-edit-start:08e6d3b7ec614598:b8 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="  1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">pwn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="  2 "></span><span class="n">context</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gnome-terminal&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;/bin/zsh&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">]</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="  3 "></span><span class="n">small</span> <span class="o">=</span> <span class="n">ELF</span><span class="p">(</span><span class="s1">&#39;./smallest&#39;</span><span class="p">)</span>
@@ -809,6 +843,9 @@
 </span><span id="__span-1-124"><span class="linenos" data-linenos="124 "></span>
 </span><span id="__span-1-125"><span class="linenos" data-linenos="125 "></span><span class="n">sh</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:08e6d3b7ec614598:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\06.SROP\readme.md" data-text-edit-revision="08e6d3b7ec614598e3f7441fe4ea5667e0e838de12ef9336f4bd04b0d3be95a2" data-text-edit-marker="08e6d3b7ec614598" data-text-edit-schema="1"></div>
 
 
 
@@ -1040,8 +1077,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

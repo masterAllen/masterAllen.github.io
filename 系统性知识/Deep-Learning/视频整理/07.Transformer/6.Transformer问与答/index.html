@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -625,10 +625,20 @@
   
 
 
+<!-- blog-edit-start:95b4efe349de37c3:b0 -->
+
 <h1 id="transformer">Transformer 问与答</h1>
+<!-- blog-edit-end:95b4efe349de37c3:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7ea7b59e116596e4383ab6d4b55a7b5a8b4f668597f42b531f2b6990057aa6a7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C07.Transformer%5C6.Transformer%E9%97%AE%E4%B8%8E%E7%AD%94.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C07.Transformer" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\07.Transformer\6.Transformer问与答.md">复制路径</span></div>
 
+<!-- blog-edit-start:95b4efe349de37c3:b1 -->
+
 <p><img alt="" src="../../../../../asset/image/f26a8da39296f93667f30605cc4ecc9a/20260513171129.png" /></p>
+<!-- blog-edit-end:95b4efe349de37c3:b1 -->
+
+<!-- blog-edit-start:95b4efe349de37c3:b2 -->
+
 <details class="question">
 <summary>FFN 层是什么，没看到啊</summary>
 <p>FFN 就是图中的 Feed Forward Network，也就是全连接层。</p>
@@ -636,6 +646,10 @@
 FFN(x) = \max(0, xW_1 + b_1)W_2 + b_2
 \]</div>
 </details>
+<!-- blog-edit-end:95b4efe349de37c3:b2 -->
+
+<!-- blog-edit-start:95b4efe349de37c3:b3 -->
+
 <details class="question">
 <summary>为什么transformer的FFN需要先升维再降维？</summary>
 <p>链接：<a href="https://www.zhihu.com/question/665731716">https://www.zhihu.com/question/665731716</a></p>
@@ -645,6 +659,10 @@ FFN(x) = \max(0, xW_1 + b_1)W_2 + b_2
 </blockquote>
 <p>总结而言，就是激活函数 ReLU 把某些地方变成 0 值，导致矩阵降秩，所以要是矩阵降秩低于 m 的概率小，就要求 n 大于 2m，也就是升维。</p>
 </details>
+<!-- blog-edit-end:95b4efe349de37c3:b3 -->
+
+<!-- blog-edit-start:95b4efe349de37c3:b4 -->
+
 <details class="question">
 <summary>为什么要有 Q 和 K 分开两种</summary>
 <p>链接：<a href="https://www.zhihu.com/question/1934742507746464833">https://www.zhihu.com/question/1934742507746464833</a></p>
@@ -655,6 +673,9 @@ FFN(x) = \max(0, xW_1 + b_1)W_2 + b_2
 <p>总结而言，如果只用一种，即 Q1 和 Q2、Q3... 计算的结果就是 token 之间的关联性，那么这种关联性表达效果会很不好。因为这是对称的，即 tokenA 和 tokenB 的关系、tokenB 和 tokenA 的关系是一样的。</p>
 <p>换句话说，这是为了破坏矩阵的对称性，从而让他表达能力更强。</p>
 </details>
+<!-- blog-edit-end:95b4efe349de37c3:b4 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\07.Transformer\6.Transformer问与答.md" data-text-edit-revision="7ea7b59e116596e4383ab6d4b55a7b5a8b4f668597f42b531f2b6990057aa6a7" data-text-edit-marker="95b4efe349de37c3" data-text-edit-schema="1"></div>
 
 
 
@@ -886,8 +907,6 @@ FFN(x) = \max(0, xW_1 + b_1)W_2 + b_2
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

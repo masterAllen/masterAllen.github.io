@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -737,12 +737,28 @@
   
 
 
+<!-- blog-edit-start:b73c6bf0eae2d35f:b0 -->
+
 <h1 id="pwnable-kr-starcraft">pwnable kr starcraft</h1>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0c6cf36f6abf5076bccaac852258f4603b3c8ad0abca69a1c479e3b173dd2cdc" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C46.starcraft.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\46.starcraft.md">复制路径</span></div>
 
+<!-- blog-edit-start:b73c6bf0eae2d35f:b1 -->
+
 <h2 id="_1">前言</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b1 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b2 -->
+
 <p>这道题是目前花费时间最长的一次，刚开始搞了两三天想不出思路。后来隔了几天在网上看到一点点思路，又搞了一个周末然后失败。过了几天后又做了两天终于本机可以搞定，结果服务器那里还是失败。最后给两位素不相识的师傅发送邮件，终于搞定了！</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b2 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b3 -->
+
 <h2 id="_2">程序分析</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b3 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b4 -->
+
 <p>程序代码我就不贴了，非常多的代码...<br />
 程序逻辑就是让你选择一个角色，每次都会随机生成一个敌人，然后进行战斗，直到战败。<br />
 其中如果挺过十轮以后，就会触发下面的语句，似乎是没有用的语句，但之后就知道了，非常非常巧妙！<br />
@@ -754,9 +770,24 @@
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">final_cmd</span><span class="p">(</span><span class="n">v18</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">haystack</span><span class="p">);</span>
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b4 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b5 -->
+
 <p>程序保护除了 Partial Reload，其余全开。</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b5 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b6 -->
+
 <p>下面直接说解题步骤</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b6 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b7 -->
+
 <h2 id="acron">步骤一: 触发 acron</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b7 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b8 -->
+
 <p>templar 这个角色的 <code>vtable</code> 和别的角色不太一样。首先来看别的角色的 <code>vtable</code>。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>.data.rel.ro:00000000002067C0 _ZTV6Dragon     dq 0
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>.data.rel.ro:00000000002067C0 
@@ -767,6 +798,10 @@
 </span><span id="__span-1-7"><span class="linenos" data-linenos="7 "></span>.data.rel.ro:00000000002067E8   dq offset result_protoss
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span>.data.rel.ro:00000000002067F0   align 20h
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b8 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b9 -->
+
 <p>然后来看看 templar 这个角色的 <code>vtable</code>.<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>.data.rel.ro:0000000000206800 _ZTV7Templar    dq 0
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>.data.rel.ro:0000000000206800                    
@@ -783,6 +818,10 @@
 </span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span>.data.rel.ro:0000000000206858   dq offset sub_41FA
 </span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span>.data.rel.ro:0000000000206860   dq offset sub_4230
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b9 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b10 -->
+
 <p>明显看到 templar 的功能比较多，其中 0x206850 这里的函数很有意思，我们进去看看。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span>int templar_to_acron(__int64 a1)
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>{
@@ -803,9 +842,24 @@
 </span><span id="__span-3-17"><span class="linenos" data-linenos="17 "></span>  return result;
 </span><span id="__span-3-18"><span class="linenos" data-linenos="18 "></span>}
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b10 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b11 -->
+
 <p>实际上这个函数作用就是让 templar 变成 acron！如果用户申请自己是 templar，那么结构如下所示。</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b11 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b12 -->
+
 <p>ancron 的属性值很强，所以我们可以挺过多轮，就可以触发开头说的语句。</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b12 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b13 -->
+
 <h2 id="acron_1">步骤二: acron 函数溢出</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b13 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b14 -->
+
 <p>来看一下 templar 每次的攻击方式<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="kr">__int64</span><span class="w"> </span><span class="nf">choose_templar</span><span class="p">(</span><span class="kr">__int64</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">a2</span><span class="p">)</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -838,6 +892,10 @@
 </span><span id="__span-4-29"><span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mf">0L</span><span class="n">L</span><span class="p">;</span>
 </span><span id="__span-4-30"><span class="linenos" data-linenos="30 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b14 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b15 -->
+
 <p>很自然，但是有一个巨大的漏洞: 没有阻止 acron 可以选择其他的攻击方式。<br />
 也就是说如果当 a1+0x138 = acron 时，如果我们输入 <code>v4</code> 为 1,2,3，发现它还会去执行后面的 <code>switch</code> 语句！<br />
 来看一下 acron 的 <code>vtable</code>，注意 a1+0x138=acron=0x206890。<br />
@@ -856,8 +914,19 @@
 </span><span id="__span-5-13"><span class="linenos" data-linenos="13 "></span>.data.rel.ro:00000000002068F0    dq offset sub_31D0
 </span><span id="__span-5-14"><span class="linenos" data-linenos="14 "></span>.data.rel.ro:00000000002068F8    align 20h
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b15 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b16 -->
+
 <p>可以执行 Ultralisk 的前三个函数！出大问题！</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b16 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b17 -->
+
 <h2 id="libc">步骤三: 利用溢出泄露 libc</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b17 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b18 -->
+
 <p>这里我们用到上面说的三个函数中的第二个函数，来看看~<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">show_zerg</span><span class="p">(</span><span class="n">_DWORD</span><span class="w"> </span><span class="o">*</span><span class="n">a1</span><span class="p">)</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -874,6 +943,10 @@
 </span><span id="__span-6-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;############################&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 </span><span id="__span-6-14"><span class="linenos" data-linenos="14 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b18 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b19 -->
+
 <p>可以显示 a1[74] 和 a1[75]，这两个换算成字节应该是 [0x128, 0x138)，这里显示什么？来看一下 acron 的初始化函数！<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">init_acron</span><span class="p">(</span><span class="kr">__int64</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a2</span><span class="p">)</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -897,8 +970,19 @@
 </span><span id="__span-7-20"><span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">_QWORD</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="n">a1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x128</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">exit</span><span class="p">;</span>
 </span><span id="__span-7-21"><span class="linenos" data-linenos="21 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b19 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b20 -->
+
 <p>啊哈！0x128 存储的是 <code>exit</code> 函数！所以我们可以得到 <code>exit</code> 函数地址，所以...libc address 搞定！</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b20 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b21 -->
+
 <h2 id="_3">步骤四: 利用泄露控制执行流</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b21 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b22 -->
+
 <p>让我们再来看可利用三个函数的第一个函数，其中 <code>m_level</code> 为 11.<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">char</span><span class="w"> </span><span class="kr">__fastcall</span><span class="w"> </span><span class="n">input_ascii_artwork</span><span class="p">(</span><span class="kr">__int64</span><span class="w"> </span><span class="n">a1</span><span class="p">)</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -911,9 +995,20 @@
 </span><span id="__span-8-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 </span><span id="__span-8-10"><span class="linenos" data-linenos="10 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b22 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b23 -->
+
 <p>发现我们可以往 <code>a1 + 32</code> 中输入非常多的数据，刚才说了 <code>a1 + 0x128</code> 存储 <code>exit</code>，如果把它覆盖为 <code>one_gadget</code> 的话..<br />
 实际上本机确实可以通过这样的方式！！但是服务器却很惨: <code>one_gadget</code> 全部失效...</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b23 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b24 -->
+
 <h2 id="stack-pivoting">步骤五: Stack pivoting</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b24 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b25 -->
+
 <p>当时真的绝望，后来发邮件问了 <strong>Veritas501</strong> 师傅才终于做出来，非常感谢师傅！<br />
 关键点是利用开头的那个语句，现在重新写一下，其中 <code>haystack</code> 是栈里面的变量。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">v17</span><span class="w"> </span><span class="p">)</span>
@@ -924,9 +1019,21 @@
 </span><span id="__span-9-6"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">final_cmd</span><span class="p">(</span><span class="n">v18</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">haystack</span><span class="p">);</span>
 </span><span id="__span-9-7"><span class="linenos" data-linenos="7 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b25 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b26 -->
+
 <p>关键点是利用 <code>stack pivoting</code>，这种是先调整栈位置再进行攻击，如 <code>add rsp, xxx; ret</code>.</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b26 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b27 -->
+
 <p>这题正确做法是我们不把 <code>exit</code> 改成 <code>one_gadget</code>，而是改成这条语句: <code>add rsp, 0x18; ret</code>.<br />
 通过改成这条语句， <code>rsp</code> 会指向 <code>haystack</code> 里的内容，所以我们就可以通过构造 <code>haystack</code> 的内容来完成攻击！</p>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b27 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b28 -->
+
 <p>最终构造 <code>haystack = 'A' * 24 + p64(pop_rdi) + p64(bin_sh_address) + p64(system_address)</code>.<br />
 这样的流程如下</p>
 <ul>
@@ -937,7 +1044,14 @@
 <li><code>rdi</code> 赋值为 <code>bin_sh</code> 地址 </li>
 <li><code>ret</code> 返回到了 <code>system_address</code>，搞定。</li>
 </ul>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b28 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b29 -->
+
 <h2 id="_4">番外篇</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b29 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b30 -->
+
 <ol>
 <li>
 <p>如何查看程序是否有，以及如果有后返回 <code>bin_sh</code> 的地址<br />
@@ -964,11 +1078,21 @@
 <p>cin 对空格截断，对 \x00 不截断，末位会补 0 (待测)</p>
 </li>
 </ol>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b32 -->
+
+<!-- blog-edit-start:b73c6bf0eae2d35f:b33 -->
+
 <h2 id="_5">总结</h2>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b33 -->
+<!-- blog-edit-start:b73c6bf0eae2d35f:b34 -->
+
 <ol>
 <li>很值得回头看的一道题目，每一步都值得学习！</li>
 <li>最后的番外篇遇到的问题也是值得看看</li>
 </ol>
+<!-- blog-edit-end:b73c6bf0eae2d35f:b34 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\46.starcraft.md" data-text-edit-revision="0c6cf36f6abf5076bccaac852258f4603b3c8ad0abca69a1c479e3b173dd2cdc" data-text-edit-marker="b73c6bf0eae2d35f" data-text-edit-schema="1"></div>
 
 
 
@@ -1200,8 +1324,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

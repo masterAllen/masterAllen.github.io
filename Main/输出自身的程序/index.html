@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -563,11 +563,25 @@
   
 
 
+<!-- blog-edit-start:bf3181aaa881dd08:b0 -->
+
 <h1 id="_1">输出自身的程序</h1>
+<!-- blog-edit-end:bf3181aaa881dd08:b0 -->
+
 <div class="file-actions" data-image-edit-revision="bf3181aaa881dd083911cb8f2af657d1d48c0879c12fdc4c2ece59019dafa0de" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E8%BE%93%E5%87%BA%E8%87%AA%E8%BA%AB%E7%9A%84%E7%A8%8B%E5%BA%8F.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\输出自身的程序.md">复制路径</span></div>
 
+<!-- blog-edit-start:bf3181aaa881dd08:b1 -->
+
 <p>之前学习了一个关于在编译器中加入后门代码的项目，里面涉及到输出自身程序（但其实没必要），这里简单记录一下。</p>
+<!-- blog-edit-end:bf3181aaa881dd08:b1 -->
+
+<!-- blog-edit-start:bf3181aaa881dd08:b2 -->
+
 <p>这有个专业的名词叫做 Quine，不直接兜圈子，直接看下面的代码，写的极好，也很容易理解：</p>
+<!-- blog-edit-end:bf3181aaa881dd08:b2 -->
+
+<!-- blog-edit-start:bf3181aaa881dd08:b3 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">;</span><span class="se">\n</span><span class="s">\</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="s">int main() {</span><span class="se">\n</span><span class="s">\</span>
@@ -598,9 +612,24 @@
 </span><span id="__span-0-28"><span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="cm">/* Here we can put any code */</span>
 </span><span id="__span-0-29"><span class="linenos" data-linenos="29 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:bf3181aaa881dd08:b3 -->
+
+<!-- blog-edit-start:bf3181aaa881dd08:b4 -->
+
 <p>这就实现了输出自身的功能，非常地精妙。他相当于在 <code>while</code> 循环的时候把最上面的字符串输出了，最后再用要给 <code>printf</code> 把下面的字符串输出了。</p>
+<!-- blog-edit-end:bf3181aaa881dd08:b4 -->
+
+<!-- blog-edit-start:bf3181aaa881dd08:b5 -->
+
 <p>只要在 <code>/* Here we can put any code*/</code> 那儿同步放下任意的代码，那么程序始终可以输出自身，很有意思。</p>
+<!-- blog-edit-end:bf3181aaa881dd08:b5 -->
+
+<!-- blog-edit-start:bf3181aaa881dd08:b6 -->
+
 <p>来源：<a href="https://github.com/bojieli/CompilerBackdoor/blob/master/self-print/hello.c">https://github.com/bojieli/CompilerBackdoor/blob/master/self-print/hello.c</a></p>
+<!-- blog-edit-end:bf3181aaa881dd08:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\输出自身的程序.md" data-text-edit-revision="bf3181aaa881dd083911cb8f2af657d1d48c0879c12fdc4c2ece59019dafa0de" data-text-edit-marker="bf3181aaa881dd08" data-text-edit-schema="1"></div>
 
 
 
@@ -832,8 +861,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -662,15 +662,45 @@
   
 
 
+<!-- blog-edit-start:fc225e1ed17fd46d:b0 -->
+
 <h1 id="leetcode-1163-">LeetCode 1163 - 按字典序排在最后的子串</h1>
+<!-- blog-edit-end:fc225e1ed17fd46d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ad21c1c13b777f448714f3185ca1455a9c253f2d0031b3ef4df71e52123c11bd" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%80%BC%E5%BE%97%E8%AE%B0%E5%BD%95%E7%9A%84LeetCode%5CLeetCode1163-%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%90%8E%E7%9A%84%E5%AD%90%E4%B8%B2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%80%BC%E5%BE%97%E8%AE%B0%E5%BD%95%E7%9A%84LeetCode" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\做题记录\值得记录的LeetCode\LeetCode1163-字典序最后的子串.md">复制路径</span></div>
 
+<!-- blog-edit-start:fc225e1ed17fd46d:b1 -->
+
 <h2 id="_1">题目描述</h2>
+<!-- blog-edit-end:fc225e1ed17fd46d:b1 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b2 -->
+
 <p>给你一个字符串 s ，找出它的所有子串并按字典序排列，返回排在最后的那个子串。</p>
+<!-- blog-edit-end:fc225e1ed17fd46d:b2 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b3 -->
+
 <h2 id="_2">解题思路</h2>
+<!-- blog-edit-end:fc225e1ed17fd46d:b3 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b4 -->
+
 <p>子串？动态规划。这题很难弄。其实这题不是子串，而是后缀，因为字典序最大一定是子串。</p>
+<!-- blog-edit-end:fc225e1ed17fd46d:b4 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b5 -->
+
 <h3 id="_3">基本解法</h3>
+<!-- blog-edit-end:fc225e1ed17fd46d:b5 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b6 -->
+
 <p>用遍历去做，和其他遍历一样，我们比较此时的 <code>i</code> 和之前记录最优解的 <code>min_i</code> 的结果，放在这题就是，比较 <code>i</code> 开头的字符串和 <code>min_i</code> 开头的字符串，哪个字典序开头的子串最大。</p>
+<!-- blog-edit-end:fc225e1ed17fd46d:b6 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b7 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="n">min_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -688,9 +718,25 @@
 </span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:fc225e1ed17fd46d:b7 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b8 -->
+
 <h3 id="_4">优化解法</h3>
+<!-- blog-edit-end:fc225e1ed17fd46d:b8 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b9 -->
+
 <p>但是其实还有提升空间，这让我想到了 KMP 字符串匹配，用了一些隐含的信息。这里其实有一个：当我们遍历到 <code>i</code> 的时候，<code>min_i ~ i</code> 之间的字符一定是小于等于 <code>str[min_i]</code> 的；同理，在遍历 <code>i</code> 的内部，当我们比较 <code>i+j</code> 和 <code>min_i+j</code> 的时候，其实说明 <code>i ~ i+j</code> 的字符一定是小于等于 <code>str[min_i]</code> 的。</p>
+<!-- blog-edit-end:fc225e1ed17fd46d:b9 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b10 -->
+
 <p>所以第二重循环的结束可以加速，就像 KMP 一样，可以跳转。</p>
+<!-- blog-edit-end:fc225e1ed17fd46d:b10 -->
+
+<!-- blog-edit-start:fc225e1ed17fd46d:b11 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="n">min_i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -709,6 +755,9 @@
 </span><span id="__span-1-16"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-17"><span class="linenos" data-linenos="17 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:fc225e1ed17fd46d:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\做题记录\值得记录的LeetCode\LeetCode1163-字典序最后的子串.md" data-text-edit-revision="ad21c1c13b777f448714f3185ca1455a9c253f2d0031b3ef4df71e52123c11bd" data-text-edit-marker="fc225e1ed17fd46d" data-text-edit-schema="1"></div>
 
 
 
@@ -940,8 +989,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

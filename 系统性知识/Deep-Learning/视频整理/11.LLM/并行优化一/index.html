@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -799,107 +799,341 @@
   
 
 
+<!-- blog-edit-start:e51afd790ab121ed:b0 -->
+
 <h1 id="dpsptp">并行优化一：DP/SP/TP</h1>
+<!-- blog-edit-end:e51afd790ab121ed:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e51afd790ab121ed058d1cb6054ea47e0db6ae992407534316b8dc6eca7fb1bd" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5C%E5%B9%B6%E8%A1%8C%E4%BC%98%E5%8C%96%E4%B8%80.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\并行优化一.md">复制路径</span></div>
+
+<!-- blog-edit-start:e51afd790ab121ed:b1 -->
 
 <blockquote>
 <p>参考文章<br />
 1. <a href="https://zhuanlan.zhihu.com/p/2003423046342554380">https://zhuanlan.zhihu.com/p/2003423046342554380</a><br />
 2. <a href="https://zhuanlan.zhihu.com/p/1937449564509545940">https://zhuanlan.zhihu.com/p/1937449564509545940</a></p>
 </blockquote>
+<!-- blog-edit-end:e51afd790ab121ed:b1 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b2 -->
+
 <h2 id="_1">前提知识</h2>
+<!-- blog-edit-end:e51afd790ab121ed:b2 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b3 -->
+
 <ol>
 <li><a href="../../../硬件知识/显卡通信方式/">显卡通信方式</a></li>
 <li>Transformer 模型结构</li>
 </ol>
+<!-- blog-edit-end:e51afd790ab121ed:b3 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b4 -->
+
 <h2 id="_2">参数说明</h2>
+<!-- blog-edit-end:e51afd790ab121ed:b4 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b5 -->
+
 <p>先要理清楚一些参数，下面的话也不是很严谨（比如 <code>batch_size</code> 仅仅对训练有用）。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b5 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b6 -->
+
 <ul>
 <li><code>batch_size</code>：一次训练的样本数目，这个参数仅用于缩短训练时间，对模型最终效果无影响。</li>
 <li><code>seq_len</code>：每句话有多少个 token，这个参数对模型最终效果有大影响。</li>
 <li><code>hidden_size</code>：隐藏层的维度。</li>
 </ul>
+<!-- blog-edit-end:e51afd790ab121ed:b6 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b7 -->
+
 <h2 id="dp-">DP - 数据并行</h2>
+<!-- blog-edit-end:e51afd790ab121ed:b7 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b8 -->
+
 <p><code>batch_size</code> 如果很大，单张 GPU 塞不下，所以就是拆分成多组，分别放到不同显卡中。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b8 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b9 -->
+
 <p>在 <strong>普通 Data Parallel / DDP</strong> 中：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b9 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b10 -->
+
 <h3 id="1-gpu">1. 前向传播一般不需要 GPU 间通信</h3>
+<!-- blog-edit-end:e51afd790ab121ed:b10 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b11 -->
+
 <p>每张 GPU 都有一份完整模型副本，各自拿一部分 batch：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b11 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b12 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>GPU0: batch[0:32]   -&gt; forward
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>GPU1: batch[32:64]  -&gt; forward
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>GPU2: batch[64:96]  -&gt; forward
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>GPU3: batch[96:128] -&gt; forward
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b12 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b13 -->
+
 <p>它们用的是<strong>相同参数副本</strong>，但计算自己的输入，所以前向阶段通常<strong>互不通信</strong>。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b13 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b14 -->
+
 <p>例外是模型里有跨 GPU 的操作，比如：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b14 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b15 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>SyncBatchNorm
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>MoE routing
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>跨卡 loss / 对比学习 gather features
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b15 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b16 -->
+
 <p>这些会在前向中通信。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b16 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b17 -->
+
 <h3 id="2">2. 后向传播需要通信</h3>
+<!-- blog-edit-end:e51afd790ab121ed:b17 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b18 -->
+
 <p>后向时，每张 GPU 根据自己的 mini-batch 算出一份梯度：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b18 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b19 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>GPU0: grad0
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>GPU1: grad1
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>GPU2: grad2
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>GPU3: grad3
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b19 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b20 -->
+
 <p><strong>为了让所有模型副本保持一致，需要把这些梯度做平均</strong>：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b20 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b21 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>grad = (grad0 + grad1 + grad2 + grad3) / 4
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b21 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b22 -->
+
 <p>上述操作就是 <code>AllReduce</code> 通信（<a href="../../../硬件知识/显卡通信方式/">显卡通信方式</a>），所以 <strong>后向传播中需要通信</strong>。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b22 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b23 -->
+
 <h2 id="sp-">SP - 序列并行</h2>
+<!-- blog-edit-end:e51afd790ab121ed:b23 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b24 -->
+
 <p>单条序列太长，导致中间激活值太大，单张 GPU 放不下。所以可以切分序列，放在不同显卡中。如果大白话理解，就是原来训练的时候用到 <code>hello, world</code>，现在切成 <code>hello</code> 和 <code>world</code> 分别放在不同显卡中。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b24 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b25 -->
+
 <h3 id="_3">为什么切序列不会有问题</h3>
+<!-- blog-edit-end:e51afd790ab121ed:b25 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b26 -->
+
 <p>第一次看这个感觉很奇怪，序列居然可以切分到不同设备。但其实，对于线性层而言，序列中各个单词是独立的，因为线性层就是每个向量自己乘上一个矩阵而已。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b26 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b27 -->
+
 <p>序列中的单词唯一需要通信的地方是计算 K/V，其实这个时候进行通信即可。此时 K/V 要在 GPU 之间交换，最简单的做法就还是各自广播（<code>AllGather</code> 通信），当然还有一些流水线通信做法，比如分为好几轮，第一轮是 <code>0-&gt;1, 1-&gt;2, 2-&gt;0</code>，第二轮是 <code>0-&gt;2, 1-&gt;0, 2-&gt;1</code>，这样可以流水线并行。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b27 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b28 -->
+
 <p>除了这个，最后要计算 softmax，即 <code>softmax(QK^T)</code>，这个时候上面的流水线就不一定能有作用。不过也有对应的方法，叫 <strong>online softmax</strong>，不是先算完整 <span class="arithmatex">\(QK^T\)</span> 再 softmax，而是一边收到 K/V 块，一边增量更新 softmax。这个就比较细节了，不谈了。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b28 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b29 -->
+
 <p>总之，序列并行中，通信只需要在计算 K/V 的时候进行即可。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b29 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b30 -->
+
 <h2 id="tp-">TP - 张量并行</h2>
+<!-- blog-edit-end:e51afd790ab121ed:b30 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b31 -->
+
 <blockquote>
 <p>这里直接放 ChatGPT 的回答了。</p>
 </blockquote>
+<!-- blog-edit-end:e51afd790ab121ed:b31 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b32 -->
+
 <p>它解决的问题是：<strong>单个模型层的参数或计算量太大，一张 GPU 放不下 / 算不过来。</strong></p>
+<!-- blog-edit-end:e51afd790ab121ed:b32 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b33 -->
+
 <h3 id="_4">直观理解</h3>
+<!-- blog-edit-end:e51afd790ab121ed:b33 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b34 -->
+
 <p>假设 Transformer 里有一个线性层：<code>Y = XW</code>，其中：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b34 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b35 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>X: [batch, seq, hidden]
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>W: [hidden, 4 * hidden]
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>Y: [batch, seq, 4 * hidden]
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b35 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b36 -->
+
 <p>如果 <code>W</code> 太大，可以把 <code>W</code> 按列切到多张 GPU：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b36 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b37 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>W = [W0 | W1 | W2 | W3]
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b37 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b38 -->
+
 <p>于是：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b38 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b39 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>GPU0: Y0 = XW0
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>GPU1: Y1 = XW1
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>GPU2: Y2 = XW2
 </span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span>GPU3: Y3 = XW3
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b39 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b40 -->
+
 <p>最后把结果拼起来：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b40 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b41 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>Y = [Y0 | Y1 | Y2 | Y3]
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b41 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b42 -->
+
 <p>这就是 <strong>列并行 Linear</strong>。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b42 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b43 -->
+
 <h3 id="1-attention-head">1. Attention 里切 head</h3>
+<!-- blog-edit-end:e51afd790ab121ed:b43 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b44 -->
+
 <p>比如有 32 个 attention head，4 张 GPU：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b44 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b45 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>GPU0: head 0~7
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>GPU1: head 8~15
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span>GPU2: head 16~23
 </span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span>GPU3: head 24~31
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b45 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b46 -->
+
 <p>每张卡只算一部分 head，最后 Attention 输出再合并。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b46 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b47 -->
+
 <h3 id="2-mlp">2. MLP 里切矩阵</h3>
+<!-- blog-edit-end:e51afd790ab121ed:b47 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b48 -->
+
 <p>Transformer MLP 通常是：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b48 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b49 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>hidden -&gt; 4 * hidden -&gt; hidden
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b49 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b50 -->
+
 <p>第一层可以按列切：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b50 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b51 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>XW1 = [XW1_0, XW1_1, XW1_2, XW1_3]
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b51 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b52 -->
+
 <p>第二层通常按行切：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b52 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b53 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span>Y = Y0W2_0 + Y1W2_1 + Y2W2_2 + Y3W2_3
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b53 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b54 -->
+
 <p>这里最后需要一次 <strong>AllReduce</strong> 把各卡部分结果加起来。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b54 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b55 -->
+
 <h3 id="tp">TP 需要通信吗？</h3>
+<!-- blog-edit-end:e51afd790ab121ed:b55 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b56 -->
+
 <p>需要，而且比 DP 更频繁。DP 主要在 <strong>后向梯度同步</strong> 时通信；TP 在 <strong>每一层的前向和后向</strong> 都可能通信。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b56 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b57 -->
+
 <p>例如：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b57 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b58 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span>Column Parallel:
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span>前向：通常输出分片，可暂时不通信
 </span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span>后向：需要同步输入梯度
@@ -908,12 +1142,31 @@
 </span><span id="__span-12-6"><span class="linenos" data-linenos="6 "></span>前向：需要 AllReduce 合并输出
 </span><span id="__span-12-7"><span class="linenos" data-linenos="7 "></span>后向：某些梯度天然分片
 </span></code></pre></div>
+<!-- blog-edit-end:e51afd790ab121ed:b58 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b59 -->
+
 <p>所以：</p>
+<!-- blog-edit-end:e51afd790ab121ed:b59 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b60 -->
+
 <blockquote>
 <p><strong>TP 是层内并行，通信更细粒度、更频繁。</strong></p>
 </blockquote>
+<!-- blog-edit-end:e51afd790ab121ed:b60 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b61 -->
+
 <h2 id="_5">总结</h2>
+<!-- blog-edit-end:e51afd790ab121ed:b61 -->
+
+<!-- blog-edit-start:e51afd790ab121ed:b62 -->
+
 <p>这些并行方式通常是配合着用的。从上面也可以看出，要对 Transformer 有足够的了解，从矩阵运算中推出各个并行方式的时候，应该是如何通信、如何处理（是拼接，还是累加等）。具体细节还是推荐用的时候再去想，否则即使现在会了，第二天可能就忘了。</p>
+<!-- blog-edit-end:e51afd790ab121ed:b62 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\并行优化一.md" data-text-edit-revision="e51afd790ab121ed058d1cb6054ea47e0db6ae992407534316b8dc6eca7fb1bd" data-text-edit-marker="e51afd790ab121ed" data-text-edit-schema="1"></div>
 
 
 
@@ -1145,8 +1398,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

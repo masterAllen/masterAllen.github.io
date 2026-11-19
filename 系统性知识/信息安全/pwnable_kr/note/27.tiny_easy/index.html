@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -788,30 +788,93 @@
   
 
 
+<!-- blog-edit-start:537dccdb3bb0530e:b0 -->
+
 <h1 id="pwnablekr-tiny_easy">Pwnable.kr tiny_easy 记录</h1>
+<!-- blog-edit-end:537dccdb3bb0530e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ff2e61484a4e79c3c2be294b8c4094e3cae4c36533473a56e7c78ab10ca80c64" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C27.tiny_easy.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\27.tiny_easy.md">复制路径</span></div>
 
+<!-- blog-edit-start:537dccdb3bb0530e:b1 -->
+
 <p>这道题现在回头来看不难，但是做的过程一步一步学习到的知识很多，也很有收获，因此题目写了记录二次，这个不能算是题解，算是还原了我当时是怎么做的过程。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b1 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b2 -->
+
 <p><strong>给我自己的话：直接去看总结反思。</strong></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b2 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b3 -->
+
 <h2 id="_1">程序分析</h2>
+<!-- blog-edit-end:537dccdb3bb0530e:b3 -->
+<!-- blog-edit-start:537dccdb3bb0530e:b4 -->
+
 <p>在 gdb 中查看执行流，可以看到最后会执行程序名。比如程序名为 <code>/home/allen/AAA</code> ，那么最后就会 <code>call 0x6d6f682f("/hom")</code> 。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b4 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b5 -->
+
 <h2 id="_2">漏洞点</h2>
+<!-- blog-edit-end:537dccdb3bb0530e:b5 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b6 -->
+
 <h3 id="argv0-execve">argv[0] 与 execve</h3>
+<!-- blog-edit-end:537dccdb3bb0530e:b6 -->
+<!-- blog-edit-start:537dccdb3bb0530e:b7 -->
+
 <p>很明显，我们需要改变程序名。然而程序名这怎么可能改变，陷入死路。所以这就是学习到的知识点了。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b7 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b8 -->
+
 <p>实际上程序名是 argv[0] ，我们要改变的是 argv[0] 。<br />
 <strong>argv[0] 是程序名只是约定俗称的事情，我们可以让它变成不一样的东西！</strong><br />
 怎么变？使用 <code>execve()</code> 。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 只要传入argv，那么argv[0]就是我们传入的参数，而不是程序名称</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">execve</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">envp</span><span class="p">[</span><span class="w"> </span><span class="p">]);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b8 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b9 -->
+
 <h3 id="heap-spray">Heap Spray</h3>
+<!-- blog-edit-end:537dccdb3bb0530e:b9 -->
+<!-- blog-edit-start:537dccdb3bb0530e:b10 -->
+
 <p>那么现在的思路是什么？这个又卡住了，参考了网上的题解：将 shellcode 传入 argv 列表中，这样栈上就有 shellcode ，然后把 argv[0] 改成该 shellcode 地址即可。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b10 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b11 -->
+
 <p>关键...栈的位置随时变，我们不能准确知道 shellcode 的确定位置。<br />
 所以：Heap Spray，该你上场了！</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b11 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b12 -->
+
 <p>方法就是 shellcode 不仅仅就传入 argv 的某一项，而是传入很多项。比如传入 50 个，这样 argv[1-50] 就全是 shellcode，栈里面就有许多许多 shellcode ，这样我们打入地址的成功概率将大大增加。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b12 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b13 -->
+
 <h2 id="_3">调试过程</h2>
+<!-- blog-edit-end:537dccdb3bb0530e:b13 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b14 -->
+
 <h3 id="argv0-pwntoolsgdb">argv[0] 与 pwntools.gdb</h3>
+<!-- blog-edit-end:537dccdb3bb0530e:b14 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b15 -->
+
 <p>现在的想法就很自然了：能否使用 <code>pwntools</code> 的 <code>gdb</code> 模块，这样可以便于调试。然而事实是不行的。 </p>
+<!-- blog-edit-end:537dccdb3bb0530e:b15 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b16 -->
+
 <p>首先是 GDB DEBUG 使用方式<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 最普通的方式</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">p</span> <span class="o">=</span> <span class="n">gdb</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;./my_program&#39;</span><span class="p">)</span>
@@ -819,6 +882,10 @@
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="c1"># 加入参数</span>
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="n">p</span> <span class="o">=</span> <span class="n">gdb</span><span class="o">.</span><span class="n">debug</span><span class="p">([</span><span class="s1">&#39;./my_program&#39;</span><span class="p">,</span> <span class="s1">&#39;AAAA&#39;</span><span class="p">,</span> <span class="s1">&#39;BBBB&#39;</span><span class="p">])</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b16 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b17 -->
+
 <p>可以看到 argv[0] 必须是程序名，如果我把 argv[0] 强制改成别的会如何？<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">p</span> <span class="o">=</span> <span class="n">gdb</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;./tiny_easy&quot;</span><span class="p">)</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="p">[</span><span class="s1">&#39;/bin/gdbserver&#39;</span><span class="p">,</span> <span class="s1">&#39;--multi&#39;</span><span class="p">,</span> <span class="s1">&#39;--no-disable-randomization&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:0&#39;</span><span class="p">,</span> <span class="s1">&#39;./tiny_easy&#39;</span><span class="p">]</span>
@@ -826,15 +893,55 @@
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="n">p</span> <span class="o">=</span> <span class="n">gdb</span><span class="o">.</span><span class="n">debug</span><span class="p">([</span><span class="s1">&#39;AAAA&#39;</span><span class="p">,</span> <span class="s1">&#39;BBBB&#39;</span><span class="p">,</span> <span class="s1">&#39;CCCC&#39;</span><span class="p">])</span>
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="p">[</span><span class="s1">&#39;/bin/gdbserver&#39;</span><span class="p">,</span> <span class="s1">&#39;--multi&#39;</span><span class="p">,</span> <span class="s1">&#39;--no-disable-randomization&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:0&#39;</span><span class="p">,</span> <span class="s1">&#39;AAAA&#39;</span><span class="p">,</span> <span class="s1">&#39;BBBB&#39;</span><span class="p">,</span> <span class="s1">&#39;CCCC&#39;</span><span class="p">]</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b17 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b18 -->
+
 <p>可以看到 GDB DEBUG 是利用 gdbserver 来启动的，反正最后 argv[0] 必须要是程序名，否则就不能启动了</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b18 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b19 -->
+
 <p><strong>当然如果不涉及 gdb，那么 python 还是和 c 语言一样，可以控制 argv，使用 process(argv, './my_program') 即可。</strong></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b19 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b20 -->
+
 <h3 id="gdb-execve">gdb 如何跟踪 execve 的子程序</h3>
+<!-- blog-edit-end:537dccdb3bb0530e:b20 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b21 -->
+
 <p><strong>所以老老实实编写 C 程序，在该程序调用我们的 tiny_easy。</strong></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b21 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b22 -->
+
 <p>这里面就要跟踪 C 程序执行的 <code>execve</code> 语句，使用 <a href="https://wizardforcel.gitbooks.io/100-gdb-tips/content/catch-exec.html">catchpoint</a></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b22 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b23 -->
+
 <h3 id="python-gdb">利用 python 加快 gdb 交互</h3>
+<!-- blog-edit-end:537dccdb3bb0530e:b23 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b24 -->
+
 <p>假设我们的程序为 debug，那么我们使用 gdb debug 来看调用过程。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b24 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b25 -->
+
 <p>如果我们定向的栈地址没有成功，那只能结束掉本次的 gdb，然后重新再来一次。可怕的是，这个成功率其实特别低，而且就算成功了，我们也很可能没有完完全全保证说通过这一次我就完全了解了过程，很有可能需要好几次才真正理解。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b25 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b26 -->
+
 <p>所以，要使用脚本，在循环里面判断，那么问题来了，python 怎么和 gdb 打交道？</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b26 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b27 -->
+
 <p>实际上和执行普通的程序是一样的呀。代码胜千言，看代码！代码进行了简化，反正大致意思就是和执行普通程序进行交互就可以。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x1000</span><span class="p">):</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">p</span> <span class="o">=</span> <span class="n">process</span><span class="p">([</span><span class="s1">&#39;gdb&#39;</span><span class="p">,</span> <span class="s1">&#39;debug&#39;</span><span class="p">])</span>
@@ -855,15 +962,49 @@
 </span><span id="__span-3-17"><span class="linenos" data-linenos="17 "></span>    <span class="k">else</span><span class="p">:</span>
 </span><span id="__span-3-18"><span class="linenos" data-linenos="18 "></span>        <span class="n">p</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:537dccdb3bb0530e:b27 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b28 -->
+
 <h2 id="c">C 语言的注意点</h2>
+<!-- blog-edit-end:537dccdb3bb0530e:b28 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b29 -->
+
 <h3 id="c-16">C 语言处理 16 进制字符串</h3>
+<!-- blog-edit-end:537dccdb3bb0530e:b29 -->
+<!-- blog-edit-start:537dccdb3bb0530e:b30 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>warning: hex escape sequence out of range
 </span></code></pre></div>
+<!-- blog-edit-end:537dccdb3bb0530e:b30 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b31 -->
+
 <p>对于这样的语句 <code>char *test = "\x90\x901";</code> ，这样会编译出错。因为 C 语言并没有规定 \x 后面只进行两位数转义，所以他相当于转义了901，而这会超出范围，关键是他还不报错只报警告，后续会导致一些问题！</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b31 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b32 -->
+
 <p>所以最好的方式是 <code>char *test = "\x90\x90""1";</code>，每个特殊转义末都加个引号隔开。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b32 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b33 -->
+
 <h3 id="execve-args-null">execve 需要最后的 args 为 NULL</h3>
+<!-- blog-edit-end:537dccdb3bb0530e:b33 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b34 -->
+
 <p>否则将会执行失败。</p>
+<!-- blog-edit-end:537dccdb3bb0530e:b34 -->
+
+<!-- blog-edit-start:537dccdb3bb0530e:b35 -->
+
 <h2 id="_4">总结反思</h2>
+<!-- blog-edit-end:537dccdb3bb0530e:b35 -->
+<!-- blog-edit-start:537dccdb3bb0530e:b36 -->
+
 <ol>
 <li>
 <p>学到的 pwn 知识</p>
@@ -893,6 +1034,9 @@
 </ul>
 </li>
 </ol>
+<!-- blog-edit-end:537dccdb3bb0530e:b36 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\27.tiny_easy.md" data-text-edit-revision="ff2e61484a4e79c3c2be294b8c4094e3cae4c36533473a56e7c78ab10ca80c64" data-text-edit-marker="537dccdb3bb0530e" data-text-edit-schema="1"></div>
 
 
 
@@ -1124,8 +1268,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

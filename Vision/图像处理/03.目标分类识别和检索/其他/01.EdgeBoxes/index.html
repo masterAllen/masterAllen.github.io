@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -635,16 +635,42 @@
   
 
 
+<!-- blog-edit-start:3863ef8d746c6e06:b0 -->
+
 <h1 id="edgeboxes">EdgeBoxes</h1>
+<!-- blog-edit-end:3863ef8d746c6e06:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7d1d679fa65a4d1144ae5a4a33faf96c9118caa1a52698f8c807334d375fbd36" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%85%B6%E4%BB%96%5C01.EdgeBoxes.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%85%B6%E4%BB%96" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\其他\01.EdgeBoxes.md">复制路径</span></div>
+
+<!-- blog-edit-start:3863ef8d746c6e06:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.a.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.a.md</a></p>
 </blockquote>
+<!-- blog-edit-end:3863ef8d746c6e06:b1 -->
+
+<!-- blog-edit-start:3863ef8d746c6e06:b2 -->
+
 <p><a href="https://docs.opencv.org/4.x/d4/d0d/group__ximgproc__edgeboxes.html">ximgproc 中实现的方法</a>，原文<a href="https://pdollar.github.io/files/papers/ZitnickDollarECCV14edgeBoxes.pdf">链接在此</a>，发表于 ECCV 2014。</p>
+<!-- blog-edit-end:3863ef8d746c6e06:b2 -->
+
+<!-- blog-edit-start:3863ef8d746c6e06:b3 -->
+
 <p>有两篇文章讲的还可以（<a href="https://blog.csdn.net/wsj998689aa/article/details/39476551">文章一</a>、<a href="https://www.cnblogs.com/yxh23/p/13619629.html">文章二</a>），能让人意会这篇文章的大致原理。总而言之，没用机器学习的知识，利用边缘信息确定框框内的轮廓个数和与框框边缘重叠的轮廓个数（这点很重要，如果我能够清楚的知道一个框框内完全包含的轮廓个数，那么目标有很大可能就在这个框中。）并基于此对框进行评分，进一步根据得分的高低顺序确定 proposal 信息（proposal 可以理解为目标大概可能的位置，类似于人眼的第一直觉）。后续工作就是在 proposal 内部运行相关检测算法。</p>
+<!-- blog-edit-end:3863ef8d746c6e06:b3 -->
+
+<!-- blog-edit-start:3863ef8d746c6e06:b4 -->
+
 <p>可以忽略上一段的解释，其实我自己还没太看懂。顺便提一句，该方法有边缘检测的步骤，用的方法是 StructuredEdgeDetection，这个也是 ximgproc 实现的方法（<a href="../../../02.特征提取和边缘检测/05.特别的特征：边缘检测/">个人笔记</a>），遇到这个词，知道是边缘检测方法就行了。</p>
+<!-- blog-edit-end:3863ef8d746c6e06:b4 -->
+
+<!-- blog-edit-start:3863ef8d746c6e06:b5 -->
+
 <p>看代码吧：</p>
+<!-- blog-edit-end:3863ef8d746c6e06:b5 -->
+
+<!-- blog-edit-start:3863ef8d746c6e06:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">edge_boxes</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ximgproc</span><span class="o">.</span><span class="n">createEdgeBoxes</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">edge_boxes</span><span class="o">.</span><span class="n">setMaxBoxes</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -672,7 +698,14 @@
 </span><span id="__span-0-25"><span class="linenos" data-linenos="25 "></span>
 </span><span id="__span-0-26"><span class="linenos" data-linenos="26 "></span><span class="n">show_images</span><span class="p">([</span> <span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span> <span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:3863ef8d746c6e06:b6 -->
+
+<!-- blog-edit-start:3863ef8d746c6e06:b7 -->
+
 <p><img alt="1727317947655" src="../../../../../asset/image/981375adbd411cbb0e9077aad273eaa3/1727317947655.png" /></p>
+<!-- blog-edit-end:3863ef8d746c6e06:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\其他\01.EdgeBoxes.md" data-text-edit-revision="7d1d679fa65a4d1144ae5a4a33faf96c9118caa1a52698f8c807334d375fbd36" data-text-edit-marker="3863ef8d746c6e06" data-text-edit-schema="1"></div>
 
 
 
@@ -904,8 +937,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

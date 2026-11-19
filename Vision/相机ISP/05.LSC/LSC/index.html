@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -750,54 +750,212 @@
   
 
 
+<!-- blog-edit-start:a9b94a384388ef5f:b0 -->
+
 <h1 id="lsc">LSC：镜头矫正</h1>
+<!-- blog-edit-end:a9b94a384388ef5f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a9b94a384388ef5ff3243638349383d38697ed19d6e5d520f34d58e9a8f4a04f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C05.LSC%5CLSC.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C05.LSC" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\05.LSC\LSC.md">复制路径</span></div>
 
+<!-- blog-edit-start:a9b94a384388ef5f:b1 -->
+
 <p>LSC: Lens Shading Correction，也有叫做晕影的，英文 Vigenetting。本篇文章是概述，另外一篇 HTML 文件合理的利用了各个工具，值得学习。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b1 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b2 -->
+
 <h2 id="_1">现象</h2>
+<!-- blog-edit-end:a9b94a384388ef5f:b2 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b3 -->
+
 <p><img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/lscRefImg.jpg" /><br />
 <img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/colorShading.png" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b3 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b4 -->
+
 <p>如图所示就是拍摄纯灰色卡（正常所有像素值一样）时 shading 的具体现象，左侧称为 Luma shading，右侧称为 color shading，相比较而言就是 color shading 除了亮度上有影响，还会影响颜色不一致。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b4 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b5 -->
+
 <h2 id="_2">原因分析</h2>
+<!-- blog-edit-end:a9b94a384388ef5f:b5 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b6 -->
+
 <h3 id="luma-shading">Luma shading 原因</h3>
+<!-- blog-edit-end:a9b94a384388ef5f:b6 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b7 -->
+
 <p><img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/illumination.jpg" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b7 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b8 -->
+
 <p>引起 Luma shading 的主要原因时镜头的光学特性决定的，本专栏主要讲解 ISP，所以这一块只能用通俗的方式解释，可能不太准确。上图是百度下载的，这幅图能比较直观地感受 shading 的原因，如有侵权还望告知。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b8 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b9 -->
+
 <p>Luma shading 的主要原因是镜头中心到边缘的能量衰减导致的，如图所示，蓝色和绿色用相同的数量线条表示能量，中心位置的蓝色几乎所有能量都能达到最右侧的的成像单元，但是边缘的绿色由于有一定角度射入，经过镜头的折射，有一部分光（最上方的几条绿色线条）就没法达到成像单元，因此成像单元中心的能量就会比边缘的大，变现在亮度上就是亮度向边缘衰减变暗。通常镜头的衰减符合</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b9 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b10 -->
+
 <div class="arithmatex">\[
 f(\theta) = cos^{4}(\theta)
 \]</div>
+<!-- blog-edit-end:a9b94a384388ef5f:b10 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b11 -->
+
 <p>式中θ表示的是入射光线和法线的夹角。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b11 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b12 -->
+
 <h3 id="color-shading">Color shading 原因</h3>
+<!-- blog-edit-end:a9b94a384388ef5f:b12 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b13 -->
+
 <p>这个又是一个专门的话题了，叫做 CAC（Color Aberration Correction），请查阅对应的资料。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b13 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b14 -->
+
 <h2 id="_3">矫正方法</h2>
+<!-- blog-edit-end:a9b94a384388ef5f:b14 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b15 -->
+
 <p>LSC 的本值就是能量有衰减，反过来为了矫正就用该点的像素值乘以一个 gain 值，让其恢复到衰减前的状态，所以矫正的本质就是找到这个 gain 值。 </p>
+<!-- blog-edit-end:a9b94a384388ef5f:b15 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b16 -->
+
 <p>从目前的矫正方法来看个人觉得可以分成三大类：</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b16 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b17 -->
+
 <ol>
 <li>储存增益法</li>
 <li>多项式拟合法</li>
 <li>自动矫正法</li>
 </ol>
+<!-- blog-edit-end:a9b94a384388ef5f:b17 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b18 -->
+
 <p>目前方法 1 和方法 2 是使用最多的，而且方法 3 我还没碰到过，只是见网上提到了就提一下，如果有谁有相关资料可以分享一下大家学习学习，所以本文主要以方法 1 和方法 2 进行讨论。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b18 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b19 -->
+
 <h3 id="_4">储存增益法</h3>
+<!-- blog-edit-end:a9b94a384388ef5f:b19 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b20 -->
+
 <h4 id="radial-shading-correct">radial shading correct</h4>
+<!-- blog-edit-end:a9b94a384388ef5f:b20 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b21 -->
+
 <p>上面有提到衰减符合 cos(θ) 的四次方规律，而θ在三维空间对各个方向是一致的，所以各个方向的衰减如下图</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b21 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b22 -->
+
 <p><img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/衰减.jpg" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b22 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b23 -->
+
 <p>图中相同颜色可以理解成亮度是一样的，也就是图中红色一圈圈的像素需要的增益是一样的，所以就可以用半径为变量来求出不同半径像素需要的增益。然后把半径对应的增益值储存在内存中，到了要用的时候再拿出来用，从而完成矫正。但是不可能把所有像素的半径都存储起来，所以就通过采样的方式提取特征半径的增益存储到内存，然后其他半径对应的增益在矫正的时候通过插值算法求出来。这种方式对内存的硬件要求就低了。这就是 radial shading correct。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b23 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b24 -->
+
 <h4 id="mesh-shading-correct">mesh shading correct</h4>
+<!-- blog-edit-end:a9b94a384388ef5f:b24 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b25 -->
+
 <p><img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/meshShading.jpg" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b25 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b26 -->
+
 <p>和半径不同，这种方式是把整幅图像分成 n*n 个网格，然后针对网格顶点求出矫正的增益，然后把这些顶点的增益储存到内存中，同理其他的点的增益也是通过插值的方式求出。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b26 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b27 -->
+
 <p><img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/org.png" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b27 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b28 -->
+
 <p>如图是上图分成网格后，每个网格亮度的分布，可以看出和 cos(θ) 的四次方很接近，然后针对这样的网格亮度求出增益如下图，刚好和亮度分布相反</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b28 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b29 -->
+
 <p><img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/gainMesh.png" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b29 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b30 -->
+
 <h3 id="_5">多项式拟合</h3>
+<!-- blog-edit-end:a9b94a384388ef5f:b30 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b31 -->
+
 <p>多项式拟合的方式就是用半径为采样点，然后把这些采样点通过高次拟合的方式拟合成一个高次曲线，然后把高次曲线的参数储存起来，用的时候把半径带入公式就能求出对应的 gain 值用于矫正。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b31 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b32 -->
+
 <p><img alt="" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/拟合.png" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b32 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b33 -->
+
 <p>这篇论文中采用拉格朗日插值法进行插值，具体公式如下图</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b33 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b34 -->
+
 <p><img alt="四次拉格朗日插值" src="../../../../asset/image/53e0b85ed96c1cb6fb088448777577a6/四次拉格朗日插值.jpg" /></p>
+<!-- blog-edit-end:a9b94a384388ef5f:b34 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b35 -->
+
 <p>其他通道也能这么拟合出曲线从而完成各个通道的矫正。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b35 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b36 -->
+
 <p>针对光学中心可能不是图像中心的问题，有的论文就提出先在图像中找出光学中心，然后以光学中心为真实中心完成标定，最后也是通过光学中心来求半径带入公式求 gain 值。</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b36 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b37 -->
+
 <h2 id="_6">具体实现</h2>
+<!-- blog-edit-end:a9b94a384388ef5f:b37 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b38 -->
+
 <p>标定代码如下</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b38 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b39 -->
+
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c">%% --------------------------------</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="c">%% author:wtzhu</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="c">%% date: 20210712</span>
@@ -878,7 +1036,15 @@ f(\theta) = cos^{4}(\theta)
 </span><span id="__span-0-78"><span class="linenos" data-linenos="78 "></span><span class="nb">save</span><span class="p">(</span><span class="s">&#39;./src/data/gGain.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;gGain&#39;</span><span class="p">);</span>
 </span><span id="__span-0-79"><span class="linenos" data-linenos="79 "></span><span class="nb">save</span><span class="p">(</span><span class="s">&#39;./src/data/bGain.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;bGain&#39;</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a9b94a384388ef5f:b39 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b40 -->
+
 <p>矫正代码（通过双线性插值法插值）</p>
+<!-- blog-edit-end:a9b94a384388ef5f:b40 -->
+
+<!-- blog-edit-start:a9b94a384388ef5f:b41 -->
+
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c">%% --------------------------------</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="c">%% author:wtzhu</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="c">%% date: 20210712</span>
@@ -946,6 +1112,9 @@ f(\theta) = cos^{4}(\theta)
 </span><span id="__span-1-65"><span class="linenos" data-linenos="65 "></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">);</span><span class="nb">imshow</span><span class="p">(</span><span class="nb">image</span><span class="p">);</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;org image&#39;</span><span class="p">);</span>
 </span><span id="__span-1-66"><span class="linenos" data-linenos="66 "></span><span class="nb">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">);</span><span class="nb">imshow</span><span class="p">(</span><span class="nb">uint8</span><span class="p">(</span><span class="n">disImg</span><span class="p">));</span><span class="nb">title</span><span class="p">(</span><span class="s">&#39;corrected image&#39;</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a9b94a384388ef5f:b41 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\05.LSC\LSC.md" data-text-edit-revision="a9b94a384388ef5ff3243638349383d38697ed19d6e5d520f34d58e9a8f4a04f" data-text-edit-marker="a9b94a384388ef5f" data-text-edit-schema="1"></div>
 
 
 
@@ -1177,8 +1346,6 @@ f(\theta) = cos^{4}(\theta)
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

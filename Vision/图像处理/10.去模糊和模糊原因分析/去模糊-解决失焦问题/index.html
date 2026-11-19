@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -738,52 +738,188 @@
   
 
 
+<!-- blog-edit-start:92825613807c3707:b0 -->
+
 <h1 id="-">去模糊-解决失焦问题的黑科技</h1>
+<!-- blog-edit-end:92825613807c3707:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1d131fcefae173c02491095061d6c980641ad47be41d9552de6016796e228a90" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C10.%E5%8E%BB%E6%A8%A1%E7%B3%8A%E5%92%8C%E6%A8%A1%E7%B3%8A%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90%5C%E5%8E%BB%E6%A8%A1%E7%B3%8A-%E8%A7%A3%E5%86%B3%E5%A4%B1%E7%84%A6%E9%97%AE%E9%A2%98.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C10.%E5%8E%BB%E6%A8%A1%E7%B3%8A%E5%92%8C%E6%A8%A1%E7%B3%8A%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\10.去模糊和模糊原因分析\去模糊-解决失焦问题.md">复制路径</span></div>
 
+<!-- blog-edit-start:92825613807c3707:b1 -->
+
 <p>本文主要是讲一些为了提前解决失焦的黑科技。传统的一些去模糊方法就不写了，其实大部分时候都还是得到一张失焦图片然后老老实实用传统方法，比如维纳滤波、人工智能去模糊。但本文侧重点是讲一些黑科技，扩展视野。</p>
+<!-- blog-edit-end:92825613807c3707:b1 -->
+
+<!-- blog-edit-start:92825613807c3707:b2 -->
+
 <p>主要参考 Wang Hawk 的分享(<a href="https://zhuanlan.zhihu.com/p/570452119">https://zhuanlan.zhihu.com/p/570452119</a>)，特此感谢。感觉讲的特别好，也可以移步去查看其文章，下面评论区也有很多有价值的讨论。</p>
+<!-- blog-edit-end:92825613807c3707:b2 -->
+
+<!-- blog-edit-start:92825613807c3707:b3 -->
+
 <p><img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250102181249.png" /></p>
+<!-- blog-edit-end:92825613807c3707:b3 -->
+
+<!-- blog-edit-start:92825613807c3707:b4 -->
+
 <h2 id="_1">失焦问题分析</h2>
+<!-- blog-edit-end:92825613807c3707:b4 -->
+
+<!-- blog-edit-start:92825613807c3707:b5 -->
+
 <p>其实就是不在景深范围内，他的 PSF 如下：</p>
+<!-- blog-edit-end:92825613807c3707:b5 -->
+
+<!-- blog-edit-start:92825613807c3707:b6 -->
+
 <p><img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104141001.gif" /></p>
+<!-- blog-edit-end:92825613807c3707:b6 -->
+
+<!-- blog-edit-start:92825613807c3707:b7 -->
+
 <h2 id="_2">各个方法快速浏览</h2>
+<!-- blog-edit-end:92825613807c3707:b7 -->
+
+<!-- blog-edit-start:92825613807c3707:b8 -->
+
 <p>只是浅尝辄止讲讲有哪些技术，具体细节可能很少谈。</p>
+<!-- blog-edit-end:92825613807c3707:b8 -->
+
+<!-- blog-edit-start:92825613807c3707:b9 -->
+
 <h2 id="_3">对焦栈</h2>
+<!-- blog-edit-end:92825613807c3707:b9 -->
+<!-- blog-edit-start:92825613807c3707:b10 -->
+
 <p>对焦栈其实就是一组图像，保证场景中每个物体都能有一张图像上是清晰的，如下所示。怎么获取的呢？其实就是手动调像距或者物距...<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104102654.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b10 -->
+
+<!-- blog-edit-start:92825613807c3707:b11 -->
+
 <p>获取这一组图片后，就用算法融合。有两个方案：一个是用权重，即先对齐图像、然后计算权重、最后融合；另一个是用光流，也是先对其图像，然后用光流融合。<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104102832.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b11 -->
+
+<!-- blog-edit-start:92825613807c3707:b12 -->
+
 <h3 id="_4">编码光圈</h3>
+<!-- blog-edit-end:92825613807c3707:b12 -->
+
+<!-- blog-edit-start:92825613807c3707:b13 -->
+
 <p>光圈不是传统的光圈，而是提前涉及的形状：<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104102901.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b13 -->
+
+<!-- blog-edit-start:92825613807c3707:b14 -->
+
 <p>传统光圈中估计，很多时候很难分清楚哪个更清晰，特别是比正确尺寸略小的卷积核的去卷积结果很难和正确尺寸的结果相区分。而使用编码光圈，不管是偏大的卷积核还是偏小的卷积核，在去卷积后都会出现振铃效应。因此编码光圈更容易让我们估计处正确的尺寸卷积核。<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104102952.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b14 -->
+
+<!-- blog-edit-start:92825613807c3707:b15 -->
+
 <h2 id="_5">动态像距</h2>
+<!-- blog-edit-end:92825613807c3707:b15 -->
+
+<!-- blog-edit-start:92825613807c3707:b16 -->
+
 <p>如下所示，在马达的作用下，传感器可以在一定范围内来回移动，镜头不动。这样像距会变化，从而对焦距离会改变。<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104103032.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b16 -->
+
+<!-- blog-edit-start:92825613807c3707:b17 -->
+
 <p>这样其实采集的图片都是糊的。但根据作者的模型推演，此时图像的模糊程度与场景中物体离镜头的距离无关：即每个点的模糊都可以用同一个 PSF 来刻画（传统的图片不同物距 PSF 尺寸不一样）。因此作者只需要利用一个基本的去卷积算法即可对图像进行去卷积，从而获取到全焦图像。<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104103130.png" /></p>
+<!-- blog-edit-end:92825613807c3707:b17 -->
+
+<!-- blog-edit-start:92825613807c3707:b18 -->
+
 <h2 id="_6">波前编码</h2>
+<!-- blog-edit-end:92825613807c3707:b18 -->
+
+<!-- blog-edit-start:92825613807c3707:b19 -->
+
 <p>如下图所示，有个叫相位板玩意。它是物理层面改变非相干光的波前相位特性来实现的，光线通过这个相位板后不再像通过普通镜头一样汇聚到一点上，而是会均匀的散布，这样使得不同物距的PSF 接近一致，这样获取的原始图像是均匀模糊的。和上面的方法一样，只用一个基本的去卷积算法即可去模糊。<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104103244.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b19 -->
+
+<!-- blog-edit-start:92825613807c3707:b20 -->
+
 <h2 id="_7">晶格透镜</h2>
+<!-- blog-edit-end:92825613807c3707:b20 -->
+
+<!-- blog-edit-start:92825613807c3707:b21 -->
+
 <p>这是通过在普通的透镜前增加多个不同焦距的小的透镜实现的。总之也是利用物理特性，能从拍摄的模糊图返回出来。这个方法主要和频率部分打交道比较多。<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104103255.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b21 -->
+
+<!-- blog-edit-start:92825613807c3707:b22 -->
+
 <h2 id="_8">扩散编码</h2>
+<!-- blog-edit-end:92825613807c3707:b22 -->
+
+<!-- blog-edit-start:92825613807c3707:b23 -->
+
 <p>如下所示，通过在传统透镜中加入特殊的扩散器来实现，这个扩散器使得入射光按照某种规则散射到传感器上，最终让不同物距的 PSF 都一致，和之前一样，简单的去卷积即可完成。<br />
 <img alt="" src="../../../../asset/image/6501fdda0c3e3504216eb95fa4540ab1/20250104103304.jpg" /></p>
+<!-- blog-edit-end:92825613807c3707:b23 -->
+
+<!-- blog-edit-start:92825613807c3707:b24 -->
+
 <h2 id="_9">解决此问题带来的其他好处</h2>
+<!-- blog-edit-end:92825613807c3707:b24 -->
+
+<!-- blog-edit-start:92825613807c3707:b25 -->
+
 <p>1. 有些方法因此可以推算深度图<br />
 2. 先摄影再对焦</p>
+<!-- blog-edit-end:92825613807c3707:b25 -->
+
+<!-- blog-edit-start:92825613807c3707:b26 -->
+
 <h2 id="_10">具体细节</h2>
+<!-- blog-edit-end:92825613807c3707:b26 -->
+
+<!-- blog-edit-start:92825613807c3707:b27 -->
+
 <p>请查看 Wang Hawk 的记录，写的蛮清楚的。注意作者的笔记经常有穿插，比如讲到 A 方法会提一嘴 B 方法，这个时候可以略过，专注于 A 方法的阅读。</p>
+<!-- blog-edit-end:92825613807c3707:b27 -->
+
+<!-- blog-edit-start:92825613807c3707:b28 -->
+
 <p>1. 对焦栈: <a href="https://zhuanlan.zhihu.com/p/99637413">https://zhuanlan.zhihu.com/p/99637413</a> (本地：./材料/33. 摄影-怎样对焦才能让不同距离的物体都拍摄清晰.html)</p>
+<!-- blog-edit-end:92825613807c3707:b28 -->
+
+<!-- blog-edit-start:92825613807c3707:b29 -->
+
 <p>2. 编码光圈: <a href="https://zhuanlan.zhihu.com/p/108060589">https://zhuanlan.zhihu.com/p/108060589</a> (本地：./材料/37. 如何从失焦的图像中恢复景深并将图像变清晰.html)</p>
+<!-- blog-edit-end:92825613807c3707:b29 -->
+
+<!-- blog-edit-start:92825613807c3707:b30 -->
+
 <p>3. 动态像距: <a href="https://zhuanlan.zhihu.com/p/114602499">https://zhuanlan.zhihu.com/p/114602499</a> (本地：./材料/38. 对焦扫描技术是如何实现EDOF（扩展景深）的.html)</p>
+<!-- blog-edit-end:92825613807c3707:b30 -->
+
+<!-- blog-edit-start:92825613807c3707:b31 -->
+
 <p>4. 波前编码: <a href="https://zhuanlan.zhihu.com/p/117636595">https://zhuanlan.zhihu.com/p/117636595</a> (本地：./材料/39. 消除失焦模糊的其他几种方法.html)</p>
+<!-- blog-edit-end:92825613807c3707:b31 -->
+
+<!-- blog-edit-start:92825613807c3707:b32 -->
+
 <p>5. 晶格透镜: <a href="https://zhuanlan.zhihu.com/p/117636595">https://zhuanlan.zhihu.com/p/117636595</a> (本地：./材料/39. 消除失焦模糊的其他几种方法.html)</p>
+<!-- blog-edit-end:92825613807c3707:b32 -->
+
+<!-- blog-edit-start:92825613807c3707:b33 -->
+
 <p>6. 扩散编码: <a href="https://zhuanlan.zhihu.com/p/117636595">https://zhuanlan.zhihu.com/p/117636595</a> (本地：./材料/39. 消除失焦模糊的其他几种方法.html)</p>
+<!-- blog-edit-end:92825613807c3707:b33 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\10.去模糊和模糊原因分析\去模糊-解决失焦问题.md" data-text-edit-revision="1d131fcefae173c02491095061d6c980641ad47be41d9552de6016796e228a90" data-text-edit-marker="92825613807c3707" data-text-edit-schema="1"></div>
 
 
 
@@ -1015,8 +1151,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

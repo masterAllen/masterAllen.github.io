@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -861,14 +861,34 @@
   
 
 
+<!-- blog-edit-start:aeae0d93558682d4:b0 -->
+
 <h1 id="_1">字符串格式化漏洞记录</h1>
+<!-- blog-edit-end:aeae0d93558682d4:b0 -->
+
 <div class="file-actions" data-image-edit-revision="9f643240fd3c61a745ebf32a8067ea12d0f7f12c9cbedcaceec85a689ba52e7e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C01.string%5Cfsb.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C01.string" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\01.string\fsb.md">复制路径</span></div>
+
+<!-- blog-edit-start:aeae0d93558682d4:b1 -->
 
 <p>遇到了一些字符串格式化漏洞的问题，看了不少相关内容，感觉需要拼凑拼凑。<br />
 格式化漏洞是什么就不说了吧，简单一句话：应该是 <code>print('%s', str)</code> 写成了 <code>print(str)</code> 。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b1 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b2 -->
+
 <h2 id="_2">语法说明</h2>
+<!-- blog-edit-end:aeae0d93558682d4:b2 -->
+<!-- blog-edit-start:aeae0d93558682d4:b3 -->
+
 <p>问题：为什么 <code>%300c%14$n</code> 可以真的将偏移值 14 的内存 写入了 300？这一部分就来解答这个问题</p>
+<!-- blog-edit-end:aeae0d93558682d4:b3 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b4 -->
+
 <h3 id="_3">语法一</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b4 -->
+<!-- blog-edit-start:aeae0d93558682d4:b5 -->
+
 <p>首先是 <code>%n</code>，这个比较简单，看一下下面的使用方式就知道了。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
@@ -877,28 +897,74 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b5 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b6 -->
+
 <p>程序最终结果是 11 ，因为读到 <code>%n</code> 时一共读了 11 个字符。<br />
 <strong>但是一定注意了是 <code>&amp;c</code> 指向的数据变为 11，一定要时刻牢记是指向的数据，而不是自身数据！！</strong><br />
 否则这个例子就不是 <code>c = 11</code> ，而是 <code>&amp;c = 11</code> 了。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b6 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b7 -->
+
 <h3 id="_4">语法二</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b7 -->
+<!-- blog-edit-start:aeae0d93558682d4:b8 -->
+
 <p>下面来探讨 <code>%14$n</code> 的意思，这里的 <code>%14$</code> 表示偏移量，表示第 14 个参数。下面看这个例子。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%2$d %2$#x; %1$d %1$#x&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">);</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b8 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b9 -->
+
 <p>最终结果是 <code>17 0x11; 16 0x10</code>，因为 <code>%2$</code> 表示使用第二个参数，也就是 17。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b9 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b10 -->
+
 <p>其中当进行 <code>call printf</code> 的时候栈结构如下：</p>
+<!-- blog-edit-end:aeae0d93558682d4:b10 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b11 -->
+
 <p><img alt="" src="../../../../../asset/image/bd8b33407fa3f225881e436e704ab29a/20260103095826.png" /></p>
+<!-- blog-edit-end:aeae0d93558682d4:b11 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b12 -->
+
 <h3 id="_5">语法三</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b12 -->
+<!-- blog-edit-start:aeae0d93558682d4:b13 -->
+
 <p>最后来探讨 <code>%300c%14$n</code>，分成三块：</p>
 <ol>
 <li>在 C 语言中，<code>%300c</code> 就是输出 300 个空白字符</li>
 <li>输出了 300 个空白字符，<code>%14$n</code> 则让偏移 14 的那个内存所<strong>指向的数据</strong>写入了 300。</li>
 </ol>
+<!-- blog-edit-end:aeae0d93558682d4:b13 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b14 -->
+
 <p>再次强调：%n 是往栈上的地址<strong>指向的地址处</strong>写入数据</p>
+<!-- blog-edit-end:aeae0d93558682d4:b14 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b15 -->
+
 <h2 id="_6">漏洞利用</h2>
+<!-- blog-edit-end:aeae0d93558682d4:b15 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b16 -->
+
 <p>如下就是常见的漏洞，这里的 <code>printf(s)</code> 漏洞很大：</p>
+<!-- blog-edit-end:aeae0d93558682d4:b16 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b17 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span><span class="w"> </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">);</span>
@@ -906,29 +972,102 @@
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:aeae0d93558682d4:b17 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b18 -->
+
 <p>当进行到 <code>printf(s)</code> 中的 <code>call printf</code> 的时候，栈结构如下（实际情况可能 <code>s</code> 不是立刻就在下方，可能有间隔，需要自行在 gdb 中查看）：</p>
+<!-- blog-edit-end:aeae0d93558682d4:b18 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b19 -->
+
 <p><img alt="" src="../../../../../asset/image/bd8b33407fa3f225881e436e704ab29a/20260103100153.png" /></p>
+<!-- blog-edit-end:aeae0d93558682d4:b19 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b20 -->
+
 <h3 id="_7">任意读取</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b20 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b21 -->
+
 <p>假如我们输入 <code>s = p32(target) + %s</code>，此时的栈结构如下：</p>
+<!-- blog-edit-end:aeae0d93558682d4:b21 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b22 -->
+
 <p><img alt="" src="../../../../../asset/image/bd8b33407fa3f225881e436e704ab29a/20260103100317.png" /></p>
+<!-- blog-edit-end:aeae0d93558682d4:b22 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b23 -->
+
 <p>此时相当于 <code>printf("p32(target)%s")</code>，打印时解析发现有一个 <code>%s</code>，他是第一个参数，也就是 <code>arg1</code>，所以相当于打印 <code>p32(target)</code> 指向的内容。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b23 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b24 -->
+
 <p>此时就时任意读取的功能。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b24 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b25 -->
+
 <h3 id="_8">任意地址写入</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b25 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b26 -->
+
 <p>假如我们输入 <code>s = p32(target) + xxx + %n</code>，此时的栈结构如下：</p>
+<!-- blog-edit-end:aeae0d93558682d4:b26 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b27 -->
+
 <p><img alt="" src="../../../../../asset/image/bd8b33407fa3f225881e436e704ab29a/20260103100658.png" /></p>
+<!-- blog-edit-end:aeae0d93558682d4:b27 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b28 -->
+
 <p>同理，解析 <code>printf</code> 的时候，发现有一个 <code>%n</code>，回顾语法一，<code>%n</code> 想某个地址写入一共打印了多少字节数：</p>
+<!-- blog-edit-end:aeae0d93558682d4:b28 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b29 -->
+
 <ol>
 <li>某个地址，此时就是第一个参数，即 <code>arg1</code>，即 <code>p32(target)</code></li>
 <li>一共打印多少字节数，那么就是 <code>4 + len(xxx)</code></li>
 </ol>
+<!-- blog-edit-end:aeae0d93558682d4:b29 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b30 -->
+
 <p>最终效果就是 <code>target</code> 指向的内容，写入了 <code>4 + len(xxx)</code>。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b30 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b31 -->
+
 <h2 id="_9">模拟练习</h2>
+<!-- blog-edit-end:aeae0d93558682d4:b31 -->
+<!-- blog-edit-start:aeae0d93558682d4:b32 -->
+
 <p>任意写入内存有一个固定的格式，当然这个还很抽象，看题就好了。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>...[overwrite addr]....%[overwrite offset]$n
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b32 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b33 -->
+
 <p>我们首先要根据 <code>AAAA%x%x%x%x%x%x%x</code> 这种来确定字符串偏移地址是多少。假定偏移值全是 6 。(最后一题除外)</p>
+<!-- blog-edit-end:aeae0d93558682d4:b33 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b34 -->
+
 <h3 id="1">题 1 ： 覆盖小数字</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b34 -->
+<!-- blog-edit-start:aeae0d93558682d4:b35 -->
+
 <h4 id="_10">源代码</h4>
+<!-- blog-edit-end:aeae0d93558682d4:b35 -->
+<!-- blog-edit-start:aeae0d93558682d4:b36 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">789</span><span class="p">;</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -941,14 +1080,48 @@
 </span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:aeae0d93558682d4:b36 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b37 -->
+
 <h4 id="_11">分析</h4>
+<!-- blog-edit-end:aeae0d93558682d4:b37 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b38 -->
+
 <p>为了简便，题目把 <code>a</code> 的地址也打印了，假定是 <code>0xfffffe00</code>。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b38 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b39 -->
+
 <p>根据我们上面任意地址写入分析的，输入 <code>p32(0xfffffe00) + %12c%6$n</code> 即可，此时 <code>call printf</code> 时候栈的内容是下方图的左边，分成 <code>p32(0xfffffe00) + %12c</code> 和 <code>%6$n</code> 两部分来看待，很清晰。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b39 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b40 -->
+
 <p>但是实际是错误的，因为 <code>p32(0xfffffe00)</code> 末位是 <code>\x00</code> ，因此截断了输入。所以我们要换种方式，很简单，把这个挪到后面去，构造： <code>%16c%8$n + p32(0xfffffe00)</code> 。注意有两个变化：输入从 <code>%12c</code> 变成 <code>%16c</code>，然后偏移 <code>%6$n</code> 变成 <code>%8$n</code>，仔细想一想原因，此时栈的内容变成右边的情况。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b40 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b41 -->
+
 <p>实际情况栈的位置可能有所不同，具体在 gdb 中调试查看。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b41 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b42 -->
+
 <p><img alt="" src="../../../../../asset/image/bd8b33407fa3f225881e436e704ab29a/20260103102254.png" /></p>
+<!-- blog-edit-end:aeae0d93558682d4:b42 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b43 -->
+
 <h3 id="2">题 2 ： 覆盖大数字</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b43 -->
+<!-- blog-edit-start:aeae0d93558682d4:b44 -->
+
 <h4 id="_12">源代码</h4>
+<!-- blog-edit-end:aeae0d93558682d4:b44 -->
+<!-- blog-edit-start:aeae0d93558682d4:b45 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">789</span><span class="p">;</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#</span><span class="w"> </span><span class="cp">include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -961,25 +1134,58 @@
 </span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:aeae0d93558682d4:b45 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b46 -->
+
 <h4 id="_13">分析</h4>
+<!-- blog-edit-end:aeae0d93558682d4:b46 -->
+<!-- blog-edit-start:aeae0d93558682d4:b47 -->
+
 <p>首先说明 <code>0x51525354 == 1364349780</code>，假设 <code>a</code> 地址是 0x80404040。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b47 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b48 -->
+
 <p>按照上面题目一的分析， 那么就<code>%136439780$n + p32(0x80404040)</code> ，然而失败了。因为 0x51525354 个字符太多了！！要输出那么多字符，会出错。<strong>根据经验，一般 0x10000000 以内是可以接受的，超过这个范围一般会错误</strong></p>
+<!-- blog-edit-end:aeae0d93558682d4:b48 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b49 -->
+
 <p>所以怎么办呢？好在除了 <code>%n</code> 还有以下可以利用。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>hh 对于整数类型，printf期待一个从char提升的int尺寸的整型参数。
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>h  对于整数类型，printf期待一个从short提升的int尺寸的整型参数。
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b49 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b50 -->
+
 <p>正确做法构造如下的格式化字符串。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>p32(0x80404040) + p32(0x80404041) + p32(0x80404042) + p32(0x80404043) + 
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>%68c%6$hhn      + %255c%7$hhn     + %255c%8$hhn     + %255c%9$hhn
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b50 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b51 -->
+
 <p>我们目标是在 <code>0x80404040</code> 写入 <code>0x51525354</code>，高地址是 <code>0x51</code>，低地址是 <code>0x54</code>：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>0x80404040: 4 个 p32 + %68c = 16 + 68 = 84
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>0x80404041: 84 + %255c = 84 + 255 --&gt; 超过了 256，取模 --&gt; 83 
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span>0x80404042: 84 + 255 + %255c = 84 + 255 + 255 --&gt; 取模 --&gt; 82
 </span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span>0x80404043: 84 + 255 + 255 + %255c --&gt; 81
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b51 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b52 -->
+
 <h3 id="3">题 3 ： 漏洞字符串在堆上</h3>
+<!-- blog-edit-end:aeae0d93558682d4:b52 -->
+<!-- blog-edit-start:aeae0d93558682d4:b53 -->
+
 <h4 id="_14">源代码</h4>
+<!-- blog-edit-end:aeae0d93558682d4:b53 -->
+<!-- blog-edit-start:aeae0d93558682d4:b54 -->
+
 <p>原题来自 pwnable.kr 的 fsb 。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span>
@@ -1005,17 +1211,49 @@
 </span><span id="__span-9-22"><span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-9-23"><span class="linenos" data-linenos="23 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b54 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b55 -->
+
 <h4 id="_15">分析</h4>
+<!-- blog-edit-end:aeae0d93558682d4:b55 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b56 -->
+
 <p>这题的不同点在于，它的漏洞变量 <code>buf</code> 是全局变量，在堆上。左图是上面题目的栈空间，它的 <code>buf</code>（也就是图里面的 <code>s</code>）是栈中的，所以 <code>buf</code> 里面内容对应的参数通常是偏移 6、偏移 8 这样。而放在堆中，则是右图，一方面 <code>buf</code> 的内容相对于栈可能偏移非常非常大，另一方面栈的地址是随机的，这样每次的偏移都不一样。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b56 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b57 -->
+
 <p><img alt="" src="../../../../../asset/image/bd8b33407fa3f225881e436e704ab29a/20260103114218.png" /></p>
+<!-- blog-edit-end:aeae0d93558682d4:b57 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b58 -->
+
 <p><strong>对于这种情况要使用跳板，即由一次修改变为两次修改。</strong></p>
+<!-- blog-edit-end:aeae0d93558682d4:b58 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b59 -->
+
 <p>需要在 gdb 中调试，查看栈中有哪些比较近的引用，如下图所示，栈顶是 <code>0xffe8ddc0</code>，发现有两个比较近的引用：</p>
 <ul>
 <li>第 14 个偏移中的内容 <code>0xffe7de10</code> 指向第 20 个偏移（<code>0xffe8de10</code>）</li>
 <li>第 15 个偏移中的内容 <code>0xffe7de14</code> 指向第 21 个偏移（<code>0xffe8de14</code>）</li>
 </ul>
+<!-- blog-edit-end:aeae0d93558682d4:b59 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b60 -->
+
 <p><img alt="" src="../../../../../asset/image/bd8b33407fa3f225881e436e704ab29a/20260104120155.png" /></p>
+<!-- blog-edit-end:aeae0d93558682d4:b60 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b61 -->
+
 <p>其中 <code>key</code> 的位置是 <code>0x0804A060</code>，我们分成两步走。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b61 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b62 -->
+
 <ol>
 <li>
 <p>第一步：使用 <code>'%' + str(0x0804A060) + 'c%14$n'</code>，即输出 <code>0x0804A060</code> 个字符，然后修改第 14 个偏移指向的内容；而上图中的第 14 个偏移指向的是第 20 个偏移，所以结果是第 20 个偏移被修改：</p>
@@ -1025,13 +1263,24 @@
 <p>第二步：使用 <code>%20$n</code>，即输出 0 个字符，然后修改第 20 个偏移指向的内容；而第 20 个偏移在上一步被我们修改了；因此，我们把 <code>0x0804A060</code> 地址对应的内容成功改成了 0。</p>
 </li>
 </ol>
+<!-- blog-edit-end:aeae0d93558682d4:b62 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b63 -->
+
 <p>由于 <code>key</code> 是 <code>unsigned long long</code>，即 8 个字节，所以我们还要修改 <code>0x0804A064</code> 也为 0，这样 <code>key</code> 最后就改成了 0。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>fmt2 = &#39;%&#39; + str(0x0804A060) + &#39;c%14$n&#39;
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span>write1 = &#39;%20$n&#39; 
 </span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span>fmt2 = &#39;%&#39; + str(0x0804A064) + &#39;c%15$n&#39;
 </span><span id="__span-10-4"><span class="linenos" data-linenos="4 "></span>write2 = &#39;%21$n&#39;
 </span></code></pre></div></p>
+<!-- blog-edit-end:aeae0d93558682d4:b63 -->
+
+<!-- blog-edit-start:aeae0d93558682d4:b64 -->
+
 <p><strong>总结，对于在堆中的字符串格式化漏洞，我们需要多观察栈中有什么可以间接跳的。</strong> 比如这里其实也可以不修改 <code>key</code>，而是修改 <code>put@got</code> 或者 <code>free_hook</code> 等更直接的方式。</p>
+<!-- blog-edit-end:aeae0d93558682d4:b64 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\01.string\fsb.md" data-text-edit-revision="9f643240fd3c61a745ebf32a8067ea12d0f7f12c9cbedcaceec85a689ba52e7e" data-text-edit-marker="aeae0d93558682d4" data-text-edit-schema="1"></div>
 
 
 
@@ -1263,8 +1512,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

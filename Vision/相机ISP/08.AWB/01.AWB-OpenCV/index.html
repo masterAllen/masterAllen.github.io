@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -683,19 +683,41 @@
   
 
 
+<!-- blog-edit-start:6a83a6658d508cae:b0 -->
+
 <h1 id="opencv-awb">OpenCV 中使用 AWB</h1>
+<!-- blog-edit-end:6a83a6658d508cae:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0d013b261f1a7e0bb3d168e6488f05dc14483f77da4808aae4cc7e21f5c83494" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB%5C01.AWB-OpenCV.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\08.AWB\01.AWB-OpenCV.md">复制路径</span></div>
+
+<!-- blog-edit-start:6a83a6658d508cae:b1 -->
 
 <blockquote>
 <p>来自本人笔记：<a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.2.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.2.md</a></p>
 </blockquote>
+<!-- blog-edit-end:6a83a6658d508cae:b1 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b2 -->
+
 <p>OpenCV 的 xphoto 模块有三个类负责白平衡：</p>
+<!-- blog-edit-end:6a83a6658d508cae:b2 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b3 -->
+
 <ol>
 <li>SimpleAWB：每个通道单独拉伸到固定的范围，有参数 p 表示前后 p% 的像素大小值不被拉伸时考虑</li>
 <li>GrayWorldAWB：认为红绿蓝在一张图上应该差不多，根据这个假设计算出红和蓝应该分别乘以多少，有一个参数 s 表示像素的 saturation 超过 s 时不被考虑。像素的 saturation 定义为：<code>(max(rgb)-min(rgb))/max(rgb)</code>。</li>
 <li>LearningBasedAWB: 从名字也可以看出这是通过数据驱动的方法，具体原理不谈，在<a href="https://openaccess.thecvf.com/content_cvpr_2015/papers/Cheng_Effective_Learning-Based_Illuminant_2015_CVPR_paper.pdf">该论文</a>中。</li>
 </ol>
+<!-- blog-edit-end:6a83a6658d508cae:b3 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b4 -->
+
 <p>演示代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_awb.ipynb">test_awb.ipynb</a> 中。</p>
+<!-- blog-edit-end:6a83a6658d508cae:b4 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b5 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">model_0</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">xphoto</span><span class="o">.</span><span class="n">createSimpleWB</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="c1"># ignores the top and bottom p% of pixel values</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">model_0</span><span class="o">.</span><span class="n">setP</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
@@ -711,18 +733,62 @@
 </span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span><span class="n">model_1</span><span class="o">.</span><span class="n">balanceWhite</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span><span class="n">model_2</span><span class="o">.</span><span class="n">balanceWhite</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6a83a6658d508cae:b5 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b6 -->
+
 <h3 id="learningbasedawb">LearningBasedAWB 的使用</h3>
+<!-- blog-edit-end:6a83a6658d508cae:b6 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b7 -->
+
 <p>参考来自 OpenCV 的官方文档：<a href="https://docs.opencv.org/4.x/dc/dcb/tutorial_xphoto_training_white_balance.html">https://docs.opencv.org/4.x/dc/dcb/tutorial_xphoto_training_white_balance.html</a></p>
+<!-- blog-edit-end:6a83a6658d508cae:b7 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b8 -->
+
 <p>我的实验数据在 <code>../code/image/awb</code> 中。</p>
+<!-- blog-edit-end:6a83a6658d508cae:b8 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b9 -->
+
 <h4 id="1">1. 数据准备</h4>
+<!-- blog-edit-end:6a83a6658d508cae:b9 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b10 -->
+
 <p>数据是 Gehler-Shi dataset(<a href="http://www.cs.sfu.ca/~colour/data/shi_gehler">http://www.cs.sfu.ca/~colour/data/shi_gehler</a>) ，它是由两台单反相机拍摄的共 568 张图片。每张图片拍的时候都有一张色卡，这样就可以根据色卡算出 Ground Truth 了，结果在该网站的 real_illum_568..mat 文件中。</p>
+<!-- blog-edit-end:6a83a6658d508cae:b10 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b11 -->
+
 <p>他的文件结构有点奇怪，解压之后要到很深的地方才能找到 PNG。有四个压缩包，从名字也能看出，第一个是第一个相机，其他三个是第二个相机。把这四个压缩包的文件都放在同一个目录。</p>
+<!-- blog-edit-end:6a83a6658d508cae:b11 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b12 -->
+
 <h4 id="2">2. 训练数据</h4>
+<!-- blog-edit-end:6a83a6658d508cae:b12 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b13 -->
+
 <p>使用<a href="https://github.com/opencv/opencv_contrib/tree/master/modules/xphoto/samples/learn_color_balance.py">官方的脚本文件</a><br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>python learn_color_balance.py -i &lt;path to the folder with training images&gt; -g &lt;path to real_illum_568..mat&gt; -r 0,378 --num_trees 30 --max_tree_depth 6 --num_augmented 0
 </span></code></pre></div></p>
+<!-- blog-edit-end:6a83a6658d508cae:b13 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b14 -->
+
 <p><code>-r</code> 表示训练用的图片范围，上面的目录用了 0-378 张；<code>num_tress</code> 和 <code>max_tree_depth</code> 决策树的参数，方法本质上用的是决策树。</p>
+<!-- blog-edit-end:6a83a6658d508cae:b14 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b15 -->
+
 <p><code>num_augmented</code> 表示对每张图片做多少次数据增强。一般增强都是用扭曲拉伸，但 AWB 应用场景比较特殊：他是对颜色通道各自乘以一个随机数，下面就是其中涉及的代码：</p>
+<!-- blog-edit-end:6a83a6658d508cae:b15 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b16 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">for</span> <span class="nb">iter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">num_augmented</span><span class="p">)):</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="c1"># 每一次 RGB 会各自乘以随机数</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">R_coef</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">);</span> <span class="n">G_coef</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">);</span> <span class="n">B_coef</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
@@ -741,6 +807,10 @@
 </span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span>    <span class="n">illum</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="n">B_coef</span>
 </span><span id="__span-2-17"><span class="linenos" data-linenos="17 "></span>    <span class="n">gt_illuminants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">illum</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6a83a6658d508cae:b16 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b17 -->
+
 <p>一些代码上其他的点：你会在上面脚本文件中看到如下代码。这一段意思是减去黑电平，但是用的两款相机，所以黑电平不一样，分别是 0 和 129。每次图片处理需要先减去黑电平。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">load_ground_truth</span><span class="p">(</span><span class="n">gt_path</span><span class="p">):</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>    <span class="o">...</span>
@@ -750,12 +820,32 @@
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>    <span class="n">black_levels</span> <span class="o">=</span> <span class="mi">87</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">base_gt_illuminants</span><span class="p">)</span> <span class="o">-</span> <span class="mi">87</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="mi">129</span><span class="p">]</span>
 </span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span>    <span class="o">...</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:6a83a6658d508cae:b17 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b18 -->
+
 <h3 id="3">3. 测试数据</h3>
+<!-- blog-edit-end:6a83a6658d508cae:b18 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b19 -->
+
 <p>同样使用<a href="https://github.com/opencv/opencv_contrib/tree/master/modules/xphoto/samples/color_balance_benchmark.py">官方的脚本</a><br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>python color_balance_benchmark.py -a grayworld,learning_based:color_balance_model.yml -m &lt;full path to folder containing the model&gt; -i &lt;path to the folder with training images&gt; -g &lt;path to real_illum_568..mat&gt; -r 379,567 -d &quot;img&quot;
 </span></code></pre></div></p>
+<!-- blog-edit-end:6a83a6658d508cae:b19 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b20 -->
+
 <p><code>learning_based:color_balance_model.yml</code> 表示训练好的模型，上面训练数据产生的模型就是这个名字，如果改了需要将这个命令也改一下。<code>-d</code> 表示生成的图片放在哪个目录。</p>
+<!-- blog-edit-end:6a83a6658d508cae:b20 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b21 -->
+
 <p>实测下来，这个脚本文件还是有点问题，过曝处理的太差了，很容易偏色，我进行了如下修改，基本就没问题了：</p>
+<!-- blog-edit-end:6a83a6658d508cae:b21 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b22 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 266 行 main 方法中进行处理的图片先不转为 8 bit，因为会损失信息</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">else</span><span class="p">:</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="c1"># im = stretch_to_8bit(im)</span>
@@ -784,8 +874,19 @@
 </span><span id="__span-5-26"><span class="linenos" data-linenos="26 "></span>        <span class="n">new_im</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="n">g3</span>
 </span><span id="__span-5-27"><span class="linenos" data-linenos="27 "></span>        <span class="n">new_im</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*=</span> <span class="n">g1</span>
 </span></code></pre></div>
+<!-- blog-edit-end:6a83a6658d508cae:b22 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b23 -->
+
 <h3 id="4">4. 测试其他图片</h3>
+<!-- blog-edit-end:6a83a6658d508cae:b23 -->
+
+<!-- blog-edit-start:6a83a6658d508cae:b24 -->
+
 <p>但实际把训练的模型用在其他的图片，感觉很一般... 只对这个数据集有效...</p>
+<!-- blog-edit-end:6a83a6658d508cae:b24 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\08.AWB\01.AWB-OpenCV.md" data-text-edit-revision="0d013b261f1a7e0bb3d168e6488f05dc14483f77da4808aae4cc7e21f5c83494" data-text-edit-marker="6a83a6658d508cae" data-text-edit-schema="1"></div>
 
 
 
@@ -1017,8 +1118,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

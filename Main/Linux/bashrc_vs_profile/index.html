@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -638,40 +638,138 @@
   
 
 
+<!-- blog-edit-start:2857cae068eacf27:b0 -->
+
 <h1 id="linux">Linux 几个用户配置文件的区别</h1>
+<!-- blog-edit-end:2857cae068eacf27:b0 -->
+
 <div class="file-actions" data-image-edit-revision="389869af7ceef8f7a1048dc512233708c6531da114ee87bbf6445f480d7f9c5d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Cbashrc_vs_profile.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\bashrc_vs_profile.md">复制路径</span></div>
 
+<!-- blog-edit-start:2857cae068eacf27:b1 -->
+
 <p>参考出处：<a href="https://itbilu.com/linux/management/NyI9cjipl.html">https://itbilu.com/linux/management/NyI9cjipl.html</a></p>
+<!-- blog-edit-end:2857cae068eacf27:b1 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b2 -->
+
 <p>在 Linux 或类 Unix 系统（含 macOS）里，<code>profile</code>、<code>bash_profile</code>、<code>bashrc</code> 经常出现。下面说明各自大致做什么、谁在什么时候读它们。</p>
+<!-- blog-edit-end:2857cae068eacf27:b2 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b3 -->
+
 <hr />
+<!-- blog-edit-end:2857cae068eacf27:b3 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b4 -->
+
 <h2 id="1-profile-etcprofile">1. <code>profile</code>（常见于 <code>/etc/profile</code>）</h2>
+<!-- blog-edit-end:2857cae068eacf27:b4 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b5 -->
+
 <p><code>/etc/profile</code> 用来配置<strong>系统级</strong>的环境变量和启动时要跑的脚本；这里的设置会对<strong>所有用户</strong>生效。用户以 <strong>login（登录式）</strong> 会话进入系统时，该文件会被执行，并通常会再去加载 <code>/etc/profile.d/</code> 下的脚本。</p>
+<!-- blog-edit-end:2857cae068eacf27:b5 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b6 -->
+
 <p>一般不鼓励随意改 <code>/etc/profile</code>：改动会影响全体用户。若确实需要系统级变量，可以：</p>
+<!-- blog-edit-end:2857cae068eacf27:b6 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b7 -->
+
 <ul>
 <li>在 <code>/etc/profile</code> 末尾追加 <code>export</code>，或  </li>
 <li>更稳妥的做法是在 <code>/etc/profile.d/</code> 里单独放一个脚本（便于维护和卸载）。</li>
 </ul>
+<!-- blog-edit-end:2857cae068eacf27:b7 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b8 -->
+
 <p>示例（定义环境变量 <code>HOST</code>）：</p>
+<!-- blog-edit-end:2857cae068eacf27:b8 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b9 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="nb">export</span><span class="w"> </span><span class="nv">HOST</span><span class="o">=</span>itbilu.com
 </span></code></pre></div>
+<!-- blog-edit-end:2857cae068eacf27:b9 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b10 -->
+
 <p>修改后通常需要<strong>重新登录</strong>才会在新会话里生效；当前终端可以用：</p>
+<!-- blog-edit-end:2857cae068eacf27:b10 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b11 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="nb">source</span><span class="w"> </span>/etc/profile
 </span></code></pre></div>
+<!-- blog-edit-end:2857cae068eacf27:b11 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b12 -->
+
 <p>让配置立刻生效。</p>
+<!-- blog-edit-end:2857cae068eacf27:b12 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b13 -->
+
 <hr />
+<!-- blog-edit-end:2857cae068eacf27:b13 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b14 -->
+
 <h2 id="2-bashrcetcbashrc-bashrc">2. <code>bashrc</code>（<code>/etc/bashrc</code> 与 <code>~/.bashrc</code>）</h2>
+<!-- blog-edit-end:2857cae068eacf27:b14 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b15 -->
+
 <p><code>bashrc</code> 多用于配置 <strong>alias（别名）</strong>、<strong>函数</strong>、以及交互式 shell 的个性化选项。</p>
+<!-- blog-edit-end:2857cae068eacf27:b15 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b16 -->
+
 <ul>
 <li><strong>系统级</strong>：<code>/etc/bashrc</code>（有的发行版叫 <code>/etc/bash.bashrc</code>），影响范围依发行版而定。  </li>
 <li><strong>用户级</strong>：<code>~/.bashrc</code>，只对当前用户生效。</li>
 </ul>
+<!-- blog-edit-end:2857cae068eacf27:b16 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b17 -->
+
 <p><strong>重要</strong>：只有 <strong>Bash</strong> 会按约定去读这些文件；并且典型用法是：<strong>交互式非登录</strong> shell 会读 <code>~/.bashrc</code>（具体顺序因「是否 login、是否交互」以及发行版默认模板而异）。</p>
+<!-- blog-edit-end:2857cae068eacf27:b17 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b18 -->
+
 <hr />
+<!-- blog-edit-end:2857cae068eacf27:b18 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b19 -->
+
 <h2 id="3-bash_profilebash_profile">3. <code>bash_profile</code>（<code>~/.bash_profile</code>）</h2>
+<!-- blog-edit-end:2857cae068eacf27:b19 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b20 -->
+
 <p><code>~/.bash_profile</code> 位于用户主目录，是<strong>用户级</strong>配置，只在 <strong>login shell</strong> 且使用 Bash 时生效，常用来放该用户的 <strong>PATH</strong>、环境变量或登录时要执行的命令。</p>
+<!-- blog-edit-end:2857cae068eacf27:b20 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b21 -->
+
 <p>与 <code>/etc/profile</code> 的相似点：都与「登录会话」相关。不同点：<code>bash_profile</code> <strong>只影响当前用户</strong>，不会替代 <code>/etc/profile</code> 的全局逻辑——二者可能在一次登录过程中先后被读到（取决于系统如何把 Bash 配成登录 shell）。</p>
+<!-- blog-edit-end:2857cae068eacf27:b21 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b22 -->
+
 <hr />
+<!-- blog-edit-end:2857cae068eacf27:b22 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b23 -->
+
 <h2 id="_1">小结（便于对照）</h2>
+<!-- blog-edit-end:2857cae068eacf27:b23 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b24 -->
+
 <table>
 <thead>
 <tr>
@@ -698,7 +796,14 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:2857cae068eacf27:b24 -->
+
+<!-- blog-edit-start:2857cae068eacf27:b25 -->
+
 <p>实际加载顺序与是否 SSH 登录、终端模拟器是否启动 login shell 等有关；若改完「不生效」，优先确认当前 shell 是不是你以为的那种（login / 非 login、交互 / 非交互），再决定改 <code>profile</code> 还是 <code>bashrc</code>。</p>
+<!-- blog-edit-end:2857cae068eacf27:b25 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\bashrc_vs_profile.md" data-text-edit-revision="389869af7ceef8f7a1048dc512233708c6531da114ee87bbf6445f480d7f9c5d" data-text-edit-marker="2857cae068eacf27" data-text-edit-schema="1"></div>
 
 
 
@@ -930,8 +1035,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

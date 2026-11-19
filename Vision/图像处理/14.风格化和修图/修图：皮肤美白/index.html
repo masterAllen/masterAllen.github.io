@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,18 +666,60 @@
   
 
 
+<!-- blog-edit-start:43f8b6c4a34574fb:b0 -->
+
 <h1 id="_1">皮肤美白</h1>
+<!-- blog-edit-end:43f8b6c4a34574fb:b0 -->
+
 <div class="file-actions" data-image-edit-revision="67c4e9c51c982c54b467352cbf0dc03f0d502a92e739b3820c8b97ec463bbd7e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE%5C%E4%BF%AE%E5%9B%BE%EF%BC%9A%E7%9A%AE%E8%82%A4%E7%BE%8E%E7%99%BD.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\14.风格化和修图\修图：皮肤美白.md">复制路径</span></div>
 
+<!-- blog-edit-start:43f8b6c4a34574fb:b1 -->
+
 <h2 id="_2">思路一</h2>
+<!-- blog-edit-end:43f8b6c4a34574fb:b1 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b2 -->
+
 <p>整体图片变量，可以用非线性拉伸，选择那些把中间值拉高的函数，比如 <span class="arithmatex">\(y=log(1+x/\alpha) / log(1+1/\alpha)\)</span>，其中 <span class="arithmatex">\(\alpha\)</span> 是控制拉伸程度的参数。这是一个常用的非线性函数，它的特点就是中间拉伸程度较高。</p>
+<!-- blog-edit-end:43f8b6c4a34574fb:b2 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b3 -->
+
 <h2 id="_3">思路二</h2>
+<!-- blog-edit-end:43f8b6c4a34574fb:b3 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b4 -->
+
 <p>也可以用饱和度和亮度去做，转到 HSL 空间后，把饱和度调低、亮度调高，这样就会变白。</p>
+<!-- blog-edit-end:43f8b6c4a34574fb:b4 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b5 -->
+
 <h2 id="_4">思路三</h2>
+<!-- blog-edit-end:43f8b6c4a34574fb:b5 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b6 -->
+
 <p>不是独立的思路。就是先检测出皮肤区域，然后再去使用上面两个思路去把皮肤区域变白。皮肤检测的算法也很简单，根据阈值去做就行，具体在<a href="../../13.色调和颜色/肤色检测/">另一个笔记</a>中。</p>
+<!-- blog-edit-end:43f8b6c4a34574fb:b6 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b7 -->
+
 <p>结果实验，肤色检测中选择第三种基于二次项更好一点，不过那个方法不检测偏红色的嘴唇，所以我改了点阈值，具体看下面代码就行。</p>
+<!-- blog-edit-end:43f8b6c4a34574fb:b7 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b8 -->
+
 <h2 id="_5">结果展示</h2>
+<!-- blog-edit-end:43f8b6c4a34574fb:b8 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b9 -->
+
 <p>代码如下：</p>
+<!-- blog-edit-end:43f8b6c4a34574fb:b9 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b10 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -716,7 +758,15 @@
 </span><span id="__span-0-36"><span class="linenos" data-linenos="36 "></span><span class="n">now</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">now1</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
 </span><span id="__span-0-37"><span class="linenos" data-linenos="37 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;./newimg3.png&#39;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:43f8b6c4a34574fb:b10 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b11 -->
+
 <p>结果：</p>
+<!-- blog-edit-end:43f8b6c4a34574fb:b11 -->
+
+<!-- blog-edit-start:43f8b6c4a34574fb:b12 -->
+
 <table>
 <thead>
 <tr>
@@ -735,6 +785,9 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:43f8b6c4a34574fb:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\14.风格化和修图\修图：皮肤美白.md" data-text-edit-revision="67c4e9c51c982c54b467352cbf0dc03f0d502a92e739b3820c8b97ec463bbd7e" data-text-edit-marker="43f8b6c4a34574fb" data-text-edit-schema="1"></div>
 
 
 
@@ -966,8 +1019,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

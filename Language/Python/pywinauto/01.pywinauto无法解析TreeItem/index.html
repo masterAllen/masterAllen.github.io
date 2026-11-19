@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -712,25 +712,79 @@
   
 
 
+<!-- blog-edit-start:4af572eb57d7846d:b0 -->
+
 <h1 id="pywinauto-treeitem">pywinauto 无法解析 TreeItem 控件</h1>
+<!-- blog-edit-end:4af572eb57d7846d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e0ac5935369ab784f2d0100c084b3c1e2e56dc27196e0b35327724eec77d7e50" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpywinauto%5C01.pywinauto%E6%97%A0%E6%B3%95%E8%A7%A3%E6%9E%90TreeItem.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpywinauto" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\pywinauto\01.pywinauto无法解析TreeItem.md">复制路径</span></div>
 
+<!-- blog-edit-start:4af572eb57d7846d:b1 -->
+
 <p><strong>结论：放弃吧</strong>，就是解析不了，用了很多方法，就是不行。</p>
+<!-- blog-edit-end:4af572eb57d7846d:b1 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b2 -->
+
 <h2 id="_1">问题</h2>
+<!-- blog-edit-end:4af572eb57d7846d:b2 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b3 -->
+
 <p>解析的时候，无法把 TreeItem 如 combobox、lineedit 等解析出来，只能得到 treeitem，所以用不了各种控件的特有方法。</p>
+<!-- blog-edit-end:4af572eb57d7846d:b3 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b4 -->
+
 <h2 id="_2">经测试，并不奏效的尝试</h2>
+<!-- blog-edit-end:4af572eb57d7846d:b4 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b5 -->
+
 <h3 id="_3">修改源码</h3>
+<!-- blog-edit-end:4af572eb57d7846d:b5 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b6 -->
+
 <ol>
 <li>修改 GUI 程序的源码，使用 TreeView + Delegate，而不是 TreeWidget，经过测试，无效果。</li>
 <li>修改 GUI 程序的源码，添加子节点，使用各种方法如 <code>setItemsExpandable</code>、<code>setData</code> 等等，经过测试，都没有效果。</li>
 <li>修改 GUI 程序的源码，添加 Accessible 信息，或者增加许多和 Accessible 属性有关的设置、各种方法（不列举了），经过测试，都没有效果。</li>
 </ol>
+<!-- blog-edit-end:4af572eb57d7846d:b6 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b7 -->
+
 <h3 id="dll">DLL 注入</h3>
+<!-- blog-edit-end:4af572eb57d7846d:b7 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b8 -->
+
 <p>这样可以直接访问 QT 源码中的各个组件。放弃吧，千万不要尝试这条路。我之前居然花了一些时间尝试这样。第一步是写出 <code>ClickButton(const char*)</code> 或者 <code>FindButton(const char*)</code> 这样的函数。也不知道写的对不对。但最关键的是，第二步进行注入就失败了，现代的系统怎么可能让你这么容易注入呢，有管理员权限也没用，可能被防护软件阻止了。而且细细想想，这种方法完全是走偏了。</p>
+<!-- blog-edit-end:4af572eb57d7846d:b8 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b9 -->
+
 <h2 id="_4">正确尝试</h2>
+<!-- blog-edit-end:4af572eb57d7846d:b9 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b10 -->
+
 <h3 id="_5">识别后用鼠标+键盘</h3>
+<!-- blog-edit-end:4af572eb57d7846d:b10 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b11 -->
+
 <p>根据文本去寻找组件，然后还是老老实实鼠标和键盘去操作。虽然 TreeItem 无法识别出正确的组件，比如下图中我们没法识别出 checkbox，但是可以通过提取文本，来得到 TreeItem，得到 Item 之后，可以用鼠标和键盘去点击或者输入。</p>
+<!-- blog-edit-end:4af572eb57d7846d:b11 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b12 -->
+
 <p><img alt="" src="../../../../asset/image/b7565af18842ab21b5f3ce2b2c8dc44c/20260402140503.png" /></p>
+<!-- blog-edit-end:4af572eb57d7846d:b12 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b13 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># ! 遍历搜索，为什么不直接 child_window: 因为 pywinauto 不能识别出 treeitem</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">def</span><span class="w"> </span><span class="nf">item_idx_in_tree</span><span class="p">(</span><span class="n">mode_str</span><span class="p">,</span> <span class="n">now_tree</span><span class="p">):</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">now_item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">now_tree</span><span class="p">):</span>
@@ -746,13 +800,41 @@
 </span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found: &quot;</span><span class="p">,</span> <span class="n">child_name</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span>    <span class="k">return</span> <span class="n">now_tree</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4af572eb57d7846d:b13 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b14 -->
+
 <h3 id="_6">多个程序并行</h3>
+<!-- blog-edit-end:4af572eb57d7846d:b14 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b15 -->
+
 <p>如果并行去做？因为涉及到了鼠标和键盘，所以没办法并行。这种情况只能老老实实用虚拟机。</p>
+<!-- blog-edit-end:4af572eb57d7846d:b15 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b16 -->
+
 <h3 id="gui">修改程序架构：GUI 程序的正确写法</h3>
+<!-- blog-edit-end:4af572eb57d7846d:b16 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b17 -->
+
 <p>最本质的解决方式，就是要修改程序架构，GUI 程序增加一个通信层，这是唯一的正路。而且架构也要注意了：<strong>一定要 GUI 和协议层分离！</strong></p>
+<!-- blog-edit-end:4af572eb57d7846d:b17 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b18 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>GUI &lt;--&gt; 协议层 API &lt;--&gt; 更深层次的业务逻辑
 </span></code></pre></div>
+<!-- blog-edit-end:4af572eb57d7846d:b18 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b19 -->
+
 <p>GUI 一定不能和协议层耦合，否则到时候如果想要外层脚本控制 GUI 自动运行时，此时会有阻塞。</p>
+<!-- blog-edit-end:4af572eb57d7846d:b19 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b20 -->
+
 <ol>
 <li>协议层暴露各种方法接口，然后 GUI 去调用或者外层脚本调用</li>
 <li>协议层完成各种方法后，需要向 GUI 层输出信号，GUI 得到信号后才会修改 GUI 状态</li>
@@ -769,7 +851,14 @@
 </li>
 <li>此时可以启动新的脚本，脚本通过网络通信来和协议层交互</li>
 </ol>
+<!-- blog-edit-end:4af572eb57d7846d:b22 -->
+
+<!-- blog-edit-start:4af572eb57d7846d:b23 -->
+
 <p>还有一个关键：<strong>协议层是一个独立个体</strong>，也就是说 GUI 启动的时候，如果发现没有协议层会启动协议层；如果脚本启动的时候，发现没有协议层，也会启动协议层。</p>
+<!-- blog-edit-end:4af572eb57d7846d:b23 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\pywinauto\01.pywinauto无法解析TreeItem.md" data-text-edit-revision="e0ac5935369ab784f2d0100c084b3c1e2e56dc27196e0b35327724eec77d7e50" data-text-edit-marker="4af572eb57d7846d" data-text-edit-schema="1"></div>
 
 
 
@@ -1001,8 +1090,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

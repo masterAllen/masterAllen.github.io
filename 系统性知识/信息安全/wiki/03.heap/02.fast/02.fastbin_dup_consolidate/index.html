@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -678,16 +678,38 @@
   
 
 
+<!-- blog-edit-start:d348300ba7d67f11:b0 -->
+
 <h1 id="fastbin-dup-consolidate">fastbin dup consolidate</h1>
+<!-- blog-edit-end:d348300ba7d67f11:b0 -->
+
 <div class="file-actions" data-image-edit-revision="413f7837deca1086c8e636e2cba4b387a09bdda18049826da4ec342664451ad5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C02.fast%5C02.fastbin_dup_consolidate.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C02.fast" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\02.fast\02.fastbin_dup_consolidate.md">复制路径</span></div>
 
+<!-- blog-edit-start:d348300ba7d67f11:b1 -->
+
 <p>利用了 <code>malloc_consolidate</code> 的机制。</p>
+<!-- blog-edit-end:d348300ba7d67f11:b1 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b2 -->
+
 <blockquote>
 <p>要求：可以 Double Free<br />
 结果：Double Reference（两个指针指向同一片内存），可用于后续如 tcache poisoning 等攻击操作</p>
 </blockquote>
+<!-- blog-edit-end:d348300ba7d67f11:b2 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b3 -->
+
 <h2 id="_1">原理说明</h2>
+<!-- blog-edit-end:d348300ba7d67f11:b3 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b4 -->
+
 <p>使用 how2heap 的例子，首先老套路，申请多个块，然后释放 7 次塞满 tcache，然后释放 1 次落入到了 fastbin 中。</p>
+<!-- blog-edit-end:d348300ba7d67f11:b4 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b5 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span>
@@ -696,9 +718,17 @@
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="n">free</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d348300ba7d67f11:b5 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b6 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>tcache &lt;- ptr6 &lt;- ... &lt;- ptr0
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>fastbin -&gt; p1
 </span></code></pre></div>
+<!-- blog-edit-end:d348300ba7d67f11:b6 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b7 -->
+
 <p>然后申请一个大块（<code>&gt;=400</code>），此时会触发 <code>malloc_consolidate</code>，这个机制把 <code>fastbin</code> 和邻居合并，并且尽可能和 Top chunk 合并，下面这条语句：</p>
 <ul>
 <li>fastbin 只有 <code>p1</code>，而它就在 top chunk 旁，所以会融合进 top chunk</li>
@@ -707,13 +737,33 @@
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x400</span><span class="p">);</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// p1 == p2</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d348300ba7d67f11:b7 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b8 -->
+
 <p><img alt="" src="../../../../../../asset/image/6f311f1b13cd2ca7c4806cd8b15cb29a/20260105122635.png" /></p>
+<!-- blog-edit-end:d348300ba7d67f11:b8 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b9 -->
+
 <p><strong>第三步</strong>，也是程序漏洞的所在，即有一个可以 Double free 的指针 <code>p1</code>，我们继续 <code>free(p1)</code>，最终这个蓝色块会落入 tcache 中（0x400 在 tcache 范围内）。<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">free</span><span class="p">(</span><span class="n">p1</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:d348300ba7d67f11:b9 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b10 -->
+
 <p>第四步，此时我们再申请这个大小的块，很显然，从 tcache 中得到了这个蓝色块。此时 <code>p3==p2</code>：</p>
+<!-- blog-edit-end:d348300ba7d67f11:b10 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b11 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="n">p3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x400</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d348300ba7d67f11:b11 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b12 -->
+
 <p>现在我们就有两个指针指向了同一片 tcache 大小的内存。后续的攻击就是用其他的手段，比如：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">free</span><span class="p">(</span><span class="n">p3</span><span class="p">);</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">want_addr</span><span class="p">;</span><span class="w"> </span><span class="c1">// 修改 next 指针</span>
@@ -721,14 +771,34 @@
 </span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x400</span><span class="p">);</span>
 </span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span><span class="n">victim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x400</span><span class="p">);</span><span class="w"> </span><span class="c1">// 从 tcache 中拿到控制块</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:d348300ba7d67f11:b12 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b13 -->
+
 <p>这里举例是修改 next 指针，但由于 safe-linking 的存在（即存储的不是 next，而是 next 和块地址异或的值），所以我们需要知道 heap 地址才行。总之我们是有了 Double Refrence，至于攻击，还需要其他辅助。</p>
+<!-- blog-edit-end:d348300ba7d67f11:b13 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b14 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>Double Free --&gt; fastbin dup consolidate --&gt; Double Refrence 
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>思路一：Double Refrence + 泄露 heap 地址 --&gt; tcache poisoning 成功修改 next 指针
 </span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span>思路二：...
 </span></code></pre></div>
+<!-- blog-edit-end:d348300ba7d67f11:b14 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b15 -->
+
 <h2 id="_2">其他说明</h2>
+<!-- blog-edit-end:d348300ba7d67f11:b15 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b16 -->
+
 <p>malloc_consolidate 的触发条件如下，上面的原理利用了第一条。</p>
+<!-- blog-edit-end:d348300ba7d67f11:b16 -->
+
+<!-- blog-edit-start:d348300ba7d67f11:b17 -->
+
 <p>As of glibc version 2.35 it is called only in the following five places:</p>
 <ol>
 <li>_int_malloc: A large sized chunk is being allocated (<a href="https://elixir.bootlin.com/glibc/glibc-2.35/source/malloc/malloc.c#L3965">https://elixir.bootlin.com/glibc/glibc-2.35/source/malloc/malloc.c#L3965</a>)</li>
@@ -737,6 +807,9 @@
 <li>mtrim: Always (<a href="https://elixir.bootlin.com/glibc/glibc-2.35/source/malloc/malloc.c#L5041">https://elixir.bootlin.com/glibc/glibc-2.35/source/malloc/malloc.c#L5041</a>)</li>
 <li>__libc_mallopt: Always (<a href="https://elixir.bootlin.com/glibc/glibc-2.35/source/malloc/malloc.c#L5463">https://elixir.bootlin.com/glibc/glibc-2.35/source/malloc/malloc.c#L5463</a>)</li>
 </ol>
+<!-- blog-edit-end:d348300ba7d67f11:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\02.fast\02.fastbin_dup_consolidate.md" data-text-edit-revision="413f7837deca1086c8e636e2cba4b387a09bdda18049826da4ec342664451ad5" data-text-edit-marker="d348300ba7d67f11" data-text-edit-schema="1"></div>
 
 
 
@@ -968,8 +1041,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

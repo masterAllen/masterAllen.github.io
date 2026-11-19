@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -662,17 +662,55 @@
   
 
 
+<!-- blog-edit-start:deed68300b17b88a:b0 -->
+
 <h1 id="piecewise-linear">Piecewise linear 快速双边滤波记录</h1>
+<!-- blog-edit-end:deed68300b17b88a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="80203ffd1031b589b2c2396669e4ea45ee9ff0498f03c33e7233d2cf3e9ab7d1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5C%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2%5CPiecewise_linear%E5%8A%A0%E9%80%9F%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5C%E5%8F%8C%E8%BE%B9%E6%BB%A4%E6%B3%A2" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\01.各种滤波\双边滤波\Piecewise_linear加速双边滤波.md">复制路径</span></div>
 
+<!-- blog-edit-start:deed68300b17b88a:b1 -->
+
 <p>原始论文：Fast Bilateral Filtering for the Display of High-Dynamic-Range Images</p>
+<!-- blog-edit-end:deed68300b17b88a:b1 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b2 -->
+
 <p>双边滤波：</p>
+<!-- blog-edit-end:deed68300b17b88a:b2 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b3 -->
+
 <p><img alt="" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819225430.png" /></p>
+<!-- blog-edit-end:deed68300b17b88a:b3 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b4 -->
+
 <p>假设窗口是 <span class="arithmatex">\(k*k\)</span>，图像大小是 <span class="arithmatex">\(n*n\)</span>，那么双边滤波的计算量是多少？只算乘法，需要 <span class="arithmatex">\(n^2*k^2*2\)</span> 次，<span class="arithmatex">\(k\)</span> 如果很大那计算量太大了。</p>
+<!-- blog-edit-end:deed68300b17b88a:b4 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b5 -->
+
 <p>上面这篇文章就提了一个有趣的思路。想了半天终于明白本质原因了，下面记录一下我的理解。</p>
+<!-- blog-edit-end:deed68300b17b88a:b5 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b6 -->
+
 <p>加速，那就空间换时间呗。假设我们有无限大的容量，有什么好的方法加速呢？提前算好，最后直接查表呗。</p>
+<!-- blog-edit-end:deed68300b17b88a:b6 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b7 -->
+
 <p>但是怎么提前算好，直接给出答案。看如下的公式，其中 <span class="arithmatex">\(i^j\)</span> 表示 0-255 内的数。也就是我假定某个像素大小是 <span class="arithmatex">\(i^j\)</span>，提前算好。到最后查表即可。</p>
+<!-- blog-edit-end:deed68300b17b88a:b7 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b8 -->
+
 <p><img alt="" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819225839.png" /></p>
+<!-- blog-edit-end:deed68300b17b88a:b8 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b9 -->
+
 <p>但是上面这个式子和原始有什么改进？<strong>可以使用分离滤波！</strong>它的步骤如下：</p>
 <ol>
 <li>遍历 <span class="arithmatex">\(i^j\)</span> 从 0 到 255，下面讲解每次遍历的情况。</li>
@@ -681,17 +719,64 @@
 <li>上图中第一个公式，<span class="arithmatex">\(G\)</span> 表和 <span class="arithmatex">\(I\)</span> 表对应相乘，得到 <span class="arithmatex">\(H\)</span> 表，同样得到 <span class="arithmatex">\(H\)</span> 后再做高斯滤波，速度很快，得到 <span class="arithmatex">\(J\)</span> 表</li>
 <li>最后 <span class="arithmatex">\(J\)</span> 除以 <span class="arithmatex">\(k\)</span>，就得到这次遍历的值</li>
 </ol>
+<!-- blog-edit-end:deed68300b17b88a:b9 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b10 -->
+
 <p>算下来，需要多少乘法？高斯滤波是可以分解为两个一维高斯核相乘，<span class="arithmatex">\(n*n\)</span> 需要 <span class="arithmatex">\(2n\)</span> 次乘法。计算 <span class="arithmatex">\(G\)</span> 不需要乘法，直接查 <span class="arithmatex">\(g\)</span> 表；计算 <span class="arithmatex">\(k\)</span> 需要 <span class="arithmatex">\(2k*n^2\)</span> 次乘法；计算 <span class="arithmatex">\(H\)</span> 需要 <span class="arithmatex">\(n^2\)</span>；计算 <span class="arithmatex">\(J\)</span> 需要 <span class="arithmatex">\(2k*n^2\)</span> 次乘法。</p>
+<!-- blog-edit-end:deed68300b17b88a:b10 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b11 -->
+
 <p>由于从 0 到 255 遍历，总结下来，需要 <span class="arithmatex">\(256*n^2*(4k+1)\)</span> 次乘法。原始朴素的，需要 <span class="arithmatex">\(n^2*k^2*2\)</span> 次乘法。当 <span class="arithmatex">\(k\)</span> 变大时，优化会很显著。</p>
+<!-- blog-edit-end:deed68300b17b88a:b11 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b12 -->
+
 <h2 id="_1">深入思考</h2>
+<!-- blog-edit-end:deed68300b17b88a:b12 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b13 -->
+
 <p>究竟优化在哪里了？想了半天，终于明白：每次遍历我是认为中心点一样的值，这样能够复用一些结果！</p>
+<!-- blog-edit-end:deed68300b17b88a:b13 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b14 -->
+
 <p><img alt="" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819232320.png" /></p>
+<!-- blog-edit-end:deed68300b17b88a:b14 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b15 -->
+
 <p>如图，由于每次按照像素值遍历的，即假设我遍历到 10，此时想要的：假定蓝一是 10，算一下双边滤波它最后多少；假定蓝二是 10，算一下双边滤波它最后多少。</p>
+<!-- blog-edit-end:deed68300b17b88a:b15 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b16 -->
+
 <p>带来什么好处？绿色的点，虽然处理以不同像素为中心的窗口，它的 <span class="arithmatex">\(g\)</span> 值始终是一样的！这样有什么好处？不需要重复计算了！</p>
+<!-- blog-edit-end:deed68300b17b88a:b16 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b17 -->
+
 <p>朴素的双边滤波每个窗口是独立的，需要重复计算绿色点的 <span class="arithmatex">\(g\)</span> 值，然后才能再 <span class="arithmatex">\(g*f\)</span>，再 <span class="arithmatex">\(g*f*I\)</span>。</p>
+<!-- blog-edit-end:deed68300b17b88a:b17 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b18 -->
+
 <p>现在这样，我们每个点的 <span class="arithmatex">\(g\)</span> 值处理不同窗口都是一样，即我们最后可以得到一个同等 <span class="arithmatex">\(n*n\)</span> 的 <span class="arithmatex">\(G\)</span> 表，那么 <span class="arithmatex">\(g*f\)</span> 可以直接高斯滤波了！可拆成两个一维了！非常精妙！</p>
+<!-- blog-edit-end:deed68300b17b88a:b18 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b19 -->
+
 <h2 id="_2">额外补充</h2>
+<!-- blog-edit-end:deed68300b17b88a:b19 -->
+
+<!-- blog-edit-start:deed68300b17b88a:b20 -->
+
 <p>当然我们空间不是无限大，我们做不到从 0 遍历到 255。论文中进行了分段，即 0、16、32... 这样，最后插值即可。</p>
+<!-- blog-edit-end:deed68300b17b88a:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\01.各种滤波\双边滤波\Piecewise_linear加速双边滤波.md" data-text-edit-revision="80203ffd1031b589b2c2396669e4ea45ee9ff0498f03c33e7233d2cf3e9ab7d1" data-text-edit-marker="deed68300b17b88a" data-text-edit-schema="1"></div>
 
 
 
@@ -923,8 +1008,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

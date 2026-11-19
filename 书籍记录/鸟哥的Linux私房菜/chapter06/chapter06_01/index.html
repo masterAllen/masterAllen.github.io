@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -599,13 +599,31 @@
   
 
 
+<!-- blog-edit-start:43591280b9d39e45:b0 -->
+
 <h1 id="_1">第六章: 文件权限</h1>
+<!-- blog-edit-end:43591280b9d39e45:b0 -->
+
 <div class="file-actions" data-image-edit-revision="43591280b9d39e45e0d6c2c7e56d49391a149e7d2afb2e54fdaffb9bc843c2bd" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter06%5Cchapter06_01.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter06" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter06\chapter06_01.md">复制路径</span></div>
 
+<!-- blog-edit-start:43591280b9d39e45:b1 -->
+
 <p>主要注意下面几点。</p>
+<!-- blog-edit-end:43591280b9d39e45:b1 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b2 -->
+
 <p>1. 文件有w权限，这是相对文件来说的，你可以改变它的内容，但是不能随意更改它本身(如删除，改文件名)<br />
 这一点非常重要，对文件操作和对文件内容操作是两回事!!!</p>
+<!-- blog-edit-end:43591280b9d39e45:b2 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b3 -->
+
 <p>2. 只要能进入目录，修改文件啊，执行文件啊等等都是看文件的本身属性而非目录了</p>
+<!-- blog-edit-end:43591280b9d39e45:b3 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b4 -->
+
 <p>3. 目录的 x 权限很重要，下面是详细情况:<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>&quot; 该抽屉没有灯光 &quot;
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>000 -- 啥都不能干，也不能进去
@@ -619,15 +637,39 @@
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>110 -- 能够读取目录下的文件名
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span>111 -- 进入目录，可以创建文件，删除文件，更改文件名
 </span></code></pre></div></p>
+<!-- blog-edit-end:43591280b9d39e45:b4 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b5 -->
+
 <p>4. 非常好的一句话:<br />
 If you don't have execute perms, then write perms are meaningless.</p>
+<!-- blog-edit-end:43591280b9d39e45:b5 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b6 -->
+
 <p>上面是普通权限，下面讲讲默认权限和隐藏权限</p>
+<!-- blog-edit-end:43591280b9d39e45:b6 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b7 -->
+
 <p>1. 默认权限 </p>
+<!-- blog-edit-end:43591280b9d39e45:b7 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b8 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 查看默认权限  umask 
 <span class="linenos" data-linenos="2 "></span>- 改变默认权限举例 umask 002
 <span class="linenos" data-linenos="3 "></span>- 创建文件时要把umask表示的文件属性减去
 </code></pre></div>
+<!-- blog-edit-end:43591280b9d39e45:b8 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b9 -->
+
 <p>2. 隐藏权限</p>
+<!-- blog-edit-end:43591280b9d39e45:b9 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b10 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 查看隐藏权限  `lsattr`
 <span class="linenos" data-linenos="2 "></span>- 改变隐藏权限  `chattr [+-=] [ASacdistu] filename`
 <span class="linenos" data-linenos="3 "></span>- 几个要记住的隐藏权限
@@ -635,13 +677,32 @@ If you don't have execute perms, then write perms are meaningless.</p>
 <span class="linenos" data-linenos="5 "></span>    - a : 只能增加数据，不能删除不能修改数据
 <span class="linenos" data-linenos="6 "></span>    - i : 不能删除，改名，修改，链接等等。
 </code></pre></div>
+<!-- blog-edit-end:43591280b9d39e45:b10 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b11 -->
+
 <p>3. 特殊权限<br />
 <a href="http://shouce.jb51.net/vbird-linux-basic-4/52.html">http://shouce.jb51.net/vbird-linux-basic-4/52.html</a></p>
+<!-- blog-edit-end:43591280b9d39e45:b11 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b12 -->
+
 <p>4. <a href=".././chapter06_03/">ACL</a>： 就是 rwx+ 后面会有 + 号, 这个就是 ACL 做的事情</p>
+<!-- blog-edit-end:43591280b9d39e45:b12 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b13 -->
+
 <p>权限应用总结</p>
+<!-- blog-edit-end:43591280b9d39e45:b13 -->
+
+<!-- blog-edit-start:43591280b9d39e45:b14 -->
+
 <p>1. 执行CP命令 (文件read权限,目录x权限)<br />
 2. 日志文件的安全保护 (+a)<br />
 3. 无法增加用户? (可能/etc/shadow文件有i属性)</p>
+<!-- blog-edit-end:43591280b9d39e45:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter06\chapter06_01.md" data-text-edit-revision="43591280b9d39e45e0d6c2c7e56d49391a149e7d2afb2e54fdaffb9bc843c2bd" data-text-edit-marker="43591280b9d39e45" data-text-edit-schema="1"></div>
 
 
 
@@ -873,8 +934,6 @@ If you don't have execute perms, then write perms are meaningless.</p>
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

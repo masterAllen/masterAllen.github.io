@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -605,11 +605,24 @@
   
 
 
+<!-- blog-edit-start:ed41b65ebb0f64bb:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录四：函数传参</h1>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7ef1d12714b505706fc3e61b363029c659ac6e0d0afa0ea5cf79ba2c0bccbe75" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_04.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_04.md">复制路径</span></div>
 
+<!-- blog-edit-start:ed41b65ebb0f64bb:b1 -->
+
 <p>这里主要讲一下 函数 相关内容</p>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b1 -->
+
+<!-- blog-edit-start:ed41b65ebb0f64bb:b2 -->
+
 <h2 id="_1">函数传参中 * 和 ** 的区别</h2>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b2 -->
+<!-- blog-edit-start:ed41b65ebb0f64bb:b3 -->
+
 <p><code>*</code> 是让参数以 tuple 形式来导入.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="o">*</span><span class="n">param2</span><span class="p">):</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span>
@@ -617,20 +630,44 @@
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b3 -->
+
+<!-- blog-edit-start:ed41b65ebb0f64bb:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>1
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>(2, 3, 4)
 </span></code></pre></div>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b4 -->
+
+<!-- blog-edit-start:ed41b65ebb0f64bb:b5 -->
+
 <p><code>**</code> 是让参数以 dictionary 形式导入.</p>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b5 -->
+
+<!-- blog-edit-start:ed41b65ebb0f64bb:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="o">**</span><span class="n">param2</span><span class="p">):</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">param2</span><span class="p">)</span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="n">test</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b6 -->
+
+<!-- blog-edit-start:ed41b65ebb0f64bb:b7 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>1
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>{&#39;a&#39;:2, &#39;b&#39;:3}
 </span></code></pre></div>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b7 -->
+
+<!-- blog-edit-start:ed41b65ebb0f64bb:b8 -->
+
 <p>两者同时出现在同一个函数中:</p>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b8 -->
+
+<!-- blog-edit-start:ed41b65ebb0f64bb:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">test1</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="o">*</span><span class="n">param2</span><span class="p">,</span> <span class="n">param4</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">param3</span><span class="p">):</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="nb">print</span><span class="p">(</span><span class="n">param2</span><span class="p">)</span>
@@ -661,6 +698,9 @@
 </span><span id="__span-4-28"><span class="linenos" data-linenos="28 "></span><span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">}</span>
 </span><span id="__span-4-29"><span class="linenos" data-linenos="29 "></span><span class="mi">2</span>
 </span></code></pre></div>
+<!-- blog-edit-end:ed41b65ebb0f64bb:b9 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_04.md" data-text-edit-revision="7ef1d12714b505706fc3e61b363029c659ac6e0d0afa0ea5cf79ba2c0bccbe75" data-text-edit-marker="ed41b65ebb0f64bb" data-text-edit-schema="1"></div>
 
 
 
@@ -892,8 +932,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

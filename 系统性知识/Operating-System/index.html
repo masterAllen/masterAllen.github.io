@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -581,63 +581,128 @@
   
 
 
+<!-- blog-edit-start:8b94e4f723ced806:b0 -->
+
 <h1 id="_1">提纲</h1>
+<!-- blog-edit-end:8b94e4f723ced806:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8fbcb5914f8f81c22c8d2a33cf0c453b88778188415774df65a4f24e44fe8644" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5CREADME.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Operating-System\README.md">复制路径</span></div>
 
+<!-- blog-edit-start:8b94e4f723ced806:b1 -->
+
 <p>操作系统，我感觉我的掌握应该非常扎实。首先我大三学操作系统就很认真，课设做的也自我感觉不错。大三的科研助理我做的操作系统知识图谱，当时对着书本去构造知识图谱，可以说很扎实了。大四毕业设计也是这个，纸上谈兵起码是没问题的。</p>
+<!-- blog-edit-end:8b94e4f723ced806:b1 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b2 -->
+
 <p>大四考研有学习了清华的操作系统，而且我个人做了很长时间的二进制安全的学习。研究生和工作之后也每年会看一遍南京大学 jyy 的操作系统。说实话，我感觉还挺遗憾没做操作系统的相关研究的。</p>
+<!-- blog-edit-end:8b94e4f723ced806:b2 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b3 -->
+
 <p>下面是各个目录的内容：</p>
+<!-- blog-edit-end:8b94e4f723ced806:b3 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b4 -->
+
 <ul>
 <li>Jiang-OS: 里面是对南京 jyy 老师的操作系统课程个人笔记。</li>
 <li>Kaoyan: 考研学习操作系统，个人准备的问答题，我在最后两三个月经常会过一遍，感觉这样效率很高。</li>
 <li>个人笔记：个人学习时不懂的地方的记录</li>
 </ul>
+<!-- blog-edit-end:8b94e4f723ced806:b4 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b5 -->
+
 <p>下面是一些整理的问题：</p>
+<!-- blog-edit-end:8b94e4f723ced806:b5 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b6 -->
+
 <details class="note">
 <summary>Shell 处在内核态还是用户态？</summary>
 <p>Shell 本身运行在用户态，它通过调用 <code>fork()</code>、<code>execve()</code> 等系统调用封装函数实现程序的加载和运行。</p>
 <p>在执行这些系统调用函数的过程中，会通过 <code>int 0x80</code> 指令陷入内核，从而在内核态由内核代码实现相应的子进程创建、程序加载等工作。</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b6 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b7 -->
+
 <details class="note">
 <summary>CISC(复杂)有哪些优点，看书上似乎RISC是完美的？</summary>
 <p>程序短小：这个可以理解，一条指令可以完成多个事情，在内存十分昂贵(现在也很重要)的远古时代，很占优势。</p>
 <p>补充说明：此外还有其他优势，不过那个可能就不是我们要掌握的东西了。而且当今RISC和CISC没有明确界限，两者在相互借鉴。</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b7 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b8 -->
+
 <details class="note">
 <summary>移码会用在哪里，为什么要用它？</summary>
 <p>移码用于浮点数中的阶码。好处：便于比较大小，浮点数经常会对指数比较。</p>
 <p>浮点数可以先对指数比较。对于移码可以直接就用无符号比了，即直接从高到低比较了。对于补码，需要特殊的有符号比较器，总体而言麻烦一点。</p>
 <p>当然这一点感觉有点苛责了。为什么整数不用移码？因为移码不适合加减运算，尤其是减法的溢出自动处理。浮点数的指数相对就用于排序多一点。</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b8 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b9 -->
+
 <details class="note">
 <summary>为什么说设备驱动让内核变得庞大复杂？按理说内核只需要处理核心程序，驱动由各个厂商作为接口提供？</summary>
 <p>理论上这样。但现实是为了方便、安全等等各种因素，内核会合并许多设备的驱动代码... <a href="Jiang-OS/设备驱动程序和ioctl.html/">我对于该问题和 AI 的对话</a></p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b9 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b10 -->
+
 <details class="note">
 <summary>进程是怎么知道自己页表放在哪的</summary>
 <p>有专门寄存器表示当前进程的页表基地址（x86 是 CR3）,寄上下文切换就从 PCB 调出</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b10 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b11 -->
+
 <details class="note">
 <summary>为什么要多级页表，阐述其好处</summary>
 <p>节省空间，因为二级页表可以不存在，二级页表可以不在内存</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b11 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b12 -->
+
 <details class="note">
 <summary>FAT 同样是链式存储，改进究竟改进在哪里？</summary>
 <p><strong>把链表指针集中放在磁盘的一个表里。</strong>管理方便、可以一口气读到内存里，之后调度很快、容错和恢复方便等等... 具体可以看 jyy 的课程。</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b12 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b13 -->
+
 <details class="note">
 <summary>当CPU占有率较低，IO设备占有率较低，但是磁盘交换空间却很繁忙时，需要如何改进?</summary>
 <p>交换频繁，说明频繁使用虚拟内存。CPU 计算低、IO 操作低，说明内存用的不好，增加内存条或者优化内存使用。</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b13 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b14 -->
+
 <details class="note">
 <summary>U盘上应该采用什么调度算法，C-SCAN吗?</summary>
 <p>对于U盘和SSD等随机访问的Flash半导体存储器，采用FCFS（先来先服务）调度策略更高效。 因为Flash的半导体存储器的物理结构不需要考虑寻道时间和旋转延迟，随机访问速度和顺序访问差别不大，可直接按I/O请求的先后顺序服务。</p>
 <p>U盘这种实际内部有一小段调度程序。</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b14 -->
+
+<!-- blog-edit-start:8b94e4f723ced806:b15 -->
+
 <details class="note">
 <summary>为什么栈比堆快</summary>
 <p>除了寻址有所区别。最重要的是空间局部性啊，Cache 命中率更高。</p>
 </details>
+<!-- blog-edit-end:8b94e4f723ced806:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Operating-System\README.md" data-text-edit-revision="8fbcb5914f8f81c22c8d2a33cf0c453b88778188415774df65a4f24e44fe8644" data-text-edit-marker="8b94e4f723ced806" data-text-edit-schema="1"></div>
 
 
 
@@ -869,8 +934,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

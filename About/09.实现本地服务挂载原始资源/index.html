@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-9-623cc78a2f1a.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-9-eeec361aae32.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-9-623cc78a2f1a.html"
+         data-shared-navigation-target="../../navigation/shared/group-9-eeec361aae32.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -728,20 +728,54 @@
   
 
 
+<!-- blog-edit-start:8d460d1ddbab0f64:b0 -->
+
 <h1 id="_1">本地服务挂载原始资源</h1>
+<!-- blog-edit-end:8d460d1ddbab0f64:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8d460d1ddbab0f645baef0367cd86f14936109cf239811f7ec10acf0d78d2a88" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CAbout%5C09.%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E6%8C%82%E8%BD%BD%E5%8E%9F%E5%A7%8B%E8%B5%84%E6%BA%90.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CAbout" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\About\09.实现本地服务挂载原始资源.md">复制路径</span></div>
 
+<!-- blog-edit-start:8d460d1ddbab0f64:b1 -->
+
 <p>使用对原始文件进行转换再去挂载的逻辑，有一个好处，就是可以根据不同的任务情况，实现不同的转换结果，这样只需要维护一个原始文件，但最终用在不同的场景中。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b1 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b2 -->
+
 <p>本文就是说明了这样一个场景：我一般会有一个本地服务，用的全是本地已有的资源，没有外部的请求。比如字体是提前下载好的、取消站点统计等等，这样浏览器打开和切换文章很快，基本是无感的。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b2 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b3 -->
+
 <p>而很自然地，本地服务不会像公开站点一样，有大资源限制，他是可以查看任何如视频文件这种大资源的。但是这就导致一个问题：我不可能像公开站点那样，把资源再复制一份到 <code>docs/asset</code> 目录中，因为大资源最后统计出来大小很大。正确做法是直接挂载原始资源。本文就是讲的实现这样一个需求。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b3 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b4 -->
+
 <h2 id="1">1. 先理解三个结论</h2>
+<!-- blog-edit-end:8d460d1ddbab0f64:b4 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b5 -->
+
 <ol>
 <li><strong>共用的是中间 Markdown，公开站点与本地站点分别生成 HTML。</strong> 公开 HTML 可以显示“未在线发布”，本地 HTML 可以在同一位置显示播放器或 PDF 阅读框。</li>
 <li><strong>资源网址不等于磁盘文件位置。</strong> 本地服务收到 <code>/asset/...</code> 请求后，可以查表读取 <code>done/</code> 中的原文件，不要求站点输出目录中存在一份同名副本。</li>
 <li><strong>文件转换、资源复制、网页展示是三个独立步骤。</strong> Word/PPT 可以先生成本地 PDF 缓存，再决定是否复制进发布目录；视频可以直接读取原文件，无须转换或复制。</li>
 </ol>
+<!-- blog-edit-end:8d460d1ddbab0f64:b5 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b6 -->
+
 <p>这一机制主要解决超限资源和独立视频的本地使用问题。普通小图片、小 PDF 等资源仍可沿用原来的复制发布流程。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b6 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b7 -->
+
 <h2 id="2">2. 整体结构</h2>
+<!-- blog-edit-end:8d460d1ddbab0f64:b7 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b8 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>原始内容：D:\Blog\done\
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>    │
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    │ 转换、链接处理、资源登记
@@ -771,13 +805,41 @@
 </span><span id="__span-0-27"><span class="linenos" data-linenos="27 "></span>                               ▼
 </span><span id="__span-0-28"><span class="linenos" data-linenos="28 "></span>                         返回文件内容给浏览器
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b8 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b9 -->
+
 <p>关键：中间生产的 Markdown 是共用的，<strong>条件判断发生在主题模板渲染 HTML 时。</strong></p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b9 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b10 -->
+
 <h2 id="3-markdown">3. 转中间 Markdown</h2>
+<!-- blog-edit-end:8d460d1ddbab0f64:b10 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b11 -->
+
 <h3 id="31">3.1 本地资源登记表</h3>
+<!-- blog-edit-end:8d460d1ddbab0f64:b11 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b12 -->
+
 <p>转换的时候会维护一个本地资源登记表，位置为：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b12 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b13 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>D:\Blog\scripts\web\configs\local_resources.json
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b13 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b14 -->
+
 <p>里面包含了许多条目，记录了本地资源，比如：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b14 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b15 -->
+
 <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">&quot;8e59c60ed849360b8e104a04de0384b7&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;D:\\Blog\\done\\系统性知识\\Computer-Network\\00.Network_Judge\\demo.mp4&quot;</span><span class="p">,</span>
@@ -791,7 +853,15 @@
 </span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="p">},</span>
 </span><span id="__span-2-12"><span class="linenos" data-linenos="12 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b15 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b16 -->
+
 <p>字段含义：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b16 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b17 -->
+
 <table>
 <thead>
 <tr>
@@ -838,9 +908,25 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:8d460d1ddbab0f64:b17 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b18 -->
+
 <p>需要注意 <code>local_resource.json</code> 只记录那些需要特别处理的文件，普通一些小图片之类的，还是会按照原来的逻辑处理。不然这个文件最后会非常大，每次重新写会很麻烦。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b18 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b19 -->
+
 <h3 id="32-markdown">3.2 中间 Markdown 的资源元数据</h3>
+<!-- blog-edit-end:8d460d1ddbab0f64:b19 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b20 -->
+
 <p>转中间 Markdown 时保存渲染需要的信息，不保存登记表中的 <code>source</code> 和 <code>conversion</code> 字段：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b20 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b21 -->
+
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="nn">---</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="nt">hide</span><span class="p">:</span>
@@ -864,7 +950,15 @@
 </span><span id="__span-3-21"><span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="nt">style</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
 </span><span id="__span-3-22"><span class="linenos" data-linenos="22 "></span><span class="nn">---</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b21 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b22 -->
+
 <p>每个 <code>id</code> 对于文章的一个资源引用。这里的 <code>marker</code> 表示正文中的资源引用标记。比如转换后的 markdown 中内容为：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b22 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b23 -->
+
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>下面是视频：
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>&lt;!--blog-resource:8e59c60ed849360b8e104a04de0384b7--&gt;
@@ -873,7 +967,15 @@
 </span><span id="__span-4-6"><span class="linenos" data-linenos="6 "></span>
 </span><span id="__span-4-7"><span class="linenos" data-linenos="7 "></span>&lt;!--blog-resource:8fe0d22925eff941df89f5a76a6f8185--&gt;
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b23 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b24 -->
+
 <p>后续转 HTML 的时候，会有不同的行为（见下个章节），公开构建的网站如下：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b24 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b25 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>下面是视频：
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>demo.mp4：此资源未在线发布
@@ -882,7 +984,15 @@
 </span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span>
 </span><span id="__span-5-7"><span class="linenos" data-linenos="7 "></span>demo.html：此资源未在线发布
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b25 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b26 -->
+
 <p>本地构建的网站如下：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b26 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b27 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>下面是视频：
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>[播放器]
@@ -891,22 +1001,62 @@
 </span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span>
 </span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span>[HTML 阅读框]
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b27 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b28 -->
+
 <p><code>resource_files.add_metadata()</code> 负责这个功能，它会扫描正文标记，从登记表提取相应记录，将所需字段写入 <code>resource_cards</code>。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b28 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b29 -->
+
 <h2 id="4-markdown-html">4. 共用 Markdown 如何生成不同 HTML</h2>
+<!-- blog-edit-end:8d460d1ddbab0f64:b29 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b30 -->
+
 <h3 id="41">4.1 构建配置说明</h3>
+<!-- blog-edit-end:8d460d1ddbab0f64:b30 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b31 -->
+
 <p>之所以能生成不同 HTML，是因为构建配置不同。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b31 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b32 -->
+
 <p>公开配置和本地配置的关键就在于，这个 <code>local_resources</code> 的值不同。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b32 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b33 -->
+
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="nt">extra</span><span class="p">:</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">local_resources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b33 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b34 -->
+
 <p>Mkdocs/Zensical 转换的时候可以利用这些配置来生成不同的 HTML。比如核心条件可以简化理解为（简化理解，后面会详细解释实际逻辑）：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b34 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b35 -->
+
 <div class="language-jinja highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">config.extra.local_resources</span> <span class="cp">%}</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="x">  &lt;!-- 根据资源类型生成本地预览与链接 --&gt;</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
 </span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span><span class="x">  &lt;!-- 生成未在线发布说明 --&gt;</span>
 </span><span id="__span-8-5"><span class="linenos" data-linenos="5 "></span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b35 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b36 -->
+
 <h3 id="42">4.2 模板渲染顺序</h3>
+<!-- blog-edit-end:8d460d1ddbab0f64:b36 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b37 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>Zensical 将 Markdown 转为 page.content
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span>    ↓
 </span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span>base.html 检查 page.meta.resource_cards（也就是 5.2 节所说的文章开头保存的信息）
@@ -917,8 +1067,20 @@
 </span><span id="__span-9-8"><span class="linenos" data-linenos="8 "></span>    ↓
 </span><span id="__span-9-9"><span class="linenos" data-linenos="9 "></span>将 page.content 中对应注释标记替换为卡片 HTML
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b37 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b38 -->
+
 <h3 id="43">4.3 统筹替换逻辑</h3>
+<!-- blog-edit-end:8d460d1ddbab0f64:b38 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b39 -->
+
 <p><code>resource-content.html</code> 是我们新增的<strong>主题模板片段，负责统筹处理把正文里的标记替换成资源卡片 HTML</strong>。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b39 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b40 -->
+
 <div class="language-jinja highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">rendered</span> <span class="o">=</span> <span class="nv">namespace</span><span class="o">(</span><span class="nv">content</span><span class="o">=</span><span class="nv">page.content</span><span class="o">)</span> <span class="cp">%}</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos=" 3 "></span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">resource</span> <span class="k">in</span> <span class="nv">page.meta.resource_cards</span> <span class="o">|</span> <span class="nf">d</span><span class="o">([])</span> <span class="cp">%}</span>
@@ -931,7 +1093,15 @@
 </span><span id="__span-10-10"><span class="linenos" data-linenos="10 "></span>
 </span><span id="__span-10-11"><span class="linenos" data-linenos="11 "></span><span class="cp">{{</span> <span class="nv">rendered.content</span> <span class="o">|</span> <span class="nf">safe</span> <span class="cp">}}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b40 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b41 -->
+
 <p>它的工作过程是：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b41 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b42 -->
+
 <ol>
 <li>取得当前文章的正文 <code>page.content</code>。</li>
 <li>遍历文章的 <code>resource_cards</code> 列表。</li>
@@ -939,8 +1109,20 @@
 <li>找到正文中对应的 <code>marker</code>，替换成这张卡片。</li>
 <li>输出替换后的正文。</li>
 </ol>
+<!-- blog-edit-end:8d460d1ddbab0f64:b42 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b43 -->
+
 <h3 id="44">4.4 单文件替换逻辑</h3>
+<!-- blog-edit-end:8d460d1ddbab0f64:b43 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b44 -->
+
 <p><code>resource-card.html</code> 负责生成单个资源卡片 HTML，<strong>他会来判断是公开还是本地预览</strong>。然后根据判断结果生成不同的 HTML。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b44 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b45 -->
+
 <div class="language-jinja highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos=" 1 "></span><span class="x">&lt;span class=&quot;blog-resource&quot;&gt;</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos=" 2 "></span><span class="x">  </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">config.extra.local_resources</span> <span class="cp">%}</span>
 </span><span id="__span-11-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -956,20 +1138,56 @@
 </span><span id="__span-11-13"><span class="linenos" data-linenos="13 "></span><span class="x">  </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </span><span id="__span-11-14"><span class="linenos" data-linenos="14 "></span><span class="x">&lt;/span&gt;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b45 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b46 -->
+
 <p>所以最终调用关系是：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b46 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b47 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span>base.html
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span>  → resource-content.html：遍历资源，替换正文标记
 </span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span>      → resource-card.html：判断配置，生成每张卡片；这里公开站点和本地站点就会有不同内容
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b47 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b48 -->
+
 <h2 id="5">5. 两种本地服务的读取方式</h2>
+<!-- blog-edit-end:8d460d1ddbab0f64:b48 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b49 -->
+
 <p>本地挂载 http 服务，用于访问站点，启动入口：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b49 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b50 -->
+
 <div class="language-powershell highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="n">python</span> <span class="n">-X</span> <span class="n">utf8</span> <span class="n">D</span><span class="p">:\</span><span class="n">Blog</span><span class="p">\</span><span class="n">scripts</span><span class="p">\</span><span class="n">web</span><span class="p">\</span><span class="n">serve_local_site</span><span class="p">.</span><span class="n">py</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b50 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b51 -->
+
 <p>这里的 URL 有两种类型，一种是文章页面，一种是资源请求：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b51 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b52 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span>http://127.0.0.1:8000/系统性知识/
 </span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span>http://127.0.0.1:8000/asset/video/&lt;哈希&gt;/demo.mp4
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b52 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b53 -->
+
 <p>脚本里面会判断 URL 类型，他会注册 <code>/asset/</code> 资源路由：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b53 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b54 -->
+
 <div class="language-python highlight"><span class="filename">local_resource.py</span><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">handlers</span><span class="p">(</span><span class="n">fallback_root</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="__span-15-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">return</span> <span class="p">[</span>
 </span><span id="__span-15-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="p">(</span>
@@ -982,8 +1200,20 @@
 </span><span id="__span-15-10"><span class="linenos" data-linenos="10 "></span>        <span class="p">),</span>
 </span><span id="__span-15-11"><span class="linenos" data-linenos="11 "></span>    <span class="p">]</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b54 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b55 -->
+
 <p>其中 <code>r'/asset/(.*)'</code> 表示：匹配 <code>/asset/</code> 开头的请求，交给 <code>ResourceHandler</code>。而后续就是去查找本地登记表，看看是否有这个哈希，如果没有就回退读取 <code>asset</code> 中已有的普通静态资源。</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b55 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b56 -->
+
 <p>本地登记表会维护一个 <code>url_to_value</code> 的查找表，所以查找速度是 <code>O(1)</code>，很快：</p>
+<!-- blog-edit-end:8d460d1ddbab0f64:b56 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b57 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 登记表加载或变化时，建立一次索引</span>
 </span><span id="__span-16-2"><span class="linenos" data-linenos="2 "></span><span class="n">resources_by_url</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="__span-16-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]:</span> <span class="n">item</span>
@@ -993,6 +1223,10 @@
 </span><span id="__span-16-7"><span class="linenos" data-linenos="7 "></span><span class="c1"># 每次请求直接查找</span>
 </span><span id="__span-16-8"><span class="linenos" data-linenos="8 "></span><span class="n">record</span> <span class="o">=</span> <span class="n">resources_by_url</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8d460d1ddbab0f64:b57 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b58 -->
+
 <details class="question">
 <summary>这里为什么不直接用 <code>http://127.0.0.1:8000/asset/video/&lt;哈希&gt;</code> 这种形式？</summary>
 <p>如果这里的哈希是 KEYID，那么这样直接是 <code>O(1)</code> 复杂度，查找很快。</p>
@@ -1013,7 +1247,15 @@
 <p>去掉宽度后，地址仍然不同。原来的前端分组逻辑会把它们当成两张不同图片，只把选中的一张发给编辑接口；而接口从原文中找到的是两次引用。数量对不上，就会拒绝。</p>
 <p>可以处理，但是这样太过麻烦了。所以使用直接查找 url 的方式，而且也是维护一个查找表，无非内存多用一点而已了。</p>
 </details>
+<!-- blog-edit-end:8d460d1ddbab0f64:b58 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b59 -->
+
 <h2 id="_2">细节</h2>
+<!-- blog-edit-end:8d460d1ddbab0f64:b59 -->
+
+<!-- blog-edit-start:8d460d1ddbab0f64:b60 -->
+
 <ol>
 <li>
 <p>例如，一份 PDF 以前只有 5 MB，允许发布；后来变成 20 MB，转为本地专用时，需要删除之前的发布副本。转换过程会处理一下这种情况。</p>
@@ -1022,6 +1264,10 @@
 <p>本地文件名有很多不好的字符，比如空格、百分号等等等，所以转 <code>url</code> 会在生成元数据时进行百分号编码。</p>
 </li>
 </ol>
+<!-- blog-edit-end:8d460d1ddbab0f64:b60 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\About\09.实现本地服务挂载原始资源.md" data-text-edit-revision="8d460d1ddbab0f645baef0367cd86f14936109cf239811f7ec10acf0d78d2a88" data-text-edit-marker="8d460d1ddbab0f64" data-text-edit-schema="1"></div>
+
                         
 
                         
@@ -1253,8 +1499,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

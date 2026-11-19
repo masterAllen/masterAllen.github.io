@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -755,57 +755,202 @@
   
 
 
+<!-- blog-edit-start:891c35fc78590255:b0 -->
+
 <h1 id="_1">阈值处理</h1>
+<!-- blog-edit-end:891c35fc78590255:b0 -->
+
 <div class="file-actions" data-image-edit-revision="3d5cec5fcb4bdfdb129be26d46ff3f8ec25edbceffc44ef83789d815d910c422" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C07.%E9%98%88%E5%80%BC%E5%A4%84%E7%90%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\07.阈值处理.md">复制路径</span></div>
+
+<!-- blog-edit-start:891c35fc78590255:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.6.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.6.md</a></p>
 </blockquote>
+<!-- blog-edit-end:891c35fc78590255:b1 -->
+
+<!-- blog-edit-start:891c35fc78590255:b2 -->
+
 <h3 id="_2">函数说明：</h3>
+<!-- blog-edit-end:891c35fc78590255:b2 -->
+
+<!-- blog-edit-start:891c35fc78590255:b3 -->
+
 <p>一共三个：<a href="https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#gae8a4a146d1ca78c626a53577199e9c57">threshold</a>、<a href="https://docs.opencv.org/4.x/d7/d1b/group__imgproc__misc.html#ga72b913f352e4a1b1b397736707afcde3">adaptiveThreshold</a>、<a href="https://docs.opencv.org/4.x/df/d2d/group__ximgproc.html#gab042a5032bbb85275f1fd3e04e7c7660">ximgproc 模块的 niBlackThreshold</a></p>
+<!-- blog-edit-end:891c35fc78590255:b3 -->
+
+<!-- blog-edit-start:891c35fc78590255:b4 -->
+
 <h3 id="_3">具体细节</h3>
+<!-- blog-edit-end:891c35fc78590255:b4 -->
+
+<!-- blog-edit-start:891c35fc78590255:b5 -->
+
 <p>用的时候还是得去查阅官方手册，个人代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_threshold.ipynb">test_threshold.ipynb</a> 中。</p>
+<!-- blog-edit-end:891c35fc78590255:b5 -->
+
+<!-- blog-edit-start:891c35fc78590255:b6 -->
+
 <h4 id="threshold">threshold</h4>
+<!-- blog-edit-end:891c35fc78590255:b6 -->
+<!-- blog-edit-start:891c35fc78590255:b7 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">double</span><span class="w"> </span><span class="n">cv</span><span class="o">::</span><span class="n">threshold</span><span class="w"> </span><span class="p">(</span><span class="n">InputArray</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">thresh</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">maxval</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">type</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:891c35fc78590255:b7 -->
+
+<!-- blog-edit-start:891c35fc78590255:b8 -->
+
 <ul>
 <li>输入图片是 U8 或 F32，通道数不限，但每个通道都是一样的操作；此外 the Otsu's and Triangle methods are implemented only for 8-bit single-channel images.</li>
 <li>type 就是上面的表格，最基础的做法就是 <code>threahold(src, 0, 255, cv2.THRESH_BINARY)</code> 产生二值化图片，其他的自行查阅表格，Otsu 和 Triangle 在文章最后会提一下</li>
 </ul>
+<!-- blog-edit-end:891c35fc78590255:b8 -->
+
+<!-- blog-edit-start:891c35fc78590255:b9 -->
+
 <p><img alt="1720837444854" src="../../../../asset/image/16b0735f79567061e15332021c60188a/1720837444854.png" /></p>
+<!-- blog-edit-end:891c35fc78590255:b9 -->
+
+<!-- blog-edit-start:891c35fc78590255:b10 -->
+
 <h4 id="adaptivethreshold">adaptiveThreshold</h4>
+<!-- blog-edit-end:891c35fc78590255:b10 -->
+
+<!-- blog-edit-start:891c35fc78590255:b11 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="n">cv</span><span class="o">::</span><span class="n">adaptiveThreshold</span><span class="w">  </span><span class="p">(</span><span class="n">InputArray</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">dst</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">maxValue</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">adaptiveMethod</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">thresholdType</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:891c35fc78590255:b11 -->
+
+<!-- blog-edit-start:891c35fc78590255:b12 -->
+
 <p>如名字所阐述的，就是一个动态阈值：</p>
+<!-- blog-edit-end:891c35fc78590255:b12 -->
+
+<!-- blog-edit-start:891c35fc78590255:b13 -->
+
 <p><img alt="1720837598672" src="../../../../asset/image/16b0735f79567061e15332021c60188a/1720837598672.png" /></p>
+<!-- blog-edit-end:891c35fc78590255:b13 -->
+
+<!-- blog-edit-start:891c35fc78590255:b14 -->
+
 <p>有两种，均值和高斯，后面的 blockSize 和 C 都是为它服务的，分别是窗口半径、计算后的值再减去一个数：</p>
+<!-- blog-edit-end:891c35fc78590255:b14 -->
+
+<!-- blog-edit-start:891c35fc78590255:b15 -->
+
 <p><img alt="1720837670545" src="../../../../asset/image/16b0735f79567061e15332021c60188a/1720837670545.png" /></p>
+<!-- blog-edit-end:891c35fc78590255:b15 -->
+
+<!-- blog-edit-start:891c35fc78590255:b16 -->
+
 <h4 id="niblackthreshold">niBlackThreshold</h4>
+<!-- blog-edit-end:891c35fc78590255:b16 -->
+
+<!-- blog-edit-start:891c35fc78590255:b17 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="n">cv</span><span class="o">::</span><span class="n">ximgproc</span><span class="o">::</span><span class="n">niBlackThreshold</span><span class="w"> </span><span class="p">(</span><span class="n">InputArray</span><span class="w"> </span><span class="n">_src</span><span class="p">,</span><span class="w"> </span><span class="n">OutputArray</span><span class="w"> </span><span class="n">_dst</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">maxValue</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">blockSize</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w">     </span><span class="n">binarizationMethod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BINARIZATION_NIBLACK</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:891c35fc78590255:b17 -->
+
+<!-- blog-edit-start:891c35fc78590255:b18 -->
+
 <p>和 <code>adaptiveThreshold</code> 很像，不过多考虑了方差而已。看最后面的 <code>niBlack</code> 细节。</p>
+<!-- blog-edit-end:891c35fc78590255:b18 -->
+
+<!-- blog-edit-start:891c35fc78590255:b19 -->
+
 <ul>
 <li>type: 就是上面的 THRESH_BINARY 这些，都支持。</li>
 <li>blockSize: 考虑邻近点的窗口直径</li>
 <li>k: 方法的参数，方法具体原理看下一章，一般在 [-1, 1]</li>
 <li>binarizationMethod: 具体的方法，有四个。NIBLACK、SAUVOLA、WOLF、NICK</li>
 </ul>
+<!-- blog-edit-end:891c35fc78590255:b19 -->
+
+<!-- blog-edit-start:891c35fc78590255:b20 -->
+
 <h3 id="_4">一些常用阈值方法</h3>
+<!-- blog-edit-end:891c35fc78590255:b20 -->
+
+<!-- blog-edit-start:891c35fc78590255:b21 -->
+
 <h4 id="ostu">Ostu</h4>
+<!-- blog-edit-end:891c35fc78590255:b21 -->
+
+<!-- blog-edit-start:891c35fc78590255:b22 -->
+
 <p>也是经典方法了，数字图像处理那本书讲的可以。网上这个<a href="https://www.zywvvd.com/notes/study/image-processing/otsu-thre/otsu-thre/">文章</a>不错。就是一个根据图像自动找寻最佳阈值的方法，最佳阈值这里是指按照这个阈值分类后，类间方差最大（具体原理看文章）。</p>
+<!-- blog-edit-end:891c35fc78590255:b22 -->
+
+<!-- blog-edit-start:891c35fc78590255:b23 -->
+
 <p><img alt="1720838372109" src="../../../../asset/image/16b0735f79567061e15332021c60188a/1720838372109.png" /></p>
+<!-- blog-edit-end:891c35fc78590255:b23 -->
+
+<!-- blog-edit-start:891c35fc78590255:b24 -->
+
 <h4 id="triangle">Triangle</h4>
+<!-- blog-edit-end:891c35fc78590255:b24 -->
+
+<!-- blog-edit-start:891c35fc78590255:b25 -->
+
 <p>这篇<a href="https://bioimagebook.github.io/chapters/2-processing/3-thresholding/thresholding.html#triangle-method">文章</a>讲的不错，下面相当于翻译：Triangle 是一种流行的确定阈值的方法，<strong>在有一个主要背景峰值的图像中尤其有效</strong>，此时理想的阈值应该在该峰值的底部。总体思路是，从直方图峰值到包含任何像素的最后一个区间绘制一条线。然后，寻找这条线到直方图上哪一个区间距离最大，这里的距离是指区间上方对这条线做垂线。线的方向取决于峰值是朝向直方图的左侧还是右侧；另一侧的所有计数都被忽略。直方图的宽度和高度被归一化，以处理像素值和强度计数处于完全不同的单位。看下面的图很容易理解：</p>
+<!-- blog-edit-end:891c35fc78590255:b25 -->
+
+<!-- blog-edit-start:891c35fc78590255:b26 -->
+
 <p><img alt="1720839033958" src="../../../../asset/image/16b0735f79567061e15332021c60188a/1720839033958.png" /></p>
+<!-- blog-edit-end:891c35fc78590255:b26 -->
+
+<!-- blog-edit-start:891c35fc78590255:b27 -->
+
 <h4 id="median-median-absolute-deviation">Median &amp; Median Absolute Deviation</h4>
+<!-- blog-edit-end:891c35fc78590255:b27 -->
+
+<!-- blog-edit-start:891c35fc78590255:b28 -->
+
 <p>这是很有意思的一个方法，也是来自上面的<a href="https://bioimagebook.github.io/chapters/2-processing/3-thresholding/thresholding.html#median-median-absolute-deviation">文章</a>。首先什么是 Median &amp; Median Absolute Deviation(MAD)：第一步，按照像素值排序，找到中位数；第二步，所有像素减去中位数并取绝对值；第三步，排序第二步得出的值，找到中位数。</p>
+<!-- blog-edit-end:891c35fc78590255:b28 -->
+
+<!-- blog-edit-start:891c35fc78590255:b29 -->
+
 <p>MAD 的一个有趣的有用特性是，它可以按1.482进行缩放，以类似于标准差。但 MAD 更加稳健，维基百科有详细的<a href="https://en.wikipedia.org/wiki/Median_absolute_deviation">解释</a>。 通常会使用 <mark class="term-highlight">中位数+ k*MAD*1.482</mark>，k 是可调整系数。结果如下：</p>
+<!-- blog-edit-end:891c35fc78590255:b29 -->
+
+<!-- blog-edit-start:891c35fc78590255:b30 -->
+
 <p><img alt="1720839856258" src="../../../../asset/image/16b0735f79567061e15332021c60188a/1720839856258.png" /></p>
+<!-- blog-edit-end:891c35fc78590255:b30 -->
+
+<!-- blog-edit-start:891c35fc78590255:b31 -->
+
 <p>这个方法挺冷门的，但是上面的文章作者很喜欢在处理噪声多的荧光图像时这个方法，他提了几个注意点：第一，<strong>图像的大部分应该是背景，并且有噪声</strong>；第二，噪声应该（或多或少）遵循正态分布；第三，图像不应该太大，因为涉及中位数计算（如果很大，考虑一些中位数计算的优化算法）。</p>
+<!-- blog-edit-end:891c35fc78590255:b31 -->
+
+<!-- blog-edit-start:891c35fc78590255:b32 -->
+
 <h4 id="adaptivethreshold_1">AdaptiveThreshold</h4>
+<!-- blog-edit-end:891c35fc78590255:b32 -->
+
+<!-- blog-edit-start:891c35fc78590255:b33 -->
+
 <p>对于每个像素，计算周围窗口的均值或者加权均值（高斯），然后减去一个固定数（函数中的参数 C），最后和这个结果进行比较。</p>
+<!-- blog-edit-end:891c35fc78590255:b33 -->
+
+<!-- blog-edit-start:891c35fc78590255:b34 -->
+
 <h4 id="niblack">NiBlack</h4>
+<!-- blog-edit-end:891c35fc78590255:b34 -->
+
+<!-- blog-edit-start:891c35fc78590255:b35 -->
+
 <p>和 <code>AdaptiveThreshold</code> 很像，不过多考虑了方差。</p>
+<!-- blog-edit-end:891c35fc78590255:b35 -->
+
+<!-- blog-edit-start:891c35fc78590255:b36 -->
+
 <ol>
 <li>
 <p>NIBLACK</p>
@@ -832,6 +977,9 @@ T(x, y) = boxMean + k * \sqrt{boxStd^{2} + Mean(Box^2)}
 \]</div>
 </li>
 </ol>
+<!-- blog-edit-end:891c35fc78590255:b36 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\07.阈值处理.md" data-text-edit-revision="3d5cec5fcb4bdfdb129be26d46ff3f8ec25edbceffc44ef83789d815d910c422" data-text-edit-marker="891c35fc78590255" data-text-edit-schema="1"></div>
 
 
 
@@ -1063,8 +1211,6 @@ T(x, y) = boxMean + k * \sqrt{boxStd^{2} + Mean(Box^2)}
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

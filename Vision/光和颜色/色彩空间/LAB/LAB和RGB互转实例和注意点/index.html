@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -706,11 +706,25 @@
   
 
 
+<!-- blog-edit-start:3e5daad461e80e91:b0 -->
+
 <h1 id="rgb-lab">RGB 和 LAB 互转实例和注意点</h1>
+<!-- blog-edit-end:3e5daad461e80e91:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2f5a7093416853fa7702b1eb778441e1966473e0a3087a7770f532dea6aaa2a8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%85%89%E5%92%8C%E9%A2%9C%E8%89%B2%5C%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%5CLAB%5CLAB%E5%92%8CRGB%E4%BA%92%E8%BD%AC%E5%AE%9E%E4%BE%8B%E5%92%8C%E6%B3%A8%E6%84%8F%E7%82%B9.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%85%89%E5%92%8C%E9%A2%9C%E8%89%B2%5C%E8%89%B2%E5%BD%A9%E7%A9%BA%E9%97%B4%5CLAB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\光和颜色\色彩空间\LAB\LAB和RGB互转实例和注意点.md">复制路径</span></div>
 
+<!-- blog-edit-start:3e5daad461e80e91:b1 -->
+
 <p>本文以色卡中标识的 Lab 和 RGB 值互转为例，介绍 RGB 和 Lab 的转换方法和注意事项。</p>
+<!-- blog-edit-end:3e5daad461e80e91:b1 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b2 -->
+
 <h2 id="_1">关键事项</h2>
+<!-- blog-edit-end:3e5daad461e80e91:b2 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b3 -->
+
 <ol>
 <li>
 <p>一个非常好非常好的空间转换工具：<a href="http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html">http://www.brucelindbloom.com/index.html?Eqn_Lab_to_XYZ.html</a> ，输入某个空间的值后，点击对应空间左边的按钮即可</p>
@@ -719,33 +733,145 @@
 <p>具体如何转换的原理，直接谷歌搜索看维基百科，感觉维基百科上的公式很清楚</p>
 </li>
 </ol>
+<!-- blog-edit-end:3e5daad461e80e91:b3 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b4 -->
+
 <p><strong>如上面所说，其实大部分空间转换只要看维基百科就行，但 Lab 和 RGB 有些注意点需要额外说明。主要是他们的转化涉及到参考白点，需要特别注意！</strong></p>
+<!-- blog-edit-end:3e5daad461e80e91:b4 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b5 -->
+
 <p>我们将尝试将色卡的 Lab 值和 RGB 值转换，下图是参考值的一部分截图：</p>
+<!-- blog-edit-end:3e5daad461e80e91:b5 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b6 -->
+
 <p><img alt="色卡" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image1.png" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b6 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b7 -->
+
 <h2 id="lab-xyz-rgb">Lab 转 XYZ 转 RGB</h2>
+<!-- blog-edit-end:3e5daad461e80e91:b7 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b8 -->
+
 <p>Lab 和 RGB 转换需要有 XYZ 空间这个媒介来进行，先看 Lab 转到 XYZ，维基百科的公式为：</p>
+<!-- blog-edit-end:3e5daad461e80e91:b8 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b9 -->
+
 <p><img alt="Lab 转 XYZ" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image2.png#w50" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b9 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b10 -->
+
 <p>公式中有 Xn、Yn、Zn，而这就要涉及到参考白点的事情了，不同的参考白点这三个值不一样，常见的 D50 和 D65 如下：</p>
+<!-- blog-edit-end:3e5daad461e80e91:b10 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b11 -->
+
 <p><img alt="参考白点" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image3.png#w50" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b11 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b12 -->
+
 <p>而色卡中 Lab 是 D50 下的，所以我们使用对应的 Xn、Yn、Zn 即可转为对应的 XYZ 空间值。</p>
+<!-- blog-edit-end:3e5daad461e80e91:b12 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b13 -->
+
 <p><img alt="Lab 转 XYZ 结果" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image4.png#w90" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b13 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b14 -->
+
 <p>转之后，就要把 XYZ 转到 RGB，这里维基百科没有，网上找的公式如下：</p>
+<!-- blog-edit-end:3e5daad461e80e91:b14 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b15 -->
+
 <p><img alt="XYZ 转 RGB" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image5.png#w80" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b15 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b16 -->
+
 <p><strong>但其实这里是不对的，涉及到参考白点！！具体可以看：<a href="http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html">http://www.brucelindbloom.com/index.html?Eqn_RGB_XYZ_Matrix.html</a></strong></p>
+<!-- blog-edit-end:3e5daad461e80e91:b16 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b17 -->
+
 <p>如下图所示，这个网页上给的矩阵，都是由对应的参考白点的，这才是正规的。而我们在前面说了，色卡的 Lab 是 D50 下的值，因此其转换后的 XYZ 也是 D50 下的值。所以我们要用 D50 对应的矩阵！</p>
+<!-- blog-edit-end:3e5daad461e80e91:b17 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b18 -->
+
 <p><img alt="XYZ 转 RGB 结果" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image6.png" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b18 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b19 -->
+
 <p><img alt="XYZ 转 RGB 结果" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image7.png" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b19 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b20 -->
+
 <p><strong>最终用这个矩阵：</strong></p>
+<!-- blog-edit-end:3e5daad461e80e91:b20 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b21 -->
+
 <p><img alt="最终矩阵" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image8.png" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b21 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b22 -->
+
 <p>所以这里就是注意 XYZ 转到 RGB 的矩阵需要根据 XYZ 空间的参考白点，注意不是 RGB 空间的参考白点哦（sRGB 的参考白点是 D65，但是我们上面是根据 XYZ 参考白点 D50 进行选择）</p>
+<!-- blog-edit-end:3e5daad461e80e91:b22 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b23 -->
+
 <h2 id="rgb-xyz-lab">RGB 转 XYZ 转 Lab</h2>
+<!-- blog-edit-end:3e5daad461e80e91:b23 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b24 -->
+
 <p>这种就反过来即可。即把上面的矩阵 M 求逆矩阵就行…注意还是 XYZ 空间的参考白点（即最后 Lab 空间的参考白点）</p>
+<!-- blog-edit-end:3e5daad461e80e91:b24 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b25 -->
+
 <p>转到 XYZ 空间之后，再转 Lab 空间：</p>
+<!-- blog-edit-end:3e5daad461e80e91:b25 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b26 -->
+
 <p><img alt="RGB 转 XYZ 结果" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image9.png#w70" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b26 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b27 -->
+
 <h2 id="_2">代码</h2>
+<!-- blog-edit-end:3e5daad461e80e91:b27 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b28 -->
+
 <p>Matlab 有直接可以用的代码：</p>
+<!-- blog-edit-end:3e5daad461e80e91:b28 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b29 -->
+
 <p><img alt="Matlab 代码" src="../../../../../asset/image/2173419b33d037006da3ad61f035ccc5/image10.png#w80" /></p>
+<!-- blog-edit-end:3e5daad461e80e91:b29 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b30 -->
+
 <p>Python 的代码如下：</p>
+<!-- blog-edit-end:3e5daad461e80e91:b30 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b31 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">LAB2RGBlinear</span><span class="p">(</span><span class="n">Lab</span><span class="p">):</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">L</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Lab</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Lab</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Lab</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="c1"># D50 LAB to D50 XYZ</span>
@@ -783,8 +909,20 @@
 </span><span id="__span-0-35"><span class="linenos" data-linenos="35 "></span>    <span class="n">b</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">*</span> <span class="p">(</span><span class="n">finv</span><span class="p">(</span><span class="n">Y</span> <span class="o">/</span> <span class="n">Yn</span><span class="p">)</span> <span class="o">-</span> <span class="n">finv</span><span class="p">(</span><span class="n">Z</span> <span class="o">/</span> <span class="n">Zn</span><span class="p">))</span>
 </span><span id="__span-0-36"><span class="linenos" data-linenos="36 "></span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">L</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:3e5daad461e80e91:b31 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b32 -->
+
 <p>更详细的代码可以看 asset 文件夹</p>
+<!-- blog-edit-end:3e5daad461e80e91:b32 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b33 -->
+
 <h2 id="_3">参考资料</h2>
+<!-- blog-edit-end:3e5daad461e80e91:b33 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b34 -->
+
 <ul>
 <li>
 <p>非常好的关于色彩空间的文章：<a href="https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a">https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a</a></p>
@@ -793,7 +931,15 @@
 <p>B 站的一个特别直观的视频，同时包括色温的说明：<a href="https://www.bilibili.com/video/BV19e4y1y7Mo">https://www.bilibili.com/video/BV19e4y1y7Mo</a></p>
 </li>
 </ul>
+<!-- blog-edit-end:3e5daad461e80e91:b34 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b35 -->
+
 <h2 id="_4">参考资料</h2>
+<!-- blog-edit-end:3e5daad461e80e91:b35 -->
+
+<!-- blog-edit-start:3e5daad461e80e91:b36 -->
+
 <ul>
 <li>
 <p>非常好的关于色彩空间的文章：<a href="https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a">https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a</a></p>
@@ -802,6 +948,9 @@
 <p>B 站的一个特别直观的视频，同时包括色温的说明：<a href="https://www.bilibili.com/video/BV19e4y1y7Mo">https://www.bilibili.com/video/BV19e4y1y7Mo</a></p>
 </li>
 </ul>
+<!-- blog-edit-end:3e5daad461e80e91:b36 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\光和颜色\色彩空间\LAB\LAB和RGB互转实例和注意点.md" data-text-edit-revision="2f5a7093416853fa7702b1eb778441e1966473e0a3087a7770f532dea6aaa2a8" data-text-edit-marker="3e5daad461e80e91" data-text-edit-schema="1"></div>
 
 
 
@@ -1033,8 +1182,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

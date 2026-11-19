@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -667,13 +667,35 @@
   
 
 
+<!-- blog-edit-start:4d78635ae5d9d8e5:b0 -->
+
 <h1 id="house-of-tangerine">house of tangerine</h1>
+<!-- blog-edit-end:4d78635ae5d9d8e5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7a5710d8d1fc2d7457cee9ae59f63b7fda96dd20c1b90e4c2d5d44d2d8e978ee" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C07.topchunk%5C02.house_of_tangerine.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C07.topchunk" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\07.topchunk\02.house_of_tangerine.md">复制路径</span></div>
 
+<!-- blog-edit-start:4d78635ae5d9d8e5:b1 -->
+
 <p>其实和 house of orange 基本一样。一句话概括，篡改 <code>top_chunk-&gt;size</code>，让其变得很小，然后再申请一段内存，这样原来的 <code>top_chunk</code> 会被释放到 unsorted bin 或者 tcache bin 中。</p>
+<!-- blog-edit-end:4d78635ae5d9d8e5:b1 -->
+
+<!-- blog-edit-start:4d78635ae5d9d8e5:b2 -->
+
 <p>区别就是 house of orange 之后用的是 FSOP，而 house of tangerine 用的是 tcache posioning，其实前面的真正核心原理是一模一样。</p>
+<!-- blog-edit-end:4d78635ae5d9d8e5:b2 -->
+
+<!-- blog-edit-start:4d78635ae5d9d8e5:b3 -->
+
 <h2 id="_1">简单说明</h2>
+<!-- blog-edit-end:4d78635ae5d9d8e5:b3 -->
+
+<!-- blog-edit-start:4d78635ae5d9d8e5:b4 -->
+
 <p>还是简单说一下步骤，按照 how2heap 的脚本为例：</p>
+<!-- blog-edit-end:4d78635ae5d9d8e5:b4 -->
+
+<!-- blog-edit-start:4d78635ae5d9d8e5:b5 -->
+
 <ol>
 <li>首先称当前这个 top chunk 叫做 <code>top_chunk_a</code>；修改 <code>top_chunk_a-&gt;size</code> 大小为 <code>0x61</code>，然后申请一个块；此时 <code>top_chunk_a</code> 被释放到 tcache 中</li>
 <li>称现在新的 top chunk 叫做 <code>top_chunk_b</code>；再次修改 <code>top_chunk_b-&gt;size</code> 大小为 <code>0x61</code>，然后申请一个块；此时 <code>top_chunk_b</code> 也被释放到 tcache 中</li>
@@ -692,7 +714,14 @@
 <li>我们执行两次 <code>malloc</code>，第一次 <code>malloc</code> 之后 <code>counts</code> 变为了 0</li>
 <li>所以第二次 <code>malloc</code> 之后系统就认为 tcache 链表为空，不会返回 <code>target</code></li>
 </ol>
+<!-- blog-edit-end:4d78635ae5d9d8e5:b7 -->
+
+<!-- blog-edit-start:4d78635ae5d9d8e5:b8 -->
+
 <p>上面内容其实是 <a href="../../01.tcache/02.tcache_poisoning/">tcache poisoning</a> 的内容了，这里多提一下。</p>
+<!-- blog-edit-end:4d78635ae5d9d8e5:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\07.topchunk\02.house_of_tangerine.md" data-text-edit-revision="7a5710d8d1fc2d7457cee9ae59f63b7fda96dd20c1b90e4c2d5d44d2d8e978ee" data-text-edit-marker="4d78635ae5d9d8e5" data-text-edit-schema="1"></div>
 
 
 
@@ -924,8 +953,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

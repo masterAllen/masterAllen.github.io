@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -699,12 +699,30 @@
   
 
 
+<!-- blog-edit-start:5f877bc17f6bbc27:b0 -->
+
 <h1 id="actor-critic">Actor-Critic</h1>
+<!-- blog-edit-end:5f877bc17f6bbc27:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7f218715cf80aff31331130bf14018f1cdc78f8be816d30e8f203845c5f7962a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5C06.Actor-Critic.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\强化学习\06.Actor-Critic.md">复制路径</span></div>
 
+<!-- blog-edit-start:5f877bc17f6bbc27:b1 -->
+
 <h2 id="actor-critic_1">Actor-Critic 算法</h2>
+<!-- blog-edit-end:5f877bc17f6bbc27:b1 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b2 -->
+
 <p>很显然，REFINFORCE 因为用的是大量采样，所以和之前蒙特卡洛的缺点一样，一局结束才能更新，样本效率极低。每次做策略梯度，每次更新参数之前都要做一些采样时，采样的次数是不可能太多的，我们只能够做非常少量的采样。所以方差也会很大，如果这次正好采样到差结果，那就不好办了。</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b2 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b3 -->
+
 <p>所以引入了 Actor-Critic 算法，核心思想是：利用 Critic 网络来评估当前策略的好坏，然后 Actor 网络根据 Critic 的评估结果来更新策略。</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b3 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b4 -->
+
 <ul>
 <li>
 <p>Actor (策略)：一个策略网络 <span class="arithmatex">\(\pi_\theta(s)\)</span>，它接收当前状态作为输入，输出一个动作的概率分布。Actor 的目标是学习一个好的策略，使得智能体可以获得尽可能高的回报。</p>
@@ -713,42 +731,130 @@
 <p>Critic (值函数)：一个值函数网络 <span class="arithmatex">\(Q_\omega(s, a)\)</span> 或 <span class="arithmatex">\(V_{\omega}(s)\)</span>，它接收当前状态（和动作）作为输入，输出一个对当前状态（或状态-动作对）的评估值。Critic 的目标是准确地评估当前策略的好坏。</p>
 </li>
 </ul>
+<!-- blog-edit-end:5f877bc17f6bbc27:b4 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b5 -->
+
 <p>这种「相互博弈」的思想其实在机器学习领域很常见，GAN 也有类似的意思。</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b5 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b6 -->
+
 <p>之前的 REINFORCE 的梯度计算：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b6 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b7 -->
+
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (G_{t}^{n}) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b7 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b8 -->
+
 <p>即公式中的 <span class="arithmatex">\(G_t\)</span>，需要等一轮采样完成之后，才能计算，我们认为不好。所以现在引入了 Q 网络，即 <span class="arithmatex">\(Q(s, a) = G_t\)</span>，某个时刻 t 传入当前的状态 s 和采取的动作 a，可以算出其可能的价值，即变成：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b8 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b9 -->
+
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (Q_\omega(s_t, a_t)) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b9 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b10 -->
+
 <p>有一个问题，哎呀，不还是得采一堆轨迹吗？<strong>采交互数据这件事，两边都要做。</strong> AC 省掉的不是交互，而是「等整条轨迹走完才能算分」。REINFORCE 因为 <span class="arithmatex">\(G_t\)</span> 的存在，<strong>游戏没结束就算不出来</strong>。一局 1000 步，前 999 步都只能干等。而 AC 则不需要，公式中的 t 不要求必须完整，可以是 1 步、5 步。</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b10 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b11 -->
+
 <p>其他几个好处：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b11 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b12 -->
+
 <ol>
 <li><strong>方差更小。</strong> <span class="arithmatex">\(G_t\)</span> 是一条随机轨迹的回报，这次运气好/差会差很多。<span class="arithmatex">\(Q_\omega\)</span> / <span class="arithmatex">\(V_\phi\)</span> 是网络对「这类状态平均有多好」的估计，相当于把很多次经验压进一个数，梯度没那么抖。代价是引入一点偏差（网络不准时分数会偏）。</li>
 <li><strong>能处理没有「一局结束」的任务。</strong> 一直跑、永不 done 的控制问题，<span class="arithmatex">\(G_t\)</span> 没有终点可等；TD 打分 <span class="arithmatex">\(r+\gamma V(s')\)</span> 仍然能用。</li>
 </ol>
+<!-- blog-edit-end:5f877bc17f6bbc27:b12 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b13 -->
+
 <p>训练的方式还是和 DQN 一样，这里还是列一下吧：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b13 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b14 -->
+
 <div class="arithmatex">\[
 L(\omega) = (r + \gamma \max_{a'} Q_\omega(s', a') - Q_\omega(s, a))^2
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b14 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b15 -->
+
 <p>这里就有矛盾点：我们上一章节介绍了基于策略的方法，之所以用基于策略而不用 DQN 这些方法，就是因为动作 a 的数量太多，比如一个关节 360 度，按照每一度分割就有 360 个动作，这里引入了 <span class="arithmatex">\(Q_\omega(s, a)\)</span>，那不还是回到原点了吗？</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b15 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b16 -->
+
 <p>关键：<strong>虽然都有 <span class="arithmatex">\(Q(s,a)\)</span>，但用法天差地别</strong>。DQN 中最后算出 Q，要遍历所有的动作 a，从中找到最好的动作；但是 AC 中，Q 的目的就给这一个动作打分，里面的 a 就是采样而来的。它只当评委。<strong>全程没有任何一步：遍历动作、比较 Q、选最大。</strong></p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b16 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b17 -->
+
 <h2 id="advantage-actor-critic">Advantage Actor-Critic 算法</h2>
+<!-- blog-edit-end:5f877bc17f6bbc27:b17 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b18 -->
+
 <p>优势-演员-评论员算法，Advantage Actor-Critic 算法（A2C）是 Actor-Critic 算法的一种改进。在 REINFORCE 算法中，有一个技巧是引入基线。用 <span class="arithmatex">\(G(\tau)\)</span> 减去一个值 <span class="arithmatex">\(b\)</span>。其中 <span class="arithmatex">\(b\)</span> 的取值是对 <span class="arithmatex">\(G(\tau)\)</span> 的值取期望， 计算 <span class="arithmatex">\(G(\tau)\)</span> 的平均值，令 <span class="arithmatex">\(b \approx E[G(\tau)]\)</span>。此时 REINFORCE 算法的梯度：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b18 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b19 -->
+
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (G_{t}^{n}-b) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b19 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b20 -->
+
 <p>同理，A2C 就是在 AC 基础上引入了基线，那么还是一样吗，即 <span class="arithmatex">\(b = E(Q_\omega(s, a))\)</span>？这又矛盾了，因为之所以有 AC，不就是希望可以不要等采样完整结束再更新吗，现在你要求期望，那还是要等一轮采样完成之后，再去计算咯。</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b20 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b21 -->
+
 <p>所以不应该是这种做法，有很多方法，其中最标准的是再次引入一个网络 V，这个和用 Q 去替代 <span class="arithmatex">\(G_t\)</span> 的本质是一样的，用网络去规避要等采样完成的问题。即此时：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b21 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b22 -->
+
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (Q_\omega(s, a)-V_\phi(s)) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b22 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b23 -->
+
 <p><img alt="" src="../../../asset/image/5b31549c1cb5546a6165cff909ac3f4f/20260424202146.png" /></p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b23 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b24 -->
+
 <p>我的天，两个网络！在 DQN 中，我们已经讨论过了，其实强化学习这里的网络训练很不稳，用的是半梯度。所以我们这里合二为一，由于有性质：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b24 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b25 -->
+
 <div class="arithmatex">\[
 Q(s_t, a_t) = E[r_t + \gamma V(s_{t+1})]
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b25 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b26 -->
+
 <details class="note">
 <summary>这个公式为什么这样，印象中并不是这个</summary>
 <p>混淆了 <strong>「确定性下一状态」</strong> 和 <strong>「环境随机转移」</strong>，再加上 A2C 用的是 <strong>单步 TD、采样轨迹</strong>，不是全期望。</p>
@@ -791,20 +897,55 @@ s_t \xrightarrow{a_t} \boldsymbol{\color{red}s_{t+1}}(\text{实际走出来的�
 </ul>
 <p>RL 普遍选择「接受一点点偏差，换工程可行性」。</p>
 </details>
+<!-- blog-edit-end:5f877bc17f6bbc27:b26 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b27 -->
+
 <p>所以我们把 Q 用 V 来直接替换，直接把期望去掉</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b27 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b28 -->
+
 <div class="arithmatex">\[
 Q(s_t, a_t) = r_t + \gamma V(s_{t+1})
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b28 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b29 -->
+
 <p>为什么可以去掉？不知道，原始的异步优势演员-评论员算法的论文尝试了各种方法，最后发现这个方法最好。当然有人可能会有疑问，但实际做实验的时候，最后结果就是这个方法最好，所以后来大家都使用了这个方法。</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b29 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b30 -->
+
 <blockquote>
 <p>这种去掉期望的方法莫名其妙的好，这个最经典的案例是 LMS 自适应滤波，事实上有各种各样学术化的解释，但也都是强行解释，没有完整系统本质的解释。这么粗暴结果却这么好，没有理论支撑，但就是好用。我觉得作为工程师，有的时候确实没必要钻牛角尖。</p>
 </blockquote>
+<!-- blog-edit-end:5f877bc17f6bbc27:b30 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b31 -->
+
 <p>最终 A2C 使用的是：</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b31 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b32 -->
+
 <div class="arithmatex">\[
 \nabla J_{\theta} \approx \frac{1}{N} \sum_{n=1}^{N} \sum_{t=1}^{T_{n}} (r_t + \gamma V_\phi(s_{t+1})-V_\phi(s)) \nabla \log p_{\theta}\left(a_{t}^{n} \mid s_{t}^{n}\right)
 \]</div>
+<!-- blog-edit-end:5f877bc17f6bbc27:b32 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b33 -->
+
 <h2 id="ac">其他 AC 网络</h2>
+<!-- blog-edit-end:5f877bc17f6bbc27:b33 -->
+
+<!-- blog-edit-start:5f877bc17f6bbc27:b34 -->
+
 <p>其他的我就没有细究了，再看下去就有点太过掉书袋了，太过孔乙己了。这些更细节的知识，用的时候再去看才对。</p>
+<!-- blog-edit-end:5f877bc17f6bbc27:b34 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\强化学习\06.Actor-Critic.md" data-text-edit-revision="7f218715cf80aff31331130bf14018f1cdc78f8be816d30e8f203845c5f7962a" data-text-edit-marker="5f877bc17f6bbc27" data-text-edit-schema="1"></div>
 
 
 
@@ -1036,8 +1177,6 @@ Q(s_t, a_t) = r_t + \gamma V(s_{t+1})
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

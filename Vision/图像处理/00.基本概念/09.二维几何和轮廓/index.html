@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -716,24 +716,58 @@
   
 
 
+<!-- blog-edit-start:31f15f6e56f3945d:b0 -->
+
 <h1 id="_1">二维几何和轮廓</h1>
+<!-- blog-edit-end:31f15f6e56f3945d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="3f3fe957f6a530bd80eb446f41cb439dd2a49a756cb5677ea624ef89dc11a67f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C09.%E4%BA%8C%E7%BB%B4%E5%87%A0%E4%BD%95%E5%92%8C%E8%BD%AE%E5%BB%93.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\09.二维几何和轮廓.md">复制路径</span></div>
+
+<!-- blog-edit-start:31f15f6e56f3945d:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.8.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.8.md</a></p>
 </blockquote>
+<!-- blog-edit-end:31f15f6e56f3945d:b1 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b2 -->
+
 <h3 id="_2">函数说明：</h3>
+<!-- blog-edit-end:31f15f6e56f3945d:b2 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b3 -->
+
 <p><strong>最重要的是记住，这里的函数基本都是纵坐标在前、横坐标在后！！</strong></p>
+<!-- blog-edit-end:31f15f6e56f3945d:b3 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b4 -->
+
 <p>基础函数：寻找轮廓、近似轮廓；OpenCV 本身的文档就很不错：<a href="https://docs.opencv.org/4.x/d3/d05/tutorial_py_table_of_contents_contours.html">链接</a></p>
+<!-- blog-edit-end:31f15f6e56f3945d:b4 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b5 -->
+
 <ul>
 <li><a href="">findContours</a>：用法在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/find_contours.ipynb">find_contours.ipynb</a> 文件中</li>
 <li><a href="">findContoursLinksRuns</a>：另一种寻找轮廓的方法，相对更省内存，但是也有一些限制，见下面说明</li>
 <li><a href="">applyProxDP</a>：把密集的轮廓（即轮廓上有许多点）近似为较小的点，用法在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/dealwith_points.ipynb">dealwith_points.ipynb</a></li>
 </ul>
+<!-- blog-edit-end:31f15f6e56f3945d:b5 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b6 -->
+
 <p>处理一堆点时的函数：在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/dealwith_points.ipynb">dealwith_points.ipynb</a> 文件中有详细使用</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b6 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b7 -->
+
 <ul>
 <li>要求点集必须是轮廓:</li>
 </ul>
+<!-- blog-edit-end:31f15f6e56f3945d:b7 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b8 -->
+
 <table>
 <thead>
 <tr>
@@ -768,9 +802,17 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:31f15f6e56f3945d:b8 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b9 -->
+
 <ul>
 <li>点集不一定构成轮廓（当然如果是轮廓也能用）:</li>
 </ul>
+<!-- blog-edit-end:31f15f6e56f3945d:b9 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b10 -->
+
 <table>
 <thead>
 <tr>
@@ -805,9 +847,17 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:31f15f6e56f3945d:b10 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b11 -->
+
 <ul>
 <li>处理两个轮廓:</li>
 </ul>
+<!-- blog-edit-end:31f15f6e56f3945d:b11 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b12 -->
+
 <table>
 <thead>
 <tr>
@@ -826,9 +876,17 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:31f15f6e56f3945d:b12 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b13 -->
+
 <ul>
 <li>匹配和变换两个轮廓，具体请查阅 <a href="../09.二维几何和轮廓/">1.8</a>节的记录：</li>
 </ul>
+<!-- blog-edit-end:31f15f6e56f3945d:b13 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b14 -->
+
 <table>
 <thead>
 <tr>
@@ -855,34 +913,121 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:31f15f6e56f3945d:b14 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b15 -->
+
 <p>其他杂项：</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b15 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b16 -->
+
 <ul>
 <li>convextiyDefects: 凸包缺陷检测</li>
 <li>connectedComponents, connectComponentsWithStats: 连通域相关的函数</li>
 </ul>
+<!-- blog-edit-end:31f15f6e56f3945d:b16 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b17 -->
+
 <h3 id="_3">具体细节</h3>
+<!-- blog-edit-end:31f15f6e56f3945d:b17 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b18 -->
+
 <p>大部分函数的实现都在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/find_contours.ipynb">find_contours</a> 和 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/dealwith_points.ipynb">dealwith_points.ipynb</a> 文件中，没有的也都是很简单纯粹的函数，下面是几个还需要再讲讲的函数。</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b18 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b19 -->
+
 <h4 id="findcontourslinksruns">findContoursLinksRuns</h4>
+<!-- blog-edit-end:31f15f6e56f3945d:b19 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b20 -->
+
 <p>官方文档写的就不错，而且这个函数不用啥参数，直接就是一张图片就行：</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b20 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b21 -->
+
 <p><img alt="1721109275885" src="../../../../asset/image/9b26e99c460939a13eff458c9062a228/1721109275885.png" /></p>
+<!-- blog-edit-end:31f15f6e56f3945d:b21 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b22 -->
+
 <h4 id="moments-humoments">moments, HuMoments</h4>
+<!-- blog-edit-end:31f15f6e56f3945d:b22 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b23 -->
+
 <p>什么是 moments，这篇<a href="https://blog.csdn.net/Caesar6666/article/details/103257632">文章</a> 和 这篇<a href="https://learnopencv.com/shape-matching-using-hu-moments-c-python/">文章</a> 讲的非常不错，用法也直接参考第一篇文章就行。</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b23 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b24 -->
+
 <p>简单而言，moments 叫做矩，两个作用：可以用来求轮廓质心、求 HuMoments；而 HuMoments 则是图像的 Hu 不变矩，是指目标具有旋转、缩放不变性，即目标的 Hu 不变矩不会随其大小、方向变化而变化。</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b24 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b25 -->
+
 <h4 id="rotatedrect">RotatedRect 类型</h4>
+<!-- blog-edit-end:31f15f6e56f3945d:b25 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b26 -->
+
 <p><img alt="1721125583653" src="../../../../asset/image/9b26e99c460939a13eff458c9062a228/1721125583653.png" /></p>
+<!-- blog-edit-end:31f15f6e56f3945d:b26 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b27 -->
+
 <p>Python 中默认把函数返回的 RotatedRect 类型作为 tuple，而有时需要利用 RotatedRect 的方法。返回的方式为 <code>(center, size, angle)</code>，所以只要用构造方法即可:</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b27 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b28 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 获取 rotatedRect 的点</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">point_set</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">18</span><span class="p">],</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">31</span><span class="p">]])</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">rect1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">minAreaRect</span><span class="p">(</span><span class="n">point_set</span><span class="p">)</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">points1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">RotatedRect</span><span class="p">(</span><span class="o">*</span><span class="n">rect1</span><span class="p">)</span><span class="o">.</span><span class="n">points</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:31f15f6e56f3945d:b28 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b29 -->
+
 <h4 id="rotaterectangleintersection">rotateRectangleIntersection</h4>
+<!-- blog-edit-end:31f15f6e56f3945d:b29 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b30 -->
+
 <p>和 <code>intersectConvexConvex</code> 的区别就在于，rotate 输入的是 <a href="https://docs.opencv.org/4.x/db/dd6/classcv_1_1RotatedRect.html"><code>RotatedRect</code> 类型</a>，intersect 输入的是轮廓。如果两个都是 rotatedRect，那就用前者；否则就用后面。</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b30 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b31 -->
+
 <h4 id="convextiydefect">convextiyDefect</h4>
+<!-- blog-edit-end:31f15f6e56f3945d:b31 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b32 -->
+
 <p>凸包缺陷检测，即传入轮廓和凸包，得到凸包和轮廓之间的间隙，参考这篇<a href="https://theailearner.com/tag/cv2-convexitydefects/">文章</a>，写的极好，他的图片介绍也很好：</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b32 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b33 -->
+
 <p><img alt="1721127173146" src="../../../../asset/image/9b26e99c460939a13eff458c9062a228/1721127173146.png" /></p>
+<!-- blog-edit-end:31f15f6e56f3945d:b33 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b34 -->
+
 <h3 id="connectedcomponents">connectedComponents</h3>
+<!-- blog-edit-end:31f15f6e56f3945d:b34 -->
+
+<!-- blog-edit-start:31f15f6e56f3945d:b35 -->
+
 <p>这篇<a href="https://blog.csdn.net/qq_40784418/article/details/106023288">文章</a>写的极好，本身函数没有太大的坑点，只要知道这是负责得到图片的各个连通域的。后续可以用这些连通域进行分割等操作。</p>
+<!-- blog-edit-end:31f15f6e56f3945d:b35 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\09.二维几何和轮廓.md" data-text-edit-revision="3f3fe957f6a530bd80eb446f41cb439dd2a49a756cb5677ea624ef89dc11a67f" data-text-edit-marker="31f15f6e56f3945d" data-text-edit-schema="1"></div>
 
 
 
@@ -1114,8 +1259,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

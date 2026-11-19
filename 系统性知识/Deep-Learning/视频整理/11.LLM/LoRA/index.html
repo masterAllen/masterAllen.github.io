@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -732,49 +732,147 @@
   
 
 
+<!-- blog-edit-start:5c3ea1da9e09f41b:b0 -->
+
 <h1 id="lora-multi-lora">LoRA 和 Multi-LoRA</h1>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="5c3ea1da9e09f41b257c186f99ae4b4028c019006fc33d3d9d7dd122fea1ac01" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CLoRA.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\LoRA.md">复制路径</span></div>
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b1 -->
 
 <blockquote>
 <p>参考文章：<a href="https://zhuanlan.zhihu.com/p/1984729458444363168">https://zhuanlan.zhihu.com/p/1984729458444363168</a></p>
 </blockquote>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b1 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b2 -->
+
 <h2 id="_1">背景介绍</h2>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b2 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b3 -->
+
 <p>大模型预训练之后，各个任务进行微调。但是：<strong>大模型实在太大了</strong>，调参成本太高了。因此有许多方法：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b3 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b4 -->
+
 <ul>
 <li>适配器：一种在模型中插入新层的方式，仅训练插入的适配器；</li>
 <li>前缀调优：给 Attention KV 层中添加一个前缀，并只训练这个附加的前缀参数。类似的方式还有提示词调优；</li>
 <li>局部训练：仅训练 Transformer 的 LayerNorm 参数，或者仅训练 Bias（BitFit）；</li>
 <li>低秩适配：给模型增加降秩权重，且仅训练该新增的权重；</li>
 </ul>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b4 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b5 -->
+
 <p>LoRA 就是上面最后一个低秩适配方法，所以它是用来解决微调的。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b5 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b6 -->
+
 <h2 id="_2">低秩分解</h2>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b6 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b7 -->
+
 <p>LoRA 涉及到关键知识：任意矩阵都能进行奇异值分解（SVD）；当矩阵是不满秩矩阵时，可以用低秩的分解矩阵来代替原矩阵。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b7 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b8 -->
+
 <div class="arithmatex">\[
 W = U \Sigma V^T
 \]</div>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b8 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b9 -->
+
 <p>其中，<span class="arithmatex">\(W \in R^{m\times r}\)</span>，<span class="arithmatex">\(U \in R^{m\times r}\)</span>，<span class="arithmatex">\(\Sigma \in R^{r\times r}\)</span>，<span class="arithmatex">\(V \in R^{r\times r}\)</span>，<span class="arithmatex">\(r\)</span> 是矩阵的秩。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b9 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b10 -->
+
 <p>这个好处：当矩阵的尺寸（m, n）较大时，分解矩阵的特点是元素个数相比原矩阵更少，r 越小元素越少。比如当 r = 1，m = n = 1000 时，原矩阵元素个数为 1,000,000，分解矩阵元素总数为 2001，比值小于 0.5%。参数量少带来好处是：计算量少、存储量少。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b10 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b11 -->
+
 <h2 id="lora">LoRA 原理</h2>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b11 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b12 -->
+
 <p>LoRA 正是用低秩分解矩阵的特点来降低微调矩阵的元素个数，原矩阵为 <span class="arithmatex">\(W_0 \in R^{d \times k}\)</span>，微调矩阵为 <span class="arithmatex">\(\Delta W \in R^{d \times k}\)</span>，输出的定义：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b12 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b13 -->
+
 <div class="arithmatex">\[
 h = W_0 x + \Delta W x = W_0 x + (B A) x
 \]</div>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b13 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b14 -->
+
 <p>其中 <span class="arithmatex">\(B = U\Sigma \in R^{d \times r}, A = V^* \in R^{r \times k}\)</span> 是 <span class="arithmatex">\(\Delta W\)</span> 的分解矩阵表达。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b14 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b15 -->
+
 <p>微调时 <span class="arithmatex">\(W_0\)</span> 冻结（不参与训练）、仅微调分解矩阵 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span>，因为 <span class="arithmatex">\(r &lt;&lt; min(d, k)\)</span>，所以需要训练的参数相比直接训练原矩阵少很多。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b15 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b16 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513195320.png" /></p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b16 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b17 -->
+
 <h2 id="lora_1">LoRA 实践</h2>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b17 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b18 -->
+
 <blockquote>
 <p>下面这个例子非常好，同样来自最开始的参考文章：<a href="https://zhuanlan.zhihu.com/p/1984729458444363168">https://zhuanlan.zhihu.com/p/1984729458444363168</a></p>
 </blockquote>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b18 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b19 -->
+
 <p>选取数字 0~9 手写体识别的训练场景，数据采用 MNIST。训练一个 3 层的 MLP，让其具备数字手写体识别的能力。为了体现 LoRA 的作用，需要对数据集进行处理，先全量训练，再增加 LoRA 微调。大致步骤如下：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b19 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b20 -->
+
 <ul>
 <li>step1：构建主模型并训练，训练数据集去掉数字「1」；</li>
 <li>step2：创建 LoRA 层；</li>
 <li>step3：主模型的参数冻结，用数字「1」的数据进行微调，测试结果；</li>
 </ul>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b20 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b21 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513195440.png" /></p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b21 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b22 -->
+
 <h3 id="_3">构建简单的模型</h3>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b22 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b23 -->
+
 <p>首先第一步，构建简单模型，然后定义训练和测试，这都是最最基础的代码：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b23 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b24 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 创建一个全连接的网络用于手写体识别：</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">class</span><span class="w"> </span><span class="nc">MLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_size_1</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">hidden_size_2</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
@@ -793,7 +891,15 @@ h = W_0 x + \Delta W x = W_0 x + (B A) x
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span>
 </span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span><span class="n">net</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b24 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b25 -->
+
 <p>然后去训练，关键点是：<strong>训练集去掉数字 1</strong>：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b25 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b26 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 下载 MNIST 手写体数字识别的数据</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.1307</span><span class="p">,),</span> <span class="p">(</span><span class="mf">0.3081</span><span class="p">,))])</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -814,9 +920,25 @@ h = W_0 x + \Delta W x = W_0 x + (B A) x
 </span><span id="__span-1-18"><span class="linenos" data-linenos="18 "></span><span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">mnist_testset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="__span-1-19"><span class="linenos" data-linenos="19 "></span><span class="n">test</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b26 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b27 -->
+
 <p>可以看到，去掉之后，对数字 1 的识别效果不好：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b27 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b28 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513195653.png" /></p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b28 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b29 -->
+
 <h3 id="lora_2">创建 LoRA 层</h3>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b29 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b30 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 定义 LoRA 对权重修改：</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">class</span><span class="w"> </span><span class="nc">LoRAParametrization</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features_in</span><span class="p">,</span> <span class="n">features_out</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">):</span>
@@ -838,7 +960,15 @@ h = W_0 x + \Delta W x = W_0 x + (B A) x
 </span><span id="__span-2-19"><span class="linenos" data-linenos="19 "></span>        <span class="k">else</span><span class="p">:</span>
 </span><span id="__span-2-20"><span class="linenos" data-linenos="20 "></span>            <span class="k">return</span> <span class="n">original_weights</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b30 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b31 -->
+
 <p>将 LoRA 层注册到模型中：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b31 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b32 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">linear_layer_parameterization</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lora_alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="c1"># LoRA 仅修改 W，忽略 bias 修改。</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">features_in</span><span class="p">,</span> <span class="n">features_out</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">shape</span>
@@ -867,6 +997,10 @@ h = W_0 x + \Delta W x = W_0 x + (B A) x
 </span><span id="__span-3-26"><span class="linenos" data-linenos="26 "></span>    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="p">[</span><span class="n">net</span><span class="o">.</span><span class="n">linear1</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">linear2</span><span class="p">,</span> <span class="n">net</span><span class="o">.</span><span class="n">linear3</span><span class="p">]:</span>
 </span><span id="__span-3-27"><span class="linenos" data-linenos="27 "></span>        <span class="n">layer</span><span class="o">.</span><span class="n">parametrizations</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="n">enabled</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b32 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b33 -->
+
 <details class="note">
 <summary>parametrize.register_parametrization 是什么</summary>
 <p><code>torch.nn.utils.parametrize.register_parametrization</code> 是 <strong>PyTorch</strong> 提供的工具函数，用于给模型里的某个张量（如 <code>weight</code>/<code>bias</code>）“套上一层可微变换”，让你访问该张量时，自动返回变换后的结果，且支持反向传播与优化。</p>
@@ -894,10 +1028,30 @@ h = W_0 x + \Delta W x = W_0 x + (B A) x
 <li>链式注册：同一张量可注册多个变换，按顺序串联执行。</li>
 </ul>
 </details>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b33 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b34 -->
+
 <p>打印原始参数和添加 LoRA 参数的对比，LoRA 占比仅 0.242%。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b34 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b35 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513200055.png" /></p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b35 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b36 -->
+
 <h3 id="_4">进行微调</h3>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b36 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b37 -->
+
 <p>然后我们就可以微调这个模型了，然后测试：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b37 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b38 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 将原始权重冻结：</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="k">if</span> <span class="s1">&#39;lora&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
@@ -918,12 +1072,39 @@ h = W_0 x + \Delta W x = W_0 x + (B A) x
 </span><span id="__span-7-18"><span class="linenos" data-linenos="18 "></span><span class="n">enable_disable_lora</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span id="__span-7-19"><span class="linenos" data-linenos="19 "></span><span class="n">test</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b38 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b39 -->
+
 <p>结果显示微调后可以：</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b39 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b40 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513200318.png" /></p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b40 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b41 -->
+
 <h2 id="multi-lora">Multi-LoRA</h2>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b41 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b42 -->
+
 <p>如果是多业务场景下呢，LoRA 微调模型的部署该如何进行，是每个场景都部署一个 LoRA 适配器（adapter）加一个基础模型吗？这涉及多场景下 LoRA 的混合部署。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b42 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b43 -->
+
 <p>由于微调时不改变原模型权重，推理时仅在上面叠加一个适配器的权重值即可。所以，推理中产生了 Multi-LoRA 服务方案：不同场景的适配器共用一个基础模型。</p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b43 -->
+
+<!-- blog-edit-start:5c3ea1da9e09f41b:b44 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513200453.png" /></p>
+<!-- blog-edit-end:5c3ea1da9e09f41b:b44 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\LoRA.md" data-text-edit-revision="5c3ea1da9e09f41b257c186f99ae4b4028c019006fc33d3d9d7dd122fea1ac01" data-text-edit-marker="5c3ea1da9e09f41b" data-text-edit-schema="1"></div>
 
 
 
@@ -1155,8 +1336,6 @@ h = W_0 x + \Delta W x = W_0 x + (B A) x
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -817,41 +817,111 @@
   
 
 
+<!-- blog-edit-start:adb6827380f06309:b0 -->
+
 <h1 id="prnu-dsnu">PRNU 和 DSNU</h1>
+<!-- blog-edit-end:adb6827380f06309:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4bb30e11c822c76426edf112a33b52b0fda92f5100d5ac6b63fc909028861afb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C01.%E7%9B%B8%E6%9C%BA%E5%99%AA%E5%A3%B0%E7%B1%BB%E5%9E%8B%5C03.PRNU_DSNU+copy.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C01.%E7%9B%B8%E6%9C%BA%E5%99%AA%E5%A3%B0%E7%B1%BB%E5%9E%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\08.噪声\01.相机噪声类型\03.PRNU_DSNU copy.md">复制路径</span></div>
 
+<!-- blog-edit-start:adb6827380f06309:b1 -->
+
 <p>FPN（fixed pattern noise）可以分为 PRNU 和 DSNU，它本质上是指不同像素对于光的响应不同，比如同样是两个光子，像素 A 结果是 2，像素 B 结果是 3。一般直接用一次线性来模拟，也就是 <code>y=kx+b</code>，其中系数就叫做 PRNU，偏移叫做 DSNU。</p>
+<!-- blog-edit-end:adb6827380f06309:b1 -->
+
+<!-- blog-edit-start:adb6827380f06309:b2 -->
+
 <p><img alt="" src="../../../../../asset/image/7a3b3d92c0305dfa22330e306b7c601d/20260213020720.png" /></p>
+<!-- blog-edit-end:adb6827380f06309:b2 -->
+
+<!-- blog-edit-start:adb6827380f06309:b3 -->
+
 <p><strong>有的时候会用 PRNU 同时表示这两个概念；有的时候则会用 FPN 单独表示 DSNU，这些称呼很乱，用的时候需要仔细捋清楚。</strong></p>
+<!-- blog-edit-end:adb6827380f06309:b3 -->
+
+<!-- blog-edit-start:adb6827380f06309:b4 -->
+
 <h2 id="prnu">PRNU 噪声</h2>
+<!-- blog-edit-end:adb6827380f06309:b4 -->
+
+<!-- blog-edit-start:adb6827380f06309:b5 -->
+
 <h3 id="_1">模型分析</h3>
+<!-- blog-edit-end:adb6827380f06309:b5 -->
+
+<!-- blog-edit-start:adb6827380f06309:b6 -->
+
 <p>让我们来看一下 PRNU 对信噪比 SNR 的影响，首先回顾之前的模型：</p>
+<!-- blog-edit-end:adb6827380f06309:b6 -->
+
+<!-- blog-edit-start:adb6827380f06309:b7 -->
+
 <div class="arithmatex">\[
 I = L * g + n_{add}
 \]</div>
 <p>其中 <code>I</code> 是像素值，<code>L</code> 是光子数，<code>g</code> 是增益，<code>n_{add}</code> 是加性噪声。此时期望和方差分别为：</p>
+<!-- blog-edit-end:adb6827380f06309:b7 -->
+
+<!-- blog-edit-start:adb6827380f06309:b8 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 E(I) &amp;= L * g \\
 V(I) &amp;= L * g^2 + \sigma^2_{add} \\
 \end{aligned}
 \]</div>
+<!-- blog-edit-end:adb6827380f06309:b8 -->
+
+<!-- blog-edit-start:adb6827380f06309:b9 -->
+
 <p>但是上面这个模型是对于单独一个像素而言，每个像素那么就有所不同，所以需要加上下标：</p>
+<!-- blog-edit-end:adb6827380f06309:b9 -->
+
+<!-- blog-edit-start:adb6827380f06309:b10 -->
+
 <div class="arithmatex">\[
 I_i = L * g_i + n_{add} + b_i
 \]</div>
 <p>其中 <code>b(i)</code> 就是 DSNU；现在我们把 <code>g(i)</code> 拆成两个部分，即平均值乘上一个偏差，这个偏差就是 PRNU：</p>
+<!-- blog-edit-end:adb6827380f06309:b10 -->
+
+<!-- blog-edit-start:adb6827380f06309:b11 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 I_i &amp;= L * (\bar{g} * k_i) + n_{add} + b_i
 \end{aligned}
 \]</div>
 <p>其中 <span class="arithmatex">\(E(k_p) = 1\)</span></p>
+<!-- blog-edit-end:adb6827380f06309:b11 -->
+
+<!-- blog-edit-start:adb6827380f06309:b12 -->
+
 <h3 id="_2">理解模型</h3>
+<!-- blog-edit-end:adb6827380f06309:b12 -->
+
+<!-- blog-edit-start:adb6827380f06309:b13 -->
+
 <p>此时对于一个图像而言，<strong>注意：这个时候时间凝固了，我们只看到一副空间上的图像</strong>。也就是我们看到的图像 <code>I</code> 是有<strong>多个分布不同的像素</strong>组合而来。<strong>此时这是一个混合模型问题</strong>，即属于 A 类的变量有自己的分布情况，属于 B 类的变量有另外的分布情况，属于 C 类的变量又有另外的分布情况...</p>
+<!-- blog-edit-end:adb6827380f06309:b13 -->
+
+<!-- blog-edit-start:adb6827380f06309:b14 -->
+
 <p><strong>为了便于计算，我们不考虑 DSNU，即舍弃了 <code>b(i)</code> 这一项。不然后面计算会相当复杂。</strong></p>
+<!-- blog-edit-end:adb6827380f06309:b14 -->
+
+<!-- blog-edit-start:adb6827380f06309:b15 -->
+
 <h3 id="_3">模型构建</h3>
+<!-- blog-edit-end:adb6827380f06309:b15 -->
+
+<!-- blog-edit-start:adb6827380f06309:b16 -->
+
 <p>这里，我们要做一个模型的修建：</p>
+<!-- blog-edit-end:adb6827380f06309:b16 -->
+
+<!-- blog-edit-start:adb6827380f06309:b17 -->
+
 <p>对于 <span class="arithmatex">\(I_1, ..., I_n\)</span> 这些像素点而言，他们分别是 <span class="arithmatex">\(L*g*k_i+n_i\)</span>，所以我们定义：</p>
 <div class="arithmatex">\[
 K = k_0, k_1, ..., k_n \\
@@ -882,15 +952,39 @@ X
 L\mid K=k\sim\operatorname{Poisson}(\lambda k),
 \qquad X=gL+N
 \]</div>
+<!-- blog-edit-end:adb6827380f06309:b17 -->
+
+<!-- blog-edit-start:adb6827380f06309:b18 -->
+
 <h3 id="_4">求解均值</h3>
+<!-- blog-edit-end:adb6827380f06309:b18 -->
+
+<!-- blog-edit-start:adb6827380f06309:b19 -->
+
 <p>期望很好计算，能从定义中推出是一个加权平均，而我们这里加权又是均匀的：</p>
+<!-- blog-edit-end:adb6827380f06309:b19 -->
+
+<!-- blog-edit-start:adb6827380f06309:b20 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 E(X) = [E(X_1) + ... + E(X_n)] / N = g\lambda
 \end{aligned}
 \]</div>
+<!-- blog-edit-end:adb6827380f06309:b20 -->
+
+<!-- blog-edit-start:adb6827380f06309:b21 -->
+
 <h3 id="_5">求解方差</h3>
+<!-- blog-edit-end:adb6827380f06309:b21 -->
+
+<!-- blog-edit-start:adb6827380f06309:b22 -->
+
 <p>方差计算比较复杂，这里先给出最终结果：</p>
+<!-- blog-edit-end:adb6827380f06309:b22 -->
+
+<!-- blog-edit-start:adb6827380f06309:b23 -->
+
 <div class="arithmatex">\[
 \boxed{
 \operatorname{Var}(X)
@@ -902,7 +996,15 @@ g^2\lambda^2\sigma_K^2
 \sigma_N^2
 }
 \]</div>
+<!-- blog-edit-end:adb6827380f06309:b23 -->
+
+<!-- blog-edit-start:adb6827380f06309:b24 -->
+
 <p>其中：</p>
+<!-- blog-edit-end:adb6827380f06309:b24 -->
+
+<!-- blog-edit-start:adb6827380f06309:b25 -->
+
 <div class="arithmatex">\[
 \underbrace{g^2\lambda}_{\text{泊松散粒噪声}}
 +
@@ -910,12 +1012,24 @@ g^2\lambda^2\sigma_K^2
 +
 \underbrace{\sigma_N^2}_{\text{加性读出噪声}}
 \]</div>
+<!-- blog-edit-end:adb6827380f06309:b25 -->
+
+<!-- blog-edit-start:adb6827380f06309:b26 -->
+
 <p>其中 <span class="arithmatex">\(\sigma_{K}^2\)</span> 的定义如下，可以把他想象成各个系数的波动情况：</p>
+<!-- blog-edit-end:adb6827380f06309:b26 -->
+
+<!-- blog-edit-start:adb6827380f06309:b27 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 \sigma_{K}^{2} = \frac{1}{N} \sum_{i=1}^{N} (k_i^2)
 \end{aligned}
 \]</div>
+<!-- blog-edit-end:adb6827380f06309:b27 -->
+
+<!-- blog-edit-start:adb6827380f06309:b28 -->
+
 <details class="note">
 <summary>方差推导过程</summary>
 <h4 id="l">先求 <span class="arithmatex">\(L\)</span> 的条件均值</h4>
@@ -992,15 +1106,35 @@ E[\lambda K] = \lambda
 = g^2\lambda + g^2\lambda^2\sigma_K^2 + \sigma_N^2
 \]</div>
 </details>
+<!-- blog-edit-end:adb6827380f06309:b28 -->
+
+<!-- blog-edit-start:adb6827380f06309:b29 -->
+
 <h3 id="_6">结果分析</h3>
+<!-- blog-edit-end:adb6827380f06309:b29 -->
+
+<!-- blog-edit-start:adb6827380f06309:b30 -->
+
 <p>现在我们来看一下 SNR：</p>
+<!-- blog-edit-end:adb6827380f06309:b30 -->
+
+<!-- blog-edit-start:adb6827380f06309:b31 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 SNR &amp;= \frac{E(X)}{\sqrt{V(X)}} \\ 
     &amp;= \frac{g\lambda}{\sqrt{g^2\lambda + g^2\lambda^2\sigma_K^2 + \sigma_N^2}} \\
 \end{aligned}
 \]</div>
+<!-- blog-edit-end:adb6827380f06309:b31 -->
+
+<!-- blog-edit-start:adb6827380f06309:b32 -->
+
 <p>假设我们把 <span class="arithmatex">\(\sigma_N^2\)</span> 忽略掉，当 <span class="arithmatex">\(\lambda\)</span> 很大的时候（也就是曝光时间足够长，光子数足够多），二次项占据主导：</p>
+<!-- blog-edit-end:adb6827380f06309:b32 -->
+
+<!-- blog-edit-start:adb6827380f06309:b33 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 SNR &amp;= \frac{g\lambda}{\sqrt{g^2\lambda +  g^2\lambda^2\sigma_K^2 + \sigma_N^2}} \\
@@ -1009,10 +1143,29 @@ SNR &amp;= \frac{g\lambda}{\sqrt{g^2\lambda +  g^2\lambda^2\sigma_K^2 + \sigma_N
 \end{aligned}
 \]</div>
 <p>所以 PRNU 能够限制 SNR 的上限，也就是说无论光子数 <span class="arithmatex">\(\lambda\)</span> 多大，SNR 都不会超过某个值。当然这里前提是 <span class="arithmatex">\(\lambda\)</span> 足够大，才能让二次项占据主导地位。因为相机有饱和阈值，所以一般而言，不会到 PRNU 占据主导地位的情况。</p>
+<!-- blog-edit-end:adb6827380f06309:b33 -->
+
+<!-- blog-edit-start:adb6827380f06309:b34 -->
+
 <h2 id="_7">对标定的影响</h2>
+<!-- blog-edit-end:adb6827380f06309:b34 -->
+
+<!-- blog-edit-start:adb6827380f06309:b35 -->
+
 <p>没啥影响，标定的时候做了平均值已经把 PRNU 给平均掉了，所以标定的结果是一个平均值，不受 PRNU 的影响。</p>
+<!-- blog-edit-end:adb6827380f06309:b35 -->
+
+<!-- blog-edit-start:adb6827380f06309:b36 -->
+
 <h2 id="prnu-dsnu_1">PRNU 和 DSNU 的标定</h2>
+<!-- blog-edit-end:adb6827380f06309:b36 -->
+
+<!-- blog-edit-start:adb6827380f06309:b37 -->
+
 <p>要采集很多暗场图，然后对每个像素单独计算系数 <span class="arithmatex">\(k_i\)</span>，最后统计一下 <span class="arithmatex">\(\sigma_K^2\)</span> 即可。</p>
+<!-- blog-edit-end:adb6827380f06309:b37 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\08.噪声\01.相机噪声类型\03.PRNU_DSNU copy.md" data-text-edit-revision="4bb30e11c822c76426edf112a33b52b0fda92f5100d5ac6b63fc909028861afb" data-text-edit-marker="adb6827380f06309" data-text-edit-schema="1"></div>
 
 
 
@@ -1244,8 +1397,6 @@ SNR &amp;= \frac{g\lambda}{\sqrt{g^2\lambda +  g^2\lambda^2\sigma_K^2 + \sigma_N
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

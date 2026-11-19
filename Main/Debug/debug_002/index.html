@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -605,14 +605,34 @@
   
 
 
+<!-- blog-edit-start:1de2bbc34e742619:b0 -->
+
 <h1 id="bug">前端遇到的一些 BUG</h1>
+<!-- blog-edit-end:1de2bbc34e742619:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1f8b6e39611591cedb38492c635fc5b99efc0812c8ee4ba503e81cedd09532a2" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug%5Cdebug_002.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Debug\debug_002.md">复制路径</span></div>
 
+<!-- blog-edit-start:1de2bbc34e742619:b1 -->
+
 <h2 id="settimeout">SetTimeout 时间过短</h2>
+<!-- blog-edit-end:1de2bbc34e742619:b1 -->
+<!-- blog-edit-start:1de2bbc34e742619:b2 -->
+
 <p>这个是用别人写的翻译网站格式化插件遇到的问题，这个插件是 Greasy Fork 上的，所以可以自己去修改代码。<br />
 碰到的问题是这个脚本按照原计划会在网页上添加一个<mark class="term-highlight">格式化</mark>按钮，但是实际根本没有。</p>
+<!-- blog-edit-end:1de2bbc34e742619:b2 -->
+
+<!-- blog-edit-start:1de2bbc34e742619:b3 -->
+
 <p>也搞了将近一个多小时，排查到问题是 SetTimeout 时间过短，导致网页上还没有加载出元素，因此查找某个 div 类返回结果是 null，在它的下面添加子按钮是不成功的。</p>
+<!-- blog-edit-end:1de2bbc34e742619:b3 -->
+
+<!-- blog-edit-start:1de2bbc34e742619:b4 -->
+
 <p>解决方式要么就是把 SetTimeout 里的时间变长，要么就是把 SetTimeout() 改成 windows.addEventListener()。</p>
+<!-- blog-edit-end:1de2bbc34e742619:b4 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Debug\debug_002.md" data-text-edit-revision="1f8b6e39611591cedb38492c635fc5b99efc0812c8ee4ba503e81cedd09532a2" data-text-edit-marker="1de2bbc34e742619" data-text-edit-schema="1"></div>
 
 
 
@@ -844,8 +864,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

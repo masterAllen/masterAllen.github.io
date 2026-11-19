@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -739,32 +739,86 @@
   
 
 
+<!-- blog-edit-start:c87f759050bc15a6:b0 -->
+
 <h1 id="unsafe-unlink">unsafe unlink</h1>
+<!-- blog-edit-end:c87f759050bc15a6:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8a83a6cd3a24fb40f9afa8d6a51dd80f3d95d828b95eb9b1c92bd3cd78374f71" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C08.misc%5C01.unsafe_unlink.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C08.misc" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\08.misc\01.unsafe_unlink.md">复制路径</span></div>
 
+<!-- blog-edit-start:c87f759050bc15a6:b1 -->
+
 <p>历史悠久的攻击手段。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b1 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b2 -->
+
 <h2 id="_1">原理核心</h2>
+<!-- blog-edit-end:c87f759050bc15a6:b2 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b3 -->
+
 <p>从 unsorted bin 等双向链表取出的时候，会进行 unlink 操作，攻击点就是如下的代码：</p>
+<!-- blog-edit-end:c87f759050bc15a6:b3 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b4 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">FD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">BK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BK</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FD</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c87f759050bc15a6:b4 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b5 -->
+
 <p>如果我们可以控制 <code>P</code> 的 <code>fd</code> 和 <code>bk</code> 指针，就可以做点攻击。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b5 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b6 -->
+
 <h2 id="_2">古老的攻击</h2>
+<!-- blog-edit-end:c87f759050bc15a6:b6 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b7 -->
+
 <p>我们构造：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target_addr</span><span class="mi">-24</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expect_value</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:c87f759050bc15a6:b7 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b8 -->
+
 <p>那么：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BK</span><span class="w"> </span><span class="o">&lt;==&gt;</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">target_addr</span><span class="mi">-24</span><span class="o">+</span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expect_value</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FD</span><span class="w"> </span><span class="o">&lt;==&gt;</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">expect_value</span><span class="o">+</span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target_addr</span><span class="mi">-24</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:c87f759050bc15a6:b8 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b9 -->
+
 <p>实现任意地址读写的目的，但是我们还是需要确保 <code>expect value + 16</code> 地址具有可写的权限，并且被破坏之后不影响程序运行。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b9 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b10 -->
+
 <h2 id="_3">现在的攻击</h2>
+<!-- blog-edit-end:c87f759050bc15a6:b10 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b11 -->
+
 <p>现在 unlink 有了如下的检查，所以之前的方式就不行了：</p>
+<!-- blog-edit-end:c87f759050bc15a6:b11 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b12 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">FD</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">P</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">BK</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">P</span><span class="p">,</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c87f759050bc15a6:b12 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b13 -->
+
 <details class="note">
 <summary>题外话</summary>
 <p>多说一句，其实这个检查也给很多其他一些攻击带来了困扰。有些攻击重点不是在于 unlink，他有其他的攻击方式，但是避免不了要把 chunk 从双向链表种取出来。需要能过掉这个检查就行，所以这种攻击通常就直接伪造这样的字段，可以带入上面的式子，是能够 PASS 掉的：</p>
@@ -772,10 +826,18 @@
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="n">chunk</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">chunk</span>
 </span></code></pre></div>
 </details>
+<!-- blog-edit-end:c87f759050bc15a6:b13 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b14 -->
+
 <p>那么现在的 unlink，我们进行这样的构造：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">P</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">P</span><span class="mi">-24</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="n">P</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">P</span><span class="mi">-16</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:c87f759050bc15a6:b14 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b15 -->
+
 <p>那么<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>FD-&gt;bk != P &lt;==&gt; *(&amp;P-24+24) != P
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>BK-&gt;fd != P &lt;==&gt; *(&amp;P-16+16) != P
@@ -783,39 +845,134 @@
 </span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span>FD-&gt;bk = BK &lt;==&gt; *(&amp;P-24+24) = &amp;P-16
 </span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span>BK-&gt;fd = FD &lt;==&gt; *(&amp;P-16+16) = &amp;P-24
 </span></code></pre></div></p>
+<!-- blog-edit-end:c87f759050bc15a6:b15 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b16 -->
+
 <p>相当于修改了 P 的指针指向比自己低 24 字节的地址，即下图中灰色框的内容变成 <code>0x7ffff0840-24</code>。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b16 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b17 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260114094417.png" /></p>
+<!-- blog-edit-end:c87f759050bc15a6:b17 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b18 -->
+
 <p>如果我们可以对 P 的指针有写入多个字节的功能，就能够改变 P 的指针了，具体可以看下一章节。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b18 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b19 -->
+
 <h2 id="_4">用途</h2>
+<!-- blog-edit-end:c87f759050bc15a6:b19 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b20 -->
+
 <p>关键是这有啥用... 从上面就能看出，现在的 unlink 已经今非昔比了，攻击力量断崖式下降。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b20 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b21 -->
+
 <p>下面是一个例子，<strong>必须要先了解 <a href="../../06.consolidate/01.house_of_einherjar/">house of einherjar</a> 才可以。</strong></p>
+<!-- blog-edit-end:c87f759050bc15a6:b21 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b22 -->
+
 <h3 id="house-of-einherjar">house of einherjar 回顾</h3>
+<!-- blog-edit-end:c87f759050bc15a6:b22 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b23 -->
+
 <p>回顾 house of einherjar，如下图所示，我们是修改了下图中 chunkC 的 <code>prev_in_use</code> 字段，这样 <code>free(C)</code> 的时候会合并我们伪造的红色框。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b23 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b24 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260114100036.png" /></p>
+<!-- blog-edit-end:c87f759050bc15a6:b24 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b25 -->
+
 <p>由于合并红色框的时候，会默认红色框在双向链表中（想一想为什么，因为如果是 fastbin 大小，释放块的时候，不会修改 nextchunk 的 <code>prev_in_use</code> 字段），所以会执行 unlink 操作。为了避免检查出错，我们将 <code>fd</code> 和 <code>bk</code> 都改成自身，这样可以 PASS 检查。</p>
+<!-- blog-edit-end:c87f759050bc15a6:b25 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b26 -->
+
 <h3 id="unsafe-unlink_1">unsafe unlink 的构造</h3>
+<!-- blog-edit-end:c87f759050bc15a6:b26 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b27 -->
+
 <p><strong>而 unsafe unlink 的区别就是这里的 <code>fd</code> 和 <code>bk</code> 不同，不再是自身，而是伪造的地址。</strong> 如下图所示：</p>
+<!-- blog-edit-end:c87f759050bc15a6:b27 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b28 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260114100707.png" /></p>
+<!-- blog-edit-end:c87f759050bc15a6:b28 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b29 -->
+
 <p>除了大小不一样，唯一的区别就是 <code>fd</code> 和 <code>bk</code>，这里是因为：</p>
+<!-- blog-edit-end:c87f759050bc15a6:b29 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b30 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">gdb</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="n">$1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="o">**</span><span class="p">)</span><span class="w"> </span><span class="mh">0x555555558020</span><span class="w"> </span><span class="o">&lt;</span><span class="n">a</span><span class="o">&gt;</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-7-4"><span class="linenos" data-linenos="4 "></span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="mi">-24</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x555555558020</span><span class="mi">-24</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x555555558008</span>
 </span><span id="__span-7-5"><span class="linenos" data-linenos="5 "></span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">a</span><span class="mi">-16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x555555558020</span><span class="mi">-16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x555555558010</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c87f759050bc15a6:b30 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b31 -->
+
 <h3 id="unsafe-unlink_2">unsafe unlink 后的利用</h3>
+<!-- blog-edit-end:c87f759050bc15a6:b31 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b32 -->
+
 <p>所以在 <code>free(c)</code> 之后，两个块合并了，然后进行了 unlink 操作，最终的结果：</p>
+<!-- blog-edit-end:c87f759050bc15a6:b32 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b33 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260114102129.png" /></p>
+<!-- blog-edit-end:c87f759050bc15a6:b33 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b34 -->
+
 <p>即最终指向了低自己 24 字节部分，如果我们这个指针有写入多个字节的功能（基本上肯定有，因为 <code>a</code> 原来是堆的地址）：</p>
+<!-- blog-edit-end:c87f759050bc15a6:b34 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b35 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// 一般都会有写入多个字节的功能，因为 a 一开始是堆的地址，即一般都是下面的语句</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// uint64_t *a = malloc(0x20);</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span><span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target_addr</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c87f759050bc15a6:b35 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b36 -->
+
 <p>最终变成下图所示，我们成功可以在 <code>target_addr</code> 上任意写入！</p>
+<!-- blog-edit-end:c87f759050bc15a6:b36 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b37 -->
+
 <p><img alt="" src="../../../../../../asset/image/9ccb66bd6ffad4cf13888b6d2aca3c01/20260114102438.png" /></p>
+<!-- blog-edit-end:c87f759050bc15a6:b37 -->
+
+<!-- blog-edit-start:c87f759050bc15a6:b38 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">&#39;</span><span class="n">hi</span><span class="o">~</span><span class="err">&#39;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c87f759050bc15a6:b38 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\08.misc\01.unsafe_unlink.md" data-text-edit-revision="8a83a6cd3a24fb40f9afa8d6a51dd80f3d95d828b95eb9b1c92bd3cd78374f71" data-text-edit-marker="c87f759050bc15a6" data-text-edit-schema="1"></div>
 
 
 
@@ -1047,8 +1204,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

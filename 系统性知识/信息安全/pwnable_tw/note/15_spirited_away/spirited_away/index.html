@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -700,13 +700,34 @@
   
 
 
+<!-- blog-edit-start:183428ba2c24de52:b0 -->
+
 <h1 id="pwnable-tw-spirited-away">pwnable tw spirited away</h1>
+<!-- blog-edit-end:183428ba2c24de52:b0 -->
+
 <div class="file-actions" data-image-edit-revision="183428ba2c24de525c9294fa8e4dbd63127c70081694c5a41749364761a9be9b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C15_spirited_away%5Cspirited_away.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C15_spirited_away" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\15_spirited_away\spirited_away.md">复制路径</span></div>
 
+<!-- blog-edit-start:183428ba2c24de52:b1 -->
+
 <p>来源: <a href="https://www.taintedbits.com/2020/07/11/binary-exploitation-pwnable-tw-spirited-away/">https://www.taintedbits.com/2020/07/11/binary-exploitation-pwnable-tw-spirited-away/</a></p>
+<!-- blog-edit-end:183428ba2c24de52:b1 -->
+
+<!-- blog-edit-start:183428ba2c24de52:b2 -->
+
 <h2 id="_1">程序分析</h2>
+<!-- blog-edit-end:183428ba2c24de52:b2 -->
+<!-- blog-edit-start:183428ba2c24de52:b3 -->
+
 <p><code>main</code> 函数相当于就执行了一个 <code>survey</code> 函数, <code>survey</code> 函数是不断循环, 每一次都是用户输入姓名、年龄、评价等.</p>
+<!-- blog-edit-end:183428ba2c24de52:b3 -->
+
+<!-- blog-edit-start:183428ba2c24de52:b4 -->
+
 <p>值得注意的是, 一共有几个字符串变量, 基本都在栈上, 只有 <code>name_ptr</code> 存储的是指向堆上的内存指针, 每次有一个申请内存的操作.</p>
+<!-- blog-edit-end:183428ba2c24de52:b4 -->
+
+<!-- blog-edit-start:183428ba2c24de52:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">survey</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">char</span><span class="w">   </span><span class="n">respond</span><span class="p">[];</span><span class="w">     </span><span class="c1">// [esp+0x10], [ebp-0xe8]</span>
@@ -757,7 +778,14 @@
 </span><span id="__span-0-48"><span class="linenos" data-linenos="48 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-49"><span class="linenos" data-linenos="49 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:183428ba2c24de52:b5 -->
+
+<!-- blog-edit-start:183428ba2c24de52:b6 -->
+
 <h2 id="_2">漏洞点</h2>
+<!-- blog-edit-end:183428ba2c24de52:b6 -->
+<!-- blog-edit-start:183428ba2c24de52:b7 -->
+
 <ol>
 <li>
 <p>使用的是 <code>read</code> 函数，没有 <code>NULL</code> 截断，可以泄露栈信息。<br />
@@ -782,7 +810,14 @@
 </span></code></pre></div></p>
 </li>
 </ol>
+<!-- blog-edit-end:183428ba2c24de52:b7 -->
+
+<!-- blog-edit-start:183428ba2c24de52:b8 -->
+
 <h2 id="_3">思路</h2>
+<!-- blog-edit-end:183428ba2c24de52:b8 -->
+<!-- blog-edit-start:183428ba2c24de52:b9 -->
+
 <ol>
 <li>
 <p>通过漏洞点一来泄露 <code>libc</code> 基址 和 栈地址.</p>
@@ -797,10 +832,20 @@
 <p>接下来的重新输入, <code>name_ptr</code> 的 <code>malloc</code> 就会申请到这个假的堆块, 又因为可以溢出 <code>name_ptr</code> 指向内容, 所以可以修改返回地址. 之前说 <code>comment</code> 溢出无法修改返回地址, 而这个块起始位置比 <code>comment</code> 的位置要更靠近返回地址, 所以此时是可以修改返回地址的.</p>
 </li>
 </ol>
+<!-- blog-edit-end:183428ba2c24de52:b9 -->
+
+<!-- blog-edit-start:183428ba2c24de52:b10 -->
+
 <h2 id="_4">总结</h2>
+<!-- blog-edit-end:183428ba2c24de52:b10 -->
+<!-- blog-edit-start:183428ba2c24de52:b11 -->
+
 <ol>
 <li>allocate to stack</li>
 </ol>
+<!-- blog-edit-end:183428ba2c24de52:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\15_spirited_away\spirited_away.md" data-text-edit-revision="183428ba2c24de525c9294fa8e4dbd63127c70081694c5a41749364761a9be9b" data-text-edit-marker="183428ba2c24de52" data-text-edit-schema="1"></div>
 
 
 
@@ -1032,8 +1077,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

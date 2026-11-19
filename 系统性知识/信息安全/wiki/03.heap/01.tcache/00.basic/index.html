@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -678,25 +678,50 @@
   
 
 
+<!-- blog-edit-start:8de34db963afeb0d:b0 -->
+
 <h1 id="tcache">tcache 记录</h1>
+<!-- blog-edit-end:8de34db963afeb0d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="11927318c8bfca5d20cc4fcb593aa580b71edab648276a9c693b533b0814662c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache%5C00.basic.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\00.basic.md">复制路径</span></div>
 
+<!-- blog-edit-start:8de34db963afeb0d:b1 -->
+
 <h2 id="_1">问题</h2>
+<!-- blog-edit-end:8de34db963afeb0d:b1 -->
+
+<!-- blog-edit-start:8de34db963afeb0d:b2 -->
+
 <details class="note">
 <summary>为什么 tcache 比 fastbin 更快，他们都是单向链表</summary>
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>最主要原因是 tcachebin 是线程私有、无锁的，相当于在线程里面放了一个结构体。此外 tcachebin 不做合并检测，校验相对也少，所以相对也会更快。
 </code></pre></div>
 </details>
+<!-- blog-edit-end:8de34db963afeb0d:b2 -->
+
+<!-- blog-edit-start:8de34db963afeb0d:b3 -->
+
 <details class="note">
 <summary>为什么 tcache 每个链表数量是 7 个</summary>
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>经验驱动。作者认为在真实 workload 下，7 已经能覆盖绝大多数小对象的瞬时峰值，再多性价比不高。
 </code></pre></div>
 </details>
+<!-- blog-edit-end:8de34db963afeb0d:b3 -->
+
+<!-- blog-edit-start:8de34db963afeb0d:b4 -->
+
 <h2 id="_2">快速跳转</h2>
+<!-- blog-edit-end:8de34db963afeb0d:b4 -->
+
+<!-- blog-edit-start:8de34db963afeb0d:b5 -->
+
 <ol>
 <li><a href=".././01.double_free/">key 字段说明</a></li>
 <li><a href=".././02.tcache_poisoning/">safe-linking 机制</a></li>
 </ol>
+<!-- blog-edit-end:8de34db963afeb0d:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\00.basic.md" data-text-edit-revision="11927318c8bfca5d20cc4fcb593aa580b71edab648276a9c693b533b0814662c" data-text-edit-marker="8de34db963afeb0d" data-text-edit-schema="1"></div>
 
 
 
@@ -928,8 +953,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

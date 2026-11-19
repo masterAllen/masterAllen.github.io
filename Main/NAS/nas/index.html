@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -671,30 +671,88 @@
   
 
 
+<!-- blog-edit-start:524ea8023ec12985:b0 -->
+
 <h1 id="nas">买完 NAS 后做的事情</h1>
+<!-- blog-edit-end:524ea8023ec12985:b0 -->
+
 <div class="file-actions" data-image-edit-revision="69a2bff790c2437a7428a5693cc5c84227b906153a47506788851007636434a8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CNAS%5Cnas.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CNAS" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\NAS\nas.md">复制路径</span></div>
 
+<!-- blog-edit-start:524ea8023ec12985:b1 -->
+
 <p>保姆级教程：<a href="https://post.smzdm.com/p/a25d6537/">https://post.smzdm.com/p/a25d6537/</a></p>
+<!-- blog-edit-end:524ea8023ec12985:b1 -->
+
+<!-- blog-edit-start:524ea8023ec12985:b2 -->
+
 <h2 id="_1">设置主目录</h2>
+<!-- blog-edit-end:524ea8023ec12985:b2 -->
+<!-- blog-edit-start:524ea8023ec12985:b3 -->
+
 <p>NAS 默认没有主目录，可以在网页中设置，也可以 ssh 登录后新建 home 下的主目录 (<code>/var/services/homes/xxx</code>). </p>
+<!-- blog-edit-end:524ea8023ec12985:b3 -->
+
+<!-- blog-edit-start:524ea8023ec12985:b4 -->
+
 <h2 id="opkg">安装 opkg</h2>
+<!-- blog-edit-end:524ea8023ec12985:b4 -->
+<!-- blog-edit-start:524ea8023ec12985:b5 -->
+
 <p>按照链接来即可：<a href="https://github.com/Entware/Entware/wiki/Install-on-Synology-NAS">https://github.com/Entware/Entware/wiki/Install-on-Synology-NAS</a></p>
+<!-- blog-edit-end:524ea8023ec12985:b5 -->
+
+<!-- blog-edit-start:524ea8023ec12985:b6 -->
+
 <h2 id="shell">修改 shell</h2>
+<!-- blog-edit-end:524ea8023ec12985:b6 -->
+<!-- blog-edit-start:524ea8023ec12985:b7 -->
+
 <p>首先安装 <code>zsh</code>: <code>opkg install zsh</code>. 一定不要通过修改 <code>/etc/passwd</code> 来完成，<strong>否则会阻止 ssh 登录</strong>. 应该直接在 <code>~/.profiles</code> 里填写两行：<code>/path/to/zsh</code> 和 <code>exit</code>.</p>
+<!-- blog-edit-end:524ea8023ec12985:b7 -->
+
+<!-- blog-edit-start:524ea8023ec12985:b8 -->
+
 <h2 id="webdav">设置 webdav</h2>
+<!-- blog-edit-end:524ea8023ec12985:b8 -->
+<!-- blog-edit-start:524ea8023ec12985:b9 -->
+
 <p>我一般用这个协议来进行传输数据，NAS 有自带的 webdav server, 设置即可.<br />
 以后客户端使用 webdav 协议连接 NAS 时，Windows 推荐用 Raidriver 软件，Linux 用 <code>mount -t davfs -o noexec http[s]://ip:port /mnt/dav</code> 命令。</p>
+<!-- blog-edit-end:524ea8023ec12985:b9 -->
+
+<!-- blog-edit-start:524ea8023ec12985:b10 -->
+
 <h2 id="_2">设置防火墙</h2>
+<!-- blog-edit-end:524ea8023ec12985:b10 -->
+<!-- blog-edit-start:524ea8023ec12985:b11 -->
+
 <p>控制面板中仔细找找，有防火墙设置，一般我是只开放 Qbitorrent, DNS, DHCP 这三个端口，同时也允许内网可以访问任何端口，其他 IP 全部 Deny.</p>
+<!-- blog-edit-end:524ea8023ec12985:b11 -->
+
+<!-- blog-edit-start:524ea8023ec12985:b12 -->
+
 <h2 id="_3">硬件：拆卸硬盘</h2>
+<!-- blog-edit-end:524ea8023ec12985:b12 -->
+<!-- blog-edit-start:524ea8023ec12985:b13 -->
+
 <p>拆卸硬盘以及之后的设置：<a href="https://www.appinn.com/synology-dsm218plus-increase-disk-space/">https://www.appinn.com/synology-dsm218plus-increase-disk-space/</a></p>
+<!-- blog-edit-end:524ea8023ec12985:b13 -->
+
+<!-- blog-edit-start:524ea8023ec12985:b14 -->
+
 <h2 id="docker">使用 Docker</h2>
+<!-- blog-edit-end:524ea8023ec12985:b14 -->
+<!-- blog-edit-start:524ea8023ec12985:b15 -->
+
 <ol>
 <li>QNAP 可以下载 Container Station，这个算是官方维护的 docker，可以安装在容量较小的 SSD 中，安装完可以选择存储目录的，那个时候再选择容量大的 HHD。</li>
 <li>使用时建议直接使用命令行，命令也是 docker，感觉上面的软件 GUI 不是很好用，命令行也更容易和参考文档对上。</li>
 <li>下载镜像会连不上，docker 的老问题，听哥的，<strong>这个时候就别想着换源了，直接走代理吧</strong>（<a href="../../../系统性知识/Computer-Network/05.Application_Layer/VPN/03.NAS使用VPN的方式/">走代理文章</a>，不然 docker 的换源真的很折腾又不安全（大机构的基本都停止镜像服务了）。</li>
 <li>设置代理成功之后，docker（也就是 Container Station）要进行设置，<a href="https://post.smzdm.com/p/awopqn7g/">这篇文章</a>讲的极好，推荐推荐。</li>
 </ol>
+<!-- blog-edit-end:524ea8023ec12985:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\NAS\nas.md" data-text-edit-revision="69a2bff790c2437a7428a5693cc5c84227b906153a47506788851007636434a8" data-text-edit-marker="524ea8023ec12985" data-text-edit-schema="1"></div>
 
 
 
@@ -926,8 +984,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

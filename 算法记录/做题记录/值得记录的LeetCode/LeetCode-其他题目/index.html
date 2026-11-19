@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -679,16 +679,50 @@
   
 
 
+<!-- blog-edit-start:78923ba10c8b3483:b0 -->
+
 <h1 id="leetcode">LeetCode 其他题目集</h1>
+<!-- blog-edit-end:78923ba10c8b3483:b0 -->
+
 <div class="file-actions" data-image-edit-revision="791e20130e0eac2a760b881fe0af3b39825fd79f881bbb55e5c72558a2423173" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%80%BC%E5%BE%97%E8%AE%B0%E5%BD%95%E7%9A%84LeetCode%5CLeetCode-%E5%85%B6%E4%BB%96%E9%A2%98%E7%9B%AE.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%80%BC%E5%BE%97%E8%AE%B0%E5%BD%95%E7%9A%84LeetCode" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\做题记录\值得记录的LeetCode\LeetCode-其他题目.md">复制路径</span></div>
 
+<!-- blog-edit-start:78923ba10c8b3483:b1 -->
+
 <p>这里记录一些 LeetCode 上不是很难但可能会有所帮助的题目。</p>
+<!-- blog-edit-end:78923ba10c8b3483:b1 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b2 -->
+
 <h2 id="leetcode-0480-">LeetCode 0480 - 滑动窗口中位数</h2>
+<!-- blog-edit-end:78923ba10c8b3483:b2 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b3 -->
+
 <h3 id="_1">题目描述</h3>
+<!-- blog-edit-end:78923ba10c8b3483:b3 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b4 -->
+
 <p>给你一个数组 nums，有一个长度为 k 的窗口从最左端滑动到最右端。窗口中有 k 个数，每次窗口向右移动 1 位。你的任务是找出每次窗口移动后得到的新窗口中元素的中位数，并输出由它们组成的数组。</p>
+<!-- blog-edit-end:78923ba10c8b3483:b4 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b5 -->
+
 <h3 id="_2">解题思路</h3>
+<!-- blog-edit-end:78923ba10c8b3483:b5 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b6 -->
+
 <h4 id="_3">方法一：使用搜索二叉树</h4>
+<!-- blog-edit-end:78923ba10c8b3483:b6 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b7 -->
+
 <p>无非就是用一个搜索二叉树，这样删除和插入都是 <span class="arithmatex">\(O(logn)\)</span>，但是有个问题是需要找二叉树的中位数，所以每次都要遍历找。那就维护一个中位数指针吧。</p>
+<!-- blog-edit-end:78923ba10c8b3483:b7 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b8 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">st</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">mid</span><span class="p">)</span><span class="w"> </span><span class="o">--</span><span class="n">mid</span><span class="p">;</span>
@@ -696,14 +730,29 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="n">st</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">lower_bound</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="p">]));</span>
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:78923ba10c8b3483:b8 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b9 -->
+
 <h4 id="_4">方法二：使用双堆</h4>
+<!-- blog-edit-end:78923ba10c8b3483:b9 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b10 -->
+
 <p>也有用两个堆来做的，这个就比较巧妙点。一个大顶堆一个小顶堆，小于中位数的在大顶堆，大于的在小顶堆。中位数就是两堆顶的平均（偶数情况）。</p>
+<!-- blog-edit-end:78923ba10c8b3483:b10 -->
+
+<!-- blog-edit-start:78923ba10c8b3483:b11 -->
+
 <p>每次操作步骤：</p>
 <ol>
 <li>先删除旧的数，先和中位数比较，找到对应堆删除即可</li>
 <li>然后添加新来的数，也要和中位数比较</li>
 <li>根据情况来调整大顶堆或者小顶堆即可</li>
 </ol>
+<!-- blog-edit-end:78923ba10c8b3483:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\做题记录\值得记录的LeetCode\LeetCode-其他题目.md" data-text-edit-revision="791e20130e0eac2a760b881fe0af3b39825fd79f881bbb55e5c72558a2423173" data-text-edit-marker="78923ba10c8b3483" data-text-edit-schema="1"></div>
 
 
 
@@ -935,8 +984,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -625,16 +625,41 @@
   
 
 
+<!-- blog-edit-start:1dc2d742d9a80182:b0 -->
+
 <h1 id="tokenizer">Tokenizer</h1>
+<!-- blog-edit-end:1dc2d742d9a80182:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1dc2d742d9a801820efe489511dc1eaa64f741c61cc2fbc0ecf9b35e08570a93" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CTokenizer.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\Tokenizer.md">复制路径</span></div>
 
+<!-- blog-edit-start:1dc2d742d9a80182:b1 -->
+
 <p>其实就是把用户输入的文本切成 token 的这一个过程。</p>
+<!-- blog-edit-end:1dc2d742d9a80182:b1 -->
+
+<!-- blog-edit-start:1dc2d742d9a80182:b2 -->
+
 <p><strong>Tokenizer（分词器）</strong>负责把用户输入的文本切成 <strong>token</strong>，再映射成模型能直接计算的 <strong>token ID</strong>（整数序列）。换句话说：模型读到的并不是原始字符串，而是「分词 + 编号」之后的结果；因此 tokenizer 是推理与训练里最先接触的一层。</p>
+<!-- blog-edit-end:1dc2d742d9a80182:b2 -->
+
+<!-- blog-edit-start:1dc2d742d9a80182:b3 -->
+
 <blockquote>
 <p>参考文章：<a href="https://zhuanlan.zhihu.com/p/2008285806222132143">https://zhuanlan.zhihu.com/p/2008285806222132143</a></p>
 </blockquote>
+<!-- blog-edit-end:1dc2d742d9a80182:b3 -->
+
+<!-- blog-edit-start:1dc2d742d9a80182:b4 -->
+
 <p>同一段 <strong>prompt</strong> 在送进 LLM 之前必须先经 tokenizer <strong>编码</strong>；最终得到的 token 个数以及每个位置上的 ID，取决于具体分词器及其实现与配置（词表、归一化规则、是否合并子词等）。以 <strong>Qwen3</strong> 的分词器为例，下面词组经编码后会得到不同的切分：例如 <code>"hello"</code> 只对应 <strong>1</strong> 个 ID，而 <code>"InfraTech"</code> 则被拆成 <strong>3</strong> 个 ID。</p>
+<!-- blog-edit-end:1dc2d742d9a80182:b4 -->
+
+<!-- blog-edit-start:1dc2d742d9a80182:b5 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513213517.png" /></p>
+<!-- blog-edit-end:1dc2d742d9a80182:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\Tokenizer.md" data-text-edit-revision="1dc2d742d9a801820efe489511dc1eaa64f741c61cc2fbc0ecf9b35e08570a93" data-text-edit-marker="1dc2d742d9a80182" data-text-edit-schema="1"></div>
 
 
 
@@ -866,8 +891,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -682,10 +682,19 @@
   
 
 
+<!-- blog-edit-start:1f408120277d6526:b0 -->
+
 <h1 id="pwnablekr-echo2">Pwnable.kr echo2</h1>
+<!-- blog-edit-end:1f408120277d6526:b0 -->
+
 <div class="file-actions" data-image-edit-revision="23610a5b9fb0a7df5970b63d910a8a995e289572f9c3fec50b34382123b3f795" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C34.echo2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\34.echo2.md">复制路径</span></div>
 
+<!-- blog-edit-start:1f408120277d6526:b1 -->
+
 <h2 id="_1">源代码漏洞</h2>
+<!-- blog-edit-end:1f408120277d6526:b1 -->
+<!-- blog-edit-start:1f408120277d6526:b2 -->
+
 <p>简化后的代码如下，程序可以无限选择执行 <code>echo2</code> 或 <code>echo3</code> 或 <code>cleanup</code> 函数。直接说漏洞点：很明显 <code>echo2</code> 有 FSB 漏洞， <code>echo3</code> 加上 <code>cleanup</code> 有 UAF 漏洞。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kr">__int64</span><span class="w"> </span><span class="nf">echo2</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -754,15 +763,33 @@
 </span><span id="__span-0-65"><span class="linenos" data-linenos="65 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-66"><span class="linenos" data-linenos="66 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:1f408120277d6526:b2 -->
+
+<!-- blog-edit-start:1f408120277d6526:b3 -->
+
 <h2 id="_2">别人的做法</h2>
+<!-- blog-edit-end:1f408120277d6526:b3 -->
+<!-- blog-edit-start:1f408120277d6526:b4 -->
+
 <p>这道题其实很简单很简单，流程如下。</p>
 <ol>
 <li>首先通过 <code>echo2</code> 泄露 <code>ebp</code> 的地址，从而可以计算出 <code>name</code> 的地址，这个 <code>name</code> 是我们事先输入的 <code>shellcode</code>。</li>
 <li>然后执行 <code>4. exit</code> ，从而触发一个 <code>cleanup</code> 函数，从而会把 <code>o</code> 这个 0x20 大小的变量 <code>free</code> 掉。</li>
 <li>最后执行 <code>echo3</code> ，导致申请的 <code>s</code> 就是之前释放的 <code>o</code> ，因此可以改变 <code>o + 4</code> 为 <code>name</code> 地址，这样执行 <code>o + 4</code> ，就相当于执行了 <code>name</code> ，即我们事先输入的 <code>shellcode</code> 。</li>
 </ol>
+<!-- blog-edit-end:1f408120277d6526:b4 -->
+
+<!-- blog-edit-start:1f408120277d6526:b5 -->
+
 <h2 id="_3">我的做法</h2>
+<!-- blog-edit-end:1f408120277d6526:b5 -->
+<!-- blog-edit-start:1f408120277d6526:b6 -->
+
 <p>我这个做法有点硬核了，竟然直接通过 FSB 暴力做出来了，下面来详细讲一讲。</p>
+<!-- blog-edit-end:1f408120277d6526:b6 -->
+
+<!-- blog-edit-start:1f408120277d6526:b7 -->
+
 <ol>
 <li>同样， <code>name</code> 需要输入可以执行的 <code>shellcode</code> 。</li>
 <li>同样， 利用 <code>echo2</code> 泄露 <code>o</code> 的内容。其中 <code>o</code> 是在 BSS 段上的变量，地址是 0x602098，里面存的 malloc 指针。<br />
@@ -770,6 +797,10 @@
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>&#39;%8$s&#39; + &#39;aaaa&#39; + p64(o_addr)
 </span></code></pre></div></li>
 </ol>
+<!-- blog-edit-end:1f408120277d6526:b7 -->
+
+<!-- blog-edit-start:1f408120277d6526:b8 -->
+
 <p>2.1 分析上面的泄露，主要在于使用了 <code>%s</code>，因此这次泄露我们可以获得 <code>o</code> 的内容，也就是那个 malloc 指针。<br />
 一定要分清楚，上面这条语句输出的就是那个指针的地址，而不是 <code>name + greetings + byebye</code>.<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>scanf(&quot;%24s&quot;, &amp;v7); // v7, v8, v9
@@ -777,19 +808,37 @@
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>*((*QWORD)o + 3) = greetings;
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span>*((*QWORD)o + 4) = byebye;
 </span></code></pre></div></p>
+<!-- blog-edit-end:1f408120277d6526:b8 -->
+
+<!-- blog-edit-start:1f408120277d6526:b9 -->
+
 <p>2.2 假设这个指针是 <code>heap_addr</code>，那么很显然，构造结构是这样的。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>heap_addr + 0x00 --&gt; [ name ]
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>heap_addr + 0x18 --&gt; [ greetings ]
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>heap_addr + 0x20 --&gt; [ byebye ]
 </span></code></pre></div></p>
+<!-- blog-edit-end:1f408120277d6526:b9 -->
+
+<!-- blog-edit-start:1f408120277d6526:b10 -->
+
 <ol>
 <li>最后，把 <code>byebye_ptr</code> 改成 <code>name_addr</code>，泄露格式如下。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>padding = (&#39;%&#39; + str(heap_addr) + &#39;c%8$n&#39;).ljust(16, &#39;a&#39;)
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>padding = (padding + p64(heap_addr + 0x20))
 </span></code></pre></div></li>
 </ol>
+<!-- blog-edit-end:1f408120277d6526:b10 -->
+
+<!-- blog-edit-start:1f408120277d6526:b11 -->
+
 <h2 id="_4">总结</h2>
+<!-- blog-edit-end:1f408120277d6526:b11 -->
+<!-- blog-edit-start:1f408120277d6526:b12 -->
+
 <p>很不错的小题，总结的话确实不知道怎么归类，可以回顾回顾看看，不费多长时间。</p>
+<!-- blog-edit-end:1f408120277d6526:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\34.echo2.md" data-text-edit-revision="23610a5b9fb0a7df5970b63d910a8a995e289572f9c3fec50b34382123b3f795" data-text-edit-marker="1f408120277d6526" data-text-edit-schema="1"></div>
 
 
 
@@ -1021,8 +1070,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

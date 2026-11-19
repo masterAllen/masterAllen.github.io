@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -605,19 +605,57 @@
   
 
 
+<!-- blog-edit-start:2d9039819973ed34:b0 -->
+
 <h1 id="youcompleteme-python">解决 Youcompleteme 支持 Python 超级烂的问题</h1>
+<!-- blog-edit-end:2d9039819973ed34:b0 -->
+
 <div class="file-actions" data-image-edit-revision="25a3955e93e7ecb33058e3519168ff80853537821a05d9d50e9fc350042fa4d7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug%5Cdebug_010.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Debug\debug_010.md">复制路径</span></div>
 
+<!-- blog-edit-start:2d9039819973ed34:b1 -->
+
 <p>问题：跳转不到位，经常没法跳，文档显示大部分也没有</p>
+<!-- blog-edit-end:2d9039819973ed34:b1 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b2 -->
+
 <p>1.  Vim 命令行YcmDebuInfo，查看信息，我这上面显示我的Clangd 为False<br />
 问题很明显，发现clang 就没有安装，安装，然后重新编译，发现还是False</p>
+<!-- blog-edit-end:2d9039819973ed34:b2 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b3 -->
+
 <p>2.  在Github 项目上搜索 Issue，发现一个（参考链接1），按照上面步骤，即进入YouCompleteMe/third_party/ycmd，然后调用 Python，输入 <code>import ycm_core; ycm_core.HasClangSupport()</code>，果然是False</p>
+<!-- blog-edit-end:2d9039819973ed34:b3 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b4 -->
+
 <p>3. 这一步想了很久，后来也是看到上面这个链接，说是ycmd 问题，于是还是去ycmd文件夹看看。发现有个run_test.py，运行一下，果然有问题，相关模块该安装安装，最后还是有问题，显示Werror=xxx</p>
+<!-- blog-edit-end:2d9039819973ed34:b4 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b5 -->
+
 <p>4. 以前遇到过这种问题，应该是编译选项的问题，当时在Makefile 里面加了一个disable-werror。但这里我不知道怎么加了，太复杂了，后来查阅资料（参考2）。</p>
+<!-- blog-edit-end:2d9039819973ed34:b5 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b6 -->
+
 <p>原来可以直接强制让GCC/G++ 编译的时候带这个命令，我怎么就没想到呢，但是注意不是这个选项。</p>
+<!-- blog-edit-end:2d9039819973ed34:b6 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b7 -->
+
 <p>答案推荐是-Wno-error，结果试了半天，这个选项还是不行，又找资料，后来看到如果再加上-w，这个问题就解决了</p>
+<!-- blog-edit-end:2d9039819973ed34:b7 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b8 -->
+
 <p>5.  终于好了，之后我又查了一会，发现是自己对Wno-error 理解不到位<br />
 如果显示错误信息为-Werror=deprecated-copy，那就添加对于FLAG，为Wno-error=deprecated-copy</p>
+<!-- blog-edit-end:2d9039819973ed34:b8 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b9 -->
+
 <p>6. 最终解决方法</p>
 <ul>
 <li>
@@ -632,11 +670,29 @@
 </span></code></pre></div></p>
 </li>
 </ul>
+<!-- blog-edit-end:2d9039819973ed34:b9 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b10 -->
+
 <p>说明，CXXFLAGS 是G++ 使用，CFLAGS 是GCC 使用</p>
+<!-- blog-edit-end:2d9039819973ed34:b10 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b11 -->
+
 <p>7.  更新：我发现其实不是Clang 的问题，其实步骤一好像就应该是False，但是好像误打误撞，是ycmd 里面要编译一下</p>
+<!-- blog-edit-end:2d9039819973ed34:b11 -->
+
+<!-- blog-edit-start:2d9039819973ed34:b12 -->
+
 <h2 id="_1">参考资料</h2>
+<!-- blog-edit-end:2d9039819973ed34:b12 -->
+<!-- blog-edit-start:2d9039819973ed34:b13 -->
+
 <p>1. <a href="https://github.com/ycm-core/YouCompleteMe/issues/1155">https://github.com/ycm-core/YouCompleteMe/issues/1155</a><br />
 2. <a href="https://stackoverflow.com/questions/28278455/gcc-with-werror-and-wno-error-unused">https://stackoverflow.com/questions/28278455/gcc-with-werror-and-wno-error-unused</a></p>
+<!-- blog-edit-end:2d9039819973ed34:b13 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Debug\debug_010.md" data-text-edit-revision="25a3955e93e7ecb33058e3519168ff80853537821a05d9d50e9fc350042fa4d7" data-text-edit-marker="2d9039819973ed34" data-text-edit-schema="1"></div>
 
 
 
@@ -868,8 +924,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

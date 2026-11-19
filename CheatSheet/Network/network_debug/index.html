@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -649,23 +649,75 @@
   
 
 
+<!-- blog-edit-start:dfc932725c207e29:b0 -->
+
 <h1 id="linux">Linux 遇到的几个网络问题及解决方式</h1>
+<!-- blog-edit-end:dfc932725c207e29:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8eef7d27a2af47509db7b5e52afb0707ae9e0ac06971689cae663ed7df0c7c6d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNetwork%5Cnetwork_debug.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNetwork" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\Network\network_debug.md">复制路径</span></div>
 
+<!-- blog-edit-start:dfc932725c207e29:b1 -->
+
 <p>最近配置了好多服务器，也遇到了好多网络上的问题，解决过程中有迟迟解决不了的急躁，也有莫名其妙解决的疑惑，也有通过层层逻辑定位并解决后的兴奋。不过总体上感觉还是学到了不少，并且遇到网络问题后能够按照步骤去解决了。</p>
+<!-- blog-edit-end:dfc932725c207e29:b1 -->
+
+<!-- blog-edit-start:dfc932725c207e29:b2 -->
+
 <p>我觉得定位问题按照如下方式。</p>
+<!-- blog-edit-end:dfc932725c207e29:b2 -->
+
+<!-- blog-edit-start:dfc932725c207e29:b3 -->
+
 <h2 id="_1">是不是网、网线本身的问题</h2>
+<!-- blog-edit-end:dfc932725c207e29:b3 -->
+<!-- blog-edit-start:dfc932725c207e29:b4 -->
+
 <p>可以用一台 Windows 上来看，试试看连接这个网线是不是有问题。<br />
 有一次是 Windows 上没有 IPv6，重启也不行，后来重新拔插网线，好了...</p>
+<!-- blog-edit-end:dfc932725c207e29:b4 -->
+
+<!-- blog-edit-start:dfc932725c207e29:b5 -->
+
 <h2 id="ping-icmp">PING 之前要看一下是否开了 ICMP 回应</h2>
+<!-- blog-edit-end:dfc932725c207e29:b5 -->
+<!-- blog-edit-start:dfc932725c207e29:b6 -->
+
 <p>尝试 ping 自己的公网地址，然后查看自己的防火墙是否禁止了 ICMP。</p>
+<!-- blog-edit-end:dfc932725c207e29:b6 -->
+
+<!-- blog-edit-start:dfc932725c207e29:b7 -->
+
 <p>举个例子，之前老师给了一台阿里云服务器，但是他阿里云设置那边只开了 ssh 22 端口，其他全都没开。所以通过这一步，我可以知道这台机器在阿里云那边是没有开 icmp 回应的。</p>
+<!-- blog-edit-end:dfc932725c207e29:b7 -->
+
+<!-- blog-edit-start:dfc932725c207e29:b8 -->
+
 <h2 id="dns">是不是 DNS 的问题</h2>
+<!-- blog-edit-end:dfc932725c207e29:b8 -->
+<!-- blog-edit-start:dfc932725c207e29:b9 -->
+
 <p>我之前用学校的网络，需要把 DNS 设置成学校的 DNS 服务器。但是我当时自作聪明，连上网之后把 DNS 改成了 114 服务器，所以再次重启后就出问题了，因为此时我连我的 DNS 服务器都无法 ping 通。</p>
+<!-- blog-edit-end:dfc932725c207e29:b9 -->
+
+<!-- blog-edit-start:dfc932725c207e29:b10 -->
+
 <h2 id="_2">是不是阿里云的问题</h2>
+<!-- blog-edit-end:dfc932725c207e29:b10 -->
+<!-- blog-edit-start:dfc932725c207e29:b11 -->
+
 <p>之前遇到过我和别人的 IPv6 双向是无法 ping 通的，然后自己的 ICMP 回应是开的，所以就咨询了阿里云，最后发现是运营商网络断了...</p>
+<!-- blog-edit-end:dfc932725c207e29:b11 -->
+
+<!-- blog-edit-start:dfc932725c207e29:b12 -->
+
 <h2 id="_3">是不是端口的问题</h2>
+<!-- blog-edit-end:dfc932725c207e29:b12 -->
+<!-- blog-edit-start:dfc932725c207e29:b13 -->
+
 <p>本地去访问这个端口，发现是 OK 的，所以应该就是端口的问题。这个和检测是否开了 ICMP 回应比较像，都是去看看对应端口有没有开放，之前有一次就是因为阿里云设置没有开的缘故。</p>
+<!-- blog-edit-end:dfc932725c207e29:b13 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\Network\network_debug.md" data-text-edit-revision="8eef7d27a2af47509db7b5e52afb0707ae9e0ac06971689cae663ed7df0c7c6d" data-text-edit-marker="dfc932725c207e29" data-text-edit-schema="1"></div>
 
 
 
@@ -897,8 +949,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

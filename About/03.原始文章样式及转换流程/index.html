@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-9-623cc78a2f1a.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-9-eeec361aae32.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-9-623cc78a2f1a.html"
+         data-shared-navigation-target="../../navigation/shared/group-9-eeec361aae32.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -598,14 +598,40 @@
   
 
 
+<!-- blog-edit-start:dd91c5be9fd1d428:b0 -->
+
 <h1 id="_1">原始文章的样式</h1>
+<!-- blog-edit-end:dd91c5be9fd1d428:b0 -->
+
 <div class="file-actions" data-image-edit-revision="dd91c5be9fd1d428c3ca494ba7dd064b698f517125d6fe98ba0d961bfdc71fbb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CAbout%5C03.%E5%8E%9F%E5%A7%8B%E6%96%87%E7%AB%A0%E6%A0%B7%E5%BC%8F%E5%8F%8A%E8%BD%AC%E6%8D%A2%E6%B5%81%E7%A8%8B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CAbout" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\About\03.原始文章样式及转换流程.md">复制路径</span></div>
 
+<!-- blog-edit-start:dd91c5be9fd1d428:b1 -->
+
 <h2 id="_2">原始文字的样式</h2>
+<!-- blog-edit-end:dd91c5be9fd1d428:b1 -->
+
+<!-- blog-edit-start:dd91c5be9fd1d428:b2 -->
+
 <p>没有什么特别的，就是普普通通的 markdown 格式，没有扩展。这也是我之所以要花费力气写转换脚本的原因，<strong>我不希望为了样式而去牺牲实用性和便捷性。</strong></p>
+<!-- blog-edit-end:dd91c5be9fd1d428:b2 -->
+
+<!-- blog-edit-start:dd91c5be9fd1d428:b3 -->
+
 <p>Hexo 要求文章的标题上方用横线，mkdocs 有各种各样的额外语法，但是这些都不能被普通的渲染器正确渲染。我以前用 hexo 搭建时用了许多它的语法，所以导致有的时候迅速本地看一篇文章时渲染格式不对，所以没有必要这样。就用最普通的方式，然后用转换脚本去优化它，比如原始文章使用中文括号作为强调，那么转换脚本会将其转换为 <code>&lt;em&gt;</code> 标签。</p>
+<!-- blog-edit-end:dd91c5be9fd1d428:b3 -->
+
+<!-- blog-edit-start:dd91c5be9fd1d428:b4 -->
+
 <h2 id="_3">转换流程及细节</h2>
+<!-- blog-edit-end:dd91c5be9fd1d428:b4 -->
+
+<!-- blog-edit-start:dd91c5be9fd1d428:b5 -->
+
 <p><code>main.py</code> 使用流水线方式串联步骤：</p>
+<!-- blog-edit-end:dd91c5be9fd1d428:b5 -->
+
+<!-- blog-edit-start:dd91c5be9fd1d428:b6 -->
+
 <table>
 <thead>
 <tr>
@@ -692,7 +718,14 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:dd91c5be9fd1d428:b6 -->
+
+<!-- blog-edit-start:dd91c5be9fd1d428:b7 -->
+
 <p>日常使用 <code>UpdateBlog</code> 做增量构建；它会先检查环境，只运行一次上面的内容流水线，再分别生成手机端和 Web 端。转换脚本变化而源文件未变化时，使用 <code>UpdateBlog --rebuild</code> 显式全量转换；只想检查环境时使用 <code>UpdateBlog --doctor-only</code>。</p>
+<!-- blog-edit-end:dd91c5be9fd1d428:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\About\03.原始文章样式及转换流程.md" data-text-edit-revision="dd91c5be9fd1d428c3ca494ba7dd064b698f517125d6fe98ba0d961bfdc71fbb" data-text-edit-marker="dd91c5be9fd1d428" data-text-edit-schema="1"></div>
 
 
 
@@ -924,8 +957,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

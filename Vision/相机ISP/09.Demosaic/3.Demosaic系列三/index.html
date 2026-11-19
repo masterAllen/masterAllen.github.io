@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,30 +655,119 @@
   
 
 
+<!-- blog-edit-start:e7d6622bb2acdae1:b0 -->
+
 <h1 id="demosaic-ri">Demosaic 系列三：RI 系列</h1>
+<!-- blog-edit-end:e7d6622bb2acdae1:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8ea5fc76c0b66e84f12ff67a04f21ed18d7c61161418d711456610f215a761a8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic%5C3.Demosaic%E7%B3%BB%E5%88%97%E4%B8%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\09.Demosaic\3.Demosaic系列三.md">复制路径</span></div>
 
+<!-- blog-edit-start:e7d6622bb2acdae1:b1 -->
+
 <p>RI 系列文章，东京工业大学的小组做的。感觉挺不错的。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b1 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b2 -->
+
 <h2 id="ri">一、RI</h2>
+<!-- blog-edit-end:e7d6622bb2acdae1:b2 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b3 -->
+
 <p><em>Residual interpolation for color image demosaicking，ICIP 2013，Daisuke Kiku，东京工业大学</em></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b3 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b4 -->
+
 <p>引用次数为 181（截至 2024/01）。RI 系列的第一篇文章，还是挺有想法的，应该是作者读硕士期间发的，后来去了奥林巴斯工作了，做内窥镜去了。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b4 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b5 -->
+
 <p>需要先了解导向滤波这个经典方法（何凯明是真的强），看这篇文章，需要和 GBTF 对着来，文章的一幅图画的非常好。就是之前 DLMMSE 和 GBTF 都是对 R-G 进行插值，现在我用导向滤波去预测一个新的 R*，然后对 R-R*进行插值，插值的方法同样是用引导滤波。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b5 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b6 -->
+
 <p>还有一个重要的点，务必理解：RI 和之后的 MLRI 方法相当于都是提高了 R 和 B 的预测精度，<strong>一般会用 GBTF 方法预测 G，然后他们认为预测 G 是正确的</strong>，拿这个 G 去提高 R 和 B 的精度。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b6 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b7 -->
+
 <p><img src="../../../../../asset/image/5f560f5a7d3bf54c98489d328e12fa0c/image1.png" style="width:3.80029in;height:5.4067in" /></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b7 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b8 -->
+
 <h2 id="mlri">二、MLRI</h2>
+<!-- blog-edit-end:e7d6622bb2acdae1:b8 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b9 -->
+
 <p><em>Beyond Color Difference: Residual Interpolation for Color Image Demosaicking，TIP 2016, <a href="https://ieeexplore.ieee.org/author/37085366998">Daisuke Kiku</a>，东京工业大学</em></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b9 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b10 -->
+
 <p>引用次数 112（2024.01），RI 的扩展版本，很简单但确实有提升，这个作者我还是非常佩服的。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b10 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b11 -->
+
 <p>继续看图即可，区别就是之前对 R-R*进行插值（图片圆圈处），是用引导滤波插值。引导滤波中的最小化目标是<mark class="term-highlight">输出图片和原始图片</mark>的差异；现在修改最小化目标为这个差异图的拉普拉斯。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b11 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b12 -->
+
 <p><img src="../../../../../asset/image/5f560f5a7d3bf54c98489d328e12fa0c/image2.png" style="width:5.76806in;height:2.54375in" /></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b12 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b13 -->
+
 <p>刚才提到最小化目标是改成了差异图的拉普拉斯，然后就按照这个目标去重新推一边引导滤波的公式，最后就重新得出导向滤波的 a 和 b 值，没有太大的增加计算量：</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b13 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b14 -->
+
 <p><img src="../../../../../asset/image/5f560f5a7d3bf54c98489d328e12fa0c/image3.png" style="width:3.22434in;height:0.5833in" /></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b14 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b15 -->
+
 <p><img src="../../../../../asset/image/5f560f5a7d3bf54c98489d328e12fa0c/image4.png" style="width:3.38037in;height:2.23961in" /></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b15 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b16 -->
+
 <h2 id="iri">三、IRI</h2>
+<!-- blog-edit-end:e7d6622bb2acdae1:b16 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b17 -->
+
 <p><em>Color Image Demosaicing Using Iterative Residual Interpolation, TIP 2015, Wei Ye, HUST</em></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b17 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b18 -->
+
 <p>引用次数 67（2024.02），感觉有道理，就是时间会长。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b18 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b19 -->
+
 <p>核心思想很简单：看看 RI 和 MLRI 那两张图，都是认为预测的 G 是没问题的（这两个方法都是先用 GBTF 去预测出 G，然后再去修改 R 和 B）。那我就不服呗，我预测完 R 和 B 之后，再去用 RI 方法去预测 G，这个效果应该会比一开始 GBTF 预测的 G 好。那我有一个好的 G 之后，我再去 RI 方法去预测 R 和 B，效果又好一点，再反过来修改 G，如此反复…</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b19 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b20 -->
+
 <p>当然论文没有用 GBTF 先去预测 G，而是直接线性插值。因为我反正都是反复迭代去提升，所以一开始的质量也无所谓，用 GBTF 反而增加时间了。</p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b20 -->
+
+<!-- blog-edit-start:e7d6622bb2acdae1:b21 -->
+
 <p><img src="../../../../../asset/image/5f560f5a7d3bf54c98489d328e12fa0c/image5.png" style="width:5.76806in;height:2.82292in" /></p>
+<!-- blog-edit-end:e7d6622bb2acdae1:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\09.Demosaic\3.Demosaic系列三.md" data-text-edit-revision="8ea5fc76c0b66e84f12ff67a04f21ed18d7c61161418d711456610f215a761a8" data-text-edit-marker="e7d6622bb2acdae1" data-text-edit-schema="1"></div>
 
 
 
@@ -910,8 +999,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -643,10 +643,20 @@
   
 
 
+<!-- blog-edit-start:42ae768b9b0a463a:b0 -->
+
 <h1 id="ret2dlresolve">Ret2dlresolve</h1>
+<!-- blog-edit-end:42ae768b9b0a463a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="750492ab912ea320bed65ef81c05ec1466ed86eaf89e1d1691a12f747f54e884" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C04.ret2dlresolve%5Cret2dlresolve.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C04.ret2dlresolve" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\04.ret2dlresolve\ret2dlresolve.md">复制路径</span></div>
 
+<!-- blog-edit-start:42ae768b9b0a463a:b1 -->
+
 <p>这里不谈太多细节，只说笼统的，如下的步骤：</p>
+<!-- blog-edit-end:42ae768b9b0a463a:b1 -->
+
+<!-- blog-edit-start:42ae768b9b0a463a:b2 -->
+
 <ol>
 <li>栈迁移，这是必须要做的，我们需要在栈中伪造各个内容，最后调用 <code>_dl_runtime_resolve</code> 进行触发。</li>
 <li>
@@ -658,13 +668,32 @@
 </ul>
 </li>
 </ol>
+<!-- blog-edit-end:42ae768b9b0a463a:b2 -->
+
+<!-- blog-edit-start:42ae768b9b0a463a:b3 -->
+
 <p>如下图，该图是 <code>_dl_runtime_resolve</code> 的具体细节。反正就是我们最终栈溢出如下结构：</p>
+<!-- blog-edit-end:42ae768b9b0a463a:b3 -->
+
+<!-- blog-edit-start:42ae768b9b0a463a:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>[old ebp] [_dl_runtime_resolve] [address] [reloc_index]
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>这里的 address 指向的内容就是我们栈中伪造的几个结构。
 </span></code></pre></div>
+<!-- blog-edit-end:42ae768b9b0a463a:b4 -->
+
+<!-- blog-edit-start:42ae768b9b0a463a:b5 -->
+
 <p><img alt="" src="../../../../../../asset/image/9841892ed515a5efa0102aeace6a5e8a/20260102085752.png" /></p>
+<!-- blog-edit-end:42ae768b9b0a463a:b5 -->
+
+<!-- blog-edit-start:42ae768b9b0a463a:b6 -->
+
 <p>具体真正看细节的话，需要看这篇文章：<a href="https://ltfa1l.top/2024/06/05/system/StackOverflow/ret2dlresolve">https://ltfa1l.top/2024/06/05/system/StackOverflow/ret2dlresolve</a></p>
+<!-- blog-edit-end:42ae768b9b0a463a:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\04.ret2dlresolve\ret2dlresolve.md" data-text-edit-revision="750492ab912ea320bed65ef81c05ec1466ed86eaf89e1d1691a12f747f54e884" data-text-edit-marker="42ae768b9b0a463a" data-text-edit-schema="1"></div>
 
 
 
@@ -896,8 +925,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

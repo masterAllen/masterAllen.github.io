@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -633,29 +633,91 @@
   
 
 
+<!-- blog-edit-start:d75d3c09127dccf9:b0 -->
+
 <h1 id="_1">图像修图之放大眼睛</h1>
+<!-- blog-edit-end:d75d3c09127dccf9:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b23b308e5a2a73a7241b27c6cccd2ce40f83a3330cce4b67b2a62b709c924a2b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE%5C%E4%BF%AE%E5%9B%BE%EF%BC%9A%E6%94%BE%E5%A4%A7%E7%9C%BC%E7%9D%9B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\14.风格化和修图\修图：放大眼睛.md">复制路径</span></div>
 
+<!-- blog-edit-start:d75d3c09127dccf9:b1 -->
+
 <p>放大眼睛分为两步：检测眼睛、放大眼睛。检测眼睛就不写了，那个属于目标检测的范畴。</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b1 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b2 -->
+
 <p>放大眼睛的思路是源于 Interactive Image Warping 这篇文章。</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b2 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b3 -->
+
 <p>思路如这张图所示，圆心是眼睛，放大就是从 A 点放大到 B 点。</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b3 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b4 -->
+
 <p><img alt="" src="../../../../asset/image/f43a9f2e3243144915ded1fc3acc93da/20241208130558.png" /></p>
+<!-- blog-edit-end:d75d3c09127dccf9:b4 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b5 -->
+
 <p>这里就要谈一个注意点，我第一次实现看了这个图那么简单，很快实现了但结果却很不好，原来有一个注意点：半径上的点放大比例是不一样的，离圆心较近的点放大会强一点，离圆心较远的点放大会弱一点，直到最后到了边缘。</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b5 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b6 -->
+
 <p>放大的公式为，其中 a 用于控制放大程度，而 rmax 则是规定放大的范围：</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b6 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b7 -->
+
 <p><img alt="" src="../../../../asset/image/f43a9f2e3243144915ded1fc3acc93da/20241208130957.png" /></p>
+<!-- blog-edit-end:d75d3c09127dccf9:b7 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b8 -->
+
 <p>上面的公式可能还是抽象，直接看如何调整横坐标的代码：</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b8 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b9 -->
+
 <div class="arithmatex">\[
 dis^2 = (x - x_0)^2 + (y - y_0)^2
 \]</div>
+<!-- blog-edit-end:d75d3c09127dccf9:b9 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b10 -->
+
 <div class="arithmatex">\[
 k = 1 - (1 - \frac{dis^2}{{rmax}^2}) * a
 \]</div>
+<!-- blog-edit-end:d75d3c09127dccf9:b10 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b11 -->
+
 <div class="arithmatex">\[
 newx = x_0 + (x - x_0) * k
 \]</div>
+<!-- blog-edit-end:d75d3c09127dccf9:b11 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b12 -->
+
 <p>最后，有经验的人肯定知道，做图像变换往往是遍历目标图片，去推测当前的点是原图的哪个点；而不是遍历原始图片，去推测这个点会变成目标图片上哪个点。</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b12 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b13 -->
+
 <p>所以回看这个公式，我们要把 x 和 y 当成目标图片的像素点，k 就是缩放比例，根据 k 就能计算出当前像素点从原图哪个点变换来的。所以如果要放大眼睛，那么 k 其实应该是小于 1，是放大比例的倒数，所以 a 要小于 1 去保证 k 小于 1。</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b13 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b14 -->
+
 <p>此时 rmax 的意思就是我的眼睛最终变换后的半径，而不是变换前的半径。推测出当前像素属于原图哪个点时，如果是小数，要用双线性插值去计算。</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b14 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b15 -->
+
 <p>代码:<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -707,8 +769,20 @@ newx = x_0 + (x - x_0) * k
 </span><span id="__span-0-48"><span class="linenos" data-linenos="48 "></span><span class="n">now</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-0-49"><span class="linenos" data-linenos="49 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;./test.png&#39;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:d75d3c09127dccf9:b15 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b16 -->
+
 <h2 id="_2">题外话</h2>
+<!-- blog-edit-end:d75d3c09127dccf9:b16 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b17 -->
+
 <p>当然如果觉得这样别扭，非要输入眼睛半径和放大比例，可以换算：</p>
+<!-- blog-edit-end:d75d3c09127dccf9:b17 -->
+
+<!-- blog-edit-start:d75d3c09127dccf9:b18 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 原来的眼睛半径，和放大的比例</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">oldr</span> <span class="o">=</span> <span class="mi">20</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">1.2</span>
@@ -719,6 +793,9 @@ newx = x_0 + (x - x_0) * k
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span>
 </span><span id="__span-1-9"><span class="linenos" data-linenos="9 "></span><span class="c1"># 后面就一样了，根据目标推原图的位置，还是要给一个参数 a，表示放大的变化强度</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d75d3c09127dccf9:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\14.风格化和修图\修图：放大眼睛.md" data-text-edit-revision="b23b308e5a2a73a7241b27c6cccd2ce40f83a3330cce4b67b2a62b709c924a2b" data-text-edit-marker="d75d3c09127dccf9" data-text-edit-schema="1"></div>
 
 
 
@@ -950,8 +1027,6 @@ newx = x_0 + (x - x_0) * k
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

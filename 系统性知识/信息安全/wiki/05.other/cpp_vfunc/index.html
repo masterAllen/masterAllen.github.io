@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -671,14 +671,38 @@
   
 
 
+<!-- blog-edit-start:112dfe89bf5cb319:b0 -->
+
 <h1 id="c">C++ 虚函数攻击</h1>
+<!-- blog-edit-end:112dfe89bf5cb319:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a1568a2e43b7c0fff903f332c2d7fdf1439a82244cc99fbe83dec90ae130ed51" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other%5Ccpp_vfunc.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\05.other\cpp_vfunc.md">复制路径</span></div>
 
+<!-- blog-edit-start:112dfe89bf5cb319:b1 -->
+
 <h2 id="c-vtable">C++ 虚函数 vtable</h2>
+<!-- blog-edit-end:112dfe89bf5cb319:b1 -->
+<!-- blog-edit-start:112dfe89bf5cb319:b2 -->
+
 <p>知道对象在继承父类的时候, 在子类的属性前面会有一个 vtable, 指向继承父类的值, 看下方图即可.</p>
+<!-- blog-edit-end:112dfe89bf5cb319:b2 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b3 -->
+
 <p><img alt="img01" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20260102001.png" /></p>
+<!-- blog-edit-end:112dfe89bf5cb319:b3 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b4 -->
+
 <p>更专业的文章：<a href="https://xuanxuanblingbling.github.io/ctf/pwn/2019/12/17/vtable/">https://xuanxuanblingbling.github.io/ctf/pwn/2019/12/17/vtable/</a></p>
+<!-- blog-edit-end:112dfe89bf5cb319:b4 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b5 -->
+
 <h2 id="pwnablekr-uaf">题目: Pwnable.kr UAF</h2>
+<!-- blog-edit-end:112dfe89bf5cb319:b5 -->
+<!-- blog-edit-start:112dfe89bf5cb319:b6 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> </span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
@@ -759,22 +783,60 @@
 </span><span id="__span-0-78"><span class="linenos" data-linenos="78 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">    </span>
 </span><span id="__span-0-79"><span class="linenos" data-linenos="79 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:112dfe89bf5cb319:b6 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b7 -->
+
 <p>关键点: </p>
+<!-- blog-edit-end:112dfe89bf5cb319:b7 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b8 -->
+
 <p>可以看出 Man 和 Woman 都是继承了 Human 类，并且可以看出 Human 类的私有虚函数 give_shell 就是 system, 所以想办法执行这个函数.</p>
+<!-- blog-edit-end:112dfe89bf5cb319:b8 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b9 -->
+
 <p>程序给了我们3个选项: <code>use</code> 使用指针指向的函数; <code>after</code> 分配一段地址空间, 我们可以用其将已经被 free 的内存, 重新allocate; <code>free</code> 将指针指向的内存释放.</p>
+<!-- blog-edit-end:112dfe89bf5cb319:b9 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b10 -->
+
 <h2 id="_1">利用思路</h2>
+<!-- blog-edit-end:112dfe89bf5cb319:b10 -->
+<!-- blog-edit-start:112dfe89bf5cb319:b11 -->
+
 <p>很明显, 只有子类 <code>introduce</code> 会执行, 所以就是把子类 <code>introduce</code> 改为父类 <code>give_shell</code> 的地址即可. </p>
+<!-- blog-edit-end:112dfe89bf5cb319:b11 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b12 -->
+
 <ul>
 <li>假设 <code>introduce</code> 在子类的偏移量为 n, <code>give_shell</code> 在父类的偏移量为 m.</li>
 <li>假设 <code>子类虚函数表</code> 地址为 X, <code>父类虚函数表</code> 为 Y.</li>
 </ul>
+<!-- blog-edit-end:112dfe89bf5cb319:b12 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b13 -->
+
 <p>做法: 把 X 指向 Y+m-n 即可. 因为要保证 <code>X + n == Y + m</code>.</p>
+<!-- blog-edit-end:112dfe89bf5cb319:b13 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b14 -->
+
 <p>里面的内容就是 <code>p64(Y+m-n)</code>, 然后执行 3-2-2-1.</p>
+<!-- blog-edit-end:112dfe89bf5cb319:b14 -->
+
+<!-- blog-edit-start:112dfe89bf5cb319:b15 -->
+
 <ul>
 <li>第一步执行 3, 会把那两个指针执行的内存删除掉, 可以调试发现大小是 24Bytes. </li>
 <li>第二步第三步执行 2, 会把之前删掉的内存块中添加 <code>Y+m-n</code>, 这样那两个指针开头为 <code>Y+m-n</code>.</li>
 <li>第四步执行 1, 让那两个指针指向的对象执行 <code>introduce</code>, 而找这个函数是通过对象开头的虚函数表, 而这个表被我们改掉了, 偏移 n 就是 Y+m, 所以成功执行了 <code>give_shell</code>.</li>
 </ul>
+<!-- blog-edit-end:112dfe89bf5cb319:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\05.other\cpp_vfunc.md" data-text-edit-revision="a1568a2e43b7c0fff903f332c2d7fdf1439a82244cc99fbe83dec90ae130ed51" data-text-edit-marker="112dfe89bf5cb319" data-text-edit-schema="1"></div>
 
 
 
@@ -1006,8 +1068,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -670,27 +670,96 @@
   
 
 
+<!-- blog-edit-start:7f17bb1af4f81153:b0 -->
+
 <h1 id="_1">宿主机和虚拟机共享屏幕</h1>
+<!-- blog-edit-end:7f17bb1af4f81153:b0 -->
+
 <div class="file-actions" data-image-edit-revision="275783d5781a0f59f182dd8c00cd0a0d2c92dc63580aede9e1b38ec2335f5bdd" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%BF%E4%B8%BB%E6%9C%BA%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%B1%E4%BA%AB%E5%B1%8F%E5%B9%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\宿主机和虚拟机共享屏幕.md">复制路径</span></div>
 
+<!-- blog-edit-start:7f17bb1af4f81153:b1 -->
+
 <p>前言: 垃圾腾讯！只知道盈利的商业公司！中国 Linux 发展的拦路者和毒瘤！</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b1 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b2 -->
+
 <p>这篇文章起因是想在 Linux 上使用腾讯会议，我不是很喜欢使用 Wine，而且微信这些软件还好，就怕开会这种实时软件突然出了点问题那就麻烦了。所以装虚拟机使用，但是共享屏幕没法共享宿主机的内容，这是个痛点。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b2 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b3 -->
+
 <p>所以要找一个共享屏幕软件，宿主机共享屏幕给虚拟机(即宿主机作为服务端、虚拟机作为客户端)，然后虚拟机的腾讯会议再共享给别人。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b3 -->
+
 <!--more-->
+<!-- blog-edit-start:7f17bb1af4f81153:b4 -->
+
 <h2 id="_2">写给我的话(总结)</h2>
+<!-- blog-edit-end:7f17bb1af4f81153:b4 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b5 -->
+
 <p>主要就两点：以后找什么多用 GitHub！然后就是安装不成功就要特别特别注意版本问题！</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b5 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b6 -->
+
 <h2 id="_3">软件筛选</h2>
+<!-- blog-edit-end:7f17bb1af4f81153:b6 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b7 -->
+
 <p>一开始是打算用 VNC，最好的就是 TigerVNC 了，但是它的痛点就是服务端没法缩放。虚拟机因为有标题栏的原因会导致屏幕比宿主机小一点，所以没有缩放就导致共享只能共享一部分。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b7 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b8 -->
+
 <p>然后搞了好久其他 VNC，没有用。但是突然发现又想到其实 VNC 是有些多余的，因为它侧重于 Control，也就是客户端可以控制服务端，但是我只需要共享屏幕就行了，所以我最好使用只有共享屏幕的软件。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b8 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b9 -->
+
 <p>于是搜了一下 screen sharing，但是好家伙，全都是些啥...又忙活了半天，结果没找到。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b9 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b10 -->
+
 <h2 id="_4">最终解决</h2>
+<!-- blog-edit-end:7f17bb1af4f81153:b10 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b11 -->
+
 <p>最后想到了神奇的 GitHub，果然这里面有一个，而且特别符合要求：就只是单纯的共享屏幕，作者也说了别的功能不会加，貌似他是被微软的远程桌面的高延迟低画质给气的才搞这一个软件，牛啊牛啊。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b11 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b12 -->
+
 <p>项目链接: <a href="https://github.com/screego/server">https://github.com/screego/server</a></p>
+<!-- blog-edit-end:7f17bb1af4f81153:b12 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b13 -->
+
 <p>下面是安装配置方法。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b13 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b14 -->
+
 <h3 id="_5">下载安装</h3>
+<!-- blog-edit-end:7f17bb1af4f81153:b14 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b15 -->
+
 <p>就正常下载就好，如果用 AUR 的话，配置示例文件是 <code>/etc/screego.config</code>，如果是从 GitHub 下载二进制的话，配置示例文件是 <code>screego.config.example</code>，之后要把示例文件修改到 <code>/etc/screego/server.config</code>。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b15 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b16 -->
+
 <h3 id="_6">生成证书</h3>
+<!-- blog-edit-end:7f17bb1af4f81153:b16 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b17 -->
+
 <p>按照下面的方法来就行，虽然我也不知道原理，<strong>基本上是照搬了 <a href="https://www.jianshu.com/p/3a2c01577c7c">https://www.jianshu.com/p/3a2c01577c7c</a>。</strong></p>
+<!-- blog-edit-end:7f17bb1af4f81153:b17 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b18 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>openssl<span class="w"> </span>genrsa<span class="w"> </span>-des3<span class="w"> </span>-out<span class="w"> </span>server.key<span class="w"> </span><span class="m">2048</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>openssl<span class="w"> </span>rsa<span class="w"> </span>-in<span class="w"> </span>server.key<span class="w"> </span>-out<span class="w"> </span>server.key
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="c1"># 过程中会要求输入一些信息，不填也可</span>
@@ -700,23 +769,51 @@
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="c1"># 创建服务器证书</span>
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span>-in<span class="w"> </span>server.csr<span class="w"> </span>-CA<span class="w"> </span>ca.crt<span class="w"> </span>-CAkey<span class="w"> </span>server.key<span class="w"> </span>-CAcreateserial<span class="w"> </span>-out<span class="w"> </span>server.crt
 </span></code></pre></div>
+<!-- blog-edit-end:7f17bb1af4f81153:b18 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b19 -->
+
 <h3 id="_7">修改配置</h3>
+<!-- blog-edit-end:7f17bb1af4f81153:b19 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b20 -->
+
 <p>把默认的配置文件放在 <code>/etc/server.config</code>。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>SCREEGO_EXTERNAL_IP=192.168.128.128 # 改成本机 IP 地址
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>SCREEGO_SERVER_TLS=true
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>SCREEGO_TLS_CERT_FILE=/path/to/server.crt
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span>SCREEGO_TLS_KEY_FILE=/path/to/server.key
 </span></code></pre></div></p>
+<!-- blog-edit-end:7f17bb1af4f81153:b20 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b21 -->
+
 <h3 id="_8">启动</h3>
+<!-- blog-edit-end:7f17bb1af4f81153:b21 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b22 -->
+
 <p>命令 <code>screego serve</code> 进行启动，然后在浏览器打开就行。比如 IP 地址是 192.168.128.128，那么就打开 <code>https://192.168.128.128:5050</code>，注意一定要有 https 才行。此外如果发现不能分享屏幕，看看是不是浏览器版本的问题。(我搞了几个小时，最后发现是因为虚拟机才安装，Edge 版本比较低，裂开...)</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b22 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b23 -->
+
 <h3 id="_9">不用这么复杂</h3>
+<!-- blog-edit-end:7f17bb1af4f81153:b23 -->
+<!-- blog-edit-start:7f17bb1af4f81153:b24 -->
+
 <p>后来我发现对于我这种需要虚拟机和宿主机之间共享屏幕的，不需要那么复杂。也不需要开头输入 https 了，虽然可能有安全问题...<br />
 配置文件如下。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span># 好像什么地址都行
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>SCREEGO_EXTERNAL_IP=127.0.0.1
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>SCREEGO_SERVER_TLS=false
 </span></code></pre></div></p>
+<!-- blog-edit-end:7f17bb1af4f81153:b24 -->
+
+<!-- blog-edit-start:7f17bb1af4f81153:b25 -->
+
 <p>然后宿主机执行 <code>screego serve</code>，宿主机输入地址 <code>localhost:5050</code>，虚拟机输入地址 <code>host_ip:5050</code>。搞定。</p>
+<!-- blog-edit-end:7f17bb1af4f81153:b25 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\宿主机和虚拟机共享屏幕.md" data-text-edit-revision="275783d5781a0f59f182dd8c00cd0a0d2c92dc63580aede9e1b38ec2335f5bdd" data-text-edit-marker="7f17bb1af4f81153" data-text-edit-schema="1"></div>
 
 
 
@@ -948,8 +1045,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

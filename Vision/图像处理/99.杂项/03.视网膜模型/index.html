@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,20 +666,62 @@
   
 
 
+<!-- blog-edit-start:444d9876663d8117:b0 -->
+
 <h1 id="_1">视网膜模型</h1>
+<!-- blog-edit-end:444d9876663d8117:b0 -->
+
 <div class="file-actions" data-image-edit-revision="90a62894fbcb7cb0e8072f287e87be5b1fc6fc7ed291ee4d6978df231d91d0bb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C99.%E6%9D%82%E9%A1%B9%5C03.%E8%A7%86%E7%BD%91%E8%86%9C%E6%A8%A1%E5%9E%8B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C99.%E6%9D%82%E9%A1%B9" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\99.杂项\03.视网膜模型.md">复制路径</span></div>
 
+<!-- blog-edit-start:444d9876663d8117:b1 -->
+
 <p>可用于对比度增强、ToneMapping、运动检测</p>
+<!-- blog-edit-end:444d9876663d8117:b1 -->
+
+<!-- blog-edit-start:444d9876663d8117:b2 -->
+
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.5.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.5.md</a></p>
 </blockquote>
+<!-- blog-edit-end:444d9876663d8117:b2 -->
+
+<!-- blog-edit-start:444d9876663d8117:b3 -->
+
 <p>OpenCV 专门的 bininspired 模块来负责 Retina 视网膜模型的功能，大部分研究来自某个大学实验组的研究内容。</p>
+<!-- blog-edit-end:444d9876663d8117:b3 -->
+
+<!-- blog-edit-start:444d9876663d8117:b4 -->
+
 <p>要细说估计得学半天，因为我看这个有好多相关论文，具体可以看 OpenCV 的这个<a href="https://docs.opencv.org/4.x/d2/d94/bioinspired_retina.html">介绍文档</a> 里面涉及到的参考链接。我看有好多地方可以用这个工作：对比度增强、去马赛克色彩插值、Tonemapping、运动检测等等...</p>
+<!-- blog-edit-end:444d9876663d8117:b4 -->
+
+<!-- blog-edit-start:444d9876663d8117:b5 -->
+
 <p>这里就简单理解下，Retina 貌似是用一堆参数来模拟人眼两种视觉细胞的行为，反正每个参数最后导致对图片有一定的影响。一共有两种视觉细胞：parvo 和 mangno，前者看起来是负责主体视觉的，对比度增强、ToneMapping 等都是改变它并且获取它的输出结果；后者看起来是负责运动检测的。示例图片：</p>
+<!-- blog-edit-end:444d9876663d8117:b5 -->
+
+<!-- blog-edit-start:444d9876663d8117:b6 -->
+
 <p><img alt="1724485079067" src="../../../../asset/image/f0cd0bafd44878d199a9e1f82e43bcb4/1724485079067.png" /></p>
+<!-- blog-edit-end:444d9876663d8117:b6 -->
+
+<!-- blog-edit-start:444d9876663d8117:b7 -->
+
 <h3 id="_2">使用时的总体逻辑</h3>
+<!-- blog-edit-end:444d9876663d8117:b7 -->
+
+<!-- blog-edit-start:444d9876663d8117:b8 -->
+
 <p>OpenCV 的使用方法：有一个 Retina 类。先创建一个对象，然后这个对象有一堆参数，调整完参数后就使用 <code>getParvo</code> 和 <code>getmagno</code> 来获取上述两种视觉细胞产生的结果，可以看下面的代码说明部分。</p>
+<!-- blog-edit-end:444d9876663d8117:b8 -->
+
+<!-- blog-edit-start:444d9876663d8117:b9 -->
+
 <p>设置参数方法是 <code>setupOPLandIPLParvoChannel</code>。之所以提这个是因为我在实验的时候踩了一个坑：最好调用这个函数一次性把想设置的参数设好，不要反复调用它。因为不显著指定某个参数的值时，它会用默认值。所以当前调用如果没显著声明之前设好的参数，那么之前设好的参数会被替换掉。</p>
+<!-- blog-edit-end:444d9876663d8117:b9 -->
+
+<!-- blog-edit-start:444d9876663d8117:b10 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">cv</span><span class="o">::</span><span class="n">bioinspired</span><span class="o">::</span><span class="n">Retina</span><span class="o">::</span><span class="n">setupOPLandIPLParvoChannel</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w">  </span><span class="n">colorMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w">  </span><span class="n">normaliseOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span>
@@ -692,7 +734,15 @@
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">ganglionCellsSensitivity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.7f</span><span class="w"> </span>
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:444d9876663d8117:b10 -->
+
+<!-- blog-edit-start:444d9876663d8117:b11 -->
+
 <h3 id="_3">参数说明</h3>
+<!-- blog-edit-end:444d9876663d8117:b11 -->
+
+<!-- blog-edit-start:444d9876663d8117:b12 -->
+
 <details class="note">
 <summary>详情</summary>
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>&lt;summary&gt; 
@@ -706,9 +756,25 @@
 <span class="linenos" data-linenos="9 "></span>&lt;IMG src=&quot;../../../../asset/image/f0cd0bafd44878d199a9e1f82e43bcb4/1724331800491.png&quot;/&gt;
 </code></pre></div>
 </details>
+<!-- blog-edit-end:444d9876663d8117:b12 -->
+
+<!-- blog-edit-start:444d9876663d8117:b13 -->
+
 <p>其中实测 horizontalCellsGain 应该要乘以 100，即文档上说要设置 0.4，实际应该要设置为 40。自己实验的代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_retina.ipynb">test_retina.ipynb</a> 中。</p>
+<!-- blog-edit-end:444d9876663d8117:b13 -->
+
+<!-- blog-edit-start:444d9876663d8117:b14 -->
+
 <h3 id="_4">代码展示</h3>
+<!-- blog-edit-end:444d9876663d8117:b14 -->
+
+<!-- blog-edit-start:444d9876663d8117:b15 -->
+
 <p>具体实验代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_retina.ipynb">test_retina.ipybn</a> 中了，这里直接复制一段，便于不用跳转直接查阅：</p>
+<!-- blog-edit-end:444d9876663d8117:b15 -->
+
+<!-- blog-edit-start:444d9876663d8117:b16 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="sd">&#39;&#39;&#39;</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="sd">Retina 提高对比度</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="sd">&#39;&#39;&#39;</span>
@@ -739,10 +805,29 @@
 </span><span id="__span-1-28"><span class="linenos" data-linenos="28 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;My Parvo&#39;</span><span class="p">,</span> <span class="n">retina</span><span class="o">.</span><span class="n">getParvo</span><span class="p">())</span>
 </span><span id="__span-1-29"><span class="linenos" data-linenos="29 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;My Magno&#39;</span><span class="p">,</span> <span class="n">retina</span><span class="o">.</span><span class="n">getMagno</span><span class="p">())</span>
 </span></code></pre></div>
+<!-- blog-edit-end:444d9876663d8117:b16 -->
+
+<!-- blog-edit-start:444d9876663d8117:b17 -->
+
 <h3 id="_5">其他说明</h3>
+<!-- blog-edit-end:444d9876663d8117:b17 -->
+
+<!-- blog-edit-start:444d9876663d8117:b18 -->
+
 <p>Opencv 还有一个 RetinaFastToneMapping 类，这个是 Retina 用于 Tonemapping 的。相当于涉及到的参数会少一点，即上面那么多的参数有一些是不起作用的。但不知道为什么，我实验的时候用这个类，最后出来的结果是黑图。不过 Retina 类有一个 <code>applyFastTonemapping</code> 方法，也是一样的，专门用于 tonemapping；当然如果直接用常规的 <code>getParvo</code> 获取 Parvo 细胞（主体视觉）的输出也可以做 tonemapping，只不过要考虑的参数可能会多一点（因为这个方法就是所有参数都会对结果有影响）。实验代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_retina.ipynb">test_retina.ipynb</a> 中。</p>
+<!-- blog-edit-end:444d9876663d8117:b18 -->
+
+<!-- blog-edit-start:444d9876663d8117:b19 -->
+
 <p>Opencv 还有一个 TransientAreasSegmentationModule 类，这个是用于运动检测的。原理上是利用了 Magno 细胞（周边运动）的输出结果。实验代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_retina.ipynb">test_retina.ipynb</a> 中。</p>
+<!-- blog-edit-end:444d9876663d8117:b19 -->
+
+<!-- blog-edit-start:444d9876663d8117:b20 -->
+
 <p>Retina 类还有一些其他的方法，如保存或读取配置文件等。具体实验代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_retina.ipynb">test_retina.ipybn</a> 中了。</p>
+<!-- blog-edit-end:444d9876663d8117:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\99.杂项\03.视网膜模型.md" data-text-edit-revision="90a62894fbcb7cb0e8072f287e87be5b1fc6fc7ed291ee4d6978df231d91d0bb" data-text-edit-marker="444d9876663d8117" data-text-edit-schema="1"></div>
 
 
 
@@ -974,8 +1059,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

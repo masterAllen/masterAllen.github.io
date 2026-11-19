@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -695,10 +695,20 @@
   
 
 
+<!-- blog-edit-start:847e5caa1af71558:b0 -->
+
 <h1 id="python">Python 打包心得</h1>
+<!-- blog-edit-end:847e5caa1af71558:b0 -->
+
 <div class="file-actions" data-image-edit-revision="936c3f45487e54e3d82f7fbd2bef467b0c183f15899afc83b1251f35b489a027" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E6%89%93%E5%8C%85%5CPython%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E6%89%93%E5%8C%85%E7%AF%87.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E6%89%93%E5%8C%85" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\python打包\Python打包心得-打包篇.md">复制路径</span></div>
 
+<!-- blog-edit-start:847e5caa1af71558:b1 -->
+
 <h2 id="nuikta">Nuikta</h2>
+<!-- blog-edit-end:847e5caa1af71558:b1 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b2 -->
+
 <ol>
 <li>
 <p>优先 Nuikta：<code>python -m nuitka --mingw64 --standalone --output-dir=out --show-progress --enable-plugin=pyqt5 --nofollow-import-to=numpy,cv2,PIL,six,pytweening,pyscreeze,pyrect,pyperclip --windows-disable-console .\main1.py</code></p>
@@ -707,39 +717,123 @@
 <p>某些包使用 Nuikta 会有问题（如Plotly），这个时候有解决方法，但没必要，时间和收益不成正比。老老实实使用 pyinstaller 就行。</p>
 </li>
 </ol>
+<!-- blog-edit-end:847e5caa1af71558:b2 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b3 -->
+
 <h2 id="pyinstaller">Pyinstaller 打包过大</h2>
+<!-- blog-edit-end:847e5caa1af71558:b3 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b4 -->
+
 <p>多半是因为在 conda 环境下，并且程序里面有调用 numpy 包（或者其他间接调用了 numpy 的包，如 cv2 等）。进行了一些对比测试后，建议如下：</p>
+<!-- blog-edit-end:847e5caa1af71558:b4 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b5 -->
+
 <ol>
 <li>不要在 conda 下安装 pyinstaller，即使是 <code>conda install pyinstaller -c conda-forge</code> 也无法解决这个问题。应该在系统原始的 python3 上安装 pyinstaller。貌似是因为 pyinstaller 会根据它自己所在环境寻找 lib 路径，判断哪些包(.so)涵盖进去，所以 conda 环境下某些 lib 会被包进去。如果经常打包，建议直接用一个虚拟机，虽然很笨但是有奇效。</li>
 <li>~~conda 安装 numpy 建议使用 conda install numpy -c conda-forge，主要是因为 conda 中的 numpy 包有使用 mkl 这个矩阵计算库，打包时很有可能会把 mkl 包上。~~ <strong>本条作废</strong>：这个问题已经解决了，现在 numpy 的安装默认行为已经不是这样了。</li>
 </ol>
+<!-- blog-edit-end:847e5caa1af71558:b5 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b6 -->
+
 <h2 id="pyintsaller">Pyintsaller 优先生成目录</h2>
+<!-- blog-edit-end:847e5caa1af71558:b6 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b7 -->
+
 <p>及其不推荐 Pyinstaller 只生成一个文件，这样有更新会相当相当麻烦。而是生成目录，这样可以备份生成的目录（即 <code>_internal</code>），后续有更新操作时，如果包不变的话，那么 <code>_internal</code> 里面内容也不会变，后续直接替换 exe 即可。</p>
+<!-- blog-edit-end:847e5caa1af71558:b7 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b8 -->
+
 <p>这种操作方式下还有如下的几个技巧：</p>
+<!-- blog-edit-end:847e5caa1af71558:b8 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b9 -->
+
 <h3 id="_1">删除目录中没必要的文件</h3>
+<!-- blog-edit-end:847e5caa1af71558:b9 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b10 -->
+
 <p>打开 exe 文件，然后对 <code>_internal</code> 目录中的文件进行无脑删除，此时会弹出某些文件被占用的窗口，这些文件跳过处理即可。这样那些没有用的文件就会被删除掉了。</p>
+<!-- blog-edit-end:847e5caa1af71558:b10 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b11 -->
+
 <p>PS:<strong>这种可能有风险，有些文件可能是后续操作才会用到（但我很少遇到过），所以先做好备份。</strong></p>
+<!-- blog-edit-end:847e5caa1af71558:b11 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b12 -->
+
 <h3 id="_2">一些常见的无用文件</h3>
+<!-- blog-edit-end:847e5caa1af71558:b12 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b13 -->
+
 <p>以下是我遇到的 <code>_internal</code> 中没用到的文件，即可以删除的文件：</p>
+<!-- blog-edit-end:847e5caa1af71558:b13 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b14 -->
+
 <ol>
 <li><code>tcl</code>、<code>tcl8</code>、<code>tk</code> 里面的文件都可以删除，但这三个文件夹要保留。</li>
 <li><code>PyQt</code> 中的 <code>translation</code> 不用，<code>bin</code> 目录下有些文件不用。</li>
 </ol>
+<!-- blog-edit-end:847e5caa1af71558:b14 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b15 -->
+
 <h3 id="_3">后续包有更新</h3>
+<!-- blog-edit-end:847e5caa1af71558:b15 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b16 -->
+
 <p>在更新的时候，还遇到一个问题，就是遇到用了新的包。其实最简单的做法就是只把 <code>_internal</code> 新加的文件放到更新的文件夹中，即：</p>
+<!-- blog-edit-end:847e5caa1af71558:b16 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b17 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>_internal
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>   new_file1
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>   new_file2
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>new.exe
 </span></code></pre></div>
+<!-- blog-edit-end:847e5caa1af71558:b17 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b18 -->
+
 <p>合成一个压缩包，然后用户解压把里面的文件直接拖进去即可，系统会自动把新增的文件放入到了 <code>_internal</code> 中了。</p>
+<!-- blog-edit-end:847e5caa1af71558:b18 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b19 -->
+
 <h3 id="_4">第一次发布时目录很大</h3>
+<!-- blog-edit-end:847e5caa1af71558:b19 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b20 -->
+
 <p>第一次发布的时候，<code>_internal</code> 会有很多文件，而且子文件比较多，这样复制起来很麻烦。我觉得最直接的就是压缩目录，然后写一个 readme.txt 就行了。</p>
+<!-- blog-edit-end:847e5caa1af71558:b20 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b21 -->
+
 <p>如果非要钻牛角尖，想直接无脑被用户使用（不推荐）。可以在程序里面刚开始运行的时候进行检测是否有压缩包，如果有那么就在程序里先解压。此时目录结构为：</p>
+<!-- blog-edit-end:847e5caa1af71558:b21 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b22 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>bootstrap.py (bootstrap 程序，刚开始会先解压)
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>main.py (项目文件入口)
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>...
 </span></code></pre></div>
+<!-- blog-edit-end:847e5caa1af71558:b22 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b23 -->
+
 <p>打包的时候对 <code>bootstrap.py</code> 进行打包，但问题是要启动 <code>bootstrap</code> 也需要必须的文件呀。但是好处是这样 <code>_internal</code> 里面的文件只用放基础的几个就行，如下所示：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>_internal (bootstrap 必须要用的文件)
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>   _tcl_data (空)
@@ -752,7 +846,15 @@
 </span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span>_internal.zip (整个项目用到的文件)
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span>my.exe (对 bootstrap 打包生成的 exe)
 </span></code></pre></div></p>
+<!-- blog-edit-end:847e5caa1af71558:b23 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b24 -->
+
 <p>下面是一个 <code>bootstrap.py</code> 示例，他是会检查同目录下是否有 <code>.notok</code> 文件，如果有则解压，解压成功后删除压缩包。</p>
+<!-- blog-edit-end:847e5caa1af71558:b24 -->
+
+<!-- blog-edit-start:847e5caa1af71558:b25 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># bootstrap.py</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -834,6 +936,9 @@
 </span><span id="__span-3-79"><span class="linenos" data-linenos="79 "></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 </span><span id="__span-3-80"><span class="linenos" data-linenos="80 "></span>    <span class="n">main</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:847e5caa1af71558:b25 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\python打包\Python打包心得-打包篇.md" data-text-edit-revision="936c3f45487e54e3d82f7fbd2bef467b0c183f15899afc83b1251f35b489a027" data-text-edit-marker="847e5caa1af71558" data-text-edit-schema="1"></div>
 
 
 
@@ -1065,8 +1170,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

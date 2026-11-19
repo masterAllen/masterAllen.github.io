@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -878,38 +878,128 @@
   
 
 
+<!-- blog-edit-start:385d440546cd4263:b0 -->
+
 <h1 id="rdma">硬件学习：RDMA</h1>
+<!-- blog-edit-end:385d440546cd4263:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e028016d2fbec8cc25feae222d1c440104589970d2a135a0c2ddb8a85a8a8a27" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86%5CRDMA%E5%AD%A6%E4%B9%A0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\硬件知识\RDMA学习.md">复制路径</span></div>
+
+<!-- blog-edit-start:385d440546cd4263:b1 -->
 
 <blockquote>
 <p>结合豆包学习，参考文章：<a href="https://zhuanlan.zhihu.com/p/648805252">https://zhuanlan.zhihu.com/p/648805252</a></p>
 </blockquote>
+<!-- blog-edit-end:385d440546cd4263:b1 -->
+
+<!-- blog-edit-start:385d440546cd4263:b2 -->
+
 <h2 id="dma">DMA</h2>
+<!-- blog-edit-end:385d440546cd4263:b2 -->
+
+<!-- blog-edit-start:385d440546cd4263:b3 -->
+
 <p>DMA 相比不用多说，外设对内存的读写过程可以不用CPU参与而直接进行，有了它以后，当我们的网卡想要从内存中拷贝数据时，除了一些必要的控制命令外，整个数据复制过程都是由DMA控制器完成的。</p>
+<!-- blog-edit-end:385d440546cd4263:b3 -->
+
+<!-- blog-edit-start:385d440546cd4263:b4 -->
+
 <p>过程跟CPU复制是一样的，只不过这次是把内存中的数据通过总线复制到DMA控制器内部的寄存器中，再复制到I/O设备的存储空间中。CPU除了关注一下这个过程的开始和结束以外，其他时间可以去做其他事情。</p>
+<!-- blog-edit-end:385d440546cd4263:b4 -->
+
+<!-- blog-edit-start:385d440546cd4263:b5 -->
+
 <figure class="img-center"><img src="../../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512184158.png" alt="左边是无 DMA，右边是有 DMA"><figcaption> 左边是无 DMA，右边是有 DMA </figcaption></figure>
 
+<!-- blog-edit-end:385d440546cd4263:b5 -->
+
+<!-- blog-edit-start:385d440546cd4263:b6 -->
+
 <h2 id="rdma_1">RDMA</h2>
+<!-- blog-edit-end:385d440546cd4263:b6 -->
+
+<!-- blog-edit-start:385d440546cd4263:b7 -->
+
 <p>RDMA（ Remote Direct Memory Access ）意为远程直接地址访问，通过RDMA，本端节点可以“直接”访问远端节点的内存。重点在于可以绕过 TCP/IP网络协议栈，大部分工作有硬件来去完成。</p>
+<!-- blog-edit-end:385d440546cd4263:b7 -->
+
+<!-- blog-edit-start:385d440546cd4263:b8 -->
+
 <p>下图是传统网络中，左边的节点在内存用户空间中的数据，需要经过CPU拷贝到内核空间的缓冲区中，然后才可以被网卡访问，这期间数据会经过软件实现的TCP/IP协议栈，加上各层头部和校验码，比如TCP头，IP头等。网卡通过DMA拷贝内核中的数据到网卡内部的缓冲区中，进行处理后通过物理链路发送给对端。</p>
+<!-- blog-edit-end:385d440546cd4263:b8 -->
+
+<!-- blog-edit-start:385d440546cd4263:b9 -->
+
 <p>对端收到数据后，会进行相反的过程：从网卡内部存储空间，将数据通过DMA拷贝到内存内核空间的缓冲区中，然后CPU会通过TCP/IP协议栈对其进行解析，将数据取出来拷贝到用户空间中。</p>
+<!-- blog-edit-end:385d440546cd4263:b9 -->
+
+<!-- blog-edit-start:385d440546cd4263:b10 -->
+
 <figure class="img-center"><img src="../../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512173822.png" alt="无 RDMA"><figcaption> 无 RDMA </figcaption></figure>
 
+<!-- blog-edit-end:385d440546cd4263:b10 -->
+
+<!-- blog-edit-start:385d440546cd4263:b11 -->
+
 <p>而有了 RDMA 之后，两端的CPU几乎不用参与数据传输过程（只参与控制面）。本端的网卡直接从内存的用户空间DMA拷贝数据到内部存储空间，然后硬件进行各层报文的组装后，通过物理链路发送到对端网卡。对端的RDMA网卡收到数据后，剥离各层报文头和校验码，通过DMA将数据直接拷贝到用户空间内存中。</p>
+<!-- blog-edit-end:385d440546cd4263:b11 -->
+
+<!-- blog-edit-start:385d440546cd4263:b12 -->
+
 <figure class="img-center"><img src="../../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512173845.png" alt="有 RMDA"><figcaption> 有 RMDA </figcaption></figure>
 
+<!-- blog-edit-end:385d440546cd4263:b12 -->
+
+<!-- blog-edit-start:385d440546cd4263:b13 -->
+
 <h2 id="_1">具体优势</h2>
+<!-- blog-edit-end:385d440546cd4263:b13 -->
+
+<!-- blog-edit-start:385d440546cd4263:b14 -->
+
 <p>RDMA主要应用在高性能计算（HPC）领域和大型数据中心当中，并且设备相对普通以太网卡要昂贵不少（比如Mellanox公司的Connext-X 5 100Gb PCIe网卡市价在4000元以上）。由于使用场景和价格的原因，RDMA与普通开发者和消费者的距离较远，目前主要是一些大型互联网企业在部署和使用。</p>
+<!-- blog-edit-end:385d440546cd4263:b14 -->
+
+<!-- blog-edit-start:385d440546cd4263:b15 -->
+
 <p>RDMA 的核心优势（后面会分析），主要是直接用户层传递，减少了来回数据拷贝、系统调用（导致上下文切换）等过程。</p>
+<!-- blog-edit-end:385d440546cd4263:b15 -->
+
+<!-- blog-edit-start:385d440546cd4263:b16 -->
+
 <p><img alt="" src="../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512174503.png" /></p>
+<!-- blog-edit-end:385d440546cd4263:b16 -->
+
+<!-- blog-edit-start:385d440546cd4263:b17 -->
+
 <ol>
 <li>0拷贝：指的是不需要在用户空间和内核空间中来回复制数据。</li>
 <li>内核Bypass：指的是IO（数据）流程可以绕过内核，即在用户层就可以把数据准备好并通知硬件准备发送和接收。避免了系统调用和上下文切换的开销。</li>
 </ol>
+<!-- blog-edit-end:385d440546cd4263:b17 -->
+
+<!-- blog-edit-start:385d440546cd4263:b18 -->
+
 <h2 id="_2">具体分析</h2>
+<!-- blog-edit-end:385d440546cd4263:b18 -->
+
+<!-- blog-edit-start:385d440546cd4263:b19 -->
+
 <p>上面大部分内容是复制参考文章。读到这里时，我就困惑了：这是怎么做到的？这样也太危险了？下面进行说明。</p>
+<!-- blog-edit-end:385d440546cd4263:b19 -->
+
+<!-- blog-edit-start:385d440546cd4263:b20 -->
+
 <h3 id="_3">核心流程</h3>
+<!-- blog-edit-end:385d440546cd4263:b20 -->
+
+<!-- blog-edit-start:385d440546cd4263:b21 -->
+
 <p><strong>RDMA 零拷贝的核心：内存注册（MR, Memory Region）+ 硬件内核旁路</strong>，使用 RDMA 流程：</p>
+<!-- blog-edit-end:385d440546cd4263:b21 -->
+
+<!-- blog-edit-start:385d440546cd4263:b22 -->
+
 <ol>
 <li>
 <p>前置授权：用户进程发起内存注册</p>
@@ -930,34 +1020,105 @@
 <p>数据路径：完全旁路内核，零拷贝收发</p>
 </li>
 </ol>
+<!-- blog-edit-end:385d440546cd4263:b24 -->
+
+<!-- blog-edit-start:385d440546cd4263:b25 -->
+
 <p><strong>下面这段也可以暂时不用管，后续说明</strong>。注册完成后，应用拿到注册内存的句柄和密钥，后续的报文收发，直接通过用户态 verbs 接口，把用户缓冲区的虚拟地址 + 密钥提交给 RNIC 的硬件队列：</p>
+<!-- blog-edit-end:385d440546cd4263:b25 -->
+
+<!-- blog-edit-start:385d440546cd4263:b26 -->
+
 <ul>
 <li>发送时：RNIC 硬件直接通过内置的地址翻译引擎，把用户虚拟地址转为物理地址，直接从用户空间内存读取数据、打包、发送，全程不需要内核参与，无任何内存拷贝。</li>
 <li>接收时：应用提前把注册好的用户缓冲区地址 + L_Key 提交到接收队列，RNIC 收到报文后，直接把数据写入对应的用户空间内存，再通过完成队列（CQ）通知应用，全程不经过内核，无拷贝。</li>
 </ul>
+<!-- blog-edit-end:385d440546cd4263:b26 -->
+
+<!-- blog-edit-start:385d440546cd4263:b27 -->
+
 <h3 id="l_key-r_key">L_Key 和 R_Key 说明</h3>
+<!-- blog-edit-end:385d440546cd4263:b27 -->
+
+<!-- blog-edit-start:385d440546cd4263:b28 -->
+
 <p>这两个 Key 是在第一步调用 <code>ibv_reg_mr</code>（注册内存区域）时，由 <strong>RDMA 内核驱动 + RNIC 硬件联合生成</strong>的随机/唯一值，直接绑定到刚注册的那段 Memory Region 上。</p>
+<!-- blog-edit-end:385d440546cd4263:b28 -->
+
+<!-- blog-edit-start:385d440546cd4263:b29 -->
+
 <p>注册完成后，驱动会返回给你一个 <code>struct ibv_mr</code> 结构体，里面就包含了：</p>
+<!-- blog-edit-end:385d440546cd4263:b29 -->
+
+<!-- blog-edit-start:385d440546cd4263:b30 -->
+
 <ul>
 <li><code>addr</code>：你注册的用户空间虚拟地址起始</li>
 <li><code>length</code>：注册的内存长度</li>
 <li><code>lkey</code>：<strong>本地密钥（Local Key）</strong></li>
 <li><code>rkey</code>：<strong>远程密钥（Remote Key）</strong></li>
 </ul>
+<!-- blog-edit-end:385d440546cd4263:b30 -->
+
+<!-- blog-edit-start:385d440546cd4263:b31 -->
+
 <h3 id="1-l_key">场景 1：普通的双边操作：只用 L_Key</h3>
+<!-- blog-edit-end:385d440546cd4263:b31 -->
+
+<!-- blog-edit-start:385d440546cd4263:b32 -->
+
 <p>双边操作是最像传统 Socket 的收发：<strong>本地发，对端必须提前发一个 Recv 请求“占位”</strong>，数据才能发过去。这种场景下，<strong>全程只用到 L_Key</strong>，R_Key 没用。</p>
+<!-- blog-edit-end:385d440546cd4263:b32 -->
+
+<!-- blog-edit-start:385d440546cd4263:b33 -->
+
 <p>以本地节点 A 给对端节点 B 发数据为例，说明 L_Key 怎么用：</p>
+<!-- blog-edit-end:385d440546cd4263:b33 -->
+
+<!-- blog-edit-start:385d440546cd4263:b34 -->
+
 <h4 id="1-l_key_1">步骤 1：两边都先注册内存，拿到各自的 L_Key</h4>
+<!-- blog-edit-end:385d440546cd4263:b34 -->
+
+<!-- blog-edit-start:385d440546cd4263:b35 -->
+
 <ul>
 <li>节点 A（发送方）：注册一段发送缓冲区 <code>buf_A</code>，拿到 <code>lkey_A</code>。</li>
 <li>节点 B（接收方）：注册一段接收缓冲区 <code>buf_B</code>，拿到 <code>lkey_B</code>。</li>
 </ul>
+<!-- blog-edit-end:385d440546cd4263:b35 -->
+
+<!-- blog-edit-start:385d440546cd4263:b36 -->
+
 <h4 id="2-b-recv-wr">步骤 2：节点 B 先提交“接收请求（Recv WR）”</h4>
+<!-- blog-edit-end:385d440546cd4263:b36 -->
+
+<!-- blog-edit-start:385d440546cd4263:b37 -->
+
 <p>节点 B 要构造一些信息：我准备好收数据了，放到用户空间 <code>buf_B</code> 里，这是我的门票 <code>lkey_B</code>。随后把这个请求提交到节点 B 的 RNIC 的<strong>接收队列（RQ）</strong>。</p>
+<!-- blog-edit-end:385d440546cd4263:b37 -->
+
+<!-- blog-edit-start:385d440546cd4263:b38 -->
+
 <p>这种操作可以提前批量进行。也就是一次性批量Post几百、几千个Recv请求到RQ里，相当于提前给硬件准备好一大堆空的“收件箱”，之后可以持续接收数据，不需要每次收数据前再重复操作。</p>
+<!-- blog-edit-end:385d440546cd4263:b38 -->
+
+<!-- blog-edit-start:385d440546cd4263:b39 -->
+
 <h4 id="3-a-send-wr">步骤 3：节点 A 提交“发送请求（Send WR）”</h4>
+<!-- blog-edit-end:385d440546cd4263:b39 -->
+<!-- blog-edit-start:385d440546cd4263:b40 -->
+
 <p>节点 A 类似，提交要发送的数据在哪段用户空间 <code>buf_A</code>，还有我的门票 <code>leky_A</code>，提交到节点 A 的 RNIC 的<strong>发送队列（SQ）</strong>。</p>
+<!-- blog-edit-end:385d440546cd4263:b40 -->
+
+<!-- blog-edit-start:385d440546cd4263:b41 -->
+
 <h4 id="4rnic-l_key">步骤 4：RNIC 硬件校验 L_Key，执行零拷贝收发</h4>
+<!-- blog-edit-end:385d440546cd4263:b41 -->
+
+<!-- blog-edit-start:385d440546cd4263:b42 -->
+
 <ul>
 <li>
 <p>节点 A 的 RNIC 从 SQ 拿到 Send WR：</p>
@@ -977,28 +1138,83 @@
 <p>节点 B 的应用轮询 CQ，看到 wr_id=123 的通知，就知道数据已经到 <code>buf_B</code> 里了，直接读就行——全程没有内核参与，没有拷贝。</p>
 </li>
 </ul>
+<!-- blog-edit-end:385d440546cd4263:b42 -->
+
+<!-- blog-edit-start:385d440546cd4263:b43 -->
+
 <h4 id="_4">关键问题</h4>
+<!-- blog-edit-end:385d440546cd4263:b43 -->
+
+<!-- blog-edit-start:385d440546cd4263:b44 -->
+
 <details class="question">
 <summary>这样的步骤，节点A 需要先向节点B发一个发送请求才可以？这样节点B才知道有人要发我数据了。</summary>
 <p>不是这样，你把传统 TCP Socket 的逻辑套到了 RDMA 上，在 RDMA 中：<strong>B 可以在完全不知道谁要发、什么时候发、发什么内容的前提下，提前做好接收准备，之后随时可以接收任何匹配的Send数据，全程不需要A提前打招呼。</strong></p>
 <p>整个过程，接收方硬件只看自己本地有没有提前准备好的缓冲区，完全不关心“发送方有没有提前打招呼”。<strong>RDMA 报文是带着「目标唯一身份标识」的，B 的网卡硬件看到不是发给自己的包，直接硬件丢弃，根本不会往内存放、也不会进队列。</strong></p>
 <p>就类似 UDP 中的包头，只不过这个直接是 RDMA 网卡来做这个事情，不需要 CPU 操作。</p>
 </details>
+<!-- blog-edit-end:385d440546cd4263:b44 -->
+
+<!-- blog-edit-start:385d440546cd4263:b45 -->
+
 <h3 id="2-r_key">场景 2：单边操作：必须用 R_Key</h3>
+<!-- blog-edit-end:385d440546cd4263:b45 -->
+
+<!-- blog-edit-start:385d440546cd4263:b46 -->
+
 <p>单边操作是 RDMA 最“狠”的地方：<strong>本地节点直接读写对端节点的内存，对端的 CPU、内核完全不知道，也不需要参与</strong>。这种场景下，<strong>发起端要用自己的 L_Key，同时必须拿到对端的 R_Key</strong>。</p>
+<!-- blog-edit-end:385d440546cd4263:b46 -->
+
+<!-- blog-edit-start:385d440546cd4263:b47 -->
+
 <p>我们以“节点 A 直接往节点 B 的内存里写数据（RDMA WRITE）”为例，看 R_Key 怎么用：</p>
+<!-- blog-edit-end:385d440546cd4263:b47 -->
+
+<!-- blog-edit-start:385d440546cd4263:b48 -->
+
 <h4 id="1-b-r_key-a">步骤 1：节点 B 注册，把 R_Key 传给节点 A</h4>
+<!-- blog-edit-end:385d440546cd4263:b48 -->
+
+<!-- blog-edit-start:385d440546cd4263:b49 -->
+
 <p>节点 B 注册一段允许远程写入的缓冲区 <code>buf_B</code>，拿到 <code>lkey_B</code> 和 <code>rkey_B</code>。</p>
+<!-- blog-edit-end:385d440546cd4263:b49 -->
+
+<!-- blog-edit-start:385d440546cd4263:b50 -->
+
 <p><strong>关键一步</strong>：节点 B 需要通过<strong>带外通道</strong>（比如传统 Socket，或者先跑一次 Send/Recv），把三个信息告诉节点 A：</p>
+<!-- blog-edit-end:385d440546cd4263:b50 -->
+
+<!-- blog-edit-start:385d440546cd4263:b51 -->
+
 <ol>
 <li><code>buf_B</code> 的<strong>虚拟地址</strong></li>
 <li><code>buf_B</code> 的<strong>长度</strong></li>
 <li><code>rkey_B</code>（<strong>远程密钥</strong>）</li>
 </ol>
+<!-- blog-edit-end:385d440546cd4263:b51 -->
+
+<!-- blog-edit-start:385d440546cd4263:b52 -->
+
 <p>这就好比节点 B 给节点 A 寄了一张“专属门票”，说：“你拿这张票，可以直接来我家 <code>buf_B</code> 这个位置放东西，不用敲门。”</p>
+<!-- blog-edit-end:385d440546cd4263:b52 -->
+
+<!-- blog-edit-start:385d440546cd4263:b53 -->
+
 <h4 id="2-a-l_key">步骤 2：节点 A 注册，拿到 L_Key</h4>
+<!-- blog-edit-end:385d440546cd4263:b53 -->
+
+<!-- blog-edit-start:385d440546cd4263:b54 -->
+
 <p>节点 A 注册 <code>buf_A</code>（里面放要写的数据），拿到 <code>lkey_A</code>。</p>
+<!-- blog-edit-end:385d440546cd4263:b54 -->
+
+<!-- blog-edit-start:385d440546cd4263:b55 -->
+
 <h4 id="3-a-rdma-write">步骤 3：节点 A 提交 RDMA WRITE 请求”</h4>
+<!-- blog-edit-end:385d440546cd4263:b55 -->
+<!-- blog-edit-start:385d440546cd4263:b56 -->
+
 <p>节点 A 填的 Send WR 里，操作类型换成 <code>IBV_WR_RDMA_WRITE</code>，并且<strong>必须加上对端的信息</strong>：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">send_wr</span><span class="p">.</span><span class="n">opcode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IBV_WR_RDMA_WRITE</span><span class="p">;</span><span class="w">  </span><span class="c1">// 操作类型：RDMA 写</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">send_wr</span><span class="p">.</span><span class="n">sg_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sg_entry</span><span class="p">;</span>
@@ -1011,7 +1227,15 @@
 </span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span><span class="n">send_wr</span><span class="p">.</span><span class="n">wr</span><span class="p">.</span><span class="n">rdma</span><span class="p">.</span><span class="n">rkey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rkey_B</span><span class="p">;</span><span class="w">                      </span><span class="c1">// 节点 B 给它的远程密钥</span>
 </span></code></pre></div></p>
 <p>调用 <code>ibv_post_send</code> 提交到 SQ。</p>
+<!-- blog-edit-end:385d440546cd4263:b56 -->
+
+<!-- blog-edit-start:385d440546cd4263:b57 -->
+
 <h4 id="4rnic">步骤 4：RNIC 硬件完成跨节点零拷贝写，对端完全无感知</h4>
+<!-- blog-edit-end:385d440546cd4263:b57 -->
+
+<!-- blog-edit-start:385d440546cd4263:b58 -->
+
 <ul>
 <li>
 <p>节点 A 的 RNIC 从 SQ 拿到请求：</p>
@@ -1032,18 +1256,66 @@
 <p>节点 A 的 RNIC 收到 ACK 消息后，往自己的 CQ 里塞一个完成通知；如果没等到，那就重传。</p>
 </li>
 </ul>
+<!-- blog-edit-end:385d440546cd4263:b58 -->
+
+<!-- blog-edit-start:385d440546cd4263:b59 -->
+
 <h3 id="_5">总结</h3>
+<!-- blog-edit-end:385d440546cd4263:b59 -->
+
+<!-- blog-edit-start:385d440546cd4263:b60 -->
+
 <p>写这个文章我才感觉，其实 RDMA 也没啥，他也要加包头之类，和 UDP 协议很像，只不过是专门的 RDMA 网卡在做，而不是 CPU 重度参与了。</p>
+<!-- blog-edit-end:385d440546cd4263:b60 -->
+
+<!-- blog-edit-start:385d440546cd4263:b61 -->
+
 <h2 id="_6">协议</h2>
+<!-- blog-edit-end:385d440546cd4263:b61 -->
+
+<!-- blog-edit-start:385d440546cd4263:b62 -->
+
 <p><strong>以下直接是复制参考文章内容。</strong></p>
+<!-- blog-edit-end:385d440546cd4263:b62 -->
+
+<!-- blog-edit-start:385d440546cd4263:b63 -->
+
 <p>RDMA本身指的是一种技术，具体协议层面，包含Infiniband（IB），RDMA over Converged Ethernet（RoCE）和internet Wide Area RDMA Protocol（iWARP）。三种协议都符合RDMA标准，使用相同的上层接口，在不同层次上有一些差别。</p>
+<!-- blog-edit-end:385d440546cd4263:b63 -->
+
+<!-- blog-edit-start:385d440546cd4263:b64 -->
+
 <h3 id="infiniband">Infiniband</h3>
+<!-- blog-edit-end:385d440546cd4263:b64 -->
+<!-- blog-edit-start:385d440546cd4263:b65 -->
+
 <p>2000年由IBTA（InfiniBand Trade Association）提出的IB协议是当之无愧的核心，其规定了一整套完整的链路层到传输层（非传统OSI七层模型的传输层，而是位于其之上）规范，但是其无法兼容现有以太网，除了需要支持IB的网卡之外，企业如果想部署的话还要重新购买配套的交换设备。</p>
+<!-- blog-edit-end:385d440546cd4263:b65 -->
+
+<!-- blog-edit-start:385d440546cd4263:b66 -->
+
 <h3 id="roce">RoCE</h3>
+<!-- blog-edit-end:385d440546cd4263:b66 -->
+<!-- blog-edit-start:385d440546cd4263:b67 -->
+
 <p>RoCE从英文全称就可以看出它是基于以太网链路层的协议，v1版本网络层仍然使用了IB规范，而v2使用了UDP+IP作为网络层，使得数据包也可以被路由。RoCE可以被认为是IB的“低成本解决方案”，将IB的报文封装成以太网包进行收发。由于RoCE v2可以使用以太网的交换设备，所以现在在企业中应用也比较多，但是相同场景下相比IB性能要有一些损失。</p>
+<!-- blog-edit-end:385d440546cd4263:b67 -->
+
+<!-- blog-edit-start:385d440546cd4263:b68 -->
+
 <h3 id="iwarp">iWARP</h3>
+<!-- blog-edit-end:385d440546cd4263:b68 -->
+<!-- blog-edit-start:385d440546cd4263:b69 -->
+
 <p>iWARP协议是IETF基于TCP提出的，因为TCP是面向连接的可靠协议，这使得iWARP在面对有损网络场景（可以理解为网络环境中可能经常出现丢包）时相比于RoCE v2和IB具有更好的可靠性，在大规模组网时也有明显的优势。但是大量的TCP连接会耗费很多的内存资源，另外TCP复杂的流控等机制会导致性能问题，所以从性能上看iWARP要比UDP的RoCE v2和IB差。</p>
+<!-- blog-edit-end:385d440546cd4263:b69 -->
+
+<!-- blog-edit-start:385d440546cd4263:b70 -->
+
 <p>需要注意的是，虽然有软件实现的RoCE和iWARP协议，但是真正商用时上述几种协议都需要专门的硬件（网卡）支持。</p>
+<!-- blog-edit-end:385d440546cd4263:b70 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\硬件知识\RDMA学习.md" data-text-edit-revision="e028016d2fbec8cc25feae222d1c440104589970d2a135a0c2ddb8a85a8a8a27" data-text-edit-marker="385d440546cd4263" data-text-edit-schema="1"></div>
 
 
 
@@ -1275,8 +1547,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

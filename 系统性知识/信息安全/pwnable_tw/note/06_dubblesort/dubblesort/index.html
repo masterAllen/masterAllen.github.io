@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -778,11 +778,24 @@
   
 
 
+<!-- blog-edit-start:282bb9778de9acb0:b0 -->
+
 <h1 id="pwnable-tw-dubblesort">Pwnable tw dubblesort</h1>
+<!-- blog-edit-end:282bb9778de9acb0:b0 -->
+
 <div class="file-actions" data-image-edit-revision="37ad59b322c867094307d8bb8f4362608e0c44382aae1307a7c58a8473f8d3a7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C06_dubblesort%5Cdubblesort.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C06_dubblesort" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\06_dubblesort\dubblesort.md">复制路径</span></div>
 
+<!-- blog-edit-start:282bb9778de9acb0:b1 -->
+
 <h2 id="_1">代码分析</h2>
+<!-- blog-edit-end:282bb9778de9acb0:b1 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b2 -->
+
 <h3 id="main">main方法</h3>
+<!-- blog-edit-end:282bb9778de9acb0:b2 -->
+<!-- blog-edit-start:282bb9778de9acb0:b3 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">envp</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num_arr</span><span class="p">;</span><span class="w"> </span><span class="c1">// [esp+1Ch] [ebp-70h]</span>
@@ -815,17 +828,52 @@
 </span><span id="__span-0-30"><span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 </span><span id="__span-0-31"><span class="linenos" data-linenos="31 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:282bb9778de9acb0:b3 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b4 -->
+
 <p>上面是我精简后的代码，可以看到代码量还是不大的，就是先输入然后排序最后输出。</p>
+<!-- blog-edit-end:282bb9778de9acb0:b4 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b5 -->
+
 <h2 id="_2">漏洞分析</h2>
+<!-- blog-edit-end:282bb9778de9acb0:b5 -->
+<!-- blog-edit-start:282bb9778de9acb0:b6 -->
+
 <h3 id="stage-1">Stage 1</h3>
+<!-- blog-edit-end:282bb9778de9acb0:b6 -->
+<!-- blog-edit-start:282bb9778de9acb0:b7 -->
+
 <p>在栈中，数组的长度 (count) 就在数组的上面，所以很容易联想到 pwnable tw calc 中的方法，就是能否修改掉 count，想了一会，很遗憾，似乎是不可以的。</p>
+<!-- blog-edit-end:282bb9778de9acb0:b7 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b8 -->
+
 <h3 id="stage-2">Stage 2</h3>
+<!-- blog-edit-end:282bb9778de9acb0:b8 -->
+<!-- blog-edit-start:282bb9778de9acb0:b9 -->
+
 <p>再进行分析，很容易看到 num_arr 数组会溢出，因为 count 上限远比 0x40u 大，所以我们可以很轻松地输入大量数据到 num_arr 从而溢出，估摸着应该是 Ret2syscall 或者 Ret2libc。</p>
+<!-- blog-edit-end:282bb9778de9acb0:b9 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b10 -->
+
 <h3 id="stage-3">Stage 3</h3>
+<!-- blog-edit-end:282bb9778de9acb0:b10 -->
+<!-- blog-edit-start:282bb9778de9acb0:b11 -->
+
 <p>因为有 Canary, 所以溢出这条路被堵死了. 但是 <code>scanf</code> 有一个 Trick, 通过它我们竟然可以绕过 Canary！<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>对于 scanf(&#39;%u&#39;)，如果输入&#39;+&#39;或者&#39;-&#39;，那么他会当做正确字符读入，但处理的时候会忽略掉它，不会更改相关内存数据
 </span></code></pre></div></p>
+<!-- blog-edit-end:282bb9778de9acb0:b11 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b12 -->
+
 <h3 id="stage-4">Stage 4</h3>
+<!-- blog-edit-end:282bb9778de9acb0:b12 -->
+<!-- blog-edit-start:282bb9778de9acb0:b13 -->
+
 <p>然后关键就是 <code>libc</code> 的基址在哪里, 这里利用了 <code>read-print</code> 组合这一漏洞: <code>read</code> 不在末尾添加 <code>\x00</code>, <code>print</code> 停止方式恰恰是检测 <code>\x00</code>, 所以如果 buf 后面恰好不是 <code>\x00</code>，就会泄露后面的内容。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">printf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="s">&quot;What your name :&quot;</span><span class="p">);</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mh">0x40u</span><span class="p">);</span>
@@ -833,15 +881,45 @@
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="c1">// printf(&quot;Hello %s, balabala&quot;, buf)</span>
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="n">printf</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="s">&quot;Hello %s,How many numbers do you what to sort :&quot;</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:282bb9778de9acb0:b13 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b14 -->
+
 <p>通过 GDB 进行调试, 看一下 <code>buf</code> 在栈中的范围, 看看范围里面有没有可能暴露 <code>libc</code> 信息, 经过调试发现 <code>buf+0x08</code> 就会暴露, 即它里面内容和 <code>libc</code> 基址偏移量是固定的, 因此可以 <code>buf == 'a'*8</code> 则让 <code>printf</code> 输出该内容.</p>
+<!-- blog-edit-end:282bb9778de9acb0:b14 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b15 -->
+
 <h3 id="stage-4_1">Stage 4</h3>
+<!-- blog-edit-end:282bb9778de9acb0:b15 -->
+<!-- blog-edit-start:282bb9778de9acb0:b16 -->
+
 <p>最终栈结构空间如下。</p>
+<!-- blog-edit-end:282bb9778de9acb0:b16 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b17 -->
+
 <p><img alt="test" src="../../../../../../asset/image/508ab1fb8cc523119053910cd69e7a3b/dubblesort.svg" /></p>
+<!-- blog-edit-end:282bb9778de9acb0:b17 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b18 -->
+
 <p>PS: 因为 <code>bin_sh_addr</code> &gt; <code>system_addr</code>，一般来说 <code>system_addr</code> &gt; Cookie，所以一般是会成功。不成功就再试一次，哈哈。</p>
+<!-- blog-edit-end:282bb9778de9acb0:b18 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b19 -->
+
 <h2 id="_3">坑点</h2>
+<!-- blog-edit-end:282bb9778de9acb0:b19 -->
+<!-- blog-edit-start:282bb9778de9acb0:b20 -->
+
 <ol>
 <li>返回的地址最后一节始终为00</li>
 </ol>
+<!-- blog-edit-end:282bb9778de9acb0:b20 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b21 -->
+
 <p>假设为(System_address == 0xFFFFFF00)，又因为是小段模式。假设输入数据为(abcd)*N，printf的时候，栈空间分配如下。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>+----+----+----+----+
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>+ 64 + 63 + 62 + 61 + --&gt; send(&#39;abcd&#39;)
@@ -851,9 +929,24 @@
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>+ FF + FF + FF + 00 + --&gt; send(0xFFFFFF00)
 </span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span>+----+----+----+----+
 </span></code></pre></div></p>
+<!-- blog-edit-end:282bb9778de9acb0:b21 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b22 -->
+
 <p>而printf是逐步输出，所以结果为 Hello, abcdabcd,What，所以最终结果处理为 addr == ,Wha，完全和我们要的不一样。</p>
+<!-- blog-edit-end:282bb9778de9acb0:b22 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b23 -->
+
 <p>这时就用IF判断一下，如果末尾为00，那就改为04，反正system前面一两句是无关痛痒的。</p>
+<!-- blog-edit-end:282bb9778de9acb0:b23 -->
+
+<!-- blog-edit-start:282bb9778de9acb0:b24 -->
+
 <h2 id="_4">总结反思</h2>
+<!-- blog-edit-end:282bb9778de9acb0:b24 -->
+<!-- blog-edit-start:282bb9778de9acb0:b25 -->
+
 <ul>
 <li>
 <p>经验</p>
@@ -869,6 +962,9 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:282bb9778de9acb0:b25 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\06_dubblesort\dubblesort.md" data-text-edit-revision="37ad59b322c867094307d8bb8f4362608e0c44382aae1307a7c58a8473f8d3a7" data-text-edit-marker="282bb9778de9acb0" data-text-edit-schema="1"></div>
 
 
 
@@ -1100,8 +1196,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

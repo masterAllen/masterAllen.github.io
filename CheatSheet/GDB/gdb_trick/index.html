@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -638,22 +638,59 @@
   
 
 
+<!-- blog-edit-start:c6f6e7aae65c12b5:b0 -->
+
 <h1 id="gdb">GDB 的一些小技巧</h1>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="64b00fa6839f76b9bd67ac42e8284c986f2d52170fb0c8849a863ee32498036e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CGDB%5Cgdb_trick.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CGDB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\GDB\gdb_trick.md">复制路径</span></div>
 
+<!-- blog-edit-start:c6f6e7aae65c12b5:b1 -->
+
 <h2 id="_1">打印结构体</h2>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b1 -->
+
+<!-- blog-edit-start:c6f6e7aae65c12b5:b2 -->
+
 <p>以 <code>FILE</code>为例，以 <code>0x8000</code>为例，打印命令为 <code>printf *(FILE *)0x8000</code></p>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b2 -->
+
+<!-- blog-edit-start:c6f6e7aae65c12b5:b3 -->
+
 <h2 id="pie">调试带 PIE 的程序</h2>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b3 -->
+
+<!-- blog-edit-start:c6f6e7aae65c12b5:b4 -->
+
 <p>用 <code>vmmap</code>查看基址，然后把后三位替换掉就行了</p>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b4 -->
+
+<!-- blog-edit-start:c6f6e7aae65c12b5:b5 -->
+
 <h2 id="gef">GEF 插件显示更多的栈空间</h2>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b5 -->
+
+<!-- blog-edit-start:c6f6e7aae65c12b5:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">define</span> <span class="n">show_more_stack</span>  
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">gef</span> <span class="n">config</span> <span class="n">context</span><span class="o">.</span><span class="n">nb_lines_stack</span> <span class="err">$</span><span class="n">arg0</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">context</span> <span class="n">stack</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>    <span class="n">gef</span> <span class="n">config</span> <span class="n">context</span><span class="o">.</span><span class="n">nb_lines_stack</span> <span class="mi">8</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">end</span>   
 </span></code></pre></div>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b6 -->
+
+<!-- blog-edit-start:c6f6e7aae65c12b5:b7 -->
+
 <h2 id="gef-pie">GEF 插件在有 PIE 程序中插入断点</h2>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b7 -->
+
+<!-- blog-edit-start:c6f6e7aae65c12b5:b8 -->
+
 <p><a href=".././gdb_gef_expand/">GDB GEF</a></p>
+<!-- blog-edit-end:c6f6e7aae65c12b5:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\GDB\gdb_trick.md" data-text-edit-revision="64b00fa6839f76b9bd67ac42e8284c986f2d52170fb0c8849a863ee32498036e" data-text-edit-marker="c6f6e7aae65c12b5" data-text-edit-schema="1"></div>
 
 
 
@@ -885,8 +922,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

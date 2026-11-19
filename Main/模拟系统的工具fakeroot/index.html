@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -609,19 +609,53 @@
   
 
 
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b0 -->
+
 <h1 id="_1">模拟系统的工具</h1>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="03f5b1ba18b0d27d6b7fd9622c10d369b334b30350becab1921d00f9327fa82d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E6%A8%A1%E6%8B%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B7%A5%E5%85%B7fakeroot.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\模拟系统的工具fakeroot.md">复制路径</span></div>
 
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b1 -->
+
 <p>想直接在一些没有 root 权限的系统上使用 ArchLinux，推荐使用: <a href="https://github.com/fsquillace/junest">https://github.com/fsquillace/junest</a></p>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b1 -->
+
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b2 -->
+
 <p>这个工具涉及到了 fakeroot / chroot / groot / bubblewrap / proot 这几个工具，下面来谈一下他们是什么。</p>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b2 -->
+
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b3 -->
+
 <h3 id="fakeroot">fakeroot</h3>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b3 -->
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b4 -->
+
 <p><code>fakeroot</code> 会新建一个 shell，在这里面目标目录的权限都是 root，但是一旦退出就还是原来的权限。<br />
 使用方法: <code>sudo chroot /path/of/your_dir</code></p>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b4 -->
+
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b5 -->
+
 <h3 id="chroot-groot-bubblewrap">chroot, groot, bubblewrap</h3>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b5 -->
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b6 -->
+
 <p>这三个基本是一样的。他们的作用是将某个目录作为<mark class="term-highlight">整个系统的根目录</mark>，需要 root 权限。</p>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b6 -->
+
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b7 -->
+
 <h3 id="proot">proot</h3>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b7 -->
+<!-- blog-edit-start:d2cde3f3e5cfb4c5:b8 -->
+
 <p>最后就是 proot 了，说到功能，他和 chroot 这些都是基本一样的，但是比较强的是，它不需要 root 权限。<br />
 这个也是最开始推荐的工具的原理，其以 proot 为基础，将一个模拟 archlinux 的目录假装为根目录。</p>
+<!-- blog-edit-end:d2cde3f3e5cfb4c5:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\模拟系统的工具fakeroot.md" data-text-edit-revision="03f5b1ba18b0d27d6b7fd9622c10d369b334b30350becab1921d00f9327fa82d" data-text-edit-marker="d2cde3f3e5cfb4c5" data-text-edit-schema="1"></div>
 
 
 
@@ -853,8 +887,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

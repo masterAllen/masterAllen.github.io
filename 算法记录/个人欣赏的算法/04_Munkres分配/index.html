@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -627,25 +627,75 @@
   
 
 
+<!-- blog-edit-start:953120e77ccc731f:b0 -->
+
 <h1 id="munkres-assignment">Munkres Assignment</h1>
+<!-- blog-edit-end:953120e77ccc731f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d5c8a3f9c12adbc68b6c005803eba39cfbe786135cf1fda0fdd1ff9b2935b957" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E4%B8%AA%E4%BA%BA%E6%AC%A3%E8%B5%8F%E7%9A%84%E7%AE%97%E6%B3%95%5C04_Munkres%E5%88%86%E9%85%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E4%B8%AA%E4%BA%BA%E6%AC%A3%E8%B5%8F%E7%9A%84%E7%AE%97%E6%B3%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\个人欣赏的算法\04_Munkres分配.md">复制路径</span></div>
 
+<!-- blog-edit-start:953120e77ccc731f:b1 -->
+
 <p>这是我在准备考研复试上机遇到的一个问题，在清华 OJ 上的题目，其实也是经典的题目</p>
+<!-- blog-edit-end:953120e77ccc731f:b1 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b2 -->
+
 <h2 id="_1">算法解决什么？</h2>
+<!-- blog-edit-end:953120e77ccc731f:b2 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b3 -->
+
 <p>如图所示，一言以蔽之，找最小消耗的匹配。这个问题很常见，比如 n 个工人处理 n 个事情。</p>
+<!-- blog-edit-end:953120e77ccc731f:b3 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b4 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250818125332.png" /></p>
+<!-- blog-edit-end:953120e77ccc731f:b4 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b5 -->
+
 <h2 id="_2">算法原理</h2>
+<!-- blog-edit-end:953120e77ccc731f:b5 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b6 -->
+
 <p>还是一样，我不进行算法原理讲述，我只是搬运工。这里有几个不错的文章：</p>
 <ol>
 <li><a href="https://www.cnblogs.com/xiaxuexiaoab/p/17838305.html">https://www.cnblogs.com/xiaxuexiaoab/p/17838305.html</a>: 这篇文章可以暂时不用看后面的第四章及之后的内容，前面的例子特别好。</li>
 <li><a href="https://blog.csdn.net/yiran103/article/details/103826367">https://blog.csdn.net/yiran103/article/details/103826367</a>: 这篇文章快速浏览一遍即可</li>
 <li><a href="https://users.cs.duke.edu/~brd/Teaching/Bio/asmb/current/Handouts/munkres.html">https://users.cs.duke.edu/~brd/Teaching/Bio/asmb/current/Handouts/munkres.html</a>: 这篇文章据说代码非常好，我当时就是看的这篇弄懂的。</li>
 </ol>
+<!-- blog-edit-end:953120e77ccc731f:b6 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b7 -->
+
 <h2 id="_3">注意: 不要和最大匹配弄混</h2>
+<!-- blog-edit-end:953120e77ccc731f:b7 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b8 -->
+
 <p>这个方法也叫做匈牙利算法。我在网上查的资料，百分之八九十都在介绍二分图，介绍匹配。但很多都弄错了，<strong>匈牙利算法不是求最大匹配，而是求最大权匹配</strong>。</p>
+<!-- blog-edit-end:953120e77ccc731f:b8 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b9 -->
+
 <p>最大匹配就是二分图中，找出匹配边数最多的匹配。而最大权匹配，是指的在最大匹配前提下，边上有权重，求出边权和最大的匹配。</p>
+<!-- blog-edit-end:953120e77ccc731f:b9 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b10 -->
+
 <p>对于上面的 Munkres' Assignment Algorithm，它是两两都有权重，所以最大匹配那肯定是 n，所以这个问题和最大匹配没关系，本质是最大权匹配。</p>
+<!-- blog-edit-end:953120e77ccc731f:b10 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b11 -->
+
 <p>同时也不要和最大婚姻算法弄混了，如下是 GPT 帮忙总结的内容：</p>
+<!-- blog-edit-end:953120e77ccc731f:b11 -->
+
+<!-- blog-edit-start:953120e77ccc731f:b12 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>匹配问题
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>│
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>├── 二分图匹配（Graph Matching）
@@ -671,6 +721,9 @@
 </span><span id="__span-0-23"><span class="linenos" data-linenos="23 "></span>        - 算法：Gale–Shapley 提议–接受算法
 </span><span id="__span-0-24"><span class="linenos" data-linenos="24 "></span>        - 特点：关注稳定性，而非边数或权重
 </span></code></pre></div>
+<!-- blog-edit-end:953120e77ccc731f:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\个人欣赏的算法\04_Munkres分配.md" data-text-edit-revision="d5c8a3f9c12adbc68b6c005803eba39cfbe786135cf1fda0fdd1ff9b2935b957" data-text-edit-marker="953120e77ccc731f" data-text-edit-schema="1"></div>
 
 
 
@@ -902,8 +955,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

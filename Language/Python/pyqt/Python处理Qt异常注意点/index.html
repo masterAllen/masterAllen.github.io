@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -645,13 +645,35 @@
   
 
 
+<!-- blog-edit-start:fbbfb0c71ed07a55:b0 -->
+
 <h1 id="python-qt">Python 处理 Qt 异常注意点</h1>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b0 -->
+
 <div class="file-actions" data-image-edit-revision="9c9eb6f910a2215f4442feeee3145359e1945143edc259d91edfd36390742e17" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpyqt%5CPython%E5%A4%84%E7%90%86Qt%E5%BC%82%E5%B8%B8%E6%B3%A8%E6%84%8F%E7%82%B9.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpyqt" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\pyqt\Python处理Qt异常注意点.md">复制路径</span></div>
 
+<!-- blog-edit-start:fbbfb0c71ed07a55:b1 -->
+
 <h2 id="qt-python">Qt 退出但是 Python 没法记录错误</h2>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b1 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b2 -->
+
 <p>之前一个项目需要点击一个按钮后做一些图像处理。由于处理时间很长，所以用了 QThread，即点击按钮后这个 QThread 就会 start，但当时遇到一个问题就是：QThread 总是莫名其妙退出，用 try catch 也抓不到错误。</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b2 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b3 -->
+
 <p>搞了半天终于弄懂：因为我点击按钮后，这个方法就结束了。即点击按钮后我初始化了一个 QThread 变量，调用其 start 方法之后，就退出了。此时相当于主线程已经退出，在主线程初始化的变量会被回收，那很显然 QThread 就运行不了。</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b3 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b4 -->
+
 <p>所以最后方法是要始终保持一个 QThread 变量即可：</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b4 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b5 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Test</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>      <span class="c1"># 需要保持一个变量，否则 on_click 方法结束后，线程变量会被回收</span>
@@ -666,7 +688,15 @@
 </span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span>      <span class="c1"># 启动线程</span>
 </span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b5 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b6 -->
+
 <p>或者大胆一点，直接就是在点击按钮后再初始化，但改成是成员变量：</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b6 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b7 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Test</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_click</span><span class="p">)</span>
@@ -677,9 +707,25 @@
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
 </span><span id="__span-1-9"><span class="linenos" data-linenos="9 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b7 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b8 -->
+
 <h2 id="qobjectsetparent-cannot-set-parent-new-parent-is-in-a-different-thread">QObject::setParent: Cannot set parent, new parent is in a different thread</h2>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b8 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b9 -->
+
 <p>这个错误曾经让我 DEBUG 了半天，这个绝对是因为在 QThread 里面新建了一个 GUI。</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b9 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b10 -->
+
 <p>我当时信誓旦旦觉得我没这样做。但最后发现：我是在 GUI 里面设置了一个 QThread，我在 <code>main.py</code> 中有一个全局异常处理函数，每次异常后就进入这个函数了。</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b10 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b11 -->
+
 <div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">show_error_dialog_in_main_thread</span><span class="p">():</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">msg_box</span> <span class="o">=</span> <span class="n">QMessageBox</span><span class="p">()</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">msg_box</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">msg_box</span><span class="o">.</span><span class="n">windowFlags</span><span class="p">()</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">WindowStaysOnTopHint</span><span class="p">)</span>
@@ -698,8 +744,20 @@
 </span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span>    <span class="c1"># 出错时，会新建一个 QMessageBox</span>
 </span><span id="__span-2-17"><span class="linenos" data-linenos="17 "></span>    <span class="n">show_error_dialog_in_main_thread</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b11 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b12 -->
+
 <p>但是如果是 QThread 里面报错，同样会到这个函数，此时进入到这个函数是在 QThread 这个线程了，此时新建 GUI 就会有问题。</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b12 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b13 -->
+
 <p>处理方式就是需要 GUI 中连接 QThread 的错误信号，即让它回到主线程上来。</p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b13 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b14 -->
+
 <div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">CpatureWin</span><span class="p">(</span><span class="n">QWidget</span><span class="p">,</span> <span class="n">window_2</span><span class="o">.</span><span class="n">Ui_Form</span><span class="p">):</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="c1"># ...</span>
@@ -715,8 +773,18 @@
 </span><span id="__span-3-13"><span class="linenos" data-linenos="13 "></span><span class="k">class</span><span class="w"> </span><span class="nc">CpatureThread</span><span class="p">(</span><span class="n">QThread</span><span class="p">):</span>
 </span><span id="__span-3-14"><span class="linenos" data-linenos="14 "></span>    <span class="n">error_occurred</span> <span class="o">=</span> <span class="n">pyqtSignal</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b14 -->
+
+<!-- blog-edit-start:fbbfb0c71ed07a55:b15 -->
+
 <h2 id="qt">QT 程序卡住</h2>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b15 -->
+<!-- blog-edit-start:fbbfb0c71ed07a55:b16 -->
+
 <p><a href="../../../../CheatSheet/QT/QT卡住并退出的原因/">跳转</a></p>
+<!-- blog-edit-end:fbbfb0c71ed07a55:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\pyqt\Python处理Qt异常注意点.md" data-text-edit-revision="9c9eb6f910a2215f4442feeee3145359e1945143edc259d91edfd36390742e17" data-text-edit-marker="fbbfb0c71ed07a55" data-text-edit-schema="1"></div>
 
 
 
@@ -948,8 +1016,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

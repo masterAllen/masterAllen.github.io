@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -655,44 +655,126 @@
   
 
 
+<!-- blog-edit-start:c4792e3e9011cc0d:b0 -->
+
 <h1 id="trpo-ppo">TRPO 和 PPO</h1>
+<!-- blog-edit-end:c4792e3e9011cc0d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="950a9367e2c3fc075d3d09201b1a6c7a8e62ea68abd0a016688076bad7f3d3f6" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5C08.TRPO%E5%92%8CPPO.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\强化学习\08.TRPO和PPO.md">复制路径</span></div>
 
+<!-- blog-edit-start:c4792e3e9011cc0d:b1 -->
+
 <h2 id="_1">重要性采样回顾和问题</h2>
+<!-- blog-edit-end:c4792e3e9011cc0d:b1 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b2 -->
+
 <p>经过重要性采样，我们可以用旧的数据 <span class="arithmatex">\(\pi_{\theta'}\)</span> 来训练新策略 <span class="arithmatex">\(\pi_\theta\)</span>，公式如下：</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b2 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b3 -->
+
 <div class="arithmatex">\[
     J^{\theta^{\prime}}(\theta)=\mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]
 \]</div>
+<!-- blog-edit-end:c4792e3e9011cc0d:b3 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b4 -->
+
 <div class="arithmatex">\[
     \nabla J = \mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right) \nabla \log p_{\theta}\left(a_{t}^{n} | s_{t}^{n}\right)\right]
 \]</div>
+<!-- blog-edit-end:c4792e3e9011cc0d:b4 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b5 -->
+
 <p>但是有一个注意点和关键点：<span class="arithmatex">\(p_{\theta}\left(a_{t} | s_{t}\right)\)</span> 不能与 <span class="arithmatex">\(p_{\theta'}\left(a_{t} | s_{t}\right)\)</span> 相差太多。否则重要性采样的结果就会不好（在上一章节中的公式推导中，如果差距过大那么方差会过大）。所以<strong>在训练的时候，应多加一个约束（constrain）。</strong></p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b5 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b6 -->
+
 <p>这就是这一章要做的内容。</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b6 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b7 -->
+
 <h2 id="trpo">TRPO</h2>
+<!-- blog-edit-end:c4792e3e9011cc0d:b7 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b8 -->
+
 <p>信任区域策略优化（TRPO）认为约束应该是 <span class="arithmatex">\(\theta\)</span>  与 <span class="arithmatex">\(\theta'\)</span> 输出的动作的 KL 散度（KL divergence），这一项用于衡量 <span class="arithmatex">\(\theta\)</span> 与 <span class="arithmatex">\(\theta'\)</span> 的相似程度。</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b8 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b9 -->
+
 <div class="arithmatex">\[
     \begin{aligned}
         J_{\mathrm{TRPO}}^{\theta^{\prime}}(\theta)=\mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} | s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right],\mathrm{KL}\left(\theta, \theta^{\prime}\right)&lt;\delta
         \end{aligned}
 \]</div>
+<!-- blog-edit-end:c4792e3e9011cc0d:b9 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b10 -->
+
 <p>其实就是加了一个 KL 散度限制，其中 <span class="arithmatex">\(\delta\)</span> 是一个超参数，用于控制 <span class="arithmatex">\(\theta\)</span> 与 <span class="arithmatex">\(\theta'\)</span> 的相似程度。</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b10 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b11 -->
+
 <p>在实际的工程中，无论是目标函数还是KL散度约束条件，计算都很复杂，我们通常会采用一些近似手段，以下内容直接来自，<strong>个人感觉没必要细看，太细节了</strong>：</p>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/20229998728">https://zhuanlan.zhihu.com/p/20229998728</a></li>
 </ul>
+<!-- blog-edit-end:c4792e3e9011cc0d:b11 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b12 -->
+
 <p><img alt="" src="../../../asset/image/5b31549c1cb5546a6165cff909ac3f4f/20260425144059.png" /></p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b12 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b13 -->
+
 <h2 id="ppo">PPO</h2>
+<!-- blog-edit-end:c4792e3e9011cc0d:b13 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b14 -->
+
 <p>从上面图片也能看出，即使有很多优化 TRPO 也确实不好算，所以有了 PPO 这个近端策略优化方法。PPO 直接把约束放到要优化的式子里面：</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b14 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b15 -->
+
 <div class="arithmatex">\[
     \begin{aligned}
         &amp;J_{\mathrm{PPO}}^{\theta^{\prime}}(\theta)=J^{\theta^{\prime}}(\theta)-\beta \mathrm{KL}\left(\theta, \theta^{\prime}\right) \\
         &amp;J^{\theta^{\prime}}(\theta)=\mathbb{E}_{\left(s_{t}, a_{t}\right) \sim \pi_{\theta^{\prime}}}\left[\frac{p_{\theta}\left(a_{t} \mid s_{t}\right)}{p_{\theta^{\prime}}\left(a_{t} \mid s_{t}\right)} A^{\theta^{\prime}}\left(s_{t}, a_{t}\right)\right]
         \end{aligned} \tag{5.6}
 \]</div>
+<!-- blog-edit-end:c4792e3e9011cc0d:b15 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b16 -->
+
 <p>当然，这样做是有代价的，PPO牺牲了TRPO「策略单调提升」的保证。但是实操上更简单，也容易获得更好的效果。机器学习是一门实践的艺术——效果好，才是真的好。就是这么一个简单的改变，PPO 却成了一个相当有名和重要的方法，它是现在 OpenAI 默认的强化学习算法（不知道现在是不是，三年前的参考文章这样写的）。</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b16 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b17 -->
+
 <p>Q: 为什么不直接计算 <span class="arithmatex">\(\theta\)</span> 和 <span class="arithmatex">\(\theta'\)</span> 之间的距离？计算这个距离甚至不用计算 KL 散度，L1 与 L2 的范数（norm）也可以保证 <span class="arithmatex">\(\theta\)</span> 与 <span class="arithmatex">\(\theta'\)</span> 很相似。</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b17 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b18 -->
+
 <p>A：在做强化学习的时候，之所以我们考虑的不是参数上的距离，而是动作上的距离，是因为很有可能对于演员，参数的变化与动作的变化不一定是完全一致的。有时候参数稍微变了，它可能输出动作的就差很多。或者是参数变很多，但输出的动作可能没有什么改变。所以我们真正在意的是演员的动作上的差距，而不是它们参数上的差距。因此在做 PPO 的时候，所谓的 KL 散度并不是参数的距离，而是动作的距离。</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b18 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b19 -->
+
 <h3 id="ppo-clip">PPO-Clip</h3>
+<!-- blog-edit-end:c4792e3e9011cc0d:b19 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b20 -->
+
 <p>如果我们觉得计算 KL 散度很复杂，那么还有一个 <strong>PPO2</strong>算法，PPO2 即<strong>近端策略优化裁剪</strong>。近端策略优化裁剪的目标函数里面没有 KL 散度，其要最大化的目标函数为</p>
 <div class="arithmatex">\[
     \begin{aligned}
@@ -700,16 +782,43 @@
         &amp;\left.\operatorname{clip}\left(\frac{p_{\theta}\left(a_{t} | s_{t}\right)}{p_{\theta^{k}}\left(a_{t} | s_{t}\right)}, 1-\varepsilon, 1+\varepsilon\right) A^{\theta^{k}}\left(s_{t}, a_{t}\right)\right)
         \end{aligned}
 \]</div>
+<!-- blog-edit-end:c4792e3e9011cc0d:b20 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b21 -->
+
 <p>看起来很复杂，其实拆解就好了：</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b21 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b22 -->
+
 <ul>
 <li><code>min</code> 这个不用多说，在第一项与第二项里面选择比较小的项。</li>
 <li><code>clip</code> 也不用多说，就是小于 <span class="arithmatex">\(1-\varepsilon\)</span> 就输出 <span class="arithmatex">\(1-\varepsilon\)</span>，大于 <span class="arithmatex">\(1+\varepsilon\)</span> 就输出 <span class="arithmatex">\(1+\varepsilon\)</span>，否则输出原值。</li>
 <li><span class="arithmatex">\(\varepsilon\)</span> 是一个超参数，是我们要调整的，可以设置成 0.1 或 0.2 。</li>
 </ul>
+<!-- blog-edit-end:c4792e3e9011cc0d:b22 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b23 -->
+
 <p>通过裁剪函数，最后能让 <span class="arithmatex">\(p_{\theta}(a_{t} | s_{t})\)</span> 与 <span class="arithmatex">\(p_{\theta^k}(a_{t} | s_{t})\)</span> 更加比较接近：</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b23 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b24 -->
+
 <p><img alt="" src="../../../asset/image/5b31549c1cb5546a6165cff909ac3f4f/20260425144931.png" /></p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b24 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b25 -->
+
 <h3 id="ppo-penalty">PPO-Penalty</h3>
+<!-- blog-edit-end:c4792e3e9011cc0d:b25 -->
+
+<!-- blog-edit-start:c4792e3e9011cc0d:b26 -->
+
 <p>类似于上面的 Clip，但是不是暴力裁剪。这个就不纠结了，总之还是 PPO-Clip 是最广泛和标准的形式。</p>
+<!-- blog-edit-end:c4792e3e9011cc0d:b26 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\强化学习\08.TRPO和PPO.md" data-text-edit-revision="950a9367e2c3fc075d3d09201b1a6c7a8e62ea68abd0a016688076bad7f3d3f6" data-text-edit-marker="c4792e3e9011cc0d" data-text-edit-schema="1"></div>
 
 
 
@@ -941,8 +1050,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

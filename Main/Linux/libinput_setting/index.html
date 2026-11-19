@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -666,26 +666,86 @@
   
 
 
+<!-- blog-edit-start:a42d99a0d01bbae0:b0 -->
+
 <h1 id="linux">Linux 触摸板和小红点设置</h1>
+<!-- blog-edit-end:a42d99a0d01bbae0:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0a5c5455ce1f47fbe4b657b5a4d25ed13e8d04e2591a83c00ca9e65c95862090" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Clibinput_setting.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\libinput_setting.md">复制路径</span></div>
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b1 -->
 
 <p>一般来说，手动进行触摸板和小红点的配置是通过 <code>libinput</code> 完成的。不知道什么原因，以前可以的配置出了问题，可能是里面的选项名称有了变换？记录一下我成功的配置。</p>
 <!--more-->
 
+<!-- blog-edit-end:a42d99a0d01bbae0:b1 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b2 -->
+
 <h2 id="_1">简单介绍</h2>
+<!-- blog-edit-end:a42d99a0d01bbae0:b2 -->
+<!-- blog-edit-start:a42d99a0d01bbae0:b3 -->
+
 <p>首先要介绍 <code>libinput</code>，可以自行去查阅它是什么，但说实话我自己对这个东西也有点感觉很模糊不清。我的理解就认为 <code>libinput</code> 是驱动程序和系统之间的设置库，即用户可以通过 <code>libinput</code> 进行方便地硬件属性设置。</p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b3 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b4 -->
+
 <p><code>libinput</code> 的配置在 <code>/etc/X11/xorg.conf.d</code> 和 <code>/usr/share/X11/xorg.conf.d</code> 两个目录中，一般而言用户自己写的配置在前者的文件夹中。配置文件名称都为 <code>50-touchpad.conf</code> 这个样子，前面数字越大优先级越高，最大好像是 99 (不确定)。</p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b4 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b5 -->
+
 <h2 id="_2">开始配置</h2>
+<!-- blog-edit-end:a42d99a0d01bbae0:b5 -->
+<!-- blog-edit-start:a42d99a0d01bbae0:b6 -->
+
 <h3 id="_3">第一步</h3>
+<!-- blog-edit-end:a42d99a0d01bbae0:b6 -->
+<!-- blog-edit-start:a42d99a0d01bbae0:b7 -->
+
 <p>下面就开始配置了，第一步需要查看是否能检测出相关硬件，使用命令 <code>xinput --list</code>，结果如下。</p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b7 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b8 -->
+
 <p><img alt="xinput result 1" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20210612001.png" /></p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b8 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b9 -->
+
 <h3 id="_4">第二步</h3>
+<!-- blog-edit-end:a42d99a0d01bbae0:b9 -->
+<!-- blog-edit-start:a42d99a0d01bbae0:b10 -->
+
 <p>可以看到，我的触摸板是 <code>id = 13</code>，小红点是 <code>id = 14</code>。查看具体细节，使用命令 <code>xinput --list-props 14</code>。</p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b10 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b11 -->
+
 <p><img alt="xinput result 2" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20210612002.png" /></p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b11 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b12 -->
+
 <p>上面就是我的小红点的一些属性。其中红框的部分就表示它的速度，它的名称为 <code>libinput Accel Speed</code>， <strong>那么在配置文件它的属性值就叫做 <code>AccelSpeed</code>，这个非常重要。</strong></p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b12 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b13 -->
+
 <h3 id="_5">第三步</h3>
+<!-- blog-edit-end:a42d99a0d01bbae0:b13 -->
+<!-- blog-edit-start:a42d99a0d01bbae0:b14 -->
+
 <p>然后命令行进行临时修改，看看能否成功，可以看到 <code>libinput Accel Speed</code> 后面括号有个数字是 331，那么我们就利用它进行修改，假如修改后的值是 0.5，那么命令为 <code>xinput --set-props 14 331 0.5</code>。</p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b14 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b15 -->
+
 <h3 id="_6">第四步</h3>
+<!-- blog-edit-end:a42d99a0d01bbae0:b15 -->
+<!-- blog-edit-start:a42d99a0d01bbae0:b16 -->
+
 <p>最后就是使用配置文件去永久修改这个属性值了，在 <code>/etc/X11/xorg.conf.d</code> 中新建立文件 <code>60-trackpoint.conf</code>，内容如下。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>Section &quot;InputClass&quot;
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    Identifier &quot;trackpoint&quot;
@@ -695,7 +755,14 @@
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span>    Option &quot;AccelSpeed&quot; &quot;0.5&quot;
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span>EndSection
 </span></code></pre></div></p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b16 -->
+
+<!-- blog-edit-start:a42d99a0d01bbae0:b17 -->
+
 <p>最后重启应该就 OK 了。</p>
+<!-- blog-edit-end:a42d99a0d01bbae0:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\libinput_setting.md" data-text-edit-revision="0a5c5455ce1f47fbe4b657b5a4d25ed13e8d04e2591a83c00ca9e65c95862090" data-text-edit-marker="a42d99a0d01bbae0" data-text-edit-schema="1"></div>
 
 
 
@@ -927,8 +994,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

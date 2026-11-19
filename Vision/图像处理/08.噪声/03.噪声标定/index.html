@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -662,21 +662,58 @@
   
 
 
+<!-- blog-edit-start:76d5ca10a1d3672c:b0 -->
+
 <h1 id="_1">噪声标定说明</h1>
+<!-- blog-edit-end:76d5ca10a1d3672c:b0 -->
+
 <div class="file-actions" data-image-edit-revision="88f06a4b74dedb4b88b0a468f3cb757b69f964becdbdab37a3fca0c03cd48f65" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C03.%E5%99%AA%E5%A3%B0%E6%A0%87%E5%AE%9A%5Creadme.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C03.%E5%99%AA%E5%A3%B0%E6%A0%87%E5%AE%9A" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\08.噪声\03.噪声标定\readme.md">复制路径</span></div>
 
+<!-- blog-edit-start:76d5ca10a1d3672c:b1 -->
+
 <h2 id="_2">前提</h2>
+<!-- blog-edit-end:76d5ca10a1d3672c:b1 -->
+
+<!-- blog-edit-start:76d5ca10a1d3672c:b2 -->
+
 <p><strong>看这个需要看一下《噪声类型》文件夹</strong>，需要知道传感器有哪些噪声就行，这里面的笔记<strong>前提是已经知道这些知识</strong>。</p>
+<!-- blog-edit-end:76d5ca10a1d3672c:b2 -->
+
+<!-- blog-edit-start:76d5ca10a1d3672c:b3 -->
+
 <h2 id="_3">本文将说明</h2>
+<!-- blog-edit-end:76d5ca10a1d3672c:b3 -->
+
+<!-- blog-edit-start:76d5ca10a1d3672c:b4 -->
+
 <p>本文件夹讲述<strong>如何针对某个相机去生成噪声，然后用这些生成后的图片进行训练去噪模型</strong>。比如传统中使用泊松高斯分布噪声，但其实还是和现实有所区别，这就是生成噪声的意义。</p>
+<!-- blog-edit-end:76d5ca10a1d3672c:b4 -->
+
+<!-- blog-edit-start:76d5ca10a1d3672c:b5 -->
+
 <p>我一开始困惑的问题：它是如何评价噪声生成的好不好，这个涉及图像去噪数据集的建立：</p>
+<!-- blog-edit-end:76d5ca10a1d3672c:b5 -->
+
+<!-- blog-edit-start:76d5ca10a1d3672c:b6 -->
+
 <ol>
 <li>从现有图像数据库获取高质量图像，然后做图像处理（如线性变化、亮度调整）并根据噪声模型添加人工合成噪声，生成噪声图像；</li>
 <li>针对同一场景，拍摄低 ISO 图像作为 ground truth，高 ISO 图像作为噪声图像，并调整曝光时间等相机参数使得两张图像亮度一致；</li>
 <li>连续拍摄多张图像，然后做图像处理（如图像配准、异常图像剔除等），然后加权平均合成 ground truth；</li>
 </ol>
+<!-- blog-edit-end:76d5ca10a1d3672c:b6 -->
+
+<!-- blog-edit-start:76d5ca10a1d3672c:b7 -->
+
 <p><img alt="" src="../../../../asset/image/780ab9e8dce08de0f2521678e7dc6e9d/20260213042424.png" /></p>
+<!-- blog-edit-end:76d5ca10a1d3672c:b7 -->
+
+<!-- blog-edit-start:76d5ca10a1d3672c:b8 -->
+
 <p>所以比较的方式：<strong>对数据集的 no-noisy 图片按照设定的噪声模型生成 noisy 图片，用于训练数据。预测真实的 noisy 图片，查看 PSNR。</strong></p>
+<!-- blog-edit-end:76d5ca10a1d3672c:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\08.噪声\03.噪声标定\readme.md" data-text-edit-revision="88f06a4b74dedb4b88b0a468f3cb757b69f964becdbdab37a3fca0c03cd48f65" data-text-edit-marker="76d5ca10a1d3672c" data-text-edit-schema="1"></div>
 
 
 
@@ -908,8 +945,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

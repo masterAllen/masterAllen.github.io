@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -694,12 +694,30 @@
   
 
 
+<!-- blog-edit-start:87917791abcde81a:b0 -->
+
 <h1 id="01">01.大模型的基本原理</h1>
+<!-- blog-edit-end:87917791abcde81a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="87917791abcde81a71f9f8205ab94046115a15abb15953492c77a2c5c6878d25" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5C01.%E5%85%B3%E4%BA%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\01.关于大模型的基础原理.md">复制路径</span></div>
 
+<!-- blog-edit-start:87917791abcde81a:b1 -->
+
 <p>下面通过问答的方式来整理大模型的基本原理。首先 Transformer 经典图先放这里。</p>
+<!-- blog-edit-end:87917791abcde81a:b1 -->
+
+<!-- blog-edit-start:87917791abcde81a:b2 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513171129.png" /></p>
+<!-- blog-edit-end:87917791abcde81a:b2 -->
+
+<!-- blog-edit-start:87917791abcde81a:b3 -->
+
 <h2 id="_1">问题一</h2>
+<!-- blog-edit-end:87917791abcde81a:b3 -->
+
+<!-- blog-edit-start:87917791abcde81a:b4 -->
+
 <details class="question">
 <summary>大模型是基于 Transformer 的，那他的输入是什么？Transformer 有两个输入啊，一个是 Encoder 的输入，一个是 Decoder 的输入。</summary>
 <p>一句话：现在大家口中的大模型（GPT、LLaMA、ChatGLM 这类），<strong>只用了 Transformer 的 Decoder</strong>，<strong>没有 Encoder！</strong></p>
@@ -716,13 +734,24 @@
 </ol>
 <p>👉 全程<strong>没有 Encoder，不需要第二个输入</strong>，就只剩一路输入。</p>
 </details>
+<!-- blog-edit-end:87917791abcde81a:b4 -->
+
+<!-- blog-edit-start:87917791abcde81a:b5 -->
+
 <h2 id="_4">问题二</h2>
+<!-- blog-edit-end:87917791abcde81a:b5 -->
+
+<!-- blog-edit-start:87917791abcde81a:b6 -->
+
 <details class="question">
 <summary>那既然这样，他是怎么预测第一个词的？平白无故生成第一个词？</summary>
 <p>既然是 Decoder-only 架构，那就相当于把用户的问题作为 Decoder 的输入呗，此时会预测出第一个词，这个阶段叫 Prefill。</p>
 <p>然后把新产生的词作为输入，继续预测下一个词，这个阶段叫 Decode，也叫自回归阶段。</p>
 <p>比如用户问：<code>How are you</code>，此时把 <code>How are you</code> 作为 Decoder 的输入，会预测出第一个词 <code>Fine</code>，然后把这个 <code>Fine</code> 作为输入，即此时输入是 <code>How are you. Fine</code>，继续预测下一个词 <code>Thank</code>，以此类推，直到预测出最后一个词。</p>
 </details>
+<!-- blog-edit-end:87917791abcde81a:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\01.关于大模型的基础原理.md" data-text-edit-revision="87917791abcde81a71f9f8205ab94046115a15abb15953492c77a2c5c6878d25" data-text-edit-marker="87917791abcde81a" data-text-edit-schema="1"></div>
 
 
 
@@ -954,8 +983,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

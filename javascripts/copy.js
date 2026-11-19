@@ -34,7 +34,7 @@ function initArticleActions() {
   });
 
   // 将文件操作链接放在标题下一行，并居中显示
-  document.querySelectorAll('.file-actions[data-title-link="true"]').forEach(function(fileActions) {
+  document.querySelectorAll('html[data-local-preview="true"] .file-actions[data-title-link="true"]').forEach(function(fileActions) {
     const h1 = fileActions.previousElementSibling;
     if (h1 && h1.tagName === 'H1') {
       // 将 h1 设置为 flex 容器
@@ -100,8 +100,9 @@ function isSamePageHashLink(href) {
   }
 }
 
-// 当前文章的文件操作始终显示在右下角。
+// 本地预览中，当前文章的文件操作显示在右下角。
 (function() {
+  if (document.documentElement.dataset.localPreview !== 'true') return;
   let toolbar;
 
   function initFloatingFileActions() {

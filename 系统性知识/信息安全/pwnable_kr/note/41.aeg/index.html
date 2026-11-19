@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -693,15 +693,31 @@
   
 
 
+<!-- blog-edit-start:32aebb6f8902ec27:b0 -->
+
 <h1 id="pwnable-kr-aeg">Pwnable kr aeg</h1>
+<!-- blog-edit-end:32aebb6f8902ec27:b0 -->
+
 <div class="file-actions" data-image-edit-revision="46ae41eed66993413ffdf124201bf0519dd66a993f70329e4dae62efa94daa4c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C41.aeg.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\41.aeg.md">复制路径</span></div>
 
+<!-- blog-edit-start:32aebb6f8902ec27:b1 -->
+
 <h2 id="_1">前言</h2>
+<!-- blog-edit-end:32aebb6f8902ec27:b1 -->
+<!-- blog-edit-start:32aebb6f8902ec27:b2 -->
+
 <p>AEG(Automatic Exploit Generation)，主要是自动化类的题目。什么是自动化类的题目？<br />
 拿本题来说，题目要求我们连接一个服务器，连接后发现他会返回一堆数据，这些数据合在一起就是一个执行程序，然后服务器要求我们在十秒内破解它。<br />
 每次的程序都不一样，但是大致样子又都是一样的，所以要找到这类程序的共性，这就是自动化类题目。<br />
 本篇文章主要分为三个部分: 首先是对某次得到的程序进行分析，然后对于该程序进行破解，最后是将方法扩展到随机程序。</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b2 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b3 -->
+
 <h2 id="_2">程序分析</h2>
+<!-- blog-edit-end:32aebb6f8902ec27:b3 -->
+<!-- blog-edit-start:32aebb6f8902ec27:b4 -->
+
 <p>程序要求有两个参数，第一个是 payload 的长度，第二个是 payload 的十六进制格式。<br />
 删了很多的 <code>main</code> 函数如下所示，大致流程看注释即可。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
@@ -740,6 +756,10 @@
 </span><span id="__span-0-34"><span class="linenos" data-linenos="34 "></span><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-0-35"><span class="linenos" data-linenos="35 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:32aebb6f8902ec27:b4 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b5 -->
+
 <p>现在来看一下它的危险函数是什么样子。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">char</span><span class="w"> </span><span class="nf">sub_1231900</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">a3</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -800,6 +820,10 @@
 </span><span id="__span-1-57"><span class="linenos" data-linenos="57 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">unk_1434210</span><span class="p">,</span><span class="w"> </span><span class="n">dword_14341D0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
 </span><span id="__span-1-58"><span class="linenos" data-linenos="58 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:32aebb6f8902ec27:b5 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b6 -->
+
 <p>可以看到，用套娃这个词来描述它非常合适，它就是对 payload 进行三个字节三个字节检查，一共执行 16 次，如果全部通过，那么就会触发一个 stack overflow.<br />
 所以很明显首先就要通过这样的检查，其实人工计算也是可以的，但是对于这种对输入进行一系列变换最后进行比对的模式，使用 angr 这个工具是再合适不过了。<br />
 代码如下，我们假设这个套娃函数开始是 <code>cyclic_00</code>，最终的函数就是 <code>cyclic_16</code>.<br />
@@ -824,12 +848,35 @@
 </span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span>    <span class="k">else</span><span class="p">:</span>
 </span><span id="__span-2-19"><span class="linenos" data-linenos="19 "></span>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Could not find the solution&#39;</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:32aebb6f8902ec27:b6 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b7 -->
+
 <p>推荐去看一下 <code>angr-ctf-py3</code> 这个项目的前几个题目，对学习 angr 挺有帮助。</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b7 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b8 -->
+
 <h2 id="_3">溢出构造</h2>
+<!-- blog-edit-end:32aebb6f8902ec27:b8 -->
+<!-- blog-edit-start:32aebb6f8902ec27:b9 -->
+
 <p>下面就是溢出该怎么溢出了，程序开了 NX，其他啥都没开，很明显要使用 ROP.<br />
 TODO: 这里我突然感觉似乎可以去泄露 libc 去做，流程是如下。首先就是遍历各个版本的 write，输出内存，然后就可以使用 DynELF 去做了，似乎好像可以这样搞哎。</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b9 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b10 -->
+
 <p>但是并不能知道 libc 的版本，因此 one_gadget 等等都是无法得到的地址，这就很麻烦，这也是这题难点之一。</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b10 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b11 -->
+
 <p>突破点在于使用 <code>mprotect</code> 函数，利用它我们就可以把某片内存的保护模式给改掉，所以尝试改掉栈空间，让它有 x 权限，这样我们在溢出的栈空间中写上 shellcode，就可以顺利逃脱 NX 的防护机制。</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b11 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b12 -->
+
 <p>另一个关键点是哪里有 ROP，使用 ROPgadget 发现如果是 <code>pop|ret</code>, <code>mov|ret</code> 均这种形式无法修改 <code>rdx</code> 寄存器，这个寄存器是 64 位下第二个参数，是我们使用 <code>mprotect</code> 绕不开的。<br />
 后来也是看网上的题解，才发现之前的 <code>main</code> 函数有一个这条语句 <code>v4 = sub_12319A5(1LL, 2LL, 3LL, 4LL, 5LL, 6LL);</code>，观察它的汇编代码，可以发现，我们可以利用它进行 ROP!<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span>; sub_12319A5     
@@ -850,12 +897,35 @@ TODO: 这里我突然感觉似乎可以去泄露 libc 去做，流程是如下�
 </span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span>.text:00000000012319F1 058                 leave
 </span><span id="__span-3-17"><span class="linenos" data-linenos="17 "></span>.text:00000000012319F2 000                 retn
 </span></code></pre></div></p>
+<!-- blog-edit-end:32aebb6f8902ec27:b12 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b13 -->
+
 <p>TODO: 为什么这个程序没有 <code>lib_csu_init</code></p>
+<!-- blog-edit-end:32aebb6f8902ec27:b13 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b14 -->
+
 <p>构造虚假的栈空间，然后通过上面的 ROP，最后就会将栈中间的数据赋值到相应寄存器~<br />
 怎么构造虚假的栈空间，也好办，只要将 <code>rbp</code> 改成我们可以控制的数据段就可以了。就像最后的返回地址改成我们写的 shellcode 那里一样，我们把 <code>rbp</code> 改成我们写的 虚假栈空间 那里。</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b14 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b15 -->
+
 <h2 id="_4">扩展到随机程序</h2>
+<!-- blog-edit-end:32aebb6f8902ec27:b15 -->
+<!-- blog-edit-start:32aebb6f8902ec27:b16 -->
+
 <p>通过上面的步骤，终于将本次的程序搞定了。可是...下次程序就不一样了呀...</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b16 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b17 -->
+
 <p>不过大致形式比较类似，所以从找共同点。</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b17 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b18 -->
+
 <ol>
 <li>
 <p>找到套娃函数的开始位置，即哪里执行了 <code>call cylic_0</code>，发现这个始终是 <code>main</code> 倒数第二个 <code>call</code>.<br />
@@ -926,13 +996,27 @@ TODO: 这里我突然感觉似乎可以去泄露 libc 去做，流程是如下�
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="n">block</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">block</span><span class="p">(</span> <span class="n">success_addr</span> <span class="o">+</span> <span class="mh">0x4</span> <span class="p">)</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="n">padding_len</span> <span class="o">=</span> <span class="p">(</span><span class="n">block</span><span class="o">.</span><span class="n">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:32aebb6f8902ec27:b18 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b19 -->
+
 <p>最终搞定~</p>
+<!-- blog-edit-end:32aebb6f8902ec27:b19 -->
+
+<!-- blog-edit-start:32aebb6f8902ec27:b20 -->
+
 <h2 id="_5">总结</h2>
+<!-- blog-edit-end:32aebb6f8902ec27:b20 -->
+<!-- blog-edit-start:32aebb6f8902ec27:b21 -->
+
 <ol>
 <li>angr 的初步学习，以后利用 angr 分析程序可以看一下这个代码</li>
 <li>一个很巧妙的 ROP: <code>mov ..... call ... ret</code>，这种形式不会被 ROPgadget 检测到</li>
 <li>要想到使用 <code>mprotect</code> 来修改内存权限</li>
 </ol>
+<!-- blog-edit-end:32aebb6f8902ec27:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\41.aeg.md" data-text-edit-revision="46ae41eed66993413ffdf124201bf0519dd66a993f70329e4dae62efa94daa4c" data-text-edit-marker="32aebb6f8902ec27" data-text-edit-schema="1"></div>
 
 
 
@@ -1164,8 +1248,6 @@ TODO: 这里我突然感觉似乎可以去泄露 libc 去做，流程是如下�
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

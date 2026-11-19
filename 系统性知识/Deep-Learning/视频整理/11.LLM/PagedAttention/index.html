@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -682,44 +682,130 @@
   
 
 
+<!-- blog-edit-start:ffd2f853e2fe38d2:b0 -->
+
 <h1 id="paged-attention">Paged Attention</h1>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ffd2f853e2fe38d25d258d1615f62605a94d0050e34fe791ee65f247b8eab81c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CPagedAttention.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\PagedAttention.md">复制路径</span></div>
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b1 -->
 
 <blockquote>
 <p>参考文章：<a href="https://zhuanlan.zhihu.com/p/1999536171961828862">https://zhuanlan.zhihu.com/p/1999536171961828862</a><br />
 非常好的文章，很多文章没看懂，但是这篇很快就让人理解了。非常推荐看原文。</p>
 </blockquote>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b1 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b2 -->
+
 <h2 id="_1">前提知识</h2>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b2 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b3 -->
+
 <p>[[KV-Cache]]</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b3 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b4 -->
+
 <h2 id="_2">背景介绍</h2>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b4 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b5 -->
+
 <p>在 Attention 中用到的 K 和 V，为了避免重复计算这些历史 Key 和 Value 向量，推理系统通常会将它们缓存下来，称为 <strong>KV Cache（Key-Value 缓存）</strong>。这不仅节省了大量重复计算，也显著提升了推理效率。</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b5 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b6 -->
+
 <p>但是 KV Cache 很占显存，下图展示了一个 13B 参数规模的大语言模型在 NVIDIA A100 40GB 显存 GPU 上推理时的显存使用分布。其中：</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b6 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b7 -->
+
 <ul>
 <li><strong>Parameters（26GB, 65%）</strong>：指模型的权重参数，这部分在加载模型后常驻显存，大小固定；</li>
 <li><strong>KV Cache（&gt;30%）</strong>：用于存储每个请求的历史 Key 和 Value 向量，随着生成 token 数量动态增长，是最主要的动态内存开销来源；</li>
 <li><strong>Others</strong>：主要指推理过程中暂时产生的中间计算结果（如 activation），生命周期短，通常在计算完一层后即被释放，占用较少。</li>
 </ul>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b7 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b8 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514110205.png" /></p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b8 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b9 -->
+
 <h2 id="_3">之前的问题</h2>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b9 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b10 -->
+
 <p>之前没怎么管理 KV Cache，所以导致有很多显存浪费，主要有三种：</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b10 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b11 -->
+
 <ul>
 <li><strong>已预留但尚未使用的空间（Reserved）</strong>：虽然未来会使用，但当前暂未使用到。</li>
 <li><strong>内部碎片（Internal Fragmentation）</strong>：实际 token 数小于预留长度，剩余空间浪费。</li>
 <li><strong>外部碎片（External Fragmentation）</strong>：不同请求所需内存大小不一，造成内存块间不连续，产生碎片。</li>
 </ul>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b11 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b12 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514110338.png" /></p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b12 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b13 -->
+
 <h2 id="paged-attention_1">Paged Attention</h2>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b13 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b14 -->
+
 <p>Paged Attention 的核心思想，借鉴自操作系统中广泛应用的虚拟内存分页机制。</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b14 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b15 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514110415.png" /></p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b15 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b16 -->
+
 <p>如下图所示，用户请求的 prompt 为 <code>"Four score and seven years ago our"</code>，共包含 7 个 token：</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b16 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b17 -->
+
 <ul>
 <li><strong>prefill 阶段</strong>：vLLM 为前 7 个 token 分配两个逻辑块 block 0 和 block 1，分别映射到物理块 7 和 1。block 0 存储前 4 个 token，block 1 存储后 3 个 token 及第一个生成 token <code>"fathers"</code>，填充数为 4。</li>
 <li><strong>decode 阶段 - 生成第 1 个词</strong>：生成 token <code>"brought"</code>，由于 block 1 尚未填满（最多容纳 4 个 token），因此直接将新 KV Cache 写入该块，填充计数从 3 更新为 4。</li>
 <li><strong>decode 阶段 - 生成第 2 个词</strong>：生成下一个 token，此时 block 1 已满，系统为逻辑块 block 2 分配新的物理块 block 3，并写入 KV Cache，同时更新映射表。</li>
 </ul>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b17 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b18 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514110452.png" /></p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b18 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b19 -->
+
 <p>整个过程中，每个逻辑块仅在前一个块被填满后才会分配新的物理块，从而最大程度地减少内存浪费。不难发现，在计算时我们操作的是逻辑块，也就是说，这些 token 在形式上是连续排列的；与此同时，vLLM 会通过 <strong>block table</strong> 映射关系，在后台将逻辑块映射到实际的物理块，从而完成数据的读取与计算。通过这种方式，每个请求仿佛都在一个连续且充足的内存空间中运行，尽管这些数据在物理内存中实际上是非连续存储的。</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b19 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b20 -->
+
 <p>而且，由于这种技术，可以实现复用，只需要逻辑块指向同一个物理块就可以。在 LLM 中，通常有很多场景下多个响应的前缀是一样的。</p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b20 -->
+
+<!-- blog-edit-start:ffd2f853e2fe38d2:b21 -->
+
 <ol>
 <li><strong>并行采样（Parallel Sampling）</strong></li>
 </ol>
@@ -737,6 +823,9 @@
 </ol>
 <p>在许多提示工程实践中，多个请求会以相同的系统提示或 <strong>few-shot</strong> 示例开头（例如翻译任务中的多个例句）。这些共享前缀同样可以被 vLLM 缓存并复用。</p>
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514110856.png" /></p>
+<!-- blog-edit-end:ffd2f853e2fe38d2:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\PagedAttention.md" data-text-edit-revision="ffd2f853e2fe38d25d258d1615f62605a94d0050e34fe791ee65f247b8eab81c" data-text-edit-marker="ffd2f853e2fe38d2" data-text-edit-schema="1"></div>
 
 
 
@@ -968,8 +1057,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

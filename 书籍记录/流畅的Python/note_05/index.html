@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -638,15 +638,32 @@
   
 
 
+<!-- blog-edit-start:322fb37394d0c298:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录五：深浅拷贝</h1>
+<!-- blog-edit-end:322fb37394d0c298:b0 -->
+
 <div class="file-actions" data-image-edit-revision="58d52209d4c3259668daaca03dfc59fd5e0431c7aa02799a45458ebaa34a4f72" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_05.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_05.md">复制路径</span></div>
 
+<!-- blog-edit-start:322fb37394d0c298:b1 -->
+
 <p>主要涉及到 Python 中类的成员变量传参问题, 非常重要. 这里的代码可以在 <a href="https://cscircles.cemc.uwaterloo.ca/visualize">python可视化网站</a> 中进行查看, 非常有用!!</p>
+<!-- blog-edit-end:322fb37394d0c298:b1 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b2 -->
+
 <p>1. 要知道 Python 中 列表 是可变的, 元组 是不可变的, 究竟是什么意思.<br />
 2. 了解列表和元组作为函数参数, 改变它们会有什么不同效果?<br />
 3. 把空列表作为默认参数, 可能会有非常大的问题<br />
 4. 当列表作为参数传给类的成员变量, 修改成员变量时可能会对原有列表产生误操作</p>
+<!-- blog-edit-end:322fb37394d0c298:b2 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b3 -->
+
 <h2 id="_1">列表可变、元组不可变的深层分析</h2>
+<!-- blog-edit-end:322fb37394d0c298:b3 -->
+<!-- blog-edit-start:322fb37394d0c298:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">66</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">44</span><span class="p">],</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">l2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -654,11 +671,23 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;l1:&#39;</span><span class="p">,</span> <span class="n">l1</span><span class="p">)</span>
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;l2:&#39;</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b4 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b5 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>l1: [3, [66, 44], (7, 8, 9), 100]
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>l2: [3, [66, 44], (7, 8, 9)]
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b5 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b6 -->
+
 <p>第二句的执行过程：<br />
 <img alt="" src="../../../asset/image/9879a4617dd4c3fb95d69a5950fd6177/20250124180007.png" /></p>
+<!-- blog-edit-end:322fb37394d0c298:b6 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b7 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">66</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">44</span><span class="p">],</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)]</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">l2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="n">l2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
@@ -666,10 +695,21 @@
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;l1:&#39;</span><span class="p">,</span> <span class="n">l1</span><span class="p">)</span>
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;l2:&#39;</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b7 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b8 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>l1: [3, [66, 55, 44, 33, 22], (7, 8, 9)]
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>l2: [3, [66, 55, 44, 33, 22], (7, 8, 9, 10, 11)]
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b8 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b9 -->
+
 <h2 id="_2">不同元素作为函数参数, 改变它们会有什么不同效果?</h2>
+<!-- blog-edit-end:322fb37394d0c298:b9 -->
+<!-- blog-edit-start:322fb37394d0c298:b10 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">a</span> <span class="o">+=</span> <span class="n">b</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -684,9 +724,20 @@
 </span><span id="__span-4-12"><span class="linenos" data-linenos="12 "></span>
 </span><span id="__span-4-13"><span class="linenos" data-linenos="13 "></span><span class="nb">print</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b10 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b11 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>1 [1, 2, 3, 4] (1, 2)
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b11 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b12 -->
+
 <h2 id="_3">列表作为参数，不传参可能会有非常大的问题</h2>
+<!-- blog-edit-end:322fb37394d0c298:b12 -->
+<!-- blog-edit-start:322fb37394d0c298:b13 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">HauntedBus</span><span class="p">:</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">passengers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Default&#39;</span><span class="p">],</span> <span class="n">int_example</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">passengers</span> <span class="o">=</span> <span class="n">passengers</span>
@@ -709,20 +760,43 @@
 </span><span id="__span-6-20"><span class="linenos" data-linenos="20 "></span><span class="nb">print</span><span class="p">(</span><span class="n">bus2</span><span class="o">.</span><span class="n">passengers</span><span class="p">)</span>
 </span><span id="__span-6-21"><span class="linenos" data-linenos="21 "></span><span class="nb">print</span><span class="p">(</span><span class="n">bus3</span><span class="o">.</span><span class="n">passengers</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b13 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b14 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>[&#39;Alice&#39;, &#39;Bill&#39;, &#39;Bus1&#39;]
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>[&#39;Default&#39;, &#39;Bus2&#39;, &#39;Bus3&#39;]
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>[&#39;Default&#39;, &#39;Bus2&#39;, &#39;Bus3&#39;]
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b14 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b15 -->
+
 <p>执行 <code>bus2</code> 的初始化时：<br />
 <img alt="" src="../../../asset/image/9879a4617dd4c3fb95d69a5950fd6177/20250124180933.png" /></p>
+<!-- blog-edit-end:322fb37394d0c298:b15 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b16 -->
+
 <p>执行 <code>bus3</code> 的初始化后：<br />
 <img alt="" src="../../../asset/image/9879a4617dd4c3fb95d69a5950fd6177/20250124181016.png" /></p>
+<!-- blog-edit-end:322fb37394d0c298:b16 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b17 -->
+
 <p>解决方式：改成 <code>self.passengers = list(passengers)</code> 就行了。当然最好的方式是做判断。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">passengers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">int_example</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">passengers</span> <span class="o">=</span> <span class="n">passengers</span> <span class="k">if</span> <span class="n">passengers</span> <span class="k">else</span> <span class="p">[</span><span class="s1">&#39;Default&#39;</span><span class="p">]</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">int_example</span> <span class="o">=</span> <span class="n">int_example</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:322fb37394d0c298:b17 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b18 -->
+
 <h2 id="_4">列表作为参数，传参也可能有问题</h2>
+<!-- blog-edit-end:322fb37394d0c298:b18 -->
+<!-- blog-edit-start:322fb37394d0c298:b19 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">TwilightBus</span><span class="p">:</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">passengers</span><span class="p">):</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span>            <span class="bp">self</span><span class="o">.</span><span class="n">passengers</span> <span class="o">=</span> <span class="n">passengers</span>
@@ -734,9 +808,20 @@
 </span><span id="__span-9-9"><span class="linenos" data-linenos=" 9 "></span><span class="n">bus</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Tina&#39;</span><span class="p">)</span>
 </span><span id="__span-9-10"><span class="linenos" data-linenos="10 "></span><span class="nb">print</span><span class="p">(</span><span class="n">basketball_team</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b19 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b20 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>[&#39;Sue&#39;, &#39;Maya&#39;, &#39;Diana&#39;, &#39;Pat&#39;]
 </span></code></pre></div>
+<!-- blog-edit-end:322fb37394d0c298:b20 -->
+
+<!-- blog-edit-start:322fb37394d0c298:b21 -->
+
 <p>这个原因很显然了，列表作为参数，用了浅拷贝。所以之后对于列表的参数一定要小心，要知道自己需不需要修改这个传入的参数。</p>
+<!-- blog-edit-end:322fb37394d0c298:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_05.md" data-text-edit-revision="58d52209d4c3259668daaca03dfc59fd5e0431c7aa02799a45458ebaa34a4f72" data-text-edit-marker="322fb37394d0c298" data-text-edit-schema="1"></div>
 
 
 
@@ -968,8 +1053,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

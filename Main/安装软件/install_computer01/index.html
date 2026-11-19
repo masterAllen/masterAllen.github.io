@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -666,25 +666,62 @@
   
 
 
+<!-- blog-edit-start:4f70606b1103e502:b0 -->
+
 <h1 id="_1">装机记一：基本安装</h1>
+<!-- blog-edit-end:4f70606b1103e502:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4f70606b1103e5026866bcf0204c5cc64efc8864c0ea543ed13273dbc5b45ed3" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%5Cinstall_computer01.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\安装软件\install_computer01.md">复制路径</span></div>
+
+<!-- blog-edit-start:4f70606b1103e502:b1 -->
 
 <p>环境: Thinkpad X1 carbon 2018<br />
 系统: Arch Linux</p>
+<!-- blog-edit-end:4f70606b1103e502:b1 -->
+
+<!-- blog-edit-start:4f70606b1103e502:b2 -->
+
 <h2 id="_2">基本安装</h2>
+<!-- blog-edit-end:4f70606b1103e502:b2 -->
+<!-- blog-edit-start:4f70606b1103e502:b3 -->
+
 <p>按照这两个链接来就可以了，主要看官方文档，参考文章网上一大堆，随便找一个就行，基本安装其实很傻很朴素</p>
+<!-- blog-edit-end:4f70606b1103e502:b3 -->
+
+<!-- blog-edit-start:4f70606b1103e502:b4 -->
+
 <ul>
 <li>官方文档: <a href="https://wiki.archlinux.org/index.php/Installation_guide">https://wiki.archlinux.org/index.php/Installation_guide</a></li>
 <li>参考文章: <a href="https://www.viseator.com/2017/05/17/arch_install/">https://www.viseator.com/2017/05/17/arch_install/</a> </li>
 </ul>
+<!-- blog-edit-end:4f70606b1103e502:b4 -->
+
+<!-- blog-edit-start:4f70606b1103e502:b5 -->
+
 <h2 id="_3">注意事项</h2>
+<!-- blog-edit-end:4f70606b1103e502:b5 -->
 <!-- more -->
+<!-- blog-edit-start:4f70606b1103e502:b6 -->
+
 <p>下面是我安装时遇到的一些注意点</p>
+<!-- blog-edit-end:4f70606b1103e502:b6 -->
+<!-- blog-edit-start:4f70606b1103e502:b7 -->
+
 <h3 id="_4">改变字体大小</h3>
+<!-- blog-edit-end:4f70606b1103e502:b7 -->
+<!-- blog-edit-start:4f70606b1103e502:b8 -->
+
 <p>刚开始字体太小，可以调整大一点的字体，/usr/share/kbd/consolefonts下有许多字体压缩包，多使用下面命令查看效果即可<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>setfont<span class="w"> </span>/usr/share/kbd/consolefonts/your_choice.tar.gz
 </span></code></pre></div></p>
+<!-- blog-edit-end:4f70606b1103e502:b8 -->
+
+<!-- blog-edit-start:4f70606b1103e502:b9 -->
+
 <h3 id="_5">无线网相关</h3>
+<!-- blog-edit-end:4f70606b1103e502:b9 -->
+<!-- blog-edit-start:4f70606b1103e502:b10 -->
+
 <ul>
 <li>对于校园网这种需要登录认证的网络，可能会出现一些问题，最好使用个人热点或者USB共享网络来进行安装</li>
 <li>wifi-menu如果始终出错，先把wpa_supplicant有关进程杀死，然后看看，如果不行就重启，我之前连不上搞了一个多小时，最后莫名其妙的好了</li>
@@ -692,13 +729,30 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>pacman<span class="w"> </span>-S<span class="w"> </span>iw<span class="w"> </span>wpa_supplicant<span class="w"> </span>dialog
 </span></code></pre></div></li>
 </ul>
+<!-- blog-edit-end:4f70606b1103e502:b10 -->
+
+<!-- blog-edit-start:4f70606b1103e502:b11 -->
+
 <h3 id="_6">换源注意点</h3>
+<!-- blog-edit-end:4f70606b1103e502:b11 -->
+<!-- blog-edit-start:4f70606b1103e502:b12 -->
+
 <p>注意要把/etc/pacman.d/mirrorlist中China的随便一个地址放在首位，默认是按照文件第一个地址来的</p>
+<!-- blog-edit-end:4f70606b1103e502:b12 -->
+
+<!-- blog-edit-start:4f70606b1103e502:b13 -->
+
 <h3 id="_7">安装之后</h3>
+<!-- blog-edit-end:4f70606b1103e502:b13 -->
+<!-- blog-edit-start:4f70606b1103e502:b14 -->
+
 <ul>
 <li>需要启动 NetworkManager: <code>systemctl start NetworkManager.service</code></li>
 <li>需要启动 wpa_supplicant: <code>systemctl start wpa_supplicant.service</code></li>
 </ul>
+<!-- blog-edit-end:4f70606b1103e502:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\安装软件\install_computer01.md" data-text-edit-revision="4f70606b1103e5026866bcf0204c5cc64efc8864c0ea543ed13273dbc5b45ed3" data-text-edit-marker="4f70606b1103e502" data-text-edit-schema="1"></div>
 
 
 
@@ -930,8 +984,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

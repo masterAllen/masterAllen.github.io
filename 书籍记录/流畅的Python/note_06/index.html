@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -722,11 +722,24 @@
   
 
 
+<!-- blog-edit-start:02ee0a8b339f73c0:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录 六：装饰器</h1>
+<!-- blog-edit-end:02ee0a8b339f73c0:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f4ee691248e358686a4e5ed7aca877386a094ce10236bb8a06d5516b189ac833" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_06.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_06.md">复制路径</span></div>
 
+<!-- blog-edit-start:02ee0a8b339f73c0:b1 -->
+
 <p>主要谈论装饰器</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b1 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b2 -->
+
 <h3 id="_1">装饰器的概念</h3>
+<!-- blog-edit-end:02ee0a8b339f73c0:b2 -->
+<!-- blog-edit-start:02ee0a8b339f73c0:b3 -->
+
 <p>假设有这样的函数<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>def decorate(func):
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    def inner():
@@ -734,6 +747,10 @@
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>        func()
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>    return inner
 </span></code></pre></div></p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b3 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b4 -->
+
 <p>那么下面这两种实现是一样的, 其中第一种就是装饰器.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># choice 1</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="nd">@decorate</span>
@@ -745,12 +762,32 @@
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I am target&#39;</span><span class="p">)</span>
 </span><span id="__span-1-9"><span class="linenos" data-linenos="9 "></span><span class="n">target</span> <span class="o">=</span> <span class="n">decorate</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b4 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b5 -->
+
 <p>下面是菜鸟教程的讲解节选，稍微加了一些自己的看法，不过总体基本是没修改的，感谢原作者。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b5 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b6 -->
+
 <blockquote>
 <p>摘自: <a href="https://www.runoob.com/w3cnote/python-func-decorators.html">https://www.runoob.com/w3cnote/python-func-decorators.html</a></p>
 </blockquote>
+<!-- blog-edit-end:02ee0a8b339f73c0:b6 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b7 -->
+
 <h3 id="_2">你的第一个装饰器</h3>
+<!-- blog-edit-end:02ee0a8b339f73c0:b7 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b8 -->
+
 <p>在上一个例子里，其实我们已经创建了一个装饰器！现在我们修改下上一个装饰器，并编写一个稍微更有用点的程序：</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b8 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>    
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">wrapTheFunction</span><span class="p">():</span>       
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I am doing some boring work before executing a_func()&quot;</span><span class="p">)</span>       
@@ -770,7 +807,15 @@
 </span><span id="__span-2-17"><span class="linenos" data-linenos="17 "></span><span class="c1">#        I am the function which needs some decoration to remove my foul smell </span>
 </span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span><span class="c1">#        I am doing some boring work after executing a_func()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b9 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b10 -->
+
 <p>你看明白了吗？我们刚刚应用了之前学习到的原理。这正是 python 中装饰器做的事情！它们封装一个函数，并且用这样或者那样的方式来修改它的行为。现在你也许疑惑，我们在代码里并没有使用 @ 符号？那只是一个简短的方式来生成一个被装饰的函数。这里是我们如何使用 @ 来运行之前的代码：</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b10 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b11 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="nd">@a_new_decorator</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">def</span><span class="w"> </span><span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Hey you! Decorate me!&quot;&quot;&quot;</span>
@@ -785,11 +830,27 @@
 </span><span id="__span-3-12"><span class="linenos" data-linenos="12 "></span><span class="c1">#the @a_new_decorator is just a short way of saying:</span>
 </span><span id="__span-3-13"><span class="linenos" data-linenos="13 "></span><span class="n">a_function_requiring_decoration</span> <span class="o">=</span> <span class="n">a_new_decorator</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b11 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b12 -->
+
 <p>希望你现在对 Python 装饰器的工作原理有一个基本的理解。如果我们运行如下代码会存在一个问题：</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b12 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b13 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>print(a_function_requiring_decoration.__name__)
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span># Output: wrapTheFunction
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b13 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b14 -->
+
 <p>这并不是我们想要的！Ouput 输出应该是"a_function_requiring_decoration"。这里的函数被warpTheFunction替代了。它重写了我们函数的名字和注释文档(docstring)。幸运的是Python提供给我们一个简单的函数来解决这个问题，那就是functools.wraps。我们修改上一个例子来使用functools.wraps：</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b14 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">def</span><span class="w"> </span><span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>
@@ -809,12 +870,40 @@
 </span><span id="__span-5-17"><span class="linenos" data-linenos="17 "></span><span class="nb">print</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 </span><span id="__span-5-18"><span class="linenos" data-linenos="18 "></span><span class="c1"># Output: a_function_requiring_decoration</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b15 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b16 -->
+
 <p>现在好多了。我们接下来学习装饰器的一些常用场景。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b16 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b17 -->
+
 <h2 id="_3">装饰器作用</h2>
+<!-- blog-edit-end:02ee0a8b339f73c0:b17 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b18 -->
+
 <p>下面就是正题了, 装饰器作用是什么? <strong>实际上装饰器就是语法糖, 用途就是有的时候方便一些呗。</strong></p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b18 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b19 -->
+
 <p>下面就来看一下哪些时候用装饰器很方便。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b19 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b20 -->
+
 <h3 id="authorization">授权(Authorization)</h3>
+<!-- blog-edit-end:02ee0a8b339f73c0:b20 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b21 -->
+
 <p>装饰器能有助于检查某个人是否被授权去使用一个web应用的端点(endpoint)。它们被大量使用于Flask和Django web框架中。执行一些函数前, 需要检查一下是否已经授权了。如果没有装饰器, 就要在每个函数里面加判断条件, 但是有了下面的装饰器, 只要在每个函数上面加一行 <code>@require_auth</code> 即可. 下面是用于授权的装饰器.</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b21 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b22 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">def</span><span class="w"> </span><span class="nf">requires_auth</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
@@ -826,8 +915,20 @@
 </span><span id="__span-6-9"><span class="linenos" data-linenos=" 9 "></span>        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span><span id="__span-6-10"><span class="linenos" data-linenos="10 "></span>    <span class="k">return</span> <span class="n">decorated</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b22 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b23 -->
+
 <h3 id="logging">日志(Logging)</h3>
+<!-- blog-edit-end:02ee0a8b339f73c0:b23 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b24 -->
+
 <p>日志是装饰器运用的另一个亮点。这是个例子：</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b24 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b25 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">def</span><span class="w"> </span><span class="nf">logit</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
@@ -846,11 +947,35 @@
 </span><span id="__span-7-16"><span class="linenos" data-linenos="16 "></span><span class="n">result</span> <span class="o">=</span> <span class="n">addition_func</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </span><span id="__span-7-17"><span class="linenos" data-linenos="17 "></span><span class="c1"># Output: addition_func was called</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b25 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b26 -->
+
 <p>我敢肯定你已经在思考装饰器的一个其他聪明用法了。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b26 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b27 -->
+
 <hr />
+<!-- blog-edit-end:02ee0a8b339f73c0:b27 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b28 -->
+
 <h2 id="_4">带参数的装饰器</h2>
+<!-- blog-edit-end:02ee0a8b339f73c0:b28 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b29 -->
+
 <p>来想想这个问题，难道@wraps不也是个装饰器吗？但是，它接收一个参数，就像任何普通的函数能做的那样。那么，为什么我们不也那样做呢？ 这是因为，当你使用@my_decorator语法时，你是在应用一个以单个函数作为参数的一个包裹函数。记住，Python里每个东西都是一个对象，而且这包括函数！记住了这些，我们可以编写一下能返回一个包裹函数的函数。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b29 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b30 -->
+
 <p>我们回到日志的例子，并创建一个包裹函数，能让我们指定一个用于输出的日志文件。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b30 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b31 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">def</span><span class="w"> </span><span class="nf">logit</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s1">&#39;out.log&#39;</span><span class="p">):</span>
@@ -883,9 +1008,25 @@
 </span><span id="__span-8-30"><span class="linenos" data-linenos="30 "></span><span class="c1"># Output: myfunc2 was called</span>
 </span><span id="__span-8-31"><span class="linenos" data-linenos="31 "></span><span class="c1"># 现在一个叫做 func2.log 的文件出现了，里面的内容就是上面的字符串</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b31 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b32 -->
+
 <h2 id="_5">装饰器类</h2>
+<!-- blog-edit-end:02ee0a8b339f73c0:b32 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b33 -->
+
 <p>现在我们有了能用于正式环境的logit装饰器，但当我们的应用的某些部分还比较脆弱时，异常也许是需要更紧急关注的事情。比方说有时你只想打日志到一个文件。而有时你想把引起你注意的问题发送到一个email，同时也保留日志，留个记录。这是一个使用继承的场景，但目前为止我们只看到过用来构建装饰器的函数。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b33 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b34 -->
+
 <p>幸运的是，类也可以用来构建装饰器。那我们现在以一个类而不是一个函数的方式，来重新构建logit。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b34 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b35 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">class</span><span class="w"> </span><span class="nc">logit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -910,12 +1051,28 @@
 </span><span id="__span-9-22"><span class="linenos" data-linenos="22 "></span>        <span class="c1"># logit只打日志，不做别的</span>
 </span><span id="__span-9-23"><span class="linenos" data-linenos="23 "></span>        <span class="k">pass</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b35 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b36 -->
+
 <p>这个实现有一个附加优势，在于比嵌套函数的方式更加整洁，而且包裹一个函数还是使用跟以前一样的语法：</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b36 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b37 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>@logit()
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span>def myfunc1():
 </span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span>    pass
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b37 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b38 -->
+
 <p>现在，我们给 logit 创建子类，来添加 email 的功能(虽然 email 这个话题不会在这里展开)。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b38 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b39 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">email_logit</span><span class="p">(</span><span class="n">logit</span><span class="p">):</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 </span><span id="__span-11-3"><span class="linenos" data-linenos=" 3 "></span><span class="sd">    一个logit的实现版本，可以在函数调用时发送email给管理员</span>
@@ -929,11 +1086,32 @@
 </span><span id="__span-11-11"><span class="linenos" data-linenos="11 "></span>        <span class="c1"># 这里就不做实现了</span>
 </span><span id="__span-11-12"><span class="linenos" data-linenos="12 "></span>        <span class="k">pass</span>
 </span></code></pre></div>
+<!-- blog-edit-end:02ee0a8b339f73c0:b39 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b40 -->
+
 <p>从现在起，@email_logit 将会和 @logit 产生同样的效果，但是在打日志的基础上，还会多发送一封邮件给管理员。</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b40 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b41 -->
+
 <h3 id="_6">一些常用装饰器</h3>
+<!-- blog-edit-end:02ee0a8b339f73c0:b41 -->
+<!-- blog-edit-start:02ee0a8b339f73c0:b42 -->
+
 <h4 id="functoolslru_cache">functools.lru_cache</h4>
+<!-- blog-edit-end:02ee0a8b339f73c0:b42 -->
+<!-- blog-edit-start:02ee0a8b339f73c0:b43 -->
+
 <p>用于优化, 避免传入相同参数时重复计算, 具体可以看 流畅的Python 7.8.1.</p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b43 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b44 -->
+
 <h4 id="classmethod">classmethod</h4>
+<!-- blog-edit-end:02ee0a8b339f73c0:b44 -->
+<!-- blog-edit-start:02ee0a8b339f73c0:b45 -->
+
 <p>classmethod 修饰符对应的函数不需要实例化, 不需要 self 参数, 但第一个参数需要是表示自身类的 cls 参数, 可以来调用类的属性, 类的方法, 实例化对象等. 具体看下面的例子.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos=" 1 "></span><span class="ch">#!/usr/bin/python</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos=" 2 "></span><span class="c1"># -*- coding: UTF-8 -*-</span>
@@ -950,6 +1128,10 @@
 </span><span id="__span-12-13"><span class="linenos" data-linenos="13 "></span>
 </span><span id="__span-12-14"><span class="linenos" data-linenos="14 "></span><span class="n">A</span><span class="o">.</span><span class="n">func2</span><span class="p">()</span>               <span class="c1"># 不需要实例化</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b45 -->
+
+<!-- blog-edit-start:02ee0a8b339f73c0:b46 -->
+
 <p>其实我觉得 <code>classmethod</code> 这个可以不用去管吧, 比如在流畅的Python 中, 作者就有时用这个装饰器有时用下面的方法来完成...<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 用 classmethod</span>
 </span><span id="__span-13-2"><span class="linenos" data-linenos="2 "></span><span class="k">def</span><span class="w"> </span><span class="nf">func2</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
@@ -960,6 +1142,9 @@
 </span><span id="__span-13-7"><span class="linenos" data-linenos="7 "></span>    <span class="bp">cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 </span><span id="__span-13-8"><span class="linenos" data-linenos="8 "></span>    <span class="nb">print</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">bar</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:02ee0a8b339f73c0:b46 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_06.md" data-text-edit-revision="f4ee691248e358686a4e5ed7aca877386a094ce10236bb8a06d5516b189ac833" data-text-edit-marker="02ee0a8b339f73c0" data-text-edit-schema="1"></div>
 
 
 
@@ -1191,8 +1376,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

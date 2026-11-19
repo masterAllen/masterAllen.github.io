@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -627,13 +627,33 @@
   
 
 
+<!-- blog-edit-start:dd71cc19e13467f7:b0 -->
+
 <h1 id="_1">记一次换代理之后惨案</h1>
+<!-- blog-edit-end:dd71cc19e13467f7:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8d0c983a96ab75c8fe65b04a3941177ceb234c001530356a411f5e63e1959db6" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug%5Cdebug_004.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Debug\debug_004.md">复制路径</span></div>
 
+<!-- blog-edit-start:dd71cc19e13467f7:b1 -->
+
 <h2 id="_2">前言</h2>
+<!-- blog-edit-end:dd71cc19e13467f7:b1 -->
+<!-- blog-edit-start:dd71cc19e13467f7:b2 -->
+
 <p>极游原来的节点炸掉了，只好重新用之前在 Vultr 上搭建的服务器，然后去 Telegram 的群里面看看，发现果然节点正在修复，估计一时半会是修不好了，那就用回原来自己那个龟速的 VPS 吧。然而用了两天之后真的不能忍了，也不知道为什么，自己搭建的服务器从几个月前就一直变的非常慢(以前也快不到哪去)，Youtube 上的速度，呵呵，100-300KB，只能勉强看看 144p，这能忍？</p>
+<!-- blog-edit-end:dd71cc19e13467f7:b2 -->
+
+<!-- blog-edit-start:dd71cc19e13467f7:b3 -->
+
 <p>之前试过什么 BBR 加速等等，都不行，又看到说 Vultr 对于电信支持很垃圾，所以就想着，反正自己搭建服务器就是为了翻墙，那还是寄离人下，用别人的吧。正好某网站打五折，嘿嘿，上车。然后订阅 v2ray 在 Windows 下它的官方软件是支持的，但是 Linux 下没有，所以需要在 Windows 下面导出订阅文件然后转到 Linux 下面去。但是这样太麻烦了，所以查找了一些 Linux 下面支持订阅的客户端，但是就是在安装过程中遇到了问题。</p>
+<!-- blog-edit-end:dd71cc19e13467f7:b3 -->
+
+<!-- blog-edit-start:dd71cc19e13467f7:b4 -->
+
 <h2 id="_3">安装记录</h2>
+<!-- blog-edit-end:dd71cc19e13467f7:b4 -->
+<!-- blog-edit-start:dd71cc19e13467f7:b5 -->
+
 <ol>
 <li>
 <p>打算安装 v2ray-desktop，直接 yay 安装就好了，然而报错了。错误报告如下。</p>
@@ -663,9 +683,19 @@
 <p>然后安装又出错，不过比较好解决了。错误发生是因为访问 gitee 超时吗，我尝试在浏览器中走代理访问这个网站，果然访问不了。现在问题清晰了: 要先用代理服务器解析地址，然后从 github clone，然后还要从 gitee clone，这就麻烦了，github 要代理，gitee 不能代理，无解。所以直接把 v2ray-desktop.git clone 下来手动安装！搞定！(不过辛辛苦苦安装的客户端不符合我的预期..)</p>
 </li>
 </ol>
+<!-- blog-edit-end:dd71cc19e13467f7:b5 -->
+
+<!-- blog-edit-start:dd71cc19e13467f7:b6 -->
+
 <h2 id="_4">总结</h2>
+<!-- blog-edit-end:dd71cc19e13467f7:b6 -->
+<!-- blog-edit-start:dd71cc19e13467f7:b7 -->
+
 <p>这是 2020 年 2 月的文章，现在看来，自己还是有所进步的，当时不懂的命令现在基本都搞懂了。从 <code>resolve host name</code> 就可以明显知道是 DNS 的问题，所以问题解决方向就比较明确了，先试一下系统解析 github 能否成功，然后再去来解决。<br />
 不过当时自己还是很 OK 的，要说学到什么，我只能说，学到了耐心...</p>
+<!-- blog-edit-end:dd71cc19e13467f7:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Debug\debug_004.md" data-text-edit-revision="8d0c983a96ab75c8fe65b04a3941177ceb234c001530356a411f5e63e1959db6" data-text-edit-marker="dd71cc19e13467f7" data-text-edit-schema="1"></div>
 
 
 
@@ -897,8 +927,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

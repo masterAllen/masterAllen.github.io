@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,14 +609,32 @@
   
 
 
+<!-- blog-edit-start:cfac6c4747bf0e16:b0 -->
+
 <h1 id="pixel-based">整体配准二：pixel-based（特征点、稀疏光流）</h1>
+<!-- blog-edit-end:cfac6c4747bf0e16:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c7203843a5abfddc99cda7ed7e2d90174dc7cf402856675fbcaa821f296cd978" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5%5C02.%E6%95%B4%E4%BD%93%E9%85%8D%E5%87%86%E4%BA%8C%EF%BC%9Apixel-based%EF%BC%88%E7%89%B9%E5%BE%81%E7%82%B9%E3%80%81%E7%A8%80%E7%96%8F%E5%85%89%E6%B5%81%EF%BC%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\02.整体配准二：pixel-based（特征点、稀疏光流）.md">复制路径</span></div>
+
+<!-- blog-edit-start:cfac6c4747bf0e16:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.2.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.2.md</a></p>
 </blockquote>
+<!-- blog-edit-end:cfac6c4747bf0e16:b1 -->
+
+<!-- blog-edit-start:cfac6c4747bf0e16:b2 -->
+
 <p>feature-based: 找两张图片上一些对应点，即找出一些点在前后两张图片的各自位置。然后用它们反算出矩阵。</p>
+<!-- blog-edit-end:cfac6c4747bf0e16:b2 -->
+
+<!-- blog-edit-start:cfac6c4747bf0e16:b3 -->
+
 <p>特征点的方法也是耳熟能详的方法了，特征点寻找、匹配、变换。网上也是一搜一大片。这里随便抄个代码，便于直接查看：</p>
+<!-- blog-edit-end:cfac6c4747bf0e16:b3 -->
+
+<!-- blog-edit-start:cfac6c4747bf0e16:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cv</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -656,8 +674,19 @@
 </span><span id="__span-0-37"><span class="linenos" data-linenos="37 "></span>
 </span><span id="__span-0-38"><span class="linenos" data-linenos="38 "></span><span class="n">cv</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;warped.jpg&#39;</span><span class="p">,</span> <span class="n">warped_image</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cfac6c4747bf0e16:b4 -->
+
+<!-- blog-edit-start:cfac6c4747bf0e16:b5 -->
+
 <p>然后也有说用稀疏光流的，即用光流算出两张图片的对应点。但是后来想了想，其实还是不推荐：<strong>因为配准意味着两张图片是属于静态的运动，即全局在动；而光流通常是用于运动的物体，即图片上是局部在动。如下图，光流是找出运动的物体，用来配准似乎有点走偏了：</strong></p>
+<!-- blog-edit-end:cfac6c4747bf0e16:b5 -->
+
+<!-- blog-edit-start:cfac6c4747bf0e16:b6 -->
+
 <p><img alt="1727174448961" src="../../../../asset/image/0ad73bcd4909d76804571276d1cf12ba/1727174448961.png" /></p>
+<!-- blog-edit-end:cfac6c4747bf0e16:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\02.整体配准二：pixel-based（特征点、稀疏光流）.md" data-text-edit-revision="c7203843a5abfddc99cda7ed7e2d90174dc7cf402856675fbcaa821f296cd978" data-text-edit-marker="cfac6c4747bf0e16" data-text-edit-schema="1"></div>
 
 
 
@@ -889,8 +918,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

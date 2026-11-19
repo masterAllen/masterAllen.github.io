@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -672,25 +672,71 @@
   
 
 
+<!-- blog-edit-start:b74d00b8b3d736f2:b0 -->
+
 <h1 id="_1">特征点三部曲：提取；描述；匹配</h1>
+<!-- blog-edit-end:b74d00b8b3d736f2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4df424962e7994267d3a456f5ff2378fbf3b8da129475df6ba03c053d0059687" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%5C01.%E7%89%B9%E5%BE%81%E7%82%B9%E4%B8%89%E9%83%A8%E6%9B%B2%EF%BC%9A%E6%8F%90%E5%8F%96%EF%BC%9B%E6%8F%8F%E8%BF%B0%EF%BC%9B%E5%8C%B9%E9%85%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\01.特征点三部曲：提取；描述；匹配.md">复制路径</span></div>
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.1.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.1.md</a></p>
 </blockquote>
+<!-- blog-edit-end:b74d00b8b3d736f2:b1 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b2 -->
+
 <p>OpenCV 的 turtorial 相当好：<a href="https://docs.opencv.org/4.x/db/d27/tutorial_py_table_of_contents_feature2d.html">链接</a></p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b2 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b3 -->
+
 <p>这个网上例子也太多，总的来说，就是三部曲：</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b3 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b4 -->
+
 <ul>
 <li>提取图像中的关键点，关键点就是特征点在图像中的位置，可能还有方向等其他信息</li>
 <li>计算关键点的描述子，描述子通常是一个向量，人为设计来描述关键点周围像素的信息</li>
 <li>根据描述子进行匹配，两张图片得到许多描述子，需要筛选出合格的匹配对</li>
 </ul>
+<!-- blog-edit-end:b74d00b8b3d736f2:b4 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b5 -->
+
 <p>得到匹配对，就可以进行相关应用了，如图像配准里面，就可以用匹配的点计算变换矩阵（1.4节）。</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b5 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b6 -->
+
 <p>特征提取和特征描述的方法实在太多太多了，Opencv <a href="https://docs.opencv.org/4.x/d5/d51/group__features2d__main.html">features2d</a> 和 <a href="https://docs.opencv.org/4.x/d7/d7a/group__xfeatures2d__experiment.html">xfeatures2d 模块</a>。</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b6 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b7 -->
+
 <h3 id="_2">函数说明：</h3>
+<!-- blog-edit-end:b74d00b8b3d736f2:b7 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b8 -->
+
 <p>不多做说明，如上所述，OpenCV turtorial 已经写的非常好，直接参考即可。<strong>这里不写各个参数的细节了，可以参考官方代码，然后自行调整</strong>。</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b8 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b9 -->
+
 <h4 id="_3">特征提取</h4>
+<!-- blog-edit-end:b74d00b8b3d736f2:b9 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b10 -->
+
 <p>简单的角点有 Harris(<code>cornerHarris</code>), Shi-Tomasi Corner(<code>goodFeatureToTrack</code>), 复杂专业的有 FAST, SIFT, SURF, ORB, KAZE, AKAZE, BRISK, AGAST... 具体对应函数去官方文档上查吧，其中前面两个在 <a href="../02.更详细的角点函数/">2.2.md</a> 上有详细介绍。</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b10 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b11 -->
+
 <ul>
 <li>各个方法的返回值类型可能有差异，这个打印下类，然后查手册就行，这里也有一个转为二维数组的简单示例</li>
 </ul>
@@ -721,9 +767,25 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:b74d00b8b3d736f2:b11 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b12 -->
+
 <h4 id="_4">特征描述</h4>
+<!-- blog-edit-end:b74d00b8b3d736f2:b12 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b13 -->
+
 <p>其实上面如 SIFT、ORB 等不仅仅只是特征提取方法，其也包含了后续的特征描述。所以有许多示例代码中通常直接用如 <code>sift.detectAndCompute</code> 来代替 <code>sift.detect</code>+<code>sift.compute</code> 的组合。</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b13 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b14 -->
+
 <p>单独的特征描述方法在 OpenCV Turotial 中只有一个 BRIEF 算法：</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b14 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">sift</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">SIFT_create</span><span class="p">()</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">brief</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">BRIEF_create</span><span class="p">()</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -735,8 +797,20 @@
 </span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span><span class="c1"># SIFT 这种特征提取、描述都有的方法其实可以合成一句 </span>
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="n">keypoints3</span><span class="p">,</span> <span class="n">descriptors3</span> <span class="o">=</span> <span class="n">sift</span><span class="o">.</span><span class="n">detectAndCompute</span><span class="p">(</span><span class="n">src_gray</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b74d00b8b3d736f2:b15 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b16 -->
+
 <h4 id="_5">特征匹配</h4>
+<!-- blog-edit-end:b74d00b8b3d736f2:b16 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b17 -->
+
 <p>直接看 <a href="https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html">官方文档</a> 即可。有两类 BFMatcher 和 FLANNMatcher，这两个类都继承自 <a href="https://docs.opencv.org/4.x/db/d39/classcv_1_1DescriptorMatcher.html#a623a2b07755cf7fb1c79554af73cdbb0">DescriptorMatcher</a> 类，他们的方法基本是一致的。</p>
+<!-- blog-edit-end:b74d00b8b3d736f2:b17 -->
+
+<!-- blog-edit-start:b74d00b8b3d736f2:b18 -->
+
 <ol>
 <li>
 <p>匹配方法都有 match、knnMatch、radiusMatch，返回值有点差别，官方文档中有使用示例。</p>
@@ -764,6 +838,9 @@
 <li>GMS 在特征数量较多时效果良好，OpenCV 建议使用 ORB 特性并将 FastThreshold 设置为 0（因为 ORB 得出的特征数量较多）。</li>
 <li>如果图片有很大的旋转和比例变化，请将参数 withRotation 或 withScale 设置为 true。</li>
 </ol>
+<!-- blog-edit-end:b74d00b8b3d736f2:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\01.特征点三部曲：提取；描述；匹配.md" data-text-edit-revision="4df424962e7994267d3a456f5ff2378fbf3b8da129475df6ba03c053d0059687" data-text-edit-marker="b74d00b8b3d736f2" data-text-edit-schema="1"></div>
 
 
 
@@ -995,8 +1072,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

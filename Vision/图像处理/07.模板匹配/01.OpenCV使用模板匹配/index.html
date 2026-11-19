@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,21 +609,55 @@
   
 
 
+<!-- blog-edit-start:0787d3a59cdd9b37:b0 -->
+
 <h1 id="opencv">OpenCV 使用模板匹配</h1>
+<!-- blog-edit-end:0787d3a59cdd9b37:b0 -->
+
 <div class="file-actions" data-image-edit-revision="86d59943aeaf06f8b92412077a551a29e8805923bb2738bed49634d581da2d9e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C07.%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D%5C01.OpenCV%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C07.%E6%A8%A1%E6%9D%BF%E5%8C%B9%E9%85%8D" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\07.模板匹配\01.OpenCV使用模板匹配.md">复制路径</span></div>
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.b.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.b.md</a></p>
 </blockquote>
+<!-- blog-edit-end:0787d3a59cdd9b37:b1 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b2 -->
+
 <p>模板匹配可以用在哪儿：目标追踪（要一开始框选目标，这样之后就把框选当成模板，每次帧变化的时候都进行一次模板匹配），识别文字 OCR（事先准备常见的文字图片，使用的时候遍历看看当前图片和哪一个模板文字图片最接近），图像配准（相当于找匹配点）。</p>
+<!-- blog-edit-end:0787d3a59cdd9b37:b2 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b3 -->
+
 <p><code>matchTemplate</code> 方法，这个无脑调用就行了，网上的示例代码很多。说一下注意点：</p>
+<!-- blog-edit-end:0787d3a59cdd9b37:b3 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b4 -->
+
 <ol>
 <li>一共六种方法，如果效果不好就换另一种指标试试，之前用过的时候，只有 TM_CCORR_NORMED 是能比较好识别的...</li>
 <li><strong>并不适用于缩放和旋转的场景</strong></li>
 </ol>
+<!-- blog-edit-end:0787d3a59cdd9b37:b4 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b5 -->
+
 <p>ximgproc 有一个 <code>colorMatchTemplate</code> 方法，同样调用就行，区别就是这个是靠颜色匹配，感觉效果一般。</p>
+<!-- blog-edit-end:0787d3a59cdd9b37:b5 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b6 -->
+
 <p>模板匹配也可以用轮廓匹配实现，相当于 找轮廓+轮廓匹配 等于是模板匹配的其中一个实现方法，当然这太过于理想化了。</p>
+<!-- blog-edit-end:0787d3a59cdd9b37:b6 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b7 -->
+
 <p>代码片段：</p>
+<!-- blog-edit-end:0787d3a59cdd9b37:b7 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b8 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="c1"># 图片来源: opencv extra 仓库</span>
@@ -649,8 +683,19 @@
 </span><span id="__span-0-23"><span class="linenos" data-linenos="23 "></span>
 </span><span id="__span-0-24"><span class="linenos" data-linenos="24 "></span><span class="n">show_images</span><span class="p">([</span> <span class="p">(</span><span class="s1">&#39;img2&#39;</span><span class="p">,</span> <span class="n">img2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;colormatch&#39;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span> <span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0787d3a59cdd9b37:b8 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b9 -->
+
 <p><img alt="1727356700097" src="../../../../asset/image/033602228d43c5b9b9d9f6caf75bed4c/1727356700097.png" /></p>
+<!-- blog-edit-end:0787d3a59cdd9b37:b9 -->
+
+<!-- blog-edit-start:0787d3a59cdd9b37:b10 -->
+
 <p><img alt="1727356721257" src="../../../../asset/image/033602228d43c5b9b9d9f6caf75bed4c/1727356721257.png" /></p>
+<!-- blog-edit-end:0787d3a59cdd9b37:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\07.模板匹配\01.OpenCV使用模板匹配.md" data-text-edit-revision="86d59943aeaf06f8b92412077a551a29e8805923bb2738bed49634d581da2d9e" data-text-edit-marker="0787d3a59cdd9b37" data-text-edit-schema="1"></div>
 
 
 
@@ -882,8 +927,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

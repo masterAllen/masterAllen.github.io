@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -662,19 +662,64 @@
   
 
 
+<!-- blog-edit-start:9b1c94d498f21663:b0 -->
+
 <h1 id="_1">同态滤波简单介绍</h1>
+<!-- blog-edit-end:9b1c94d498f21663:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ec54ea29d52ac3dae499fbf7971fb46cb2bbbd91d550861c6d24ba3ae29e337b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5C%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%5C%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5C%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\01.各种滤波\同态滤波\同态滤波简单介绍.md">复制路径</span></div>
 
+<!-- blog-edit-start:9b1c94d498f21663:b1 -->
+
 <p>其实就是做一个对数，然后再用频域去处理。</p>
+<!-- blog-edit-end:9b1c94d498f21663:b1 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b2 -->
+
 <p>图像的定义模型为：<span class="arithmatex">\(f(x,y) = i(x,y) \times r(x,y)\)</span>，其中 <span class="arithmatex">\(i(x,y)\)</span> 是光照分量，<span class="arithmatex">\(r(x,y)\)</span> 是反射分量。</p>
+<!-- blog-edit-end:9b1c94d498f21663:b2 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b3 -->
+
 <p>对数变换：<span class="arithmatex">\(ln(f(x,y)) = ln(i(x,y)) + ln(r(x,y))\)</span>。</p>
+<!-- blog-edit-end:9b1c94d498f21663:b3 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b4 -->
+
 <p>频域处理：<span class="arithmatex">\(F(u,v) = I(u,v) + R(u,v)\)</span>。</p>
+<!-- blog-edit-end:9b1c94d498f21663:b4 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b5 -->
+
 <p>之后就对频域做一些处理，然后再傅里叶反变换回去，最后取个指数。没错，这就是同态滤波。</p>
+<!-- blog-edit-end:9b1c94d498f21663:b5 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b6 -->
+
 <h2 id="_2">简单应用</h2>
+<!-- blog-edit-end:9b1c94d498f21663:b6 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b7 -->
+
 <p>一般是为了提高对比度。即让光照分量尽可能均匀，反射分量对比度则提高，这样对比度就会高。</p>
+<!-- blog-edit-end:9b1c94d498f21663:b7 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b8 -->
+
 <p>即压缩照射分量的变化范围，增强反射分量的对比度，总结起来就是这个滤波器需要对低频能量进行压制，以降低动态范围，同时要对高频进行提高，以增强图像对比度。所以弄个高通滤波器即可。</p>
+<!-- blog-edit-end:9b1c94d498f21663:b8 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b9 -->
+
 <h2 id="_3">代码</h2>
+<!-- blog-edit-end:9b1c94d498f21663:b9 -->
+
+<!-- blog-edit-start:9b1c94d498f21663:b10 -->
+
 <p>看这篇文章：<a href="http://giantpandacv.com/academic/%E4%BC%A0%E7%BB%9F%E5%9B%BE%E5%83%8F/%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%20%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/">http://giantpandacv.com/academic/%E4%BC%A0%E7%BB%9F%E5%9B%BE%E5%83%8F/%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E7%9A%84%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/%E5%90%8C%E6%80%81%E6%BB%A4%E6%B3%A2%20%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/</a></p>
+<!-- blog-edit-end:9b1c94d498f21663:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\01.各种滤波\同态滤波\同态滤波简单介绍.md" data-text-edit-revision="ec54ea29d52ac3dae499fbf7971fb46cb2bbbd91d550861c6d24ba3ae29e337b" data-text-edit-marker="9b1c94d498f21663" data-text-edit-schema="1"></div>
 
 
 
@@ -906,8 +951,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

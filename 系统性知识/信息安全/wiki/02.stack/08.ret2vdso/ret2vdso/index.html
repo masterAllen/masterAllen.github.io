@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -678,29 +678,74 @@
   
 
 
+<!-- blog-edit-start:1e10fa478b2b6d82:b0 -->
+
 <h1 id="ret2vdso">ret2vdso 说明</h1>
+<!-- blog-edit-end:1e10fa478b2b6d82:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4baddab7ce2ac1726557ad419335d12084f9e41790521011b996dc949cf421e8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C08.ret2vdso%5Cret2vdso.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C08.ret2vdso" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\08.ret2vdso\ret2vdso.md">复制路径</span></div>
 
+<!-- blog-edit-start:1e10fa478b2b6d82:b1 -->
+
 <p>vDSO（virtual Dynamic Shared Object）：是内核在每个进程地址空间里自动映射的一段代码，作用是：让用户态快速、安全地调用某些内核功能，而不必真的陷入内核。比如 <code>gettimeofday</code>，这种常用函数，就不需要反复用户内核态切换了。</p>
+<!-- blog-edit-end:1e10fa478b2b6d82:b1 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b2 -->
+
 <p>内存中的位置通常是 <code>7ffff7ffd000-7ffff7fff000 r-xp [vdso]</code> 这种高地址，检测命令：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>info auxv
 </span></code></pre></div></p>
+<!-- blog-edit-end:1e10fa478b2b6d82:b2 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b3 -->
+
 <p>ret2vdso 就是利用 VDSO 中的一些片段，通常是：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>mov rax, SYS_clock_gettime
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>syscall
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>ret
 </span></code></pre></div></p>
+<!-- blog-edit-end:1e10fa478b2b6d82:b3 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b4 -->
+
 <p>这样我们可以有 <code>syscall; ret</code> 这样的组合可以利用。</p>
+<!-- blog-edit-end:1e10fa478b2b6d82:b4 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b5 -->
+
 <h2 id="syscall-system">注意点一：是 <code>syscall</code> 而不是 <code>system</code></h2>
+<!-- blog-edit-end:1e10fa478b2b6d82:b5 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b6 -->
+
 <p>注意，vDSO 里面没有 <code>system</code> 给我们用，而是 <code>syscall</code> 系统调用，所以 ret2vdso 通常是需要构造：</p>
+<!-- blog-edit-end:1e10fa478b2b6d82:b6 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b7 -->
+
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="nf">rax</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">syscall_number</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="nf">rdi</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">arg1</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="nf">rsi</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">arg2</span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="nf">rdx</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">arg3</span>
 </span></code></pre></div>
+<!-- blog-edit-end:1e10fa478b2b6d82:b7 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b8 -->
+
 <p>比如可以构造出 <code>execve("/bin/sh", NULL, NULL)</code>；或者 <code>open</code>、<code>read</code> 等指令；或者 <code>mprotect</code> 给内存某段加 RX 权限。</p>
+<!-- blog-edit-end:1e10fa478b2b6d82:b8 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b9 -->
+
 <h2 id="libc-vdso">注意点二：没有 libc 不代表没有 VDSO 段</h2>
+<!-- blog-edit-end:1e10fa478b2b6d82:b9 -->
+
+<!-- blog-edit-start:1e10fa478b2b6d82:b10 -->
+
 <p>一般而言，都会有 VDSO 段的，所以如果没有 libc 不意味没有 VDSO 段。</p>
+<!-- blog-edit-end:1e10fa478b2b6d82:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\08.ret2vdso\ret2vdso.md" data-text-edit-revision="4baddab7ce2ac1726557ad419335d12084f9e41790521011b996dc949cf421e8" data-text-edit-marker="1e10fa478b2b6d82" data-text-edit-schema="1"></div>
 
 
 
@@ -932,8 +977,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,23 +655,61 @@
   
 
 
+<!-- blog-edit-start:cb6171b78bd86bbb:b0 -->
+
 <h1 id="_1">图像风格化之老照片风格</h1>
+<!-- blog-edit-end:cb6171b78bd86bbb:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f4eb7d02d90133e0261448e040a47421b6c7eec4d4c4a5e3e9696ee7817b0f9f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE%5C%E9%A3%8E%E6%A0%BC%E5%8C%96%EF%BC%9A%E8%80%81%E7%85%A7%E7%89%87.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\14.风格化和修图\风格化：老照片.md">复制路径</span></div>
 
+<!-- blog-edit-start:cb6171b78bd86bbb:b1 -->
+
 <p>老照片风格英文名叫做 Sepia Tone algorithm，可以用这个关键词搜索。</p>
+<!-- blog-edit-end:cb6171b78bd86bbb:b1 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b2 -->
+
 <h2 id="_2">变化方式一</h2>
+<!-- blog-edit-end:cb6171b78bd86bbb:b2 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b3 -->
+
 <p>一般搜索的算法都是如下公式，非常神奇，简单但却有实效：</p>
+<!-- blog-edit-end:cb6171b78bd86bbb:b3 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">nr</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="mf">0.393</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="mf">0.769</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mf">0.189</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">ng</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="mf">0.349</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="mf">0.686</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mf">0.168</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">nb</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="mf">0.272</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="mf">0.534</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mf">0.131</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cb6171b78bd86bbb:b4 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b5 -->
+
 <h2 id="_3">变化方式二</h2>
+<!-- blog-edit-end:cb6171b78bd86bbb:b5 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b6 -->
+
 <p>上面的方式太不自由了，比较不好的一点是它转换后的图片往往太亮了，所以还有新的方法，其过程如下：</p>
+<!-- blog-edit-end:cb6171b78bd86bbb:b6 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b7 -->
+
 <ol>
 <li>彩色转成黑白图</li>
 <li>根据黑白的图给一个新的颜色，这个步骤可以用公式，也可以直接用 LUT 表直接映射</li>
 </ol>
+<!-- blog-edit-end:cb6171b78bd86bbb:b7 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b8 -->
+
 <p>也很简单，本质上也就是转成黑白的图再去上色。下面是参考代码：</p>
+<!-- blog-edit-end:cb6171b78bd86bbb:b8 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">src</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./src.jpg&#39;</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -693,7 +731,15 @@
 </span><span id="__span-1-19"><span class="linenos" data-linenos="19 "></span><span class="n">nowimg</span> <span class="o">=</span> <span class="n">nowimg</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 </span><span id="__span-1-20"><span class="linenos" data-linenos="20 "></span><span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./newimg3.jpg&#39;</span><span class="p">,</span> <span class="n">nowimg</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cb6171b78bd86bbb:b9 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b10 -->
+
 <h2 id="_4">结果展示</h2>
+<!-- blog-edit-end:cb6171b78bd86bbb:b10 -->
+
+<!-- blog-edit-start:cb6171b78bd86bbb:b11 -->
+
 <table>
 <thead>
 <tr>
@@ -712,6 +758,9 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:cb6171b78bd86bbb:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\14.风格化和修图\风格化：老照片.md" data-text-edit-revision="f4eb7d02d90133e0261448e040a47421b6c7eec4d4c4a5e3e9696ee7817b0f9f" data-text-edit-marker="cb6171b78bd86bbb" data-text-edit-schema="1"></div>
 
 
 
@@ -943,8 +992,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

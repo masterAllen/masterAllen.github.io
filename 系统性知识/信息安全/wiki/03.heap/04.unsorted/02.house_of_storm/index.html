@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -739,12 +739,30 @@
   
 
 
+<!-- blog-edit-start:47687f1f72a294cc:b0 -->
+
 <h1 id="house-of-storm">house of storm</h1>
+<!-- blog-edit-end:47687f1f72a294cc:b0 -->
+
 <div class="file-actions" data-image-edit-revision="3b2dd68013bbed0ac774d6192669f1f5b3040ed3d9f8458e9f4c17986d274509" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C04.unsorted%5C02.house_of_storm.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C04.unsorted" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\04.unsorted\02.house_of_storm.md">复制路径</span></div>
 
+<!-- blog-edit-start:47687f1f72a294cc:b1 -->
+
 <p>很有趣的攻击，结合了 unsorted bin attack 和 large bin attack 的一个手段。由于 unsorted bin attack 只能在 2.29 以下版本使用，所以这个攻击也是只能在 2.29 以下使用。</p>
+<!-- blog-edit-end:47687f1f72a294cc:b1 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b2 -->
+
 <h2 id="unsortebin-attack-largebin-attack">unsortebin attack 和 largebin attack 回顾</h2>
+<!-- blog-edit-end:47687f1f72a294cc:b2 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b3 -->
+
 <p>先回顾两种基础攻击方式，这里就直接说结论，具体细节看其他文章。</p>
+<!-- blog-edit-end:47687f1f72a294cc:b3 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b4 -->
+
 <ol>
 <li>
 <p>unsorted bin attack: </p>
@@ -760,10 +778,30 @@
 </ul>
 </li>
 </ol>
+<!-- blog-edit-end:47687f1f72a294cc:b4 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b5 -->
+
 <p>只要知道这两种攻击的效果，下面的 house of storm 就不难了。</p>
+<!-- blog-edit-end:47687f1f72a294cc:b5 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b6 -->
+
 <h2 id="_1">算法原理</h2>
+<!-- blog-edit-end:47687f1f72a294cc:b6 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b7 -->
+
 <h3 id="unsorted-largebin">准备 unsorted 和 largebin</h3>
+<!-- blog-edit-end:47687f1f72a294cc:b7 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b8 -->
+
 <p>如下所示，没啥好说的。一开始 <code>free</code> 之后两个块都在 unsorted 中，然后申请一个块使得另一个放入到了 largebin 中，最后再释放掉这个块，会放入 unsorted 中。</p>
+<!-- blog-edit-end:47687f1f72a294cc:b8 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b9 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">unsorted_bin</span><span class="o">=</span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x418</span><span class="p">);</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0X18</span><span class="p">);</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">large_bin</span><span class="o">=</span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x408</span><span class="p">);</span>
@@ -774,8 +812,20 @@
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span><span class="n">unsorted_bin</span><span class="o">=</span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x418</span><span class="p">);</span>
 </span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span><span class="n">free</span><span class="p">(</span><span class="n">unsorted_bin</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:47687f1f72a294cc:b9 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b10 -->
+
 <h3 id="unsorted-bin">unsorted bin 攻击</h3>
+<!-- blog-edit-end:47687f1f72a294cc:b10 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b11 -->
+
 <p>下面就是一个最正常的 unsorted bin 攻击：</p>
+<!-- blog-edit-end:47687f1f72a294cc:b11 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b12 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">unsorted_bin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// 即 unsorted_bin-&gt;bk = target_addr</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="n">unsorted_bin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">target_addr</span><span class="p">;</span>
@@ -783,9 +833,25 @@
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="c1">//则 target_addr-&gt;fd = unsorted_chunks(av),不过似乎没有发挥使用</span>
 </span><span id="__span-1-6"><span class="linenos" data-linenos="6 "></span><span class="c1">//重点是：unsorted_chunks(av)-&gt;bk = target_addr</span>
 </span></code></pre></div>
+<!-- blog-edit-end:47687f1f72a294cc:b12 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b13 -->
+
 <p>假设这个块脱链之后（后面会让他脱链），会修改了 <code>unsorted_chunks(av)</code> 中的 bk，此时系统会认为 malloc 中的 unsorted 链表里面还有一个块，即 <code>target_addr</code>。</p>
+<!-- blog-edit-end:47687f1f72a294cc:b13 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b14 -->
+
 <h3 id="large-bin">large bin 攻击</h3>
+<!-- blog-edit-end:47687f1f72a294cc:b14 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b15 -->
+
 <p>但这个时候直接 malloc 还不行，因为只有 malloc 对应大小的块，系统才会返回给我们。所以这里用最正常的 large bin attack 修改 <code>size</code>：</p>
+<!-- blog-edit-end:47687f1f72a294cc:b15 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b16 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">large_bin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">large_bin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">target_addr</span><span class="o">+</span><span class="mi">8</span><span class="p">;</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="n">large_bin</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
@@ -794,22 +860,64 @@
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span><span class="c1">// 此时 (target_addr-0x18-5)-&gt;fd_nextsize = victim(a heap_addr)</span>
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span><span class="c1">// 即 target_addr + 3 = victim</span>
 </span></code></pre></div>
+<!-- blog-edit-end:47687f1f72a294cc:b16 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b17 -->
+
 <p>假设某个块放入到 largebin 中时，会把 <code>target_addr + 3</code> 修改成 <code>victim</code> 这个 libc 地址，为啥要 <code>+3</code>，可以看下面的图，相当于偏移写：</p>
+<!-- blog-edit-end:47687f1f72a294cc:b17 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b18 -->
+
 <p><img alt="" src="../../../../../../asset/image/716fe5b68e2b4a3bc9493a30334ece50/20260129115755.png" /></p>
+<!-- blog-edit-end:47687f1f72a294cc:b18 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b19 -->
+
 <p><img alt="" src="../../../../../../asset/image/716fe5b68e2b4a3bc9493a30334ece50/20260130121419.png" /></p>
+<!-- blog-edit-end:47687f1f72a294cc:b19 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b20 -->
+
 <p>上面的是小端写，仔细体会。很有趣，最终相当于是利用了 libc 地址中的高位字节，修改了 <code>size</code> 是 0x56。</p>
+<!-- blog-edit-end:47687f1f72a294cc:b20 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b21 -->
+
 <h3 id="target">控制 target</h3>
+<!-- blog-edit-end:47687f1f72a294cc:b21 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b22 -->
+
 <p>所以如果我们申请一个 0x50 大小的块，而上面两种攻击成功做好了铺垫，让系统认为此时 unsorted 链表正好有一个对应的块，所以就会返回给我们，此时控制了 <code>target_addr</code>。</p>
+<!-- blog-edit-end:47687f1f72a294cc:b22 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b23 -->
+
 <p>这里我们只需要一条语句 <code>malloc(0x48)</code> 就行了，执行前系统是 unsorted bin 和 large bin 各有一块，并且里面块的内容已经修改完毕了，就等着触发了。执行 malloc 之后：</p>
+<!-- blog-edit-end:47687f1f72a294cc:b23 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b24 -->
+
 <ol>
 <li>首先会遍历 unsorted bin，所以触发了 <code>unsorted_bin</code> 的脱链，所以触发了 unsorted bin 攻击</li>
 <li>脱链之后 <code>unsorted_bin</code> 会放入到 large bin 中，所以触发了 large bin 的插入，所以触发了 large bin 攻击</li>
 <li>两种攻击都完毕后，系统会认为 unsorted 链表还有一个块，地址是 target，大小是 0x50，而我们又恰好要这个大小的块，所以返回。</li>
 </ol>
+<!-- blog-edit-end:47687f1f72a294cc:b24 -->
+
+<!-- blog-edit-start:47687f1f72a294cc:b25 -->
+
 <h2 id="_2">参考</h2>
+<!-- blog-edit-end:47687f1f72a294cc:b25 -->
+<!-- blog-edit-start:47687f1f72a294cc:b26 -->
+
 <ol>
 <li><a href="https://www.cnblogs.com/tolele/p/16728502.html">https://www.cnblogs.com/tolele/p/16728502.html</a> ：以上内容都是参考本篇文章</li>
 </ol>
+<!-- blog-edit-end:47687f1f72a294cc:b26 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\04.unsorted\02.house_of_storm.md" data-text-edit-revision="3b2dd68013bbed0ac774d6192669f1f5b3040ed3d9f8458e9f4c17986d274509" data-text-edit-marker="47687f1f72a294cc" data-text-edit-schema="1"></div>
 
 
 
@@ -1041,8 +1149,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -670,26 +670,84 @@
   
 
 
+<!-- blog-edit-start:03e169b56013db54:b0 -->
+
 <h1 id="vmwaretool-ubuntu">VMwareTool 无法在 Ubuntu 中使用</h1>
+<!-- blog-edit-end:03e169b56013db54:b0 -->
+
 <div class="file-actions" data-image-edit-revision="38d5a2f8cc18885f63e0f7be64c5f54165b9b83165edda1a7511219ce549a5e8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CVMwareTool%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\VMwareTool无法使用.md">复制路径</span></div>
 
+<!-- blog-edit-start:03e169b56013db54:b1 -->
+
 <p>VMWare 安装完 Ubuntu 之后，即使安装了 VMwareTool，发现还是无法让他全屏或者无法传输文件，下面是解决方法。</p>
+<!-- blog-edit-end:03e169b56013db54:b1 -->
+
+<!-- blog-edit-start:03e169b56013db54:b2 -->
+
 <h2 id="1-ubuntu">1. Ubuntu 中安装对应包</h2>
+<!-- blog-edit-end:03e169b56013db54:b2 -->
+
+<!-- blog-edit-start:03e169b56013db54:b3 -->
+
 <p><code>open-vm-tools</code> 和 <code>open-vm-tools-desktop</code> 两个包都要装。<code>open-vm-tools-desktop</code> 一定要装，这里面是很重要的补充。</p>
+<!-- blog-edit-end:03e169b56013db54:b3 -->
+
+<!-- blog-edit-start:03e169b56013db54:b4 -->
+
 <h2 id="2-vmtoolsd">2. 确保 <code>vmtoolsd</code> 服务是启动的</h2>
+<!-- blog-edit-end:03e169b56013db54:b4 -->
+
+<!-- blog-edit-start:03e169b56013db54:b5 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>vmtoolsd
 </span></code></pre></div>
+<!-- blog-edit-end:03e169b56013db54:b5 -->
+
+<!-- blog-edit-start:03e169b56013db54:b6 -->
+
 <h2 id="3">3. 检查是否能检测到共享文件夹</h2>
+<!-- blog-edit-end:03e169b56013db54:b6 -->
+
+<!-- blog-edit-start:03e169b56013db54:b7 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>vmware-hgfsclient
 </span></code></pre></div>
+<!-- blog-edit-end:03e169b56013db54:b7 -->
+
+<!-- blog-edit-start:03e169b56013db54:b8 -->
+
 <h2 id="4">4. 挂载共享文件夹</h2>
+<!-- blog-edit-end:03e169b56013db54:b8 -->
+
+<!-- blog-edit-start:03e169b56013db54:b9 -->
+
 <p>如果有返回，说明可以启用共享。下面进行挂载：</p>
+<!-- blog-edit-end:03e169b56013db54:b9 -->
+
+<!-- blog-edit-start:03e169b56013db54:b10 -->
+
 <h3 id="_1">创建挂载点目录（如果没有）</h3>
+<!-- blog-edit-end:03e169b56013db54:b10 -->
+
+<!-- blog-edit-start:03e169b56013db54:b11 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/hgfs
 </span></code></pre></div>
+<!-- blog-edit-end:03e169b56013db54:b11 -->
+
+<!-- blog-edit-start:03e169b56013db54:b12 -->
+
 <h3 id="_2">手动挂载共享目录</h3>
+<!-- blog-edit-end:03e169b56013db54:b12 -->
+
+<!-- blog-edit-start:03e169b56013db54:b13 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>vmhgfs-fuse<span class="w"> </span>.host:/<span class="w"> </span>/mnt/hgfs<span class="w"> </span>-o<span class="w"> </span>allow_other
 </span></code></pre></div>
+<!-- blog-edit-end:03e169b56013db54:b13 -->
+
+<!-- blog-edit-start:03e169b56013db54:b14 -->
+
 <ul>
 <li><code>.host:/</code> 表示你主机上的所有共享文件夹</li>
 <li><code>/mnt/hgfs</code> 是你要挂载到的位置</li>
@@ -698,18 +756,57 @@
 <blockquote>
 <p>🚨 如果这一步没有报错，再去 <code>/mnt/hgfs</code> 里看看，应该就能看到了。</p>
 </blockquote>
+<!-- blog-edit-end:03e169b56013db54:b14 -->
+
+<!-- blog-edit-start:03e169b56013db54:b15 -->
+
 <h3 id="_3">（可选）让普通用户能访问</h3>
+<!-- blog-edit-end:03e169b56013db54:b15 -->
+
+<!-- blog-edit-start:03e169b56013db54:b16 -->
+
 <p>确保 <code>/mnt/hgfs</code> 有权限访问：</p>
+<!-- blog-edit-end:03e169b56013db54:b16 -->
+
+<!-- blog-edit-start:03e169b56013db54:b17 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/mnt/hgfs
 </span></code></pre></div>
+<!-- blog-edit-end:03e169b56013db54:b17 -->
+
+<!-- blog-edit-start:03e169b56013db54:b18 -->
+
 <p>你也可以用 <code>ls -l /mnt/hgfs</code> 看看权限是否对。</p>
+<!-- blog-edit-end:03e169b56013db54:b18 -->
+
+<!-- blog-edit-start:03e169b56013db54:b19 -->
+
 <h3 id="crontab">如果你希望开机自动挂载，可以添加到 crontab</h3>
+<!-- blog-edit-end:03e169b56013db54:b19 -->
+
+<!-- blog-edit-start:03e169b56013db54:b20 -->
+
 <p>打开当前用户的 crontab：</p>
+<!-- blog-edit-end:03e169b56013db54:b20 -->
+
+<!-- blog-edit-start:03e169b56013db54:b21 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>crontab<span class="w"> </span>-e
 </span></code></pre></div>
+<!-- blog-edit-end:03e169b56013db54:b21 -->
+
+<!-- blog-edit-start:03e169b56013db54:b22 -->
+
 <p>添加下面一行（注意完整路径）：</p>
+<!-- blog-edit-end:03e169b56013db54:b22 -->
+
+<!-- blog-edit-start:03e169b56013db54:b23 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>@reboot<span class="w"> </span>/usr/bin/vmhgfs-fuse<span class="w"> </span>.host:/<span class="w"> </span>/mnt/hgfs<span class="w"> </span>-o<span class="w"> </span>allow_other
 </span></code></pre></div>
+<!-- blog-edit-end:03e169b56013db54:b23 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\VMwareTool无法使用.md" data-text-edit-revision="38d5a2f8cc18885f63e0f7be64c5f54165b9b83165edda1a7511219ce549a5e8" data-text-edit-marker="03e169b56013db54" data-text-edit-schema="1"></div>
 
 
 
@@ -941,8 +1038,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

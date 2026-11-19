@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -625,18 +625,48 @@
   
 
 
+<!-- blog-edit-start:5fad37d2d24806a3:b0 -->
+
 <h1 id="pd-prefill-and-decode">PD: Prefill and Decode</h1>
+<!-- blog-edit-end:5fad37d2d24806a3:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2a421a3b0ca41c1da61a5607b19a892b93b05c8f01e23c601c866ee985aa4609" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CPrefill_Decode.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\Prefill_Decode.md">复制路径</span></div>
 
+<!-- blog-edit-start:5fad37d2d24806a3:b1 -->
+
 <p>大模型首先把用户的问题作为输入，预测出第一个词，这个阶段叫 Prefill，也叫预填充阶段。</p>
+<!-- blog-edit-end:5fad37d2d24806a3:b1 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b2 -->
+
 <p>然后把新产生的词加到输入后面，继续预测下一个词，这个阶段叫 Decode，也叫自回归阶段。</p>
+<!-- blog-edit-end:5fad37d2d24806a3:b2 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b3 -->
+
 <p>比如用户问：<code>How are you</code>，此时把 <code>How are you</code> 作为 Decoder 的输入，会预测出第一个词 <code>Fine</code>，然后把这个 <code>Fine</code> 作为输入，即此时输入是 <code>How are you. Fine</code>，继续预测下一个词 <code>Thank</code>，以此类推，直到预测出最后一个词。</p>
+<!-- blog-edit-end:5fad37d2d24806a3:b3 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b4 -->
+
 <hr />
+<!-- blog-edit-end:5fad37d2d24806a3:b4 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b5 -->
+
 <p>当然上面的说法比较泛化，真正的操作的是 Token，而不是词。</p>
+<!-- blog-edit-end:5fad37d2d24806a3:b5 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b6 -->
+
 <ul>
 <li>Prefill 相当于要计算所有的 Token，这个是计算密集型阶段</li>
 <li>Decoder 每次新来一个 Token，然后计算，这个是串行阶段</li>
 </ul>
+<!-- blog-edit-end:5fad37d2d24806a3:b6 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b7 -->
+
 <details class="question">
 <summary>那岂不是prefill很少会用到，只是用户第一次提问的时候会有？</summary>
 <p>本质上可以这样说，但本质是有新的内容输入，比如：</p>
@@ -649,10 +679,29 @@
 </li>
 </ol>
 </details>
+<!-- blog-edit-end:5fad37d2d24806a3:b7 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b8 -->
+
 <hr />
+<!-- blog-edit-end:5fad37d2d24806a3:b8 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b9 -->
+
 <p>在传统集成式推理流水线中，LLM的Prefill和Decode阶段往往被置于同一GPU上运行，导致资源需求不匹配，资源利用率不高。因为很明显，两个阶段计算量是不一样的。</p>
+<!-- blog-edit-end:5fad37d2d24806a3:b9 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b10 -->
+
 <p>所以现在通常是将Prefill实例和Decode实例分开部署，这个牵扯到很多很多的内容.... 是 AI Infra 里面非常重要和庞大的子领域了，这里不讲。对于我来说，只要知道有这个东西就行。</p>
+<!-- blog-edit-end:5fad37d2d24806a3:b10 -->
+
+<!-- blog-edit-start:5fad37d2d24806a3:b11 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513192521.png" /></p>
+<!-- blog-edit-end:5fad37d2d24806a3:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\Prefill_Decode.md" data-text-edit-revision="2a421a3b0ca41c1da61a5607b19a892b93b05c8f01e23c601c866ee985aa4609" data-text-edit-marker="5fad37d2d24806a3" data-text-edit-schema="1"></div>
 
 
 
@@ -884,8 +933,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

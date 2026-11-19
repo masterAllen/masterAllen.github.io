@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -638,23 +638,53 @@
   
 
 
+<!-- blog-edit-start:69e11c8d4e20f980:b0 -->
+
 <h1 id="python-property">Python property() 函数</h1>
+<!-- blog-edit-end:69e11c8d4e20f980:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e05dc30c7a920804a41c95ebd22368079705927264bfca522bd5eab99b942b29" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cproperty.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\property.md">复制路径</span></div>
 
+<!-- blog-edit-start:69e11c8d4e20f980:b1 -->
+
 <h2 id="_1">语法</h2>
+<!-- blog-edit-end:69e11c8d4e20f980:b1 -->
+<!-- blog-edit-start:69e11c8d4e20f980:b2 -->
+
 <p>以下是 property() 方法的语法:<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">property</span><span class="p">([</span><span class="n">fget</span><span class="p">[,</span> <span class="n">fset</span><span class="p">[,</span> <span class="n">fdel</span><span class="p">[,</span> <span class="n">doc</span><span class="p">]]]])</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:69e11c8d4e20f980:b2 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b3 -->
+
 <h2 id="_2">参数</h2>
+<!-- blog-edit-end:69e11c8d4e20f980:b3 -->
+<!-- blog-edit-start:69e11c8d4e20f980:b4 -->
+
 <ul>
 <li>fget -- 获取属性值的函数</li>
 <li>fset -- 设置属性值的函数</li>
 <li>fdel -- 删除属性值函数</li>
 <li>doc -- 属性描述信息</li>
 </ul>
+<!-- blog-edit-end:69e11c8d4e20f980:b4 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b5 -->
+
 <h2 id="_3">返回值</h2>
+<!-- blog-edit-end:69e11c8d4e20f980:b5 -->
+<!-- blog-edit-start:69e11c8d4e20f980:b6 -->
+
 <p>返回新式类属性。</p>
+<!-- blog-edit-end:69e11c8d4e20f980:b6 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b7 -->
+
 <h2 id="_4">实例</h2>
+<!-- blog-edit-end:69e11c8d4e20f980:b7 -->
+<!-- blog-edit-start:69e11c8d4e20f980:b8 -->
+
 <p>定义一个可控属性值 x<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -671,9 +701,25 @@
 </span><span id="__span-1-13"><span class="linenos" data-linenos="13 "></span>
 </span><span id="__span-1-14"><span class="linenos" data-linenos="14 "></span>    <span class="n">x</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">getx</span><span class="p">,</span> <span class="n">setx</span><span class="p">,</span> <span class="n">delx</span><span class="p">,</span> <span class="s2">&quot;I&#39;m the &#39;x&#39; property.&quot;</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:69e11c8d4e20f980:b8 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b9 -->
+
 <p>如果 c 是 C 的实例化, c.x 将触发 getter, c.x = value 将触发 setter, del c.x 触发 deleter。</p>
+<!-- blog-edit-end:69e11c8d4e20f980:b9 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b10 -->
+
 <p>如果给定 doc 参数，其将成为这个属性值的 docstring，否则 property 函数就会复制 fget 函数的 docstring（如果有的话）。</p>
+<!-- blog-edit-end:69e11c8d4e20f980:b10 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b11 -->
+
 <p>将 property 函数用作装饰器可以很方便的创建只读属性：</p>
+<!-- blog-edit-end:69e11c8d4e20f980:b11 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b12 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Parrot</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_voltage</span> <span class="o">=</span> <span class="mi">100000</span>
@@ -683,8 +729,20 @@
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the current voltage.&quot;&quot;&quot;</span>
 </span><span id="__span-2-8"><span class="linenos" data-linenos="8 "></span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_voltage</span>
 </span></code></pre></div>
+<!-- blog-edit-end:69e11c8d4e20f980:b12 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b13 -->
+
 <p>上面的代码将 voltage() 方法转化成同名只读属性的 getter 方法。</p>
+<!-- blog-edit-end:69e11c8d4e20f980:b13 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b14 -->
+
 <p>property 的 getter,setter 和 deleter 方法同样可以用作装饰器：</p>
+<!-- blog-edit-end:69e11c8d4e20f980:b14 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">C</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="kc">None</span>
@@ -702,7 +760,14 @@
 </span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span>        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x</span>
 </span></code></pre></div>
+<!-- blog-edit-end:69e11c8d4e20f980:b15 -->
+
+<!-- blog-edit-start:69e11c8d4e20f980:b16 -->
+
 <p>这个代码和第一个例子完全相同，但要注意这些额外函数的名字和 property 下的一样，例如这里的 x。</p>
+<!-- blog-edit-end:69e11c8d4e20f980:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\property.md" data-text-edit-revision="e05dc30c7a920804a41c95ebd22368079705927264bfca522bd5eab99b942b29" data-text-edit-marker="69e11c8d4e20f980" data-text-edit-schema="1"></div>
 
 
 
@@ -934,8 +999,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

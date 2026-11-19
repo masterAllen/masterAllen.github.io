@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -745,13 +745,33 @@
   
 
 
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b0 -->
+
 <h1 id="pwnabletw-orw">Pwnable.tw orw</h1>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b9b87b4b2822d26114dfe9bb7f7b960e1759f6f04e025634907daa6cfffbfd64" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C02_orw%5Corw.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C02_orw" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\02_orw\orw.md">复制路径</span></div>
 
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b1 -->
+
 <h2 id="_1">需要掌握的知识点</h2>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b1 -->
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b2 -->
+
 <p>无</p>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b2 -->
+
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b3 -->
+
 <h2 id="_2">代码分析</h2>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b3 -->
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b4 -->
+
 <h3 id="main">main 方法</h3>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b4 -->
+
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">int</span><span class="w"> </span><span class="kr">__cdecl</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">envp</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">orw_seccomp</span><span class="p">();</span>
@@ -761,14 +781,46 @@
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b5 -->
+
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b6 -->
+
 <p>很简单，似乎就是输入一段数据，然后将这段数据当做代码来执行</p>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b6 -->
+
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b7 -->
+
 <h2 id="_3">漏洞分析</h2>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b7 -->
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b8 -->
+
 <h3 id="stage-1">Stage 1</h3>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b8 -->
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b9 -->
+
 <p>分析代码，很简单哇。这连什么溢出都不需要了，直接在Read()函数调用时写下Shellcode就行。结果，哎..不行。</p>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b9 -->
+
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b10 -->
+
 <p>原来是在orw_seccomp()方法中调用了prctl()，这个函数对Execv()函数进行了屏蔽。</p>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b10 -->
+
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b11 -->
+
 <h3 id="stage-2">Stage 2</h3>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b11 -->
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b12 -->
+
 <p>既然Execv()不可以，那就另辟蹊径，这里直接就说了把，就是利用open, read函数进行读取flag 文件，write函数写到标准输出就行。</p>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b12 -->
+
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b13 -->
+
 <h2 id="_4">总结</h2>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b13 -->
+<!-- blog-edit-start:e7d41ef4cbb3ca53:b14 -->
+
 <ul>
 <li>
 <p>经验</p>
@@ -783,6 +835,9 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:e7d41ef4cbb3ca53:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\02_orw\orw.md" data-text-edit-revision="b9b87b4b2822d26114dfe9bb7f7b960e1759f6f04e025634907daa6cfffbfd64" data-text-edit-marker="e7d41ef4cbb3ca53" data-text-edit-schema="1"></div>
 
 
 
@@ -1014,8 +1069,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

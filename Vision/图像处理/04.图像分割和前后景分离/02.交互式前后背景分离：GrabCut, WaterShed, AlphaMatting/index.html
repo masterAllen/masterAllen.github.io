@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,26 +655,79 @@
   
 
 
+<!-- blog-edit-start:54e95088952b173a:b0 -->
+
 <h1 id="grabcut-watershed-alphamatting">交互式前后背景分离：GrabCut, WaterShed, AlphaMatting</h1>
+<!-- blog-edit-end:54e95088952b173a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="336017ff291741ee8acd6bd16c1fa2c23755a6bfa9d2a800b20fc742c8ec8e6e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB%5C02.%E4%BA%A4%E4%BA%92%E5%BC%8F%E5%89%8D%E5%90%8E%E8%83%8C%E6%99%AF%E5%88%86%E7%A6%BB%EF%BC%9AGrabCut%2C+WaterShed%2C+AlphaMatting.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C04.%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E5%92%8C%E5%89%8D%E5%90%8E%E6%99%AF%E5%88%86%E7%A6%BB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\02.交互式前后背景分离：GrabCut, WaterShed, AlphaMatting.md">复制路径</span></div>
+
+<!-- blog-edit-start:54e95088952b173a:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.1.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/4.1.md</a></p>
 </blockquote>
+<!-- blog-edit-end:54e95088952b173a:b1 -->
+
+<!-- blog-edit-start:54e95088952b173a:b2 -->
+
 <p>无脑调包完事。</p>
+<!-- blog-edit-end:54e95088952b173a:b2 -->
+
+<!-- blog-edit-start:54e95088952b173a:b3 -->
+
 <h3 id="grabcut">GrabCut</h3>
+<!-- blog-edit-end:54e95088952b173a:b3 -->
+
+<!-- blog-edit-start:54e95088952b173a:b4 -->
+
 <p>这是一个交互式方法。需要输入一个 mask，里面的值代表你认为的前景和背景的点，算法会根据这个 mask 进行处理。不满意则继续在 mask 上面加点，进行运行算法，直到算法输出的结果满意为止（有点像画图里面的油漆桶）。这个 mask 可以是空的（全0全1），算法会自动判别认为的背景和前景。</p>
+<!-- blog-edit-end:54e95088952b173a:b4 -->
+
+<!-- blog-edit-start:54e95088952b173a:b5 -->
+
 <p>关于原理的介绍，有一篇<a href="https://blog.csdn.net/zouxy09/article/details/8534954">文章</a>写的很好，可惜是CSDN... 这个函数推荐是跑一下，比看文章好多了，跑完就明白怎么用了，<a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/image_segemnt.ipynb">链接</a>。</p>
+<!-- blog-edit-end:54e95088952b173a:b5 -->
+
+<!-- blog-edit-start:54e95088952b173a:b6 -->
+
 <h3 id="watershed">WaterShed</h3>
+<!-- blog-edit-end:54e95088952b173a:b6 -->
+
+<!-- blog-edit-start:54e95088952b173a:b7 -->
+
 <p>原理就可以等价于 BFS，初始有几个点，然后开始做 BFS。函数需要先对第二个参数 markers 进行处理，需要有一些起始点。<a href="https://docs.opencv.org/4.x/d3/db4/tutorial_py_watershed.html">官方教程</a>的文章非常好，讲了一个如何用 watershed 来提取碰在一起的硬币边界。在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/image_segemnt.ipynb">image_segement.ipynb</a> 中也有那个例子的代码。非常好的例子，算是形态学、watershed、findcontours 结合起来的综合方法。</p>
+<!-- blog-edit-end:54e95088952b173a:b7 -->
+
+<!-- blog-edit-start:54e95088952b173a:b8 -->
+
 <h3 id="alphamatting">AlphaMatting</h3>
+<!-- blog-edit-end:54e95088952b173a:b8 -->
+
+<!-- blog-edit-start:54e95088952b173a:b9 -->
+
 <p>一样的，调包就可以。具体原理在这个<a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Aksoy_Designing_Effective_Inter-Pixel_CVPR_2017_paper.pdf">链接</a>，以后再看再写。貌似原理是认为图片是前景和背景的加权和，目标是前景和背景过渡部分的两个占比合理一些，即最小化一个设计的值。</p>
+<!-- blog-edit-end:54e95088952b173a:b9 -->
+
+<!-- blog-edit-start:54e95088952b173a:b10 -->
+
 <p>这个需要自己编译 opencv + contrib 才可以用，也是传入一个 mask 灰度图，同样里面含义表示前景、背景、不确定的部分。</p>
+<!-- blog-edit-end:54e95088952b173a:b10 -->
+
+<!-- blog-edit-start:54e95088952b173a:b11 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./image/alpha_matting_src.jpg&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;./image/alpha_matting_trimap.png&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">alphamat</span><span class="o">.</span><span class="n">infoFlow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:54e95088952b173a:b11 -->
+
+<!-- blog-edit-start:54e95088952b173a:b12 -->
+
 <p><img alt="1723452398287" src="../../../../asset/image/03c2e9183753c77a2a6f781b6373d85e/1723452398287.png" /></p>
+<!-- blog-edit-end:54e95088952b173a:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\04.图像分割和前后景分离\02.交互式前后背景分离：GrabCut, WaterShed, AlphaMatting.md" data-text-edit-revision="336017ff291741ee8acd6bd16c1fa2c23755a6bfa9d2a800b20fc742c8ec8e6e" data-text-edit-marker="54e95088952b173a" data-text-edit-schema="1"></div>
 
 
 
@@ -906,8 +959,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

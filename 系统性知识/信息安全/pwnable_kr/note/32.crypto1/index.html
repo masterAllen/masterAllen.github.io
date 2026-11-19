@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -671,21 +671,59 @@
   
 
 
+<!-- blog-edit-start:133f935336d967ed:b0 -->
+
 <h1 id="pwnablekr-crypto1">Pwnable.kr crypto1</h1>
+<!-- blog-edit-end:133f935336d967ed:b0 -->
+
 <div class="file-actions" data-image-edit-revision="133f935336d967ed292b7281bbb6b9da9d89e11469127392871d2850c3724b2c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C32.crypto1.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\32.crypto1.md">复制路径</span></div>
 
+<!-- blog-edit-start:133f935336d967ed:b1 -->
+
 <h2 id="_1">源代码</h2>
+<!-- blog-edit-end:133f935336d967ed:b1 -->
+<!-- blog-edit-start:133f935336d967ed:b2 -->
+
 <p>源代码不写了。流程就是客户端用户首先输入 <code>id</code> 和 <code>password</code> ，而且客户端存有一个我们不可见的 <code>cookie</code> ，客户端会以 <code>id-password-cookie</code> 这样方式将三者组合起来，进行 AES 加密。然后服务端解密，得到 <code>id</code> 和 <code>password</code> 和 <code>cookie</code> ，最后判断 <code>id==admin</code> 以及 <code>password==id+cookie</code> ，成功就会通过。</p>
+<!-- blog-edit-end:133f935336d967ed:b2 -->
+
+<!-- blog-edit-start:133f935336d967ed:b3 -->
+
 <h2 id="_2">流程分析</h2>
+<!-- blog-edit-end:133f935336d967ed:b3 -->
+<!-- blog-edit-start:133f935336d967ed:b4 -->
+
 <p>首先分析加密算法是否有问题，没有问题，使用了官方包。我们必须要知道 <code>cookie</code> 是多少，才能通过检测，但我们没有漏洞点找到 <code>cookie</code> 的值。然而很遗憾，程序的多次一举让它有了漏洞。多此一举在于它把 <code>id-password-cookie</code> 这种方式进行组合。</p>
+<!-- blog-edit-end:133f935336d967ed:b4 -->
+
+<!-- blog-edit-start:133f935336d967ed:b5 -->
+
 <p>首先两个前提要知道：第一， AES 加密是通过 16 字节一段一段进行加密。第二，加密内容我们是可以知道的。这是肯定的，要是连加密内容都不能截获(本题是直接打印告诉我们了)，那还谈什么破解啊。</p>
+<!-- blog-edit-end:133f935336d967ed:b5 -->
+
+<!-- blog-edit-start:133f935336d967ed:b6 -->
+
 <p>想象一下，我们首先输入 <code>id='-'*13</code> 以及 <code>pwd=NULL</code> ，那么 AES 会先加密 <code>'-'*15 + cookie[0]</code> 这一段，我们获取加密的内容。</p>
+<!-- blog-edit-end:133f935336d967ed:b6 -->
+
+<!-- blog-edit-start:133f935336d967ed:b7 -->
+
 <p>下面进行爆破，现在输入 <code>id='-'*15 + obj</code> ，其中 <code>obj</code> 就是我们爆破的字符，此时 AES 会加密 <code>'-'*15 + obj</code> 这一段，我们也可以获取这一段加密后的内容。然后两个比较即可，如果不一样，那就换字符，如果一样，那么 <code>cookie[0]</code> 就是当前这个字符了，其余字符同理。</p>
+<!-- blog-edit-end:133f935336d967ed:b7 -->
+
+<!-- blog-edit-start:133f935336d967ed:b8 -->
+
 <h2 id="_3">总结知识</h2>
+<!-- blog-edit-end:133f935336d967ed:b8 -->
+<!-- blog-edit-start:133f935336d967ed:b9 -->
+
 <ul>
 <li>就是按照字符爆破的思想，BROP 中对 Canary 也是进行这样的操作，可以去看一看</li>
 <li>一篇讲 AES 加密的文章，写的很好：<a href="https://github.com/matt-wu/AES/blob/master/README.md">https://github.com/matt-wu/AES/blob/master/README.md</a></li>
 </ul>
+<!-- blog-edit-end:133f935336d967ed:b9 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\32.crypto1.md" data-text-edit-revision="133f935336d967ed292b7281bbb6b9da9d89e11469127392871d2850c3724b2c" data-text-edit-marker="133f935336d967ed" data-text-edit-schema="1"></div>
 
 
 
@@ -917,8 +955,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

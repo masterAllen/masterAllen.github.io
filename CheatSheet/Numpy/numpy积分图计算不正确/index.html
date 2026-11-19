@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,11 +581,25 @@
   
 
 
+<!-- blog-edit-start:3ee89ca0fd70b57b:b0 -->
+
 <h1 id="numpy">numpy 积分图不正确</h1>
+<!-- blog-edit-end:3ee89ca0fd70b57b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="59d1769f5f368662570cd8a773617956b2e8828656c84393779b8ecc95c19173" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNumpy%5Cnumpy%E7%A7%AF%E5%88%86%E5%9B%BE%E8%AE%A1%E7%AE%97%E4%B8%8D%E6%AD%A3%E7%A1%AE.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CNumpy" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\Numpy\numpy积分图计算不正确.md">复制路径</span></div>
 
+<!-- blog-edit-start:3ee89ca0fd70b57b:b1 -->
+
 <p>我服了，搞了一个多小时，最后发现是<strong>精度问题</strong>。我还在那一直拷问 AI，AI 也搞半天 Debug，最后我拿暴力遍历和积分图对比，才发现是精度问题...</p>
+<!-- blog-edit-end:3ee89ca0fd70b57b:b1 -->
+
+<!-- blog-edit-start:3ee89ca0fd70b57b:b2 -->
+
 <p>需要转为 <code>np.longdouble</code> 才可以，最好和我上面一样，拿一个暴力求出的结果进行对比。</p>
+<!-- blog-edit-end:3ee89ca0fd70b57b:b2 -->
+
+<!-- blog-edit-start:3ee89ca0fd70b57b:b3 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 用 OpenCV 算一个</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">blur</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="p">(</span><span class="n">win_w</span><span class="p">,</span> <span class="n">win_h</span><span class="p">))</span>
@@ -611,6 +625,9 @@
 </span><span id="__span-0-23"><span class="linenos" data-linenos="23 "></span><span class="n">delta</span> <span class="o">=</span> <span class="n">out</span> <span class="o">-</span> <span class="n">out2</span>
 </span><span id="__span-0-24"><span class="linenos" data-linenos="24 "></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">delta</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">]))</span>
 </span></code></pre></div>
+<!-- blog-edit-end:3ee89ca0fd70b57b:b3 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\Numpy\numpy积分图计算不正确.md" data-text-edit-revision="59d1769f5f368662570cd8a773617956b2e8828656c84393779b8ecc95c19173" data-text-edit-marker="3ee89ca0fd70b57b" data-text-edit-schema="1"></div>
 
 
 
@@ -842,8 +859,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

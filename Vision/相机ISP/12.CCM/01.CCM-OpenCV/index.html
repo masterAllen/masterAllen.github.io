@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -677,18 +677,52 @@
   
 
 
+<!-- blog-edit-start:93fc0512f5c76834:b0 -->
+
 <h1 id="opencv-ccm">OpenCV 中使用 CCM</h1>
+<!-- blog-edit-end:93fc0512f5c76834:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8b87865ec944c23a1c4cb55885f32f44f5b3ae506e943553849ba7cc5488fc35" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C12.CCM%5C01.CCM-OpenCV.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C12.CCM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\12.CCM\01.CCM-OpenCV.md">复制路径</span></div>
+
+<!-- blog-edit-start:93fc0512f5c76834:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.3.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/7.3.md</a></p>
 </blockquote>
+<!-- blog-edit-end:93fc0512f5c76834:b1 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b2 -->
+
 <p>先只简单写一下 CCM 概念：CCM 是从相机 Raw 图到最终出图的一个流程，本质上就是对各个像素的 RGB 做一个矩阵变换。因为 CCM 前的各个像素是属于相机线性颜色空间，要转为如 sRGB 这种颜色空间，需要做一些变换。让其尽可能的解决目标颜色空间，如尽可能让拍色卡拍出的红色、绿色接近目标颜色空间规定的色卡红色、绿色。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b2 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b3 -->
+
 <p>在 OpenCV 中，mcc 和 ccm 这两个模块负责这个功能，而且处理流程还是很线性的，非常易懂。<strong>非常推荐直接看我当时做的实验代码 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_ccm.ipynb">test_ccm.ipynb</a></strong>：</p>
+<!-- blog-edit-end:93fc0512f5c76834:b3 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b4 -->
+
 <h3 id="1">1. 检测图片中的色卡</h3>
+<!-- blog-edit-end:93fc0512f5c76834:b4 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b5 -->
+
 <p>用 mcc.CCheckerDetector 类即可，创建一个对象后，对图片执行 <code>process</code>，然后使用 <code>getListColorChecker</code> 或 <code>getBestColorChecker</code> 就能返回结果，前者是返回一堆列表，后者是返回这个列表里面得分最高（即最可能的）条目。这个条目是 mcc.CChecker 类，后面会用到，现在就可以理解成一个卡片信息类。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b5 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b6 -->
+
 <p>值得一提的是，不仅仅支持常见 24 色卡，还支持检测 SG140 和 VINYL18 这两种色卡，在 <code>process</code> 传入对应选项即可。但为了方便讲述，后面统一就写处理 24 色卡时候的情况了。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b6 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b7 -->
+
 <p>执行上面操作后，得到了最可能的条目，即 mcc.CChecker 类的一个对象，假设叫做 <code>now_checker</code>。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b7 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b8 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">detector</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">mcc</span><span class="o">.</span><span class="n">CCheckerDetector</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="c1"># 也可以用神经网络模型来检测，检测的时候参数要设置为 useNet</span>
@@ -703,31 +737,91 @@
 </span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span>    <span class="c1"># checkers = detector.getListColorChecker()</span>
 </span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span>    <span class="n">now_checker</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">getBestColorChecker</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:93fc0512f5c76834:b8 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b9 -->
+
 <h3 id="2">2. 可选：画出色卡位置</h3>
+<!-- blog-edit-end:93fc0512f5c76834:b9 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b10 -->
+
 <p>可以使用 mcc.CCheckerDraw 来画出检测到的色卡， 也是创建一个对象（传入上面检测到的 <code>now_checker</code> 作为参数），然后调用 <code>draw</code> 画图即可（也要传入原始图片，这样才能在图片上画出色卡的框框来）。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b10 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b11 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># CCheckerDraw 画图，就这两个方法；create 这里的 color 和 thickness 都是默认值，不指定也可以</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="n">cdraw_src</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="n">cdraw</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">mcc</span><span class="o">.</span><span class="n">CCheckerDraw</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">now_checker</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">thickness</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="n">cdraw</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">cdraw_src</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:93fc0512f5c76834:b11 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b12 -->
+
 <h3 id="3">3. 查看检测出的色卡的一些信息</h3>
+<!-- blog-edit-end:93fc0512f5c76834:b12 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b13 -->
+
 <p>上面所提到，得到了 mcc.CChecker 类的一个对象，为了方便将其叫做 <code>now_checker</code>。此时就可以去 OpenCV <a href="https://docs.opencv.org/4.x/db/d3e/classcv_1_1mcc_1_1CChecker.html">文档</a>中查看这个类的各个方法了，全是 <code>get</code> 和 <code>set</code> 方法，本质上就是查看或者修改这张检测出的色卡的信息。基本没啥好说的，如 <code>getBox</code> 是返回四个点，即整张色卡的四角；<code>getColorCharts</code> 是返回 96 个点，即 24 色卡中各个色块的四角。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b13 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b14 -->
+
 <p>但是要重点强调 <code>getChartsRGB</code> 的结果，返回 <span class="arithmatex">\(72 \times 5\)</span> 的 ndarray：72 是 24 色卡中各自三个颜色，颜色顺序是 RGB；5 是分别表示 <code>p_size, average, stddev, max, min</code>，其中 <code>p_size</code> 是色卡大小（所以每个色卡 RGB 中第一个数都是一样的），其他四个好理解。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b14 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># getChartsRGB -&gt; (72, 5)；24*3，各自表示 p_size, average, stddev, max, min，这里就只拿 average 即可</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">src_rgb</span> <span class="o">=</span> <span class="n">now_checker</span><span class="o">.</span><span class="n">getChartsRGB</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:93fc0512f5c76834:b15 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b16 -->
+
 <h3 id="4-ccm">4. 准备好做 CCM 的一些参数</h3>
+<!-- blog-edit-end:93fc0512f5c76834:b16 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b17 -->
+
 <p>下面准备求矩阵了。ccm.ColorCorrectionModel 负责这个做 CCM 这个功能。创建对象的时候需要传入校正前 24 色卡的颜色信息，如前所述，<code>now_checker.getChartsRGB</code> 可得到色卡的各个颜色信息。返回是 <span class="arithmatex">\(72 \times 5\)</span> 的 ndarray，我们只要取 <code>average</code> 即可（五列中第二列），即各个色块的平均 RGB 值。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b17 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b18 -->
+
 <p><strong>但是注意，有三个要求：大小需要变为 (24, 1, 3)；范围需要变为 [0, 1]；排序需要是 RGB</strong>。所以需要多做一下处理！！</p>
+<!-- blog-edit-end:93fc0512f5c76834:b18 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b19 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 重要：CCM 模型需要传入当前拍摄色卡的颜色，要求是：(24,1,3)、[0,1]、RGB排列（已满足）</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="n">src_rgb</span> <span class="o">=</span> <span class="n">src_rgb</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">24</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">/</span> <span class="mi">255</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="n">ccm_model</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">ccm</span><span class="o">.</span><span class="n">ColorCorrectionModel</span><span class="p">(</span><span class="n">src_rgb</span><span class="p">,</span> <span class="n">constcolor</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">ccm</span><span class="o">.</span><span class="n">COLORCHECKER_MACBETH</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:93fc0512f5c76834:b19 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b20 -->
+
 <p>然后就可以设置一些参数了，具体查阅 <a href="https://docs.opencv.org/4.x/df/d38/classcv_1_1ccm_1_1ColorCorrectionModel.html#a10fdf1a39d938e2bf4fa9a7bdf21736c">OpenCV 文档</a>。强烈推荐用 Imatest 这个软件实现做一遍 CCM 流程，里面的一些参数设置都能和 OpenCV 对应上。</p>
+<!-- blog-edit-end:93fc0512f5c76834:b20 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b21 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 设置参数，有许多参数，这里就简单写一个意思意思（其实这个也不用写，默认就是 3x3）</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="n">ccm_model</span><span class="o">.</span><span class="n">setCCM_TYPE</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">ccm</span><span class="o">.</span><span class="n">CCM_3x3</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:93fc0512f5c76834:b21 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b22 -->
+
 <p>参数的话，随便写一点（这个还是需要对 CCM 有一点熟悉，所以这也是为什么我推荐用 Imatest 先去做几次 CCM）：</p>
+<!-- blog-edit-end:93fc0512f5c76834:b22 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b23 -->
+
 <ol>
 <li><code>setWeightList</code>: 不同色卡的权重</li>
 <li><code>setWeightCoeff</code>: 亮度 L* 的指数大小，默认是 0，相当于对权重影响都是 1，即不考虑亮度。</li>
@@ -750,8 +844,20 @@
 <blockquote>
 <p>PolyFit 的四种： COLORPOLYFIT  GRAYPOLYFIT COLORLOGPOLYFIT GRAYLOGPOLYFIT</p>
 </blockquote>
+<!-- blog-edit-end:93fc0512f5c76834:b23 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b24 -->
+
 <h3 id="5">5. 算出矩阵，校正图片</h3>
+<!-- blog-edit-end:93fc0512f5c76834:b24 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b25 -->
+
 <p>没啥说的，<code>run</code> 算矩阵，<code>getCCM</code> 得出矩阵，<code>infer</code> 校正图片。只不过 <code>infer</code> 校正图片是输入和输出都要是 0-1 和 RGB 排列，所以要多做一点处理罢了。直接看代码即可：</p>
+<!-- blog-edit-end:93fc0512f5c76834:b25 -->
+
+<!-- blog-edit-start:93fc0512f5c76834:b26 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">ccm_model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="n">ccm_matrix</span> <span class="o">=</span> <span class="n">ccm_model</span><span class="o">.</span><span class="n">getCCM</span><span class="p">()</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>
@@ -762,6 +868,9 @@
 </span><span id="__span-5-8"><span class="linenos" data-linenos="8 "></span><span class="n">out</span> <span class="o">=</span> <span class="n">ccm_model</span><span class="o">.</span><span class="n">infer</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>
 </span><span id="__span-5-9"><span class="linenos" data-linenos="9 "></span><span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span> <span class="p">(</span><span class="n">out</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2BGR</span> <span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:93fc0512f5c76834:b26 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\12.CCM\01.CCM-OpenCV.md" data-text-edit-revision="8b87865ec944c23a1c4cb55885f32f44f5b3ae506e943553849ba7cc5488fc35" data-text-edit-marker="93fc0512f5c76834" data-text-edit-schema="1"></div>
 
 
 
@@ -993,8 +1102,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

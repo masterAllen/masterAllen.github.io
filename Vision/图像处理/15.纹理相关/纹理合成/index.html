@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,39 +666,164 @@
   
 
 
+<!-- blog-edit-start:622625b03d2e6990:b0 -->
+
 <h1 id="_1">纹理合成学习记录</h1>
+<!-- blog-edit-end:622625b03d2e6990:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d8426f38beeebd2f9fa06ca21ffe6b4d649c1437609575f360494291966c8797" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C15.%E7%BA%B9%E7%90%86%E7%9B%B8%E5%85%B3%5C%E7%BA%B9%E7%90%86%E5%90%88%E6%88%90.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C15.%E7%BA%B9%E7%90%86%E7%9B%B8%E5%85%B3" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\15.纹理相关\纹理合成.md">复制路径</span></div>
 
+<!-- blog-edit-start:622625b03d2e6990:b1 -->
+
 <p>纹理合成，就是从一张纹理图去合成另一张大的纹理图。参考了 Wang Hawk 的知乎笔记，学些了几个纹理合成的代码，特此简单记录一下，主要是记录当时遇到的问题，主体还是看 Wang Hawk 的文章最好。</p>
+<!-- blog-edit-end:622625b03d2e6990:b1 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b2 -->
+
 <h2 id="_2">通过缝隙拼接合成</h2>
+<!-- blog-edit-end:622625b03d2e6990:b2 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b3 -->
+
 <p>Wang Hawk 的知乎笔记：<a href="https://zhuanlan.zhihu.com/p/62245480">https://zhuanlan.zhihu.com/p/62245480</a></p>
+<!-- blog-edit-end:622625b03d2e6990:b3 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b4 -->
+
 <p>原理下面的图很好表示了，每次都把原始纹理图放到当前的生成纹理图上，二者要有叠加部分，然后叠加部分进行切割，使其比较完美。</p>
+<!-- blog-edit-end:622625b03d2e6990:b4 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b5 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250104143914.jpg" /></p>
+<!-- blog-edit-end:622625b03d2e6990:b5 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b6 -->
+
 <p>我这里只是笼统介绍，具体还是看上面链接。关键点是图割那里，当时看了半天，后来发现看下面这个图就很好理解。相当于转成了图算法问题，最终转成最大流问题，至于为什么会转成这样以及最大流如何求解，不用管。</p>
+<!-- blog-edit-end:622625b03d2e6990:b6 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b7 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250104144256.jpg" /></p>
+<!-- blog-edit-end:622625b03d2e6990:b7 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b8 -->
+
 <h2 id="_3">基于金字塔</h2>
+<!-- blog-edit-end:622625b03d2e6990:b8 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b9 -->
+
 <p>Wang Hawk 的知乎笔记：<a href="https://zhuanlan.zhihu.com/p/67776577">https://zhuanlan.zhihu.com/p/67776577</a></p>
+<!-- blog-edit-end:622625b03d2e6990:b9 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b10 -->
+
 <p>这个没什么说的，我当时看笔记很快就看完了，很好懂。一开始有一个噪声图，然后噪声图和原始纹理图都用金字塔分层，每一层中都进行噪声图和原始纹理图的直方图匹配，最后合成就行。然后里面涉及到 Steerable Pyramid，也不用细究，知道它每一层是啥玩意就行。</p>
+<!-- blog-edit-end:622625b03d2e6990:b10 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b11 -->
+
 <p>这里我也复现了代码，在 code 目录里面。</p>
+<!-- blog-edit-end:622625b03d2e6990:b11 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b12 -->
+
 <h2 id="_4">非参数方法（基于空间相似块）</h2>
+<!-- blog-edit-end:622625b03d2e6990:b12 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b13 -->
+
 <p>Wang Hawk 的知乎笔记：<a href="https://zhuanlan.zhihu.com/p/68430344">https://zhuanlan.zhihu.com/p/68430344</a></p>
+<!-- blog-edit-end:622625b03d2e6990:b13 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b14 -->
+
 <p>这个方法我看了半天。其实真的很简单，不用管笔记里面什么香农信息论之类的话，就看下面的图就行：</p>
+<!-- blog-edit-end:622625b03d2e6990:b14 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b15 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250104145237.jpg" /></p>
+<!-- blog-edit-end:622625b03d2e6990:b15 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b16 -->
+
 <p>首先要知道方法是从一个小图逐渐变成大图，而且是从中间向四周扩散，如下图所示：</p>
+<!-- blog-edit-end:622625b03d2e6990:b16 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b17 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250104145501.gif" /></p>
+<!-- blog-edit-end:622625b03d2e6990:b17 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b18 -->
+
 <p>因此，每次补充一个未知像素，直到补充完毕。而他的方法就是和 NLM 去噪、模板匹配、图像填充的方法类似的，就是以当前像素为中心，取一个 patch，然后和周围像素的 patch 进行相似度计算，找出合适的 patch。</p>
+<!-- blog-edit-end:622625b03d2e6990:b18 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b19 -->
+
 <p>唯一不同的是，他这里的 patch 存在一些未知像素（比如补充上方行的时候，patch 上方一半都是未知的），因此要把未知像素对应位置的权重都设成 0 即可。</p>
+<!-- blog-edit-end:622625b03d2e6990:b19 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b20 -->
+
 <p>这里我也复现了代码，在 code 目录里面，速度很慢，这方法就是这样。</p>
+<!-- blog-edit-end:622625b03d2e6990:b20 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b21 -->
+
 <h2 id="_5">基于图像缝合</h2>
+<!-- blog-edit-end:622625b03d2e6990:b21 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b22 -->
+
 <p>Wang Hawk 的知乎笔记：<a href="https://zhuanlan.zhihu.com/p/71935649">https://zhuanlan.zhihu.com/p/71935649</a></p>
+<!-- blog-edit-end:622625b03d2e6990:b22 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b23 -->
+
 <p>其实和第一个方法有点像，具体原理就是如下图所示，每次挑一个块，然后和当前生成的图放起来，要有叠加部分，然后叠加部分算出一个划分的缝隙，缝隙左边是图 A，右边则用图 B。</p>
+<!-- blog-edit-end:622625b03d2e6990:b23 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b24 -->
+
 <p>这里缝隙不是用图割，而是用动态规划来做，其实就是这个公式：<span class="arithmatex">\(E(i,j) = e(i,j) + min(E(i-1,j-1),E(i-1,j),E(i-1,j+1))\)</span>，其中 <span class="arithmatex">\(e(i,j)\)</span> 是误差平方，这个公式关键点就是当前行的点确定之后，下一行的点一定只有三种可能，否则线就断掉了。</p>
+<!-- blog-edit-end:622625b03d2e6990:b24 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b25 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250104150307.jpg" /></p>
+<!-- blog-edit-end:622625b03d2e6990:b25 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b26 -->
+
 <p>其实这个方法还是有缺陷的，只找了这条缝那也不行，举个极端情况，重叠部分中两个块基本上完全不一样的，但只有正中间的线完全一样，那拼接出来效果其实还是很差很差（即右半部分和左半部分还是很突兀）。</p>
+<!-- blog-edit-end:622625b03d2e6990:b26 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b27 -->
+
 <p>这也是我当时学习看笔记的时候一直感到疑惑的点，后来去看原始论文发现也确实真的就按这条缝来进行划分的。不过后来继续看笔记明白了，为了避免上面那种极端情况，每次寻找新的块的时候，会计算重叠部分的误差，要保证误差小于某个阈值。</p>
+<!-- blog-edit-end:622625b03d2e6990:b27 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b28 -->
+
 <p>笔记后面讲了一下纹理转移，这个也可以看看，当时看笔记感觉也很顺利。其实唯一区别就是每次找一个新的 patch 的时候，会计算和原图对应位置的误差，保证在某个阈值内。</p>
+<!-- blog-edit-end:622625b03d2e6990:b28 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b29 -->
+
 <p><img alt="" src="../../../../asset/image/c9f8317c3b28f56859b70c4bc291c827/20250104152701.gif" /></p>
+<!-- blog-edit-end:622625b03d2e6990:b29 -->
+
+<!-- blog-edit-start:622625b03d2e6990:b30 -->
+
 <p>由于没想深究，这个代码没有复现，可以参考 Wang Hawk 的笔记，最后面他提供了他复现的代码。</p>
+<!-- blog-edit-end:622625b03d2e6990:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\15.纹理相关\纹理合成.md" data-text-edit-revision="d8426f38beeebd2f9fa06ca21ffe6b4d649c1437609575f360494291966c8797" data-text-edit-marker="622625b03d2e6990" data-text-edit-schema="1"></div>
 
 
 
@@ -930,8 +1055,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

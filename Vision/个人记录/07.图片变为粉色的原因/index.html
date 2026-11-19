@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -648,63 +648,185 @@
   
 
 
+<!-- blog-edit-start:5a326af2a0e9b2b4:b0 -->
+
 <h1 id="_1">图像变为粉色的原因</h1>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b0 -->
+
 <div class="file-actions" data-image-edit-revision="089ba06d2f4d589208b2f4c3f5628f72416a2a281a644136434db87a2c61f350" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95%5C07.%E5%9B%BE%E7%89%87%E5%8F%98%E4%B8%BA%E7%B2%89%E8%89%B2%E7%9A%84%E5%8E%9F%E5%9B%A0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E4%B8%AA%E4%BA%BA%E8%AE%B0%E5%BD%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\个人记录\07.图片变为粉色的原因.md">复制路径</span></div>
 
+<!-- blog-edit-start:5a326af2a0e9b2b4:b1 -->
+
 <p><strong>原因：做了 PRNU 和 白平衡，如果拍摄过曝物体会导致图像变为粉色。</strong></p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b1 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b2 -->
+
 <p>推导如下，首先有以下前提知识：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b2 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b3 -->
+
 <ol>
 <li>像素的感光程度是不一样，而且基本是区域聚集的，常见的是中间感光高，两边感光低。</li>
 <li>虽然不同区域感光程度不一样，但不同区域之间的绿红、绿蓝之比是差不多的，即感光低的区域红色值低，但是绿色值也会低。</li>
 <li>做 PRNU 的时候，红绿蓝是各自做的，也就是所有红色像素的均值去除以各个红色像素，得到红色各个像素的系数</li>
 </ol>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b3 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b4 -->
+
 <h2 id="_2">举例规定</h2>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b4 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b5 -->
+
 <p>文章后面会举出一些例子，下面说明一下：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b5 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b6 -->
+
 <ol>
 <li>假设是 12-bit 的相机，即最大是 4095</li>
 <li>白平衡就用最简单的白平衡，即绿色全体均值去除以红色和蓝色全体均值，得到比值即可</li>
 </ol>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b6 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b7 -->
+
 <h2 id="_3">正常情况的流程</h2>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b7 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b8 -->
+
 <p>假设某个白色物体，在一个 RGGB Bayer 小区域内，正常曝光时得到：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b8 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b9 -->
+
 <div class="arithmatex">\[
 R=1000,\quad G=2000,\quad B=1000
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b9 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b10 -->
+
 <p>假设这个区域是感光度低的区域，他们的 PRNU 系数如下，因为是这几个像素是小区域内，就简单用一样的数字举例：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b10 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b11 -->
+
 <div class="arithmatex">\[
 K_R=0.9,\quad K_G=0.9,\quad K_B=0.9
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b11 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b12 -->
+
 <p>PRNU 后：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b12 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b13 -->
+
 <div class="arithmatex">\[
 R'=900,\quad G'=1800,\quad B'=900
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b13 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b14 -->
+
 <p>白平衡的系数：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b14 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b15 -->
+
 <div class="arithmatex">\[
 W_R=2,\quad W_G=1,\quad W_B=2
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b15 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b16 -->
+
 <p>白平衡后：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b16 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b17 -->
+
 <div class="arithmatex">\[
 R_o=1800,\quad G_o=1800,\quad B_o=1800
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b17 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b18 -->
+
 <p>非常完美。</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b18 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b19 -->
+
 <h2 id="_4">过曝以后</h2>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b19 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b20 -->
+
 <p>假设现在曝光增加到原来的 2.5 倍。理论 RAW 应该是：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b20 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b21 -->
+
 <div class="arithmatex">\[
 R=2500,\quad G=5000,\quad B=2500
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b21 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b22 -->
+
 <p>由于最大是 12-bit，<strong>所以绿色通道过曝了</strong>，因此实际值为：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b22 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b23 -->
+
 <div class="arithmatex">\[
 R=2500,\quad G=4095,\quad B=2500
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b23 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b24 -->
+
 <p>进行 PRNU，上文得到的系数是 0.9，各自相乘得到：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b24 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b25 -->
+
 <div class="arithmatex">\[
 R'=2250,\quad G'=3685.5,\quad B'=2250
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b25 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b26 -->
+
 <p>再白平衡，各自相乘系数（红蓝为 2，绿色不变）得到：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b26 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b27 -->
+
 <div class="arithmatex">\[
 R_o=4500,\quad G_o=3685.5,\quad B_o=4500
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b27 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b28 -->
+
 <p>这就是粉红色了，粉红色是 <code>R=B&gt;&gt;G</code>，即此时过曝区域呈现粉红色状态。</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b28 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b29 -->
+
 <p>上面的例子是为了阐述普遍性，为了说明只要绿色（接近）过曝就会有问题。其实即使完全过曝，即红蓝也过曝，也会粉红色：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b29 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b30 -->
+
 <div class="arithmatex">\[
 \begin{align*}
 R_o &amp;= 4095\times0.9\times2 = 7371 \rightarrow 4095 \\
@@ -712,16 +834,35 @@ G_o &amp;= 4095\times0.9\times1 = 3685.5 \rightarrow 3685.5 \\
 B_o &amp;= 4095\times0.9\times2 = 7371 \rightarrow 4095
 \end{align*}
 \]</div>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b30 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b31 -->
+
 <blockquote>
 <p>只要白平衡系数乘以 PRNU 系数大于 1，就会出现问题，而这个条件很容易满足。</p>
 </blockquote>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b31 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b32 -->
+
 <h2 id="_5">原因分析</h2>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b32 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b33 -->
+
 <p>从上面的分析看出，只要绿色（接近）过曝就会有问题的。出现粉红色基本是这个原因，但有些没有经验的客户被告知并自己排查后，仍然认为没有过曝，其实有以下原因：</p>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b33 -->
+
+<!-- blog-edit-start:5a326af2a0e9b2b4:b34 -->
+
 <ol>
 <li>只关注了感光度低的区域，忽视了感光度高的像素。低区域未过曝，但是高区域已经过曝了。</li>
 <li>没有特别关注绿色通道。此时客户会关闭矫正检查出图情况，但这个时候以为，此时出图是比较偏绿的。而且红蓝是偏弱的，所以整体上的亮度观感会偏低。这个时候需要实际看一下像素输出，而不是简单凭着感觉。</li>
 <li>接近过曝也会有这样的问题，从上面分析可以看出，只要做完白平衡后，红蓝饱和那么就会有这样的问题，尽量让绿色通道最大值小于 80% 保险一点。</li>
 </ol>
+<!-- blog-edit-end:5a326af2a0e9b2b4:b34 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\个人记录\07.图片变为粉色的原因.md" data-text-edit-revision="089ba06d2f4d589208b2f4c3f5628f72416a2a281a644136434db87a2c61f350" data-text-edit-marker="5a326af2a0e9b2b4" data-text-edit-schema="1"></div>
 
 
 
@@ -953,8 +1094,6 @@ B_o &amp;= 4095\times0.9\times2 = 7371 \rightarrow 4095
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -667,10 +667,20 @@
   
 
 
+<!-- blog-edit-start:61d4aaca9dc10a93:b0 -->
+
 <h1 id="fastbin_reverse_into_tcache">fastbin_reverse_into_tcache</h1>
+<!-- blog-edit-end:61d4aaca9dc10a93:b0 -->
+
 <div class="file-actions" data-image-edit-revision="24dc72fb410020d08ca8f75564d3544eb6fdaaf7817b603a38efec2dee898d9f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C02.fast%5C03.fastbin_reverse_into_tcache.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C02.fast" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\02.fast\03.fastbin_reverse_into_tcache.md">复制路径</span></div>
 
+<!-- blog-edit-start:61d4aaca9dc10a93:b1 -->
+
 <p>建议直接看 <a href="../../01.tcache/04.tcache_stashing_unlink/">tcache_stashing_unlink 记录文章</a>，建议从头看到尾，不要贪图块。尤其是最后面的引申，把这两个攻击完全串起来了。</p>
+<!-- blog-edit-end:61d4aaca9dc10a93:b1 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b2 -->
+
 <p>这里还是简单稍微介绍一下：</p>
 <ol>
 <li>申请 N 块内存，释放七次，塞满 tcahe；然后释放七次，全都放进了 fastbin</li>
@@ -683,10 +693,30 @@
 <p>要求：可以复写某个 freed chunk 的 fd 内容<br />
 效果：任意地址块控制</p>
 </blockquote>
+<!-- blog-edit-end:61d4aaca9dc10a93:b2 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b3 -->
+
 <p>而且因为这样思考和延申，我还发现了 how2heap 中 <code>fastbin_reverse_into_tcahe.c</code> 的错误，之前这个文件的注释认为第 1 步中不一定要释放七次块到 fastbin 中，但其实是必须的。</p>
+<!-- blog-edit-end:61d4aaca9dc10a93:b3 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b4 -->
+
 <p>当时的提交 Issue（英文）：<a href="https://github.com/shellphish/how2heap/issues/222">https://github.com/shellphish/how2heap/issues/222</a></p>
+<!-- blog-edit-end:61d4aaca9dc10a93:b4 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b5 -->
+
 <h2 id="issue">当时 Issue 的本地草稿</h2>
+<!-- blog-edit-end:61d4aaca9dc10a93:b5 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b6 -->
+
 <p>在 <code>fastbin_reverse_into_tcahe</code> 中，注释宣称如果目标控制地址的内容为 0，那么可以指释放一个 fastbin：</p>
+<!-- blog-edit-end:61d4aaca9dc10a93:b6 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b7 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="w">    </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">victim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptrs</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The next pointer that we free is the chunk that we&#39;re going to corrupt: %p</span><span class="se">\n</span><span class="s">&quot;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">           </span><span class="s">&quot;It doesn&#39;t matter if we corrupt it now or later. Because the tcache is</span><span class="se">\n</span><span class="s">&quot;</span>
@@ -705,11 +735,31 @@
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="c1">// 如果按照注释，我们只释放一个</span>
 </span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">ptrs</span><span class="p">[</span><span class="mi">8</span><span class="p">]);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:61d4aaca9dc10a93:b7 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b8 -->
+
 <p>此时堆空间为：</p>
+<!-- blog-edit-end:61d4aaca9dc10a93:b8 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b9 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>[fastbin] -&gt; victim -&gt; target_addr(it&#39;s fd is zero)
 </span></code></pre></div>
+<!-- blog-edit-end:61d4aaca9dc10a93:b9 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b10 -->
+
 <p>注释这样写应该是认为 <code>fd</code> 为 0，此时 stash 会终止。</p>
+<!-- blog-edit-end:61d4aaca9dc10a93:b10 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b11 -->
+
 <p>但由于 safe-linking，把 target_addr 放入到 tcache 时，会解析 target_addr→next 为一个非法地址 <code>REVEAL_PTR(0)</code>，而不是 0，因此会检测失败：</p>
+<!-- blog-edit-end:61d4aaca9dc10a93:b11 -->
+
+<!-- blog-edit-start:61d4aaca9dc10a93:b12 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/* While we&#39;re here, if we see other chunks of the same size, stash them in the tcache.  */</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">size_t</span><span class="w"> </span><span class="n">tc_idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">csize2tidx</span><span class="w"> </span><span class="p">(</span><span class="n">nb</span><span class="p">);</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tcache</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">tc_idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mp_</span><span class="p">.</span><span class="n">tcache_bins</span><span class="p">)</span>
@@ -735,6 +785,9 @@
 </span><span id="__span-2-23"><span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-24"><span class="linenos" data-linenos="24 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:61d4aaca9dc10a93:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\02.fast\03.fastbin_reverse_into_tcache.md" data-text-edit-revision="24dc72fb410020d08ca8f75564d3544eb6fdaaf7817b603a38efec2dee898d9f" data-text-edit-marker="61d4aaca9dc10a93" data-text-edit-schema="1"></div>
 
 
 
@@ -966,8 +1019,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

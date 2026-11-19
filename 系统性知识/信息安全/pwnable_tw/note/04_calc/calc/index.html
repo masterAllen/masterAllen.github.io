@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -806,15 +806,34 @@
   
 
 
+<!-- blog-edit-start:8712d9fa6e557c55:b0 -->
+
 <h1 id="pwnable-tw-calc">Pwnable tw calc</h1>
+<!-- blog-edit-end:8712d9fa6e557c55:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8712d9fa6e557c55ac094760c9416eca883f1af05a63b4d3ff698fdfa2ff7b24" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C04_calc%5Ccalc.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C04_calc" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\04_calc\calc.md">复制路径</span></div>
 
+<!-- blog-edit-start:8712d9fa6e557c55:b1 -->
+
 <h2 id="_1">需要掌握的知识点</h2>
+<!-- blog-edit-end:8712d9fa6e557c55:b1 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b2 -->
+
 <ul>
 <li>基础 ROP: Ret2syscall &amp;&amp; Ret2libc</li>
 </ul>
+<!-- blog-edit-end:8712d9fa6e557c55:b2 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b3 -->
+
 <h2 id="_2">代码分析</h2>
+<!-- blog-edit-end:8712d9fa6e557c55:b3 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b4 -->
+
 <h3 id="main">main 方法</h3>
+<!-- blog-edit-end:8712d9fa6e557c55:b4 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="kr">__cdecl</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">envp</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">v3</span><span class="p">;</span><span class="w"> </span><span class="c1">// ebx</span>
@@ -828,12 +847,37 @@
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Merry Christmas!&quot;</span><span class="p">);</span>
 </span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8712d9fa6e557c55:b5 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b6 -->
+
 <p>alarm 函数没有好说的，重点就是 <code>calc()</code> 函数</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b6 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b7 -->
+
 <h3 id="calc-get_expr-parse_expr">calc &amp;&amp; get_expr &amp;&amp; parse_expr</h3>
+<!-- blog-edit-end:8712d9fa6e557c55:b7 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b8 -->
+
 <p>代码就不贴了，说一下代码实现功能，输出表达式字符串到 expr 数组，处理 expr 数组，处理方法相当于是栈章节学习的处理表达式方法，就是用一个数组模拟栈，把那些临时数字放入数组里面。然后数组的第一位固定表示是栈的长度，这样就可以知道栈里面的数据 push 到哪个位置。</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b8 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b9 -->
+
 <h2 id="_3">漏洞分析</h2>
+<!-- blog-edit-end:8712d9fa6e557c55:b9 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b10 -->
+
 <h3 id="stage-1">Stage 1</h3>
+<!-- blog-edit-end:8712d9fa6e557c55:b10 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b11 -->
+
 <p>想了很久，但是没有想到有哪些可利用的地方，后来看了别人的题解，感觉这应该是一种经验吧。</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b11 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b12 -->
+
 <p>可以看到他的实现方式是实现这样的结构：数组首位为长度，后面为内容。这样就有破绽，如果能够修改首位，可能会出问题。<br />
 这道题的破绽在下面语句。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="n">_DWORD</span><span class="w"> </span><span class="o">*</span><span class="kr">__cdecl</span><span class="w"> </span><span class="n">eval</span><span class="p">(</span><span class="n">_DWORD</span><span class="w"> </span><span class="o">*</span><span class="n">num_stack</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">op</span><span class="p">)</span>
@@ -846,8 +890,20 @@
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 </span><span id="__span-1-9"><span class="linenos" data-linenos="9 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:8712d9fa6e557c55:b12 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b13 -->
+
 <p>这里很关键的是没有检查刚开始的情况, 如果输入 '+20' 这种语句, 会出错的. </p>
+<!-- blog-edit-end:8712d9fa6e557c55:b13 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b14 -->
+
 <p>刚开始 num_stack[0] == 1，那就相当于改掉了 num_stack[0] 的数据，此时 num_stack[0] 就失去对真实长度的准确性。</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b14 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b15 -->
+
 <p>例子如下。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>说明
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>1. 每次往num_stack添加数据，num_stack[0]会加一
@@ -868,10 +924,29 @@
 </span><span id="__span-2-17"><span class="linenos" data-linenos="17 "></span>
 </span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span>最终结果: 会改掉num_stack[360]内的数据
 </span></code></pre></div></p>
+<!-- blog-edit-end:8712d9fa6e557c55:b15 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b16 -->
+
 <p>所以我们可以修改任意位置的数据！并且修改为任何数据。比如想改 num_stack[360]，那么首先输入+360，获取数据，然后比较我们想改的值，假设差值为100，那么就输入+360+100，最终成功。</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b16 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b17 -->
+
 <h3 id="stage-2">Stage 2</h3>
+<!-- blog-edit-end:8712d9fa6e557c55:b17 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b18 -->
+
 <p>确认现在的突破口：我们即可以获取任意地址的数据，也可以修改任意地址的数据！</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b18 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b19 -->
+
 <p>第一想法，在某一段写shellcode，然后要么返回地址转到该处，要么finarray某一项改为该处。</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b19 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b20 -->
+
 <p>在 GDB 中查看信息，利用 vmmap，很显然没有哪一段是即有w，又有x，因此该想法失败。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>0x08048000 0x080eb000 0x00000000 r-x /home/allen/Work/Pwn/pwnable004/calc
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>0x080eb000 0x080ed000 0x000a2000 rw- /home/allen/Work/Pwn/pwnable004/calc
@@ -880,30 +955,77 @@
 </span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span>0xf7ffd000 0xf7ffe000 0x00000000 r-x [vdso]
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>0xfffdd000 0xffffe000 0x00000000 rw- [stack]
 </span></code></pre></div></p>
+<!-- blog-edit-end:8712d9fa6e557c55:b20 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b21 -->
+
 <h3 id="stage-3">Stage 3</h3>
+<!-- blog-edit-end:8712d9fa6e557c55:b21 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b22 -->
+
 <p>既然不能采用这样操作，又因为不是动态链接，所以不能用 Ret2libc，那么就只能采用 Ret2syscall 的方法。构造栈结构如下。<br />
 <img alt="test" src="../../../../../../asset/image/ef5504822c06e5366ee05a2ceb60fd5c/test.png" /></p>
+<!-- blog-edit-end:8712d9fa6e557c55:b22 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b23 -->
+
 <h3 id="stage-4">Stage 4</h3>
+<!-- blog-edit-end:8712d9fa6e557c55:b23 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b24 -->
+
 <p>现在还差一个 <code>/bin/sh</code> 的地址, 这个也很容易想到：通过输出 <code>ebp</code> 指向的内存内容, 该内容为 <code>old ebp</code>, 它和我们要找的地址偏移量是固定的, 所以可以调试得到结果.</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b24 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b25 -->
+
 <h2 id="_4">坑点</h2>
+<!-- blog-edit-end:8712d9fa6e557c55:b25 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b26 -->
+
 <h3 id="python">Python 的有符号和无符号处理</h3>
+<!-- blog-edit-end:8712d9fa6e557c55:b26 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b27 -->
+
 <p>假设地址0xFFFFFFFFF，按有符号数来说是-1，按无符号数来说是4294967295</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b27 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b28 -->
+
 <p>在Python中，假设A = -1，如果(A &amp; 0xFFFFFFFFF)，最后输出结果是4294967295</p>
+<!-- blog-edit-end:8712d9fa6e557c55:b28 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b29 -->
+
 <p>虽然这样是对的，但是对面下面的语句<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>if old_value &lt; stack[i]:
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>    p.sendline(&#39;+&#39; + str(address) + &#39;+&#39; + str(stack[i] - old_value))
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>else:
 </span><span id="__span-4-4"><span class="linenos" data-linenos="4 "></span>    p.sendline(&#39;+&#39; + str(address) + &#39;-&#39; + str(old_value - stack[i]))
 </span></code></pre></div></p>
+<!-- blog-edit-end:8712d9fa6e557c55:b29 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b30 -->
+
 <p>假设old_value = 1<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>如果stack[i] == -1，那最后输出+(1-(-1)) = +2，最终结果为 1+2=3
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>如果stack[i] == 4294967295，那最后输出+(4294967295-1) = 4294967294，最终结果为 1+4294967294=4294967295
 </span></code></pre></div></p>
+<!-- blog-edit-end:8712d9fa6e557c55:b30 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b31 -->
+
 <p>所以最后结果处理方式应该如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>if stack[i] &lt; 0:
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>    stack[i] = (1&lt;&lt;32) - stack[i]
 </span></code></pre></div></p>
+<!-- blog-edit-end:8712d9fa6e557c55:b31 -->
+
+<!-- blog-edit-start:8712d9fa6e557c55:b32 -->
+
 <h2 id="_5">总结反思</h2>
+<!-- blog-edit-end:8712d9fa6e557c55:b32 -->
+<!-- blog-edit-start:8712d9fa6e557c55:b33 -->
+
 <ul>
 <li>
 <p>经验</p>
@@ -920,6 +1042,9 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:8712d9fa6e557c55:b33 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\04_calc\calc.md" data-text-edit-revision="8712d9fa6e557c55ac094760c9416eca883f1af05a63b4d3ff698fdfa2ff7b24" data-text-edit-marker="8712d9fa6e557c55" data-text-edit-schema="1"></div>
 
 
 
@@ -1151,8 +1276,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

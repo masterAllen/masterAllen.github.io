@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -670,15 +670,45 @@
   
 
 
+<!-- blog-edit-start:c8944d94ca822884:b0 -->
+
 <h1 id="datalink">DataLink 记录</h1>
+<!-- blog-edit-end:c8944d94ca822884:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c8944d94ca822884db2c421b71238f7e83a541c7ece97aa52cb590649933633d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C02.DataLink_Layer%5CLayer02.Datalink.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C02.DataLink_Layer" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Computer-Network\02.DataLink_Layer\Layer02.Datalink.md">复制路径</span></div>
 
+<!-- blog-edit-start:c8944d94ca822884:b1 -->
+
 <p>数据链路层有如下目录：<code>SlideWindow</code>、<code>SpanTree</code>、<code>VLAN</code>、<code>WIFI</code>、<code>以太网</code></p>
+<!-- blog-edit-end:c8944d94ca822884:b1 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b2 -->
+
 <hr />
+<!-- blog-edit-end:c8944d94ca822884:b2 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b3 -->
+
 <p>本质上数据链路层就是关心如何把数据传输对了。WIFI 和 以太网都需要保证这一点，所以有两类基础知识：SlideWindow 和 CSMA，知道他们的重心非常关键。</p>
+<!-- blog-edit-end:c8944d94ca822884:b3 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b4 -->
+
 <h2 id="slidewindow">SlideWindow</h2>
+<!-- blog-edit-end:c8944d94ca822884:b4 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b5 -->
+
 <p><strong>滑动窗口协议关心的是“已发送数据是否被正确接收、何时重传、如何控制发送速率”。</strong></p>
+<!-- blog-edit-end:c8944d94ca822884:b5 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b6 -->
+
 <p>也就是发送方、接收方各自维护一个窗口，使得可以好多包在传输，并且利用确认（ACK）和序号，保证丢失或乱序的数据可以重传。具体看视频：</p>
+<!-- blog-edit-end:c8944d94ca822884:b6 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b7 -->
+
 <ul>
 <li>算法过程: <span class="blog-resource">
   
@@ -700,17 +730,53 @@
   
 </span></li>
 </ul>
+<!-- blog-edit-end:c8944d94ca822884:b7 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b8 -->
+
 <h2 id="wifi">以太网和 WIFI</h2>
+<!-- blog-edit-end:c8944d94ca822884:b8 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b9 -->
+
 <p>这两个除了传输介质不同，最最重要的不同就是以太网使用 <code>CSMA/CD</code>，而 WIFI 使用 <code>CSMA/CA</code>，那么这个是啥？<strong>简单来说：关心的是“什么时候可以在信道上发送数据”。</strong></p>
+<!-- blog-edit-end:c8944d94ca822884:b9 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b10 -->
+
 <ul>
 <li>CD 是 碰撞发生后检测并处理，保证信号不会无限冲突。 </li>
 <li>CA 是 在发送前通过机制降低碰撞概率，而不是发送后再检测。</li>
 </ul>
+<!-- blog-edit-end:c8944d94ca822884:b10 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b11 -->
+
 <p>选择不同的方案本质也是因为介质传输速度。</p>
+<!-- blog-edit-end:c8944d94ca822884:b11 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b12 -->
+
 <h2 id="spantree">SpanTree</h2>
+<!-- blog-edit-end:c8944d94ca822884:b12 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b13 -->
+
 <p>SpanTree 也是为了数据传输可靠。但它更加细节，<strong>关心的是：消除网络中的环路（Loop），防止广播风暴。</strong></p>
+<!-- blog-edit-end:c8944d94ca822884:b13 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b14 -->
+
 <h2 id="vlan">VLAN</h2>
+<!-- blog-edit-end:c8944d94ca822884:b14 -->
+
+<!-- blog-edit-start:c8944d94ca822884:b15 -->
+
 <p>VLAN 则是和上面都不同，它不是关心数据可靠。而是说<strong>在同一物理网络上创建多个逻辑子网，实现隔离和管理。</strong></p>
+<!-- blog-edit-end:c8944d94ca822884:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\02.DataLink_Layer\Layer02.Datalink.md" data-text-edit-revision="c8944d94ca822884db2c421b71238f7e83a541c7ece97aa52cb590649933633d" data-text-edit-marker="c8944d94ca822884" data-text-edit-schema="1"></div>
+
                         
 
                         
@@ -942,8 +1008,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

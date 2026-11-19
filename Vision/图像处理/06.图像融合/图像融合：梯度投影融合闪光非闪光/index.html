@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,61 +666,226 @@
   
 
 
+<!-- blog-edit-start:d25784d5c5526291:b0 -->
+
 <h1 id="_1">梯度投影融合闪光非闪光</h1>
+<!-- blog-edit-end:d25784d5c5526291:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ca278445c9e7772076692ee55596c1232f83d734d90e1e2f567688678d920794" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%5C%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%EF%BC%9A%E6%A2%AF%E5%BA%A6%E6%8A%95%E5%BD%B1%E8%9E%8D%E5%90%88%E9%97%AA%E5%85%89%E9%9D%9E%E9%97%AA%E5%85%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C06.%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\06.图像融合\图像融合：梯度投影融合闪光非闪光.md">复制路径</span></div>
 
+<!-- blog-edit-start:d25784d5c5526291:b1 -->
+
 <p>用梯度投影融合闪光非闪光，来自 Wang Hawk 老师在深蓝学院开设的《计算摄影学进阶》课程第五章，质量蛮好的。</p>
+<!-- blog-edit-end:d25784d5c5526291:b1 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b2 -->
+
 <p>现在有同一场景的闪光和非闪光图片，目标是合并，既可以有闪光图片的低噪声，也能避免在闪光图片的高光。是代码我自己实现了，放在 code 目录中。</p>
+<!-- blog-edit-end:d25784d5c5526291:b2 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b3 -->
+
 <p>写给我自己：看录制的视频，很快就能看懂。</p>
+<!-- blog-edit-end:d25784d5c5526291:b3 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b4 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111190343.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b4 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b5 -->
+
 <h2 id="_2">解决痛点</h2>
+<!-- blog-edit-end:d25784d5c5526291:b5 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b6 -->
+
 <p>闪光非闪光融合有一个用联合双边滤波进行融合的方法（<a href=".././图像融合：联合双边滤波融合闪光非闪光/">个人笔记</a>），但是这个方法很显著的缺点是：</p>
+<!-- blog-edit-end:d25784d5c5526291:b6 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b7 -->
+
 <p>有的时候闪光和非闪光可能有反射现象，这个时候应该丢掉其中之一，但是联合双边滤波的方法无法做到这一点。比如第一张图时闪光有反射，第二张图时无闪光有反射。</p>
+<!-- blog-edit-end:d25784d5c5526291:b7 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b8 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111185800.png" /><br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111185910.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b8 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b9 -->
+
 <h2 id="_3">引入梯度解决反射</h2>
+<!-- blog-edit-end:d25784d5c5526291:b9 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b10 -->
+
 <p>作者认为，梯度可以帮我们解决反射问题。</p>
+<!-- blog-edit-end:d25784d5c5526291:b10 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b11 -->
+
 <p>非强反射区域，闪光和非闪光梯度应该相似；相反，在强反射区域，闪光和非闪光梯度方向不同。</p>
+<!-- blog-edit-end:d25784d5c5526291:b11 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b12 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111190503.png" /><br />
 <img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111190524.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b12 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b13 -->
+
 <p><strong>此时用梯度投影就能够消除反射</strong>，如果闪光有反射，那就闪光映射到非闪光，反之亦然。</p>
+<!-- blog-edit-end:d25784d5c5526291:b13 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b14 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111190627.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b14 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b15 -->
+
 <h2 id="_4">算法细节</h2>
+<!-- blog-edit-end:d25784d5c5526291:b15 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b16 -->
+
 <p>我们拿到两张图片后，计算各自的梯度。如上面所述，在非反射区域，梯度一致，此时更加相信闪光图；在反射区域，则更加相信非闪光图。</p>
+<!-- blog-edit-end:d25784d5c5526291:b16 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b17 -->
+
 <p>首先计算梯度的相关程度，如下所示：</p>
+<!-- blog-edit-end:d25784d5c5526291:b17 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b18 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111222007.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b18 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b19 -->
+
 <p>然后利用这种相关程度做一个加权求和，即越不相关我们就越信任非闪光图片的梯度：</p>
+<!-- blog-edit-end:d25784d5c5526291:b19 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b20 -->
+
 <div class="arithmatex">\[
 \nabla \Phi^{*} = M *\nabla \Phi^{'} + (1 - M) * \nabla \alpha
 \]</div>
+<!-- blog-edit-end:d25784d5c5526291:b20 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b21 -->
+
 <p>但是还有一个问题：闪光图像容易有过曝的亮点，在这种地方的新的梯度会非常不准确。所以此时我们更信任原始的非闪光梯度。所以还是做一个加权求和，需要用检测闪光图像的亮度进行求权重：</p>
+<!-- blog-edit-end:d25784d5c5526291:b21 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b22 -->
+
 <div class="arithmatex">\[
 w_s(x, y) = \tanh(\sigma * (I(x, y) - \tau_s))
 \]</div>
+<!-- blog-edit-end:d25784d5c5526291:b22 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b23 -->
+
 <p>论文中 <span class="arithmatex">\(\sigma = 40\)</span>，<span class="arithmatex">\(\tau_s = 0.9\)</span>，需要对 <span class="arithmatex">\(I\)</span> 先归一化，最后算出权重后也要归一化以下，最终图像如下：</p>
+<!-- blog-edit-end:d25784d5c5526291:b23 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b24 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111224159.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b24 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b25 -->
+
 <p>相当于越亮的地方，我们就越信任原始的非闪光梯度，所以最后我们得到的梯度为：</p>
+<!-- blog-edit-end:d25784d5c5526291:b25 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b26 -->
+
 <div class="arithmatex">\[
 \nabla \Phi^{*} = w_s * \nabla \alpha + (1 - w_s) * \nabla \Phi^{*}
 \]</div>
+<!-- blog-edit-end:d25784d5c5526291:b26 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b27 -->
+
 <p>得到新的梯度后，需要还原图像。这儿其实是一个经典问题，把它当成泊松融合就行：即我们有要融合的图像，这是未知的，和泊松融合一样；我们还有一个原始图像，这里的区别就是：泊松融合那里这个是知道的，但我们这里只知道它的梯度场。</p>
+<!-- blog-edit-end:d25784d5c5526291:b27 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b28 -->
+
 <p>但没有关系，泊松融合的经典公式如下，其中 <span class="arithmatex">\(f\)</span> 是最终融合后的图像，<span class="arithmatex">\(\mathbf{v}\)</span> 是融合前图像的梯度场，<span class="arithmatex">\(\Omega\)</span> 是融合区域（不包含边界），<span class="arithmatex">\(\partial \Omega\)</span> 是融合区域边界。</p>
+<!-- blog-edit-end:d25784d5c5526291:b28 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b29 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250111230617.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b29 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b30 -->
+
 <p>对于 <span class="arithmatex">\(\text{div } \mathbf{v}\)</span>，其表示对原始图像的梯度场 <span class="arithmatex">\(v\)</span> 做散度，因此就是拉普拉斯操作（下面的 <span class="arithmatex">\(g\)</span> 是原始图像）：</p>
+<!-- blog-edit-end:d25784d5c5526291:b30 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b31 -->
+
 <div class="arithmatex">\[
 \text{div } \mathbf{v} = \text{div} (u, v) = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}
 \]</div>
+<!-- blog-edit-end:d25784d5c5526291:b31 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b32 -->
+
 <div class="arithmatex">\[
 (u, v) = \left( \frac{\partial g}{\partial x}, \frac{\partial g}{\partial y} \right) \Rightarrow \text{div } \mathbf{v} = \frac{\partial^2 g}{\partial x^2} + \frac{\partial^2 g}{\partial y^2}
 \]</div>
+<!-- blog-edit-end:d25784d5c5526291:b32 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b33 -->
+
 <p>而我们上面一大段操作得到的新的梯度场，就是这里的 <span class="arithmatex">\(\mathbf{v}\)</span>，即这里的 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span>。所以 <span class="arithmatex">\(\text{div } \mathbf{v}\)</span> 就用上面的第一行的公式即可得到，即梯度 <span class="arithmatex">\(u\)</span> 和 <span class="arithmatex">\(v\)</span> 分别再做一次行或列的梯度，然后加起来。</p>
+<!-- blog-edit-end:d25784d5c5526291:b33 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b34 -->
+
 <p>之后用泊松融合的公式去求解，其中边界的值就规定是非闪光的图像边界即可。</p>
+<!-- blog-edit-end:d25784d5c5526291:b34 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b35 -->
+
 <p>结果：</p>
+<!-- blog-edit-end:d25784d5c5526291:b35 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b36 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250112002356.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b36 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b37 -->
+
 <h2 id="_5">其他说明</h2>
+<!-- blog-edit-end:d25784d5c5526291:b37 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b38 -->
+
 <p>上面一章中是加权融合闪光非闪光的投影，原论文中也提到有直接投影的，如下面的公式：</p>
+<!-- blog-edit-end:d25784d5c5526291:b38 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b39 -->
+
 <p><img alt="" src="../../../../asset/image/563e47afe9f3c6c41df4910ec759144a/20250112002219.png" /></p>
+<!-- blog-edit-end:d25784d5c5526291:b39 -->
+
+<!-- blog-edit-start:d25784d5c5526291:b40 -->
+
 <p>这个就是非闪光可能有反射，所以直接一股脑把梯度投影到闪光图上。似乎对于发生反射现象而言，这种做法更好。没有反射现象时，用上一章的加权融合更好。</p>
+<!-- blog-edit-end:d25784d5c5526291:b40 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\06.图像融合\图像融合：梯度投影融合闪光非闪光.md" data-text-edit-revision="ca278445c9e7772076692ee55596c1232f83d734d90e1e2f567688678d920794" data-text-edit-marker="d25784d5c5526291" data-text-edit-schema="1"></div>
 
 
 
@@ -952,8 +1117,6 @@ w_s(x, y) = \tanh(\sigma * (I(x, y) - \tau_s))
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

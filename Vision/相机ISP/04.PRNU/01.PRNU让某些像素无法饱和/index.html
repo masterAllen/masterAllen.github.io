@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,36 +655,105 @@
   
 
 
+<!-- blog-edit-start:3d38757eccdc16ae:b0 -->
+
 <h1 id="prnu">PRNU 让某些像素无法饱和</h1>
+<!-- blog-edit-end:3d38757eccdc16ae:b0 -->
+
 <div class="file-actions" data-image-edit-revision="77a2eff758d7089af82596698bcb3c5aaa05159ddbdb7ebf333b09377d070832" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C04.PRNU%5C01.PRNU%E8%AE%A9%E6%9F%90%E4%BA%9B%E5%83%8F%E7%B4%A0%E6%97%A0%E6%B3%95%E9%A5%B1%E5%92%8C.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C04.PRNU" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\04.PRNU\01.PRNU让某些像素无法饱和.md">复制路径</span></div>
 
+<!-- blog-edit-start:3d38757eccdc16ae:b1 -->
+
 <h2 id="_1">问题</h2>
+<!-- blog-edit-end:3d38757eccdc16ae:b1 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b2 -->
+
 <p>PRNU 我的理解是所有列统一乘以一个系数，那我就好奇了，有些列响应程度比较高，所以做PRNU会乘以小于1的数字，那这些列岂不是永远不会过曝了？</p>
+<!-- blog-edit-end:3d38757eccdc16ae:b2 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b3 -->
+
 <h2 id="_2">回答</h2>
+<!-- blog-edit-end:3d38757eccdc16ae:b3 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b4 -->
+
 <p>大致可以这么理解，但要分清两阶段：</p>
+<!-- blog-edit-end:3d38757eccdc16ae:b4 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b5 -->
+
 <ol>
 <li><strong>模拟 / 光电转换阶段</strong>：像素该饱和还是会饱和，PRNU 校正改不了物理上的溢出。</li>
 <li><strong>读出并做完 PRNU 之后</strong>：数值可能被乘小，原先「应该很亮、甚至该过曝」的列，在 <strong>数字 Raw / ISP 侧</strong> 看起来就不再饱和。</li>
 </ol>
+<!-- blog-edit-end:3d38757eccdc16ae:b5 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b6 -->
+
 <p>导致的后果：灯光打的很足，此时按理应该是过曝的，但是现在有些列就不是过曝的了，图像反而不均匀。</p>
+<!-- blog-edit-end:3d38757eccdc16ae:b6 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b7 -->
+
 <h2 id="_3">工业上常见做法</h2>
+<!-- blog-edit-end:3d38757eccdc16ae:b7 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b8 -->
+
 <p>在得到 Raw 之后，对 PRNU 增益 <code>gain</code> 做乘法时，常见几种限制方式：</p>
+<!-- blog-edit-end:3d38757eccdc16ae:b8 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b9 -->
+
 <p><strong>方法 1：设置不做 PRNU 的阈值</strong></p>
+<!-- blog-edit-end:3d38757eccdc16ae:b9 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b10 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>if Raw &gt; threshold:
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    Corrected = Raw      # 不再乘 gain
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>else:
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>    Corrected = Raw × gain
 </span></code></pre></div>
+<!-- blog-edit-end:3d38757eccdc16ae:b10 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b11 -->
+
 <p><strong>方法 2：设置新的全局最大值</strong></p>
+<!-- blog-edit-end:3d38757eccdc16ae:b11 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b12 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>if Raw &gt; threshold:
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>    Corrected = threshold     # 类似方法一，但是这里是 Raw
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>else:
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span>    Corrected = Raw × gain
 </span></code></pre></div>
+<!-- blog-edit-end:3d38757eccdc16ae:b12 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b13 -->
+
 <p><strong>方法 3：限制 gain 的取值范围</strong></p>
+<!-- blog-edit-end:3d38757eccdc16ae:b13 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b14 -->
+
 <p>例如令 <code>gain ∈ [0.9, 1.1]</code>，避免个别列校正过猛。</p>
+<!-- blog-edit-end:3d38757eccdc16ae:b14 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b15 -->
+
 <hr />
+<!-- blog-edit-end:3d38757eccdc16ae:b15 -->
+
+<!-- blog-edit-start:3d38757eccdc16ae:b16 -->
+
 <p>个人感觉方法 2 最好，虽然降低了动态范围。</p>
+<!-- blog-edit-end:3d38757eccdc16ae:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\04.PRNU\01.PRNU让某些像素无法饱和.md" data-text-edit-revision="77a2eff758d7089af82596698bcb3c5aaa05159ddbdb7ebf333b09377d070832" data-text-edit-marker="3d38757eccdc16ae" data-text-edit-schema="1"></div>
 
 
 
@@ -916,8 +985,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

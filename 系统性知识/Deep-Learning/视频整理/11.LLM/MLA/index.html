@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -660,21 +660,54 @@
   
 
 
+<!-- blog-edit-start:7ebb89ad061dcbbf:b0 -->
+
 <h1 id="deepseek-mla">DeepSeek MLA</h1>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7ebb89ad061dcbbf2db1594a585e595b1273aec127c1653fed48a0a1ae2e88d5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CMLA.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\MLA.md">复制路径</span></div>
 
+<!-- blog-edit-start:7ebb89ad061dcbbf:b1 -->
+
 <h2 id="_1">总结</h2>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b1 -->
+
+<!-- blog-edit-start:7ebb89ad061dcbbf:b2 -->
+
 <p>先回顾一下，Attention 计算所需要的 QKV 矩阵，都要分别用矩阵去乘以输入 h 来完成。MLA 的思想是对输入 h 先进行压缩降维，计算的时候再乘以一个矩阵去升维。所以原来存储的矩阵变为存储压缩用的矩阵和升维用的矩阵，会显著减少显存占用。因为是相当于把原来的矩阵进行拆分，而原来的矩阵通常是稀疏的。</p>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b2 -->
+
+<!-- blog-edit-start:7ebb89ad061dcbbf:b3 -->
+
 <p>比如下面的图，说一下这里的符号：</p>
 <ol>
 <li><span class="arithmatex">\(W^{DQ}\)</span> 就表示原来的 <span class="arithmatex">\(W^Q\)</span> 拆分成了两个矩阵 <span class="arithmatex">\(W^{DQ}\)</span> 和 <span class="arithmatex">\(W^{UQ}\)</span>；</li>
 <li><span class="arithmatex">\(W^{QR}\)</span> 是解耦 RoPE 用到的矩阵，这也是 MLA 工作的一部分，但和上面那一段的原理无关，可以就当成原来也会用的一个矩阵；</li>
 <li><span class="arithmatex">\(W^{DKV}\)</span> 这个意思是 <span class="arithmatex">\(W^{DK}\)</span> 和 <span class="arithmatex">\(W^{DV}\)</span> 其实是同一个矩阵，也就是 K 和 V 的降维或降维用的是同一个矩阵；</li>
 </ol>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b3 -->
+
+<!-- blog-edit-start:7ebb89ad061dcbbf:b4 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260517173619.png" /></p>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b4 -->
+
+<!-- blog-edit-start:7ebb89ad061dcbbf:b5 -->
+
 <h2 id="_2">更细节的原理</h2>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b5 -->
+
+<!-- blog-edit-start:7ebb89ad061dcbbf:b6 -->
+
 <p>更细节的原理我没有深入，可以看这篇文章：<a href="https://www.cnblogs.com/rossiXYZ/p/18827618">https://www.cnblogs.com/rossiXYZ/p/18827618</a></p>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b6 -->
+
+<!-- blog-edit-start:7ebb89ad061dcbbf:b7 -->
+
 <p>可以看到，实在太多了，说明 MLA 也是一个相当庞大的研究方向。只有深入去搞，才有意义去看更多的细节。</p>
+<!-- blog-edit-end:7ebb89ad061dcbbf:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\MLA.md" data-text-edit-revision="7ebb89ad061dcbbf2db1594a585e595b1273aec127c1653fed48a0a1ae2e88d5" data-text-edit-marker="7ebb89ad061dcbbf" data-text-edit-schema="1"></div>
 
 
 
@@ -906,8 +939,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

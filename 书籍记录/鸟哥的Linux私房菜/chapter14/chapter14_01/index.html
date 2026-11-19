@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -623,8 +623,14 @@
   
 
 
+<!-- blog-edit-start:0c166b149fff1b4b:b0 -->
+
 <h1 id="linux">第十四章: Linux 用户管理的四个文件（重要）</h1>
+<!-- blog-edit-end:0c166b149fff1b4b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="78eb7c761123974aec1bd79c68b358d6f21e0ef8bf81fb5128fb1b82c977b746" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter14%5Cchapter14_01.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter14" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter14\chapter14_01.md">复制路径</span></div>
+
+<!-- blog-edit-start:0c166b149fff1b4b:b1 -->
 
 <p>1. /etc/passwd 文件格式<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>root:x:0:0:root:/root:/bin/bash
@@ -633,6 +639,10 @@
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>| daemon   | x    | 1   | 1   | daemon       | /usr/sbin | /usr/sbin/nologin |
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>| 账号名称 | 密码 | UID | GID | 用户信息说明 | 家目录    | shell             |
 </span></code></pre></div></p>
+<!-- blog-edit-end:0c166b149fff1b4b:b1 -->
+
+<!-- blog-edit-start:0c166b149fff1b4b:b2 -->
+
 <p>2. /etc/shadow 文件格式<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span>allen:$6$qldPXAMk$MT.RR3mZFZQv46pjKbq8asY.12k87P4gNtuQ7VCzFK0r9zs1FgpQgDEflrl0UatSHajaf4kkx3A.j9iRJ8iKP0:17767:0:99999:7:::
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>
@@ -647,6 +657,10 @@
 </span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span>        |---&gt;原因:常用于收费服务，过了一段时间那个账号就不能再用了
 </span><span id="__span-1-12"><span class="linenos" data-linenos="12 "></span>|---&gt;保留
 </span></code></pre></div></p>
+<!-- blog-edit-end:0c166b149fff1b4b:b2 -->
+
+<!-- blog-edit-start:0c166b149fff1b4b:b3 -->
+
 <p>3. /etc/group 文件格式<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>sudo:x:27:allen
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>
@@ -660,6 +674,10 @@
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span>            1.passwd的GID为初始用户组
 </span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span>            2.初始用户组就没必要写初始账号了
 </span></code></pre></div></p>
+<!-- blog-edit-end:0c166b149fff1b4b:b3 -->
+
+<!-- blog-edit-start:0c166b149fff1b4b:b4 -->
+
 <p>4. /etc/gshadow 文件格式<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>systemd-network:!::
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>
@@ -668,8 +686,19 @@
 </span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span>    |----&gt;现在一般不用了
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>|---&gt;支持账号
 </span></code></pre></div></p>
+<!-- blog-edit-end:0c166b149fff1b4b:b4 -->
+
+<!-- blog-edit-start:0c166b149fff1b4b:b5 -->
+
 <h2 id="tips">TIPS</h2>
+<!-- blog-edit-end:0c166b149fff1b4b:b5 -->
+<!-- blog-edit-start:0c166b149fff1b4b:b6 -->
+
 <p>1. COMMAND</p>
+<!-- blog-edit-end:0c166b149fff1b4b:b6 -->
+
+<!-- blog-edit-start:0c166b149fff1b4b:b7 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- groups : 有效组和支持的组查看
 <span class="linenos" data-linenos="2 "></span>- newgrp : 有效用户组的切换
 </code></pre></div>
@@ -677,6 +706,9 @@
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 普通用户: 通过 root 使用 passwd 命令即可
 <span class="linenos" data-linenos="2 "></span>- root: 进入 用户维护模式 ,修改 shadow 让密码为空，登录系统然后一顿操作即可
 </code></pre></div>
+<!-- blog-edit-end:0c166b149fff1b4b:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter14\chapter14_01.md" data-text-edit-revision="78eb7c761123974aec1bd79c68b358d6f21e0ef8bf81fb5128fb1b82c977b746" data-text-edit-marker="0c166b149fff1b4b" data-text-edit-schema="1"></div>
 
 
 
@@ -908,8 +940,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

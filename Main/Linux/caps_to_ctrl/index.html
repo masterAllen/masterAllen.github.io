@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -605,21 +605,55 @@
   
 
 
+<!-- blog-edit-start:88d704e796851af6:b0 -->
+
 <h1 id="linux">Linux 按键修改</h1>
+<!-- blog-edit-end:88d704e796851af6:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d1b74b3515f77830a6f6cb6e87088912af9c012504d73b192ed17364a33ae625" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Ccaps_to_ctrl.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\caps_to_ctrl.md">复制路径</span></div>
+
+<!-- blog-edit-start:88d704e796851af6:b1 -->
 
 <p>实际上我就只把 Caps 映射为 Ctrl，方式如下：<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>xmodmap<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;keycode 66 = Control_L&#39;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>xmodmap<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;clear Lock&#39;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>xmodmap<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;add Control = Control_L&#39;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:88d704e796851af6:b1 -->
+
+<!-- blog-edit-start:88d704e796851af6:b2 -->
+
 <p>如果想永久更改，有两种方式：</p>
+<!-- blog-edit-end:88d704e796851af6:b2 -->
+
+<!-- blog-edit-start:88d704e796851af6:b3 -->
+
 <p>1. 第一种就是在开机执行的文件(比如 <code>.xinitrc</code>)中加入上面的命令。<br />
 2. 第二种是先将现在的方案写入文件 <code>xmodmap -pke &gt; .Xmodmap</code>，然后在开机执行的文件中加入命令 <code>xmodmap .Xmodmap</code>。</p>
+<!-- blog-edit-end:88d704e796851af6:b3 -->
+
+<!-- blog-edit-start:88d704e796851af6:b4 -->
+
 <h2 id="ubuntu-2204">Ubuntu 22.04 后的方案</h2>
+<!-- blog-edit-end:88d704e796851af6:b4 -->
+
+<!-- blog-edit-start:88d704e796851af6:b5 -->
+
 <p>问 GPT 也是给出上面的方案。但 Ubuntu 22.04 及其之后上面就失灵了，原因是 XWindows 默认从 Xorg 变成了 Wayland，所以 Xmodmap 不在使用。</p>
+<!-- blog-edit-end:88d704e796851af6:b5 -->
+
+<!-- blog-edit-start:88d704e796851af6:b6 -->
+
 <p>解决方案，直接问 GPT 呗，告诉它这个原因，然后它会告诉正确的答案。我觉得这也是现在这个时代下博客或者笔记的一些意义。不是以前，笔记真的就是知识库，现在这个时代，GPT 能回答我们很多了，但有的时候往往就差那么一两句提示，而这就是现代这种笔记应该做的事情。</p>
+<!-- blog-edit-end:88d704e796851af6:b6 -->
+
+<!-- blog-edit-start:88d704e796851af6:b7 -->
+
 <p>留存一下我当时解决的问答，最后用了方法二。</p>
+<!-- blog-edit-end:88d704e796851af6:b7 -->
+
+<!-- blog-edit-start:88d704e796851af6:b8 -->
+
 <blockquote>
 <p>ubuntu24.04不可以，好像是因为现在用的是Wayland而不是Xorg了</p>
 </blockquote>
@@ -679,6 +713,9 @@
 </span><span id="__span-1-54"><span class="linenos" data-linenos="54 "></span>
 </span><span id="__span-1-55"><span class="linenos" data-linenos="55 "></span>需要我帮你写一个脚本或者 UDEV 规则来处理更复杂的键盘映射，也可以！你现在是用 GNOME 桌面吗？还是别的桌面环境（比如 KDE、Sway、Hyprland）？这样我可以给你更准的建议。
 </span></code></pre></div>
+<!-- blog-edit-end:88d704e796851af6:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\caps_to_ctrl.md" data-text-edit-revision="d1b74b3515f77830a6f6cb6e87088912af9c012504d73b192ed17364a33ae625" data-text-edit-marker="88d704e796851af6" data-text-edit-schema="1"></div>
 
 
 
@@ -910,8 +947,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

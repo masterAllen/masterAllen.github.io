@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -608,10 +608,20 @@
 <h1 id="cpp_mmap">cpp_mmap</h1>
 <div class="file-actions" data-image-edit-revision="aee78922c9f2a345aa65d872889d1b07f408ce25e4b1723cfd487e08acd98f47" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP%5Ccpp_mmap.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\CPP\cpp_mmap.md">复制路径</span></div>
 
+<!-- blog-edit-start:bed2b27ec5e0920d:b0 -->
+
 <h2 id="mmap">mmap 函数原型</h2>
+<!-- blog-edit-end:bed2b27ec5e0920d:b0 -->
+
+<!-- blog-edit-start:bed2b27ec5e0920d:b1 -->
+
 <p>函数原型如下：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">mmap</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">prot</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">off_t</span><span class="w"> </span><span class="n">offset</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:bed2b27ec5e0920d:b1 -->
+
+<!-- blog-edit-start:bed2b27ec5e0920d:b2 -->
+
 <p>参数说明如下：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>start  ： 映射区的开始地址，有时设为 0 的意思是让内核去处理分配位置
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>length ： 映射区的长度
@@ -620,6 +630,10 @@
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span>fd     ： 有效的文件描述词。如果 flags 中 有 MAP_ANONYMOUS ，为了兼容问题，其值应为-1
 </span><span id="__span-1-6"><span class="linenos" data-linenos="6 "></span>offset ： 被映射对象内容的起点
 </span></code></pre></div></p>
+<!-- blog-edit-end:bed2b27ec5e0920d:b2 -->
+
+<!-- blog-edit-start:bed2b27ec5e0920d:b3 -->
+
 <p>prot 有如下设置：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>#define PROT_READ    0x1        /* page can be read */
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>#define PROT_WRITE    0x2        /* page can be written */
@@ -629,6 +643,10 @@
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>#define PROT_GROWSDOWN    0x01000000    /* mprotect flag: extend change to start of growsdown vma */
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span>#define PROT_GROWSUP    0x02000000    /* mprotect flag: extend change to end of growsup vma */
 </span></code></pre></div></p>
+<!-- blog-edit-end:bed2b27ec5e0920d:b3 -->
+
+<!-- blog-edit-start:bed2b27ec5e0920d:b4 -->
+
 <p>flags 有如下设置(以后遇到再补)：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>| MAP_FIXED     | 0x10   | 如果我们想要映射的一段区域，内存已经有内容了，那么就覆盖掉原内容               |
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>| MAP_SHARED    | 0x01   | 创建一个共享映射的区域，多个进程可以映射到一个文件，修改后内容会同步到磁盘中   |
@@ -638,7 +656,14 @@
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>| MAP_GROWSDOWN | 0x0100 | 告诉内核VM系统，映射区可以向下扩展。                                           |
 </span><span id="__span-3-7"><span class="linenos" data-linenos="7 "></span>| MAP_DENYWRITE | 0x0800 | 没有用的标志                                                                   |
 </span></code></pre></div></p>
+<!-- blog-edit-end:bed2b27ec5e0920d:b4 -->
+
+<!-- blog-edit-start:bed2b27ec5e0920d:b5 -->
+
 <p>成功执行时， <code>mmap()</code> 返回被映射区的指针。</p>
+<!-- blog-edit-end:bed2b27ec5e0920d:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\CPP\cpp_mmap.md" data-text-edit-revision="aee78922c9f2a345aa65d872889d1b07f408ce25e4b1723cfd487e08acd98f47" data-text-edit-marker="bed2b27ec5e0920d" data-text-edit-schema="1"></div>
 
 
 
@@ -870,8 +895,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

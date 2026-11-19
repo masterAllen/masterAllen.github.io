@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -723,10 +723,20 @@
   
 
 
+<!-- blog-edit-start:31c322f0af6c23b5:b0 -->
+
 <h1 id="_1">同级文件导入解决方案</h1>
+<!-- blog-edit-end:31c322f0af6c23b5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2b0a809919b37337851f29ba4d681c07e8d85cf195032d69f6fc7122ee0d4478" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0%5C03.%E6%9B%B4%E6%B7%B1%E5%B1%82%E6%AC%A1%E7%9A%84%E6%96%87%E4%BB%B6%E7%9A%84%E5%AF%BC%E5%85%A5.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\python导入包学习\03.更深层次的文件的导入.md">复制路径</span></div>
 
+<!-- blog-edit-start:31c322f0af6c23b5:b1 -->
+
 <h2 id="_2">当前问题</h2>
+<!-- blog-edit-end:31c322f0af6c23b5:b1 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b2 -->
+
 <p><code>capture/main.py</code> 中：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">window_2</span>          <span class="c1"># ❌ 找不到</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">captureThread0</span>    <span class="c1"># ❌ 找不到</span>
@@ -735,22 +745,50 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">infoWin</span><span class="w"> </span><span class="kn">import</span> <span class="n">InfoWin</span>  <span class="c1"># ❌ 找不到</span>
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">configParser</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigParser</span>  <span class="c1"># ❌ 找不到（在 tools/ 下）</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:31c322f0af6c23b5:b2 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b3 -->
+
 <p><strong>原因：</strong></p>
 <ul>
 <li><code>main.py</code> 现在在包内（<code>tools.capture</code>）</li>
 <li>Python 无法直接找到同目录的模块</li>
 <li>需要使用相对导入或绝对导入</li>
 </ul>
+<!-- blog-edit-end:31c322f0af6c23b5:b3 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b4 -->
+
 <h2 id="_3">解决方案</h2>
+<!-- blog-edit-end:31c322f0af6c23b5:b4 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b5 -->
+
 <h3 id="1">方案 1：使用相对导入（推荐）⭐</h3>
+<!-- blog-edit-end:31c322f0af6c23b5:b5 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b6 -->
+
 <p><strong>优点：</strong></p>
 <ul>
 <li>✅ 明确表示它们在同一个包下</li>
 <li>✅ 不依赖 <code>sys.path</code></li>
 <li>✅ 更符合 Python 包的设计理念</li>
 </ul>
+<!-- blog-edit-end:31c322f0af6c23b5:b6 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b7 -->
+
 <p><strong>个人记录：</strong> 没错，在子目录下依然建立 <code>__init__.py</code> 文件，总之把所有目录都当成包来看待。</p>
+<!-- blog-edit-end:31c322f0af6c23b5:b7 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b8 -->
+
 <p><strong>修改方式：</strong></p>
+<!-- blog-edit-end:31c322f0af6c23b5:b8 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># capture/main.py</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="c1"># 同级文件（在 capture/ 目录下）</span>
@@ -764,17 +802,41 @@
 </span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">..settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">CONFIGS_DIR</span>
 </span><span id="__span-1-12"><span class="linenos" data-linenos="12 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">..configParser</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigParser</span>
 </span></code></pre></div>
+<!-- blog-edit-end:31c322f0af6c23b5:b9 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b10 -->
+
 <p><strong>要求：</strong></p>
 <ul>
 <li>需要创建 <code>capture/__init__.py</code>（让 <code>capture</code> 成为一个包）</li>
 </ul>
+<!-- blog-edit-end:31c322f0af6c23b5:b10 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b11 -->
+
 <hr />
+<!-- blog-edit-end:31c322f0af6c23b5:b11 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b12 -->
+
 <h3 id="2">方案 2：使用绝对导入</h3>
+<!-- blog-edit-end:31c322f0af6c23b5:b12 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b13 -->
+
 <p><strong>优点：</strong></p>
 <ul>
 <li>✅ 简单直接</li>
 </ul>
+<!-- blog-edit-end:31c322f0af6c23b5:b13 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b14 -->
+
 <p><strong>修改方式：</strong></p>
+<!-- blog-edit-end:31c322f0af6c23b5:b14 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># capture/main.py</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="c1"># 同级文件</span>
@@ -787,9 +849,25 @@
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">tools.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">CONFIGS_DIR</span>
 </span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">tools.configParser</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigParser</span>
 </span></code></pre></div>
+<!-- blog-edit-end:31c322f0af6c23b5:b15 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b16 -->
+
 <hr />
+<!-- blog-edit-end:31c322f0af6c23b5:b16 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b17 -->
+
 <h2 id="_4">推荐方案：相对导入</h2>
+<!-- blog-edit-end:31c322f0af6c23b5:b17 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b18 -->
+
 <h3 id="_5">需要修改的导入</h3>
+<!-- blog-edit-end:31c322f0af6c23b5:b18 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b19 -->
+
 <ol>
 <li>
 <p><strong>同级文件</strong>（在 <code>capture/</code> 目录下）：<br />
@@ -818,26 +896,62 @@
 </span></code></pre></div></p>
 </li>
 </ol>
+<!-- blog-edit-end:31c322f0af6c23b5:b19 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b20 -->
+
 <h3 id="_6">需要创建的文件</h3>
+<!-- blog-edit-end:31c322f0af6c23b5:b20 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b21 -->
+
 <p>创建 <code>capture/__init__.py</code>：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># capture/__init__.py</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="c1"># 可以是空文件，或者添加包的说明</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:31c322f0af6c23b5:b21 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b22 -->
+
 <hr />
+<!-- blog-edit-end:31c322f0af6c23b5:b22 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b23 -->
+
 <h2 id="_7">相对导入的语法</h2>
+<!-- blog-edit-end:31c322f0af6c23b5:b23 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b24 -->
+
 <ul>
 <li><code>.</code> = 当前包（<code>capture</code>）</li>
 <li><code>..</code> = 父包（<code>tools</code>）</li>
 <li><code>...</code> = 祖父包（如果有的话）</li>
 </ul>
+<!-- blog-edit-end:31c322f0af6c23b5:b24 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b25 -->
+
 <p>示例：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">window_2</span>           <span class="c1"># 同目录</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">.window_2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ui_Form</span>     <span class="c1"># 同目录的模块</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">..settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">BASE_DIR</span>   <span class="c1"># 父目录</span>
 </span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">..configParser</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigParser</span>  <span class="c1"># 父目录</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:31c322f0af6c23b5:b25 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b26 -->
+
 <hr />
+<!-- blog-edit-end:31c322f0af6c23b5:b26 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b27 -->
+
 <h2 id="_8">注意事项</h2>
+<!-- blog-edit-end:31c322f0af6c23b5:b27 -->
+
+<!-- blog-edit-start:31c322f0af6c23b5:b28 -->
+
 <ol>
 <li>
 <p><strong>相对导入只能在包内使用</strong></p>
@@ -864,6 +978,9 @@
 </ul>
 </li>
 </ol>
+<!-- blog-edit-end:31c322f0af6c23b5:b28 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\python导入包学习\03.更深层次的文件的导入.md" data-text-edit-revision="2b0a809919b37337851f29ba4d681c07e8d85cf195032d69f6fc7122ee0d4478" data-text-edit-marker="31c322f0af6c23b5" data-text-edit-schema="1"></div>
 
 
 
@@ -1095,8 +1212,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

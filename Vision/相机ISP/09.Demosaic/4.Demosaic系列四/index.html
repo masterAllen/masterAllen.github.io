@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -644,25 +644,94 @@
   
 
 
+<!-- blog-edit-start:ce78bd831504f1cc:b0 -->
+
 <h1 id="demosaic">Demosaic 系列四：杂七杂八</h1>
+<!-- blog-edit-end:ce78bd831504f1cc:b0 -->
+
 <div class="file-actions" data-image-edit-revision="9762f33b21ed9868ddff21aacbc982b679ca2113ff0264287e0ce8a4fcba9369" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic%5C4.Demosaic%E7%B3%BB%E5%88%97%E5%9B%9B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\09.Demosaic\4.Demosaic系列四.md">复制路径</span></div>
 
+<!-- blog-edit-start:ce78bd831504f1cc:b1 -->
+
 <p>还有一些杂七杂八的文章，感觉实用性不大。</p>
+<!-- blog-edit-end:ce78bd831504f1cc:b1 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b2 -->
+
 <h2 id="nat">一、NAT</h2>
+<!-- blog-edit-end:ce78bd831504f1cc:b2 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b3 -->
+
 <p><em>Color Demosaicking by Local Directional Interpolation and Nonlocal Adaptive Thresholding，Unknown 2011，Lei Zhang，香港理工大学</em></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b3 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b4 -->
+
 <p>引用次数为 507（截至 2024.02）。张磊博士的文章，引用次数很高，效果也还行，但是因为是非线性所以时间上感觉会长很多，所以实用价值存疑。</p>
+<!-- blog-edit-end:ce78bd831504f1cc:b4 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b5 -->
+
 <p>本质思想就是用 NLM 的方法去解决 Demosaic，貌似也是先算色差，然后在色差图上去求解。</p>
+<!-- blog-edit-end:ce78bd831504f1cc:b5 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b6 -->
+
 <h2 id="ecc">二、ECC</h2>
+<!-- blog-edit-end:ce78bd831504f1cc:b6 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b7 -->
+
 <p><em>EXPLOITATION OF INTER-COLOR CORRELATION FOR COLOR IMAGE，ICIP 2013,</em> Jaiswal<em>，HKUST</em></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b7 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b8 -->
+
 <p>引用次数 14（2024.02），论文太花里胡哨了，本质上就是融合<mark class="term-highlight">利用低通滤波预测</mark>和<mark class="term-highlight">利用色差插值预测</mark>这两种方法。</p>
+<!-- blog-edit-end:ce78bd831504f1cc:b8 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b9 -->
+
 <p>论文就是用了许多公式，最后结果就是融合两种方法效果会更好，但是他用的这两个方法都是最朴素的方法，后续许多改进方法，可能论文的公式就不适用了。</p>
+<!-- blog-edit-end:ce78bd831504f1cc:b9 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b10 -->
+
 <p>此外论文和 RI 方法一样，只是对 R 和 B 进行提升，G 是认为 GBTF 预测的 G 足够准确。</p>
+<!-- blog-edit-end:ce78bd831504f1cc:b10 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b11 -->
+
 <p><img src="../../../../../asset/image/79061fe1377bb8f173273bb15b88f8c4/image1.png" style="width:4.15462in;height:3.24977in" /></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b11 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b12 -->
+
 <p><img src="../../../../../asset/image/79061fe1377bb8f173273bb15b88f8c4/image2.png" style="width:5.76806in;height:0.67014in" /></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b12 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b13 -->
+
 <p><img src="../../../../../asset/image/79061fe1377bb8f173273bb15b88f8c4/image3.png" style="width:5.76806in;height:0.93472in" /></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b13 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b14 -->
+
 <p><img src="../../../../../asset/image/79061fe1377bb8f173273bb15b88f8c4/image4.png" style="width:3.03125in;height:0.51042in" /></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b14 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b15 -->
+
 <p><img src="../../../../../asset/image/79061fe1377bb8f173273bb15b88f8c4/image5.png" style="width:5.76806in;height:1.39514in" /></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b15 -->
+
+<!-- blog-edit-start:ce78bd831504f1cc:b16 -->
+
 <p><img src="../../../../../asset/image/79061fe1377bb8f173273bb15b88f8c4/image6.png" style="width:5.73958in;height:1.10417in" /></p>
+<!-- blog-edit-end:ce78bd831504f1cc:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\09.Demosaic\4.Demosaic系列四.md" data-text-edit-revision="9762f33b21ed9868ddff21aacbc982b679ca2113ff0264287e0ce8a4fcba9369" data-text-edit-marker="ce78bd831504f1cc" data-text-edit-schema="1"></div>
 
 
 
@@ -894,8 +963,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

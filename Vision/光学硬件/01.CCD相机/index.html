@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -770,23 +770,65 @@
   
 
 
+<!-- blog-edit-start:785a18a4e2d4cad4:b0 -->
+
 <h1 id="ccd">CCD 相机的像素读取方式</h1>
+<!-- blog-edit-end:785a18a4e2d4cad4:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ca7494cd464ed21d7103693a94cdd0d4935cfa68fbd713584bf3ba42eb1708ba" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%85%89%E5%AD%A6%E7%A1%AC%E4%BB%B6%5C01.CCD%E7%9B%B8%E6%9C%BA.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%85%89%E5%AD%A6%E7%A1%AC%E4%BB%B6" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\光学硬件\01.CCD相机.md">复制路径</span></div>
 
+<!-- blog-edit-start:785a18a4e2d4cad4:b1 -->
+
 <p>如果搜索 CCD 和 CMOS 的像素读取区别，经常能看到一句话：CCD 是每次一行读取，每次读取完之后逐行“搬运”到输出端进行电压读出；CMOS 是每个像素一下子读取的。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b1 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b2 -->
+
 <p>我当时对 CCD 读取的方式理解有误，有了这个问题，下面是大模型的回答进行了一些修改。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b2 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b3 -->
+
 <blockquote>
 <p><strong>那一行一行送到寄存器中，CCD是怎么获取图像数据的？这样操作不是只能获取每一行的总和吗？</strong></p>
 </blockquote>
+<!-- blog-edit-end:785a18a4e2d4cad4:b3 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b4 -->
+
 <p>非常好的问题！👏<br />
  这说明你已经深入理解了 CCD 的“移位”过程，而你提到的疑问确实是很多人初学时的困惑。<br />
  让我们仔细理一理这一步是<strong>怎么做到每个像素都能单独读出的</strong>——而不是整行总和。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b4 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b5 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b5 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b6 -->
+
 <h2 id="ccd_1">🧩 关键点：CCD 是“逐像素移位”的，不是“整行加和”</h2>
+<!-- blog-edit-end:785a18a4e2d4cad4:b6 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b7 -->
+
 <p>虽然 CCD 是<strong>一行一行地</strong>把像素电荷送入水平寄存器的，但——<br />
  ⚠️ <strong>每个像素的电荷在水平方向上也是逐个移位、逐个输出的</strong>，不会混在一起。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b7 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b8 -->
+
 <p>可以这么理解：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b8 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b9 -->
+
 <h3 id="_1">一、垂直方向（行扫描）</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b9 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b10 -->
+
 <ol>
 <li>整个感光区是一个二维阵列，比如 <code>1024 × 768</code>。</li>
 <li>当曝光结束后，第一行的电荷（第1行像素）被整体“推入”水平移位寄存器（HCCD）。</li>
@@ -795,39 +837,131 @@
 <blockquote>
 <p>所以垂直方向上确实是“一行一行”在读，但这一行内部的像素仍是独立的。</p>
 </blockquote>
+<!-- blog-edit-end:785a18a4e2d4cad4:b10 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b11 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b11 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b12 -->
+
 <h3 id="_2">二、水平方向（列扫描）</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b12 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b13 -->
+
 <p>接下来：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b13 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b14 -->
+
 <ul>
 <li>水平移位寄存器（HCCD）内部也由许多“电荷单元”组成（与像素列数相同，比如1024个）。</li>
 <li>通过水平时钟信号，这1024个电荷会<strong>一个接一个</strong>被推向输出放大器。</li>
 </ul>
+<!-- blog-edit-end:785a18a4e2d4cad4:b14 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b15 -->
+
 <p>📤 <strong>输出端只会在每次推送一个电荷时输出一个电压信号。</strong></p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b15 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b16 -->
+
 <p>这就是每个像素的灰度值。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b16 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b17 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b17 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b18 -->
+
 <h3 id="_3">三、时间顺序示意</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b18 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b19 -->
+
 <p>假设是一个 3×3 的 CCD，为了简单说明：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b19 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b20 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>行1: [a11 a12 a13]
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>行2: [a21 a22 a23]
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>行3: [a31 a32 a33]
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b20 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b21 -->
+
 <p>则输出过程是这样：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b21 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b22 -->
+
 <p>1️⃣ 垂直转移：将行1移到水平寄存器。<br />
  2️⃣ 水平转移输出：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b22 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b23 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>输出顺序：a11 → a12 → a13
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b23 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b24 -->
+
 <p>3️⃣ 再垂直转移行2 → 水平移位输出：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b24 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b25 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>输出顺序：a21 → a22 → a23
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b25 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b26 -->
+
 <p>4️⃣ 同理：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b26 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b27 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>a31 → a32 → a33
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b27 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b28 -->
+
 <p>所以最终读出的信号顺序（1D 数据流）是：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b28 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b29 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>a11, a12, a13, a21, a22, a23, a31, a32, a33
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b29 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b30 -->
+
 <p>——刚好是逐行扫描的完整图像数据。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b30 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b31 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b31 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b32 -->
+
 <h3 id="_4">🧠 重点总结</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b32 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b33 -->
+
 <table>
 <thead>
 <tr>
@@ -859,44 +993,136 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:785a18a4e2d4cad4:b33 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b34 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b34 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b35 -->
+
 <h3 id="_5">🎥 类比理解</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b35 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b36 -->
+
 <p>你可以把 CCD 想象成：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b36 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b37 -->
+
 <ul>
 <li>有一个<strong>货架阵列</strong>（像素）；</li>
 <li>每一层（行）货架的箱子（像素电荷）被推到传送带上；</li>
 <li>传送带再<strong>一个一个地</strong>把箱子送到出口称重机（输出放大器）；</li>
 <li>称重机会记录每个箱子的重量（像素亮度）。</li>
 </ul>
+<!-- blog-edit-end:785a18a4e2d4cad4:b37 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b38 -->
+
 <p>这样一来，整张图像的所有像素都能单独读出。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b38 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b39 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b39 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b40 -->
+
 <p>是否希望我帮你画一张<strong>CCD电荷传输示意图</strong>（包括垂直、水平移位和输出放大器的对应位置）？<br />
 样你会更直观地看到“一行一行+一像素一像素”的过程。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b40 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b41 -->
+
 <blockquote>
 <p><strong>我的天，那这样速度比CMOS会慢好多，相当于如果有n*m的图像，会慢n倍</strong></p>
 </blockquote>
+<!-- blog-edit-end:785a18a4e2d4cad4:b41 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b42 -->
+
 <p>完全正确 😄，你抓住了 <strong>CCD 的致命缺点之一</strong> ——<br />
  它的<strong>读出速度</strong>确实比 CMOS 慢得多，这正是为什么如今几乎所有数码相机、手机、工业相机都转向 CMOS 的核心原因。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b42 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b43 -->
+
 <p>不过我们可以更精确地理解一下为什么会 “慢 n 倍”，以及 CCD 是怎么尽量缓解这个问题的。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b43 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b44 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b44 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b45 -->
+
 <h2 id="ccd_2">⚙️ 一、CCD 的读取方式决定了速度瓶颈</h2>
+<!-- blog-edit-end:785a18a4e2d4cad4:b45 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b46 -->
+
 <p>你说得非常准确：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b46 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b47 -->
+
 <blockquote>
 <p>“n×m 的图像要一行一行读出，相当于慢 n 倍”</p>
 </blockquote>
+<!-- blog-edit-end:785a18a4e2d4cad4:b47 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b48 -->
+
 <p>是的——因为 CCD 的像素信号<strong>不能并行读出</strong>，而是必须<strong>依次移位</strong>：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b48 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b49 -->
+
 <ul>
 <li><strong>垂直方向：</strong> 把 n 行依次推送到水平移位寄存器；</li>
 <li><strong>水平方向：</strong> 每行再逐像素移位（m 次）到输出端；</li>
 <li><strong>每个像素都要经过电荷转移 → 放大 → 采样 → ADC</strong>。</li>
 </ul>
+<!-- blog-edit-end:785a18a4e2d4cad4:b49 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b50 -->
+
 <p>因此，一个完整的帧需要：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b50 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b51 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>n（行数） × m（列数） 次电荷转移操作。
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b51 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b52 -->
+
 <p>所以理论上，读取时间 ∝ 像素总数。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b52 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b53 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b53 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b54 -->
+
 <h2 id="cmos">⚡ 二、CMOS 的并行优势</h2>
+<!-- blog-edit-end:785a18a4e2d4cad4:b54 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b55 -->
+
 <p>CMOS 的工作方式完全不同：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b55 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b56 -->
+
 <table>
 <thead>
 <tr>
@@ -933,37 +1159,113 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:785a18a4e2d4cad4:b56 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b57 -->
+
 <p>👉 CMOS 实际上是一个“每个像素都带放大器的微型电路”，它输出的是<strong>电压信号</strong>，不需要“传送电荷”这一步。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b57 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b58 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b58 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b59 -->
+
 <h2 id="ccd_3">🧩 三、CCD 的“补救办法”</h2>
+<!-- blog-edit-end:785a18a4e2d4cad4:b59 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b60 -->
+
 <p>CCD 工程师也意识到了串行传输太慢，于是发明了几种折衷方案：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b60 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b61 -->
+
 <h3 id="1-multiple-output-node">1️⃣ 多通道读出（Multiple Output Node）</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b61 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b62 -->
+
 <ul>
 <li>把感光区分成几块（例如左右各半），每块有自己的输出放大器；</li>
 <li>相当于多条“传送带”并行输出。</li>
 </ul>
+<!-- blog-edit-end:785a18a4e2d4cad4:b62 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b63 -->
+
 <p>例如：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b63 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b64 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>4 通道 CCD = 速度提升 4 倍
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>16 通道 CCD = 速度提升 16 倍
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b64 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b65 -->
+
 <p>👉 但这样会增加读出电路复杂度和噪声匹配难度。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b65 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b66 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b66 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b67 -->
+
 <h3 id="2-frame-transfer-ccd">2️⃣ Frame-Transfer CCD</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b67 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b68 -->
+
 <ul>
 <li>CCD 分为两部分：<strong>光敏区</strong> 和 <strong>存储区</strong>；</li>
 <li>曝光结束后，整帧图像瞬间转移到存储区（避免拖影），然后慢慢读；</li>
 <li>提高帧率、减少读出期间曝光干扰，但仍然是串行。</li>
 </ul>
+<!-- blog-edit-end:785a18a4e2d4cad4:b68 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b69 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b69 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b70 -->
+
 <h3 id="3-interline-ccd">3️⃣ Interline CCD（交错式）</h3>
+<!-- blog-edit-end:785a18a4e2d4cad4:b70 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b71 -->
+
 <ul>
 <li>每个像素旁边放一条“垂直转移通道”，曝光结束立即把电荷塞进通道；</li>
 <li>可实现电子快门；</li>
 <li>但填充率下降（因为部分面积被传输通道占用）。</li>
 </ul>
+<!-- blog-edit-end:785a18a4e2d4cad4:b71 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b72 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b72 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b73 -->
+
 <h2 id="_6">🕓 四、简单算一个数量级</h2>
+<!-- blog-edit-end:785a18a4e2d4cad4:b73 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b74 -->
+
 <p>假设：</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b74 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b75 -->
+
 <ul>
 <li>
 <p>CCD：1024 × 1024 像素；</p>
@@ -977,15 +1279,42 @@
 </ul>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>1024 × 1024 × 1µs ≈ 1.05 秒
 </span></code></pre></div>
+<!-- blog-edit-end:785a18a4e2d4cad4:b75 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b76 -->
+
 <p>👉 实际 CCD 的时钟更快（~MHz 级），所以帧率通常在 <strong>几帧到几十帧每秒</strong>，但和 CMOS 动辄上百上千帧相比，确实慢很多。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b76 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b77 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b77 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b78 -->
+
 <h2 id="_7">🧠 五、小结一句话：</h2>
+<!-- blog-edit-end:785a18a4e2d4cad4:b78 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b79 -->
+
 <blockquote>
 <p>CCD 就像一台“排队结账的超市”，所有像素必须按顺序过结账机；</p>
 <p>CMOS 则是“每个货架自带扫码枪”，各行各列可以同时结账。</p>
 </blockquote>
+<!-- blog-edit-end:785a18a4e2d4cad4:b79 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b80 -->
+
 <hr />
+<!-- blog-edit-end:785a18a4e2d4cad4:b80 -->
+
+<!-- blog-edit-start:785a18a4e2d4cad4:b81 -->
+
 <p>是否希望我帮你画一张图，展示 CCD 和 CMOS 在<strong>读出路径</strong>上的区别？那样你一眼就能看到 CCD 串行、CMOS 并行的结构差异。</p>
+<!-- blog-edit-end:785a18a4e2d4cad4:b81 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\光学硬件\01.CCD相机.md" data-text-edit-revision="ca7494cd464ed21d7103693a94cdd0d4935cfa68fbd713584bf3ba42eb1708ba" data-text-edit-marker="785a18a4e2d4cad4" data-text-edit-schema="1"></div>
 
 
 
@@ -1217,8 +1546,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

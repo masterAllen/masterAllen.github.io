@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -643,16 +643,49 @@
   
 
 
+<!-- blog-edit-start:8b99a0d0a024ca17:b0 -->
+
 <h1 id="setcontext">setcontext 说明</h1>
+<!-- blog-edit-end:8b99a0d0a024ca17:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c25a8f4ca32ec04f790b09459206ff8cea3ec21a7e40a44aa9c7e6f67feb6cb7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C09.setcontext%5Csetcontext.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C09.setcontext" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\09.setcontext\setcontext.md">复制路径</span></div>
 
+<!-- blog-edit-start:8b99a0d0a024ca17:b1 -->
+
 <p>主要参考文章：<a href="https://blog.wingszeng.top/pwn-glibc-setcontext/">https://blog.wingszeng.top/pwn-glibc-setcontext/</a></p>
+<!-- blog-edit-end:8b99a0d0a024ca17:b1 -->
+
+<!-- blog-edit-start:8b99a0d0a024ca17:b2 -->
+
 <p><code>setcontext</code> 是 glibc 中的一个函数，里面有某些片段可以被我们所用，如下图所示（不同版本不一样，这里是 glibc 2.27）：</p>
+<!-- blog-edit-end:8b99a0d0a024ca17:b2 -->
+
+<!-- blog-edit-start:8b99a0d0a024ca17:b3 -->
+
 <p><img alt="" src="../../../../../../asset/image/afac38067b182ef4ff1155015d6c417b/20260102094651.png" /></p>
+<!-- blog-edit-end:8b99a0d0a024ca17:b3 -->
+
+<!-- blog-edit-start:8b99a0d0a024ca17:b4 -->
+
 <p>可以看到, 从 <code>0x52085</code> 开始, 一直在通过 <code>rdi</code> 指向的地址处去设置寄存器的值, 除了 rax 最后赋值为 0。 最后会执行 <code>ret</code>，而返回地址追根溯源是在 <code>0x520ae</code> 处的 <code>push rcx</code>，这条语句最终是返回地址。</p>
+<!-- blog-edit-end:8b99a0d0a024ca17:b4 -->
+
+<!-- blog-edit-start:8b99a0d0a024ca17:b5 -->
+
 <p>而我们知道, 函数调用时, 第一个参数就是放在 <code>rdi</code> 里的，所以我们可以利用上面那一段代码进行操作。</p>
+<!-- blog-edit-end:8b99a0d0a024ca17:b5 -->
+
+<!-- blog-edit-start:8b99a0d0a024ca17:b6 -->
+
 <p>举例而言，如果 free hook 被覆盖成了 <code>(setcontext + 0x35)</code> 这个位置, 然后执行 <code>free(addr)</code>。而 addr 即 <code>rdi</code>， 是某个 chunk 的地址，里面的数据我们可以控制。所以只要调用这个，我们精心设置好 chunk 中的数据，就可以设置各个寄存器, 达到随意控制程序执行流的目的.</p>
+<!-- blog-edit-end:8b99a0d0a024ca17:b6 -->
+
+<!-- blog-edit-start:8b99a0d0a024ca17:b7 -->
+
 <p>后续一般就可以让 <code>rsp</code> 跳到事先布置好的 ROP 链上, 或者 <code>rip</code> 跳到 <code>mprotect</code> 函数去开一段可执行空间, 然后执行事先写好的 shellcode.</p>
+<!-- blog-edit-end:8b99a0d0a024ca17:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\09.setcontext\setcontext.md" data-text-edit-revision="c25a8f4ca32ec04f790b09459206ff8cea3ec21a7e40a44aa9c7e6f67feb6cb7" data-text-edit-marker="8b99a0d0a024ca17" data-text-edit-schema="1"></div>
 
 
 
@@ -884,8 +917,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -634,19 +634,49 @@
   
 
 
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b0 -->
+
 <h1 id="pytorch">Pytorch 显存管理</h1>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b0 -->
+
 <div class="file-actions" data-image-edit-revision="eb77507d4201e5ed0532992dda0f887ed93ceb4906ee997655bf2d98c2a57d34" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5CPytorch%5CPytorch%E6%98%BE%E5%AD%98%E7%AE%A1%E7%90%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5CPytorch" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\Pytorch\Pytorch显存管理.md">复制路径</span></div>
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b1 -->
 
 <blockquote>
 <p>参考文章<br />
 1. <a href="https://zhuanlan.zhihu.com/p/680769942">https://zhuanlan.zhihu.com/p/680769942</a><br />
 2. <a href="https://zhuanlan.zhihu.com/p/681651660">https://zhuanlan.zhihu.com/p/681651660</a></p>
 </blockquote>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b1 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b2 -->
+
 <p><strong>写的会很简陋，而且只会涉及最最基础的内容。简单留存一下，花费不到五分钟的水文章。</strong></p>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b2 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b3 -->
+
 <p>如下图所示，用两个 pool 管理空闲和占用的块：</p>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b3 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b4 -->
+
 <p><img alt="" src="../../../../asset/image/b6acc0e3501c251d6fc9ce4edf6043e4/20260523164844.png" /></p>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b4 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b5 -->
+
 <h2 id="_1">结构体</h2>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b5 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b6 -->
+
 <p>上图中 block 的结构体，本质是用双向链表穿起来：</p>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b6 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b7 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">Block</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">device</span><span class="p">;</span><span class="w"> </span><span class="c1">// gpu</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="p">;</span><span class="w"> </span><span class="c1">// 哪个stream开辟了的</span>
@@ -664,7 +694,15 @@
 </span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="n">History</span><span class="o">*</span><span class="w"> </span><span class="n">history_last</span><span class="p">;</span>
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b7 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b8 -->
+
 <p>上图中管理 block 的 pool 结构体，主要使用了 set 容器，排序和查找都很方便（CPP 中的 set 是可以根据索引获取的）。</p>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b8 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b9 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">BlockPool</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">BlockPool</span><span class="p">(</span><span class="n">Comparison</span><span class="w"> </span><span class="n">comparator</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">small</span><span class="p">,</span><span class="w"> </span><span class="n">PrivatePool</span><span class="w"> </span><span class="o">*</span><span class="n">private_pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">)</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">blocks</span><span class="p">(</span><span class="n">comparator</span><span class="p">)</span>
@@ -677,12 +715,27 @@
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">PrivatePool</span><span class="w"> </span><span class="o">*</span><span class="n">owner_PrivatePool</span><span class="p">;</span>
 </span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b9 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b10 -->
+
 <h2 id="_2">整体逻辑</h2>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b10 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b11 -->
+
 <p>其实很简单。</p>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b11 -->
+
+<!-- blog-edit-start:8f78fb7b8bb2d9ef:b12 -->
+
 <ul>
 <li>申请一个块：查找有没有空闲的 block，如果要切分那么切分；</li>
 <li>释放一个块：查找左右是否可以合并，如果合并就操作；</li>
 </ul>
+<!-- blog-edit-end:8f78fb7b8bb2d9ef:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\Pytorch\Pytorch显存管理.md" data-text-edit-revision="eb77507d4201e5ed0532992dda0f887ed93ceb4906ee997655bf2d98c2a57d34" data-text-edit-marker="8f78fb7b8bb2d9ef" data-text-edit-schema="1"></div>
 
 
 
@@ -914,8 +967,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

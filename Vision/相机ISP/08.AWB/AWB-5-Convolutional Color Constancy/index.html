@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -644,20 +644,70 @@
   
 
 
+<!-- blog-edit-start:c82f86832482b293:b0 -->
+
 <h1 id="awb-convolutional-color-constancyccc">AWB 算法四：Convolutional Color Constancy(CCC)</h1>
+<!-- blog-edit-end:c82f86832482b293:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7905971656100ec9a4547bea4ea079ec6fcb9bb18a4b44c8aa20d411a10b885a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB%5CAWB-5-Convolutional+Color+Constancy.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\08.AWB\AWB-5-Convolutional Color Constancy.md">复制路径</span></div>
 
+<!-- blog-edit-start:c82f86832482b293:b1 -->
+
 <p>Convolutional Color Constancy, ICCV 2015, Baron, Google</p>
+<!-- blog-edit-end:c82f86832482b293:b1 -->
+
+<!-- blog-edit-start:c82f86832482b293:b2 -->
+
 <p>非常牛逼的论文，计算量和内存有着极小依赖，却有着极高的效果。<strong>本质思想是对图片的直方图进行 linear combination，求出哪一个地方最大，如果最大则将这个点的值作为光源。</strong></p>
+<!-- blog-edit-end:c82f86832482b293:b2 -->
+
+<!-- blog-edit-start:c82f86832482b293:b3 -->
+
 <p>其实之前的简单方法，比如灰度时间、完美反射，也是如此思路。只不过这篇文章说它提出的这个特征能更好地表示光源信息。也就是说，根据本文提出的新特征去找出的点，大概率是比较靠谱的。</p>
+<!-- blog-edit-end:c82f86832482b293:b3 -->
+
+<!-- blog-edit-start:c82f86832482b293:b4 -->
+
 <p>这篇文章的流程：需要先对 RGB 进行转换为 UV 直方图（具体什么含义看论文），然后将直方图输入训练好的函数 F（原文说的是滤波器），输出结果为上面说的<mark class="term-highlight">能反映光源的一个点</mark>，最后根据这个点取算出光源即可。</p>
+<!-- blog-edit-end:c82f86832482b293:b4 -->
+
+<!-- blog-edit-start:c82f86832482b293:b5 -->
+
 <h2 id="introduction">Introduction</h2>
+<!-- blog-edit-end:c82f86832482b293:b5 -->
+
+<!-- blog-edit-start:c82f86832482b293:b6 -->
+
 <p>略</p>
+<!-- blog-edit-end:c82f86832482b293:b6 -->
+
+<!-- blog-edit-start:c82f86832482b293:b7 -->
+
 <h2 id="_1">模型建立</h2>
+<!-- blog-edit-end:c82f86832482b293:b7 -->
+
+<!-- blog-edit-start:c82f86832482b293:b8 -->
+
 <p>和其他的 AWB 没什么不同，算出各个通道的系数，然后做一个乘法呗。符号表示：<code>J = W * L</code>，其中 <code>J</code> 是得到的图像，<code>W</code> 是原始图像，<code>L</code> 是一个系数（也就是要求的值）。</p>
+<!-- blog-edit-end:c82f86832482b293:b8 -->
+
+<!-- blog-edit-start:c82f86832482b293:b9 -->
+
 <p>关键点，将 RGB 这个三维变量转为二维。因为 AWB 一般都不会对 G 通道进行修改，最后是求 R/G 和 B/G，这不就是二维变量吗，设他们分别为 <span class="arithmatex">\(J_x\)</span> 和 <span class="arithmatex">\(J_y\)</span>，系数也因此同样变化。</p>
+<!-- blog-edit-end:c82f86832482b293:b9 -->
+
+<!-- blog-edit-start:c82f86832482b293:b10 -->
+
 <p>下面就不写了，直接参考：<a href="https://zhuanlan.zhihu.com/p/568017934">https://zhuanlan.zhihu.com/p/568017934</a></p>
+<!-- blog-edit-end:c82f86832482b293:b10 -->
+
+<!-- blog-edit-start:c82f86832482b293:b11 -->
+
 <p>总之记住以下几点：</p>
+<!-- blog-edit-end:c82f86832482b293:b11 -->
+
+<!-- blog-edit-start:c82f86832482b293:b12 -->
+
 <ul>
 <li>
 <p>这一篇是做 AWB 必须要看的文章，必须要先应用一下该方法，看看是否符合项目要求</p>
@@ -666,6 +716,9 @@
 <p>上面的参考写的也一般，但关键是要沉下去，还是可以看懂的。</p>
 </li>
 </ul>
+<!-- blog-edit-end:c82f86832482b293:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\08.AWB\AWB-5-Convolutional Color Constancy.md" data-text-edit-revision="7905971656100ec9a4547bea4ea079ec6fcb9bb18a4b44c8aa20d411a10b885a" data-text-edit-marker="c82f86832482b293" data-text-edit-schema="1"></div>
 
 
 
@@ -897,8 +950,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

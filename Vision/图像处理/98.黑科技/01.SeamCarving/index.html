@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -633,22 +633,79 @@
   
 
 
+<!-- blog-edit-start:005769b7013e38e6:b0 -->
+
 <h1 id="seam-carving">缝隙裁剪 Seam Carving</h1>
+<!-- blog-edit-end:005769b7013e38e6:b0 -->
+
 <div class="file-actions" data-image-edit-revision="05b8196bbde899bbc2f5f3c2bfc26c6100c97e26ade92d445cba82432fcab581" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C98.%E9%BB%91%E7%A7%91%E6%8A%80%5C01.SeamCarving.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C98.%E9%BB%91%E7%A7%91%E6%8A%80" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\98.黑科技\01.SeamCarving.md">复制路径</span></div>
 
+<!-- blog-edit-start:005769b7013e38e6:b1 -->
+
 <p>主要参考：<a href="https://zhuanlan.zhihu.com/p/65339171">https://zhuanlan.zhihu.com/p/65339171</a></p>
+<!-- blog-edit-end:005769b7013e38e6:b1 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b2 -->
+
 <p>如下图所示，改变尺寸中，Seam Carving 相比其他图像缩小方法保留了更多的信息，且维持了主体的比例。Scale 方法会导致目标变形，Crop 方法丢失了图像两边边界区域的内容。</p>
+<!-- blog-edit-end:005769b7013e38e6:b2 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b3 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105173929.jpg" /></p>
+<!-- blog-edit-end:005769b7013e38e6:b3 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b4 -->
+
 <p>其实很好理解，假设我们现在就只删除一列，crop 方法就是删掉最后一列，但 Seam Carving 的思想是：找到一条最小能量的路径，然后删掉它。如下图的红线：</p>
+<!-- blog-edit-end:005769b7013e38e6:b4 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b5 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105174310.png" /></p>
+<!-- blog-edit-end:005769b7013e38e6:b5 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b6 -->
+
 <p>具体做法也很简单。首先是能量的定义，作者就直接用两个梯度绝对值求和作为一个像素的能量了。那我们就是求下面的公式，其中 s 就表示一条线、e 表示一个点的能量：</p>
+<!-- blog-edit-end:005769b7013e38e6:b6 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b7 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105174449.png" /></p>
+<!-- blog-edit-end:005769b7013e38e6:b7 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b8 -->
+
 <p>这个用动态规划就能做了，假设我们已经确定了第 i 行中要删除的像素是 <code>(i, j)</code>，那么第 i-1 行中只可能删除 <code>(i-1, j-1)</code>, <code>(i-1, j)</code> 或者 <code>(i-1, j+1)</code> 中的一个。即动态规划的转移方差就能写出下面这样了，之后就简单求解就可：</p>
+<!-- blog-edit-end:005769b7013e38e6:b8 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b9 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105174720.png" /></p>
+<!-- blog-edit-end:005769b7013e38e6:b9 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b10 -->
+
 <p>那如果是横纵方向都删除呢？最后也是一个动态规划即可。</p>
+<!-- blog-edit-end:005769b7013e38e6:b10 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b11 -->
+
 <h2 id="_1">放大图像</h2>
+<!-- blog-edit-end:005769b7013e38e6:b11 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b12 -->
+
 <p>放大图像是逆过程。相当于找一条能量最小的缝隙，然后复制一份即可。但这里有个 trick，如果就用这一条缝隙去拼接最后图像还是不自然（如图 b），应该先找出 k 条能量最低的缝隙，然后反向顺序插入图片中：</p>
+<!-- blog-edit-end:005769b7013e38e6:b12 -->
+
+<!-- blog-edit-start:005769b7013e38e6:b13 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105175034.jpg" /></p>
+<!-- blog-edit-end:005769b7013e38e6:b13 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\98.黑科技\01.SeamCarving.md" data-text-edit-revision="05b8196bbde899bbc2f5f3c2bfc26c6100c97e26ade92d445cba82432fcab581" data-text-edit-marker="005769b7013e38e6" data-text-edit-schema="1"></div>
 
 
 
@@ -880,8 +937,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

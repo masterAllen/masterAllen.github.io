@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -706,14 +706,40 @@
   
 
 
+<!-- blog-edit-start:4b3a0ef35e5661db:b0 -->
+
 <h1 id="house-of-lore">House of lore</h1>
+<!-- blog-edit-end:4b3a0ef35e5661db:b0 -->
+
 <div class="file-actions" data-image-edit-revision="eeabc7590d16fc084d56c44a60605c3f99ac1efca9db6101cae6084163e91534" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C03.small%5C01.house_of_lore.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C03.small" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\03.small\01.house_of_lore.md">复制路径</span></div>
 
+<!-- blog-edit-start:4b3a0ef35e5661db:b1 -->
+
 <p><strong>不推荐看的方法，很强行很教条</strong></p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b1 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b2 -->
+
 <h2 id="_1">详细说明</h2>
+<!-- blog-edit-end:4b3a0ef35e5661db:b2 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b3 -->
+
 <h3 id="step1">Step1. 准备数据</h3>
+<!-- blog-edit-end:4b3a0ef35e5661db:b3 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b4 -->
+
 <p>第一，由于用到是 smallbin，老套路在后面需要把 tcache 先塞满，所以要先准备七个块，用于后续塞满 tcache。第二，准备一个 smallbin 大小的块，这个块就是后续被攻击的块。第三，准备一个大块，避免前面所说的块在 <code>free</code> 的时候和 top chunk 合并了。</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b4 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b5 -->
+
 <p>然后就进行 <code>free</code>，首先被攻击的块会在 unsorted bin 中。我们再进行申请一个超大块，触发 unsorted → smallbin 这一过程。</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b5 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b6 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 用于填满 tcache 的块，没有其他意义</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">dummies</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">dummies</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>
@@ -735,10 +761,22 @@
 </span><span id="__span-0-19"><span class="linenos" data-linenos="19 "></span>
 </span><span id="__span-0-20"><span class="linenos" data-linenos="20 "></span><span class="c1">// 最终：victim 在 smallbin 中</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4b3a0ef35e5661db:b6 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b7 -->
+
 <h3 id="step2">Step2. 尝试解链</h3>
+<!-- blog-edit-end:4b3a0ef35e5661db:b7 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b8 -->
+
 <p>现在我们希望从 smallbin 中解链时解出我们的目标地址。首先当然要先清空掉 tcache，这样申请对应大小块的时候会从 smallbin 中申请。<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b8 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b9 -->
+
 <p>现在我们尝试直接从 smallbin 中解链出目标，攻击的前提是我们可以对 <code>victim</code> 的 <code>bk</code> 指针进行修改。如果我们简单地修改为 <code>victim-&gt;bk = want</code>，那么会报错：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">want</span><span class="p">;</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>
@@ -746,7 +784,15 @@
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="n">want</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b9 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b10 -->
+
 <p>下面的代码是解链过程，他会检查 <code>bck-&gt;fd</code> 是否指向 <code>victim</code>。</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b10 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b11 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">bck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk</span><span class="p">;</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__glibc_unlikely</span><span class="w"> </span><span class="p">(</span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">victim</span><span class="p">)){</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">errstr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;malloc(): smallbin double linked list corrupted&quot;</span><span class="p">;</span>
@@ -757,26 +803,77 @@
 </span><span id="__span-3-8"><span class="linenos" data-linenos="8 "></span><span class="n">bin</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="p">;</span>
 </span><span id="__span-3-9"><span class="linenos" data-linenos="9 "></span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bin</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4b3a0ef35e5661db:b11 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b12 -->
+
 <p>为了避免这样的检查，我们需要构造一个中间块，这个块的 <code>fd</code> 指向 <code>victim</code>，这样在解链的时候就不会报错。所以这里表示了一个条件：<strong>我们需要有一个可以事先控制内容的内存，最常见的比如栈中有一片内存，程序又让你输入内容到这片内存中。</strong></p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b12 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b13 -->
+
 <p>我们构造如下的格式，当我们进行 <code>malloc(0x100)</code> 取出 <code>victim</code> 的时候，此时 <code>bck = victim-&gt;bk == can_control_addr1</code>，<code>bin = smallbin_header</code>，此时满足 <code>bck-&gt;fd == victim</code>：</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b13 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b14 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>name    smallbin_header     victim                  can_control_addr1
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>--------------------------------------------------------------------
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>fd      victim              smallbin_header         victim
 </span><span id="__span-4-4"><span class="linenos" data-linenos="4 "></span>bk      victim              can_control_addr1       fakechunk
 </span></code></pre></div>
+<!-- blog-edit-end:4b3a0ef35e5661db:b14 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b15 -->
+
 <p>解链，即 <code>bck-&gt;fd = bin; bin-&gt;bk = bck;</code> 后，格式如下：</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b15 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b16 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>name    smallbin_header         can_control_addr1
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>--------------------------------------------------------------------
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>fd      victim                  smallbin_header
 </span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span>bk      can_control_addr1       fakechunk
 </span></code></pre></div>
+<!-- blog-edit-end:4b3a0ef35e5661db:b16 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b17 -->
+
 <h3 id="step3-stash">Step3. stash 的影响</h3>
+<!-- blog-edit-end:4b3a0ef35e5661db:b17 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b18 -->
+
 <p>但上一步解链之后，malloc 有 stash 机制，即会把剩下的 smallbin 尽可能放入 tcache 中。而现在 tcache 是空的，所以是会不断进行这种操作的。</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b18 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b19 -->
+
 <p>所以上一步之后，会尝试把 <code>can_control_addr1</code> 放入 tcache 中，放入之后，会继续沿着 <code>bk</code> 指针继续放入 tcache 中，所以下一个就是要把 <code>fakechunk</code> 放入 tcache 中。而如果 <code>fakechunk-&gt;bk</code> 不是 0，则会继续往下。所以脚本里面构造了 fakechunk 链条。</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b19 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b20 -->
+
 <p><img alt="" src="../../../../../../asset/image/cf166431039f914660cce11eb56c54c5/20260106030144.png" /></p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b20 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b21 -->
+
 <hr />
+<!-- blog-edit-end:4b3a0ef35e5661db:b21 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b22 -->
+
 <p><strong>这个方法没有意义记录了。</strong> 脚本里面其实不止构造了一个中间块，还有另一个中间块。并且更关键的是，我把脚本改成只用一个中间块，发现居然不行，最后调试检查是因为释放块的时候有 <code>set_inuse</code>，由于中间块和 fakechunk 链条在附近，所以释放中间块的时候把 fakechunk 链条某个地址最后一位改了。而如果使用两个中间块，恰好偏了一点没改到。也就是说脚本其实挺凑巧的，第二个中间块没什么必要性。</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b22 -->
+
+<!-- blog-edit-start:4b3a0ef35e5661db:b23 -->
+
 <p>另外这个方法也太极端太教条了，基本上不会遇到。举个最简单的证明：在 how2heap 中，这个方法居然没有 CTF 例题。</p>
+<!-- blog-edit-end:4b3a0ef35e5661db:b23 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\03.small\01.house_of_lore.md" data-text-edit-revision="eeabc7590d16fc084d56c44a60605c3f99ac1efca9db6101cae6084163e91534" data-text-edit-marker="4b3a0ef35e5661db" data-text-edit-schema="1"></div>
 
 
 
@@ -1008,8 +1105,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

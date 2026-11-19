@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,14 +581,32 @@
   
 
 
+<!-- blog-edit-start:0c4e5918ab0fae8d:b0 -->
+
 <h1 id="qt-qthread">qt 记录-处理 QThread</h1>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="63481fb8f9c354c1cce724a3c4e5a32fba50ec3be176773296d95c0f0d5b7a1c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT%5C3.QT%E8%AE%B0%E5%BD%95-%E5%A4%84%E7%90%86QThread.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\QT\3.QT记录-处理QThread.md">复制路径</span></div>
+
+<!-- blog-edit-start:0c4e5918ab0fae8d:b1 -->
 
 <p>有一次遇到一个问题：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>QObject::setParent: Cannot set parent, new parent is in a different thread
 </span></code></pre></div></p>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b1 -->
+
+<!-- blog-edit-start:0c4e5918ab0fae8d:b2 -->
+
 <p>这个错误曾经让我 DEBUG 了半天。这个绝对是因为某个 GUI 里面用了一个 QThread，然后对这个 QThread 进行了什么处理。</p>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b2 -->
+
+<!-- blog-edit-start:0c4e5918ab0fae8d:b3 -->
+
 <p>我当时信誓旦旦觉得我没这样做。但最后发现：我是在 GUI 里面设置了一个 QThread，我在 <code>main.py</code> 中有一个全局异常处理函数，每次异常后就进入这个函数了。</p>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b3 -->
+
+<!-- blog-edit-start:0c4e5918ab0fae8d:b4 -->
+
 <div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">show_error_dialog_in_main_thread</span><span class="p">():</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">msg_box</span> <span class="o">=</span> <span class="n">QMessageBox</span><span class="p">()</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">msg_box</span><span class="o">.</span><span class="n">setWindowFlags</span><span class="p">(</span><span class="n">msg_box</span><span class="o">.</span><span class="n">windowFlags</span><span class="p">()</span> <span class="o">|</span> <span class="n">Qt</span><span class="o">.</span><span class="n">WindowStaysOnTopHint</span><span class="p">)</span>
@@ -607,8 +625,20 @@
 </span><span id="__span-1-16"><span class="linenos" data-linenos="16 "></span>    <span class="c1"># 出错时，会新建一个 QMessageBox</span>
 </span><span id="__span-1-17"><span class="linenos" data-linenos="17 "></span>    <span class="n">show_error_dialog_in_main_thread</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b4 -->
+
+<!-- blog-edit-start:0c4e5918ab0fae8d:b5 -->
+
 <p>但是如果是 QThread 里面报错，同样会到这个函数，此时进入到这个函数是在 QThread 这个线程了，此时新建 GUI 就会有问题。</p>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b5 -->
+
+<!-- blog-edit-start:0c4e5918ab0fae8d:b6 -->
+
 <p>处理方式就是需要 GUI 中连接 QThread 的错误信号，即让它回到主线程上来。</p>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b6 -->
+
+<!-- blog-edit-start:0c4e5918ab0fae8d:b7 -->
+
 <div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">CpatureWin</span><span class="p">(</span><span class="n">QWidget</span><span class="p">,</span> <span class="n">window_2</span><span class="o">.</span><span class="n">Ui_Form</span><span class="p">):</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>        <span class="c1"># ...</span>
@@ -621,6 +651,9 @@
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">handle_thread_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error_msg</span><span class="p">):</span>
 </span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">error_msg</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0c4e5918ab0fae8d:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\QT\3.QT记录-处理QThread.md" data-text-edit-revision="63481fb8f9c354c1cce724a3c4e5a32fba50ec3be176773296d95c0f0d5b7a1c" data-text-edit-marker="0c4e5918ab0fae8d" data-text-edit-schema="1"></div>
 
 
 
@@ -852,8 +885,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

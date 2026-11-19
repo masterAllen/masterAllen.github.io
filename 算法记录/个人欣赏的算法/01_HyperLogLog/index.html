@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,21 +581,54 @@
   
 
 
+<!-- blog-edit-start:cb00a9d9b07730c8:b0 -->
+
 <h1 id="hyperloglog">HyperLogLog</h1>
+<!-- blog-edit-end:cb00a9d9b07730c8:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b0c6eeaeb1978d4626a512f51329d97fe21efc6eaca2e750360fae224d87c2cf" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E4%B8%AA%E4%BA%BA%E6%AC%A3%E8%B5%8F%E7%9A%84%E7%AE%97%E6%B3%95%5C01_HyperLogLog.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E4%B8%AA%E4%BA%BA%E6%AC%A3%E8%B5%8F%E7%9A%84%E7%AE%97%E6%B3%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\个人欣赏的算法\01_HyperLogLog.md">复制路径</span></div>
 
+<!-- blog-edit-start:cb00a9d9b07730c8:b1 -->
+
 <p>接触这个算法是在著名的 CMU 15455 的 Project0 遇到的。题外话，这个课程的 Project0 是用 C++ 实现一些数据结构或算法，目的是检测学生的 C++ 水平，如果得不到满分，就会不推荐你学这门课程。由于 Project0 基本是独立于课程的，所以题目基本每学期都会变，比如这学期是跳表，下学期就是 HyperLogLog，我是做的 2024 Fall，那个学期就是要求 HyperLogLog。</p>
+<!-- blog-edit-end:cb00a9d9b07730c8:b1 -->
+
+<!-- blog-edit-start:cb00a9d9b07730c8:b2 -->
+
 <p>长话短说，其实我觉得知道这个算法的意义最重要。非常重要，因为我第一次接触的时候就因为误解了它的用途，导致看别人的讲解看的一头雾水：</p>
+<!-- blog-edit-end:cb00a9d9b07730c8:b2 -->
+
+<!-- blog-edit-start:cb00a9d9b07730c8:b3 -->
+
 <blockquote>
 <p>统计网页每天有多少用户点击进入的次数。同一个用户的反复点击进入记为 1 次。当数量过大后，使用 HashMap 会消耗大量内存；并且当数量过大时，允许有一定的误差。</p>
 </blockquote>
+<!-- blog-edit-end:cb00a9d9b07730c8:b3 -->
+
+<!-- blog-edit-start:cb00a9d9b07730c8:b4 -->
+
 <p>看如下的文章即可：</p>
+<!-- blog-edit-end:cb00a9d9b07730c8:b4 -->
+
+<!-- blog-edit-start:cb00a9d9b07730c8:b5 -->
+
 <p>1. <a href="https://juejin.cn/post/6844903785744056333">https://juejin.cn/post/6844903785744056333</a><br />
 这篇文章的入门介绍讲的很好，比较适合第一次看，主要是看硬币那里的介绍即可。</p>
+<!-- blog-edit-end:cb00a9d9b07730c8:b5 -->
+
+<!-- blog-edit-start:cb00a9d9b07730c8:b6 -->
+
 <p>2. <a href="https://developer.volcengine.com/articles/7065609735982022664">https://developer.volcengine.com/articles/7065609735982022664</a><br />
 这篇文章就相对专业许多，看了第一篇文章的硬币介绍部分再来看这个。它的<mark class="term-highlight">MVP版基数估计</mark>讲的特别好，我从这才明白为什么第一篇文章的 HyperLogLog 和 抛硬币的关系，里面的细节比较多。</p>
+<!-- blog-edit-end:cb00a9d9b07730c8:b6 -->
+
+<!-- blog-edit-start:cb00a9d9b07730c8:b7 -->
+
 <p>3. <a href="http://content.research.neustar.biz/blog/hll.html">http://content.research.neustar.biz/blog/hll.html</a><br />
 这是一个 Demo 网站，实际上一篇文章也提到了，这里单独拿出来，看的时候配合着看。感谢作者。</p>
+<!-- blog-edit-end:cb00a9d9b07730c8:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\个人欣赏的算法\01_HyperLogLog.md" data-text-edit-revision="b0c6eeaeb1978d4626a512f51329d97fe21efc6eaca2e750360fae224d87c2cf" data-text-edit-marker="cb00a9d9b07730c8" data-text-edit-schema="1"></div>
 
 
 
@@ -827,8 +860,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

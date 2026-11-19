@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -667,11 +667,25 @@
   
 
 
+<!-- blog-edit-start:5f0f44e03eb07d6a:b0 -->
+
 <h1 id="_1">去噪算法总览</h1>
+<!-- blog-edit-end:5f0f44e03eb07d6a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b6e1f6d1c9f3e4fe7c01e68a56dcac01f4a67ae1d756dee900636d1bcfd1c278" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C04.%E5%8E%BB%E5%99%AA%E6%96%B9%E6%B3%95%5CREADME.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C04.%E5%8E%BB%E5%99%AA%E6%96%B9%E6%B3%95" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\08.噪声\04.去噪方法\README.md">复制路径</span></div>
 
+<!-- blog-edit-start:5f0f44e03eb07d6a:b1 -->
+
 <p>代码：<code>D:\Work\Denoise\A-Refer</code> 文件夹中。</p>
+<!-- blog-edit-end:5f0f44e03eb07d6a:b1 -->
+
+<!-- blog-edit-start:5f0f44e03eb07d6a:b2 -->
+
 <h2 id="_2">记录</h2>
+<!-- blog-edit-end:5f0f44e03eb07d6a:b2 -->
+
+<!-- blog-edit-start:5f0f44e03eb07d6a:b3 -->
+
 <ol>
 <li><strong>简单空域操作</strong>：均值、中值、高斯；这个没什么好谈的</li>
 <li><strong>三大保边滤波</strong>：双边滤波、导向滤波、WLS 滤波；<strong>都在<a href="../../01.各种滤波/">滤波文件夹</a>中</strong>，都非常妙，尤其后两种，是通过数学推导，有目标公式，最后推出应该用什么样的参数。</li>
@@ -689,8 +703,20 @@
 </ul>
 </li>
 </ol>
+<!-- blog-edit-end:5f0f44e03eb07d6a:b3 -->
+
+<!-- blog-edit-start:5f0f44e03eb07d6a:b4 -->
+
 <h2 id="_3">没有参考图像的去噪</h2>
+<!-- blog-edit-end:5f0f44e03eb07d6a:b4 -->
+
+<!-- blog-edit-start:5f0f44e03eb07d6a:b5 -->
+
 <p>如果没有参考图像给我们训练，怎么去噪呢？这个是 2018 年一篇文章 DIP 开的坑，非常有趣的 AI 去噪。</p>
+<!-- blog-edit-end:5f0f44e03eb07d6a:b5 -->
+
+<!-- blog-edit-start:5f0f44e03eb07d6a:b6 -->
+
 <ol>
 <li>首先会用：scikit-image 中有一篇《Calibrating Denoisers Using J-Invariance》，可以去搜索看，只要会用不求理解，这个方法传入不同参数，可以选择他认为比较好的去噪图片。</li>
 <li>然后 DIP 这篇文章，非常有意思。在 B 站上有一个很好的视频，有<span class="blog-resource">
@@ -701,6 +727,10 @@
 <li>之后就是各种 AI 开始这个方向走，如 Self2Self、Self2Noise，当时看了但没有记录，这些我感觉就那样，其实 low-level 本身在 AI 应用上就没啥意思，毕竟是一个 ill-posed problem，本质上就是填像素的。</li>
 <li>没意思但有用啊，BM3D 比很多 AI 方法都还要复杂，既然如此那我为什么不用 AI 呢。</li>
 </ol>
+<!-- blog-edit-end:5f0f44e03eb07d6a:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\08.噪声\04.去噪方法\README.md" data-text-edit-revision="b6e1f6d1c9f3e4fe7c01e68a56dcac01f4a67ae1d756dee900636d1bcfd1c278" data-text-edit-marker="5f0f44e03eb07d6a" data-text-edit-schema="1"></div>
+
                         
 
                         
@@ -932,8 +962,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

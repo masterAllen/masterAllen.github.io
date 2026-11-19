@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -716,16 +716,42 @@
   
 
 
+<!-- blog-edit-start:49f6e0759dde2c81:b0 -->
+
 <h1 id="_1">变换矩阵</h1>
+<!-- blog-edit-end:49f6e0759dde2c81:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8c72b4023c285aceaaa547812b0104e17873a75cfd205c6f433da72618fda0b4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C06.%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\06.变换矩阵.md">复制路径</span></div>
+
+<!-- blog-edit-start:49f6e0759dde2c81:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.5.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.5.md</a></p>
 </blockquote>
+<!-- blog-edit-end:49f6e0759dde2c81:b1 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b2 -->
+
 <h3 id="_2">前提知识</h3>
+<!-- blog-edit-end:49f6e0759dde2c81:b2 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b3 -->
+
 <p>高中知识，两张图片之间的关系（拉伸扭曲等）可以用一个矩阵相乘来模拟，按细节程度分为三种：刚体、仿射、透视。</p>
+<!-- blog-edit-end:49f6e0759dde2c81:b3 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b4 -->
+
 <h3 id="_3">函数说明：</h3>
+<!-- blog-edit-end:49f6e0759dde2c81:b4 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b5 -->
+
 <p>求矩阵的函数分为两种：一种是许多映射点之后求最优解矩阵；另一种是只有几个映射点，可以求出唯一解矩阵。</p>
+<!-- blog-edit-end:49f6e0759dde2c81:b5 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b6 -->
+
 <ul>
 <li>estimateRigidTransform：已废弃</li>
 <li><a href="https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#gad767faff73e9cbd8b9d92b955b50062d" title="Computes an optimal limited affine transformation with 4 degrees of freedom between two 2D point sets...">estimateAffinePartial2D</a>：多点求最优解；2X3矩阵、4自由度（即最终2X3矩阵其可由4个参数控制）</li>
@@ -735,26 +761,70 @@
 <li><a href="https://docs.opencv.org/4.x/da/d54/group__imgproc__transform.html#ga8f6d378f9f8eebb5cb55cd3ae295a999" title="Calculates an affine transform from three pairs of the corresponding points.">getAffineTransform</a>：三个映射点求仿射矩阵唯一解；2x3矩阵、6自由度</li>
 <li><a href="https://docs.opencv.org/4.x/da/d54/group__imgproc__transform.html#ga20f62aa3235d869c9956436c870893ae" title="Calculates a perspective transform from four pairs of the corresponding points.">getPerspectiveTransform</a>：四个映射点求透视矩阵唯一解；3x3矩阵</li>
 </ul>
+<!-- blog-edit-end:49f6e0759dde2c81:b6 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b7 -->
+
 <p>用矩阵函数有两个：<code>warpPerspective</code> 和 <code>warpAffine</code>，一个3x3，一个2x3，利用求解出的矩阵去变换原始图片</p>
+<!-- blog-edit-end:49f6e0759dde2c81:b7 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b8 -->
+
 <h3 id="_4">具体细节</h3>
+<!-- blog-edit-end:49f6e0759dde2c81:b8 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b9 -->
+
 <p>具体用的时候还是要查文档</p>
+<!-- blog-edit-end:49f6e0759dde2c81:b9 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b10 -->
+
 <h4 id="estimateaffine2d">estimateAffine2D</h4>
+<!-- blog-edit-end:49f6e0759dde2c81:b10 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b11 -->
+
 <ul>
 <li>form, to: nx2 的列表，表示变换前后的点</li>
 <li>outlier: 最后输出的一个结果，表示对应索引点是否是异常点（0异常）</li>
 <li>method: 计算最优解的方法，具体查阅手册；其中最常见有最小二乘（需要至少有50%的正常点）、RANSAC；最小二乘对噪声较敏感</li>
 <li>后面的就是求最优解的一些参数，比如置信度这些，<strong>具体需要理解算法原理以及实际慢慢调参了</strong>，具体说明参见 Opencv 文档，默认值上面也有</li>
 </ul>
+<!-- blog-edit-end:49f6e0759dde2c81:b11 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b12 -->
+
 <h4 id="findhomograhpy">findHomograhpy</h4>
+<!-- blog-edit-end:49f6e0759dde2c81:b12 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b13 -->
+
 <ul>
 <li>参数和上面基本一致，其中 method 多了一个新的方法 RHO，还多一个 mask 参数，是输出的一个掩膜结果，过于细节，不细究</li>
 </ul>
+<!-- blog-edit-end:49f6e0759dde2c81:b13 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b14 -->
+
 <h4 id="getperspectivetransform">getPerspectiveTransform</h4>
+<!-- blog-edit-end:49f6e0759dde2c81:b14 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b15 -->
+
 <ul>
 <li>前两个参数一样，变换前后的点。</li>
 <li>solveMethod: <mark class="term-highlight">矩阵分解</mark>参数，不同矩阵分解方法侧重点不同，不过用在这个场景（求3x3线性方程组）其实都差不多（个人看法，说错了希望可以指正）</li>
 </ul>
+<!-- blog-edit-end:49f6e0759dde2c81:b15 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b16 -->
+
 <h4 id="warpperspective-warpaffine">warpPerspective, warpAffine</h4>
+<!-- blog-edit-end:49f6e0759dde2c81:b16 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b17 -->
+
 <ul>
 <li>src, M: 分别是原始图片和变换的矩阵</li>
 <li>dsize：变换后图片的大小，<strong>注意是 (宽度，高度)！！</strong></li>
@@ -767,12 +837,23 @@
 </li>
 <li>borderValue: 这个就是上面这个参数，如果是常数，应该是多少</li>
 </ul>
+<!-- blog-edit-end:49f6e0759dde2c81:b17 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b18 -->
+
 <h3 id="_5">注意点</h3>
+<!-- blog-edit-end:49f6e0759dde2c81:b18 -->
+
+<!-- blog-edit-start:49f6e0759dde2c81:b19 -->
+
 <ol>
 <li>3x3矩阵变换不是单纯的只要1x3结果前面的两个值，都要除以最后一个值。</li>
 <li>变换前后的图片要分清楚究竟是哪一张，之前花了好长时间栽在这上面。尤其是那两个warp函数里面flags有一个WARP_INVERSE_MAP选项，需要仔细考虑。</li>
 <li>两个warp函数中的dsize是宽度、高度，顺序不要乱了，即顺序是多少列、多少行。而变换前后的点的坐标则是表示第几行、第几列的顺序。</li>
 </ol>
+<!-- blog-edit-end:49f6e0759dde2c81:b19 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\06.变换矩阵.md" data-text-edit-revision="8c72b4023c285aceaaa547812b0104e17873a75cfd205c6f433da72618fda0b4" data-text-edit-marker="49f6e0759dde2c81" data-text-edit-schema="1"></div>
 
 
 
@@ -1004,8 +1085,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

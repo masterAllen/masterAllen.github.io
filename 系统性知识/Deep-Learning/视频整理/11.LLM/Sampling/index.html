@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -738,72 +738,226 @@
   
 
 
+<!-- blog-edit-start:5e9000a2e3e168a6:b0 -->
+
 <h1 id="sampling">Sampling</h1>
+<!-- blog-edit-end:5e9000a2e3e168a6:b0 -->
+
 <div class="file-actions" data-image-edit-revision="5e9000a2e3e168a6dffea7a060524ad7b445aa90cea033f3ae124add83857a44" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CSampling.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\Sampling.md">复制路径</span></div>
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b1 -->
 
 <blockquote>
 <p>参考文章：<a href="https://zhuanlan.zhihu.com/p/1981752176578667658">https://zhuanlan.zhihu.com/p/1981752176578667658</a></p>
 </blockquote>
+<!-- blog-edit-end:5e9000a2e3e168a6:b1 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b2 -->
+
 <h2 id="_1">背景介绍</h2>
+<!-- blog-edit-end:5e9000a2e3e168a6:b2 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b3 -->
+
 <p>了解 LLM 的基本原理都知道，大模型每次会输出的是词典中各个词的概率，然后我们根据概率分布从字典中选取一个最合适的词。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b3 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b4 -->
+
 <p>Sampling 就是这一步骤，也就是调整输出的概率、以及如何根据概率选词。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b4 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b5 -->
+
 <p>首先要知道一个名词：<strong>logits</strong>，这个就是指的大模型输出的词典各个词的概率。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b5 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b6 -->
+
 <h2 id="_2">调整概率</h2>
+<!-- blog-edit-end:5e9000a2e3e168a6:b6 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b7 -->
+
 <p>没错，很多时候，我们不是直接用大模型生成的概率，而是在其基础上再调整一下。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b7 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b8 -->
+
 <h3 id="temperature">温度 (Temperature)</h3>
+<!-- blog-edit-end:5e9000a2e3e168a6:b8 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b9 -->
+
 <p>温度 (Temperature) 操作用于调整 logits 的概率分布整体情况，能让概率分布变得尖锐或者平坦。利用了吉布斯分布的特点，其实很简单，就是 softmax 那里多除以一个 T 而已。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b9 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b10 -->
+
 <div class="arithmatex">\[
 P(i) = \frac{e^{z_i/T}}{\sum_{j=1}^{n} e^{z_j/T}}
 \]</div>
+<!-- blog-edit-end:5e9000a2e3e168a6:b10 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b11 -->
+
 <p>改变 T 值的大小，能够影响输出的概率：</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b11 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b12 -->
+
 <ul>
 <li><strong>0 &lt; T &lt; 1</strong>，称之为低温。logits 概率数组将会变得锐化，值与值之间的差距拉大。</li>
 <li><strong>T &gt; 1</strong>，称之为高温。logits 概率数组变得更加平缓，值与值之间的差距缩小。</li>
 </ul>
+<!-- blog-edit-end:5e9000a2e3e168a6:b12 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b13 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514161322.png" /></p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b13 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b14 -->
+
 <h3 id="topktoppminp">TopK、TopP、MinP</h3>
+<!-- blog-edit-end:5e9000a2e3e168a6:b14 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b15 -->
+
 <p>目前一个 LLM 字典大小能到 151K，随机采样时范围并不需要这么大，为了降低随机的范围，可去掉一些低概率值。常见的方式是用过滤来缩小范围。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b15 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b16 -->
+
 <ul>
 <li><strong>TopK</strong>：概率排序后，保留概率最大的 K 个值。</li>
 <li><strong>TopP</strong>：概率排序后，取累积概率到 P 的值，先排序，然后算累加值，直到累加值大于 P 为止。</li>
 <li><strong>MinP</strong>：保留所有概率至少为最高概率的 P 倍的候选词。</li>
 </ul>
+<!-- blog-edit-end:5e9000a2e3e168a6:b16 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b17 -->
+
 <p>若字典是 <code>['A', 'B', 'C', 'D', 'E', 'F']</code>，logits 为 <code>[0.6, 0.3, 0.05, 0.03, 0.015, 0.005]</code></p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b17 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b18 -->
+
 <ul>
 <li>用 TopK = 4，则 logits 变为：<code>[0.6, 0.3, 0.05, 0.03, 0, 0]</code>；</li>
 <li>用 TopP = 0.95，则 logits 变为：<code>[0.6, 0.3, 0.05, 0, 0, 0]</code>；</li>
 <li>用 MinP = 0.5，则 logits 变为：<code>[0.6, 0.3, 0, 0, 0, 0]</code>；</li>
 </ul>
+<!-- blog-edit-end:5e9000a2e3e168a6:b18 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b19 -->
+
 <p>通过示例，了解这几个处理方式的问题：</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b19 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b20 -->
+
 <ul>
 <li><strong>TopK</strong> 会选取到一些概率低的样本。例：logits 为 <code>[0.6, 0.3, 0.05, 0.03, 0.015, 0.005]</code>，TopK = 3，0.05 概率被采样进去了。</li>
 <li><strong>TopP</strong> 有采集的数量过多的问题。例：logits 为 <code>[0.2, 0.2, 0.2, 0.2, 0.1, 0.1]</code>，TopP = 0.95，全部值都有效。</li>
 <li><strong>MinP</strong> 有采样过少的问题。例：logits 为 <code>[0.8, 0.1, 0.05, 0.03, 0.015, 0.005]</code>，MinP = 0.5 时，仅保留了一个值。</li>
 </ul>
+<!-- blog-edit-end:5e9000a2e3e168a6:b20 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b21 -->
+
 <p>所以通常的 LLM 推理过程中，会混合使用这些策略。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b21 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b22 -->
+
 <h3 id="penalty">惩罚 (Penalty)</h3>
+<!-- blog-edit-end:5e9000a2e3e168a6:b22 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b23 -->
+
 <p>惩罚（Penalty）是根据历史的输出字符情况增加一些超参来调整局部的 logits 值，是一个局部缩放操作。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b23 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b24 -->
+
 <p>为什么需要惩罚这种机制？一个理想 LLM 像人类一样输出合适的结果，但目前的 LLM 还不能完全达到人类的水平。在输出采样实践中，如果纯靠概率模型可能会犯一些错误，比如：循环、重复、冗余。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b24 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b25 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514161607.png" /></p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b25 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b26 -->
+
 <p>惩罚作为对 logits 的一种处理手段，抑制一些基本的错误。常见的惩罚手段有：</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b26 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b27 -->
+
 <ul>
 <li><strong>频率惩罚（frequency penalty）</strong>：对出现过的词，根据其出现频率降低 logits 值，频率越高衰减越严重。</li>
 <li><strong>存在惩罚（presence penalty）</strong>：对出现过的词，在 logits 中减去一个相应惩罚值，每个词至多惩罚一次。</li>
 <li><strong>重复惩罚（repetition penalty）</strong>：对重复出现的词进行衰减，类似频率处理。</li>
 </ul>
+<!-- blog-edit-end:5e9000a2e3e168a6:b27 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b28 -->
+
 <h3 id="_3">操作顺序</h3>
+<!-- blog-edit-end:5e9000a2e3e168a6:b28 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b29 -->
+
 <p>除了温度、惩罚外，还有其它能修改 logits 数值的方式，比如：</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b29 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b30 -->
+
 <ul>
 <li><strong>偏置（bias）</strong>：给指定的词添加一个偏置项，计算方式：<code>logits[i] += bias[i]</code>；</li>
 <li><strong>掩膜（mask）</strong>：将掩膜外的值置为 0；</li>
 </ul>
+<!-- blog-edit-end:5e9000a2e3e168a6:b30 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b31 -->
+
 <h2 id="_4">根据概率选择词</h2>
+<!-- blog-edit-end:5e9000a2e3e168a6:b31 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b32 -->
+
 <p>这里可能会奇怪，每一步取最大的概率不就可以了。的确有这个方法，这是<strong>贪婪搜索（greedy search）</strong>，但贪婪搜索保证的是单步最优，没有考虑多步之间的联系，不能保证累积概率最大。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b32 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b33 -->
+
 <p>举个例子，如下图所示，采用贪婪采样，在 step 1 选择 "吃"（概率 0.6），step 2 选择 "你"。两步的累积概率为 0.6 * 0.3 = 0.18；与之对比，若 step 1 选 "爱"、step 2 选 "吃"，最后能够得到累积概率 0.3 * 0.7 = 0.21，数值比贪婪算法的结果更大。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b33 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b34 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260514161840.png" /></p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b34 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b35 -->
+
 <p>从上面图也能看出，这是一个多叉树求最优解问题。的确有最优解，问题是树实在是太大了，根本无法穷举。</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b35 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b36 -->
+
 <h3 id="beam-search">束搜索 (Beam Search)</h3>
+<!-- blog-edit-end:5e9000a2e3e168a6:b36 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b37 -->
+
 <p>beam search 是一种结合 topK 和剪枝的搜索算法，每次保留束宽（beam width）k 个结果。beam search 的基本步骤：</p>
+<!-- blog-edit-end:5e9000a2e3e168a6:b37 -->
+
+<!-- blog-edit-start:5e9000a2e3e168a6:b38 -->
+
 <ol>
 <li>对首次输出进行 topK 排序，选取前 k 个值；</li>
 <li>根据上一轮的 k 个值，分别获得 k 个输出，每个分支进行 topK 排序，计算累积概率；</li>
@@ -813,6 +967,9 @@ P(i) = \frac{e^{z_i/T}}{\sum_{j=1}^{n} e^{z_j/T}}
 <blockquote>
 <p>上面的步骤可以一扫而过即可，总之意会即可，用的时候再查。</p>
 </blockquote>
+<!-- blog-edit-end:5e9000a2e3e168a6:b38 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\Sampling.md" data-text-edit-revision="5e9000a2e3e168a6dffea7a060524ad7b445aa90cea033f3ae124add83857a44" data-text-edit-marker="5e9000a2e3e168a6" data-text-edit-schema="1"></div>
 
 
 
@@ -1044,8 +1201,6 @@ P(i) = \frac{e^{z_i/T}}{\sum_{j=1}^{n} e^{z_j/T}}
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

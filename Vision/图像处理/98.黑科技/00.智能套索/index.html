@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -744,87 +744,300 @@
   
 
 
+<!-- blog-edit-start:e20e59ee83f2c434:b0 -->
+
 <h1 id="intelligent-scissors">智能套索学习记录（Intelligent Scissors）</h1>
+<!-- blog-edit-end:e20e59ee83f2c434:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a263e78143df401721b8cf0810b9c6e7419e01e3def5d7c4cb4b6f9e25dbc39f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C98.%E9%BB%91%E7%A7%91%E6%8A%80%5C00.%E6%99%BA%E8%83%BD%E5%A5%97%E7%B4%A2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C98.%E9%BB%91%E7%A7%91%E6%8A%80" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\98.黑科技\00.智能套索.md">复制路径</span></div>
 
+<!-- blog-edit-start:e20e59ee83f2c434:b1 -->
+
 <p>智能套索是什么，如下所示，基本上人人都知道的功能：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b1 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b2 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105161539.gif" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b2 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b3 -->
+
 <h2 id="_1">总览</h2>
+<!-- blog-edit-end:e20e59ee83f2c434:b3 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b4 -->
+
 <p>首先需要用八联通将图片转为一张图：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b4 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b5 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105161824.png" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b5 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b6 -->
+
 <p>构造图之后，总体的操作流程如下:</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b6 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b7 -->
+
 <p>1. 为边计算损失, 包括静态权重和动态权重<br />
 2. 用户在待分割目标的边界给定初始种子点<br />
 3. 用户移动鼠标，即时计算上一种子点到鼠标点间的最短路径<br />
 4. 用户点击鼠标生成下一个种子点后，重复上一步操作，直到目标物体的轮廓勾画完成.</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b7 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b8 -->
+
 <p>后三步都没什么好讲的，计算最小路径用的 Dijkstra 算法，重点在第一步中每条边的权重是如何计算的。权重包括静态和动态</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b8 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b9 -->
+
 <h2 id="_2">静态权重计算</h2>
+<!-- blog-edit-end:e20e59ee83f2c434:b9 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b10 -->
+
 <p>如下图所示，本质让边界处的权重小，这样最小路径才会沿着边界走：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b10 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b11 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105162222.jpg" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b11 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b12 -->
+
 <p>代价计算就是他们合并起来即可，如下面的公式，其中 <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span> 表示像素点：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b12 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b13 -->
+
 <div class="arithmatex">\[
 weight(p, q) = f_z(p) * w_z + f_D(p, q) * w_D + f_G(p) * w_G
 \]</div>
+<!-- blog-edit-end:e20e59ee83f2c434:b13 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b14 -->
+
 <p>可以看到，有的代价是点上的代价，有的是边上的代价。论文提到实验表明参数分别是 <code>0.43, 0.43, 0.14</code>，可以适用于很多图像。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b14 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b15 -->
+
 <h3 id="f_zp">拉普拉斯过零点 <span class="arithmatex">\(f_z(p)\)</span></h3>
+<!-- blog-edit-end:e20e59ee83f2c434:b15 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b16 -->
+
 <p>尽管 1986 年 Canny 算子就已经发布，但作者并未采用。从图像的二阶导数看，当其为过零点时可以说明中心像素位于边缘上：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b16 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b17 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105162647.png" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b17 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b18 -->
+
 <p>计算方式如下，计算的二阶导数而不是简单的拉普拉斯，当结果为 0，说明这个点是边缘，那么就让点的权重变小，这样最小路径大概率会经过这个点：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b18 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b19 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105162820.png" /><br />
 <img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105162800.png" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b19 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b20 -->
+
 <p>但是由于图像是离散的，拉普拉斯真正为 0 的像素点非常少，直接这样做就找不到很多边缘点了。所以作者认为在如果两个像素点的拉普拉斯值符号相反，那么它们之间有一个过零亚像素点。于是就会选择两个像素点中离边缘最近的点作为实际计算中的过零点。通过这样的折中，就会得到图像上的单像素边缘曲线。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b20 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b21 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105163517.png" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b21 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b22 -->
+
 <p>论文参数：使用了两种大小的高斯核: 5x5 和 9x9，各自计算 LoG，并以 0.45 和 0.55 的权重进行加权得到最终的结果。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b22 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b23 -->
+
 <h3 id="f_gp">梯度大小 <span class="arithmatex">\(f_G(p)\)</span></h3>
+<!-- blog-edit-end:e20e59ee83f2c434:b23 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b24 -->
+
 <p>梯度就正常的梯度计算，即 <span class="arithmatex">\(G = \sqrt{I_x^2 + I_y^2}\)</span>。同样的，梯度越大说明越可能是边缘，就让这个点的权重变小，让最小路径尽可能经过这个点：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b24 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b25 -->
+
 <div class="arithmatex">\[
 f_G(p) = 1 - \frac{G - min(G)}{max(G) - min(G)}
 \]</div>
+<!-- blog-edit-end:e20e59ee83f2c434:b25 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b26 -->
+
 <p>和拉普拉斯一样，也用了多个核大小，各自算出梯度值之后进行合并，但不是加权，而是取最大值，有两个方案：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b26 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b27 -->
+
 <p>1. 取各自算出来梯度的最大值，这个很简单，但也很有效，也是最终采纳的方案<br />
 2. 对多核的拉普拉斯零交叉点的斜率绝对值取 maximum，取斜率绝对值大的核对应的梯度大小</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b27 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b28 -->
+
 <h3 id="f_dp-q">梯度方向 <span class="arithmatex">\(f_D(p, q)\)</span></h3>
+<!-- blog-edit-end:e20e59ee83f2c434:b28 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b29 -->
+
 <p>梯度向量指向可能最大强度增加的方向，考虑三个场景：<br />
 1. 两个点梯度方向很接近，而且和两点之间的连接方向接近垂直，说明这条边靠谱，代价要低<br />
 2. 两个点梯度方向很接近，但和两点之间的连接方向不垂直，说明这条边没有沿着边界，代价要高<br />
 3. 两个点梯度方向不接近，这个时候不管两点的连接方向了，总之代价要高</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b29 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b30 -->
+
 <p>这里网上几篇文章都出现了理解错误，都说梯度方向和连接方向一致才是低代价，我看了原文和公式，应该梯度方向和连接方向垂直才是低代价。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b30 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b31 -->
+
 <p>从上面看，有三个方向要看：两点连接方向和两点各自的梯度方向。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b31 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b32 -->
+
 <p>两点连接方向如下（不用管后面的 D'，总之很容易看出是单位向量）：<br />
 <img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105170544.png" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b32 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b33 -->
+
 <p>两点各自的梯度方向定义为 <span class="arithmatex">\(D(p)\)</span> 和 <span class="arithmatex">\(D(q)\)</span>，<strong>旋转90度后</strong>的方向叫做 <span class="arithmatex">\(D'(p)\)</span> 和 <span class="arithmatex">\(D'(q)\)</span>。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b33 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b34 -->
+
 <p>那么 <span class="arithmatex">\(f_D(p, q)\)</span> 的计算公式如下：<br />
 <img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105170751.png" /><br />
 <img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105170812.png" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b34 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b35 -->
+
 <h2 id="_3">动态权重计算</h2>
+<!-- blog-edit-end:e20e59ee83f2c434:b35 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b36 -->
+
 <p>为什么需要动态权重，可以看下面的图，可以看到&copy;图中算法跟踪到了具有强梯度幅值的外边缘，而非原本想要抠出的内部边缘。因此引入在线学习，算法会根据当前曲线之前的少量像素的特征来推断新的边界像素的特征。这就是动态权重。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b36 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b37 -->
+
 <p><img alt="" src="../../../../asset/image/86af2c054b64e6f41fb7c9bc4402f51b/20250105170848.jpg" /></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b37 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b38 -->
+
 <p>一共有三个特征：<code>Edge pixel value</code> <span class="arithmatex">\(f_P(p)\)</span>，<code>Inside pixel value</code> <span class="arithmatex">\(f_I(p)\)</span>，<code>Outside pixel value</code> <span class="arithmatex">\(f_O(p)\)</span></p>
+<!-- blog-edit-end:e20e59ee83f2c434:b38 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b39 -->
+
 <h3 id="_4">训练数据准备</h3>
+<!-- blog-edit-end:e20e59ee83f2c434:b39 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b40 -->
+
 <p>训练的数据来源就是已经确定好的边。我们用这些边准备好数据，后面会用直方图计算他们的分布，以此用于后续确定新的边。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b40 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b41 -->
+
 <p>边像素值 (edge pixel values) 损失的计算很简单，就是像素值：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b41 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b42 -->
+
 <div class="arithmatex">\[
 f_P(p) = I(p) / 255
 \]</div>
+<!-- blog-edit-end:e20e59ee83f2c434:b42 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b43 -->
+
 <p>内部和外部像素值(inside and outside pixel values) 损失计算是沿着梯度方向一定距离的地方采样的（<span class="arithmatex">\(k\)</span> 是参数，<span class="arithmatex">\(D\)</span> 就是梯度方向）：</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b43 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b44 -->
+
 <div class="arithmatex">\[
 f_I(p) = I(p + k * D(p)) / 255
 \]</div>
+<!-- blog-edit-end:e20e59ee83f2c434:b44 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b45 -->
+
 <div class="arithmatex">\[
 f_O(p) = I(p - k * D(p)) / 255
 \]</div>
+<!-- blog-edit-end:e20e59ee83f2c434:b45 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b46 -->
+
 <h3 id="_5">直方图计算</h3>
+<!-- blog-edit-end:e20e59ee83f2c434:b46 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b47 -->
+
 <p>就正常计算直方图，符号是 <span class="arithmatex">\(h\)</span>，即分别有 <span class="arithmatex">\(h_P\)</span>，<span class="arithmatex">\(h_I\)</span>，<span class="arithmatex">\(h_O\)</span>。此外为了防止点很少，噪声比较多, 因此对直方图应用一维高斯平滑来抑制噪声。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b47 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b48 -->
+
 <p>直方图的意义是什么，直方图代表了一种概率分布。我们拿最简单的 edge pixel value 来说，训练完毕后，此时要计算新的路径了，对于每个点它有一个 <span class="arithmatex">\(f_P\)</span> 值，就可以到 <span class="arithmatex">\(h_P\)</span> 直方图中去找 <span class="arithmatex">\(f_P\)</span> 对应的概率值，其代表了原来的那些边中，有多少比例的点是 <span class="arithmatex">\(f_P\)</span>。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b48 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b49 -->
+
 <h3 id="_6">其他说明</h3>
+<!-- blog-edit-end:e20e59ee83f2c434:b49 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b50 -->
+
 <p>1. 这种训练是反复进行的，新加了一条边，就要更新直方图。<br />
 2. 其实梯度大小（静态权重）也是可以用这种直方图训练的。<br />
 3. 这里原文有很多公式，很绕，但总体思想就是上面的逻辑。</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b50 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b51 -->
+
 <h2 id="_7">参考</h2>
+<!-- blog-edit-end:e20e59ee83f2c434:b51 -->
+
+<!-- blog-edit-start:e20e59ee83f2c434:b52 -->
+
 <p>1. Jarvis's Blog: <a href="https://www.jarvis73.com/2020/07/09/Intelligent-Scissors/#24-pixel-value-features-%E5%83%8F%E7%B4%A0%E5%80%BC%E7%89%B9%E5%BE%81">https://www.jarvis73.com/2020/07/09/Intelligent-Scissors/#24-pixel-value-features-%E5%83%8F%E7%B4%A0%E5%80%BC%E7%89%B9%E5%BE%81</a><br />
 2. Wang Hawk 的知乎分享：<a href="https://zhuanlan.zhihu.com/p/61302177">https://zhuanlan.zhihu.com/p/61302177</a><br />
 3. Interactive segmentation with intelligent scissors. Mortensen E N, Barrett W A. In Graphical models and image processing, 1998, 60(5): 349-384. <a href="https://icg.gwu.edu/sites/g/files/zaxdzs1481/f/downloads/seg_scissors.pdf">[PDF]</a>. <br />
 4. Intelligent scissors for image composition. Mortensen E N, Barrett W A. In Proceedings of the 22<sup>nd</sup> annual conference on Computer graphics and interactive techniques. 1995: 191-198. <a href="https://dl.acm.org/doi/pdf/10.1145/218380.218442">[PDF]</a>.</p>
+<!-- blog-edit-end:e20e59ee83f2c434:b52 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\98.黑科技\00.智能套索.md" data-text-edit-revision="a263e78143df401721b8cf0810b9c6e7419e01e3def5d7c4cb4b6f9e25dbc39f" data-text-edit-marker="e20e59ee83f2c434" data-text-edit-schema="1"></div>
 
 
 
@@ -1056,8 +1269,6 @@ f_O(p) = I(p - k * D(p)) / 255
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -609,13 +609,35 @@
   
 
 
+<!-- blog-edit-start:2cba1a332843d8d7:b0 -->
+
 <h1 id="gui">编写 GUI 程序对观察者模式的学习</h1>
+<!-- blog-edit-end:2cba1a332843d8d7:b0 -->
+
 <div class="file-actions" data-image-edit-revision="56dc346d4387c295577df300f135528a1435369ab73211ec0bf2b5b6ad2b09a9" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E7%BC%96%E5%86%99GUI%E7%A8%8B%E5%BA%8F%E5%AF%B9%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%AD%A6%E4%B9%A0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\编写GUI程序对观察者模式的学习.md">复制路径</span></div>
 
+<!-- blog-edit-start:2cba1a332843d8d7:b1 -->
+
 <p>有一个项目，简短写了个 GUI 界面。但是后来，又增加一个需求：有的时候，我需要运行脚本去控制它。</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b1 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b2 -->
+
 <p>其实就是一个相机出图的界面，上面可以进行一些设置。我是希望这个界面属于通用的，以后正常来说用这个 GUI 界面，偶尔有一些自动化任务，此时：应该直接启动脚本，脚本会解析到窗口，然后自定义各种操作。</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b2 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b3 -->
+
 <h2 id="_1">错误做法</h2>
+<!-- blog-edit-end:2cba1a332843d8d7:b3 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b4 -->
+
 <p>使用 pywinauto 去解析窗口，这个有几个缺点：</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b4 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b5 -->
+
 <ol>
 <li>pywinauto 有些元素无法解析出来，最经典的就是 TreeItem，也就是某个 checkbox 之类的元素同时也是 TreeItem，这个用了许多方法都无法解析出正确的元素，所以没办法用 checkbox 等特有的方法。</li>
 <li>pywinauto 的解析速度很慢，因为它是通过模拟鼠标和键盘来操作的，所以速度很慢。</li>
@@ -632,25 +654,80 @@
 </li>
 <li>统计多帧的一些信息怎么办？GUI 上没有这样的信息呀</li>
 </ol>
+<!-- blog-edit-end:2cba1a332843d8d7:b7 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b8 -->
+
 <h2 id="_2">正确做法</h2>
+<!-- blog-edit-end:2cba1a332843d8d7:b8 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b9 -->
+
 <p>脚本不应该调用 GUI 上的按钮，而是新建一个独立的 Controller，它是可以单独运行的，脚本和和 Controller 交互，GUI 也和 Controller 交互。</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b9 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b10 -->
+
 <p>所以 GUI 一定要做到解耦，即：</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b10 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b11 -->
+
 <ol>
 <li>Controller 暴露各种方法接口，然后 GUI 或者外层脚本通过通信去下发任务给 Controller</li>
 <li>Controller 完成各种方法后，需要向各个层输出信号</li>
 <li>GUI 得到信号后才会修改 GUI 状态</li>
 </ol>
+<!-- blog-edit-end:2cba1a332843d8d7:b11 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b12 -->
+
 <p>而且脚本或者 GUI 刚启动的时候：</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b12 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b13 -->
+
 <ul>
 <li>检查是否有启动的 Controller，如果有那么就去绑定，如果没有则自己开一个线程/进程去和它绑定</li>
 </ul>
+<!-- blog-edit-end:2cba1a332843d8d7:b13 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b14 -->
+
 <p>所以协议层可以通过网络通信来完成，因为这是跨进程的。</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b14 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b15 -->
+
 <h2 id="_3">观察者模式</h2>
+<!-- blog-edit-end:2cba1a332843d8d7:b15 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b16 -->
+
 <p>在上面的模型中，其实这就是设计模式一个很重要的 <strong>观察者模式</strong> 这个模型。如下图所示，GUI/CLI 不就是 Observer 吗，Subject 就是 Controller。</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b16 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b17 -->
+
 <p><img alt="" src="../../asset/image/746989483530c87ab73a277eb8a70dd9/20260403205225.png" /></p>
+<!-- blog-edit-end:2cba1a332843d8d7:b17 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b18 -->
+
 <p>有的时候这个模式也叫做另一个名字，你绝对听过：<strong>发布-订阅</strong>。所以其实一目了然了，当然有的教条主义非要区分二者：<strong>发布-订阅</strong>中间有个专门负责转发的人：</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b18 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b19 -->
+
 <p><img alt="" src="../../asset/image/746989483530c87ab73a277eb8a70dd9/20260403205430.png" /></p>
+<!-- blog-edit-end:2cba1a332843d8d7:b19 -->
+
+<!-- blog-edit-start:2cba1a332843d8d7:b20 -->
+
 <p>Broker 就是专门的协议层，用来收发消息的。其实没有区别，上面 Controller 就是 Publisher+Broker 二者结合起来呗。如果是简单的项目，比如我们上面这个项目，直接 Controller 把收发消息的做出来就行了，没多几行代码。</p>
+<!-- blog-edit-end:2cba1a332843d8d7:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\编写GUI程序对观察者模式的学习.md" data-text-edit-revision="56dc346d4387c295577df300f135528a1435369ab73211ec0bf2b5b6ad2b09a9" data-text-edit-marker="2cba1a332843d8d7" data-text-edit-schema="1"></div>
 
 
 
@@ -882,8 +959,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

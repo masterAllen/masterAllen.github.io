@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -777,13 +777,27 @@
   
 
 
+<!-- blog-edit-start:e125c6cd1cd0c64a:b0 -->
+
 <h1 id="tcache-stashing-unlink">tcache stashing unlink 记录</h1>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7b88d8d4ed533166578fe45e1088cc8798cea9c7a6506b3e2a9ea1d0c6d60473" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache%5C04.tcache_stashing_unlink.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\04.tcache_stashing_unlink.md">复制路径</span></div>
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b1 -->
 
 <blockquote>
 <p>我觉得二进制安全人员对攻防术语命名真的规范一点了，百分之八十都是很烂的名字。什么 house of xxx，根本体现不出本质，甚至驴头不对马嘴，真的很没有想象力哎。</p>
 </blockquote>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b1 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b2 -->
+
 <h2 id="_1">场景</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b2 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b3 -->
+
 <blockquote>
 <p>要求：可以进行复写 freed chunk 的内容，最常见的就是 Use After Free，如下面的代码<br />
 结果：Write a libc addr to wherever we want &amp;&amp; Create a fake chunk wherever we need</p>
@@ -792,16 +806,52 @@
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">free</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">want_address</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b3 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b4 -->
+
 <p>比如上面的代码，我可以复写某个 freed chunk 中的内容。在以前，是直接修改 <code>a-&gt;fd = want_address</code>，然后两次 <code>malloc(0x20)</code> 就得到数据了。这个也叫 <a href=".././02.tcache_poisoning/">tcache poisoning</a>，但由于 safe-linking 的机制，现在改 <code>fd</code> 需要知道 heap 地址才可以。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b4 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b5 -->
+
 <h2 id="_2">原理说明</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b5 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b6 -->
+
 <p>本质上的思路是：既然我手动修改 <code>fd</code> 需要 heap 地址；那有没有什么办法<strong>把恶意块自动地放入到 tcache 中？</strong> 所以寻找源码，有没有往 tcache 中放东西的操作？有，stash 机制。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b6 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b7 -->
+
 <p>stash 是针对 tcache 的机制，当我们从非 tcache bin 中拿数据时，会把这个堆块链剩下的块尽可能放到 tcache 中。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b7 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b8 -->
+
 <blockquote>
 <p>👉 截至 glibc2.41，翻阅源代码，只有处理 fastbin 和 smallbin 会有 stash 操作。</p>
 </blockquote>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b8 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b9 -->
+
 <h2 id="_3">正确的尝试</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b9 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b10 -->
+
 <p>这里直接说正确的做法。使用了 <code>calloc</code> 进行操作，<code>calloc</code> 和 <code>malloc</code> 不同，它不用 tcache，正确做法如下。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b10 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b11 -->
+
 <p><strong>第一步</strong>，首先申请九个块，然后释放七个填满 tcache，剩下两个则释放到了 unsorted bin 中。注意释放到 unsorted bin 中的两个块不能是紧挨着的，不然就合并了。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b11 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b12 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">9</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">chunk_lis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x90</span><span class="p">);</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">}</span>
@@ -815,6 +865,10 @@
 </span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span><span class="n">free</span><span class="p">(</span><span class="n">chunk_lis</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 </span><span id="__span-1-12"><span class="linenos" data-linenos="12 "></span><span class="n">free</span><span class="p">(</span><span class="n">chunk_lis</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b12 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b13 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>Tcachebins[idx=8, size=0xa0, count=7] ←  Chunk1(addr=0x555555559340)  ←  
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>Chunk8(addr=0x5555555597a0)  ←  Chunk7(addr=0x555555559700)  ←  
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>Chunk6(addr=0x555555559660)  ←  Chunk5(addr=0x5555555595c0)  ←  
@@ -823,9 +877,21 @@
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>unsorted_bins[0]: fw=0x5555555593d0, bk=0x555555559290
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span> →   Chunk2(addr=0x5555555593e0, size=0xa0)   →   Chunk0(addr=0x5555555592a0, size=0xa0)
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b13 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b14 -->
+
 <p><strong>第二步</strong>，把 unsorted bin 转移到 small bin 中，方式是申请一个大块，unsorted bin 中如果没有符合的空闲块，那么会顺手处理 unsorted bin 中的空闲块。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b14 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b15 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0xa0</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b15 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b16 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>Tcachebins[idx=8, size=0xa0, count=7] ←  Chunk1(addr=0x555555559340)  ←  
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>Chunk8(addr=0x5555555597a0)  ←  Chunk7(addr=0x555555559700)  ←  
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>Chunk6(addr=0x555555559660)  ←  Chunk5(addr=0x5555555595c0)  ←  
@@ -834,10 +900,22 @@
 </span><span id="__span-4-6"><span class="linenos" data-linenos="6 "></span>Smallbins[9]: fw=0x5555555593d0, bk=0x555555559290
 </span><span id="__span-4-7"><span class="linenos" data-linenos="7 "></span> →   Chunk2(addr=0x5555555593e0, size=0xa0)   →   Chunk0(addr=0x5555555592a0, size=0xa0)
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b16 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b17 -->
+
 <p><strong>第三步</strong>，清理 tcache 空间，这个攻击需要两个空间，所以我们申请两个块，在 tcache 中留两个空间出来：</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b17 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b18 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x90</span><span class="p">);</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x90</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b18 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b19 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>Tcachebins[idx=8, size=0xa0, count=7] ←  Chunk7(addr=0x555555559700)  ←  
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>Chunk6(addr=0x555555559660)  ←  Chunk5(addr=0x5555555595c0)  ←  
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>Chunk4(addr=0x555555559520)  ←  Chunk3(addr=0x555555559480) 
@@ -845,18 +923,58 @@
 </span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span>Smallbins[9]: fw=0x5555555593d0, bk=0x555555559290
 </span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span> →   Chunk2(addr=0x5555555593e0, size=0xa0)   →   Chunk0(addr=0x5555555592a0, size=0xa0)
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b19 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b20 -->
+
 <p><strong>第四步</strong>，修改 Chunk2 指向的内容，这里就是攻击的要求：需要 Use After Free，这里的 chunk2 已经 free 在 smallbins 中了，但我们还有对应的变量，可以写入内容，我们改写：</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b20 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b21 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">chunk_list</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">want_addr</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b21 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b22 -->
+
 <p>实际上修改的是 <code>bk</code> 指针，如下图所示。注意 <code>chunk_list[2]</code> 指向的是数据区（变量始终指向的是数据），所以偏移一个单位就是 <code>bk</code> 指针。同时也要注意<strong>我们不能修改 <code>fd</code> 指针</strong>。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b22 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b23 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260104093038.png" /></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b23 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b24 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260104094057.png" /></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b24 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b25 -->
+
 <p><strong>第五步</strong>，使用 <code>calloc</code>，这里就是精华。<strong>此时 <code>calloc</code> 不会像 <code>malloc</code> 检查 tcache 是否有，所以最终会从 small bin 中拿</strong>。双向链表是按照 <code>bk</code> 拿数据（FIFO），所以 chunk0 走了。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b25 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b26 -->
+
 <p>拿走之后，开始 stash 操作，我们来看现在的空间：</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b26 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b27 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260105064230.png" /></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b27 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b28 -->
+
 <p>stash 也是通过 <code>bk</code> 来的，由于 tcache 还有两个块，所以 chunk2 和 want 都放入了 tcache 中，最终就是：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>Tcachebins[idx=8] ← Want ← Chunk2 ← Chunk6 ← Chunk5 ← Chunk4 ← Chunk3
 </span></code></pre></div></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b28 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b29 -->
+
 <p>回顾上面的操作，本质上 stash 在 unlink 的时候没有做完整性检查：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/* While bin not empty and tcache not full, copy chunks over.  */</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">tcache</span><span class="o">-&gt;</span><span class="n">counts</span><span class="p">[</span><span class="n">tc_idx</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mp_</span><span class="p">.</span><span class="n">tcache_count</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">tc_victim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="p">(</span><span class="n">bin</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">bin</span><span class="p">)</span>
@@ -873,15 +991,55 @@
 </span><span id="__span-9-13"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-9-14"><span class="linenos" data-linenos="14 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b29 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b30 -->
+
 <p><strong>但这里有一个注意点</strong>，上面的示意图也标注了，Want 中的 <code>bk</code> 不应该为 0！至少需要是一个可写的地址。因为在解链 want 的时候，有 <code>bck-&gt;fd = bin</code>，这里的 <code>bck</code> 就是 <code>want-&gt;bk</code>，所以这里一定要是合法地址才可以！！！</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b30 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b31 -->
+
 <p>其实这一步中，我们已经达成一个目标：向某个地址写入一个 <code>libc</code> 地址。是在解 chunk2 的时候，解链操作有 <code>bck-&gt;fd=bin</code>，这里的 <code>bck</code> 是 Want，而 <code>bin</code> 是 smallbin 头部；所以我们相当于向 <code>want+0x10</code> 写入了 smallbin 某个头部的地址。（偏移量不严谨，不一定对）</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b31 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b32 -->
+
 <p><strong>第六步</strong>，一次 malloc，从而获取了 want 的空间块。这个就达到控制块的目的，更强了。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b32 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b33 -->
+
 <h2 id="fd">思考一：是否可以用 <code>fd</code></h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b33 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b34 -->
+
 <p>很简单，因为解链操作都是用的 <code>bk</code>，如下图所示，如果修改 <code>fd</code>，stash 的时候根本不会把 want 放到 tcache 中。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b34 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b35 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260104115942.png" /></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b35 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b36 -->
+
 <h2 id="bin">思考二：是否可以用其他 bin</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b36 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b37 -->
+
 <p>由于截至到 glibc2.41，只有处理 fastbin 和 smallbin 会有 stash 操作。所以这个其实就是问能否使用 fastbin？</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b37 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b38 -->
+
 <p>但基本不行，因为从 fastbin 解除链接有如下操作：</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b38 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b39 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/* While bin not empty and tcache not full, copy chunks.  */</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">tcache</span><span class="o">-&gt;</span><span class="n">counts</span><span class="p">[</span><span class="n">tc_idx</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mp_</span><span class="p">.</span><span class="n">tcache_count</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">tc_victim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">fb</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos=" 3 "></span><span class="p">{</span>
@@ -899,49 +1057,179 @@
 </span><span id="__span-10-15"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="n">tcache_put</span><span class="w"> </span><span class="p">(</span><span class="n">tc_victim</span><span class="p">,</span><span class="w"> </span><span class="n">tc_idx</span><span class="p">);</span>
 </span><span id="__span-10-16"><span class="linenos" data-linenos="16 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b39 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b40 -->
+
 <p>在 <code>while</code> 语句中，每次的 <code>tc_victim</code> 是从 <code>*fd</code> 而得来；而下一个 <code>*fd</code> 则是通过 <code>REVEAL_PTR(tc_victim-&gt;fd)</code> 得来，这是 safe-linking 那边的操作。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b40 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b41 -->
+
 <p>所以本质上就是 <code>fd</code> 指针用的是 safe-linking，所以和 tcache poisoning 遇到的问题一样，我们必须要知道 heap 地址才可以，否则就会在解链失效。而使用 smallbin 可以的原因就是双向解链没有使用 safe-linking 的机制，所以可以。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b41 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b42 -->
+
 <p>Update：无意中居然引申了这种攻击，没错，如果能知道 heap 地址，这种攻击是可行的，并且可以不用 <code>calloc</code> 来做（见思考四）。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b42 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b43 -->
+
 <h2 id="tcache">思考三：为什么 tcache 一定要留两个空间</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b43 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b44 -->
+
 <p>首先如果留有一个空间，我们没办法控制最终的 Want 块。当然如果我们真的只能留有一个空间，我们还是可以做到 Write a libc addr to wherever we want，因为把 Chunk2 从 smallbin 取出的时候，会让 <code>bck-&gt;fd = bin</code>，这里 <code>bck</code> 是 Want 块，而 <code>bin</code> 是 smallbin 头部地址。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b44 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b45 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span>// 留有两个块
 </span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span>Tcachebins[idx=8] ← Want ← Chunk2 ← Chunk6 ← Chunk5 ← Chunk4 ← Chunk3
 </span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-11-4"><span class="linenos" data-linenos="4 "></span>// 留有一个块
 </span><span id="__span-11-5"><span class="linenos" data-linenos="5 "></span>Tcachebins[idx=8] ← Chunk2 ← Chunk6 ← Chunk5 ← Chunk4 ← Chunk3 ← ChunkX
 </span></code></pre></div>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b45 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b46 -->
+
 <p>那如果留有不止两个空间，看思考四，本质上是一样的。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b46 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b47 -->
+
 <h2 id="calloc">思考四：不用 calloc</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b47 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b48 -->
+
 <p>似乎不用 <code>calloc</code> 绕过 tcache 也是可以的？</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b48 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b49 -->
+
 <p>假如不绕过，因为 stash 是从 smallbin 中找到数据之后顺手做的，而第一步总是要从 tcache 中找，<strong>所以只能是：tcache 为空，而 smallbin 有</strong>。所以这样的操作呢：</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b49 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b50 -->
+
 <p>前面还是一样，把 7 个块放入 tcache，2 个块放入 small 中；而之后做法不同：</p>
 <ul>
 <li>之前的做法是做 2 次 <code>malloc</code>，让 tcache 留有 2 个空间</li>
 <li>现在直接做 7 次 <code>malloc</code>，直接<strong>清空 tcache</strong></li>
 </ul>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b50 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b51 -->
+
 <p>此时再故技重施，修改 <code>bk</code> 指针，是不是还是可以？其实理论上是可以的。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b51 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b52 -->
+
 <p>在解除 Want 块的时候，解链需要进行 <code>bck-&gt;fd=bin</code>，这里的 <code>bck</code> 是 <code>want-&gt;bk</code>。所以我们之前说 want 块中的 <code>bk</code> 位置一定要是合法地址。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b52 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b53 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260105064230.png" /></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b53 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b54 -->
+
 <p>之前解除 want 块之后，由于 tcache 满了所以就不继续了。但如果我们释放不仅仅两个空间，所以会继续根据 <code>bk</code> 往下找，<strong>理论上如果 <code>want-&gt;bk</code> 的块中 <code>bk</code> 内容是合法地址，那依然可以 <code>want-&gt;bk</code> 放入 tcache 中。</strong></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b54 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b55 -->
+
 <p>然后依次反复，要求 <code>bk</code> 指向块的 <code>bk</code> 中的内容是合法地址。所以理论上，这样做是可以的，甚至可以得到一系列链，但是可能有点难度...</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b55 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b56 -->
+
 <p>同理，思考三中的问题，如果 tcache 留有空间超过两个会怎么样。答案就是会继续往下找。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b56 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b57 -->
+
 <h2 id="_4">思考四的延申一</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b57 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b58 -->
+
 <p>在上面的思考四中，需要 smallbin 中的 <code>bk</code> 一直是合法。由于我们不用 <code>calloc</code>，即必须要求是 tcache 之前是空的，所以意味着我们构造的 want 块，可以满足六七次解链操作，基本不可能。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b58 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b59 -->
+
 <p>但其实思维定势了！！凭什么 smallbin 只能有两个块？？之前是 <code>free</code> 两次到 smallbin 中，现在改成 <code>free</code> 七次呗。即构造出下面这样不就可以了，当然要注意这里面的块不能挨着，不然从 unsorted 到 small 的过程会合并。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b59 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b60 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260105093618.png" /></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b60 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b61 -->
+
 <h2 id="_5">思考四的延申二</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b61 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b62 -->
+
 <p>同理，思考二中想要 fastbin，当时给出的结论是：因为修改的是 <code>fd</code>，所以需要 heap 地址来绕过 safe-linking。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b62 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b63 -->
+
 <p>那假设我们知道 hepa 地址了，按照上面的方式，直接使用 <code>malloc</code> 也是可以做的。这里使用不同类型的 bin 其实有一个比较含蓄巧妙的优劣势。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b63 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b64 -->
+
 <p>smallbin 的好处，或者说 fastbin 的坏处，很显然了：如果使用 fastbin，那么需要解决 safe-linking，即需要知道 heap 地址，而使用 smallbin 则不需要。本质是二者的解链有区别，smallbin 的 <code>bk</code> 没有使用 safe-linking。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b64 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b65 -->
+
 <p>那么使用 fastbin 有什么好处吗？有的，此时不用管 Want 块的 <code>fd</code> 是否是合法地址。因为 fastbin 是单向链，所以 stash 的时候是不断从头部取出，没有对 <code>want-&gt;fd</code> 指向的内容进行赋值的操作。而使用 smallbin 双向链表，有 <code>bck-&gt;fd = bin</code> 即 <code>want-&gt;bk-&gt;fd = bin</code> 这一操作，所以要求 Want 块的 <code>bk</code> 是合法地址。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b65 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b66 -->
+
 <p>其实这里就叫做 fastbin reverse into tcache...</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b66 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b67 -->
+
 <h2 id="241">2.41 后失效</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b67 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b68 -->
+
 <p>那么作为 glibc 作者，如何防护这种攻击，一种思路是双向链表解链多加一些检查。而 2.41 之后，解决方式就更直接了：<code>calloc</code> 也检查 tcache... 思考四说的绕过 <code>calloc</code> 还能奏效。</p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b68 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b69 -->
+
 <p>所以我当时还以为 <code>calloc</code> 不用 tcache 是考虑到什么特殊因素，其实没啥... 具体链接：<a href="https://sourceware.org/bugzilla/show_bug.cgi?id=25183">https://sourceware.org/bugzilla/show_bug.cgi?id=25183</a></p>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b69 -->
+
+<!-- blog-edit-start:e125c6cd1cd0c64a:b70 -->
+
 <h2 id="_6">参考</h2>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b70 -->
+<!-- blog-edit-start:e125c6cd1cd0c64a:b71 -->
+
 <ol>
 <li><a href="https://blog.csdn.net/qq_41202237/article/details/113604261">https://blog.csdn.net/qq_41202237/article/details/113604261</a></li>
 </ol>
+<!-- blog-edit-end:e125c6cd1cd0c64a:b71 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\04.tcache_stashing_unlink.md" data-text-edit-revision="7b88d8d4ed533166578fe45e1088cc8798cea9c7a6506b3e2a9ea1d0c6d60473" data-text-edit-marker="e125c6cd1cd0c64a" data-text-edit-schema="1"></div>
 
 
 
@@ -1173,8 +1461,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

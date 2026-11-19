@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -646,14 +646,31 @@
 <h1 id="babystack">babystack</h1>
 <div class="file-actions" data-image-edit-revision="a95cafaf1c0a82ce9342631485dada33dd7e01c89ca329a0c92ec6e55e0a6aeb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C16_babystack%5Cbabystack.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C16_babystack" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\16_babystack\babystack.md">复制路径</span></div>
 
+<!-- blog-edit-start:a95cafaf1c0a82ce:b0 -->
+
 <p>BabyStack</p>
+<!-- blog-edit-end:a95cafaf1c0a82ce:b0 -->
+
+<!-- blog-edit-start:a95cafaf1c0a82ce:b1 -->
+
 <p>也是一个很简单的题目，就写点概要吧。</p>
+<!-- blog-edit-end:a95cafaf1c0a82ce:b1 -->
+
+<!-- blog-edit-start:a95cafaf1c0a82ce:b2 -->
+
 <p>→ 关键点在于strlen，因为是统计到'\x00'结尾，所以可以人为地进行控制结果<br />
 → 以上漏洞的组合就是(value = strlen → strcmp(value))，可以爆破，反复比较</p>
+<!-- blog-edit-end:a95cafaf1c0a82ce:b2 -->
+
+<!-- blog-edit-start:a95cafaf1c0a82ce:b3 -->
+
 <p>脆弱代码:<br />
 s_len = strlen(&amp;s);<br />
 if ( strncmp(&amp;s, result, s_len) )<br />
     return puts("Failed !");</p>
+<!-- blog-edit-end:a95cafaf1c0a82ce:b3 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\16_babystack\babystack.md" data-text-edit-revision="a95cafaf1c0a82ce9342631485dada33dd7e01c89ca329a0c92ec6e55e0a6aeb" data-text-edit-marker="a95cafaf1c0a82ce" data-text-edit-schema="1"></div>
 
 
 
@@ -885,8 +902,6 @@ if ( strncmp(&amp;s, result, s_len) )<br />
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

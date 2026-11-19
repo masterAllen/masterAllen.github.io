@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -728,11 +728,25 @@
   
 
 
+<!-- blog-edit-start:24af680ac55811e5:b0 -->
+
 <h1 id="large-bin-attack">large bin attack</h1>
+<!-- blog-edit-end:24af680ac55811e5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1b92d0b60ef84bc492cc7367e11a1268b90d46720a4cb9c1cd911363dc653aa2" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C05.large%5C01.large_bin_attack.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C05.large" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\05.large\01.large_bin_attack.md">复制路径</span></div>
 
+<!-- blog-edit-start:24af680ac55811e5:b1 -->
+
 <p>建议先看一下 unsorted bin attack（<a href="../../04.unsorted/01.unsorted_bin_attack/">个人笔记</a>），然后也要了解 large bin，他除了 fd 和 bk 指针，还有一个叫 fd_nextsize 和 bk_nextsize 指针。</p>
+<!-- blog-edit-end:24af680ac55811e5:b1 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b2 -->
+
 <h2 id="fd_nextsize-bk_nextsize">理解 fd_nextsize 和 bk_nextsize</h2>
+<!-- blog-edit-end:24af680ac55811e5:b2 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b3 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/*</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="cm">  This struct declaration is misleading (but accurate and necessary).</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="cm">  It declares a &quot;view&quot; into memory allowing access to necessary</span>
@@ -748,15 +762,43 @@
 </span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">malloc_chunk</span><span class="o">*</span><span class="w"> </span><span class="n">bk_nextsize</span><span class="p">;</span>
 </span><span id="__span-0-14"><span class="linenos" data-linenos="14 "></span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:24af680ac55811e5:b3 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b4 -->
+
 <p>要理解这两个指针，<strong>首先要明白 large bin 的大小属于是一个范围</strong>，即一个 index 下的块大小不是唯一的，large bin 从 64 开始：</p>
+<!-- blog-edit-end:24af680ac55811e5:b4 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b5 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>index   块的范围
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>64  [0x400,0x440) 0x40
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>65  [0x440,0x480) 0x40
 </span></code></pre></div>
+<!-- blog-edit-end:24af680ac55811e5:b5 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b6 -->
+
 <p>所以这里的 fd_next_size 相当于是跨度大的链表指针，fd 用于跨度小的链表指针。</p>
+<!-- blog-edit-end:24af680ac55811e5:b6 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b7 -->
+
 <h2 id="_1">原理</h2>
+<!-- blog-edit-end:24af680ac55811e5:b7 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b8 -->
+
 <p>unsorted bin 的攻击是某个块脱链的时候，我们进行攻击。而 large bin 则相反，<strong>是某个块被插入的时候，有可能被攻击</strong>。</p>
+<!-- blog-edit-end:24af680ac55811e5:b8 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b9 -->
+
 <p>这个是具体的插入代码，不同的 size 有不同的处理（比如假设比所有 large bin 都要写，有一个单独的插入逻辑）：</p>
+<!-- blog-edit-end:24af680ac55811e5:b9 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b10 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">in_smallbin_range</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">victim_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smallbin_index</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
@@ -826,13 +868,45 @@
 </span><span id="__span-2-67"><span class="linenos" data-linenos="67 "></span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
 </span><span id="__span-2-68"><span class="linenos" data-linenos="68 "></span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:24af680ac55811e5:b10 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b11 -->
+
 <h3 id="glibc230">glibc2.30 前的攻击</h3>
+<!-- blog-edit-end:24af680ac55811e5:b11 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b12 -->
+
 <p>unsorted chunk 中原来有一个块，我们叫做 X，然后让 X 脱链，它进入 large bin 的时候，根据不同的 size 情况有不同的插入操作。</p>
+<!-- blog-edit-end:24af680ac55811e5:b12 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b13 -->
+
 <p>总之有一个控制流能进行如下的攻击，这里的 <code>victim</code> 就是 X，我们不用控制它，这里的 <code>fwd</code> 是原来就在 large bin 的块，<strong>我们需要控制 <code>fwd</code>。</strong></p>
+<!-- blog-edit-end:24af680ac55811e5:b13 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b14 -->
+
 <p><img alt="" src="../../../../../../asset/image/3607e4d3285530ddc041da2c1034550c/20260128112057.png" /></p>
+<!-- blog-edit-end:24af680ac55811e5:b14 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b15 -->
+
 <p>从上图看，我们可以在<strong>两个 target 地址上写入 <code>victim</code>，即写入堆的某个地址。</strong></p>
+<!-- blog-edit-end:24af680ac55811e5:b15 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b16 -->
+
 <h3 id="glibc229">glibc2.29 后的攻击</h3>
+<!-- blog-edit-end:24af680ac55811e5:b16 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b17 -->
+
 <p>glibc2.29 做了检查，也就是我们不能随便修改 <code>fwd</code> 里面的内容了：</p>
+<!-- blog-edit-end:24af680ac55811e5:b17 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b18 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="p">;</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="p">;</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>
@@ -843,7 +917,15 @@
 </span><span id="__span-3-8"><span class="linenos" data-linenos="8 "></span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
 </span><span id="__span-3-9"><span class="linenos" data-linenos="9 "></span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:24af680ac55811e5:b18 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b19 -->
+
 <p>但是回看原理这一节最开始给的大段代码，如果要插入的块比 largebin 所有的块都要小，那么代码是：</p>
+<!-- blog-edit-end:24af680ac55811e5:b19 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b20 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// large bin 从大到小排列</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span><span class="c1">// 如果进入 if，说明要插入的 size 是 largebin 最小，需要加入到尾部</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">bk</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
@@ -856,7 +938,15 @@
 </span><span id="__span-4-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="o">-&gt;</span><span class="n">fd_nextsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span><span class="p">;</span>
 </span><span id="__span-4-11"><span class="linenos" data-linenos="11 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:24af680ac55811e5:b20 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b21 -->
+
 <p>这里的 <code>fwd-&gt;fd</code> 也是 largebin 中的块，我们要控制它：</p>
+<!-- blog-edit-end:24af680ac55811e5:b21 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b22 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="nl">do</span><span class="p">:</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">fd</span><span class="o">-&gt;</span><span class="n">bk_nextsize</span><span class="w"> </span><span class="o">==&gt;</span><span class="w"> </span><span class="n">target_addr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">0x20</span><span class="p">;</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -869,19 +959,49 @@
 </span><span id="__span-5-10"><span class="linenos" data-linenos="10 "></span><span class="o">&lt;===&gt;</span>
 </span><span id="__span-5-11"><span class="linenos" data-linenos="11 "></span><span class="n">target_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">victim</span>
 </span></code></pre></div>
+<!-- blog-edit-end:24af680ac55811e5:b22 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b23 -->
+
 <p>所以这里我们是控制 <code>fwd-&gt;fd</code>，达到<strong>在一个 target 地址上</strong>写入某个 libc 地址的目的。</p>
+<!-- blog-edit-end:24af680ac55811e5:b23 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b24 -->
+
 <h2 id="_2">攻击后续</h2>
+<!-- blog-edit-end:24af680ac55811e5:b24 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b25 -->
+
 <p>总结而言，达到的效果是：</p>
+<!-- blog-edit-end:24af680ac55811e5:b25 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b26 -->
+
 <ol>
 <li>glibc2.30 前，控制 largebin 中的某一个块，实现对两个 target 地址写入 libc 地址</li>
 <li>glibc2.30 后，控制 largebin 中的某一个块，实现对一个 target 地址写入 libc 地址</li>
 </ol>
+<!-- blog-edit-end:24af680ac55811e5:b26 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b27 -->
+
 <p>都是写入内容，至于这种方式如何用，可以参考 unsorted bin attack 文章（<a href="../../04.unsorted/01.unsorted_bin_attack/">个人笔记</a>）中的内容。</p>
+<!-- blog-edit-end:24af680ac55811e5:b27 -->
+
+<!-- blog-edit-start:24af680ac55811e5:b28 -->
+
 <h2 id="_3">参考资料</h2>
+<!-- blog-edit-end:24af680ac55811e5:b28 -->
+<!-- blog-edit-start:24af680ac55811e5:b29 -->
+
 <ol>
 <li><a href="https://blog.wjhwjhn.com/posts/large-bin-attack-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95">https://blog.wjhwjhn.com/posts/large-bin-attack-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95</a></li>
 <li><a href="https://www.cnblogs.com/tolele/p/16728502.html">https://www.cnblogs.com/tolele/p/16728502.html</a> （虽然是讲 house of storm，但刚开始提到了 largebin attack）</li>
 </ol>
+<!-- blog-edit-end:24af680ac55811e5:b29 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\05.large\01.large_bin_attack.md" data-text-edit-revision="1b92d0b60ef84bc492cc7367e11a1268b90d46720a4cb9c1cd911363dc653aa2" data-text-edit-marker="24af680ac55811e5" data-text-edit-schema="1"></div>
 
 
 
@@ -1113,8 +1233,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

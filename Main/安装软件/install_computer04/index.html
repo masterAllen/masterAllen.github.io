@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -638,42 +638,100 @@
   
 
 
+<!-- blog-edit-start:d477e296fb335ecb:b0 -->
+
 <h1 id="_1">装机记四：科学提速</h1>
+<!-- blog-edit-end:d477e296fb335ecb:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d477e296fb335ecb56bfe675cb63b268b2f2568b315d0a9c429269bdc87762d7" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%5Cinstall_computer04.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\安装软件\install_computer04.md">复制路径</span></div>
+
+<!-- blog-edit-start:d477e296fb335ecb:b1 -->
 
 <p>连接外网的设置。</p>
 <!--more-->
 
+<!-- blog-edit-end:d477e296fb335ecb:b1 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b2 -->
+
 <h2 id="pip">pip</h2>
+<!-- blog-edit-end:d477e296fb335ecb:b2 -->
+<!-- blog-edit-start:d477e296fb335ecb:b3 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># vim ~/.pip/pip.conf</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="o">[</span>global<span class="o">]</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>index-url<span class="w"> </span><span class="o">=</span><span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple
 </span></code></pre></div>
+<!-- blog-edit-end:d477e296fb335ecb:b3 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b4 -->
+
 <ul>
 <li>没有文件夹或者文件就创建一个</li>
 <li>不要缩进</li>
 </ul>
+<!-- blog-edit-end:d477e296fb335ecb:b4 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b5 -->
+
 <h2 id="v2ray">v2ray</h2>
+<!-- blog-edit-end:d477e296fb335ecb:b5 -->
+<!-- blog-edit-start:d477e296fb335ecb:b6 -->
+
 <p>1. 安装好<code>v2ray</code>, <code>v2sub</code>(订阅需要) <br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>v2ray<span class="w"> </span>v2sub
 </span></code></pre></div></p>
+<!-- blog-edit-end:d477e296fb335ecb:b6 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b7 -->
+
 <p>2. 魔改 <code>/usr/lib/python3.8/site-packages/v2sub</code></p>
+<!-- blog-edit-end:d477e296fb335ecb:b7 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b8 -->
+
 <ul>
 <li><code>port</code>: 1080 -- 2333</li>
 <li><code>config.py</code>: <code>get_config()</code> → 返回的json格式改掉</li>
 <li><code>subscribe.py</code>: <code>parse_subscribe</code> → 处理trojon格式</li>
 </ul>
+<!-- blog-edit-end:d477e296fb335ecb:b8 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b9 -->
+
 <p>3. 下载SwitchyOmega，设置代理端口即可(我的端口是2333)</p>
+<!-- blog-edit-end:d477e296fb335ecb:b9 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b10 -->
+
 <h2 id="git-clone">git clone</h2>
+<!-- blog-edit-end:d477e296fb335ecb:b10 -->
+<!-- blog-edit-start:d477e296fb335ecb:b11 -->
+
 <p>1. 前提条件，已经可以连接国外网络，以本机代理端口为2333为例</p>
+<!-- blog-edit-end:d477e296fb335ecb:b11 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b12 -->
+
 <p>2. 编辑<code>gitconfig</code> 文件 <br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="o">[</span>http<span class="o">]</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="nv">postBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">524288000</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nv">proxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>socks5://127.0.0.1:2333
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="c1"># proxy = socks5h://127.0.0.1:2333</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:d477e296fb335ecb:b12 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b13 -->
+
 <p>3. 说明，<code>socks5</code>用本地来解析地址，<code>socks5h</code>是用代理服务器来解析地址，遇到卡顿这两个切换着试一试。</p>
+<!-- blog-edit-end:d477e296fb335ecb:b13 -->
+
+<!-- blog-edit-start:d477e296fb335ecb:b14 -->
+
 <h2 id="yay">yay</h2>
+<!-- blog-edit-end:d477e296fb335ecb:b14 -->
+<!-- blog-edit-start:d477e296fb335ecb:b15 -->
+
 <p>1. 用<code>proxychains4</code>，但是貌似要重新用<code>gcc-go</code>代替<code>go</code>来进行编译<code>yay</code>，所以弃用<br />
 2. 用<code>polipo</code>，即直接全局代理，完事之后关闭就行<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 安装配置: /etc/polipo/config</span>
@@ -691,6 +749,9 @@
 </span><span id="__span-3-13"><span class="linenos" data-linenos="13 "></span><span class="c1"># 测试</span>
 </span><span id="__span-3-14"><span class="linenos" data-linenos="14 "></span>curl<span class="w"> </span>https://ip.info
 </span></code></pre></div></p>
+<!-- blog-edit-end:d477e296fb335ecb:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\安装软件\install_computer04.md" data-text-edit-revision="d477e296fb335ecb56bfe675cb63b268b2f2568b315d0a9c429269bdc87762d7" data-text-edit-marker="d477e296fb335ecb" data-text-edit-schema="1"></div>
 
 
 
@@ -922,8 +983,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

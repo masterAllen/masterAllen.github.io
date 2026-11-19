@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -712,36 +712,118 @@
   
 
 
+<!-- blog-edit-start:1343360a1b0df15f:b0 -->
+
 <h1 id="_1">各向异性滤波记录</h1>
+<!-- blog-edit-end:1343360a1b0df15f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8cddce666355397b257e69e8dea47100cb848232bf16e309cae8946b4f9d1743" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5C%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2%5C%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C01.%E5%90%84%E7%A7%8D%E6%BB%A4%E6%B3%A2%5C%E5%90%84%E5%90%91%E5%BC%82%E6%80%A7%E6%BB%A4%E6%B3%A2" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\01.各种滤波\各向异性滤波\各向异性滤波简单记录.md">复制路径</span></div>
 
+<!-- blog-edit-start:1343360a1b0df15f:b1 -->
+
 <p>通常用在图像去噪上，文章许多文字来自别的文章，以下是参考链接：</p>
+<!-- blog-edit-end:1343360a1b0df15f:b1 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b2 -->
+
 <p>1. <a href="https://zhuanlan.zhihu.com/p/443182644">https://zhuanlan.zhihu.com/p/443182644</a><br />
 2. <a href="https://www.zhihu.com/question/430771515/answer/2738003246">https://www.zhihu.com/question/430771515/answer/2738003246</a><br />
 3. <a href="https://www.zhihu.com/question/430771515/answer/1597682592">https://www.zhihu.com/question/430771515/answer/1597682592</a></p>
+<!-- blog-edit-end:1343360a1b0df15f:b2 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b3 -->
+
 <h2 id="_2">基本思想</h2>
+<!-- blog-edit-end:1343360a1b0df15f:b3 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b4 -->
+
 <p>传统滤波时，各个方向都一视同仁，边缘和平坦区域都做平滑，去噪的同时容易丢失边缘等有意义的高频，如高斯滤波、均值滤波等。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b4 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b5 -->
+
 <p>因此考虑在做滤波时，各个方向不是一视同仁的，边缘等高频跟平坦区域会区别对待。其实双边滤波也是类似的思路。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b5 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b6 -->
+
 <h2 id="_3">公式解释</h2>
+<!-- blog-edit-end:1343360a1b0df15f:b6 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b7 -->
+
 <p>Perona P, Malik J 于 1990 年提出了 PM 扩散方程，其基本公式为 </p>
+<!-- blog-edit-end:1343360a1b0df15f:b7 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b8 -->
+
 <div class="arithmatex">\[
 \frac{\partial u}{\partial t} = \text{div}(c(u)\nabla u)
 \]</div>
+<!-- blog-edit-end:1343360a1b0df15f:b8 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b9 -->
+
 <p>其中 <span class="arithmatex">\(u\)</span> 是图像，<span class="arithmatex">\(t\)</span> 是第几次迭代，<span class="arithmatex">\(c(u)\)</span> 是扩散的传导函数，<span class="arithmatex">\(\nabla u\)</span> 是梯度，<span class="arithmatex">\(\text{div}\)</span> 是散度，有些会在下面详细解释。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b9 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b10 -->
+
 <h3 id="_4">迭代</h3>
+<!-- blog-edit-end:1343360a1b0df15f:b10 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b11 -->
+
 <p>所以每次迭代，计算 <span class="arithmatex">\(u(t+1) = u(t) + \lambda * \partial u / \partial t\)</span> 进行更新就行。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b11 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b12 -->
+
 <p>这里的 <span class="arithmatex">\(\lambda\)</span> 取值越大越平滑。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b12 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b13 -->
+
 <h3 id="_5">散度计算</h3>
+<!-- blog-edit-end:1343360a1b0df15f:b13 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b14 -->
+
 <p>散度的这个概念是高数后面开始涉及的，就是高斯 - 斯托克斯那个部分。具体推导不谈，反正直到散度的重要性在于，可用表征空间各点矢量场发散的强弱程度。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b14 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b15 -->
+
 <p>散度的计算如下，<span class="arithmatex">\(\mathbf{v} = \{f(x, y, z), g(x, y, z), h(x, y, z)\}\)</span>：</p>
+<!-- blog-edit-end:1343360a1b0df15f:b15 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b16 -->
+
 <div class="arithmatex">\[
 \text{div}(\mathbf{v}) = \frac{\partial f(x, y, z)}{\partial x} + \frac{\partial g(x, y, z)}{\partial y} + \frac{\partial h(x, y, z)}{\partial z}
 \]</div>
+<!-- blog-edit-end:1343360a1b0df15f:b16 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b17 -->
+
 <p>回看 PM 扩散方程的公式，我们先忽略 <span class="arithmatex">\(c(u)\)</span> 的定义，假设它都是 1；而另一个项目 <span class="arithmatex">\(\nabla u\)</span> 是梯度，即 <span class="arithmatex">\(\nabla u = (\partial u / \partial x, \partial u / \partial y)\)</span>。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b17 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b18 -->
+
 <p>很多图像处理的文章讲到这里就直接给如下公式，然后说这就是拉普拉斯，非常让人迷惑：</p>
+<!-- blog-edit-end:1343360a1b0df15f:b18 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b19 -->
+
 <div class="arithmatex">\[
 \text{div}(\nabla u) = \frac{\partial^{2} u}{\partial x^2} + \frac{\partial^{2} u}{\partial y^2}
 \]</div>
+<!-- blog-edit-end:1343360a1b0df15f:b19 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b20 -->
+
 <details class="note">
 <summary>详细讲一下为什么这样</summary>
 <p>为了方便，把 <span class="arithmatex">\(\partial u / \partial x\)</span> 记作 <span class="arithmatex">\(H\)</span>，<span class="arithmatex">\(\partial u / \partial y\)</span> 记作 <span class="arithmatex">\(V\)</span>。</p>
@@ -783,14 +865,34 @@ V(p, q) = u(p, q) - u(p-1, q)
 \]</div>
 <p>其中 <span class="arithmatex">\(\nabla_{E}(u) = u(x,y+1)-u(x,y)\)</span>，<span class="arithmatex">\(\nabla_{W}(u) = u(x,y-1)-u(x,y)\)</span>，另外两个同理。</p>
 </details>
+<!-- blog-edit-end:1343360a1b0df15f:b20 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b21 -->
+
 <h3 id="_6">扩散传导函数</h3>
+<!-- blog-edit-end:1343360a1b0df15f:b21 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b22 -->
+
 <p>这里的 <span class="arithmatex">\(c(x)\)</span> 有不同的类型，常见的有：</p>
+<!-- blog-edit-end:1343360a1b0df15f:b22 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b23 -->
+
 <div class="arithmatex">\[
 c1(x) = \text{exp}\left(-(x / k)^2\right)
 \]</div>
+<!-- blog-edit-end:1343360a1b0df15f:b23 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b24 -->
+
 <div class="arithmatex">\[
 c2(x) = \frac{1}{1+(x / k)^2}
 \]</div>
+<!-- blog-edit-end:1343360a1b0df15f:b24 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b25 -->
+
 <div class="arithmatex">\[
 c3(x) = \left\{ 
 \begin{array}{ll} 
@@ -799,13 +901,36 @@ c3(x) = \left\{
 \end{array} 
 \right\}
 \]</div>
+<!-- blog-edit-end:1343360a1b0df15f:b25 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b26 -->
+
 <p>这里的 <span class="arithmatex">\(k\)</span> 表示控制扩散的对比因子，值越大越平滑，越不易保留边缘。具体的函数一般常用前两个。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b26 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b27 -->
+
 <h3 id="_7">综合</h3>
+<!-- blog-edit-end:1343360a1b0df15f:b27 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b28 -->
+
 <p>综上，公式如下，从公式可以发现 <span class="arithmatex">\(c(u)\)</span> 也分了方向，即不同方向的系数不同：</p>
+<!-- blog-edit-end:1343360a1b0df15f:b28 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b29 -->
+
 <div class="arithmatex">\[
 u(t+1) = u(t) + \lambda * \sum^{E,W,N,S}_{d}\bigg(c(\nabla_d(u)) * \nabla_d(u)\bigg)
 \]</div>
+<!-- blog-edit-end:1343360a1b0df15f:b29 -->
+
+<!-- blog-edit-start:1343360a1b0df15f:b30 -->
+
 <p>其中 <span class="arithmatex">\(c(x)\)</span> 参考上面的扩散传导函数，<span class="arithmatex">\(\nabla_d(u)\)</span> 是差分算子，<span class="arithmatex">\(d\)</span> 是方向。</p>
+<!-- blog-edit-end:1343360a1b0df15f:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\01.各种滤波\各向异性滤波\各向异性滤波简单记录.md" data-text-edit-revision="8cddce666355397b257e69e8dea47100cb848232bf16e309cae8946b4f9d1743" data-text-edit-marker="1343360a1b0df15f" data-text-edit-schema="1"></div>
 
 
 
@@ -1037,8 +1162,6 @@ u(t+1) = u(t) + \lambda * \sum^{E,W,N,S}_{d}\bigg(c(\nabla_d(u)) * \nabla_d(u)\b
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

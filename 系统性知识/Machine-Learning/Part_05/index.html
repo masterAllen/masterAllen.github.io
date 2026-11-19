@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -716,42 +716,140 @@
   
 
 
+<!-- blog-edit-start:0bff1bdf63fe768a:b0 -->
+
 <h1 id="chap8-9">泛化和正则化(Chap.8-9)</h1>
+<!-- blog-edit-end:0bff1bdf63fe768a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0bff1bdf63fe768a4b6e8fdffdc7aaabc307481ea44cff74bed8d32641d6401d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CMachine-Learning%5CPart_05.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CMachine-Learning" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Machine-Learning\Part_05.md">复制路径</span></div>
 
+<!-- blog-edit-start:0bff1bdf63fe768a:b1 -->
+
 <p><strong>泛化: generalization, 正则化: Regularization</strong></p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b1 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b2 -->
+
 <p>这里其实没什么说的，都是比较碎的知识。而且到后面很多都是悬而未决的问题。</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b2 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b3 -->
+
 <h2 id="k-fold-cross-validation">K fold cross validation</h2>
+<!-- blog-edit-end:0bff1bdf63fe768a:b3 -->
+<!-- blog-edit-start:0bff1bdf63fe768a:b4 -->
+
 <p>这个还用说吗，就是分成 K 份，然后用 K-1 训练，用剩余的预测。<strong>leave-one-out cross validation</strong> 是指 K 等于样本数目时，此时每次预测一份。</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b4 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b5 -->
+
 <h2 id="online-learning">Online learning</h2>
+<!-- blog-edit-end:0bff1bdf63fe768a:b5 -->
+<!-- blog-edit-start:0bff1bdf63fe768a:b6 -->
+
 <p>每次来一个 <code>(x(i), y(i))</code>，进行更新</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b6 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b7 -->
+
 <h2 id="implicit-regularization-effect">Implicit regularization effect</h2>
+<!-- blog-edit-end:0bff1bdf63fe768a:b7 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b8 -->
+
 <h3 id="_1">解释</h3>
+<!-- blog-edit-end:0bff1bdf63fe768a:b8 -->
+<!-- blog-edit-start:0bff1bdf63fe768a:b9 -->
+
 <p>9.2 节讲的这个，这是深度学习产生的新概念：传统的算法是认为有一个全局的最小值，对于这个优化问题，最终都到达那个最小值。但是深度学习中，却发现很多时候它之后还会有一些下降上升的变化情况，而且不同的学习率也会导致不同的问题。</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b9 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b10 -->
+
 <p>直接看图解释比较好:</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b10 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b11 -->
+
 <p>Fig.9.1 先看虚线，能够看到他训练的时候有两个合理的谷底，但是看实现，预测时候左边谷底要比右边的好。<br />
 <img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250818215408.png" /></p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b11 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b12 -->
+
 <p>Fig.9.2 先看右边的图，同样的看虚线，两个颜色训练时候最终的 loss 是一样的，结果预测就有区别了。它们的区别只是 initialization 不同。<br />
 <img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250818215423.png" /></p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b12 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b13 -->
+
 <p>Fig.9.2 再看左边的图，同样的看虚线，两个颜色训练时候最终的 loss 是一样的，结果预测就有区别了。它们的区别只是 learning-rate 不同。<br />
 <img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250818215435.png" /></p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b13 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b14 -->
+
 <h3 id="_2">说明</h3>
+<!-- blog-edit-end:0bff1bdf63fe768a:b14 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b15 -->
+
 <ul>
 <li>这个说明深度学习，我们训练即使得到好的结果，也不能大意，尽量继续再去修改。</li>
 <li>训练时候的这几个谷底，以及训练时候选择什么 initialization 和 learning-rate，这个都还在要研究中。</li>
 <li>有一个经验是：大的 learning-rate，小的 initialization，小的 batch-size，小的 momentum 似乎更好</li>
 </ul>
+<!-- blog-edit-end:0bff1bdf63fe768a:b15 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b16 -->
+
 <h2 id="double-descent">Double descent</h2>
+<!-- blog-edit-end:0bff1bdf63fe768a:b16 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b17 -->
+
 <h3 id="model-wise-double-descent">model-wise double descent</h3>
+<!-- blog-edit-end:0bff1bdf63fe768a:b17 -->
+<!-- blog-edit-start:0bff1bdf63fe768a:b18 -->
+
 <p>8.2 节介绍，一个在深度学习开始的概念。如下图所示，实际就是当参数数目增大时，会出现 error 降低的现象！而且很多时候，这个第二次降低反而之后会得到更好的结果，而且还没有上升降低上升降低的情况了。（Update：这就是 scaling law，改变世界的一个思想，大模型的思路）</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b18 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b19 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250818215537.png" /></p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b19 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b20 -->
+
 <h3 id="sample-wise-double-descent">sample-wise double descent</h3>
+<!-- blog-edit-end:0bff1bdf63fe768a:b20 -->
+<!-- blog-edit-start:0bff1bdf63fe768a:b21 -->
+
 <p>8.2 节介绍，一个在深度学习开始的概念。直观上：训练样本越多越好？可实际情况却不是这样，看图，而且往往是样本数和训练参数相等时候会误差最大。</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b21 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b22 -->
+
 <h3 id="_3">解决</h3>
+<!-- blog-edit-end:0bff1bdf63fe768a:b22 -->
+<!-- blog-edit-start:0bff1bdf63fe768a:b23 -->
+
 <p>加入一个比较好的正则项，似乎可以有效减少甚至消除上面的 model-wise 和 sample-wise double descent 的情况。<br />
 但真的吗？为什么？以及如何选？这个全在研究中。但是有一个解释是梯度下降引入了上面一章的 <em>implicit regularization effect</em>，导致最终的结果有问题，这个解释没太懂，算了，不强求理解了。</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b23 -->
+
+<!-- blog-edit-start:0bff1bdf63fe768a:b24 -->
+
 <h2 id="vc">VC 维度</h2>
+<!-- blog-edit-end:0bff1bdf63fe768a:b24 -->
+<!-- blog-edit-start:0bff1bdf63fe768a:b25 -->
+
 <p>这个太难了，我去</p>
+<!-- blog-edit-end:0bff1bdf63fe768a:b25 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Machine-Learning\Part_05.md" data-text-edit-revision="0bff1bdf63fe768a4b6e8fdffdc7aaabc307481ea44cff74bed8d32641d6401d" data-text-edit-marker="0bff1bdf63fe768a" data-text-edit-schema="1"></div>
 
 
 
@@ -983,8 +1081,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

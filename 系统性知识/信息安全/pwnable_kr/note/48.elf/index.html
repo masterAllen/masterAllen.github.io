@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -671,14 +671,30 @@
   
 
 
+<!-- blog-edit-start:f07d577dd9e15eaf:b0 -->
+
 <h1 id="pwanblekr-elf">Pwanble.kr elf</h1>
+<!-- blog-edit-end:f07d577dd9e15eaf:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f07d577dd9e15eaffc17dac11e877bdded9de17bf05e13520f58c0e8cf2cd857" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C48.elf.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\48.elf.md">复制路径</span></div>
 
+<!-- blog-edit-start:f07d577dd9e15eaf:b1 -->
+
 <h2 id="_1">小趣事</h2>
+<!-- blog-edit-end:f07d577dd9e15eaf:b1 -->
+<!-- blog-edit-start:f07d577dd9e15eaf:b2 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>Q: 一开始读取 Section Table 死活读不出，明明 baseaddr + e_shoff 就行了。
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>A: 这是可执行文件啊... 可执行文件对应读取的是 Segment Table，目标文件才是读取 Section Table..
 </span></code></pre></div>
+<!-- blog-edit-end:f07d577dd9e15eaf:b2 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b3 -->
+
 <h2 id="_2">整体思路</h2>
+<!-- blog-edit-end:f07d577dd9e15eaf:b3 -->
+<!-- blog-edit-start:f07d577dd9e15eaf:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>1. [ELF Header] --&gt; 找到 [Program Header Table] 位置 
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>2. [Program Header Table] --&gt; 找到 [Dynamic Header Table] 位置
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>3. [Dynamic Table] --&gt; 找到 [DT_DEBUG] 位置 
@@ -687,29 +703,64 @@
 </span><span id="__span-1-6"><span class="linenos" data-linenos="6 "></span>6. [Dynamic Header Table] --&gt; 找到 [symtab] 和 [strtab] 
 </span><span id="__span-1-7"><span class="linenos" data-linenos="7 "></span>7. [symtab] [strtab] --&gt; 找到 [yes_ur_flag] 内容
 </span></code></pre></div>
+<!-- blog-edit-end:f07d577dd9e15eaf:b4 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b5 -->
+
 <h2 id="_3">具体逻辑</h2>
+<!-- blog-edit-end:f07d577dd9e15eaf:b5 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b6 -->
+
 <p>1. 这一步比较简单，都是固定的格式</p>
+<!-- blog-edit-end:f07d577dd9e15eaf:b6 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b7 -->
+
 <p>2. 在 [Program Header Table] 中，是由各个表项组成的，也都是固定格式，找到 [Dynmaic] 就行</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></li>
 </ul>
+<!-- blog-edit-end:f07d577dd9e15eaf:b7 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b8 -->
+
 <p>3. 在 [Dynmaic Table] 中，也是各个表项组成，也是固定格式，同样的有许多格式，比如 [DT_NEED] 表示这是需要依赖的文件，找到 [DT_DEBUG]，获得了对应的地址</p>
 <ul>
 <li><a href="https://docs.oracle.com/cd/E23824_01/html/819-0690/chapter6-42444.html">https://docs.oracle.com/cd/E23824_01/html/819-0690/chapter6-42444.html</a> (Blog/CTF/Dynamic_Table)</li>
 </ul>
+<!-- blog-edit-end:f07d577dd9e15eaf:b8 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b9 -->
+
 <p>4. [DT_DEBUG] 的地址指向的是 r_debug 这个结构体，通过它可以找到 link_map 这个结构体的位置，link_map 就是各个依赖文件项组成的链表，所以遍历这个链表，看看它的名称是不是 libflag.so，具体看下面细节</p>
 <ul>
 <li><a href="https://rk700.github.io/2015/04/09/dt_debug-read/">https://rk700.github.io/2015/04/09/dt_debug-read/</a> (Blog/CTF/Debug)</li>
 </ul>
+<!-- blog-edit-end:f07d577dd9e15eaf:b9 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b10 -->
+
 <p>5. 有了 libflag.so 基址，就可以找到 libflag.so 的 [Dynmaic Table]，方法和上面找总体的 [Dynmaic Table] 一样</p>
+<!-- blog-edit-end:f07d577dd9e15eaf:b10 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b11 -->
+
 <p>6. 之前是从 [Dynmaic Table] 中找 [DT_DEBUG]，现在就找 [SYMTAB] 和 [STRTAB]</p>
 <ul>
 <li><a href="https://docs.oracle.com/cd/E23824_01/html/819-0690/chapter6-42444.html">https://docs.oracle.com/cd/E23824_01/html/819-0690/chapter6-42444.html</a> (0001)</li>
 </ul>
+<!-- blog-edit-end:f07d577dd9e15eaf:b11 -->
+
+<!-- blog-edit-start:f07d577dd9e15eaf:b12 -->
+
 <p>7. [SYMTAB] 就是符号表，各个函数细节就在这个里面，所以遍历这个符号表，内容看下面链接，每次遍历去 [STRTAB] 字符串表中看看是不是 yes_ur_flag，找到了就有了这个函数的起始地址，然后再把这个地址开始的内容泄露出来，里面有 flag ~</p>
 <ul>
 <li><a href="http://blog.k3170makan.com/2018/10/introduction-to-elf-format-part-vi.html">http://blog.k3170makan.com/2018/10/introduction-to-elf-format-part-vi.html</a></li>
 </ul>
+<!-- blog-edit-end:f07d577dd9e15eaf:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\48.elf.md" data-text-edit-revision="f07d577dd9e15eaffc17dac11e877bdded9de17bf05e13520f58c0e8cf2cd857" data-text-edit-marker="f07d577dd9e15eaf" data-text-edit-schema="1"></div>
 
 
 
@@ -941,8 +992,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

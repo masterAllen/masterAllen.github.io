@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -770,23 +770,61 @@
   
 
 
+<!-- blog-edit-start:db984a0b6d680080:b0 -->
+
 <h1 id="_1">从图像配准到图像拼接：细节介绍</h1>
+<!-- blog-edit-end:db984a0b6d680080:b0 -->
+
 <div class="file-actions" data-image-edit-revision="68a5149b0e63d71d7ed68b533f066050c68a56851d249b22399ac82996b0412a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5%5C06.%E4%BB%8E%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%88%B0%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%EF%BC%9A%E7%BB%86%E8%8A%82%E4%BB%8B%E7%BB%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\06.从图像配准到图像拼接：细节介绍.md">复制路径</span></div>
+
+<!-- blog-edit-start:db984a0b6d680080:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.6.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.6.md</a></p>
 </blockquote>
+<!-- blog-edit-end:db984a0b6d680080:b1 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b2 -->
+
 <p>在 <a href="https://docs.opencv.org/4.x/d1/d46/group__stitching.html">OpenCV 的 Image Stitching 页面</a>上，看到还有好几个 Module 和一个很复杂的流程图。的确，如果是直接无脑用 stitching 很简单，但如果涉及到一些更精细的调节就需要深入了解了。</p>
+<!-- blog-edit-end:db984a0b6d680080:b2 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b3 -->
+
 <p>OpenCV 提供了一个 stitching_details 的文件，有 CPP 也有 Python，写的非常好，<a href="https://docs.opencv.org/4.x/d8/d19/tutorial_stitcher.html">可以去他的 tutorial 下载</a>，在最后面。</p>
+<!-- blog-edit-end:db984a0b6d680080:b3 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b4 -->
+
 <p>下面进行逐步解释，需要说明的是，有许多地方和官方的 sample 代码不一致，我的具体代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_stitching.ipynb">test_stitching.ipynb</a>。此外，这篇文章写的也特别好，涉及的细节很多，推荐查看：<a href="https://www.cnblogs.com/huty/p/8516981.html">https://www.cnblogs.com/huty/p/8516981.html</a></p>
+<!-- blog-edit-end:db984a0b6d680080:b4 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b5 -->
+
 <p>先说个下面的 <code>compute_scale</code> 函数，这个在原来的 sample 代码没有。他的作用是计算出一幅图像如果缩放到某 M 个像素时，此时缩放比例是多少。之所以不直接给一个缩放比例，因为图片尺寸不保证一样。当然其实直接给缩放比例也是可以的，处理时的图片尺寸不一定要一样，主要还是参考了 sample 代码，为了保持一致。</p>
+<!-- blog-edit-end:db984a0b6d680080:b5 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">compute_scale</span><span class="p">(</span><span class="n">megapix</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    <span class="k">if</span> <span class="n">megapix</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">megapix</span> <span class="o">*</span> <span class="mf">1e6</span> <span class="o">/</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>    <span class="k">return</span> <span class="mf">1.0</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b6 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b7 -->
+
 <h3 id="1">1. 找特征点</h3>
+<!-- blog-edit-end:db984a0b6d680080:b7 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b8 -->
+
 <p>如代码所示，这一步很常规，默认是用 SURF；唯一需要注意点的是可以用缩放，来加快速度。</p>
+<!-- blog-edit-end:db984a0b6d680080:b8 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 用哪个 feature 方法来找特征点；surf, orb, sift, akaze</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">finder</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">xfeatures2d</span><span class="o">.</span><span class="n">SURF</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="c1"># finder = cv2.SIFT.create()</span>
@@ -806,8 +844,20 @@
 </span><span id="__span-1-17"><span class="linenos" data-linenos="17 "></span>    <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">detail</span><span class="o">.</span><span class="n">computeImageFeatures2</span><span class="p">(</span><span class="n">finder</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
 </span><span id="__span-1-18"><span class="linenos" data-linenos="18 "></span>    <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b9 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b10 -->
+
 <h3 id="2">2. 寻找匹配</h3>
+<!-- blog-edit-end:db984a0b6d680080:b10 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b11 -->
+
 <p>得到的结果（代码中的 <code>pairwise_matching</code>）后面会多次用到。</p>
+<!-- blog-edit-end:db984a0b6d680080:b11 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b12 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># match_conf: 置信度，默认值：surf 0.65; orb 0.3</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">match_conf</span> <span class="o">=</span> <span class="mf">0.65</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -819,8 +869,20 @@
 </span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span><span class="n">pairwise_matching</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="n">apply2</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span><span class="n">matcher</span><span class="o">.</span><span class="n">collectGarbage</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b12 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b13 -->
+
 <h3 id="3">3. 筛选图片</h3>
+<!-- blog-edit-end:db984a0b6d680080:b13 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b14 -->
+
 <p>上一步得到匹配后，筛选出合适的图片，即有些图片可能其实匹配程度很低，这种图片没必要去强行拼接，把它们丢弃掉。根据一个参数 <code>conf_thresh</code> 来实现。</p>
+<!-- blog-edit-end:db984a0b6d680080:b14 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># conf_thresh: 置信度阈值；即用它来挑选算出的 match</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">conf_thresh</span> <span class="o">=</span> <span class="mf">1.0</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -834,21 +896,53 @@
 </span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span><span class="n">img_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">img_names</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
 </span><span id="__span-3-12"><span class="linenos" data-linenos="12 "></span><span class="n">img_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">img_sizes</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b15 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b16 -->
+
 <h3 id="4">4. 初略计算相机参数</h3>
+<!-- blog-edit-end:db984a0b6d680080:b16 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b17 -->
+
 <p>如下代码，根据匹配的特征点，计算相机参数。返回的 <code>cameras</code> 就是参数，每张图片都会返回一个相机参数。</p>
+<!-- blog-edit-end:db984a0b6d680080:b17 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b18 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="n">estimator</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">detail_HomographyBasedEstimator</span><span class="p">()</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="c1"># estimator = cv.detail_AffineBasedEstimator()</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="n">is_success</span><span class="p">,</span> <span class="n">cameras</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">pairwise_matching</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </span><span id="__span-4-4"><span class="linenos" data-linenos="4 "></span><span class="nb">print</span><span class="p">(</span><span class="n">cameras</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">focal</span><span class="p">,</span> <span class="n">cameras</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="n">cameras</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">R</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b18 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b19 -->
+
 <h3 id="5">5. 光束法平差调整相机参数</h3>
+<!-- blog-edit-end:db984a0b6d680080:b19 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b20 -->
+
 <p>Bundle Adjustment（光束法平差）算法主要是解决所有相机参数的联合。这是全景拼接必须的一步，因为<strong>多个成对的单应性矩阵合成全景图时，会忽略全局的限制，造成累积误差</strong>。因此每一个图像都要加上光束法平差值，使图像被初始化成相同的旋转和焦距长度。如下图，不做调整，到了最右边的图片误差会很大。</p>
+<!-- blog-edit-end:db984a0b6d680080:b20 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b21 -->
+
 <p>光束法平差的目标函数是一个具有鲁棒性的映射误差的平方和函数。即每一个特征点都要映射到其他的图像中，计算出使误差的平方和最小的相机参数。具体的推导过程可以参见 Automatic Panoramic Image Stitching using Invariant Features.pdf 的第五章。</p>
+<!-- blog-edit-end:db984a0b6d680080:b21 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b22 -->
+
 <span class="blog-resource">
   
     <span>1727573925244.png · 17.45 MB：此资源未在线发布，可在本地服务中查看。</span>
   
 </span>
+
+<!-- blog-edit-end:db984a0b6d680080:b22 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b23 -->
 
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 用于调整相机参数的类</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">adjuster</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">detail_BundleAdjusterRay</span><span class="p">()</span>
@@ -872,9 +966,25 @@
 </span><span id="__span-5-20"><span class="linenos" data-linenos="20 "></span><span class="n">is_success</span><span class="p">,</span> <span class="n">cameras</span> <span class="o">=</span> <span class="n">adjuster</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">pairwise_matching</span><span class="p">,</span> <span class="n">cameras</span><span class="p">)</span>
 </span><span id="__span-5-21"><span class="linenos" data-linenos="21 "></span><span class="nb">print</span><span class="p">(</span><span class="n">cameras</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">R</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">cameras</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">focal</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b23 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b24 -->
+
 <h3 id="6">6. 波形校正调整相机参数</h3>
+<!-- blog-edit-end:db984a0b6d680080:b24 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b25 -->
+
 <p>拍摄者拍摄图片的时候不一定是水平的，轻微的倾斜会导致全景图像出现飞机曲线，因此我们要对图像进行波形校正，主要是寻找每幅图形的<mark class="term-highlight">上升向量</mark>（up_vector）。</p>
+<!-- blog-edit-end:db984a0b6d680080:b25 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b26 -->
+
 <p><img alt="1727573711300" src="../../../../asset/image/dca716bb12f8ec5b5ef1b18514cae9ff/1727573711300.png" /></p>
+<!-- blog-edit-end:db984a0b6d680080:b26 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b27 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="n">wave_correct</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">detail</span><span class="o">.</span><span class="n">WAVE_CORRECT_HORIZ</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="c1"># wave_correct = cv2.detail.WAVE_CORRECT_VERT</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="k">if</span> <span class="n">wave_correct</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -883,11 +993,35 @@
 </span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span>    <span class="k">for</span> <span class="n">camera</span><span class="p">,</span> <span class="n">rmat</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cameras</span><span class="p">,</span> <span class="n">rmats</span><span class="p">):</span>
 </span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span>        <span class="n">camera</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">rmat</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b27 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b28 -->
+
 <p>该步骤完成后，终于可以对图片变换了。</p>
+<!-- blog-edit-end:db984a0b6d680080:b28 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b29 -->
+
 <h3 id="7">7. 利用相机参数变换图片</h3>
+<!-- blog-edit-end:db984a0b6d680080:b29 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b30 -->
+
 <p>得出了参数之后，就可以对每个图片进行变换了。变换（PyRotationWarper）对象需要传入一个 scale 参数，这个就是根据图片计算的相机参数中的焦距值。而每张图片都有一个焦距，所以我们选择其中的中位数，作为最终参数。</p>
+<!-- blog-edit-end:db984a0b6d680080:b30 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b31 -->
+
 <p>变换有一个缩放比例（warp_scale），我们在步骤一的特征点寻找也有缩放比（work_scale），相机的参数是在这个 work_scale 下获取的，所以还需要乘以一个比例。</p>
+<!-- blog-edit-end:db984a0b6d680080:b31 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b32 -->
+
 <p>该步骤之后其实就可以直接去融合了。但后面还有一些光照补偿、缝隙估计等操作，这些操作会利用变换的图片，计算出 mask，即用来表示有哪些地方需要再进行更细节的调整。</p>
+<!-- blog-edit-end:db984a0b6d680080:b32 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b33 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 找出每个相机参数的焦段，求出中位数，该参数很重要，其之后会作为 Warp 对象中的 scale 属性。 </span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">median_focal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">([</span><span class="n">cam</span><span class="o">.</span><span class="n">focal</span> <span class="k">for</span> <span class="n">cam</span> <span class="ow">in</span> <span class="n">cameras</span><span class="p">])</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos=" 3 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;median_focal =&#39;</span><span class="p">,</span> <span class="n">median_focal</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -924,7 +1058,15 @@
 </span><span id="__span-7-34"><span class="linenos" data-linenos="34 "></span>    <span class="n">_</span><span class="p">,</span> <span class="n">warped_mask</span> <span class="o">=</span> <span class="n">warper</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">camera</span><span class="o">.</span><span class="n">R</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_NEAREST</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">BORDER_CONSTANT</span><span class="p">)</span>
 </span><span id="__span-7-35"><span class="linenos" data-linenos="35 "></span>    <span class="n">warped_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">warped_mask</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b33 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b34 -->
+
 <p>Python 中是直接根据 PyRotationWarper 来初始化变换对象的，可以比较一下 CPP 的方式：</p>
+<!-- blog-edit-end:db984a0b6d680080:b34 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b35 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">warp_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;plane&quot;</span><span class="p">)</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">warper_creator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makePtr</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">PlaneWarper</span><span class="o">&gt;</span><span class="p">();</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">warp_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;affine&quot;</span><span class="p">)</span>
@@ -937,8 +1079,20 @@
 </span><span id="__span-8-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">warper_creator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makePtr</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">FisheyeWarper</span><span class="o">&gt;</span><span class="p">();</span>
 </span><span id="__span-8-11"><span class="linenos" data-linenos="11 "></span><span class="n">Ptr</span><span class="o">&lt;</span><span class="n">RotationWarper</span><span class="o">&gt;</span><span class="w"> </span><span class="n">warper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warper_creator</span><span class="o">-&gt;</span><span class="n">create</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">warped_image_scale</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">seam_work_aspect</span><span class="p">));</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b35 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b36 -->
+
 <h3 id="8">8. 更细节的调整：光照补偿 + 缝隙估计</h3>
+<!-- blog-edit-end:db984a0b6d680080:b36 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b37 -->
+
 <p>拍摄的图片有可能因为光圈或者光线的问题，亮度并不一致，拼接后很明显。简单的解决方法是通过线性插值，可以看<a href="https://www.cnblogs.com/curiositywang/p/17480796.html">这篇文章</a>。但这样只要有稍微的运动物体，就会有鬼影。OpenCV 解决的方式是对图像进行亮度补偿，（只对重叠区域进行了亮度补偿，所以融合处虽然光照渐变，但是图像整体的光强没有柔和的过渡）。</p>
+<!-- blog-edit-end:db984a0b6d680080:b37 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b38 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">expos_comp_type</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">cv</span><span class="o">.</span><span class="n">detail</span><span class="o">.</span><span class="n">ExposureCompensator_GAIN_BLOCKS</span><span class="p">,</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">cv</span><span class="o">.</span><span class="n">detail</span><span class="o">.</span><span class="n">ExposureCompensator_GAIN</span><span class="p">,</span>
@@ -962,7 +1116,15 @@
 </span><span id="__span-9-21"><span class="linenos" data-linenos="21 "></span>    <span class="n">compensator</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">detail</span><span class="o">.</span><span class="n">ExposureCompensator_createDefault</span><span class="p">(</span><span class="n">expos_comp_type</span><span class="p">)</span>
 </span><span id="__span-9-22"><span class="linenos" data-linenos="22 "></span><span class="n">compensator</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="n">corners</span><span class="o">=</span><span class="n">corners</span><span class="p">,</span> <span class="n">images</span><span class="o">=</span><span class="n">warped_imgs</span><span class="p">,</span> <span class="n">masks</span><span class="o">=</span><span class="n">warped_masks</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b38 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b39 -->
+
 <p>缝隙估计有6种方法，默认就是第三种方法，seam_find_type == "gc_color"，该方法是利用最大流方法检测。</p>
+<!-- blog-edit-end:db984a0b6d680080:b39 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b40 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="n">SEAM_FIND_CHOICES</span><span class="p">[</span><span class="s1">&#39;gc_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">detail_GraphCutSeamFinder</span><span class="p">(</span><span class="s1">&#39;COST_COLOR&#39;</span><span class="p">)</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos="2 "></span><span class="n">SEAM_FIND_CHOICES</span><span class="p">[</span><span class="s1">&#39;gc_colorgrad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">detail_GraphCutSeamFinder</span><span class="p">(</span><span class="s1">&#39;COST_COLOR_GRAD&#39;</span><span class="p">)</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos="3 "></span><span class="n">SEAM_FIND_CHOICES</span><span class="p">[</span><span class="s1">&#39;dp_color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">detail_DpSeamFinder</span><span class="p">(</span><span class="s1">&#39;COLOR&#39;</span><span class="p">)</span>
@@ -973,8 +1135,20 @@
 </span><span id="__span-10-8"><span class="linenos" data-linenos="8 "></span><span class="c1"># warped_masks 被更新，考虑了缝隙</span>
 </span><span id="__span-10-9"><span class="linenos" data-linenos="9 "></span><span class="n">warped_masks</span> <span class="o">=</span> <span class="n">seam_finder</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">warped_imgs</span><span class="p">,</span> <span class="n">corners</span><span class="p">,</span> <span class="n">warped_masks</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b40 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b41 -->
+
 <h3 id="9">9. 计算融合后的尺寸和各个图片的位置</h3>
+<!-- blog-edit-end:db984a0b6d680080:b41 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b42 -->
+
 <p>如下面的代码。融合时有一个缩放比例，而相机参数是在另一个缩放比例下做的，所以要进行一个比例相乘。其实如果没有上一步更细节的调整（光照补偿和缝隙估计），这一步可以覆盖前两步的变换图片步骤，因为这一步本身就是有变换图片的操作的。</p>
+<!-- blog-edit-end:db984a0b6d680080:b42 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b43 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">compose_megapix</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">corners</span><span class="p">,</span> <span class="n">sizes</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
 </span><span id="__span-11-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">img_names</span><span class="p">):</span>
@@ -1001,16 +1175,40 @@
 </span><span id="__span-11-24"><span class="linenos" data-linenos="24 "></span>
 </span><span id="__span-11-25"><span class="linenos" data-linenos="25 "></span><span class="n">fullshape</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">detail</span><span class="o">.</span><span class="n">resultRoi</span><span class="p">(</span><span class="n">corners</span><span class="o">=</span><span class="n">corners</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="n">sizes</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b43 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b44 -->
+
 <h3 id="10-blend">10. 初始化 blend</h3>
+<!-- blog-edit-end:db984a0b6d680080:b44 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b45 -->
+
 <p>进行多波段融合，首先要初始化 blend，确定 blender 融合方式，默认是多波段融合（MULTI_BAND）。上一个步骤得到了处理后的尺寸（<code>fullshape</code> 变量），要传入给 blend 初始化。</p>
+<!-- blog-edit-end:db984a0b6d680080:b45 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b46 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="n">blend_strength</span> <span class="o">=</span> <span class="mi">5</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="n">blend_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">full_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">full_shape</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">*</span> <span class="n">blend_strength</span> <span class="o">/</span> <span class="mi">100</span>
 </span><span id="__span-12-3"><span class="linenos" data-linenos="3 "></span><span class="n">blender</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">detail_MultiBandBlender</span><span class="p">()</span>
 </span><span id="__span-12-4"><span class="linenos" data-linenos="4 "></span><span class="n">blender</span><span class="o">.</span><span class="n">setNumBands</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">blend_width</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
 </span><span id="__span-12-5"><span class="linenos" data-linenos="5 "></span><span class="n">blender</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">full_shape</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b46 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b47 -->
+
 <h3 id="11-blend">11. 使用 blend 融合</h3>
+<!-- blog-edit-end:db984a0b6d680080:b47 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b48 -->
+
 <p>最后就对每张图片，进行图像变换，而且我们为了更好的效果，有光照补偿和缝隙估计的步骤，这个对每张图片处理时也要加上去。</p>
+<!-- blog-edit-end:db984a0b6d680080:b48 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b49 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 每张图片都进行 变换 + 光照补偿 + 缝隙估计</span>
 </span><span id="__span-13-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">img_names</span><span class="p">):</span>
 </span><span id="__span-13-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">nowimg</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
@@ -1036,8 +1234,20 @@
 </span><span id="__span-13-23"><span class="linenos" data-linenos="23 "></span><span class="c1"># blender 最终融合</span>
 </span><span id="__span-13-24"><span class="linenos" data-linenos="24 "></span><span class="n">result</span><span class="p">,</span> <span class="n">result_mask</span> <span class="o">=</span> <span class="n">blender</span><span class="o">.</span><span class="n">blend</span><span class="p">(</span><span class="n">dst</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dst_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b49 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b50 -->
+
 <h3 id="12">12. 显示和保存图片</h3>
+<!-- blog-edit-end:db984a0b6d680080:b50 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b51 -->
+
 <p>没什么好说的。</p>
+<!-- blog-edit-end:db984a0b6d680080:b51 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b52 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos="1 "></span><span class="n">cv</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">result_name</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
 </span><span id="__span-14-2"><span class="linenos" data-linenos="2 "></span><span class="n">zoom_x</span> <span class="o">=</span> <span class="mf">600.0</span> <span class="o">/</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </span><span id="__span-14-3"><span class="linenos" data-linenos="3 "></span><span class="n">dst</span> <span class="o">=</span> <span class="n">cv</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">src</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="n">dst</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">255.</span><span class="p">,</span> <span class="n">norm_type</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">cv</span><span class="o">.</span><span class="n">CV_8U</span><span class="p">)</span>
@@ -1045,9 +1255,25 @@
 </span><span id="__span-14-5"><span class="linenos" data-linenos="5 "></span><span class="n">cv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result_name</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
 </span><span id="__span-14-6"><span class="linenos" data-linenos="6 "></span><span class="n">cv</span><span class="o">.</span><span class="n">waitKey</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:db984a0b6d680080:b52 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b53 -->
+
 <h3 id="13">13. 其他说明</h3>
+<!-- blog-edit-end:db984a0b6d680080:b53 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b54 -->
+
 <p>本文的代码效率很低，可以参考官方 sample 代码进行调整。比如其实拼接时图片大概率都是一样尺寸，所以没有必要像本文代码一样，每个图片都要算一下 scale，每个图片都单独初始化一个 Warper。</p>
+<!-- blog-edit-end:db984a0b6d680080:b54 -->
+
+<!-- blog-edit-start:db984a0b6d680080:b55 -->
+
 <p>本文的代码很多都展示了默认的参数，如特征点用 SURF。具体每个步骤都有很多方法可供选择，可以查看官方的 sample 代码，写的很好。</p>
+<!-- blog-edit-end:db984a0b6d680080:b55 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\06.从图像配准到图像拼接：细节介绍.md" data-text-edit-revision="68a5149b0e63d71d7ed68b533f066050c68a56851d249b22399ac82996b0412a" data-text-edit-marker="db984a0b6d680080" data-text-edit-schema="1"></div>
+
                         
 
                         
@@ -1279,8 +1505,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

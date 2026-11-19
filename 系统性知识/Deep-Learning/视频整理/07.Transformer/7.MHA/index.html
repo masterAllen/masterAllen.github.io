@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -671,16 +671,42 @@
   
 
 
+<!-- blog-edit-start:c3f7c6818165be8b:b0 -->
+
 <h1 id="mha">MHA</h1>
+<!-- blog-edit-end:c3f7c6818165be8b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="fd1a11d3e220eeefdc0a145a608d2f811b098ed8baca1e47e79da603b7c61699" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C07.Transformer%5C7.MHA.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C07.Transformer" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\07.Transformer\7.MHA.md">复制路径</span></div>
 
+<!-- blog-edit-start:c3f7c6818165be8b:b1 -->
+
 <h2 id="standard-attention">Standard Attention</h2>
+<!-- blog-edit-end:c3f7c6818165be8b:b1 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b2 -->
+
 <p>传统的 Attention 如下，就是 QKV 的矩阵乘法，其中 <span class="arithmatex">\(Q = W_Q X\)</span>，其他类似。</p>
+<!-- blog-edit-end:c3f7c6818165be8b:b2 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b3 -->
+
 <div class="arithmatex">\[
 Attention(Q, k, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V
 \]</div>
+<!-- blog-edit-end:c3f7c6818165be8b:b3 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b4 -->
+
 <h2 id="mha_1">MHA</h2>
+<!-- blog-edit-end:c3f7c6818165be8b:b4 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b5 -->
+
 <p>本质上是把原来的 Attention 计算拆分成多个小份的 Attention 计算，然后并行计算，最后再合回原来的维度。</p>
+<!-- blog-edit-end:c3f7c6818165be8b:b5 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b6 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 head_i = Attention(Q_i, K_i, V_i) \\
@@ -688,9 +714,24 @@ H = concat(head_1, head_2, ..., head_h) \\
 MHA(Q, K, V) = H W^O
 \end{aligned}
 \]</div>
+<!-- blog-edit-end:c3f7c6818165be8b:b6 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b7 -->
+
 <p>之所以这样，是希望能够理解输入不同部分之间的关系。因此切分成不同的头，每个头独立学习不同关系，比如第一个头学习的是主语和宾语之间的关系，第二个头学习的是谓语和宾语之间的关系，以此类推。</p>
+<!-- blog-edit-end:c3f7c6818165be8b:b7 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b8 -->
+
 <h2 id="mqa-gqa">MQA 和 GQA</h2>
+<!-- blog-edit-end:c3f7c6818165be8b:b8 -->
+
+<!-- blog-edit-start:c3f7c6818165be8b:b9 -->
+
 <p>放到 LLM 中去讲了，<a href="../../11.LLM/MHA和MQA和GQA/">个人笔记链接</a>，因为这个涉及到 KV Cache，都是为了解决实际应用中显存占用过高的问题，是一个工程化的问题。</p>
+<!-- blog-edit-end:c3f7c6818165be8b:b9 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\07.Transformer\7.MHA.md" data-text-edit-revision="fd1a11d3e220eeefdc0a145a608d2f811b098ed8baca1e47e79da603b7c61699" data-text-edit-marker="c3f7c6818165be8b" data-text-edit-schema="1"></div>
 
 
 
@@ -922,8 +963,6 @@ MHA(Q, K, V) = H W^O
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

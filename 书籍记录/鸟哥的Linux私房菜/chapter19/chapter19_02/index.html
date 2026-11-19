@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -599,8 +599,14 @@
   
 
 
+<!-- blog-edit-start:1dab6e7d8a3a4b0c:b0 -->
+
 <h1 id="_1">第十九章: 日志文件二</h1>
+<!-- blog-edit-end:1dab6e7d8a3a4b0c:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1057f86231dab587645fa975a7b942fa61118c97d297d03691617c3f1f1fc015" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter19%5Cchapter19_02.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E9%B8%9F%E5%93%A5%E7%9A%84Linux%E7%A7%81%E6%88%BF%E8%8F%9C%5Cchapter19" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter19\chapter19_02.md">复制路径</span></div>
+
+<!-- blog-edit-start:1dab6e7d8a3a4b0c:b1 -->
 
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>1\. logrotate -- 日志轮循
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>|---&gt; 配置文件 : /etc/logrotate.conf &amp;&amp; /etc/logrotate.d 
@@ -623,6 +629,10 @@
 </span><span id="__span-0-19"><span class="linenos" data-linenos="19 "></span>|---&gt; 一般 log 文件被修改后，服务就不会运行了(rsyslog)
 </span><span id="__span-0-20"><span class="linenos" data-linenos="20 "></span>|---&gt; 有了 a 属性，这样logrotate就不能重命名，删除了. 修改后也必须要重新启动文件服务(rsyslog)
 </span></code></pre></div>
+<!-- blog-edit-end:1dab6e7d8a3a4b0c:b1 -->
+
+<!-- blog-edit-start:1dab6e7d8a3a4b0c:b2 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span>sharedscripts
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>prerotate
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>    /usr/bin/chattr -a /var/log/demo
@@ -635,6 +645,10 @@
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span>    /usr/bin/chattr +a /var/log/demo
 </span><span id="__span-1-11"><span class="linenos" data-linenos="11 "></span>endscript
 </span></code></pre></div>
+<!-- blog-edit-end:1dab6e7d8a3a4b0c:b2 -->
+
+<!-- blog-edit-start:1dab6e7d8a3a4b0c:b3 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>/bin/kill -HUP `cat /var/run/rsyslog.pid 2&gt; /dev/null` 2&gt; /dev/null || true
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>1\. cat /var/run/rsyslog.pid 2&gt; /dev/null 
@@ -650,6 +664,9 @@
 </span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span>    一个运行syslog，一个运行rsyslog，是因为不同linux版本用的不一样。
 </span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span>    最后要加上属性a哦，千万不要忘记
 </span></code></pre></div>
+<!-- blog-edit-end:1dab6e7d8a3a4b0c:b3 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\鸟哥的Linux私房菜\chapter19\chapter19_02.md" data-text-edit-revision="1057f86231dab587645fa975a7b942fa61118c97d297d03691617c3f1f1fc015" data-text-edit-marker="1dab6e7d8a3a4b0c" data-text-edit-schema="1"></div>
 
 
 
@@ -881,8 +898,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,25 +609,74 @@
   
 
 
+<!-- blog-edit-start:484de53fc81eaa21:b0 -->
+
 <h1 id="fast-direct-super-resolution-by-simple-functions">超分文章二：Fast Direct Super-Resolution by Simple Functions</h1>
+<!-- blog-edit-end:484de53fc81eaa21:b0 -->
+
 <div class="file-actions" data-image-edit-revision="37dce51cba5945c91c8075fdea4514feeca004cd4ac9b32a1a47cf4bbeed5ed4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C09.%E8%B6%85%E5%88%86%5CPaper-2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C09.%E8%B6%85%E5%88%86" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\09.超分\Paper-2.md">复制路径</span></div>
+
+<!-- blog-edit-start:484de53fc81eaa21:b1 -->
 
 <ul>
 <li>Fast Direct Super-Resolution by Simple Functions</li>
 <li>ICCV 2013, Chih-Yang, University of California at Merced</li>
 </ul>
+<!-- blog-edit-end:484de53fc81eaa21:b1 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b2 -->
+
 <p>个人感觉：其实就是做出了稍微的改进：上一篇从训练数据中寻找块，太过消耗时间，本篇文章用 KMeans 聚类减小数量。</p>
+<!-- blog-edit-end:484de53fc81eaa21:b2 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b3 -->
+
 <p><strong>根据常规的写法，我们把低清块叫做 <span class="arithmatex">\(y\)</span>，高清块叫做 <span class="arithmatex">\(x\)</span></strong></p>
+<!-- blog-edit-end:484de53fc81eaa21:b3 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b4 -->
+
 <p>同样，通过自然图像来收集一系列的（y-x）pairs。而不同的是，对这些<strong>低清块</strong>使用 K-Means 聚类，聚集成 4096 个 pairs。聚集方式的特征可以由很多种，比如可以用上一篇文章的一阶二阶微分，本篇文章就直接用块的像素完事（标准化后的，也就是像素减去低清块平均）。</p>
+<!-- blog-edit-end:484de53fc81eaa21:b4 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b5 -->
+
 <p>下图就是作者得出的 4096 个 pairs 中的低清块，其中排序方式是自然图像中的块属于这些类的数量。比如第一个块，他很平滑，因此自然图像中有很多块属于他这一类（也就是K-Means聚类时离他最近）；而后面的那些块，可以看到非常复杂，所以自然图像中属于它这一类的就比较少。</p>
+<!-- blog-edit-end:484de53fc81eaa21:b5 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b6 -->
+
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20231025001.PNG" /></p>
+<!-- blog-edit-end:484de53fc81eaa21:b6 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b7 -->
+
 <p>得出这 4096 个 pairs 后，计算系数 <strong><span class="arithmatex">\(C\)</span></strong>，就是让低清块到高清快的转换尽可能准确，每个 pairs 分别有一个系数。</p>
+<!-- blog-edit-end:484de53fc81eaa21:b7 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b8 -->
+
 <p>对于其中的一个 pairs，假设自然图像中有 <span class="arithmatex">\(l\)</span> 个低清块是离这个 pairs 低清块最近，低清块、高清块为 <span class="arithmatex">\(y\)</span> 和 <span class="arithmatex">\(x\)</span>，大小分别为 <span class="arithmatex">\(m\)</span> 和 <span class="arithmatex">\(n\)</span>。多说一句：这里的低清块和高清块都是减去了低清块的像素平均值，其实块的大小就是块的像素个数。那么 <span class="arithmatex">\(C\)</span> 的大小为 <span class="arithmatex">\(n *  (m+1)\)</span>，我们的目标为：</p>
+<!-- blog-edit-end:484de53fc81eaa21:b8 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b9 -->
+
 <div class="arithmatex">\[
 \mathop{argmin}_{C} \sum_{i=1}^{l} \left\| x_i - C * \left( \begin{matrix} y_i \\ 1 \end{matrix} \right) \right\| ^2 _2
 \]</div>
+<!-- blog-edit-end:484de53fc81eaa21:b9 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b10 -->
+
 <p>算出所有系数 <span class="arithmatex">\(C\)</span> 之后，在预测时，我们寻找当前块距离这 4096 个 pairs 哪一个低清块最近，得到对应的系数 <span class="arithmatex">\(C\)</span> 之后，末尾添加个 1，然后相乘即可。</p>
+<!-- blog-edit-end:484de53fc81eaa21:b10 -->
+
+<!-- blog-edit-start:484de53fc81eaa21:b11 -->
+
 <p>个人评述：确实比上一篇文章暴力搜索要好得多，但是<mark class="term-highlight">寻找当前块距离 4096 个 pairs 中哪一个低清块较近</mark>这一步骤，还是慢。</p>
+<!-- blog-edit-end:484de53fc81eaa21:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\09.超分\Paper-2.md" data-text-edit-revision="37dce51cba5945c91c8075fdea4514feeca004cd4ac9b32a1a47cf4bbeed5ed4" data-text-edit-marker="484de53fc81eaa21" data-text-edit-schema="1"></div>
 
 
 
@@ -859,8 +908,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

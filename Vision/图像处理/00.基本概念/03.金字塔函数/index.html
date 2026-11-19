@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -683,8 +683,14 @@
   
 
 
+<!-- blog-edit-start:937935e0beaa3b55:b0 -->
+
 <h1 id="_1">金字塔函数</h1>
+<!-- blog-edit-end:937935e0beaa3b55:b0 -->
+
 <div class="file-actions" data-image-edit-revision="710876e1800b60ea812de15cb7ffedd9cae12620a648c682492d4c787f2b975d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C03.%E9%87%91%E5%AD%97%E5%A1%94%E5%87%BD%E6%95%B0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C00.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\00.基本概念\03.金字塔函数.md">复制路径</span></div>
+
+<!-- blog-edit-start:937935e0beaa3b55:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.2.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/1.2.md</a></p>
@@ -692,29 +698,85 @@
 <ul>
 <li><a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html">Image Process - Image Filtering</a></li>
 </ul>
+<!-- blog-edit-end:937935e0beaa3b55:b1 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b2 -->
+
 <p>图片金字塔<a href="https://zhuanlan.zhihu.com/p/112040797">是什么</a>；目的就是不同尺度做不同程度的调整，这样可以在速度和质量上权衡，比如我只在低尺度下做精细的图像处理，速度会快一些。</p>
+<!-- blog-edit-end:937935e0beaa3b55:b2 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b3 -->
+
 <p>什么时候想到用这个：做完任何图像处理都可以想到要用金字塔，比如图像对准、去噪等等都可以去用金字塔，这个相当于是一个 Warp，其改变的是图片尺寸，和图像处理算法是不冲突的。</p>
+<!-- blog-edit-end:937935e0beaa3b55:b3 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b4 -->
+
 <h2 id="_2">函数说明：</h2>
+<!-- blog-edit-end:937935e0beaa3b55:b4 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b5 -->
+
 <ul>
 <li><a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga910e29ff7d7b105057d1625a4bf6318d">pyrDown</a>: 高斯金字塔的下采样，即先高斯平滑然后行列各自少一半</li>
 <li><a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gada75b59bdaaca411ed6fee10085eb784">pyrUp</a>: 高斯金字塔的上采样，即先行列加一半然后高斯平滑</li>
 <li><a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#gacfdda2bc1ac55e96de7e9f0bce7238c0">buildPyramid</a>：构建高斯金字塔</li>
 </ul>
+<!-- blog-edit-end:937935e0beaa3b55:b5 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b6 -->
+
 <h2 id="_3">具体细节</h2>
+<!-- blog-edit-end:937935e0beaa3b55:b6 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b7 -->
+
 <h3 id="pyrdown-pyrup">pyrDown, pyrUP</h3>
+<!-- blog-edit-end:937935e0beaa3b55:b7 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b8 -->
+
 <p><img alt="1720754568271" src="../../../../asset/image/6d43249dc7576e38ace8143b88ad4c2a/1720754568271.png" /></p>
+<!-- blog-edit-end:937935e0beaa3b55:b8 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b9 -->
+
 <ul>
 <li>高斯模糊是固定的，不满意则不能用这个函数</li>
 <li>out: 可选项，输出的结果图片，实测在 Python 中没有起作用，返回结果才是最后真正结果</li>
 <li>dstsize: 可选项，输出图片的大小。默认是src长宽除以2，实际这个函数也基本就只能在默认值上下浮动两个单位：<code>|dstsize.width*2 - src.width| &lt;= 2</code>；<strong>注意他的顺序是 (cols, rows)，除非特殊情况建议不赋值直接默认。</strong></li>
 </ul>
+<!-- blog-edit-end:937935e0beaa3b55:b9 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b10 -->
+
 <h3 id="buildpyramid">buildPyramid</h3>
+<!-- blog-edit-end:937935e0beaa3b55:b10 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b11 -->
+
 <ul>
 <li>OpenCV 文档上有，但 Python 不知道为啥会报错没有，不过这个也可以自己写</li>
 </ul>
+<!-- blog-edit-end:937935e0beaa3b55:b11 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b12 -->
+
 <h3 id="gaussian-and-laplacian-pyrmid">Gaussian and Laplacian Pyrmid</h3>
+<!-- blog-edit-end:937935e0beaa3b55:b12 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b13 -->
+
 <p>Opencv 里面没有默认的 拉普拉斯金字塔，需要自行写；高斯金字塔有 buildPyramid，但如上面所说，Python 貌似不支持。拉普拉斯的定义：</p>
+<!-- blog-edit-end:937935e0beaa3b55:b13 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b14 -->
+
 <p><img alt="1720764576904" src="../../../../asset/image/6d43249dc7576e38ace8143b88ad4c2a/1720764576904.png" /></p>
+<!-- blog-edit-end:937935e0beaa3b55:b14 -->
+
+<!-- blog-edit-start:937935e0beaa3b55:b15 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">Pyramid</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="c1"># 高斯金字塔，不断下采样</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">img</span><span class="p">]</span>
@@ -732,6 +794,9 @@
 </span><span id="__span-0-15"><span class="linenos" data-linenos="15 "></span>    <span class="k">for</span> <span class="n">nowL</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span>        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">pyrUp</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="o">+</span> <span class="n">nowL</span>
 </span></code></pre></div>
+<!-- blog-edit-end:937935e0beaa3b55:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\00.基本概念\03.金字塔函数.md" data-text-edit-revision="710876e1800b60ea812de15cb7ffedd9cae12620a648c682492d4c787f2b975d" data-text-edit-marker="937935e0beaa3b55" data-text-edit-schema="1"></div>
 
 
 
@@ -963,8 +1028,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

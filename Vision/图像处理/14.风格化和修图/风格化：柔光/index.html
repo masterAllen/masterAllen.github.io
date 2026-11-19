@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,19 +655,65 @@
   
 
 
+<!-- blog-edit-start:7369b970836b2b63:b0 -->
+
 <h1 id="_1">柔光的实现原理</h1>
+<!-- blog-edit-end:7369b970836b2b63:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d2282f8a6ff8dc104915de599db638d380cb4cb31fea9002a818b5d4e2a71d92" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE%5C%E9%A3%8E%E6%A0%BC%E5%8C%96%EF%BC%9A%E6%9F%94%E5%85%89.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\14.风格化和修图\风格化：柔光.md">复制路径</span></div>
 
+<!-- blog-edit-start:7369b970836b2b63:b1 -->
+
 <h2 id="_2">方法一</h2>
+<!-- blog-edit-end:7369b970836b2b63:b1 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b2 -->
+
 <p>下面这个图片简直太好了：</p>
+<!-- blog-edit-end:7369b970836b2b63:b2 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b3 -->
+
 <p><img alt="" src="../../../../asset/image/f43a9f2e3243144915ded1fc3acc93da/20241208135121.png" /></p>
+<!-- blog-edit-end:7369b970836b2b63:b3 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b4 -->
+
 <p>其中 A 是原图，或者是原图高斯模糊后的图片（因为柔光往往带有模糊化的表现）；B 叫做光源层，因为是柔光所以我们一般给个比较靠近白色的图。</p>
+<!-- blog-edit-end:7369b970836b2b63:b4 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b5 -->
+
 <p>B 控制了柔光的程度，想强一点就让 B 变白，弱一点就稍微黑一些。原理其实就是函数的映射了，直接参考下面链接，写的特别好：<a href="https://zhuanlan.zhihu.com/p/108820522">https://zhuanlan.zhihu.com/p/108820522</a></p>
+<!-- blog-edit-end:7369b970836b2b63:b5 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b6 -->
+
 <h2 id="_3">方法二</h2>
+<!-- blog-edit-end:7369b970836b2b63:b6 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b7 -->
+
 <p>也是图层叠加，但和上面不一样，我只在这个链接上看到的：<a href="https://www.cnblogs.com/Imageshop/p/3145216.html">https://www.cnblogs.com/Imageshop/p/3145216.html</a></p>
+<!-- blog-edit-end:7369b970836b2b63:b7 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b8 -->
+
 <p>A 层是原图；B 层是原图模糊后，再调整亮度（可以通过 HSV 空间调整等）；最后叠加的公式是 A + B - (A * B)</p>
+<!-- blog-edit-end:7369b970836b2b63:b8 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b9 -->
+
 <p>感觉这个方法其实很不错，更加亮一点</p>
+<!-- blog-edit-end:7369b970836b2b63:b9 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b10 -->
+
 <h2 id="_4">结果展示</h2>
+<!-- blog-edit-end:7369b970836b2b63:b10 -->
+
+<!-- blog-edit-start:7369b970836b2b63:b11 -->
+
 <table>
 <thead>
 <tr>
@@ -684,6 +730,9 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:7369b970836b2b63:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\14.风格化和修图\风格化：柔光.md" data-text-edit-revision="d2282f8a6ff8dc104915de599db638d380cb4cb31fea9002a818b5d4e2a71d92" data-text-edit-marker="7369b970836b2b63" data-text-edit-schema="1"></div>
 
 
 
@@ -915,8 +964,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

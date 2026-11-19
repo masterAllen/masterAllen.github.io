@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -649,19 +649,39 @@
   
 
 
+<!-- blog-edit-start:7a7d7075a0342dc2:b0 -->
+
 <h1 id="polybar">Polybar 添加自定义脚本（以网络测速模块为例）</h1>
+<!-- blog-edit-end:7a7d7075a0342dc2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e059b8dfaf4733bb96b5974bf2428a4163fc4a318563a8bc18dc932c79702006" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CPolybar%5Cpolybar01.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CPolybar" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\Polybar\polybar01.md">复制路径</span></div>
 
+<!-- blog-edit-start:7a7d7075a0342dc2:b1 -->
+
 <h2 id="_1">所学知识</h2>
+<!-- blog-edit-end:7a7d7075a0342dc2:b1 -->
+<!-- blog-edit-start:7a7d7075a0342dc2:b2 -->
+
 <ul>
 <li>Polybar 如何添加自己的脚本来显示模块</li>
 <li>Polybar 如何进行鼠标左键点击切换</li>
 <li>Python 信号处理、一直睡眠、睡眠唤醒</li>
 <li>查看当前网络信息、当前网速</li>
 </ul>
+<!-- blog-edit-end:7a7d7075a0342dc2:b2 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b3 -->
+
 <h2 id="polybar_1">Polybar 添加自己的脚本来显示模块</h2>
+<!-- blog-edit-end:7a7d7075a0342dc2:b3 -->
+<!-- blog-edit-start:7a7d7075a0342dc2:b4 -->
+
 <p>首先脚本要输出想输出的内容，注意要使用 <code>os.system('echo ..')</code>，而不是 <code>print('..')</code>。<br />
 然后 Polybar 里面有定义的模块可以显示，方式如下。</p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b4 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b5 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>[module/my_moudle]
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>type = custom/script
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>exec = python /path/to/script.py
@@ -669,14 +689,29 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>click-left = kill -USR1 %pid%
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span>format-underline = #9f78e1
 </span></code></pre></div>
+<!-- blog-edit-end:7a7d7075a0342dc2:b5 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b6 -->
+
 <p>要关注这个 <code>click-left</code>，它就是鼠标左键事件，至于为什么用后面的命令，用于后面的切换，具体看后面。我们先去了解 Python 的一些特征。</p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b6 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b7 -->
+
 <h2 id="python">Python 信号机制、一直睡眠、睡眠唤醒</h2>
+<!-- blog-edit-end:7a7d7075a0342dc2:b7 -->
+<!-- blog-edit-start:7a7d7075a0342dc2:b8 -->
+
 <p>对于显示的脚本，让它接收 <code>sigUSR1</code> 这个用户自定义信号会触发固定函数，方式如下。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">change_toggle</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this will be trigged if kill -USR1 this_pid&#39;</span><span class="p">)</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="n">signal</span><span class="o">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="o">.</span><span class="n">SIGUSR1</span><span class="p">,</span> <span class="n">change_toggle</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b8 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b9 -->
+
 <p>利用 <code>threading</code> 的 <code>event</code> 可实现 Python 程序一直睡眠，并且结合信号机制进行睡眠唤醒。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">threading</span><span class="w"> </span><span class="kn">import</span> <span class="n">Event</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">sleep_event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">()</span>
@@ -689,13 +724,28 @@
 </span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span><span class="k">while</span> <span class="n">true</span><span class="p">:</span>
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span>    <span class="n">sleep_event</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b9 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b10 -->
+
 <p>可以理解为 <code>Event()</code> 维护一个布尔变量，主要是有四个方法: <code>wait</code>、<code>set</code>、<code>clear</code>、<code>is_set</code>。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>is_set(): 查看这个布尔变量是否为真
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>wait(xx): 睡眠 xx 秒，但是一旦那个布尔变量是真，就会直接醒来
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>set(), clear(): 设置这个布尔变量
 </span></code></pre></div></p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b10 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b11 -->
+
 <h2 id="polybar_2">Polybar 鼠标左键切换</h2>
+<!-- blog-edit-end:7a7d7075a0342dc2:b11 -->
+<!-- blog-edit-start:7a7d7075a0342dc2:b12 -->
+
 <p>进行切换就使用一个全局变量 <code>toggle_flag</code>，根据它的真假值来进行不同的输出格式，因此切换它也就完成了切换输出内容。每次有 <code>USR1</code> 信号来就转换 <code>toogle_flag</code> 的真假。然后主程序就利用 <code>threading.Event()</code> 进行等待。</p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b12 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b13 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">change_toggle</span><span class="p">(</span><span class="n">signum</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>    <span class="k">global</span> <span class="n">toggle_flag</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>    <span class="n">toggle_flag</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">toggle_flag</span>
@@ -706,17 +756,36 @@
 </span><span id="__span-4-8"><span class="linenos" data-linenos="8 "></span>    <span class="n">sleep_event</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </span><span id="__span-4-9"><span class="linenos" data-linenos="9 "></span>    <span class="n">sleep_event</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:7a7d7075a0342dc2:b13 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b14 -->
+
 <p><code>Polybar</code> 的设置如下，即鼠标左键点击会发送一个 <code>USR1</code> 信号。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>[module/my_moudle]
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>type = custom/script
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>exec = python /path/to/script.py
 </span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span>click-left = kill -USR1 %pid%
 </span></code></pre></div></p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b14 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b15 -->
+
 <h2 id="linux">Linux 查看当前网速、网络信息</h2>
+<!-- blog-edit-end:7a7d7075a0342dc2:b15 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b16 -->
+
 <p>查看当前网络名称使用 <code>iwgetid -r</code>，查看当前网络详细信息使用 <code>iwconfig wlan0</code> (<code>wlan0</code> 是无线网卡名称，使用 <code>ip addr</code> 查看)，其中 ESSID 表示网络名称，Quality 表示网络质量。</p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b16 -->
+
+<!-- blog-edit-start:7a7d7075a0342dc2:b17 -->
+
 <p>查看当前网络上传速度通过读取文件 <code>/sys/class/net/wlan0/statistics/rx_bytes</code><br />
 查看当前网络下载速度通过读取文件 <code>/sys/class/net/wlan0/statistics/tx_bytes</code><br />
 二者都是通过读取文件内容变化来获取，比如每隔 10 s 查看增加多少，除以 10 就得到每秒变化情况。</p>
+<!-- blog-edit-end:7a7d7075a0342dc2:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\Polybar\polybar01.md" data-text-edit-revision="e059b8dfaf4733bb96b5974bf2428a4163fc4a318563a8bc18dc932c79702006" data-text-edit-marker="7a7d7075a0342dc2" data-text-edit-schema="1"></div>
 
 
 
@@ -948,8 +1017,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

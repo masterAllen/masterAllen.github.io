@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,10 +581,20 @@
   
 
 
+<!-- blog-edit-start:b5642386fd285690:b0 -->
+
 <h1 id="python">流畅的 Python 阅读记录一：杂项</h1>
+<!-- blog-edit-end:b5642386fd285690:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c285135bcdc0aa877c06e070731b99095f1b78e2912f26d76ce244e70ad4348b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python%5Cnote_01.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C%E6%B5%81%E7%95%85%E7%9A%84Python" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\流畅的Python\note_01.md">复制路径</span></div>
 
+<!-- blog-edit-start:b5642386fd285690:b1 -->
+
 <p>这一部分主要是讲一下不是很清楚的知识点</p>
+<!-- blog-edit-end:b5642386fd285690:b1 -->
+
+<!-- blog-edit-start:b5642386fd285690:b2 -->
+
 <p>1. <code>namedtuple</code>, 可以使用它来快速创立一个类。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">collections</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="c1"># 使用 namedtuple 可以创立一个类</span>
@@ -594,6 +604,10 @@
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="nb">print</span><span class="p">(</span><span class="n">new_card</span><span class="p">)</span>
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="c1"># output: Card(rank=7, suit=&#39;diamonds&#39;)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b5642386fd285690:b2 -->
+
+<!-- blog-edit-start:b5642386fd285690:b3 -->
+
 <p>2. <code>map</code> &amp;&amp; <code>filter</code> 是什么，此外这两个可以被代替<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 计算阶乘</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">def</span><span class="w"> </span><span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -609,10 +623,17 @@
 </span><span id="__span-1-12"><span class="linenos" data-linenos="12 "></span><span class="p">[</span><span class="n">fact</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
 </span><span id="__span-1-13"><span class="linenos" data-linenos="13 "></span><span class="p">[</span><span class="n">fact</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b5642386fd285690:b3 -->
+
+<!-- blog-edit-start:b5642386fd285690:b4 -->
+
 <p>3. <code>reduce</code> 使用, 经常用于累加, 累乘, 累计异或...<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="n">a</span><span class="o">^</span><span class="n">b</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b5642386fd285690:b4 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\流畅的Python\note_01.md" data-text-edit-revision="c285135bcdc0aa877c06e070731b99095f1b78e2912f26d76ce244e70ad4348b" data-text-edit-marker="b5642386fd285690" data-text-edit-schema="1"></div>
 
 
 
@@ -844,8 +865,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

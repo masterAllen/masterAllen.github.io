@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -745,14 +745,40 @@
   
 
 
+<!-- blog-edit-start:b566c4e02a903886:b0 -->
+
 <h1 id="tcache-poisoning">tcache poisoning</h1>
+<!-- blog-edit-end:b566c4e02a903886:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f3b6f0522bcdd4bb882065ce7daec20db7c9d2704457919c32b7d91ef1d3d869" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache%5C02.tcache_poisoning.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\02.tcache_poisoning.md">复制路径</span></div>
 
+<!-- blog-edit-start:b566c4e02a903886:b1 -->
+
 <p>tache poisoning 暨 <strong>safe-linking</strong> 说明</p>
+<!-- blog-edit-end:b566c4e02a903886:b1 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b2 -->
+
 <h2 id="_1">介绍</h2>
+<!-- blog-edit-end:b566c4e02a903886:b2 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b3 -->
+
 <p>一句话，就是把某个块的 <code>next</code> 指针给改了，然后 <code>malloc</code> 就能得到任意地址的数据。</p>
+<!-- blog-edit-end:b566c4e02a903886:b3 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b4 -->
+
 <p>本质上，double free 最终很多也是修改了 next 指针，所以 tcache poisoning 是一种更泛的术语。</p>
+<!-- blog-edit-end:b566c4e02a903886:b4 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b5 -->
+
 <h3 id="counts">counts 很重要</h3>
+<!-- blog-edit-end:b566c4e02a903886:b5 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b6 -->
+
 <p><strong>但是其实这里有细节</strong>：tcache 判断的时候是通过对应的 <code>count</code> 来判断的：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tc_idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mp_</span><span class="p">.</span><span class="n">tcache_bins</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">tcache</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">tcache</span><span class="o">-&gt;</span><span class="n">counts</span><span class="p">[</span><span class="n">tc_idx</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
@@ -760,6 +786,10 @@
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">tag_new_usable</span><span class="w"> </span><span class="p">(</span><span class="n">victim</span><span class="p">);</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b566c4e02a903886:b6 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b7 -->
+
 <p>所以如果假设链表上只有一个 chunk，把它改成 <code>next</code> 并没有效果，因为第一次 <code>malloc</code> 之后 <code>counts</code> 已经是 0 了：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 放入 tcache 中</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">vuln_chunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span>
@@ -772,7 +802,15 @@
 </span><span id="__span-1-9"><span class="linenos" data-linenos=" 9 "></span>
 </span><span id="__span-1-10"><span class="linenos" data-linenos="10 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span><span class="w"> </span><span class="c1">// 此时不会得到 target_addr，因为 counts 是 0，系统认为 tcache 上是空的</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b566c4e02a903886:b7 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b8 -->
+
 <p>所以如果要攻击，通常是需要在 tcache 中放上两个才行，这样修改第一个的 <code>next</code>，然后再去两次 <code>malloc</code> 就可以了：</p>
+<!-- blog-edit-end:b566c4e02a903886:b8 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b9 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 先放入一个到 tcache</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x20</span><span class="p">);</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">free</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
@@ -788,56 +826,171 @@
 </span><span id="__span-2-13"><span class="linenos" data-linenos="13 "></span>
 </span><span id="__span-2-14"><span class="linenos" data-linenos="14 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x20</span><span class="p">)</span><span class="w"> </span><span class="c1">// 此时会得到 target_addr</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b566c4e02a903886:b9 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b10 -->
+
 <h2 id="safe-linking">防御机制：safe-linking</h2>
+<!-- blog-edit-end:b566c4e02a903886:b10 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b11 -->
+
 <p>glibc 2.32 增加了 safe-linking 这个操作，先介绍宏定义：</p>
+<!-- blog-edit-end:b566c4e02a903886:b11 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b12 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="cp">#define PROTECT_PTR(pos, ptr) \</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="cp">  ((__typeof (ptr)) ((((size_t) pos) &gt;&gt; 12) ^ ((size_t) ptr)))</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span><span class="cp">#define REVEAL_PTR(ptr) \</span>
 </span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span><span class="cp">  PROTECT_PTR (&amp;ptr, ptr)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b566c4e02a903886:b12 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b13 -->
+
 <p>核心改动，每次在 <code>free</code> 之后，加入链表的 <code>next</code> 多做如下的操作：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PROTECT_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="n">next</span><span class="p">);</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// 等价于</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">chunk_addr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b566c4e02a903886:b13 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b14 -->
+
 <p>找链表下一个的操作变成了：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">REVEAL_PTR</span><span class="p">(</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// 等价于</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PROTECT_PTR</span><span class="p">(</span><span class="o">&amp;</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="o">&amp;</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b566c4e02a903886:b14 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b15 -->
+
 <p>我知道现在会有很多疑问，别着急慢慢来。</p>
+<!-- blog-edit-end:b566c4e02a903886:b15 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b16 -->
+
 <h3 id="_2">正确时候的分析</h3>
+<!-- blog-edit-end:b566c4e02a903886:b16 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b17 -->
+
 <p>假设没有恶意攻击。原来的 <code>next</code>，即下一个 chunk 的地址，我们叫做 <code>real_next</code>。当 <code>free(e)</code> 时：</p>
+<!-- blog-edit-end:b566c4e02a903886:b17 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b18 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// chunk_addr 是 e 自身的地址</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">real_next</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">chunk_addr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b566c4e02a903886:b18 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b19 -->
+
 <p>当 <code>malloc</code> 的时候，我们需要从 <code>e</code> 去寻找下一个，那么：<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="o">&amp;</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">chunk_addr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">real_next</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">chunk_addr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">))</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">real_next</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:b566c4e02a903886:b19 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b20 -->
+
 <p>所以，正确的时候，可以找到下一个 chunk 的地址。</p>
+<!-- blog-edit-end:b566c4e02a903886:b20 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b21 -->
+
 <h3 id="_3">恶意时候的攻击</h3>
+<!-- blog-edit-end:b566c4e02a903886:b21 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b22 -->
+
 <p><strong>1. 原来的攻击方式</strong>，攻击把 <code>e-&gt;next</code> 指针改成了 <code>fake_next</code>，然后 <code>malloc()</code> 把 <code>e</code> 从链表取走，再来一次 <code>malloc()</code> 得到了 <code>fake_next</code> 指向的内容。</p>
+<!-- blog-edit-end:b566c4e02a903886:b22 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b23 -->
+
 <p>现在来看，则变成了，此时就不对了。</p>
+<!-- blog-edit-end:b566c4e02a903886:b23 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b24 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fake_addr</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">chunk_addr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b566c4e02a903886:b24 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b25 -->
+
 <p><strong>2. 那么转换思路</strong>，攻击把 <code>e-&gt;next</code> 指针改成 <code>fake_next ^ (chunk_addr &gt;&gt; 12)</code>，这样不就可以了吗？</p>
+<!-- blog-edit-end:b566c4e02a903886:b25 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b26 -->
+
 <p>但是：<strong>攻击者很难知道 <code>chunk_addr</code>！</strong> 这相当于攻击者需要知道 heap 的地址，如果开了 ASLR，那么攻击者是没办法知道准确地址的。</p>
+<!-- blog-edit-end:b566c4e02a903886:b26 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b27 -->
+
 <p><strong>3. 那如果我知道 heap 地址再去做</strong>，是的，这样你就可以攻击了。但那就不是 safe-linking 所考虑的事情了，他这个防御的存在就是为了让攻击者不知道 heap 地址的时候可以防护。</p>
+<!-- blog-edit-end:b566c4e02a903886:b27 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b28 -->
+
 <p>至于为什么是右移 12 位，其实就是低 12 位在 ASLR 中表示的偏移量，这个是可以根据调试得到已知的。</p>
+<!-- blog-edit-end:b566c4e02a903886:b28 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b29 -->
+
 <h3 id="_4">其他说明</h3>
+<!-- blog-edit-end:b566c4e02a903886:b29 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b30 -->
+
 <p>当时的疑问：加了 <a href=".././01.double_free/">tcache_key</a> 应该已经可以防止 safe-linking 预防的场景了吧？</p>
+<!-- blog-edit-end:b566c4e02a903886:b30 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b31 -->
+
 <p>简单回答：<code>tcache_key</code> 只能防止 double free，有的时候 tcache poisoning，即修改 <code>next</code> 指针不一定是通过 double free 来完成的。</p>
+<!-- blog-edit-end:b566c4e02a903886:b31 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b32 -->
+
 <h2 id="decrypt-safe-linking">decrypt safe-linking</h2>
+<!-- blog-edit-end:b566c4e02a903886:b32 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b33 -->
+
 <p>在正常的时候，假设我们不知道堆地址，但是我们知道 next 指针，我们能否解出正确的指针？答案是肯定的。</p>
+<!-- blog-edit-end:b566c4e02a903886:b33 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b34 -->
+
 <p>回顾 safe-linking，可以看到，高 12 bit 是没有动的。并且基于一个事实：<strong><code>real_next</code> 和 <code>chunk_addr</code> 在 12bit 往上的部分大概率一样。</strong> 之所以用 12 bit 就是这表示了一个页的大小，堆块一般都在一个页之间，所以他们除了低 12 bit 有所不同，剩下的是一样的。</p>
+<!-- blog-edit-end:b566c4e02a903886:b34 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b35 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// chunk_addr 是 e 自身的地址</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span><span class="n">e</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">real_next</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">chunk_addr</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b566c4e02a903886:b35 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b36 -->
+
 <p>所以如下图所示，我们逐步的去求解即可。我们按照每 12 bit 划分，最后的 <code>x5</code> 其实是 4bit，这个暂且忽略，就假设地址是 60 bit 吧。<code>x0-x4</code> 是正确的地址，<code>c0-c4</code> 是密文，即 <code>e-&gt;next</code>。蓝色是未知、绿色是已知，我们逐步能推出来...</p>
+<!-- blog-edit-end:b566c4e02a903886:b36 -->
+
+<!-- blog-edit-start:b566c4e02a903886:b37 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260114082902.png" /></p>
+<!-- blog-edit-end:b566c4e02a903886:b37 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\02.tcache_poisoning.md" data-text-edit-revision="f3b6f0522bcdd4bb882065ce7daec20db7c9d2704457919c32b7d91ef1d3d869" data-text-edit-marker="b566c4e02a903886" data-text-edit-schema="1"></div>
 
 
 
@@ -1069,8 +1222,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

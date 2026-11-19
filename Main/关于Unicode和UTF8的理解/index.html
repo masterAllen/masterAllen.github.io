@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -563,22 +563,48 @@
   
 
 
+<!-- blog-edit-start:20a0fe6b2e1b901a:b0 -->
+
 <h1 id="unicode-utf-8">关于 Unicode 和 UTF-8 的理解</h1>
+<!-- blog-edit-end:20a0fe6b2e1b901a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="125a4d2016b14f5e84f79856c369f35edd783f3dd6d66ee6edac15305f718c70" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E5%85%B3%E4%BA%8EUnicode%E5%92%8CUTF8%E7%9A%84%E7%90%86%E8%A7%A3.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\关于Unicode和UTF8的理解.md">复制路径</span></div>
+
+<!-- blog-edit-start:20a0fe6b2e1b901a:b1 -->
 
 <ul>
 <li>Unicode 可以理解为一套字符集，这个集合里面包含了英中日文、表情等等，比如第 0x0041 个表示 'A'，比如第 0x2EF0 个表示 '龙'。具体的集合可以看 <a href="https://unicode-table.com/en/">https://unicode-table.com/en/</a>。</li>
 <li>UTF-8 可以理解为是 Unicode 的编码方式，即 'A' 怎么用二进制表示，'龙' 怎么用二进制表示。</li>
 </ul>
+<!-- blog-edit-end:20a0fe6b2e1b901a:b1 -->
+
+<!-- blog-edit-start:20a0fe6b2e1b901a:b2 -->
+
 <p>当然你说，为什么不就用 0x0041 表示 'A'，0x2EF0 表示 '龙'呢？目的还是为了减少平均长度，因为 Unicode 集合个数超过两个字节，所以如果表示频率很多的英文，那也要起码三个字节，所以太亏了，所以要按照别的方式来进行编码。</p>
+<!-- blog-edit-end:20a0fe6b2e1b901a:b2 -->
+
+<!-- blog-edit-start:20a0fe6b2e1b901a:b3 -->
+
 <p>Python 如何对 Unicode 进行输出，方式如下。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;unicode_escape&quot;</span><span class="p">))</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="nb">print</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;\u2600&#39;</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;unicode_escape&quot;</span><span class="p">))</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:20a0fe6b2e1b901a:b3 -->
+
+<!-- blog-edit-start:20a0fe6b2e1b901a:b4 -->
+
 <p>1. urxvt 指定 Unifont，但是好像不能输出其中的一些字符<br />
 2. urxvt 无法指定 siji，导致无线网信号这种 Unicode 中自定义的符号显示不出或显示错误。<br />
 3. gnome-terminal 显示完美。</p>
+<!-- blog-edit-end:20a0fe6b2e1b901a:b4 -->
+
+<!-- blog-edit-start:20a0fe6b2e1b901a:b5 -->
+
 <p>下面是知乎的一个问题和回答: Unicode 和 UTF-8 有什么区别？</p>
+<!-- blog-edit-end:20a0fe6b2e1b901a:b5 -->
+
+<!-- blog-edit-start:20a0fe6b2e1b901a:b6 -->
+
 <blockquote>
 <p>作者：uuspider<br />
 链接：<a href="https://www.zhihu.com/question/23374078/answer/65352538">https://www.zhihu.com/question/23374078/answer/65352538</a><br />
@@ -633,6 +659,9 @@
 </span></code></pre></div><br />
 和上边的方案对比一下，英文短了，每个中文字符却多用了一个字节。但是整个字符串只用了17个字节，比上边的18个短了一点点。</p>
 </blockquote>
+<!-- blog-edit-end:20a0fe6b2e1b901a:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\关于Unicode和UTF8的理解.md" data-text-edit-revision="125a4d2016b14f5e84f79856c369f35edd783f3dd6d66ee6edac15305f718c70" data-text-edit-marker="20a0fe6b2e1b901a" data-text-edit-schema="1"></div>
 
 
 
@@ -864,8 +893,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

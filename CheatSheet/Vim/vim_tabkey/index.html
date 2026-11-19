@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,12 +581,30 @@
   
 
 
+<!-- blog-edit-start:040d791208bd4a86:b0 -->
+
 <h1 id="vim-tab">Vim 中命令行更改 Tab 不起作用</h1>
+<!-- blog-edit-end:040d791208bd4a86:b0 -->
+
 <div class="file-actions" data-image-edit-revision="012151ecf5ac6517cf9a329aa044cc03763674ec356845b87ec7cfe2801231e5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CVim%5Cvim_tabkey.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CVim" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\Vim\vim_tabkey.md">复制路径</span></div>
 
+<!-- blog-edit-start:040d791208bd4a86:b1 -->
+
 <p>故事的开始是因为 vim 在 cmdline-mode 下的自动补全是 <code>&lt;Tab&gt;</code>，而 insert-mode 下是 <code>&lt;C-N&gt;</code>，所以就打算把 cmdline 下改掉。</p>
+<!-- blog-edit-end:040d791208bd4a86:b1 -->
+
+<!-- blog-edit-start:040d791208bd4a86:b2 -->
+
 <p>但是直接 <code>cnoremap &lt;C-N&gt; &lt;Tab&gt;</code> 不可以，实际情况会输出 <code>^I</code> 字符(<code>Tab</code> 和 <code>C-I</code> 相当于是一个键位)，而不是预期的自动补全。</p>
+<!-- blog-edit-end:040d791208bd4a86:b2 -->
+
+<!-- blog-edit-start:040d791208bd4a86:b3 -->
+
 <p>这就非常奇怪了啊，查了一个多小时，终于明白了，首先看 vim 帮助文档中关于 <code>wildcharm</code> 定义。</p>
+<!-- blog-edit-end:040d791208bd4a86:b3 -->
+
+<!-- blog-edit-start:040d791208bd4a86:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span>&#39;wildcharm&#39; &#39;wcm&#39;   number  (default: none (0))
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>            global
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>    &#39;wildcharm&#39; works exactly like &#39;wildchar&#39;, except that it is
@@ -598,7 +616,14 @@
 </span><span id="__span-0-9"><span class="linenos" data-linenos=" 9 "></span>        :cnoremap ss so $vim/sessions/*.vim&lt;C-Z&gt;
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span>&lt;   Then after typing :ss you can use CTRL-P &amp; CTRL-N.
 </span></code></pre></div>
+<!-- blog-edit-end:040d791208bd4a86:b4 -->
+
+<!-- blog-edit-start:040d791208bd4a86:b5 -->
+
 <p>意思就是 wildcharm 是用来定义自动补全的键位，默认是 Tab，但是默认是不允许这个值去被扩展，所以直接改 <code>wildcharm</code> 就可以了，<code>set wildcharm=&lt;C-N&gt;</code>，搞定...</p>
+<!-- blog-edit-end:040d791208bd4a86:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\Vim\vim_tabkey.md" data-text-edit-revision="012151ecf5ac6517cf9a329aa044cc03763674ec356845b87ec7cfe2801231e5" data-text-edit-marker="040d791208bd4a86" data-text-edit-schema="1"></div>
 
 
 
@@ -830,8 +855,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

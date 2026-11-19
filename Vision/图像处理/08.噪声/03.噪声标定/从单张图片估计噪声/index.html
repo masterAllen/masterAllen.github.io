@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -627,11 +627,25 @@
   
 
 
+<!-- blog-edit-start:511b36ba0d112765:b0 -->
+
 <h1 id="_1">从单张图片估计噪声</h1>
+<!-- blog-edit-end:511b36ba0d112765:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d40044b292c7bbea42db05bd41bad1cf58c5c2f3e9e09eab248c2b05e49ca2e1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C03.%E5%99%AA%E5%A3%B0%E6%A0%87%E5%AE%9A%5C%E4%BB%8E%E5%8D%95%E5%BC%A0%E5%9B%BE%E7%89%87%E4%BC%B0%E8%AE%A1%E5%99%AA%E5%A3%B0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C08.%E5%99%AA%E5%A3%B0%5C03.%E5%99%AA%E5%A3%B0%E6%A0%87%E5%AE%9A" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\08.噪声\03.噪声标定\从单张图片估计噪声.md">复制路径</span></div>
 
+<!-- blog-edit-start:511b36ba0d112765:b1 -->
+
 <p>链接：<a href="https://www.cnblogs.com/Imageshop/p/17021471.html">https://www.cnblogs.com/Imageshop/p/17021471.html</a></p>
+<!-- blog-edit-end:511b36ba0d112765:b1 -->
+
+<!-- blog-edit-start:511b36ba0d112765:b2 -->
+
 <p>Halcon 中的 <code>estmate_noise</code> 函数，可以从单帧估计高斯噪声。当使用最推荐的方法 <code>immerkaer</code>，它的实现是这样的：</p>
+<!-- blog-edit-end:511b36ba0d112765:b2 -->
+
+<!-- blog-edit-start:511b36ba0d112765:b3 -->
+
 <div class="arithmatex">\[
 M = \left| \begin{matrix}
     1&amp;      -2&amp;     1\\
@@ -639,12 +653,31 @@ M = \left| \begin{matrix}
     1&amp;      -2&amp;     1\\
 \end{matrix} \right|
 \]</div>
+<!-- blog-edit-end:511b36ba0d112765:b3 -->
+
+<!-- blog-edit-start:511b36ba0d112765:b4 -->
+
 <div class="arithmatex">\[
 \sigma = \sqrt{\frac{\pi}{2}} \frac{1}{6N} \sum_{i,j} |image * M|
 \]</div>
+<!-- blog-edit-end:511b36ba0d112765:b4 -->
+
+<!-- blog-edit-start:511b36ba0d112765:b5 -->
+
 <p>其中 N 是像素个数。</p>
+<!-- blog-edit-end:511b36ba0d112765:b5 -->
+
+<!-- blog-edit-start:511b36ba0d112765:b6 -->
+
 <p>这里 M 的好处：The advantage of this method is that M is almost insensitive to image structure but only depends on the noise in the image. Assuming a Gaussian distributed noise, its standard deviation is finally obtained as</p>
+<!-- blog-edit-end:511b36ba0d112765:b6 -->
+
+<!-- blog-edit-start:511b36ba0d112765:b7 -->
+
 <p>说是对图像结构不敏感，只依赖图片噪声。总之偶尔用用即可。要严格标定的话还是要走严格流程。</p>
+<!-- blog-edit-end:511b36ba0d112765:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\08.噪声\03.噪声标定\从单张图片估计噪声.md" data-text-edit-revision="d40044b292c7bbea42db05bd41bad1cf58c5c2f3e9e09eab248c2b05e49ca2e1" data-text-edit-marker="511b36ba0d112765" data-text-edit-schema="1"></div>
 
 
 
@@ -876,8 +909,6 @@ M = \left| \begin{matrix}
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -700,15 +700,45 @@
   
 
 
+<!-- blog-edit-start:9b59892fdc5291ee:b0 -->
+
 <h1 id="ret2csu">ret2csu 说明</h1>
+<!-- blog-edit-end:9b59892fdc5291ee:b0 -->
+
 <div class="file-actions" data-image-edit-revision="6a13f02aa7636736ef176a046bc88c189cf3939411c945baa7b4bebceeb6984f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C07.ret2csu%5Cret2csu.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C07.ret2csu" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\07.ret2csu\ret2csu.md">复制路径</span></div>
 
+<!-- blog-edit-start:9b59892fdc5291ee:b1 -->
+
 <p>之所以叫 csu，本质是利用 <code>__libc_csu_init</code> 里现成的两段代码，构造出 ROP 链。</p>
+<!-- blog-edit-end:9b59892fdc5291ee:b1 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b2 -->
+
 <h2 id="libc">注意点：不需要知道 libc 地址</h2>
+<!-- blog-edit-end:9b59892fdc5291ee:b2 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b3 -->
+
 <p><code>__libc_csu_init</code> 不是在 libc 里面，而是编译进 你这个可执行文件 里的代码。也就是在 <strong>主程序 ELF 的 <code>.text</code> 段</strong>。</p>
+<!-- blog-edit-end:9b59892fdc5291ee:b3 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b4 -->
+
 <p><strong>所以 ret2csu 不需要知道 libc 基地址！</strong></p>
+<!-- blog-edit-end:9b59892fdc5291ee:b4 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b5 -->
+
 <h2 id="_1">具体细节</h2>
+<!-- blog-edit-end:9b59892fdc5291ee:b5 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b6 -->
+
 <p>用的 <code>__libc_csu_init</code> 这个函数，里面有两个片段可以用：</p>
+<!-- blog-edit-end:9b59892fdc5291ee:b6 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b7 -->
+
 <p><strong>片段一：</strong><br />
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="nf">pop</span><span class="w"> </span><span class="no">rbx</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="nf">pop</span><span class="w"> </span><span class="no">rbp</span>
@@ -718,13 +748,25 @@
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span><span class="nf">pop</span><span class="w"> </span><span class="no">r15</span>
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span><span class="nf">ret</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:9b59892fdc5291ee:b7 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b8 -->
+
 <p><strong>片段二：</strong><br />
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="nf">mov</span><span class="w"> </span><span class="no">rdx</span><span class="p">,</span><span class="w"> </span><span class="no">r15</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="nf">mov</span><span class="w"> </span><span class="no">rsi</span><span class="p">,</span><span class="w"> </span><span class="no">r14</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="nf">mov</span><span class="w"> </span><span class="no">edi</span><span class="p">,</span><span class="w"> </span><span class="no">r13d</span>
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="nf">call</span><span class="w"> </span><span class="p">[</span><span class="no">r12</span><span class="w"> </span><span class="err">+</span><span class="w"> </span><span class="no">rbx</span><span class="p">*</span><span class="mi">8</span><span class="p">]</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:9b59892fdc5291ee:b8 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b9 -->
+
 <p>可以看到第二片段里面有个 <code>call</code> 指令，里面用到的寄存器 <code>r12</code> 和 <code>rbx</code> 我们可以在第一个片段中控制，所以两个片段会组合使用，达到 <code>func(arg1, arg2, arg3)</code> 的效果：</p>
+<!-- blog-edit-end:9b59892fdc5291ee:b9 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b10 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>padding
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>csu_pop_addr      ← 片段 A
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span>rbx = 0
@@ -736,20 +778,43 @@
 </span><span id="__span-2-9"><span class="linenos" data-linenos=" 9 "></span>csu_call_addr     ← 片段 B
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span>junk              ← 对齐 / 占位
 </span></code></pre></div>
+<!-- blog-edit-end:9b59892fdc5291ee:b10 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b11 -->
+
 <h2 id="_2">常用方式</h2>
+<!-- blog-edit-end:9b59892fdc5291ee:b11 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b12 -->
+
 <p>常见的做法有 <code>write(1, puts@got, 8);</code> 泄露 libc 地址，<code>read(0, bss, 0x400);</code> 达到写入内存目的。</p>
+<!-- blog-edit-end:9b59892fdc5291ee:b12 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b13 -->
+
 <p>通常有如下的组合：<br />
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="nf">ret2csu</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="no">write</span><span class="w"> </span><span class="err">泄露</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="nf">ret2csu</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="no">read</span><span class="w"> </span><span class="err">写第二阶段</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="nf">ret2libc</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="no">system</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:9b59892fdc5291ee:b13 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b14 -->
+
 <h2 id="_3">好处</h2>
+<!-- blog-edit-end:9b59892fdc5291ee:b14 -->
+
+<!-- blog-edit-start:9b59892fdc5291ee:b15 -->
+
 <ol>
 <li>ELF 基本都有 <code>__libc_csu_init</code></li>
 <li>不依赖 libc</li>
 <li>能一次性设置 3 个参数</li>
 <li>ASLR 开启也能用（只要程序不是 PIE）（回忆：ASLR 是 heap 之类的结构随机化，主程序不随机）</li>
 </ol>
+<!-- blog-edit-end:9b59892fdc5291ee:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\07.ret2csu\ret2csu.md" data-text-edit-revision="6a13f02aa7636736ef176a046bc88c189cf3939411c945baa7b4bebceeb6984f" data-text-edit-marker="9b59892fdc5291ee" data-text-edit-schema="1"></div>
 
 
 
@@ -981,8 +1046,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

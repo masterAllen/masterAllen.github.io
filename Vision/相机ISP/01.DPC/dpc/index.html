@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -733,28 +733,110 @@
   
 
 
+<!-- blog-edit-start:58c2a67011b50322:b0 -->
+
 <h1 id="dpc">DPC 坏点矫正</h1>
+<!-- blog-edit-end:58c2a67011b50322:b0 -->
+
 <div class="file-actions" data-image-edit-revision="58c2a67011b50322251a809e332c27fcd2b4e1ed0eaa65ca55f39c09b72c6736" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C01.DPC%5Cdpc.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C01.DPC" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\01.DPC\dpc.md">复制路径</span></div>
 
+<!-- blog-edit-start:58c2a67011b50322:b1 -->
+
 <p>DPC: Defective Pixel Correction</p>
+<!-- blog-edit-end:58c2a67011b50322:b1 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b2 -->
+
 <h2 id="_1">简介</h2>
+<!-- blog-edit-end:58c2a67011b50322:b2 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b3 -->
+
 <p>这是真实世界，一颗传感器上难免会有瑕疵，成像上就表现为坏点。</p>
+<!-- blog-edit-end:58c2a67011b50322:b3 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b4 -->
+
 <p>坏点一般分为<strong>两种类型</strong>：像素值固定比较大/小，或者像素值感光线性度和其他像素差异很大。</p>
+<!-- blog-edit-end:58c2a67011b50322:b4 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b5 -->
+
 <p>DPC 算法也是两个重点：<strong>检测</strong>和<strong>修复</strong>；其中检测是比较重要的，修复则没啥特别标新立异的方法，因为 DPC 一般都是独立点或者很小的点簇（如果有一个 4x4 的坏点，厂商就有极大可能作为不良品不出货了），所以很小的点一般都是用周围点均值或者中值替代，无非是有的方法<strong>简单判断边缘，只用对应方向的点来修复。</strong></p>
+<!-- blog-edit-end:58c2a67011b50322:b5 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b6 -->
+
 <h2 id="_2">写给自己的</h2>
+<!-- blog-edit-end:58c2a67011b50322:b6 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b7 -->
+
 <p>DPC 之前简单弄过一些，工作目录：<code>D:\Work\DPC</code>。</p>
+<!-- blog-edit-end:58c2a67011b50322:b7 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b8 -->
+
 <h2 id="sdpc">静态校正（SDPC）</h2>
+<!-- blog-edit-end:58c2a67011b50322:b8 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b9 -->
+
 <p>由 sensor 厂商在生产后进行标定，把所有坏点的坐标位置记录下来，然后矫正的时候直接通过查表得方式找到坏点进行矫正。</p>
+<!-- blog-edit-end:58c2a67011b50322:b9 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b10 -->
+
 <h3 id="_3">个人的经验分享</h3>
+<!-- blog-edit-end:58c2a67011b50322:b10 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b11 -->
+
 <p>除了直接通过均值方差比较，坏点有可能会影响周围的点，导致出现下面的形状：</p>
+<!-- blog-edit-end:58c2a67011b50322:b11 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b12 -->
+
 <p><img alt="" src="../../../../asset/image/f59cb5f8c57f61a6a0f2e4d8059fe497/20260213101343.png" /></p>
+<!-- blog-edit-end:58c2a67011b50322:b12 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b13 -->
+
 <p>所以适当降低检查的标准，然后找出这种形状，即 <code>3x3</code> 窗口里面有多个坏点的。而且均值和方差最好用小窗口来做，而不是全局的，这个思想在任何时候都有用。</p>
+<!-- blog-edit-end:58c2a67011b50322:b13 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b14 -->
+
 <h2 id="dpc_1">动态校正（DPC）</h2>
+<!-- blog-edit-end:58c2a67011b50322:b14 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b15 -->
+
 <p>随着时间，坏点会增加，而且有些坏点也不好说清楚到底是不是坏点，所以需要动态检测坏点并进行矫正。</p>
+<!-- blog-edit-end:58c2a67011b50322:b15 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b16 -->
+
 <h3 id="pinto">PINTO算法</h3>
+<!-- blog-edit-end:58c2a67011b50322:b16 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b17 -->
+
 <p>主要思想是坏点往往是在一个邻域中的极亮或极暗点，所以以一个5x5的邻域为检测区域</p>
+<!-- blog-edit-end:58c2a67011b50322:b17 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b18 -->
+
 <p><img alt="" src="../../../../asset/image/ac597f720e1773beb3f342499fee5294/5x5.png" /></p>
+<!-- blog-edit-end:58c2a67011b50322:b18 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b19 -->
+
 <p>如图所示5x5的邻域内同意颜色通道相对于中心像素都有8个临近像素。那么矫正按以下步骤操作：</p>
+<!-- blog-edit-end:58c2a67011b50322:b19 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b20 -->
+
 <ol>
 <li>计算中心像素与周围八个像素值的差；</li>
 <li>判断八个差值是否都为正值或者都为负值；</li>
@@ -762,9 +844,25 @@
 <li>设置一个阈值，如果八个差值的绝对值都查过阈值，那么就判断为坏点；</li>
 <li>判断为坏点后就用八个临近的像素值的中位值来替换当前的像素值；</li>
 </ol>
+<!-- blog-edit-end:58c2a67011b50322:b20 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b21 -->
+
 <h3 id="_4">梯度法</h3>
+<!-- blog-edit-end:58c2a67011b50322:b21 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b22 -->
+
 <p><img alt="" src="../../../../asset/image/ac597f720e1773beb3f342499fee5294/5X5_1.jpg" /></p>
+<!-- blog-edit-end:58c2a67011b50322:b22 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b23 -->
+
 <p>该算法的作者针对三个通道都使用这一种窗口进行检测，具体步骤如下：</p>
+<!-- blog-edit-end:58c2a67011b50322:b23 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b24 -->
+
 <ol>
 <li>
 <p>计算四个方向的梯度：</p>
@@ -813,10 +911,29 @@
 </li>
 <li>边缘为45°，如果|P3-Pc|&lt;|P6-Pc|，则Pc更靠近P3，output=P3+(P4+P7-P2-p5)/2</li>
 </ol>
+<!-- blog-edit-end:58c2a67011b50322:b26 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b27 -->
+
 <h3 id="demosaic">和 demosaic 结合法</h3>
+<!-- blog-edit-end:58c2a67011b50322:b27 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b28 -->
+
 <p><strong>没必要看了</strong></p>
+<!-- blog-edit-end:58c2a67011b50322:b28 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b29 -->
+
 <h3 id="_5">行检测法</h3>
+<!-- blog-edit-end:58c2a67011b50322:b29 -->
+
+<!-- blog-edit-start:58c2a67011b50322:b30 -->
+
 <p><strong>在这个硬件已经相当便宜的时代，没有必要看了</strong></p>
+<!-- blog-edit-end:58c2a67011b50322:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\01.DPC\dpc.md" data-text-edit-revision="58c2a67011b50322251a809e332c27fcd2b4e1ed0eaa65ca55f39c09b72c6736" data-text-edit-marker="58c2a67011b50322" data-text-edit-schema="1"></div>
 
 
 
@@ -1048,8 +1165,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

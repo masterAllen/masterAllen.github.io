@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,18 +581,39 @@
   
 
 
+<!-- blog-edit-start:aa69be22fde5d69f:b0 -->
+
 <h1 id="i3-gnome-terminal">i3 下 gnome-terminal 无法切换搜狗输入法</h1>
+<!-- blog-edit-end:aa69be22fde5d69f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f9d0a06a64404d75588ef39db31625d7f55abbe67c147110cf5d73c6660d0581" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug%5Cdebug_001.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Debug\debug_001.md">复制路径</span></div>
 
+<!-- blog-edit-start:aa69be22fde5d69f:b1 -->
+
 <p>解决方法是执行 <code>/usr/lib/gsd-xsettings</code>。执行完可能会发现字体变小了，输入法的浮窗也变小了，那么执行 <code>dconf</code>，改变 <code>org.gnome.desktop.interface</code> 下的两个 <code>scaling-factor</code>，都改成 2 即可。</p>
+<!-- blog-edit-end:aa69be22fde5d69f:b1 -->
+
+<!-- blog-edit-start:aa69be22fde5d69f:b2 -->
+
 <p>原因分析: 正常情况下 i3 是不需要执行 <code>gsd-xsettings</code> 的，但是由于 <code>gnome-terminal</code> 依赖 gnome 的一些环境，所以此时就需要执行 <code>gsd-xsettings</code> 了。而执行完成之后相当于使用了 gnome 的桌面设置，因此会引发 HiDPI 的问题，所以再使用 gnome 下解决 HiDPI 的方法即可。</p>
+<!-- blog-edit-end:aa69be22fde5d69f:b2 -->
+
+<!-- blog-edit-start:aa69be22fde5d69f:b3 -->
+
 <p>排查过程：</p>
+<!-- blog-edit-end:aa69be22fde5d69f:b3 -->
+
+<!-- blog-edit-start:aa69be22fde5d69f:b4 -->
+
 <ol>
 <li>查看别的终端是否可以，使用了 <code>urxvt</code>，发现可以切换输入法，说明是 <code>gnome-terminal</code> 的问题。</li>
 <li>查看 <code>gnome-terminal</code> 所依赖的桌面环境 gnome，进入 gnome 环境下看看是否可以切换，发现可以。说明是 i3 环境有些问题，应该是哪个进程没有执行。</li>
 <li>对比 i3 和 gnome 环境下 <code>ps -aux</code> 的进程，在 i3 下尝试执行 gnome 下运行的进程，发现执行 <code>gsd-xsettings</code> 后可以实现。</li>
 <li>查看 <code>gsd-xsettings</code> 的作用，明白了最终的问题原因。</li>
 </ol>
+<!-- blog-edit-end:aa69be22fde5d69f:b4 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Debug\debug_001.md" data-text-edit-revision="f9d0a06a64404d75588ef39db31625d7f55abbe67c147110cf5d73c6660d0581" data-text-edit-marker="aa69be22fde5d69f" data-text-edit-schema="1"></div>
 
 
 
@@ -824,8 +845,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

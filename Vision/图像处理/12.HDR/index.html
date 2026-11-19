@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -682,23 +682,57 @@
   
 
 
+<!-- blog-edit-start:4326dd199076a07a:b0 -->
+
 <h1 id="hdr">HDR 学习记录</h1>
+<!-- blog-edit-end:4326dd199076a07a:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4326dd199076a07ae7b7ff67a60bbcd4abe820f575cc596650ece4a4cb4a7603" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C12.HDR%5Creadme.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C12.HDR" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\12.HDR\readme.md">复制路径</span></div>
+
+<!-- blog-edit-start:4326dd199076a07a:b1 -->
 
 <p>HDR 包括两个部分：</p>
 <ol>
 <li>从多张图片融合成一张，此时这个图片范围是 32bit。</li>
 <li>融合成一张的图在显示器上显示，即 32bit 的浮点数转成 8bit 数，这是 ToneMapping</li>
 </ol>
+<!-- blog-edit-end:4326dd199076a07a:b1 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b2 -->
+
 <p>做过一个作业（深蓝学院第一章），那个作业收获了很多，可以对着代码来看。而且那个代码文件夹下有一个 PDF 和一个视频讲解。</p>
+<!-- blog-edit-end:4326dd199076a07a:b2 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b3 -->
+
 <h2 id="_1">经典长短曝光</h2>
+<!-- blog-edit-end:4326dd199076a07a:b3 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b4 -->
+
 <p>先把最经典的一个长短曝光结合方法好好看一下。非常经典，上面提到做过一个作业，在 <a href="D:\Blog\done\课程知识\计算摄影学\Code\CVProj001-HDR">图像实验文件夹下</a>。这个分为了融合和 Tonemapping 两个部分，如果不理解 Tonemapping，可以先看忽略。</p>
+<!-- blog-edit-end:4326dd199076a07a:b4 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b5 -->
+
 <ol>
 <li><a href="./01.使用OpenCV进行长短帧HDR/">01.使用 OpenCV 进行长短帧 HDR</a>：这个是 OpenCV 有直接的 API 调用，具体的笔记，很简单。</li>
 <li><a href="./02.ExposureFusion/">02.Exposure Fusion</a>：这个是一个比较经典的论文融合方法，非常推荐看一下，利用金字塔的思想很值得借鉴。</li>
 </ol>
+<!-- blog-edit-end:4326dd199076a07a:b5 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b6 -->
+
 <h2 id="tonemapping">Tonemapping</h2>
+<!-- blog-edit-end:4326dd199076a07a:b6 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b7 -->
+
 <p>Tonemapping 就是高 bit 图像转成低 bit 图像（常见的是 8bit），这个是 HDR 的最后一步。</p>
+<!-- blog-edit-end:4326dd199076a07a:b7 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b8 -->
+
 <ol>
 <li><a href="./11.Tonemapping和CCM的顺序/">11.Tonemapping 和 CCM 的顺序</a>：首先思考 Tonemapping 和 CCM 的顺序关系，必须先 CCM 再 Tonemapping，为什么？自行查看。</li>
 <li><span class="blog-resource">
@@ -708,19 +742,55 @@
 </span>：一个相当漂亮的文章，看了这篇就明白 Global Tonemapping 的思路了。</li>
 <li>还有 LocalTonemapping，这里就没有展开了。</li>
 </ol>
+<!-- blog-edit-end:4326dd199076a07a:b8 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b9 -->
+
 <h2 id="hdrplus">HDRPlus</h2>
+<!-- blog-edit-end:4326dd199076a07a:b9 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b10 -->
+
 <p>然后 HDR 无法绕开 HDRPlus 这个方法，2016 年在谷歌 Pixel 手机已经用的方法，夜间拍照非常惊艳。但是对于 HDR 而言，HDRplus 并不需要看：</p>
+<!-- blog-edit-end:4326dd199076a07a:b10 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b11 -->
+
 <p>HDRPlus 使用了多帧同等曝光融合，那么同等曝光如何做 HDR？他是直接有的帧乘以不同 gain 来模拟不同曝光的帧，之后用这些帧来进行长短曝光的 HDR。所以在 HDR 方面 HDRPlus 很简单，他主要贡献点是如何对齐各个图片、整个 ISP 流程的工程实现。</p>
+<!-- blog-edit-end:4326dd199076a07a:b11 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b12 -->
+
 <h2 id="_2">芯片上改进</h2>
+<!-- blog-edit-end:4326dd199076a07a:b12 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b13 -->
+
 <p>另外：芯片上的改进和算法是同样重要的！！事实上为了克服传统长短曝光时间过长的缺点，有不少硬件上 HDR 方法的提出。比如大小像素（大小 FD），双转换增益（DCG），多个 ADC 并行工作等。</p>
+<!-- blog-edit-end:4326dd199076a07a:b13 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b14 -->
+
 <ol>
 <li><a href="21.图像传感器中的HDR技术.html/">21.图像传感器中的 HDR 技术</a>：这篇文章对 sensor 硬件上 HDR 方法的一个总结，值得一看。</li>
 </ol>
+<!-- blog-edit-end:4326dd199076a07a:b14 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b15 -->
+
 <h2 id="_3">阅读文章的提示</h2>
+<!-- blog-edit-end:4326dd199076a07a:b15 -->
+
+<!-- blog-edit-start:4326dd199076a07a:b16 -->
+
 <ol>
 <li>阅读文章的时候搜解读，HDR 这方面的解读明显比 Demosaic 要多得多</li>
 <li>分清楚目的，比如 Single-Image，这种明显是妥协之举，不用看这些算法</li>
 </ol>
+<!-- blog-edit-end:4326dd199076a07a:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\12.HDR\readme.md" data-text-edit-revision="4326dd199076a07ae7b7ff67a60bbcd4abe820f575cc596650ece4a4cb4a7603" data-text-edit-marker="4326dd199076a07a" data-text-edit-schema="1"></div>
+
                         
 
                         
@@ -952,8 +1022,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -652,43 +652,116 @@
 <h1 id="question">question</h1>
 <div class="file-actions" data-image-edit-revision="467b2046441002bf49f6298cde16bee9cb4c7de6f515cd72b4d72ea68d855c08" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5CDebug-Hacker%5Cquestion.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5CDebug-Hacker" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\Debug-Hacker\question.md">复制路径</span></div>
 
+<!-- blog-edit-start:5cc6ae1c799c65fb:b0 -->
+
 <h2 id="hack-09">Hack 09</h2>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b0 -->
+<!-- blog-edit-start:5cc6ae1c799c65fb:b1 -->
+
 <p>1. 栈从高往低走</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b1 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b2 -->
+
 <p>2. 说出函数调用前后栈的变化情况</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b2 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b3 -->
+
 <ul>
 <li>父亲: push 传递参数 =&gt; push 返回地址 =&gt; call</li>
 <li>儿子: push old ebp(保存ebp) =&gt; ebp=esp(更新ebp) =&gt; 调整esp(为临时变量开辟空间)</li>
 <li>可以看到传递参数和返回地址在ebp的上面，临时用的变量在ebp的下面</li>
 </ul>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b3 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b4 -->
+
 <p>3. 为什么儿子esp→ebp 这一环节中就能保证 esp 就是栈顶？可以发现，之前的种种操作，虽然栈上添加了许多东西，但是根本没有改变esp的值!<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>因为esp在函数一开始就是这个函数的最大栈顶，可以看儿子部分中的调整esp，可以看出，每个函数执行开始，就已经把esp调到了栈的顶端，而不是说，每次往栈添加东西，都要去调整esp.
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>PC --&gt; RIP
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>FP --&gt; RBP
 </span></code></pre></div></p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b4 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b5 -->
+
 <h2 id="hack10">Hack10</h2>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b5 -->
+<!-- blog-edit-start:5cc6ae1c799c65fb:b6 -->
+
 <p>基本知识:</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b6 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b7 -->
+
 <p>1. 说出函数传参对应的寄存器(看手册就好，不用强记)</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b7 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b8 -->
+
 <h2 id="hack12">Hack12</h2>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b8 -->
+<!-- blog-edit-start:5cc6ae1c799c65fb:b9 -->
+
 <p>1. 某个类拥有成员函数时，该函数实现在内存只有一个，如果该类调用此函数，实际情况是什么？<br />
 (即对于<code>foo:func(int a, int b)</code>这种函数而言，<code>foo A</code> 调用<code>func</code>的实际情况是什么样子)</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b9 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b10 -->
+
 <h2 id="hack14">Hack14</h2>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b10 -->
+<!-- blog-edit-start:5cc6ae1c799c65fb:b11 -->
+
 <p>从汇编代码定位源代码位置</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b11 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b12 -->
+
 <p>1. 首先查看附件的call func，标记可疑点: </p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b12 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b13 -->
+
 <ul>
 <li>注意点：很有可能并不是直接调用某个函数，而是调用了A函数，A函数中又调用了func</li>
 </ul>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b13 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b14 -->
+
 <p>2. 利用 crash 查看结构体成员</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b14 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b15 -->
+
 <ul>
 <li>如果出现invalid data structure，怎么解决？</li>
 <li>如何查看结构体的偏移量？</li>
 <li>如何用十六进制显示？</li>
 </ul>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b15 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b16 -->
+
 <p>3. 偷懒方法，利用 crash 中的 <code>dis -l</code>，可以查看汇编代码和源代码的关系</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b16 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b17 -->
+
 <h2 id="gdb">GDB使用</h2>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b17 -->
+
+<!-- blog-edit-start:5cc6ae1c799c65fb:b18 -->
+
 <p>1. 如何查看帧的情况及其变量内容<br />
 2. 如何查看Seg Fault的最后一个汇编代码<br />
 3. 如何查看及修改系统规定的每个程序中栈的最大大小<br />
 4. 当有2个参数因为寄存器不够用了而传入栈，此时怎么查询，应该查几个</p>
+<!-- blog-edit-end:5cc6ae1c799c65fb:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\Debug-Hacker\question.md" data-text-edit-revision="467b2046441002bf49f6298cde16bee9cb4c7de6f515cd72b4d72ea68d855c08" data-text-edit-marker="5cc6ae1c799c65fb" data-text-edit-schema="1"></div>
 
 
 
@@ -920,8 +993,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

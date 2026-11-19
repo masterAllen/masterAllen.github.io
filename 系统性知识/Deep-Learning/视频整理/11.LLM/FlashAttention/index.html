@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -816,52 +816,162 @@
   
 
 
+<!-- blog-edit-start:10c843871f08de5d:b0 -->
+
 <h1 id="flashattention">FlashAttention 的简单理解</h1>
+<!-- blog-edit-end:10c843871f08de5d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="10c843871f08de5dbfacffe3ede687f9f58c01eb5af6021d95b9deabe0d1d3e5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CFlashAttention.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\FlashAttention.md">复制路径</span></div>
+
+<!-- blog-edit-start:10c843871f08de5d:b1 -->
 
 <blockquote>
 <p>参考文章：<a href="https://zhuanlan.zhihu.com/p/668888063">https://zhuanlan.zhihu.com/p/668888063</a></p>
 </blockquote>
+<!-- blog-edit-end:10c843871f08de5d:b1 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b2 -->
+
 <h2 id="softmax-online-softmax">从 softmax 到 online-softmax</h2>
+<!-- blog-edit-end:10c843871f08de5d:b2 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b3 -->
+
 <p>首先，softmax 的计算公式是：</p>
+<!-- blog-edit-end:10c843871f08de5d:b3 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b4 -->
+
 <div class="arithmatex">\[
 \operatorname{softmax}(x)_i = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b4 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b5 -->
+
 <p>工程上，为了防止溢出，通常会减去一个最大值，确保指数项不会溢出：</p>
+<!-- blog-edit-end:10c843871f08de5d:b5 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b6 -->
+
 <div class="arithmatex">\[
 \operatorname{safe\text{-}softmax}(x)_i = \frac{e^{x_i - m}}{\sum_{j=1}^{n} e^{x_j - m}}
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b6 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b7 -->
+
 <div class="arithmatex">\[
 m = \max(x_1, x_2, \ldots, x_n)
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b7 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b8 -->
+
 <p>如下是伪代码：</p>
+<!-- blog-edit-end:10c843871f08de5d:b8 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b9 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260523203326.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b9 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b10 -->
+
 <p>下面介绍 online-softmax，它的目标是把上面的 3 个 <code>for</code> 循环变为 2 个 <code>for</code> 循环，方法如下：</p>
+<!-- blog-edit-end:10c843871f08de5d:b10 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b11 -->
+
 <p>构造 <span class="arithmatex">\(d'_i\)</span>。其中，<span class="arithmatex">\(m_i = \max(x_1, \ldots, x_i)\)</span>，定义如下：</p>
+<!-- blog-edit-end:10c843871f08de5d:b11 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b12 -->
+
 <div class="arithmatex">\[
 d'_i \leftarrow d'_{i-1} e^{m_{i-1} - m_i} + e^{x_i - m_i}
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b12 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b13 -->
+
 <p>根据定义，可以得到：</p>
+<!-- blog-edit-end:10c843871f08de5d:b13 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b14 -->
+
 <div class="arithmatex">\[
 d_N = d'_N = \sum_{j=1}^{N} e^{x_j - m_N}
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b14 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b15 -->
+
 <p>并且因此可以递推地计算：</p>
+<!-- blog-edit-end:10c843871f08de5d:b15 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b16 -->
+
 <div class="arithmatex">\[
 d'_i = d'_{i-1} e^{m_{i-1} - m_i} + e^{x_i - m_i}
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b16 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b17 -->
+
 <details class="note">
 <summary>推导过程</summary>
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525100014.png" /></p>
 </details>
+<!-- blog-edit-end:10c843871f08de5d:b17 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b18 -->
+
 <p>所以，它的好处是可以变成两个 <code>for</code> 循环：</p>
+<!-- blog-edit-end:10c843871f08de5d:b18 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b19 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525100056.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b19 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b20 -->
+
 <h2 id="online-softmax">online-softmax 的好处（重点）</h2>
+<!-- blog-edit-end:10c843871f08de5d:b20 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b21 -->
+
 <p>但是，变成两个 <code>for</code> 循环的好处是什么呢？仔细想想，其实时间复杂度根本就没有变。跑三个 <code>for</code> 循环计算次数是 <code>3*N</code>，现在变成两个 <code>for</code> 循环，但第一个循环中计算两次，所以计算次数还是 <code>3*N</code>，甚至细究起来，online-softmax 的计算量还更大一些。</p>
+<!-- blog-edit-end:10c843871f08de5d:b21 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b22 -->
+
 <p>理解这一点就是核心之处了。<strong>无论是 online-softmax 还是 FlashAttention，都不是从时间复杂度上进行优化，而是尽可能提高缓存友好性，减少程序在 SRAM 和更慢存储介质之间的数据交换。</strong></p>
+<!-- blog-edit-end:10c843871f08de5d:b22 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b23 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525101029.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b23 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b24 -->
+
 <h3 id="_1">三个循环的情况</h3>
+<!-- blog-edit-end:10c843871f08de5d:b24 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b25 -->
+
 <p>我们先来看三个循环的情况。假设 SRAM 只能存储四个向量：</p>
+<!-- blog-edit-end:10c843871f08de5d:b25 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b26 -->
+
 <p>第一步，计算 <span class="arithmatex">\(m_i\)</span>，每次之后要进行交换，即：</p>
+<!-- blog-edit-end:10c843871f08de5d:b26 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b27 -->
+
 <ol>
 <li>
 <p>计算 <span class="arithmatex">\(m_1\)</span> 时，<span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(m_0\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_0, x_1, m_1\)</span></p>
@@ -910,10 +1020,30 @@ d'_i = d'_{i-1} e^{m_{i-1} - m_i} + e^{x_i - m_i}
 <p>同理，把 <span class="arithmatex">\(x_2\)</span> 和 <span class="arithmatex">\(a_2\)</span> 从 SRAM 送出去</p>
 </li>
 </ol>
+<!-- blog-edit-end:10c843871f08de5d:b31 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b32 -->
+
 <p>综上所述，每一轮里，基本都是从 SRAM 中读取，计算完之后再送出去，缓存友好性很差，甚至可以说基本没有。</p>
+<!-- blog-edit-end:10c843871f08de5d:b32 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b33 -->
+
 <h3 id="_2">两个循环的情况</h3>
+<!-- blog-edit-end:10c843871f08de5d:b33 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b34 -->
+
 <p>对于第一个 <code>for</code> 循环，即：</p>
+<!-- blog-edit-end:10c843871f08de5d:b34 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b35 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525103315.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b35 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b36 -->
+
 <ol>
 <li>
 <p>计算 <span class="arithmatex">\(m_1\)</span> 和 <span class="arithmatex">\(d_1\)</span> 时，<span class="arithmatex">\(m_0\)</span>、<span class="arithmatex">\(x_1\)</span> 在 SRAM 中，此时 SRAM 中有 <span class="arithmatex">\(m_0, x_1, m_1, d_1\)</span></p>
@@ -928,52 +1058,215 @@ d'_i = d'_{i-1} e^{m_{i-1} - m_i} + e^{x_i - m_i}
 <p>把 <span class="arithmatex">\(m_1\)</span> 和 <span class="arithmatex">\(x_2\)</span> 从 SRAM 送出去</p>
 </li>
 </ol>
+<!-- blog-edit-end:10c843871f08de5d:b36 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b37 -->
+
 <p>对于第二个 <code>for</code> 循环，和上面三个循环中的最后一个是一样的。</p>
+<!-- blog-edit-end:10c843871f08de5d:b37 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b38 -->
+
 <p>所以总体来看，在两个循环的情况下，我们也是每次都要从 SRAM 中读取，计算完之后再送出去。但由于只需要两个循环，所以和 SRAM 交换的次数会少很多。</p>
+<!-- blog-edit-end:10c843871f08de5d:b38 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b39 -->
+
 <p>关键点就在于第一个循环做了合并，从而把 <span class="arithmatex">\(m_i\)</span> 和 <span class="arithmatex">\(d_i\)</span> 的计算合并到一起，减少了和 SRAM 的交换次数。</p>
+<!-- blog-edit-end:10c843871f08de5d:b39 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b40 -->
+
 <h2 id="flashattention-v1">FlashAttention V1</h2>
+<!-- blog-edit-end:10c843871f08de5d:b40 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b41 -->
+
 <p>从这一小节开始，进入到 FlashAttention 部分。既然可以优化成两个 <code>for</code> 循环（2-pass），我们还能不能优化成 1-pass？遗憾的是，对于 safe-softmax，并不存在这样的 1-pass 算法。但是，Attention 的目标并不是求 softmax，而是求最终的输出 <span class="arithmatex">\(O\)</span>：</p>
+<!-- blog-edit-end:10c843871f08de5d:b41 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b42 -->
+
 <div class="arithmatex">\[
 \operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right) V
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b42 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b43 -->
+
 <h3 id="_3">原理和推导</h3>
+<!-- blog-edit-end:10c843871f08de5d:b43 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b44 -->
+
 <p>原始计算 Attention 的情况，其实就是多了红框中的部分，其他部分就是上面介绍的 online-softmax 流程。</p>
+<!-- blog-edit-end:10c843871f08de5d:b44 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b45 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525104035.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b45 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b46 -->
+
 <p>下面介绍 FlashAttention 的做法。它有点类似 online-softmax，也是定义一个新的变量：</p>
+<!-- blog-edit-end:10c843871f08de5d:b46 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b47 -->
+
 <div class="arithmatex">\[
 o'_i := \sum_{j=1}^{i} \frac{e^{x_j - m_i}}{d'_i} \, V[j,:]
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b47 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b48 -->
+
 <p>由定义可知：</p>
+<!-- blog-edit-end:10c843871f08de5d:b48 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b49 -->
+
 <div class="arithmatex">\[
 o'_N = o_N := \sum_{j=1}^{N} \frac{e^{x_j - m_N}}{d'_N} \, V[j,:]
 \]</div>
+<!-- blog-edit-end:10c843871f08de5d:b49 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b50 -->
+
 <p>并且可以推导出 <span class="arithmatex">\(o'_i\)</span> 和 <span class="arithmatex">\(o'_{i-1}\)</span> 的关系：</p>
+<!-- blog-edit-end:10c843871f08de5d:b50 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b51 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525104451.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b51 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b52 -->
+
 <p>所以，最终可以合并为一个循环：</p>
+<!-- blog-edit-end:10c843871f08de5d:b52 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b53 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525104552.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b53 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b54 -->
+
 <h3 id="_4">总结</h3>
+<!-- blog-edit-end:10c843871f08de5d:b54 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b55 -->
+
 <p>可以看出，FlashAttention 的优化和 online-softmax 的优化思路很相似。通过一个新的定义，成功把 <span class="arithmatex">\(a_i\)</span> 这一步隐去了，因此可以合并为一个循环。</p>
+<!-- blog-edit-end:10c843871f08de5d:b55 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b56 -->
+
 <h2 id="flashattention-v2">FlashAttention V2</h2>
+<!-- blog-edit-end:10c843871f08de5d:b56 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b57 -->
+
 <p><strong>这一部分会很简略，甚至很多地方可能是错的。</strong></p>
+<!-- blog-edit-end:10c843871f08de5d:b57 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b58 -->
+
 <h3 id="v1">V1 的分块操作</h3>
+<!-- blog-edit-end:10c843871f08de5d:b58 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b59 -->
+
 <p>显然，正常情况下，对于向量肯定不是一个一个地操作，而是进行分块处理：</p>
+<!-- blog-edit-end:10c843871f08de5d:b59 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b60 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525105040.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b60 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b61 -->
+
 <p>上面的 <span class="arithmatex">\(b\)</span> 就是分块大小，下面是 FlashAttention V1 的伪代码：</p>
+<!-- blog-edit-end:10c843871f08de5d:b61 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b62 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525105125.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b62 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b63 -->
+
 <p>我没有太细究这一部分，意会即可。具体可以看参考文章，里面还有各种细节分析，比如分块大小对速度的具体影响公式等等。（不过我感觉太细节了。）</p>
+<!-- blog-edit-end:10c843871f08de5d:b63 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b64 -->
+
 <h3 id="v2">V2 的优化</h3>
+<!-- blog-edit-end:10c843871f08de5d:b64 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b65 -->
+
 <p>FlashAttention V2 其实没有大刀阔斧的优化，更多是在 V1 的基础上做一些细节优化。</p>
+<!-- blog-edit-end:10c843871f08de5d:b65 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b66 -->
+
 <h4 id="matmul-tensor-cores">减少非 matmul 的冗余计算，增加 Tensor Cores 运算比例</h4>
+<!-- blog-edit-end:10c843871f08de5d:b66 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b67 -->
+
 <p>这个不了解，没细看。</p>
+<!-- blog-edit-end:10c843871f08de5d:b67 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b68 -->
+
 <h4 id="seqlen">增加 seqlen 维度的并行</h4>
+<!-- blog-edit-end:10c843871f08de5d:b68 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b69 -->
+
 <p>FA1 中的伪代码是先 load K/V，再 load Q；在 FA2 中，算法调换了循环顺序，先 load Q，再 load K、V。</p>
+<!-- blog-edit-end:10c843871f08de5d:b69 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b70 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525105632.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b70 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b71 -->
+
 <p>它的好处就是调整完之后，<span class="arithmatex">\(O_i\)</span> 可以直接在外层计算，不像 FA1 中那样需要在内层计算。具体细节其实还有很多，比如上面的操作只会出现在 forward 中，backward 中没有调整顺序。具体细节看参考文章。</p>
+<!-- blog-edit-end:10c843871f08de5d:b71 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b72 -->
+
 <h4 id="warp-partitioning-split-k">更好的 Warp Partitioning 策略，避免 Split-K</h4>
+<!-- blog-edit-end:10c843871f08de5d:b72 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b73 -->
+
 <p>这一部分也没有细看，就放一张图吧。具体细节还是看参考文章。</p>
+<!-- blog-edit-end:10c843871f08de5d:b73 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b74 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260525110014.png" /></p>
+<!-- blog-edit-end:10c843871f08de5d:b74 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b75 -->
+
 <h2 id="_5">总结</h2>
+<!-- blog-edit-end:10c843871f08de5d:b75 -->
+
+<!-- blog-edit-start:10c843871f08de5d:b76 -->
+
 <p>这是一个非常扎实且有效的工作。现在，FlashAttention 也是计算 Attention 的主要实现方式之一。其中的思想很有过去计算机时代的特点：空间很宝贵，因此要尽量提升缓存一致性。平时更普遍的思路往往是空间无所谓，优化计算量才是关键；过去很多节省空间的算法，也基本被遗弃在历史长河中了。但是在显存场景里，还是有很多空间利用的 trick，比较有 old-school 的感觉。</p>
+<!-- blog-edit-end:10c843871f08de5d:b76 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\FlashAttention.md" data-text-edit-revision="10c843871f08de5dbfacffe3ede687f9f58c01eb5af6021d95b9deabe0d1d3e5" data-text-edit-marker="10c843871f08de5d" data-text-edit-schema="1"></div>
 
 
 
@@ -1205,8 +1498,6 @@ o'_N = o_N := \sum_{j=1}^{N} \frac{e^{x_j - m_N}}{d'_N} \, V[j,:]
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

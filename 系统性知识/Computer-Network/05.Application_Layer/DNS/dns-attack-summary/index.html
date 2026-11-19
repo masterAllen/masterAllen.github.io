@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -735,31 +735,91 @@
 
 <hr />
 <h2 id="title-dns">title: DNS 学习一：域名劫持和域名污染简单介绍及例子</h2>
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b0 -->
+
 <p>名词: 域名劫持 ，域名污染 = 域名缓存投毒 = 域名欺骗。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b0 -->
+
 <!--more-->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b1 -->
 
 <p>基本是从网上一篇文章上学来的，也算是转载吧，贴一下转载说明。</p>
 <blockquote>
 <p>版权声明<br />
 本博客所有的原创文章，作者皆保留版权。转载必须包含本声明，保持本文完整，并以超链接形式注明作者编程随想和本文原始地址：<a href="https://program-think.blogspot.com/2014/01/dns.html">https://program-think.blogspot.com/2014/01/dns.html</a> </p>
 </blockquote>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b1 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b2 -->
+
 <h2 id="_1">域名劫持</h2>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b2 -->
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b3 -->
+
 <p>域名服务器上都会保存一大堆的域名记录（每条记录包含“域名”和“IP地址”）。当收到域名查询的时候，域名服务器会从这堆记录中找到对方想要的，然后回应给对方。<br />
 如果域名服务器上的某条记录被<mark class="term-highlight">人为修改</mark>了（改成错的），那么一旦要查询这条记录，得到的就是错误的结果。这种情况称之为“域名劫持”。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b3 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b4 -->
+
 <h3 id="_2">谁有“域名劫持”的企图？</h3>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b4 -->
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b5 -->
+
 <p>“域名劫持”通常是电信运营商（ISP）干的好事儿。很多宽带用户用的域名服务器就是 ISP 提供给你的。<br />
 举例：<br />
 　　前几年曾经出现过：某个 ISP 跟百度勾结，把谷歌的流量重定向到百度。具体搞法是：该 ISP 篡改自己的域名服务器的记录，把里面跟 google.com 相关的域名记录的 IP 地址修改为百度服务器的 IP 地址。如此一来，假设你用的是这个 ISP 的域名服务器，当你在浏览器输入 <a href="http://www.google.com">www.google.com</a> 的时候，你的电脑查询到的 IP 地址其实是百度的 IP 地址，所以浏览器打开的是“百度”的主页。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b5 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b6 -->
+
 <h2 id="_3">域名污染</h2>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b6 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b7 -->
+
 <p><strong>域名污染 = 域名缓存投毒 = 域名欺骗</strong></p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b7 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b8 -->
+
 <p>当你的电脑向域名服务器发送了“域名查询”的请求，然后域名服务器把回应发送给你的电脑，这之间是有一个时间差的。如果某个攻击者能够在域名服务器的“DNS 应答”还没有到达你的电脑之前，先伪造一个错误的“DNS 应答”发给你电脑。那么你的电脑收到的就是错误的信息，并得到一个错误的 IP 地址。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b8 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b9 -->
+
 <h3 id="gfw">GFW 的两种“域名污染”</h3>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b9 -->
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b10 -->
+
 <p>分为两种污染，普通的骇客顶多只能做到“直接污染”，GFW 还可以做到做到“大范围的间接污染”。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b10 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b11 -->
+
 <h3 id="gfw_1">GFW 怎么做到污染？</h3>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b11 -->
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b12 -->
+
 <p>互联网只有少数几个国际出口（例如北京出口、上海出口）。如果访问外网，必定会经过某个“国际出口”。而<mark class="term-highlight">每一个</mark>国际出口都部署了 GFW 的设备。而如果访问国内的网站，就不会走国际出口。你可以简化想象：国际出口就是我们这个超大局域网的边界路由器。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b12 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b13 -->
+
 <h3 id="gfw_2">GFW 的直接污染</h3>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b13 -->
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b14 -->
+
 <p>访问外网，使用外网的 DNS 服务器，“DNS请求”必定会经过国际出口；同样，DNS服务器的“DNS应答”必定也会经过国际出口才能到你的电脑。GFW 因此可以在这一来一回进行直接污染。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b14 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b15 -->
+
 <h3 id="gfw_3">GFW 的间接污染</h3>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b15 -->
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b16 -->
+
 <p>如果你用的是<mark class="term-highlight">国内的</mark>DNS 服务器？就会被“间接污染”。过程如下：</p>
 <ol>
 <li>比方说你用的是电信的 DNS 服务器，然后你想要访问外网。</li>
@@ -768,8 +828,15 @@
 <li>如此一来，“电信的域名服务器”拿到的是已经被污染的域名记录（里面的IP是错的）。而且“电信的域名服务器”会把这条错误的记录保存在自己的域名缓存中。</li>
 <li>下次如果有另一个网友也访问该外网，也会查到错误的结果。</li>
 </ol>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b16 -->
+
+<!-- blog-edit-start:bb3e7ac87f8b2bc1:b17 -->
+
 <p>上述过程不断重复，最终会导致：全国所有的域名服务器，它们的缓存中只要是包含了该外网的记录，记录中的 IP 地址必定是错的。<br />
 现在来理解投毒，“投毒”一词真的非常形象 -- 就好象在某条河流的源头下毒，从而把整条河流的水都污染。</p>
+<!-- blog-edit-end:bb3e7ac87f8b2bc1:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\DNS\dns-attack-summary.md" data-text-edit-revision="bb3e7ac87f8b2bc1ace9ce2fcafea47ddfbd1aa5bc1bd8433d467f4fe894c742" data-text-edit-marker="bb3e7ac87f8b2bc1" data-text-edit-schema="1"></div>
 
 
 
@@ -1001,8 +1068,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

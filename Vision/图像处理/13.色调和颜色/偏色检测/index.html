@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,16 +609,49 @@
   
 
 
+<!-- blog-edit-start:41d5e35275258a47:b0 -->
+
 <h1 id="_1">偏色检测</h1>
+<!-- blog-edit-end:41d5e35275258a47:b0 -->
+
 <div class="file-actions" data-image-edit-revision="6a4a45962f8c57db2373688467a1394e4abb7b495c29ee521fef392c39d2a19a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C13.%E8%89%B2%E8%B0%83%E5%92%8C%E9%A2%9C%E8%89%B2%5C%E5%81%8F%E8%89%B2%E6%A3%80%E6%B5%8B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C13.%E8%89%B2%E8%B0%83%E5%92%8C%E9%A2%9C%E8%89%B2" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\13.色调和颜色\偏色检测.md">复制路径</span></div>
 
+<!-- blog-edit-start:41d5e35275258a47:b1 -->
+
 <p>基本来自：<a href="https://www.cnblogs.com/Imageshop/p/3191853.html">https://www.cnblogs.com/Imageshop/p/3191853.html</a></p>
+<!-- blog-edit-end:41d5e35275258a47:b1 -->
+
+<!-- blog-edit-start:41d5e35275258a47:b2 -->
+
 <p>作者对正常图像和偏色图像分析，发现将图像从 RGB 转为 Lab 空间之后，如果在 ab 色度坐标上的直方图中，色度分布基本上为单峰值、或者分布较为集中；而色度平均值 D 又较大时，一般都存在色偏，而且色度平均值越大，色偏越严重。然而，如果在ab色度坐标平面上的直方图中色度分布存在明显的多峰值，而且较为分散时，图像色偏程度将大大减轻，甚至没有色偏。</p>
+<!-- blog-edit-end:41d5e35275258a47:b2 -->
+
+<!-- blog-edit-start:41d5e35275258a47:b3 -->
+
 <p><img alt="" src="../../../../asset/image/c51f96e06f640cb8e343686fdf61b68d/20241204221756.png" /></p>
+<!-- blog-edit-end:41d5e35275258a47:b3 -->
+
+<!-- blog-edit-start:41d5e35275258a47:b4 -->
+
 <p>如上图所示，第一个美女图明显就偏色，其 ab 直方图明显有只有一个波峰，而第二个美女图则很协调，ab 直方图也分布的很均匀。</p>
+<!-- blog-edit-end:41d5e35275258a47:b4 -->
+
+<!-- blog-edit-start:41d5e35275258a47:b5 -->
+
 <p>引入等效圆的概念，采用图像平均色度 D 和色度中心距 M 的比值，即偏色因子 K 来衡量图像的偏色程度。其计算方法如下式：</p>
+<!-- blog-edit-end:41d5e35275258a47:b5 -->
+
+<!-- blog-edit-start:41d5e35275258a47:b6 -->
+
 <p><img alt="" src="../../../../asset/image/c51f96e06f640cb8e343686fdf61b68d/20241204221856.png" /></p>
+<!-- blog-edit-end:41d5e35275258a47:b6 -->
+
+<!-- blog-edit-start:41d5e35275258a47:b7 -->
+
 <p>其中，M、N 分别为图像的宽和高，在 ab 色度平面上，等效圆的中心坐标为 (da,db)、半径为 M。等效圆的中心到 ab 色度平面原点距离 D。由等效圆在 ab色度平面上的具体位置，来判断图像整体的偏色。da &gt; 0 偏红，否则偏绿。db &gt; 0 偏黄，否则偏蓝。引入偏色因子 K, K 值越大 ,偏色越严重。</p>
+<!-- blog-edit-end:41d5e35275258a47:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\13.色调和颜色\偏色检测.md" data-text-edit-revision="6a4a45962f8c57db2373688467a1394e4abb7b495c29ee521fef392c39d2a19a" data-text-edit-marker="41d5e35275258a47" data-text-edit-schema="1"></div>
 
 
 
@@ -850,8 +883,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

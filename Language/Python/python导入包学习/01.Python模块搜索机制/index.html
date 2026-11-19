@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -695,19 +695,57 @@
   
 
 
+<!-- blog-edit-start:24b93cfe8db02579:b0 -->
+
 <h1 id="python">Python 模块搜索机制详解</h1>
+<!-- blog-edit-end:24b93cfe8db02579:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e9a7f563457a180de7373132a9d173e0f28cc323656cbea487be220fd8ed989b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0%5C01.Python%E6%A8%A1%E5%9D%97%E6%90%9C%E7%B4%A2%E6%9C%BA%E5%88%B6.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E5%AF%BC%E5%85%A5%E5%8C%85%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\python导入包学习\01.Python模块搜索机制.md">复制路径</span></div>
 
+<!-- blog-edit-start:24b93cfe8db02579:b1 -->
+
 <h2 id="_1">问题</h2>
+<!-- blog-edit-end:24b93cfe8db02579:b1 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b2 -->
+
 <p>主目录 Projects 中，我执行了 <code>python src/run_capture.py</code>，这个文件有语句 <code>from tools.bootstrap</code> ，它能够能找到 <code>src/tools/bootstrap.py</code>。</p>
+<!-- blog-edit-end:24b93cfe8db02579:b2 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b3 -->
+
 <p>我的理解是 <code>from tools.bootstrap</code> 应该是在当前执行目录（即 Projects）中进行寻找的，所以应该找 <code>tools/bootstrap.py</code>，应该找不到才对。</p>
+<!-- blog-edit-end:24b93cfe8db02579:b3 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b4 -->
+
 <h2 id="python_1">关键概念：Python 的模块搜索路径</h2>
+<!-- blog-edit-end:24b93cfe8db02579:b4 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b5 -->
+
 <p>当 Python 执行一个文件时，会将<strong>该文件所在的目录</strong>添加到 <code>sys.path</code> 中。</p>
+<!-- blog-edit-end:24b93cfe8db02579:b5 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b6 -->
+
 <h2 id="_2">场景分析</h2>
+<!-- blog-edit-end:24b93cfe8db02579:b6 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b7 -->
+
 <h3 id="1">场景 1：直接执行脚本文件</h3>
+<!-- blog-edit-end:24b93cfe8db02579:b7 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b8 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 在项目根目录执行</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>python<span class="w"> </span>src/run_capture.py
 </span></code></pre></div>
+<!-- blog-edit-end:24b93cfe8db02579:b8 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b9 -->
+
 <p><strong>Python 的行为：</strong></p>
 <ol>
 <li>找到 <code>src/run_capture.py</code> 文件</li>
@@ -723,10 +761,22 @@
 </li>
 <li>找到 <code>src/tools/bootstrap.py</code> ✅</li>
 </ol>
+<!-- blog-edit-end:24b93cfe8db02579:b9 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b10 -->
+
 <h3 id="2">场景 2：作为模块运行</h3>
+<!-- blog-edit-end:24b93cfe8db02579:b10 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b11 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 在项目根目录执行</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>python<span class="w"> </span>-m<span class="w"> </span>src.run_capture
 </span></code></pre></div>
+<!-- blog-edit-end:24b93cfe8db02579:b11 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b12 -->
+
 <p><strong>Python 的行为：</strong></p>
 <ol>
 <li>将<strong>当前工作目录</strong>（项目根目录）添加到 <code>sys.path</code></li>
@@ -741,28 +791,67 @@
 </li>
 <li>需要改为 <code>from src.tools.bootstrap import main</code> ✅</li>
 </ol>
+<!-- blog-edit-end:24b93cfe8db02579:b12 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b13 -->
+
 <h3 id="3-src">场景 3：在 src/ 目录下执行</h3>
+<!-- blog-edit-end:24b93cfe8db02579:b13 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b14 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="nb">cd</span><span class="w"> </span>src/
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>python<span class="w"> </span>run_capture.py
 </span></code></pre></div>
+<!-- blog-edit-end:24b93cfe8db02579:b14 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b15 -->
+
 <p><strong>Python 的行为：</strong></p>
 <ol>
 <li>将 <code>src/</code> 目录添加到 <code>sys.path</code>（因为 <code>run_capture.py</code> 在 <code>src/</code> 下）</li>
 <li><code>from tools.bootstrap</code> 能找到 <code>src/tools/bootstrap.py</code> ✅</li>
 </ol>
+<!-- blog-edit-end:24b93cfe8db02579:b15 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b16 -->
+
 <h2 id="_3">总结</h2>
+<!-- blog-edit-end:24b93cfe8db02579:b16 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b17 -->
+
 <p><strong>回答您的问题：</strong></p>
+<!-- blog-edit-end:24b93cfe8db02579:b17 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b18 -->
+
 <blockquote>
 <p>难道 python 中的 from xx import xx 是根据当前文件来找的吗？</p>
 </blockquote>
+<!-- blog-edit-end:24b93cfe8db02579:b18 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b19 -->
+
 <p><strong>是的！</strong> Python 的模块搜索是<strong>基于当前执行文件所在的目录</strong>：</p>
+<!-- blog-edit-end:24b93cfe8db02579:b19 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b20 -->
+
 <ol>
 <li>执行 <code>python src/run_capture.py</code> 时</li>
 <li>Python 将 <code>src/</code> 目录添加到 <code>sys.path</code></li>
 <li><code>from tools.bootstrap</code> 在 <code>src/</code> 下查找</li>
 <li>找到 <code>src/tools/bootstrap.py</code> ✅</li>
 </ol>
+<!-- blog-edit-end:24b93cfe8db02579:b20 -->
+
+<!-- blog-edit-start:24b93cfe8db02579:b21 -->
+
 <p>这就是为什么能找到 <code>src/tools/bootstrap.py</code> 而不是 <code>Projects/tools/bootstrap.py</code> 的原因！</p>
+<!-- blog-edit-end:24b93cfe8db02579:b21 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\python导入包学习\01.Python模块搜索机制.md" data-text-edit-revision="e9a7f563457a180de7373132a9d173e0f28cc323656cbea487be220fd8ed989b" data-text-edit-marker="24b93cfe8db02579" data-text-edit-schema="1"></div>
 
 
 
@@ -994,8 +1083,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

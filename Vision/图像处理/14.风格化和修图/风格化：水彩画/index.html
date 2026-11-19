@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -677,21 +677,75 @@
   
 
 
+<!-- blog-edit-start:602fc556c5407ef9:b0 -->
+
 <h1 id="_1">风格化之水彩画</h1>
+<!-- blog-edit-end:602fc556c5407ef9:b0 -->
+
 <div class="file-actions" data-image-edit-revision="e48328c722dc92a16fc8918ec4d41ccda5d049be4bc17ddfefce8f76ec705bc3" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE%5C%E9%A3%8E%E6%A0%BC%E5%8C%96%EF%BC%9A%E6%B0%B4%E5%BD%A9%E7%94%BB.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C14.%E9%A3%8E%E6%A0%BC%E5%8C%96%E5%92%8C%E4%BF%AE%E5%9B%BE" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\14.风格化和修图\风格化：水彩画.md">复制路径</span></div>
 
+<!-- blog-edit-start:602fc556c5407ef9:b1 -->
+
 <p>有不同的方法去实现这个效果：</p>
+<!-- blog-edit-end:602fc556c5407ef9:b1 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b2 -->
+
 <h2 id="_2">方法一：保边滤波</h2>
+<!-- blog-edit-end:602fc556c5407ef9:b2 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b3 -->
+
 <p>这个原理其实就是保边滤波，不断去滤，其中可以用金字塔加速，即只对金字塔下采样后的图片进行滤波。这个推荐用 <a href="https://docs.opencv.org/4.x/df/dac/group__photo__render.html">edgePreservingFilter</a>，这是一个频率上的保边滤波，速度相当快，非常适合这种操作。</p>
+<!-- blog-edit-end:602fc556c5407ef9:b3 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b4 -->
+
 <h2 id="pyrmeanshiftfiltering">方法二：pyrMeanShiftFiltering</h2>
+<!-- blog-edit-end:602fc556c5407ef9:b4 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b5 -->
+
 <p>也可以用 <a href="https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html#ga9fabdce9543bd602445f5db3827e4cc0">pyrMeanShiftFiltering</a>，本质上是 Meanshift + Pyramid，即这里的滤波是 MeanShift 来完成。也可以用 bilateralFilter 多次滤波。</p>
+<!-- blog-edit-end:602fc556c5407ef9:b5 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b6 -->
+
 <p>具体原理在我的学习 OpenCV 笔记中有记录：<a href="https://github.com/masterAllen/LearnOpenCV/blob/main/details/pyrMeanShiftFilter.md">https://github.com/masterAllen/LearnOpenCV/blob/main/details/pyrMeanShiftFilter.md</a></p>
+<!-- blog-edit-end:602fc556c5407ef9:b6 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b7 -->
+
 <h2 id="oilpainting">方法三：oilPainting</h2>
+<!-- blog-edit-end:602fc556c5407ef9:b7 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b8 -->
+
 <p>也可以用 <a href="https://docs.opencv.org/4.x/de/daa/group__xphoto.html#gac050a6e876298cb9713cd2c09db9a027">xphoto 模块的 oilPainting</a>，这个好像就是最正统的油画做法。具体原理从网上看到的是：对于每个像素，如果计算 2×size+1 窗口大小的直方图，将最常出现的值赋给该像素点，这样的结果看起来就很像油画了。</p>
+<!-- blog-edit-end:602fc556c5407ef9:b8 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b9 -->
+
 <h2 id="kuwahara-filter">方法四：Kuwahara Filter</h2>
+<!-- blog-edit-end:602fc556c5407ef9:b9 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b10 -->
+
 <p>也有叫做 Kuwahara Filter 的滤波，它的思路是：把当前像素为中心的块分为四个子块，各自计算方差和均值，然后把方差最小的子块的均值赋给当前中心像素。</p>
+<!-- blog-edit-end:602fc556c5407ef9:b10 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b11 -->
+
 <p><img alt="1733651087519" src="../../../../asset/image/b2f69c185e0a08525d9ce878481334fb/1733651087519.webp" /></p>
+<!-- blog-edit-end:602fc556c5407ef9:b11 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b12 -->
+
 <h2 id="_3">代码</h2>
+<!-- blog-edit-end:602fc556c5407ef9:b12 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b13 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 频域上的保边滤波 edgePreserving；速度相当快，其中 RECURS 速度好于 NORMCONV</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">out1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">edgePreservingFilter</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">RECURS_FILTER</span><span class="p">,</span> <span class="n">sigma_s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sigma_r</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="n">out2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">edgePreservingFilter</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">NORMCONV_FILTER</span><span class="p">,</span> <span class="n">sigma_s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sigma_r</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -715,7 +769,14 @@
 </span><span id="__span-0-21"><span class="linenos" data-linenos="21 "></span>        <span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">xphoto</span><span class="o">.</span><span class="n">oilPainting</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">dynRatio</span><span class="o">=</span><span class="n">j</span><span class="p">)</span>
 </span><span id="__span-0-22"><span class="linenos" data-linenos="22 "></span>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s1">&#39;oilPainint(size=</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">, dynRation=</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">out</span><span class="p">))</span>
 </span></code></pre></div>
+<!-- blog-edit-end:602fc556c5407ef9:b13 -->
+
+<!-- blog-edit-start:602fc556c5407ef9:b14 -->
+
 <p><img alt="1733651231492" src="../../../../asset/image/b2f69c185e0a08525d9ce878481334fb/1733651231492.png" /></p>
+<!-- blog-edit-end:602fc556c5407ef9:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\14.风格化和修图\风格化：水彩画.md" data-text-edit-revision="e48328c722dc92a16fc8918ec4d41ccda5d049be4bc17ddfefce8f76ec705bc3" data-text-edit-marker="602fc556c5407ef9" data-text-edit-schema="1"></div>
 
 
 
@@ -947,8 +1008,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

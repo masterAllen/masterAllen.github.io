@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,20 +581,69 @@
   
 
 
+<!-- blog-edit-start:9a7fc162ed9cdc14:b0 -->
+
 <h1 id="qt-">qt 记录-联动下拉框</h1>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7304bf8a0502e508d181ac193919157e83034a5293601fefaf11f84da1562a73" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT%5C1.QT%E8%AE%B0%E5%BD%95-%E8%81%94%E5%8A%A8%E4%B8%8B%E6%8B%89%E6%A1%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\QT\1.QT记录-联动下拉框.md">复制路径</span></div>
 
+<!-- blog-edit-start:9a7fc162ed9cdc14:b1 -->
+
 <p>遇到这样一个需求，有很多下拉框中，每次某个下拉框改变的时候，都会重新利用这些下拉框进行名字重新生成。这个很简单，我只需要给一个QT的信号槽机制，即各个下拉框都是同一个触发函数。</p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b1 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b2 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240604001.PNG" /></p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b2 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b3 -->
+
 <p>但是后来又需要一些限制条件。比如：下拉框一如果选择A，那么下拉框二必然要是10，反之亦然。这个如果对各个下拉框都单独写一个触发函数，也很轻松完成。比如下拉框一的触发函数中需要检查是否是A，然后改变；下拉框二则是另一个触发函数。</p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b3 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b4 -->
+
 <p>但是这样很乱，没法统一管理限制条件，此外每个下拉框都给一个触发函数，非常的丑。于是设置统一管理函数，即原来统一的触发函数中一开始进行检查：</p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b4 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b5 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240604002.PNG" /></p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b5 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b6 -->
+
 <p>问题就是检查限制条件函数怎么写，一开始就想着判断就好呗：如果下拉框一是A，下拉框二改为10；如果下拉框二是10，下拉框改为A。但是这遇到了一个类似死锁一样的问题。假如我现在是<mark class="term-highlight">A,10</mark>的组合了，我想改为B，结果在限制条件函数中它会发现<mark class="term-highlight">下拉框二是10</mark>，这样又改成了A，此时永远都无法修改为其他的选项了。</p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b6 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b7 -->
+
 <p>所以就需要给一个参数：这一次修改的是哪一个下拉框，然后检查函数中会检查。如上一个逻辑，将<mark class="term-highlight">A,10</mark>中下拉框一改成B时，检查函数不会有<mark class="term-highlight">发现下拉框二是10，下拉框一改成了A</mark>，因为他会在这个判断下检查这次是下拉框二修改的吗，发现不是就跳过这个检查了。给修改的哪个下拉框就是上图打码的部分：</p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b7 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b8 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240604003.PNG" /></p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b8 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b9 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240604004.PNG" /></p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b9 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b10 -->
+
 <p>可以看到我写了一个 <code>set_newidx</code> 这个子函数，里面还是有一些细节的。除了如果是限制值则另一个下拉框要对应修改；还有：不是限制值则要另一个下拉框的原来对应的值也修改掉，但如果另一个下拉框不是原来对应值，那么不要修改。即限制是<mark class="term-highlight">A,10</mark>时，当前组合也是<mark class="term-highlight">A,10</mark>时，如果从A改成B，那么就要把10也改变，防止出现<mark class="term-highlight">B,10</mark>这种错误；原来是<mark class="term-highlight">B,20</mark>，如果从B改成C，则不需要把20改掉，即最后为<mark class="term-highlight">C,20</mark>。</p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b10 -->
+
+<!-- blog-edit-start:9a7fc162ed9cdc14:b11 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240604005.PNG" /></p>
+<!-- blog-edit-end:9a7fc162ed9cdc14:b11 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\QT\1.QT记录-联动下拉框.md" data-text-edit-revision="7304bf8a0502e508d181ac193919157e83034a5293601fefaf11f84da1562a73" data-text-edit-marker="9a7fc162ed9cdc14" data-text-edit-schema="1"></div>
 
 
 
@@ -826,8 +875,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -767,19 +767,45 @@
   
 
 
+<!-- blog-edit-start:fa85751e295e1be0:b0 -->
+
 <h1 id="pwnable-tw-3x17">Pwnable tw 3x17</h1>
+<!-- blog-edit-end:fa85751e295e1be0:b0 -->
+
 <div class="file-actions" data-image-edit-revision="cf6d1056479850489a2b47e0904bd35da757cf5f950698ea96e6f934daf37363" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C05_3x17%5C3x17.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C05_3x17" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\05_3x17\3x17.md">复制路径</span></div>
 
+<!-- blog-edit-start:fa85751e295e1be0:b1 -->
+
 <h2 id="_1">需要掌握的知识点</h2>
+<!-- blog-edit-end:fa85751e295e1be0:b1 -->
+<!-- blog-edit-start:fa85751e295e1be0:b2 -->
+
 <ul>
 <li>静态编译和动态编译，以及Stripped</li>
 <li>Linux 程序执行流程(main 函数是如何执行起来的)</li>
 <li>64 Bit SystemCall in Assembly</li>
 </ul>
+<!-- blog-edit-end:fa85751e295e1be0:b2 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b3 -->
+
 <h2 id="_2">漏洞分析</h2>
+<!-- blog-edit-end:fa85751e295e1be0:b3 -->
+<!-- blog-edit-start:fa85751e295e1be0:b4 -->
+
 <h3 id="stage-1">Stage 1</h3>
+<!-- blog-edit-end:fa85751e295e1be0:b4 -->
+<!-- blog-edit-start:fa85751e295e1be0:b5 -->
+
 <p>首先很不幸，IDA Pro分析程序，发现全是SUB_XXX的样式。所以应该先恢复符号表，这个请看另外一篇文章。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b5 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b6 -->
+
 <h3 id="stage-2">Stage 2</h3>
+<!-- blog-edit-end:fa85751e295e1be0:b6 -->
+<!-- blog-edit-start:fa85751e295e1be0:b7 -->
+
 <p>恢复完成，代码如下。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="kr">__cdecl</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">envp</span><span class="p">)</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -804,11 +830,34 @@
 </span><span id="__span-0-21"><span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 </span><span id="__span-0-22"><span class="linenos" data-linenos="22 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:fa85751e295e1be0:b7 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b8 -->
+
 <p>分析代码，现在唯一的问题就是这个 <code>SUB_40EE70</code>，可以看到在他函数之后，他将 <code>eax</code> 赋给了另外一个变量。而我们知道在64Bit中，eax 存放的是返回值，所以进入 GDB 调试。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b8 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b9 -->
+
 <p>查看的情况就不贴图了，输入 100，发现经过这个函数之后 eax 为0x64，所以说这个函数功能就是把字符串参数转换为数值。这个函数我原来以为是自创的。后来查阅得知这个函数就是 strtol (想一下atoi，是不是很像，就是属于XtoY的一类)。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b9 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b10 -->
+
 <h3 id="stage-3">Stage 3</h3>
+<!-- blog-edit-end:fa85751e295e1be0:b10 -->
+<!-- blog-edit-start:fa85751e295e1be0:b11 -->
+
 <p>那么程序的逻辑清楚了: 输入一个字符串, 程序将其转为数值, 之后可以对这个数值指向的内存进行写入。但是关键在于只能执行一次任意写，只有一次修改这种威力完全不够。所以怎么可以多次进行任意写呢？</p>
+<!-- blog-edit-end:fa85751e295e1be0:b11 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b12 -->
+
 <p>答案: <code>fin_array</code>, 查阅代码，观察_libc_csu_fini。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b12 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b13 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kr">__int64</span><span class="w"> </span><span class="nf">_libc_csu_fini</span><span class="p">()</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">signed</span><span class="w"> </span><span class="kr">__int64</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"> </span><span class="c1">// rbx</span>
@@ -825,17 +874,61 @@
 </span><span id="__span-1-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sub_48E32C</span><span class="p">();</span>
 </span><span id="__span-1-15"><span class="linenos" data-linenos="15 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:fa85751e295e1be0:b13 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b14 -->
+
 <p>注意fin_array是逆序执行，fin_array[1] 更改为main函数，然后就可以继续执行main函数，然后进行多次任意写了。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b14 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b15 -->
+
 <p>你要问我为什么不把fin_array[0]改为main函数，事实上它要改成_libc_csu_fini()，即利用它重新执行该fin_arr[1]。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b15 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b16 -->
+
 <p>如果把fin_arr[0]改成main函数，那么执行完两次main函数，_libc_csu_fini()就结束了，可以看到 main 方法中只有flag == 1 才会执行，所以执行三次 main 函数丝毫不会有影响。只有不断执行 main 函数，让flag 溢出回到1，这样才OK。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b16 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b17 -->
+
 <h3 id="stage-4">Stage 4</h3>
+<!-- blog-edit-end:fa85751e295e1be0:b17 -->
+<!-- blog-edit-start:fa85751e295e1be0:b18 -->
+
 <p>所以就先把 fin_array 改掉，然后可以任意写之后，构造 ret2syscall 咯。现在问题是如何确保最后执行了 ret2syscall，最后一次返回地址改掉就好了哇。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b18 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b19 -->
+
 <h2 id="_3">坑点</h2>
+<!-- blog-edit-end:fa85751e295e1be0:b19 -->
+<!-- blog-edit-start:fa85751e295e1be0:b20 -->
+
 <h3 id="_4">第一次应该怎么写，可以确保有第二次写的出现？</h3>
+<!-- blog-edit-end:fa85751e295e1be0:b20 -->
+<!-- blog-edit-start:fa85751e295e1be0:b21 -->
+
 <p>我本来是打算，写成fin_array[1] = main，然后第二次再进行fin_array[0] = libc_csu_fin，但是结果失败。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b21 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b22 -->
+
 <p>原因在于，虽然确实执行了main方法，但是里面(flag == 2)，因此不会执行写操作。</p>
+<!-- blog-edit-end:fa85751e295e1be0:b22 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b23 -->
+
 <p>正确做法是，一口气把fin_array全部写完，这样才能保证会不断循环，然后有了第二次写的出现</p>
+<!-- blog-edit-end:fa85751e295e1be0:b23 -->
+
+<!-- blog-edit-start:fa85751e295e1be0:b24 -->
+
 <h2 id="_5">总结反思</h2>
+<!-- blog-edit-end:fa85751e295e1be0:b24 -->
+<!-- blog-edit-start:fa85751e295e1be0:b25 -->
+
 <ul>
 <li>
 <p>经验</p>
@@ -844,6 +937,9 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:fa85751e295e1be0:b25 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\05_3x17\3x17.md" data-text-edit-revision="cf6d1056479850489a2b47e0904bd35da757cf5f950698ea96e6f934daf37363" data-text-edit-marker="fa85751e295e1be0" data-text-edit-schema="1"></div>
 
 
 
@@ -1075,8 +1171,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

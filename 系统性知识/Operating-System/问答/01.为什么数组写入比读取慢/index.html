@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -634,13 +634,35 @@
   
 
 
+<!-- blog-edit-start:5d3ff6e340d31159:b0 -->
+
 <h1 id="_1">为什么该程序写入比读取慢？</h1>
+<!-- blog-edit-end:5d3ff6e340d31159:b0 -->
+
 <div class="file-actions" data-image-edit-revision="da08f92093638f36bb067c7581265b1ff0c4ed08573bd77530681f31695bfa93" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5C%E9%97%AE%E7%AD%94%5C01.%E4%B8%BA%E4%BB%80%E4%B9%88%E6%95%B0%E7%BB%84%E5%86%99%E5%85%A5%E6%AF%94%E8%AF%BB%E5%8F%96%E6%85%A2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5COperating-System%5C%E9%97%AE%E7%AD%94" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Operating-System\问答\01.为什么数组写入比读取慢.md">复制路径</span></div>
 
+<!-- blog-edit-start:5d3ff6e340d31159:b1 -->
+
 <p>感谢作者：<a href="https://www.bilibili.com/video/BV1gu41117bW">https://www.bilibili.com/video/BV1gu41117bW</a></p>
+<!-- blog-edit-end:5d3ff6e340d31159:b1 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b2 -->
+
 <p>非常好的视频，很有意思的问题。</p>
+<!-- blog-edit-end:5d3ff6e340d31159:b2 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b3 -->
+
 <p>如下图所示，为什么写入数组比读取数组要慢？</p>
+<!-- blog-edit-end:5d3ff6e340d31159:b3 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b4 -->
+
 <h2 id="_2">问题说明</h2>
+<!-- blog-edit-end:5d3ff6e340d31159:b4 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">BM_read</span><span class="p">(</span><span class="n">benchmark</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">bm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span>
@@ -676,17 +698,48 @@
 </span><span id="__span-0-33"><span class="linenos" data-linenos="33 "></span><span class="p">}</span>
 </span><span id="__span-0-34"><span class="linenos" data-linenos="34 "></span><span class="n">BENCHMARK</span><span class="p">(</span><span class="n">BM_read_and_write</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:5d3ff6e340d31159:b5 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b6 -->
+
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20251014211357.png" /></p>
+<!-- blog-edit-end:5d3ff6e340d31159:b6 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b7 -->
+
 <h2 id="_3">回答</h2>
+<!-- blog-edit-end:5d3ff6e340d31159:b7 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b8 -->
+
 <p>这是 Cache 和 Memory 打交道的原因。如果 Cache 向 Memory 中写入数据，必须是 64B 为寻址。上面的代码中给某个地址每次写入和读取的是 4B 数据时，所以写入时：</p>
+<!-- blog-edit-end:5d3ff6e340d31159:b8 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b9 -->
+
 <ol>
 <li>CPU 向 Cache 发送 4B 数据（读取时正好反过来，最后 Cache 向 CPU 返回 4B 数据）</li>
 <li>Cache 从 Memory 读取对齐后的地址，读取 64B 数据到 Cache (读取时也会有)</li>
 <li>Cache 把其中对应的 4B 数据替换掉，择机写回 Memory（也就是说不是立即写回，假如下一次又要修改这个 64B 部分或整体数据，就可以利用 Cache 存好的了）（读取时没有）</li>
 </ol>
+<!-- blog-edit-end:5d3ff6e340d31159:b9 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b10 -->
+
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20251014211432.png" /></p>
+<!-- blog-edit-end:5d3ff6e340d31159:b10 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b11 -->
+
 <p>而读取就没有这个问题，Cache 也是从 Memory 读取 64B，但是由于上面代码读取数组时顺序读取，当某次 Cache 从 Memory 搬运 64B 之后，读取下一个数据时这个 64B 已经存在 Cache 里面了，所以 Cache 直接就返回结果了。</p>
+<!-- blog-edit-end:5d3ff6e340d31159:b11 -->
+
+<!-- blog-edit-start:5d3ff6e340d31159:b12 -->
+
 <p>综上，假设数组有 <code>64*n</code> B，那么读取时 Cache 从 Memory 读取 <code>n</code> 次；写入时 Cache 必须从 Memory 读取 <code>n</code> 次（关键），向 Memory 写回也是 <code>n</code> 次，所以结果就写入比读取慢两倍。</p>
+<!-- blog-edit-end:5d3ff6e340d31159:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Operating-System\问答\01.为什么数组写入比读取慢.md" data-text-edit-revision="da08f92093638f36bb067c7581265b1ff0c4ed08573bd77530681f31695bfa93" data-text-edit-marker="5d3ff6e340d31159" data-text-edit-schema="1"></div>
 
 
 
@@ -918,8 +971,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

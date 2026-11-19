@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -609,23 +609,61 @@
   
 
 
+<!-- blog-edit-start:0509978500157537:b0 -->
+
 <h1 id="peilinnormalization">PeiLinNormalization</h1>
+<!-- blog-edit-end:0509978500157537:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b8ab5ee9457bf525f6dce161a9a765dd29194666788c0848797c122e62819b98" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C99.%E6%9D%82%E9%A1%B9%5C06.PeiLinNormalization.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C99.%E6%9D%82%E9%A1%B9" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\99.杂项\06.PeiLinNormalization.md">复制路径</span></div>
+
+<!-- blog-edit-start:0509978500157537:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.8.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/0.8.md</a></p>
 </blockquote>
+<!-- blog-edit-end:0509978500157537:b1 -->
+
+<!-- blog-edit-start:0509978500157537:b2 -->
+
 <p>没看懂...原始论文如下，可以看到 PeiLin 是两个作者的姓。</p>
+<!-- blog-edit-end:0509978500157537:b2 -->
+
+<!-- blog-edit-start:0509978500157537:b3 -->
+
 <p><img alt="1727520974066" src="../../../../asset/image/e657aa2dd0c2a73ac98c4bcb9eeedf6e/1727520974066.png" /></p>
+<!-- blog-edit-end:0509978500157537:b3 -->
+
+<!-- blog-edit-start:0509978500157537:b4 -->
+
 <p>OpenCV 的函数介绍已经讲清楚了：</p>
+<!-- blog-edit-end:0509978500157537:b4 -->
+
+<!-- blog-edit-start:0509978500157537:b5 -->
+
 <blockquote>
 <p>Assume given image I=T(I¯) where I¯ is a normalized image and T is an affine transformation distorting this image by translation, rotation, scaling and skew. The function returns an affine transformation matrix corresponding to the transformation T−1 described in [PeiLin95].</p>
 </blockquote>
+<!-- blog-edit-end:0509978500157537:b5 -->
+
+<!-- blog-edit-start:0509978500157537:b6 -->
+
 <p>但是关键点是 normalized image 是什么，原论文说是无论缩放、旋转都不会变的图片，太奇怪了，没理解。</p>
+<!-- blog-edit-end:0509978500157537:b6 -->
+
+<!-- blog-edit-start:0509978500157537:b7 -->
+
 <blockquote>
 <p>Here, we define normalization as a process which transforms the input pattern into a normal form that is invariant under translation, rotation, scaling and skew. We call the transformed image a normalized image. Since the normalized image is invariant under translation, rotation, scaling and skew, we can recognize patterns just by a simple matching method.</p>
 </blockquote>
+<!-- blog-edit-end:0509978500157537:b7 -->
+
+<!-- blog-edit-start:0509978500157537:b8 -->
+
 <p>OpenCV 的调用：</p>
+<!-- blog-edit-end:0509978500157537:b8 -->
+
+<!-- blog-edit-start:0509978500157537:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_images</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>
@@ -636,7 +674,14 @@
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span>
 </span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span><span class="n">show_images</span><span class="p">([</span> <span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span> <span class="p">])</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0509978500157537:b9 -->
+
+<!-- blog-edit-start:0509978500157537:b10 -->
+
 <p><img alt="1727521459160" src="../../../../asset/image/e657aa2dd0c2a73ac98c4bcb9eeedf6e/1727521459160.png" /></p>
+<!-- blog-edit-end:0509978500157537:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\99.杂项\06.PeiLinNormalization.md" data-text-edit-revision="b8ab5ee9457bf525f6dce161a9a765dd29194666788c0848797c122e62819b98" data-text-edit-marker="0509978500157537" data-text-edit-schema="1"></div>
 
 
 
@@ -868,8 +913,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

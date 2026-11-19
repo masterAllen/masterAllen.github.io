@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -659,17 +659,43 @@
   
 
 
+<!-- blog-edit-start:bfe322a7ea4a508b:b0 -->
+
 <h1 id="cds">理解 CDS</h1>
+<!-- blog-edit-end:bfe322a7ea4a508b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="aed08e64688b99b70685172e211dbb6b7cec96e8e2a953bcf9d9dbbd77e37c41" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5CCMOS%E7%9A%84%E7%90%86%E8%A7%A3%5C05.%E7%90%86%E8%A7%A3CDS.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5CCMOS%E7%9A%84%E7%90%86%E8%A7%A3" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\CMOS的理解\05.理解CDS.md">复制路径</span></div>
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b1 -->
 
 <blockquote>
 <p>这直接就是 AI 回答，没有任何修改。</p>
 </blockquote>
+<!-- blog-edit-end:bfe322a7ea4a508b:b1 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b2 -->
+
 <p>你问的 <strong>CDS</strong> 在相机里通常指的是 <strong>Correlated Double Sampling（相关双采样）</strong>，这是图像传感器里一个很重要的技术，用来降低噪声。下面我详细解释一下：</p>
+<!-- blog-edit-end:bfe322a7ea4a508b:b2 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b3 -->
+
 <hr />
+<!-- blog-edit-end:bfe322a7ea4a508b:b3 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b4 -->
+
 <h2 id="1-cds">1. 背景：为什么需要 CDS</h2>
+<!-- blog-edit-end:bfe322a7ea4a508b:b4 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b5 -->
+
 <p>在 CMOS 或 CCD 图像传感器中，每个像素都是一个光电二极管（或光敏元件），光照强度转换为电荷，然后通过 <strong>放大器（通常是源极跟随器）</strong> 转成电压信号输出。<br />
 问题是，输出信号里不仅有光信号，还有各种噪声：</p>
+<!-- blog-edit-end:bfe322a7ea4a508b:b5 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b6 -->
+
 <ol>
 <li>
 <p><strong>重置噪声（Reset Noise）</strong><br />
@@ -684,11 +710,31 @@
    像素在黑暗中仍会产生少量电荷，尤其是长曝光或高温时明显。</p>
 </li>
 </ol>
+<!-- blog-edit-end:bfe322a7ea4a508b:b6 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b7 -->
+
 <p>其中最主要、容易被 CDS 消除的就是 <strong>重置噪声</strong>。</p>
+<!-- blog-edit-end:bfe322a7ea4a508b:b7 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b8 -->
+
 <hr />
+<!-- blog-edit-end:bfe322a7ea4a508b:b8 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b9 -->
+
 <h2 id="2-cds">2. CDS 的基本原理</h2>
+<!-- blog-edit-end:bfe322a7ea4a508b:b9 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b10 -->
+
 <p>CDS 的思路非常直观：<br />
 <strong>对同一个像素，在采光前和采光后分别读一次信号，然后用后者减去前者</strong>：</p>
+<!-- blog-edit-end:bfe322a7ea4a508b:b10 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b11 -->
+
 <ol>
 <li>
 <p><strong>采样重置电压</strong> (<span class="arithmatex">\(V_\text{reset}\)</span>)</p>
@@ -712,14 +758,34 @@
 <p><strong>做差</strong>：</p>
 </li>
 </ol>
+<!-- blog-edit-end:bfe322a7ea4a508b:b11 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b12 -->
+
 <div class="arithmatex">\[
 V_\text{CDS} = V_\text{signal} - V_\text{reset}
 \]</div>
+<!-- blog-edit-end:bfe322a7ea4a508b:b12 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b13 -->
+
 <ul>
 <li>这样，重置噪声（主要来源于初始电压的随机波动）就会被抵消，因为它在两次采样中高度相关（hence <strong>correlated</strong>）。</li>
 </ul>
+<!-- blog-edit-end:bfe322a7ea4a508b:b13 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b14 -->
+
 <hr />
+<!-- blog-edit-end:bfe322a7ea4a508b:b14 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b15 -->
+
 <h2 id="3-cds">3. CDS 的效果</h2>
+<!-- blog-edit-end:bfe322a7ea4a508b:b15 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b16 -->
+
 <ul>
 <li><strong>降低重置噪声</strong>：通常可以把噪声降低 2~3 倍甚至更多</li>
 <li><strong>改善低光性能</strong>：在暗场或长曝光下尤为明显</li>
@@ -728,8 +794,20 @@ V_\text{CDS} = V_\text{signal} - V_\text{reset}
 <blockquote>
 <p>注意：CDS 不能消除全部噪声，比如 <strong>暗电流噪声</strong> 和 <strong>放大器噪声</strong> 依然存在。</p>
 </blockquote>
+<!-- blog-edit-end:bfe322a7ea4a508b:b16 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b17 -->
+
 <hr />
+<!-- blog-edit-end:bfe322a7ea4a508b:b17 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b18 -->
+
 <h2 id="4-cds">4. CDS 的实现方式</h2>
+<!-- blog-edit-end:bfe322a7ea4a508b:b18 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b19 -->
+
 <ol>
 <li>
 <p><strong>模拟 CDS（在像素或列级电路完成）</strong></p>
@@ -754,13 +832,28 @@ V_\text{CDS} = V_\text{signal} - V_\text{reset}
 </li>
 <li>缺点：重置噪声在 ADC 量化过程中已经混入数字信号，改善效果略差</li>
 </ol>
+<!-- blog-edit-end:bfe322a7ea4a508b:b19 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b20 -->
+
 <hr />
+<!-- blog-edit-end:bfe322a7ea4a508b:b20 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b21 -->
+
 <h2 id="5-cds">5. CDS 在相机中的意义</h2>
+<!-- blog-edit-end:bfe322a7ea4a508b:b21 -->
+
+<!-- blog-edit-start:bfe322a7ea4a508b:b22 -->
+
 <ul>
 <li>对 <strong>CMOS 图像传感器（CIS）</strong> 和 <strong>CCD</strong> 都重要</li>
 <li>尤其在 <strong>科学相机、工业相机、低光摄影</strong> 中非常常见</li>
 <li>和 <strong>快门类型、曝光方式、噪声优化</strong> 密切相关</li>
 </ul>
+<!-- blog-edit-end:bfe322a7ea4a508b:b22 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\CMOS的理解\05.理解CDS.md" data-text-edit-revision="aed08e64688b99b70685172e211dbb6b7cec96e8e2a953bcf9d9dbbd77e37c41" data-text-edit-marker="bfe322a7ea4a508b" data-text-edit-schema="1"></div>
 
 
 
@@ -992,8 +1085,6 @@ V_\text{CDS} = V_\text{signal} - V_\text{reset}
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

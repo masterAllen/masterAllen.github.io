@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -671,23 +671,77 @@
   
 
 
+<!-- blog-edit-start:0fc07d4c2e984046:b0 -->
+
 <h1 id="esptool-gui">记录：包装 esptool GUI</h1>
+<!-- blog-edit-end:0fc07d4c2e984046:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7b9c5e8aeacee3abfc51904df4d7f051f680af8c2187341ce5a47f55f6b25326" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32%5C%E7%BB%99esptool%E5%8C%85%E8%A3%85GUI.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CESP32" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\ESP32\给esptool包装GUI.md">复制路径</span></div>
 
+<!-- blog-edit-start:0fc07d4c2e984046:b1 -->
+
 <p>需要给客户提供升级工具，虽然 ESP32 官方提供了对应 exe，但会显示具体芯片，在网上找到 GUI 工具背后的源码，很幸运 ESP32 官方将其开源，所以可以直接下载下来在命令行使用。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b1 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b2 -->
+
 <p>所以之后我们要做的就是写一个 GUI 界面即可，但其实中间还是遇到了一些坑，特此记录一下。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b2 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b3 -->
+
 <h2 id="1">1. 实现调用代码升级</h2>
+<!-- blog-edit-end:0fc07d4c2e984046:b3 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b4 -->
+
 <p>下载完源码后，首先就要先实现调用代码升级，才能之后把他包装成 GUI 界面。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b4 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b5 -->
+
 <p><code>python esptool.py</code> 后面还需要很多参数，即使看官方文档也很有可能漏掉，估计会消耗很多时间。这里我觉得很巧妙，直接使用 Arduino IDE 进行固件烧写，然后他的下方终端有一些输出信息，发现他其实也用的是 esptool，所以这样我们就能从这些输出信息中获取到需要传入的参数。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b5 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b6 -->
+
 <h2 id="2">2. 外部代码中传入这些参数</h2>
+<!-- blog-edit-end:0fc07d4c2e984046:b6 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b7 -->
+
 <p>然后我们要写一个 GUI 代码，里面调用 <code>esptool.py</code> 的方法，但需要知道传入的参数是怎么传的。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b7 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b8 -->
+
 <p>分析他的代码结构即可，也很容易分析，其最后到了 <code>esptool/__init.py__</code> 文件的 <code>main</code> 方法，里面有如下语句：</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b8 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b9 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>    <span class="n">argv</span> <span class="o">=</span> <span class="n">expand_file_arguments</span><span class="p">(</span><span class="n">argv</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0fc07d4c2e984046:b9 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b10 -->
+
 <p>都已经为我们贴心准备了。我们只需要第一次在这里加入 <code>print(argv)</code>，然后执行命令行操作，看看最终的 argv 是什么，发现是一个列表，那外部 GUI 代码就先构造这个列表，然后作为参数传进去即可。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b10 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b11 -->
+
 <h2 id="3">3. 像串口助手一样自动检测串口列表，并更新</h2>
+<!-- blog-edit-end:0fc07d4c2e984046:b11 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b12 -->
+
 <p>使用下面代码即可，有一些库可以直接用来检测串口</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b12 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b13 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 获取所有可用的串口</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">def</span><span class="w"> </span><span class="nf">get_ports</span><span class="p">():</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">ports</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">list_ports</span><span class="o">.</span><span class="n">comports</span><span class="p">()</span>
@@ -709,9 +763,25 @@
 </span><span id="__span-1-19"><span class="linenos" data-linenos="19 "></span>    <span class="n">root</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">update_combobox</span><span class="p">)</span>
 </span><span id="__span-1-20"><span class="linenos" data-linenos="20 "></span><span class="n">update_combobox</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0fc07d4c2e984046:b13 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b14 -->
+
 <h2 id="4">4. 出错会直接退出</h2>
+<!-- blog-edit-end:0fc07d4c2e984046:b14 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b15 -->
+
 <p>发现 GUI 调用的时候，如果烧录出错（比如 COM 口选择错），会直接退出，即使 GUI 主程序代码使用 try-except 也不行。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b15 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b16 -->
+
 <p>后来发现是 <code>esptool.py</code> 中使用 <code>sys.exit()</code> 退出了，所以需要捕获 sys.exit 函数：</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b16 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b17 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>    <span class="k">try</span><span class="p">:</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>        <span class="n">esptool</span><span class="o">.</span><span class="n">_main</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>        <span class="n">action_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;升级完成&quot;</span><span class="p">)</span>
@@ -719,6 +789,10 @@
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span>    <span class="k">except</span> <span class="ne">SystemExit</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>        <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0fc07d4c2e984046:b17 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b18 -->
+
 <p>而在 <code>esptool</code> 源码中，修改 <code>sys.exit()</code> 的参数，这样弹窗也能显示具体信息了：<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>    <span class="k">try</span><span class="p">:</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>        <span class="n">main</span><span class="p">()</span>
@@ -727,8 +801,20 @@
 </span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span>        <span class="c1"># 原来时 sys.exit(1)</span>
 </span><span id="__span-3-6"><span class="linenos" data-linenos="6 "></span>        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:0fc07d4c2e984046:b18 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b19 -->
+
 <h2 id="5-gui-no-json-found">5. 打包 GUI 界面时显示 No JSON Found</h2>
+<!-- blog-edit-end:0fc07d4c2e984046:b19 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b20 -->
+
 <p>使用 nuitka 打包时，显示 No JSON Found，在网上也没有找到对应措施。后来是在源码搜索 "not found" 找到对应源码才明白是为什么，具体在 loder.py 文件中。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b20 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b21 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">StubFlasher</span><span class="p">:</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">STUB_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;targets&quot;</span><span class="p">,</span> <span class="s2">&quot;stub_flasher&quot;</span><span class="p">)</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="c1"># directories will be searched in the order of STUB_SUBDIRS</span>
@@ -746,8 +832,20 @@
 </span><span id="__span-4-15"><span class="linenos" data-linenos="15 "></span>            <span class="n">json_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">STUB_DIR</span><span class="p">,</span> <span class="n">subdir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">chip_name</span><span class="si">}</span><span class="s2">.json&quot;</span><span class="p">)</span>
 </span><span id="__span-4-16"><span class="linenos" data-linenos="16 "></span>            <span class="c1"># ...</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0fc07d4c2e984046:b21 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b22 -->
+
 <p>可以看到，这里他会使用 <code>get_json_path</code> 动态导入 JSON 文件，所以打包的时候就没有把最后要导入的文件打包进去，所以就会显示 No JSON Found。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b22 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b23 -->
+
 <p>解决方法就是这里直接改成静态导入，因为我们的芯片是固定的，所以这里 <code>get_json_path</code> 返回的文件是固定的。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b23 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b24 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">StubFlasher</span><span class="p">:</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">STUB_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;targets&quot;</span><span class="p">,</span> <span class="s2">&quot;stub_flasher&quot;</span><span class="p">)</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="c1"># directories will be searched in the order of STUB_SUBDIRS</span>
@@ -765,9 +863,25 @@
 </span><span id="__span-5-15"><span class="linenos" data-linenos="15 "></span>    <span class="c1">#     for i, subdir in enumerate(self.STUB_SUBDIRS):</span>
 </span><span id="__span-5-16"><span class="linenos" data-linenos="16 "></span>    <span class="c1">#         json_path = os.path.join(self.STUB_DIR, subdir, f&quot;{chip_name}.json&quot;)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0fc07d4c2e984046:b24 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b25 -->
+
 <h2 id="6-gui">6. 打包时间很长，GUI 界面会卡顿</h2>
+<!-- blog-edit-end:0fc07d4c2e984046:b25 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b26 -->
+
 <p>这也是经典问题了，如果是 QT 那就直接用 QThread。但这里我图轻量，用的 tkinter，一开始是用的 tkinter 叫做 <code>after</code> 的函数，但感觉还是乱。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b26 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b27 -->
+
 <p>后来我干脆修改 <code>esptool.py</code> 源码了。搜索其更新过程的输出文本，定位到源码的位置，后来发现主要慢的地方是 <code>log.set_progress</code> 那里，从 0% 到 100% 挺慢的，进一步定位，发现在 <code>esptool/logger.py</code> 文件中：</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b27 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b28 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">set_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percentage</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="sd">        Sets the progress of long-running operations to a specific percentage.</span>
@@ -777,6 +891,10 @@
 </span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="__span-6-8"><span class="linenos" data-linenos="8 "></span>        <span class="k">pass</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0fc07d4c2e984046:b28 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b29 -->
+
 <p>可以看到，他是空着的。我们可以直接用，所以我们将这个 <code>log</code> 对象和我们的 <code>button</code> 绑定，然后执行 <code>set_progress</code> 时候，直接修改 <code>button</code> 的文本。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># esptool/logger.py</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">def</span><span class="w"> </span><span class="nf">set_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percentage</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
@@ -797,8 +915,20 @@
 </span><span id="__span-7-17"><span class="linenos" data-linenos="17 "></span>
 </span><span id="__span-7-18"><span class="linenos" data-linenos="18 "></span>    <span class="n">esptool</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:0fc07d4c2e984046:b29 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b30 -->
+
 <p>但发现并没有起作用。后来终于明白了：主程序 GUI 是始终卡住的。如果要让按钮的文本更新，那么需要 <code>on_button_click</code> 执行完毕后，才会刷新。</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b30 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b31 -->
+
 <p>所以这里就用多线程来完成：</p>
+<!-- blog-edit-end:0fc07d4c2e984046:b31 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b32 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">on_button_click</span><span class="p">():</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="c1"># ... 构建 argv</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos=" 3 "></span>    <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">run_esptool</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">argv</span><span class="p">,),</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
@@ -812,7 +942,15 @@
 </span><span id="__span-8-11"><span class="linenos" data-linenos="11 "></span>    <span class="n">action_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">DISABLED</span><span class="p">)</span>
 </span><span id="__span-8-12"><span class="linenos" data-linenos="12 "></span>    <span class="n">action_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;正在升级...&quot;</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:0fc07d4c2e984046:b32 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b33 -->
+
 <h2 id="_1">复盘</h2>
+<!-- blog-edit-end:0fc07d4c2e984046:b33 -->
+
+<!-- blog-edit-start:0fc07d4c2e984046:b34 -->
+
 <ol>
 <li>打包时先不要 disable-console，不要图快</li>
 <li>打包时如果代码中有静态加载文件的（即源码中加载的是固定的文件链接），可以放心了。最后打包会自动将文件打包到 exe 中。</li>
@@ -826,6 +964,9 @@
 <p>如果文件不一定是唯一的，那就打消打包成一个文件的想法吧，老老实实在当前 exe 文件中新建目录，把那些配置文件放进去，然后修改源码，让他加载文件时从当前 exe 目录加载这些文件。</p>
 </li>
 </ol>
+<!-- blog-edit-end:0fc07d4c2e984046:b34 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\ESP32\给esptool包装GUI.md" data-text-edit-revision="7b9c5e8aeacee3abfc51904df4d7f051f680af8c2187341ce5a47f55f6b25326" data-text-edit-marker="0fc07d4c2e984046" data-text-edit-schema="1"></div>
 
 
 
@@ -1057,8 +1198,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

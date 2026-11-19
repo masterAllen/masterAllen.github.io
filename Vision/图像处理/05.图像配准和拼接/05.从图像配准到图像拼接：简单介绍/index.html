@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -644,37 +644,102 @@
   
 
 
+<!-- blog-edit-start:d215f4134debbd08:b0 -->
+
 <h1 id="_1">从图像配准到图像拼接：简单介绍</h1>
+<!-- blog-edit-end:d215f4134debbd08:b0 -->
+
 <div class="file-actions" data-image-edit-revision="7ae0a257843f2313f2444c5d172ec5db966aac4e8ee52055bdfcfcd2496524e0" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5%5C05.%E4%BB%8E%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%88%B0%E5%9B%BE%E5%83%8F%E6%8B%BC%E6%8E%A5%EF%BC%9A%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C05.%E5%9B%BE%E5%83%8F%E9%85%8D%E5%87%86%E5%92%8C%E6%8B%BC%E6%8E%A5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\05.从图像配准到图像拼接：简单介绍.md">复制路径</span></div>
+
+<!-- blog-edit-start:d215f4134debbd08:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.5.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/5.5.md</a></p>
 </blockquote>
+<!-- blog-edit-end:d215f4134debbd08:b1 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b2 -->
+
 <h3 id="_2">普通的配准</h3>
+<!-- blog-edit-end:d215f4134debbd08:b2 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b3 -->
+
 <p>配准后进行拼接，无比自然的事情。不少文章也是介绍图片拼接才介绍的图片配准。如下图所示：</p>
+<!-- blog-edit-end:d215f4134debbd08:b3 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b4 -->
+
 <p><img alt="1727608755763" src="../../../../asset/image/5816499e6d07063e0bd01dfa18280f26/1727608755763.png" /></p>
+<!-- blog-edit-end:d215f4134debbd08:b4 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b5 -->
+
 <p>找到特征点后，对某张图片进行变换即可，如下图，变换后直接拼起来就好了。</p>
+<!-- blog-edit-end:d215f4134debbd08:b5 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b6 -->
+
 <p><img alt="1727608463485" src="../../../../asset/image/5816499e6d07063e0bd01dfa18280f26/1727608463485.png" /><img alt="1727608475849" src="../../../../asset/image/5816499e6d07063e0bd01dfa18280f26/1727608475849.png" /></p>
+<!-- blog-edit-end:d215f4134debbd08:b6 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b7 -->
+
 <p>但其实这里面还有很多的学问，以下两篇文章写的特别好，作者们都做了一些思考，并且去查看了 Opencv 的实现：</p>
+<!-- blog-edit-end:d215f4134debbd08:b7 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b8 -->
+
 <ul>
 <li><a href="https://www.cnblogs.com/skyfsm/p/7411961.html">https://www.cnblogs.com/skyfsm/p/7411961.html</a></li>
 <li><a href="https://www.cnblogs.com/curiositywang/p/17480796.html">https://www.cnblogs.com/curiositywang/p/17480796.html</a></li>
 </ul>
+<!-- blog-edit-end:d215f4134debbd08:b8 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b9 -->
+
 <p>主要是有两个问题：</p>
+<!-- blog-edit-end:d215f4134debbd08:b9 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b10 -->
+
 <ol>
 <li>特征点如何保证多：两次特征点。先对图一进行特征点提取和筛选匹配（1→2），再对图二进行特征点的提取和匹配（2→1），可以保证更多的匹配点被选中，匹配点越多，findHomography求出的变换越准确。这个思路值得借鉴。<mark class="term-highlight">文章一</mark></li>
 <li>左右图片亮部不一致，过度的比较明显：可以通过简单的插值来做，但这样还是可能有鬼影。OpenCV 是利用<mark class="term-highlight">曝光补偿</mark>的方式，让左右图片亮度尽量一样，然后重叠的部分直接选其中一张，这样就不可能有鬼影了（因为没有插值，是原来其中一张图片的内容）。<mark class="term-highlight">文章二</mark></li>
 </ol>
+<!-- blog-edit-end:d215f4134debbd08:b10 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b11 -->
+
 <h3 id="stitiching-high-api">Stitiching High API</h3>
+<!-- blog-edit-end:d215f4134debbd08:b11 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b12 -->
+
 <p>OpenCV 有专门的 stitching 来处理图片配准，如果没有特别精细的要求（如运行时间等），可以直接调用它的 Hight API 即可，如下所示：</p>
+<!-- blog-edit-end:d215f4134debbd08:b12 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b13 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;./image/stitching/a</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">stitcher</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Stitcher</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">status</span><span class="p">,</span> <span class="n">outimg</span> <span class="o">=</span> <span class="n">stitcher</span><span class="o">.</span><span class="n">stitch</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d215f4134debbd08:b13 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b14 -->
+
 <p>没错，就是这么简单。</p>
+<!-- blog-edit-end:d215f4134debbd08:b14 -->
+
+<!-- blog-edit-start:d215f4134debbd08:b15 -->
+
 <p>但 stitching 其实很复杂，该模块有 detail 层，通过对这些层的调用就能改变或丢弃一些流程。官方给了一个 stitching_details 的 sample 代码，写的非常好。因为比较多，所以单独另写一篇文章进行说明，可以见<a href="../06.从图像配准到图像拼接：细节介绍/">下一篇文章</a>。</p>
+<!-- blog-edit-end:d215f4134debbd08:b15 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\05.图像配准和拼接\05.从图像配准到图像拼接：简单介绍.md" data-text-edit-revision="7ae0a257843f2313f2444c5d172ec5db966aac4e8ee52055bdfcfcd2496524e0" data-text-edit-marker="d215f4134debbd08" data-text-edit-schema="1"></div>
 
 
 
@@ -906,8 +971,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

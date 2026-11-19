@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,24 +655,82 @@
   
 
 
+<!-- blog-edit-start:5ea8700dcc0252eb:b0 -->
+
 <h1 id="ridgets">特别的特征：Ridgets</h1>
+<!-- blog-edit-end:5ea8700dcc0252eb:b0 -->
+
 <div class="file-actions" data-image-edit-revision="bf5a6e2d84a8a47ee2ac06852c67e215b8927bc8e1c83550056104b94a26cf61" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%5C06.%E7%89%B9%E5%88%AB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9ARidgets.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\06.特别的特征：Ridgets.md">复制路径</span></div>
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.8.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/2.8.md</a></p>
 </blockquote>
+<!-- blog-edit-end:5ea8700dcc0252eb:b1 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b2 -->
+
 <p>来自于 StackExchange 上一个特别好的回答：<a href="https://dsp.stackexchange.com/questions/1714/best-way-of-segmenting-veins-in-leaves/1735#1735">https://dsp.stackexchange.com/questions/1714/best-way-of-segmenting-veins-in-leaves/1735#1735</a></p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b2 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b3 -->
+
 <p>有人想提取一个叶子的骨干，但是边缘提取效果很不好。下面的回答就介绍了这种情况应该是 Ridgets 而不是 Edges。</p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b3 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b4 -->
+
 <p><img alt="1727501944089" src="../../../../asset/image/42f77552d116f8867d35539efe773731/1727501944089.png" /></p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b4 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b5 -->
+
 <h3 id="edges-ridgets">Edges 和 Ridgets 的区分：</h3>
+<!-- blog-edit-end:5ea8700dcc0252eb:b5 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b6 -->
+
 <p>Edges 是提取两边差异较大的那些地方，如从黑到白；而 Ridgets 提取的是比两边差异都较大的那些地方，比如黑白黑，就会提取出白。</p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b6 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b7 -->
+
 <p>所以很显然，如果用 Edges 提取叶子骨干，很容易出现 "double line pattern"，即提取的是叶子骨干的两边了。如下面的图，第一行是原始图，一条黑线，它的两边是白色的，用 Edges 就会提取出它的两边，用 Ridgets 才会提取到黑线本身。</p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b7 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b8 -->
+
 <p><img alt="1727501914437" src="../../../../asset/image/42f77552d116f8867d35539efe773731/1727501914437.png" /></p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b8 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b9 -->
+
 <h3 id="ridgets_1">寻找 Ridgets 原理</h3>
+<!-- blog-edit-end:5ea8700dcc0252eb:b9 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b10 -->
+
 <p>Edges 一般是一阶导，如 Sobel；想要找 Ridgets 就要在二阶导上作文章。这个就是对 Hessian 矩阵求特征向量来做的，相当于求抛物线极值点。这是一个经典的问题，多元函数求极值，网上很多资料，比如<a href="https://www.cnblogs.com/jzssuanfa/p/7341602.html">这篇文章</a>不错。</p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b10 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b11 -->
+
 <p><img alt="1727502105265" src="../../../../asset/image/42f77552d116f8867d35539efe773731/1727502105265.png" /></p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b11 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b12 -->
+
 <h3 id="opencv-ridget">Opencv 中使用 Ridget</h3>
+<!-- blog-edit-end:5ea8700dcc0252eb:b12 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b13 -->
+
 <p>具体代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_edges.ipynb">test_edges.ipynb</a> 中，这里摘抄一下，ximgproc 里面有现成的 API：</p>
+<!-- blog-edit-end:5ea8700dcc0252eb:b13 -->
+
+<!-- blog-edit-start:5ea8700dcc0252eb:b14 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>src = cv2.imread(&#39;image/edge/sources/06.png&#39;)
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>now_filter = cv2.ximgproc.RidgeDetectionFilter.create()
@@ -682,6 +740,9 @@
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span>    (&#39;result&#39;, result),
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span>])
 </span></code></pre></div>
+<!-- blog-edit-end:5ea8700dcc0252eb:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\06.特别的特征：Ridgets.md" data-text-edit-revision="bf5a6e2d84a8a47ee2ac06852c67e215b8927bc8e1c83550056104b94a26cf61" data-text-edit-marker="5ea8700dcc0252eb" data-text-edit-schema="1"></div>
 
 
 
@@ -913,8 +974,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

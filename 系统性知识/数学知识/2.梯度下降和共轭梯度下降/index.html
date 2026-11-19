@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -616,30 +616,107 @@
   
 
 
+<!-- blog-edit-start:b3be862c55f60b13:b0 -->
+
 <h1 id="_1">梯度下降和共轭梯度下降</h1>
+<!-- blog-edit-end:b3be862c55f60b13:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b3be862c55f60b139c9407098730680f7bceab770224d116c80c74ec48768805" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%5C2.%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E5%92%8C%E5%85%B1%E8%BD%AD%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\数学知识\2.梯度下降和共轭梯度下降.md">复制路径</span></div>
 
+<!-- blog-edit-start:b3be862c55f60b13:b1 -->
+
 <p>最优化中的基础内容。梯度下降，机器学习基础中的基础知识，这个在CS229中学过，当时觉得很简单啊。但是现在来看，还是缺少理解，导致后续对共轭梯度下降的学习产生了阻碍。而共轭下降则是求解线性方程组常用的一个方法。</p>
+<!-- blog-edit-end:b3be862c55f60b13:b1 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b2 -->
+
 <p>还是强调一句：学以致用，其实会用就可以了，记录梯度下降和共轭梯度下降的原理是我在阅读论文时（一篇融合闪光和非闪光图像的论文）遇到了麻烦，特此记录。</p>
+<!-- blog-edit-end:b3be862c55f60b13:b2 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b3 -->
+
 <p>本文章主要参考了两个网页内容，这两个网页写的非常好！</p>
+<!-- blog-edit-end:b3be862c55f60b13:b3 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b4 -->
+
 <ul>
 <li><a href="https://o-o-sudo.github.io/numerical-methods/-conjugate-gradient.html">https://o-o-sudo.github.io/numerical-methods/-conjugate-gradient.html</a></li>
 <li><a href="https://pynumerical.com/archives/88/">https://pynumerical.com/archives/88/</a> and <a href="https://pynumerical.com/archives/89/">https://pynumerical.com/archives/89/</a></li>
 </ul>
+<!-- blog-edit-end:b3be862c55f60b13:b4 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b5 -->
+
 <h2 id="_2">从梯度下降说起</h2>
+<!-- blog-edit-end:b3be862c55f60b13:b5 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b6 -->
+
 <p>什么！梯度下降还要讲吗？虽然没必要，但我觉得两点是需要理解的：梯度下降为什么能解决Ax=b，梯度下降中每一步之间的关系是什么。</p>
+<!-- blog-edit-end:b3be862c55f60b13:b6 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b7 -->
+
 <p>第一个问题，梯度下降为什么解决了Ax=b，<strong>实际上他不是直接对Ax-b进行求解，而是很巧妙地转换为了求一个二次函数最小值</strong>。求出最小值，我们就获得了最后的解x。</p>
+<!-- blog-edit-end:b3be862c55f60b13:b7 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b8 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240228002.png" /></p>
+<!-- blog-edit-end:b3be862c55f60b13:b8 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b9 -->
+
 <p>求最小值我们就可以逐步迭代去求，根据公式推导推出形式化解法，也就是令梯度下降方法从而得出。</p>
+<!-- blog-edit-end:b3be862c55f60b13:b9 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b10 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240228003.png" /></p>
+<!-- blog-edit-end:b3be862c55f60b13:b10 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b11 -->
+
 <p>那么第二个问题，梯度下降中每一步之间的关系是什么。<strong>实际上上一张图公式8那儿已经给了答案：前后两步梯度向量保证正交！！</strong>在图像中就是下图。绿线就是梯度下降，他每次保证是正交的，所以可能：原来一个方向已经到了最优解，结果现在去求第二个方向最优解，导致之前的方向又不是最优的了，所以会反反复复，导致速度变慢。</p>
+<!-- blog-edit-end:b3be862c55f60b13:b11 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b12 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240228004.png" /></p>
+<!-- blog-edit-end:b3be862c55f60b13:b12 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b13 -->
+
 <h2 id="_3">共轭梯度下降</h2>
+<!-- blog-edit-end:b3be862c55f60b13:b13 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b14 -->
+
 <p>共轭梯度下降可以达到上图红线的效果。而它的推导过程如下，本部分完全记录于 <a href="https://pynumerical.com/archives/89/">https://pynumerical.com/archives/89/</a>，非常好的文章。</p>
+<!-- blog-edit-end:b3be862c55f60b13:b14 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b15 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240228005.png" /></p>
+<!-- blog-edit-end:b3be862c55f60b13:b15 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b16 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240228006.png" /></p>
+<!-- blog-edit-end:b3be862c55f60b13:b16 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b17 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240228007.png" /></p>
+<!-- blog-edit-end:b3be862c55f60b13:b17 -->
+
+<!-- blog-edit-start:b3be862c55f60b13:b18 -->
+
 <p><img alt="image-20240228173339282" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240228009.png" /></p>
+<!-- blog-edit-end:b3be862c55f60b13:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\数学知识\2.梯度下降和共轭梯度下降.md" data-text-edit-revision="b3be862c55f60b139c9407098730680f7bceab770224d116c80c74ec48768805" data-text-edit-marker="b3be862c55f60b13" data-text-edit-schema="1"></div>
 
 
 
@@ -871,8 +948,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

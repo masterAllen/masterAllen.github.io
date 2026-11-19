@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -767,11 +767,24 @@
   
 
 
+<!-- blog-edit-start:6695ce3095a1ec56:b0 -->
+
 <h1 id="pwnable-tw-realloc">Pwnable tw realloc</h1>
+<!-- blog-edit-end:6695ce3095a1ec56:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f40afc5f487639b3ce07e324d2115f5fa0572a42d13fddbcaa73573465b7af1a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C10_realloc%5Crecord.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C10_realloc" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\10_realloc\record.md">复制路径</span></div>
 
+<!-- blog-edit-start:6695ce3095a1ec56:b1 -->
+
 <h2 id="_1">源码分析</h2>
+<!-- blog-edit-end:6695ce3095a1ec56:b1 -->
+<!-- blog-edit-start:6695ce3095a1ec56:b2 -->
+
 <p>菜单类题目，一共三个选择: <code>alloc</code>, <code>realloc</code>, <code>free</code>，其中我们就是利用了 <code>realloc</code> 中的漏洞点。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b2 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b3 -->
+
 <p><code>realloc</code> 调用了 <code>realloc(ptr, size, content)</code> 这个函数，这个函数显而易见就是用来重新分配某块内存的。</p>
 <ul>
 <li>如果 <code>size == 0</code>，那么很显然就是把原来的块 <code>free</code> 掉。</li>
@@ -784,13 +797,43 @@
 <p>如果 <code>size == oldsize</code>，那么就保持不变，就是把块里面数据改成 <code>content</code> 即可。</p>
 </li>
 </ul>
+<!-- blog-edit-end:6695ce3095a1ec56:b3 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b4 -->
+
 <p>上面这个还是比较直观的，仔细体会。本题就是没有判断是否 <code>realloc(0)</code>，所以可以造成 Double Free. 总体结构如下.</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b4 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b5 -->
+
 <p><img alt="test" src="../../../../../../asset/image/c05283ce812bb573821e4c8a6a3beffd/10_realloc.jpg" /></p>
+<!-- blog-edit-end:6695ce3095a1ec56:b5 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b6 -->
+
 <h2 id="_2">利用步骤</h2>
+<!-- blog-edit-end:6695ce3095a1ec56:b6 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b7 -->
+
 <h3 id="_3">步骤一：统揽全局</h3>
+<!-- blog-edit-end:6695ce3095a1ec56:b7 -->
+<!-- blog-edit-start:6695ce3095a1ec56:b8 -->
+
 <p>在这直接说出本题的目标，算是一个该学到的姿势: 把 <code>atoll</code> 改成 <code>printf</code> 泄露，再改成 <code>system</code> 攻击。我知道很玄乎，看下面的步骤吧。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b8 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b9 -->
+
 <h3 id="atoll-to-printf">步骤二：<code>atoll</code> to <code>printf</code></h3>
+<!-- blog-edit-end:6695ce3095a1ec56:b9 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b10 -->
+
 <h4 id="atoll_got-tcache-bin">第一步：<code>atoll_got</code> 放入 tcache bin 中</h4>
+<!-- blog-edit-end:6695ce3095a1ec56:b10 -->
+<!-- blog-edit-start:6695ce3095a1ec56:b11 -->
+
 <p>这个太简单了，就是 double free 即可，看下面的代码。对了，程序一共可以申请两个指针，比如 <code>my_alloc(0, ..)</code> 就是关于第一个指针的事。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 假定这个块为 node[0]</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="n">my_alloc</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x18</span><span class="p">,</span> <span class="s1">&#39;AAAA&#39;</span><span class="p">)</span>
@@ -802,11 +845,30 @@
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span><span class="c1"># heap[0] == heap[1] == node[0]</span>
 </span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span><span class="n">my_alloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mh">0x18</span><span class="p">,</span> <span class="s1">&#39;BBBB&#39;</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:6695ce3095a1ec56:b11 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b12 -->
+
 <h4 id="free-atoll_got">第二步：<code>free</code> 不去污染 <code>atoll_got</code> 所在链表</h4>
+<!-- blog-edit-end:6695ce3095a1ec56:b12 -->
+<!-- blog-edit-start:6695ce3095a1ec56:b13 -->
+
 <p>下面我们还要继续利用这两个指针，所以要把他们先 <code>my_free</code> 掉，其中 <code>my_free</code> 函数会把当前指针清零。<br />
 否则在 <code>alloc</code> 中，程序发现它不是 0，就会提前终止。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b13 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b14 -->
+
 <p>现在的 <code>atoll_got</code> 在 <code>tcache[0x18]</code> 这个链表首部。堆里面只有一个 <code>[0x18]</code> 大小的块，<code>ptr0</code> 和 <code>ptr1</code> 都是指向它，设为 <code>node[0]</code>。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b14 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b15 -->
+
 <p>如果我们就是简单地 <code>my_free(0)</code>，那么很显然 <code>tcache[0x18]</code> 结构就会被破坏掉，所以要另辟蹊径。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b15 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b16 -->
+
 <ol>
 <li>
 <p>对于 <code>ptr0</code> 而言。</p>
@@ -826,7 +888,15 @@
 <p>对于 <code>ptr1</code> 而言。</p>
 </li>
 </ol>
+<!-- blog-edit-end:6695ce3095a1ec56:b20 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b21 -->
+
 <p>如果我们效仿 <code>ptr0</code> 会怎么样？要知道 <code>ptr1</code> 也是指向 <code>node[0]</code>，所以这样同样会让 <code>node[0]</code> 放入 <code>tcache[0x28]</code>，系统就检测到 Double Free 了。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b21 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b22 -->
+
 <p>所以我们要破坏系统的检测，系统检测 <code>tcache</code> 有没有 Double Free 是通过下面的 <code>key</code> 来进行检测的。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">tcache_entry</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
@@ -834,24 +904,56 @@
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">tcache_perthread_struct</span><span class="w"> </span><span class="o">*</span><span class="n">key</span><span class="p">;</span><span class="w"> </span><span class="c1">// 通过这个字段进行判断是否 Double Free</span>
 </span><span id="__span-1-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span><span class="w"> </span><span class="n">tcache_entr</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:6695ce3095a1ec56:b22 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b23 -->
+
 <p>那么我们就这样: <code>my_alloc(1, 0x28, 'DDDDDDDDDDD')</code>，这样会让 <code>node[0]</code> 的 <code>key</code> 变成 <code>DDDD</code>，那么很显然再放入 <code>tcache</code> 中就不会检测到 Doube Free 了。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b23 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b24 -->
+
 <p>下面是这一步的代码<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">my_realloc</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">,</span> <span class="s1">&#39;CCCC&#39;</span><span class="p">)</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">my_free</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="n">my_realloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">,</span> <span class="s1">&#39;DDDDDDDDDDDDDDDD&#39;</span><span class="p">)</span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="n">my_free</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:6695ce3095a1ec56:b24 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b25 -->
+
 <h4 id="atoll-printf">第三步：<code>atoll</code> 变为 <code>printf</code></h4>
+<!-- blog-edit-end:6695ce3095a1ec56:b25 -->
+<!-- blog-edit-start:6695ce3095a1ec56:b26 -->
+
 <p>然后就直接通过 <code>my_alloc(0, 0x38, p64(print_plt))</code> 就可以了。<br />
 但是呢，这一步最好放到最后再去做。(看脚本就知道了)</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b26 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b27 -->
+
 <h3 id="atoll-to-system">步骤三：<code>atoll</code> to <code>system</code></h3>
+<!-- blog-edit-end:6695ce3095a1ec56:b27 -->
+<!-- blog-edit-start:6695ce3095a1ec56:b28 -->
+
 <p>效仿步骤二即可。</p>
+<!-- blog-edit-end:6695ce3095a1ec56:b28 -->
+
+<!-- blog-edit-start:6695ce3095a1ec56:b29 -->
+
 <h3 id="_4">步骤四：总体步骤</h3>
+<!-- blog-edit-end:6695ce3095a1ec56:b29 -->
+<!-- blog-edit-start:6695ce3095a1ec56:b30 -->
+
 <ol>
 <li>首先将 <code>atoll</code> 放入 <code>tcache[0x18]</code> 和 <code>tcache[0x38]</code> 中去。</li>
 <li>将 <code>atoll</code> 变为 <code>printf</code>，程序调用 <code>atoll(&amp;input)</code>，相当于 <code>printf(&amp;input)</code>，这就可以格式化字符串攻击，最终可以得到 <code>system</code> 地址。</li>
 <li>将 <code>atoll</code> 变为 <code>system</code>，程序调用 <code>atoll(&amp;input)</code>，就可以 <code>system(&amp;input)</code>。注意这一步中 <code>atoll</code> 是 <code>printf</code>，<code>printf</code> 返回值是输入长度，比如需要 <code>my_alloc(1, 0x18, 'AAAA')</code>，那么就要改成 <code>my_alloc('a', 'a'*0x18, 'aaaa')</code>。</li>
 </ol>
+<!-- blog-edit-end:6695ce3095a1ec56:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\10_realloc\record.md" data-text-edit-revision="f40afc5f487639b3ce07e324d2115f5fa0572a42d13fddbcaa73573465b7af1a" data-text-edit-marker="6695ce3095a1ec56" data-text-edit-schema="1"></div>
 
 
 
@@ -1083,8 +1185,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

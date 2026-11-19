@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -749,8 +749,14 @@
   
 
 
+<!-- blog-edit-start:4557a8cb2d375412:b0 -->
+
 <h1 id="hooks">hooks 说明</h1>
+<!-- blog-edit-end:4557a8cb2d375412:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f26d39ae815e86b18f1bb2686db0178f9ab49ddf5f2cf20ce54e82b748e425d4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other%5Chooks.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\05.other\hooks.md">复制路径</span></div>
+
+<!-- blog-edit-start:4557a8cb2d375412:b1 -->
 
 <p>分成三个部分：</p>
 <ol>
@@ -758,23 +764,55 @@
 <li>hooks 有什么危险，有什么被利用的方式？</li>
 <li>hooks 删除之后，原来<strong>正常（非恶意）</strong>使用 hooks 的应该改成说明？</li>
 </ol>
+<!-- blog-edit-end:4557a8cb2d375412:b1 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b2 -->
+
 <h2 id="hooks_1">hooks 介绍</h2>
+<!-- blog-edit-end:4557a8cb2d375412:b2 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b3 -->
+
 <p>如下所示，以前的时候 <code>free</code> 是这样的逻辑，<strong>其中 <code>free_hook</code> 是全局变量</strong>。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b3 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>free()
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span> ├─ if (__free_hook != NULL)
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span> │     └─ call __free_hook(ptr)
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span> └─ else
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>       └─ _int_free()
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b4 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b5 -->
+
 <p>学术化讲，它的作用是<strong>在 不改 glibc、不重编译程序</strong>的前提下，你能在 <code>malloc/free</code> 发生时插入一点自己的逻辑。”</p>
+<!-- blog-edit-end:4557a8cb2d375412:b5 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b6 -->
+
 <h3 id="_1">举例一：最朴素、最合理的例子：内存分配统计</h3>
+<!-- blog-edit-end:4557a8cb2d375412:b6 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b7 -->
+
 <p>你在 2003 年维护一个大型服务器程序：</p>
 <ul>
 <li>不能重启</li>
 <li>不能重新编译</li>
 <li>怀疑内存泄漏</li>
 </ul>
+<!-- blog-edit-end:4557a8cb2d375412:b7 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b8 -->
+
 <p>你想知道：到底是谁在 malloc？你可以写一个这样的函数：</p>
+<!-- blog-edit-end:4557a8cb2d375412:b8 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b9 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">my_malloc_hook</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">caller</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;[malloc] size=%zu, caller=%p</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">caller</span><span class="p">);</span>
@@ -784,9 +822,25 @@
 </span><span id="__span-1-7"><span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b9 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b10 -->
+
 <p>然后把正在运行的程序 <code>attach gdb</code>，并且设置 <code>__malloc_hook</code>（没错，hooks 最大的优势就是在 gdb 中可以替换这个全局变量），此时就能进行检测了。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b10 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b11 -->
+
 <h3 id="_2">举例二：复现诊断</h3>
+<!-- blog-edit-end:4557a8cb2d375412:b11 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b12 -->
+
 <p>如果程序出现问题，或者想要统计一些指标。同样地可以用 hooks，我们需要修改程序，把对应的 hooks 修改成我们写的函数即可：</p>
+<!-- blog-edit-end:4557a8cb2d375412:b12 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b13 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;malloc.h&gt;</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">old_malloc_hook</span><span class="p">)(</span><span class="kt">size_t</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">);</span>
@@ -807,63 +861,189 @@
 </span><span id="__span-2-18"><span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 </span><span id="__span-2-19"><span class="linenos" data-linenos="19 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b13 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b14 -->
+
 <p>这个也很方便，这样我们就可以跑这个程序，作为诊断手段了。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b14 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b15 -->
+
 <h2 id="hooks_2">hooks 危险</h2>
+<!-- blog-edit-end:4557a8cb2d375412:b15 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b16 -->
+
 <p>要注意，如 <code>free_hook</code> 这些是全局变量。很显然，攻击者如果把某个 <code>hooks</code> 变量修改成危险函数指针，执行对应的 hook 函数时（比如 <code>free_hook</code> 对应 <code>free</code>），那么就执行危险函数了。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b16 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b17 -->
+
 <p>这在以前很流行的攻击方式。只要能任意写，那么很多就是利用 hook 来攻击的。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b17 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b18 -->
+
 <p>所以在 glibc 2.34 中，hooks 这些全局变量被全部删除，如新版本的 <code>free</code> 就直接 <code>_int_free</code>，而不再进行判断是否用 hooks 了。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b18 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b19 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>free()
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span> └─ __libc_free()
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>       └─ _int_free()
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b19 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b20 -->
+
 <h2 id="hooks_3">hooks 删除之后</h2>
+<!-- blog-edit-end:4557a8cb2d375412:b20 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b21 -->
+
 <p>但是这就有一个问题了，hooks 对于正常的行为而言很方便呀，删除了 hooks，那之前比如可以统计 malloc 次数啥的需求，我现在应该怎么做呢？</p>
+<!-- blog-edit-end:4557a8cb2d375412:b21 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b22 -->
+
 <p>有很多方法，这里只说一个最主流的：LD_PRELOAD，它的本质时动态链接器在做符号解析时，把自定义的共享库放在搜索顺序最前面。下面具体详谈。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b22 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b23 -->
+
 <h3 id="_3">命令行执行</h3>
+<!-- blog-edit-end:4557a8cb2d375412:b23 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b24 -->
+
 <p>当我们把自己的 <code>malloc</code> 函数编译成 <code>hook.so</code>，然后按照下面的格式执行：</p>
+<!-- blog-edit-end:4557a8cb2d375412:b24 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b25 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="nv">LD_PRELOAD</span><span class="o">=</span>./hook.so<span class="w"> </span>./a.out
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b25 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b26 -->
+
 <p>动态链接器的行为变成：</p>
+<!-- blog-edit-end:4557a8cb2d375412:b26 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b27 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>加载顺序：
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>1. hook.so        ← 你指定的
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>2. a.out 依赖的 so
 </span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span>3. libc.so
 </span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span>4. 其他库
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b27 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b28 -->
+
 <h3 id="_4">寻找链接库</h3>
+<!-- blog-edit-end:4557a8cb2d375412:b28 -->
+<!-- blog-edit-start:4557a8cb2d375412:b29 -->
+
 <p>ELF 的规则是：<strong>“第一个定义该符号的共享对象胜出”</strong></p>
+<!-- blog-edit-end:4557a8cb2d375412:b29 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b30 -->
+
 <p>举例：</p>
+<!-- blog-edit-end:4557a8cb2d375412:b30 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b31 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="c1">// hook.so</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span><span class="p">);</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span><span class="c1">// libc.so</span>
 </span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b31 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b32 -->
+
 <p>当程序里调用 <code>malloc(0x100);</code>，此时<strong>命中 <code>hook.so</code> 的 <code>malloc</code></strong></p>
+<!-- blog-edit-end:4557a8cb2d375412:b32 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b33 -->
+
 <h3 id="_5">如何确保真正的函数也执行</h3>
+<!-- blog-edit-end:4557a8cb2d375412:b33 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b34 -->
+
 <p>很多时候，我们还是希望真正的函数也执行，比如下面的语句，我们只是想统计 <code>malloc</code> 的次数：</p>
+<!-- blog-edit-end:4557a8cb2d375412:b34 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b35 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="p">{</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;malloc %zu</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
 </span><span id="__span-7-4"><span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">real_malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
 </span><span id="__span-7-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b35 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b36 -->
+
 <p>我们可以用上面的操作让动态链接时链接的是我们的 <code>malloc</code>，那 <code>real_malloc</code> 又是怎么找到的？没有全局变量了呀。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b36 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b37 -->
+
 <p><strong>关键函数：<code>dlsym</code></strong>，其中 RTLD_NEXT: <strong>“从当前共享对象之后，继续找符号”</strong></p>
+<!-- blog-edit-end:4557a8cb2d375412:b37 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b38 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="n">real_malloc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dlsym</span><span class="p">(</span><span class="n">RTLD_NEXT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;malloc&quot;</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b38 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b39 -->
+
 <p>因此搜索顺序：</p>
+<!-- blog-edit-end:4557a8cb2d375412:b39 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b40 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>跳过 hook.so
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span>→ libc.so
 </span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span>→ …
 </span></code></pre></div>
+<!-- blog-edit-end:4557a8cb2d375412:b40 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b41 -->
+
 <p>所以我们可以从 <code>libc.so</code> 中得到 <code>real_malloc</code>。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b41 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b42 -->
+
 <h3 id="_6">缺点</h3>
+<!-- blog-edit-end:4557a8cb2d375412:b42 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b43 -->
+
 <p>但其实有一个问题：如果程序不能重启呢？以前是可以用 <code>attach gdb</code>，然后设置 <code>malloc_hook</code> 全局变量的。</p>
+<!-- blog-edit-end:4557a8cb2d375412:b43 -->
+
+<!-- blog-edit-start:4557a8cb2d375412:b44 -->
+
 <p>回答：<strong>没有等价方案。</strong> hooks 被删除，意味着：</p>
 <blockquote>
 <p>👉 glibc 明确放弃了“不中断进程、运行时热接管 allocator”这一能力。</p>
 </blockquote>
+<!-- blog-edit-end:4557a8cb2d375412:b44 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\05.other\hooks.md" data-text-edit-revision="f26d39ae815e86b18f1bb2686db0178f9ab49ddf5f2cf20ce54e82b748e425d4" data-text-edit-marker="4557a8cb2d375412" data-text-edit-schema="1"></div>
 
 
 
@@ -1095,8 +1275,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

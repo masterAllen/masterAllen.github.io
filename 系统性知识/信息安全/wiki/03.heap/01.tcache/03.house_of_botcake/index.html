@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -689,10 +689,20 @@
   
 
 
+<!-- blog-edit-start:a0373fcecc5679d4:b0 -->
+
 <h1 id="house-of-botcake">House of Botcake</h1>
+<!-- blog-edit-end:a0373fcecc5679d4:b0 -->
+
 <div class="file-actions" data-image-edit-revision="4ed3af49a5160094180c7f48debd4ab575fa639979609a8b9fab9def7bc91ea9" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache%5C03.house_of_botcake.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C01.tcache" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\03.house_of_botcake.md">复制路径</span></div>
 
+<!-- blog-edit-start:a0373fcecc5679d4:b1 -->
+
 <h2 id="_1">原理快速说明</h2>
+<!-- blog-edit-end:a0373fcecc5679d4:b1 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b2 -->
+
 <blockquote>
 <p>前提：可以进行 Double free，下面的例子是可以 free 两次 chunk9<br />
 结果：任意地址控制</p>
@@ -714,11 +724,31 @@
 <p>此时我们完成了 Double Free，例如我们可以申请 unsortedbin 中的大块，这样可以修改 chunk9 里面的内容；比如修改掉 next 指针，最后申请两次 tcache 大小的块，就可以得到目标地址。</p>
 </li>
 </ol>
+<!-- blog-edit-end:a0373fcecc5679d4:b2 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b3 -->
+
 <p>PS: 第四步的举例是修改 next 指针，但由于 safe-linking 的存在（即存储的不是 next，而是 next 和块地址异或的值），所以我们需要知道 heap 地址才行。本质上第四步是最终可以修改 freed chunk 的内容，即拥有了 tcache poisoning 的能力，至于最终攻击，还需要其他辅助。</p>
+<!-- blog-edit-end:a0373fcecc5679d4:b3 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b4 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>Double Free --&gt; house of botcake --&gt; 拥有 tcache poisoning 能力
 </span></code></pre></div>
+<!-- blog-edit-end:a0373fcecc5679d4:b4 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b5 -->
+
 <h2 id="_2">具体细节</h2>
+<!-- blog-edit-end:a0373fcecc5679d4:b5 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b6 -->
+
 <p>上面的还是有点抽象，下面具体用示例来讲，肯定不可能一下子看懂，慢慢来就明白了。</p>
+<!-- blog-edit-end:a0373fcecc5679d4:b6 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b7 -->
+
 <p><strong>第一步</strong>，申请 9 个 chunk，其中原理中的 chunk8 这里叫做 <code>prev</code>，chunk9 叫做 <code>a</code>。同时我们最后还要申请一个小块，避免和 top chunk 合并。<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="k">sizeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">intptr_t</span><span class="o">*</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="w">        </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>
@@ -728,7 +758,15 @@
 </span><span id="__span-1-6"><span class="linenos" data-linenos="6 "></span><span class="kt">intptr_t</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>
 </span><span id="__span-1-7"><span class="linenos" data-linenos="7 "></span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:a0373fcecc5679d4:b7 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b8 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260104062132.png" /></p>
+<!-- blog-edit-end:a0373fcecc5679d4:b8 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b9 -->
+
 <p><strong>第二步</strong>，依次 <code>free</code>，这样前面 7 个 chunk 掉入 tcache，剩下两个在 unsorted 中。可以看到 <code>prev</code> 和 <code>a</code> 合并了，并且合并的时候不会清洗内容，所以<strong>先 <code>free</code> 的 <code>a</code> 中原先的 <code>fd &amp; bk</code> 指针依然存在。</strong><br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="w">        </span><span class="n">free</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
@@ -736,8 +774,20 @@
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="n">free</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
 </span><span id="__span-2-5"><span class="linenos" data-linenos="5 "></span><span class="n">free</span><span class="p">(</span><span class="n">prev</span><span class="p">);</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:a0373fcecc5679d4:b9 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b10 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260104062256.png" /></p>
+<!-- blog-edit-end:a0373fcecc5679d4:b10 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b11 -->
+
 <p><strong>第三步</strong>，申请一个块，目的是从 tacache 中留一个空间；然后我们 <code>free(a)</code>，此时 <code>a</code> 这个地址即在 tcache 中也在 unsorted 中。</p>
+<!-- blog-edit-end:a0373fcecc5679d4:b11 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b12 -->
+
 <blockquote>
 <p>其中 <code>free(a)</code> 就是假设我们可以进行 Double Free。回顾本攻击的意义，我们可以 Double Free，但由于 tcache key 的存在，我们会被检测出来。而本攻击的目的就在于规避这些检查，让 Double Free 最终成功。</p>
 </blockquote>
@@ -746,17 +796,41 @@
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span><span class="n">free</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="c1">// a is already freed</span>
 </span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span><span class="cm">/*VULNERABILITY*/</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a0373fcecc5679d4:b12 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b13 -->
+
 <p>为什么这里 <code>free(a)</code> 不会受到检查，因为 <code>a</code> 中的 <code>bk</code> 指针帮我们规避了 tcache key 的检查：<br />
 <div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__glibc_unlikely</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="o">-&gt;</span><span class="n">key</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">tcache_key</span><span class="p">))</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:a0373fcecc5679d4:b13 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b14 -->
+
 <p>这一步之后的空间如下，可以看到 <code>a</code> 的 <code>fd</code> 指针被修改成指向 tcache 中下一个 chunk；而 <code>bk</code> 指针对应的是 <code>e-&gt;key</code>，被修改成了 tcache key：</p>
+<!-- blog-edit-end:a0373fcecc5679d4:b14 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b15 -->
+
 <p><img alt="" src="../../../../../../asset/image/7c114cd7cb7153363f34058a7b0ae384/20260104063234.png" /></p>
+<!-- blog-edit-end:a0373fcecc5679d4:b15 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b16 -->
+
 <p>现在缓一缓，仔细体会如下两点：</p>
 <ol>
 <li>本质上是修改 <code>a</code> 的 <code>e-&gt;key</code> 位置内容，而这个位置对应的正好是 <code>bk</code> 指针。所以我们要让 <code>a</code> 落入了双向链表的堆。由于 tcache 满了的第一站就是 unsorted，所以理所当然用 unsorted 就可以。</li>
 <li>那让 <code>a</code> 落入到 unsorted 之后，它的 <code>bk</code> 已经被改掉，我们直接 <code>free(a)</code> 为什么不行？因为 <code>free(a)</code> 时判断 <code>a</code> 是否已经被 <code>free</code>，<strong>有一个判断是根据下一个 chunk 的 PREV_INUSE 位</strong>。所以 <code>a</code> 被检测已经 <code>free</code> 了，而利用 unsorted 合并，就规避了这一点。</li>
 </ol>
+<!-- blog-edit-end:a0373fcecc5679d4:b16 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b17 -->
+
 <p><strong>第四步</strong>，此时我们把 Unsorted 上面的大块申请了，然后可以该里面的内容，把 <code>a-&gt;next</code> 指针改掉；然后两次 malloc，第一次是把 <code>a</code> 从 tcache 中拿下来，第二次就是把 <code>a-&gt;next</code> 从 tcache 中拿到手。</p>
+<!-- blog-edit-end:a0373fcecc5679d4:b17 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b18 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="kt">intptr_t</span><span class="w"> </span><span class="o">*</span><span class="n">unsorted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x100</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">0x10</span><span class="p">);</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// 为了避免 safe unlinking，Demo 直接就有变量 a 来表示地址，实际操作中我们需要泄露 heap 地址</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span><span class="n">unsorted</span><span class="p">[</span><span class="mh">0x110</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">intptr_t</span><span class="p">)]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">target_addr</span><span class="p">;</span>
@@ -765,11 +839,21 @@
 </span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span>
 </span><span id="__span-5-7"><span class="linenos" data-linenos="7 "></span><span class="kt">intptr_t</span><span class="w"> </span><span class="o">*</span><span class="n">target_content</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x100</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:a0373fcecc5679d4:b18 -->
+
+<!-- blog-edit-start:a0373fcecc5679d4:b19 -->
+
 <h2 id="_3">参考：</h2>
+<!-- blog-edit-end:a0373fcecc5679d4:b19 -->
+<!-- blog-edit-start:a0373fcecc5679d4:b20 -->
+
 <ol>
 <li><a href="https://blog.csdn.net/Mr_Fmnwon/article/details/142468380">https://blog.csdn.net/Mr_Fmnwon/article/details/142468380</a></li>
 <li><a href="https://4xura.com/binex/house-of-botcake/">https://4xura.com/binex/house-of-botcake/</a></li>
 </ol>
+<!-- blog-edit-end:a0373fcecc5679d4:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\01.tcache\03.house_of_botcake.md" data-text-edit-revision="4ed3af49a5160094180c7f48debd4ab575fa639979609a8b9fab9def7bc91ea9" data-text-edit-marker="a0373fcecc5679d4" data-text-edit-schema="1"></div>
 
 
 
@@ -1001,8 +1085,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

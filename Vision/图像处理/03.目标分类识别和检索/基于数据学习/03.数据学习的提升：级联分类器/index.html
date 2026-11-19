@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -709,16 +709,42 @@
   
 
 
+<!-- blog-edit-start:7c9d17ef0eed44ab:b0 -->
+
 <h1 id="_1">数据学习的提升：级联分类器</h1>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b0 -->
+
 <div class="file-actions" data-image-edit-revision="55de57d620d2b8f0dd0723ad8638f629ba17839f49db698a54ee02b7e97ac4a0" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%5C03.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8F%90%E5%8D%87%EF%BC%9A%E7%BA%A7%E8%81%94%E5%88%86%E7%B1%BB%E5%99%A8.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\03.数据学习的提升：级联分类器.md">复制路径</span></div>
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.5.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.5.md</a></p>
 </blockquote>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b1 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b2 -->
+
 <p>主要是对 OpenCV 官方 tutorial 的解读：<a href="https://docs.opencv.org/4.x/db/d28/tutorial_cascade_classifier.html">https://docs.opencv.org/4.x/db/d28/tutorial_cascade_classifier.html</a> ，感觉官方说的不是很清楚。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b2 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b3 -->
+
 <p>本质上是对 Rapid Object Detection using a Boosted Cascade of Simple Features[J].CVPR, 2001 的说明。参考了这篇<a href="https://www.cnblogs.com/YiXiaoZhou/p/5875492.html">文章</a>。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b3 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b4 -->
+
 <h3 id="_2">怎么用</h3>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b4 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b5 -->
+
 <p>OpenCV 里面有训练好的一些文件，只要调用就可以了，文件 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_cascade.ipynb">test_cascade.ipynb</a> 有介绍，这里复制一下，方便查阅。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b5 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">face_cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="n">eyes_cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">()</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -743,41 +769,132 @@
 </span><span id="__span-0-22"><span class="linenos" data-linenos="22 "></span>        <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y2</span>
 </span><span id="__span-0-23"><span class="linenos" data-linenos="23 "></span>        <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="o">+</span><span class="n">w2</span><span class="p">,</span> <span class="n">y2</span><span class="o">+</span><span class="n">h2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b6 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b7 -->
+
 <h3 id="_3">原理说明</h3>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b7 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b8 -->
+
 <p>最开始，大家进行图片分类，是求各个图片的特征点，然后作为 SVM 的训练数据。每张图片特征点数量、种类都不一样，很麻烦。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b8 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b9 -->
+
 <p>于是有了另一个思路：那我不求 SIFT 这种特征点了，而是用一个叫做 Harr-like 的特征。先不管 Harr 的原理，总之它的输入是一个固定大小的块，输出是一个值。对于一张图片，进行滑动窗口，每次窗口得出一个 Harr 特征值。这样只要图片大小一样，那么最后得出的特征值数量也是一样的。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b9 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b10 -->
+
 <p>而且 Harr 不止一种，有的 Harr 特征侧重横线，有的侧重竖线。但无论多少种，只要对图片进行同样多的 Harr 特征分析，那么最后得出的特征值就是一样的。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b10 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b11 -->
+
 <p>这是不是就是卷积神经网络！只不过区别就是 Harr 是人为设计的特征罢了。学者有如下的一些设计，白色为 1， 黑色为 -1（其实下图是后续学者们的改进，初始论文只有几个，并且有的效果不是很好）：<br />
 <img alt="1722050324001" src="../../../../../asset/image/4c6df43eb8e5d0e00e5d14cb80e90ed4/1722050324001.png" /></p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b11 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b12 -->
+
 <p>但是有两个问题，并且对于这两个问题，分别想到了对应的解法：</p>
 <ol>
 <li>特征点太多了：选择主要特征，即看看哪些是重要特征，对应下面的特征选择章节。（而 <a href="../02.数据学习的提升：BoW 词袋模型/">上一节的 BoW</a> 则是用了聚类+直方图统计来实现）</li>
 <li>训练出的分类器准确率还是不够：用多个分类器串联，对应下面的级联章节。</li>
 </ol>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b12 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b13 -->
+
 <h4 id="_4">积分图上的特征提取</h4>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b13 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b14 -->
+
 <p>为了加快速度，用的积分图。积分图之前有提到过，其实就是计算零点到当前点的和（下图）。如上图所示，Harr feature 全是一大片矩形块的 1 和 -1，那么很适合用积分图来做，无非就是事先计算好的积分图上加加减减，不用每次计算都要按照像素点求和来做。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b14 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b15 -->
+
 <p><img alt="1722049990508" src="../../../../../asset/image/4c6df43eb8e5d0e00e5d14cb80e90ed4/1722049990508.png" /></p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b15 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b16 -->
+
 <h4 id="_5">特征选择</h4>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b16 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b17 -->
+
 <p>这里查阅了很多资料才明白是什么意思。各个资料上说的特征其实就是指用各个 Harr 块对图片进行滑动操作最后产生的结果。也就是说，每个滑动块上每个 Harr feature 都是一个特征，最后拼出一个很长的一维向量。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b17 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b18 -->
+
 <p>输出很长的一维向量，然而只有一少部分是有用的，这就是官方文档给的那个例子的意思：如下图所示，有两个 harr feature 能比较好检测到眼睛，那么这两个 harr 块处理<strong>以眼睛为中心的块</strong>得到的特征是有用的；但是这两个 harr feature 去处理图片其他部分，得到的特征就是基本没用的。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b18 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b19 -->
+
 <p><img alt="1722063352642" src="../../../../../asset/image/4c6df43eb8e5d0e00e5d14cb80e90ed4/1722063352642.png" /></p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b19 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b20 -->
+
 <p>所以需要选择主要特征，这个就是通过 Adboost 分类器方法寻找而来的。具体的细节做法请查阅别的文章。最后的效果 from 160000+ features to 6000 features，非常大的降低。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b20 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b21 -->
+
 <blockquote>
 <p>关于特征选择的思考：<br />
 类似卷积神经网络，但很遗憾它没有利用二维的信息，走了另一条暴力的路：即滑动窗口的各个值作为一个一维向量进行分类。<br />
 更新：后来又一想，不对啊，这个其实就是只有一个卷积层的神经网络。而在这个唯一的卷积层中，卷积核是人工构造的 harr 矩形块。输出了许多特征后，这些特征作为一维向量进行处理。对比一下，神经网络无非是多个层，层里面有激活函数；但最后也还是要把输出当成一维向量处理的（比如扔到全连接层里面）。</p>
 <p>个人感觉难怪神经网络之前的方法多少效果还是不够好，这个选主要特征的方法还是不太好，因为没考虑位置信息啊。比如图片的眼睛是很大概率不在同一个位置上，只要不是同一个位置，对他们进行特征提取出的特征在一维向量中的位置就是不同的。而在提取主要特征的时候，不同位置的特征是独立的关系。如果极端情况：只保留一个主要特征，那么最后待预测图片的眼睛必须要和大部分训练图片的眼睛位置一样，但凡翻转一下都不对。</p>
 </blockquote>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b21 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b22 -->
+
 <h4 id="_6">级联</h4>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b22 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b23 -->
+
 <p>而文章也给了一个很好更快的思想，级联分类器。AdaBoost 高准确率（真的认为真的）很容易，但低误检率（假的认为真的）很难。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b23 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b24 -->
+
 <p>参考文章中给的数据：假设要实现 99% 的正确率，1% 的误检率需要 200 维特征，而实现具有 99.9% 正确率和 50% 的误检率的 AdaBoost 分类器仅需要 10 维特征。（没错低维度反而可以达到高准确率，可以理解成低维度相当于放宽准入条件，所以符合的更加不会被漏掉，只不过代价是许多漏网之鱼准入了）</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b24 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b25 -->
+
 <p>如果只用一个分类器，必须它这一个分类器就要做到高准确率，低误检率，这样特征维度要求太高了。但利用高准确率很容易达到的特点，使用级联可以很有效果，<strong>即多个分类器串联</strong>。即如果要输出真，那么必须多个串联分类器全同意。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b25 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b26 -->
+
 <p>计算一下，拿上两段所说的 200 维和 10 维为例，如果 10 个 10 维，那么：</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b26 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b27 -->
+
 <ul>
 <li>准确率 = (99.9%)^10 = 99.004%</li>
 <li>误检率 = (50%)^10 = 0.09%</li>
 </ul>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b27 -->
+
+<!-- blog-edit-start:7c9d17ef0eed44ab:b28 -->
+
 <p>用了 10*10=100 维度，级联分类器可以打败 200 维度的一个分类器。</p>
+<!-- blog-edit-end:7c9d17ef0eed44ab:b28 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\03.数据学习的提升：级联分类器.md" data-text-edit-revision="55de57d620d2b8f0dd0723ad8638f629ba17839f49db698a54ee02b7e97ac4a0" data-text-edit-marker="7c9d17ef0eed44ab" data-text-edit-schema="1"></div>
 
 
 
@@ -1009,8 +1126,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

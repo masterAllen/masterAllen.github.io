@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -767,41 +767,119 @@
   
 
 
+<!-- blog-edit-start:d4d068d58cc62c25:b0 -->
+
 <h1 id="unsorted-bin-attack">unsorted bin attack</h1>
+<!-- blog-edit-end:d4d068d58cc62c25:b0 -->
+
 <div class="file-actions" data-image-edit-revision="bf2e9fe1eb78a28008f09c7d08934e5bbbb64ac5eb51d4fef16a7d8cf063206d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C04.unsorted%5C01.unsorted_bin_attack.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C03.heap%5C04.unsorted" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\04.unsorted\01.unsorted_bin_attack.md">复制路径</span></div>
 
+<!-- blog-edit-start:d4d068d58cc62c25:b1 -->
+
 <p>这个方法是很多攻击的一个环节。glibc2.29 之后该方法失效。</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b1 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b2 -->
+
 <ol>
 <li>攻击效果：可以达到任意地址写一个 libc 地址(即unsorted_chunks(av))</li>
 <li>攻击前提：可以控制 bk 指针</li>
 </ol>
+<!-- blog-edit-end:d4d068d58cc62c25:b2 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b3 -->
+
 <h2 id="_1">攻击原理</h2>
+<!-- blog-edit-end:d4d068d58cc62c25:b3 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b4 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="cm">/* remove from unsorted list */</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__glibc_unlikely</span><span class="w"> </span><span class="p">(</span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">victim</span><span class="p">))</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">malloc_printerr</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;malloc(): corrupted unsorted chunks 3&quot;</span><span class="p">);</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span><span class="n">unsorted_chunks</span><span class="w"> </span><span class="p">(</span><span class="n">av</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">bk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bck</span><span class="p">;</span>
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span><span class="n">bck</span><span class="o">-&gt;</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unsorted_chunks</span><span class="w"> </span><span class="p">(</span><span class="n">av</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d4d068d58cc62c25:b4 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b5 -->
+
 <p>如上所示，这是 unsorted 脱链的过程，如果可以控制 bk 指针，则造成攻击。</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b5 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b6 -->
+
 <h2 id="_2">攻击效果的扩展</h2>
+<!-- blog-edit-end:d4d068d58cc62c25:b6 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b7 -->
+
 <p>在某个地址上写入 libc 地址，究竟有啥用，因为以前都是能直接控制到目标块的，现在只能写一个数，感觉有点鸡肋？</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b7 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b8 -->
+
 <h3 id="global_max_fast">覆盖 <code>global_max_fast</code></h3>
+<!-- blog-edit-end:d4d068d58cc62c25:b8 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b9 -->
+
 <h4 id="1-global_max_fast">1️⃣ <code>global_max_fast</code> 是什么？</h4>
+<!-- blog-edit-end:d4d068d58cc62c25:b9 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b10 -->
+
 <ul>
 <li>控制：最大多大的 chunk 可以进 fastbin</li>
 <li>默认值： <code>global_max_fast = 0x80</code></li>
 </ul>
+<!-- blog-edit-end:d4d068d58cc62c25:b10 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b11 -->
+
 <h4 id="2">2️⃣ 覆盖之后</h4>
+<!-- blog-edit-end:d4d068d58cc62c25:b11 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b12 -->
+
 <p>fastbin 判断：</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b12 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b13 -->
+
 <div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">global_max_fast</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">放进</span><span class="w"> </span><span class="n">fastbin</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d4d068d58cc62c25:b13 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b14 -->
+
 <p>现在：</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b14 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b15 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>size &lt;= 0x7ffff7dd1b78   // 几乎永真
 </span></code></pre></div>
+<!-- blog-edit-end:d4d068d58cc62c25:b15 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b16 -->
+
 <p>👉 <strong>所有 chunk 都能进 fastbin</strong></p>
+<!-- blog-edit-end:d4d068d58cc62c25:b16 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b17 -->
+
 <hr />
+<!-- blog-edit-end:d4d068d58cc62c25:b17 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b18 -->
+
 <h4 id="3">3️⃣ 最终效果</h4>
+<!-- blog-edit-end:d4d068d58cc62c25:b18 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b19 -->
+
 <ul>
 <li>large chunk 进入 fastbin</li>
 <li>fastbin 没有 size check</li>
@@ -814,28 +892,91 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:d4d068d58cc62c25:b19 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b20 -->
+
 <p>📌 <strong>这就是为什么：</strong></p>
+<!-- blog-edit-end:d4d068d58cc62c25:b20 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b21 -->
+
 <blockquote>
 <p>写一个 “main_arena 指针” 就已经是核弹</p>
 </blockquote>
+<!-- blog-edit-end:d4d068d58cc62c25:b21 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b22 -->
+
 <hr />
+<!-- blog-edit-end:d4d068d58cc62c25:b22 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b23 -->
+
 <h3 id="__malloc_hook-__free_hook">覆盖 <code>__malloc_hook</code> / <code>__free_hook</code></h3>
+<!-- blog-edit-end:d4d068d58cc62c25:b23 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b24 -->
+
 <p>在 hook 还存在的年代，可以覆盖有些 hook：</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b24 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b25 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>__malloc_hook = main_arena
 </span></code></pre></div>
+<!-- blog-edit-end:d4d068d58cc62c25:b25 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b26 -->
+
 <p>然后对里面内容进行二次修正，即 partial overwrite，最终修改成 system 地址。</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b26 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b27 -->
+
 <h3 id="allocator">破坏 allocator 逻辑</h3>
+<!-- blog-edit-end:d4d068d58cc62c25:b27 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b28 -->
+
 <p>这个就千奇百怪了，总之是覆盖 malloc 当中的一些数据结构逻辑，比如：</p>
 <ul>
 <li><code>av-&gt;top</code></li>
 <li><code>av-&gt;bins[...]</code></li>
 </ul>
+<!-- blog-edit-end:d4d068d58cc62c25:b28 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b29 -->
+
 <p>后续可以进行一些其他的攻击操作</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b29 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b30 -->
+
 <h3 id="_3">偏移写</h3>
+<!-- blog-edit-end:d4d068d58cc62c25:b30 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b31 -->
+
 <p>这是一个很常见，但是初学者很容易忽略的地方。我们可以向任意地址写入某个 libc 地址，不一定需要写入对齐地址，比如在 house of storm 攻击中，我们就用这种方式修改了某个 chunk 地址的 <code>size</code> 内容，而我们修改的地址是 <code>fake_chunk+3</code>，如下图所示：</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b31 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b32 -->
+
 <p><img alt="" src="../../../../../../asset/image/716fe5b68e2b4a3bc9493a30334ece50/20260129115755.png" /></p>
+<!-- blog-edit-end:d4d068d58cc62c25:b32 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b33 -->
+
 <p>这里我们是偏移写，达到让 <code>size</code> 内容为 0x56，便于后续攻击，这里是小端写，具体内容：</p>
+<!-- blog-edit-end:d4d068d58cc62c25:b33 -->
+
+<!-- blog-edit-start:d4d068d58cc62c25:b34 -->
+
 <p><img alt="" src="../../../../../../asset/image/716fe5b68e2b4a3bc9493a30334ece50/20260129115853.png" /></p>
+<!-- blog-edit-end:d4d068d58cc62c25:b34 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\03.heap\04.unsorted\01.unsorted_bin_attack.md" data-text-edit-revision="bf2e9fe1eb78a28008f09c7d08934e5bbbb64ac5eb51d4fef16a7d8cf063206d" data-text-edit-marker="d4d068d58cc62c25" data-text-edit-schema="1"></div>
 
 
 
@@ -1067,8 +1208,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

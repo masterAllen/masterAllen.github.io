@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -627,14 +627,31 @@
   
 
 
+<!-- blog-edit-start:8678ae5c529c98c2:b0 -->
+
 <h1 id="linux-run-level">Linux 的 run-level 学习</h1>
+<!-- blog-edit-end:8678ae5c529c98c2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="496a329108de8bd7fa4ce9b5f0a0e25861d716231e06a1b35a12467043a36b11" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Crun_level.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\run_level.md">复制路径</span></div>
+
+<!-- blog-edit-start:8678ae5c529c98c2:b1 -->
 
 <p>之前安装系统总是要手动 <code>startx</code> 才行，后来发现是 <code>run-level</code> 问题，学习了一波。</p>
 <!--more-->
 
+<!-- blog-edit-end:8678ae5c529c98c2:b1 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b2 -->
+
 <h2 id="run-level-in-old-article">Run-Level in old article</h2>
+<!-- blog-edit-end:8678ae5c529c98c2:b2 -->
+<!-- blog-edit-start:8678ae5c529c98c2:b3 -->
+
 <p>首先是 Run-level 概念，每个用户都会有一个 Run-level，对应它进入系统的行为，参照下面的表。 </p>
+<!-- blog-edit-end:8678ae5c529c98c2:b3 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b4 -->
+
 <table>
 <thead>
 <tr>
@@ -681,10 +698,25 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:8678ae5c529c98c2:b4 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b5 -->
+
 <p>用户想要查看自己的 run-level，可以执行命令 <code>runlevel</code><br />
 <strong>但是现在基本用 systemd，可能这个命令不存在了!</strong></p>
+<!-- blog-edit-end:8678ae5c529c98c2:b5 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b6 -->
+
 <h2 id="run-level-in-systemd">Run-Level in Systemd</h2>
+<!-- blog-edit-end:8678ae5c529c98c2:b6 -->
+<!-- blog-edit-start:8678ae5c529c98c2:b7 -->
+
 <p>现在用了 systemd 没有 run-level 这个词了，不过基本换汤不换药，现在用 target 来代替这个玩意了，对应关系如下。</p>
+<!-- blog-edit-end:8678ae5c529c98c2:b7 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b8 -->
+
 <ul>
 <li>poweroff.target (runlevel 0): shutdown and power off the system</li>
 <li>rescue.target (runlevel 1): launch the rescue shell session</li>
@@ -692,16 +724,38 @@
 <li>graphical.target (runlevel 5): use a graphical multi-user system with network services</li>
 <li>reboot.target (runlevel 6): shutdown and reboot the system</li>
 </ul>
+<!-- blog-edit-end:8678ae5c529c98c2:b8 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b9 -->
+
 <p>用户查看自己的默认 <code>target</code>，使用命令: <code>systemctl get-default</code>，会输出对应的 <code>target</code>。</p>
+<!-- blog-edit-end:8678ae5c529c98c2:b9 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b10 -->
+
 <p>用户修改自己的 <code>target</code>，使用如下命令<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 改成自己想要的 target</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>set-default<span class="w"> </span>multi-user.target
 </span></code></pre></div></p>
+<!-- blog-edit-end:8678ae5c529c98c2:b10 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b11 -->
+
 <p>所以如果发现用户每次都需要手动 <code>startx</code> 进行图形环境，可能是 <code>run-level</code>/<code>target</code> 不对，我的就是默认为 3，改成 5 就好。</p>
+<!-- blog-edit-end:8678ae5c529c98c2:b11 -->
+
+<!-- blog-edit-start:8678ae5c529c98c2:b12 -->
+
 <h2 id="_1">参考资料</h2>
+<!-- blog-edit-end:8678ae5c529c98c2:b12 -->
+<!-- blog-edit-start:8678ae5c529c98c2:b13 -->
+
 <ul>
 <li><a href="https://alibaba-cloud.medium.com/understanding-and-changing-runlevels-in-systemd-ccc30065c53d">https://alibaba-cloud.medium.com/understanding-and-changing-runlevels-in-systemd-ccc30065c53d</a></li>
 </ul>
+<!-- blog-edit-end:8678ae5c529c98c2:b13 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\run_level.md" data-text-edit-revision="496a329108de8bd7fa4ce9b5f0a0e25861d716231e06a1b35a12467043a36b11" data-text-edit-marker="8678ae5c529c98c2" data-text-edit-schema="1"></div>
 
 
 
@@ -933,8 +987,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

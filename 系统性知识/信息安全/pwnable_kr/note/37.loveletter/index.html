@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -682,11 +682,24 @@
   
 
 
+<!-- blog-edit-start:bf50d633e70ed217:b0 -->
+
 <h1 id="pwnablekr-loveletter">Pwnable.kr loveletter</h1>
+<!-- blog-edit-end:bf50d633e70ed217:b0 -->
+
 <div class="file-actions" data-image-edit-revision="bf50d633e70ed217fb34d33c68caf91157828e51ab254ba738d04397257de0c0" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C37.loveletter.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\37.loveletter.md">复制路径</span></div>
 
+<!-- blog-edit-start:bf50d633e70ed217:b1 -->
+
 <p>这道题太可惜了太可惜了，漏洞点很明显，然后没想到怎么用！看了别人题解瞬间就明白了，后悔哇...</p>
+<!-- blog-edit-end:bf50d633e70ed217:b1 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b2 -->
+
 <h2 id="_1">题目描述</h2>
+<!-- blog-edit-end:bf50d633e70ed217:b2 -->
+<!-- blog-edit-start:bf50d633e70ed217:b3 -->
+
 <p>首先是 <code>main</code> 函数，很好理解。<code>protect</code> 是一个过滤函数，假设我们输入 <code>allen</code>，此时它没有反应。然后最后有连续三个 <code>memcpy</code>，这样会让 <code>loveletter = echo I love allen very much</code>，最后执行依次 <code>system(loveletter)</code>，就相当于在 <code>shell</code> 上执行 <code>echo I love allen very much</code>。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -710,9 +723,25 @@
 </span><span id="__span-0-20"><span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">system</span><span class="p">(</span><span class="n">loveletter</span><span class="p">);</span>
 </span><span id="__span-0-21"><span class="linenos" data-linenos="21 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:bf50d633e70ed217:b3 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b4 -->
+
 <p>然后看看这个 <code>protect</code> 这个过滤函数。被我大改了一通，但是本质还是没变。实际上就是看看输入有那些地方是禁止字符。如果是禁止字符，注意使用了 <code>*(_DWORD *)&amp;input[i] = 0xA599E2</code>，所以相当于是 <code>input[i]=0xE2, input[i+1]=0x99, input[i+2]=0xA5, input[i+3]=0</code>。</p>
+<!-- blog-edit-end:bf50d633e70ed217:b4 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b5 -->
+
 <p>然后又执行 <code>memcpy((void *)&amp;input[v1], &amp;dest, v2);</code>，所以相当于从 <code>input[i+3]</code> 开始复制原来的 <code>input[i+1]</code> 开头内容。本质上就是将 <code>input</code> 往后移动两个，原来的 <code>input[i~i+2]</code> 三块变成 0xA599E2。</p>
+<!-- blog-edit-end:bf50d633e70ed217:b5 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b6 -->
+
 <p>所以如果我们输入 <code>&amp;&amp; sh ||</code>，这样做是为了最后相当于执行 <code>echo I love &amp;&amp; sh || very much</code>，但是这个函数就会过滤掉我们的输入，最后相当于 <code>echo I love xxx sh xxx very much</code>。</p>
+<!-- blog-edit-end:bf50d633e70ed217:b6 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b7 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">protect</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">ban</span><span class="p">[</span><span class="mi">25</span><span class="p">];</span><span class="w"> </span>
@@ -736,16 +765,44 @@
 </span><span id="__span-1-21"><span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">__readgsdword</span><span class="p">(</span><span class="mh">0x14u</span><span class="p">)</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">v8</span><span class="p">;</span>
 </span><span id="__span-1-22"><span class="linenos" data-linenos="22 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:bf50d633e70ed217:b7 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b8 -->
+
 <h2 id="_2">漏洞分析</h2>
+<!-- blog-edit-end:bf50d633e70ed217:b8 -->
+<!-- blog-edit-start:bf50d633e70ed217:b9 -->
+
 <p>仔细想，漏洞点很简单，就是 <code>protect</code> 会把一个字节扩展为三个字节，这就导致我们的输入变长了。算一下最长的长度: 0x100*3 = 0x300，而 main 函数的 <code>s</code> 变量最长为 0x100，堆上的 <code>loveletter</code> 变量最长为 0x100，所以可以溢出这两个。</p>
+<!-- blog-edit-end:bf50d633e70ed217:b9 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b10 -->
+
 <h2 id="_3">流程分析</h2>
+<!-- blog-edit-end:bf50d633e70ed217:b10 -->
+<!-- blog-edit-start:bf50d633e70ed217:b11 -->
+
 <p>溢出 main 函数的 <code>s</code> 变量，它的后面是 <code>v5, v6, v7, v8</code>， <code>v8</code> 是 canary，所以溢出到这就结束了(因为本题没想到办法去泄露 canary)，所以可以泄露 <code>v5,v6,v7</code>，这几个是和 <code>memcpy</code> 有关系的。</p>
+<!-- blog-edit-end:bf50d633e70ed217:b11 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b12 -->
+
 <p>这里参考别人的做法，把 <code>v5</code> 泄露为 0，这样就相当于没有 <code>memcpy((void *)(loveletter), prolog, v5)</code>。<br />
 程序继续执行 <code>memcpy((void *)(loveletter), s, v6)</code>，所以 <code>loveletter</code> 开始就是我们的输入，输入 <code>cat flag</code>，这样 <code>system(loveletter)</code> 就是 <code>cat flag</code>。看下面代码。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">payload</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cat flag&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">253</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;&#39;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:bf50d633e70ed217:b12 -->
+
+<!-- blog-edit-start:bf50d633e70ed217:b13 -->
+
 <h2 id="_4">总结</h2>
+<!-- blog-edit-end:bf50d633e70ed217:b13 -->
+<!-- blog-edit-start:bf50d633e70ed217:b14 -->
+
 <p>我推荐重新做一遍</p>
+<!-- blog-edit-end:bf50d633e70ed217:b14 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\37.loveletter.md" data-text-edit-revision="bf50d633e70ed217fb34d33c68caf91157828e51ab254ba738d04397257de0c0" data-text-edit-marker="bf50d633e70ed217" data-text-edit-schema="1"></div>
 
 
 
@@ -977,8 +1034,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

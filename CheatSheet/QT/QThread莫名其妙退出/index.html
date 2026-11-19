@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,12 +581,30 @@
   
 
 
+<!-- blog-edit-start:3d2b37c90098d463:b0 -->
+
 <h1 id="qthread">QThread 莫名其妙退出</h1>
+<!-- blog-edit-end:3d2b37c90098d463:b0 -->
+
 <div class="file-actions" data-image-edit-revision="1bfeecbe801ca1afe5c9251e5077954375b7a02bb7301423965b70042c749c25" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT%5CQThread%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E9%80%80%E5%87%BA.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\QT\QThread莫名其妙退出.md">复制路径</span></div>
 
+<!-- blog-edit-start:3d2b37c90098d463:b1 -->
+
 <p>之前一个项目需要点击一个按钮后做一些图像处理。由于处理时间很长，所以用了 QThread，即点击按钮后这个 QThread 就会 start，但当时遇到一个问题就是：QThread 总是莫名其妙退出，用 try catch 也抓不到错误。</p>
+<!-- blog-edit-end:3d2b37c90098d463:b1 -->
+
+<!-- blog-edit-start:3d2b37c90098d463:b2 -->
+
 <p>搞了半天终于弄懂：因为我点击按钮后，这个方法就结束了。即点击按钮后我初始化了一个 QThread 变量，调用其 start 方法之后，就退出了。此时相当于主线程已经退出，在主线程初始化的变量会被回收，那很显然 QThread 就运行不了。</p>
+<!-- blog-edit-end:3d2b37c90098d463:b2 -->
+
+<!-- blog-edit-start:3d2b37c90098d463:b3 -->
+
 <p>所以最后方法是要始终保持一个 QThread 变量即可：</p>
+<!-- blog-edit-end:3d2b37c90098d463:b3 -->
+
+<!-- blog-edit-start:3d2b37c90098d463:b4 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Test</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span>      <span class="c1"># 需要保持一个变量，否则 on_click 方法结束后，线程变量会被回收</span>
@@ -601,7 +619,15 @@
 </span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span>      <span class="c1"># 启动线程</span>
 </span><span id="__span-0-13"><span class="linenos" data-linenos="13 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:3d2b37c90098d463:b4 -->
+
+<!-- blog-edit-start:3d2b37c90098d463:b5 -->
+
 <p>或者大胆一点，直接就是在点击按钮后再初始化，但改成是成员变量：</p>
+<!-- blog-edit-end:3d2b37c90098d463:b5 -->
+
+<!-- blog-edit-start:3d2b37c90098d463:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="k">class</span><span class="w"> </span><span class="nc">Test</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>  <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">button</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_click</span><span class="p">)</span>
@@ -612,6 +638,9 @@
 </span><span id="__span-1-8"><span class="linenos" data-linenos="8 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">QThread</span><span class="p">()</span>
 </span><span id="__span-1-9"><span class="linenos" data-linenos="9 "></span>      <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </span></code></pre></div>
+<!-- blog-edit-end:3d2b37c90098d463:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\QT\QThread莫名其妙退出.md" data-text-edit-revision="1bfeecbe801ca1afe5c9251e5077954375b7a02bb7301423965b70042c749c25" data-text-edit-marker="3d2b37c90098d463" data-text-edit-schema="1"></div>
 
 
 
@@ -843,8 +872,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

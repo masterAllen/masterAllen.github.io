@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -644,12 +644,30 @@
   
 
 
+<!-- blog-edit-start:087bb9e02400351f:b0 -->
+
 <h1 id="awb">AWB：整体逻辑</h1>
+<!-- blog-edit-end:087bb9e02400351f:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b95b69348a716e92f69fbe2682b39e49e65ad6bb2b19f25fe1fe4e63bffa84d8" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB%5CAWB-1-%E6%95%B4%E4%BD%93%E9%80%BB%E8%BE%91.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C08.AWB" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\08.AWB\AWB-1-整体逻辑.md">复制路径</span></div>
 
+<!-- blog-edit-start:087bb9e02400351f:b1 -->
+
 <p>谈一下 AWB 的理解，其实它本质上就是红色蓝色乘以一个系数，人眼有 color constancy 性质：在自然世界中尽管光源变换，一个物体给我们的颜色感觉大致保持一致。但是传感器不会，多少光子来就显示多少光子，所以就需要进行调整。</p>
+<!-- blog-edit-end:087bb9e02400351f:b1 -->
+
+<!-- blog-edit-start:087bb9e02400351f:b2 -->
+
 <h2 id="awb-demosaic">为什么 AWB 要在 Demosaic 前？</h2>
+<!-- blog-edit-end:087bb9e02400351f:b2 -->
+
+<!-- blog-edit-start:087bb9e02400351f:b3 -->
+
 <p>​实际上前后都可以，但是由两个原因：</p>
+<!-- blog-edit-end:087bb9e02400351f:b3 -->
+
+<!-- blog-edit-start:087bb9e02400351f:b4 -->
+
 <ul>
 <li>
 <p>第一个是有些人说 Demosaic 带来的噪声会让 AWB 不太好做</p>
@@ -658,8 +676,19 @@
 <p>第二个是我的理解：Demosaic 许多方法建立在红绿蓝感光程度一致的情况，比如很多算法都会评测柯达的数据集，而这个数据集很显然是正确显示颜色后的结果。再比如说，有的算法假定 <code>G-R</code> 很平和，即 <code>G1-R1=G2-R2</code>，现在假设 AWB 的时候红色要乘以系数 2，那么如果在 AWB 前做算法，就相当于认为 <code>G1-0.5*R1=G2-0.5*R2</code>，很显然就不太对了。</p>
 </li>
 </ul>
+<!-- blog-edit-end:087bb9e02400351f:b4 -->
+
+<!-- blog-edit-start:087bb9e02400351f:b5 -->
+
 <h2 id="awb_1">AWB 算法的逻辑</h2>
+<!-- blog-edit-end:087bb9e02400351f:b5 -->
+
+<!-- blog-edit-start:087bb9e02400351f:b6 -->
+
 <p>​简单的灰度变换，就是平均值。然后完美反射，基于色温。这一部分其实归纳为：分块、找白点、求系数。比如找白点，有人用 YUV 来做，有人用色温曲线的统计数据来做。</p>
+<!-- blog-edit-end:087bb9e02400351f:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\08.AWB\AWB-1-整体逻辑.md" data-text-edit-revision="b95b69348a716e92f69fbe2682b39e49e65ad6bb2b19f25fe1fe4e63bffa84d8" data-text-edit-marker="087bb9e02400351f" data-text-edit-schema="1"></div>
 
 
 
@@ -891,8 +920,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

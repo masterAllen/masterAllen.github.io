@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -666,31 +666,96 @@
   
 
 
+<!-- blog-edit-start:ea0625896f3a38be:b0 -->
+
 <h1 id="chap9-11">无监督学习(Chap.9-11)</h1>
+<!-- blog-edit-end:ea0625896f3a38be:b0 -->
+
 <div class="file-actions" data-image-edit-revision="ea0625896f3a38be6160aaa3a1329709deec0e00f09b0341b465269507ff475d" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CMachine-Learning%5CPart_06.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CMachine-Learning" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Machine-Learning\Part_06.md">复制路径</span></div>
 
+<!-- blog-edit-start:ea0625896f3a38be:b1 -->
+
 <p>无监督学习，就是不要标签</p>
+<!-- blog-edit-end:ea0625896f3a38be:b1 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b2 -->
+
 <h2 id="k-means">K-Means 算法</h2>
+<!-- blog-edit-end:ea0625896f3a38be:b2 -->
+<!-- blog-edit-start:ea0625896f3a38be:b3 -->
+
 <p>分类问题，这个太简单了，直接网上搜一下视频即可。</p>
+<!-- blog-edit-end:ea0625896f3a38be:b3 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b4 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819193953.png" /></p>
+<!-- blog-edit-end:ea0625896f3a38be:b4 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b5 -->
+
 <h2 id="em">EM 算法</h2>
+<!-- blog-edit-end:ea0625896f3a38be:b5 -->
+<!-- blog-edit-start:ea0625896f3a38be:b6 -->
+
 <p>用来做什么: 用于预测概率问题<br />
 这里我感觉 CS229 上面太晦涩了，上来就是什么高斯混合模型。李航老师那本统计学习方法挺好。</p>
+<!-- blog-edit-end:ea0625896f3a38be:b6 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b7 -->
+
 <h3 id="_1">基本思想</h3>
+<!-- blog-edit-end:ea0625896f3a38be:b7 -->
+<!-- blog-edit-start:ea0625896f3a38be:b8 -->
+
 <ol>
 <li>先看一下《统计学习方法》的第一节，也就是三硬币模型，主要就是知道 EM 他也是这种迭代计算的方式。</li>
 <li>然后看《统》中的第三节，关于高斯混合模型的介绍，不需要看之后在其上面使用 EM 算法的推到，直接看结果，会发现其实也是对参数进行优化迭代。但是要注意：不要想着之前的三硬币模型！</li>
 <li>然后就看一下 CS229 上面的章节，它一开始就讲了高斯混合模型。这里注意的是，两个地方对高斯混合模型的定义有点不同，但都是对的，只不过 CS229 用的是协方差矩阵。</li>
 <li>然后回顾三硬币模型，为什么说在看高斯混合模型时不要去想它呢，因为三硬币模型并不是高斯混合模型。其实这也说明：EM 算法并不局限在高斯混合模型，这也是为什么我觉得 CS229 有点晦涩了。</li>
 </ol>
+<!-- blog-edit-end:ea0625896f3a38be:b8 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b9 -->
+
 <h3 id="jensens-inequality">Jensen's inequality</h3>
+<!-- blog-edit-end:ea0625896f3a38be:b9 -->
+<!-- blog-edit-start:ea0625896f3a38be:b10 -->
+
 <p>直接看 CS229 的凸函数图像例子，要明白证明是非常学术和复杂的，所以这里的图形化只是说明其中的某一种情况。不要纠结于证明，这个例子只是用来便于记忆这个不等式。</p>
+<!-- blog-edit-end:ea0625896f3a38be:b10 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b11 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819194025.png" /></p>
+<!-- blog-edit-end:ea0625896f3a38be:b11 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b12 -->
+
 <h2 id="pca-svd">PCA &amp; SVD</h2>
+<!-- blog-edit-end:ea0625896f3a38be:b12 -->
+<!-- blog-edit-start:ea0625896f3a38be:b13 -->
+
 <p>PCA 建议看这篇文章，完美: <a href="../CS229/PCA.htm/">链接</a></p>
+<!-- blog-edit-end:ea0625896f3a38be:b13 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b14 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819195154.png" /></p>
+<!-- blog-edit-end:ea0625896f3a38be:b14 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b15 -->
+
 <p>SVD 建议看这篇文章: <a href="../CS229/SVD-1.htm/">链接</a></p>
+<!-- blog-edit-end:ea0625896f3a38be:b15 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b16 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819194807.png" /></p>
+<!-- blog-edit-end:ea0625896f3a38be:b16 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b17 -->
+
 <p>其实重点是这两是干嘛的？这两区别和用途是什么：</p>
 <ol>
 <li>PCA 常用于降维，便于加快之后的处理。</li>
@@ -698,13 +763,27 @@
 <li>PCA 和 SVD 的联系: <strong>其实可以理解为 PCA 是 SVD 的子集，PCA 在一些库的实现方式就是通过 SVD 来完成的！</strong>（因为这样更快更好）</li>
 <li>更进一步的理解: <strong>PCA 与 SVD 的右奇异向量的压缩效果相同。</strong></li>
 </ol>
+<!-- blog-edit-end:ea0625896f3a38be:b17 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b18 -->
+
 <p><img alt="" src="../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250819195102.png" /></p>
+<!-- blog-edit-end:ea0625896f3a38be:b18 -->
+
+<!-- blog-edit-start:ea0625896f3a38be:b19 -->
+
 <h2 id="ica">ICA 算法</h2>
+<!-- blog-edit-end:ea0625896f3a38be:b19 -->
+<!-- blog-edit-start:ea0625896f3a38be:b20 -->
+
 <p>这里 CS229 讲的一般。但是也没有找到比较好的其他资料。</p>
 <ol>
 <li>ICA 是干嘛的，知道这个例子: d 个人讲话，d 个话筒记录，怎么把它们分离呢？这个场景很常见，比如医学里面的各种电图，就是多个电图的组合，如何分离就是个重要问题。</li>
 <li>然后就按照 CS229 看吧，感觉耐心点也可以。</li>
 </ol>
+<!-- blog-edit-end:ea0625896f3a38be:b20 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Machine-Learning\Part_06.md" data-text-edit-revision="ea0625896f3a38be6160aaa3a1329709deec0e00f09b0341b465269507ff475d" data-text-edit-marker="ea0625896f3a38be" data-text-edit-schema="1"></div>
 
 
 
@@ -936,8 +1015,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

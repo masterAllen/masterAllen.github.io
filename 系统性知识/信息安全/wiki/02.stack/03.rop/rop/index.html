@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -667,32 +667,65 @@
   
 
 
+<!-- blog-edit-start:363d54a9ff587774:b0 -->
+
 <h1 id="rop">ROP 说明</h1>
+<!-- blog-edit-end:363d54a9ff587774:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a2af9fe0aee0f6dcfab29e4dc4075d9039171e00ead4945330a4d599a1b743f5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C03.rop%5Crop.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C03.rop" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\03.rop\rop.md">复制路径</span></div>
 
+<!-- blog-edit-start:363d54a9ff587774:b1 -->
+
 <p>ret2libc 是把返回地址修改成 <code>system('/bin/sh')</code> 这种的代码段，但大部分时候没办法直接用。所以 ROP 就是解决这个的。</p>
+<!-- blog-edit-end:363d54a9ff587774:b1 -->
+
+<!-- blog-edit-start:363d54a9ff587774:b2 -->
+
 <p>他是把返回地址改成下面的这些 gadget：<br />
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="err">&lt;若干条指令&gt;</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="nf">ret</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:363d54a9ff587774:b2 -->
+
+<!-- blog-edit-start:363d54a9ff587774:b3 -->
+
 <p>栈里面改成：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>rsp → gadget1
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>      gadget2
 </span><span id="__span-1-3"><span class="linenos" data-linenos="3 "></span>      gadget3
 </span><span id="__span-1-4"><span class="linenos" data-linenos="4 "></span>      ...
 </span></code></pre></div></p>
+<!-- blog-edit-end:363d54a9ff587774:b3 -->
+
+<!-- blog-edit-start:363d54a9ff587774:b4 -->
+
 <p>最后就能够达到 <code>gadget1 → ret → gadget2 → ret → gadget3 ...</code> 这样的方式。</p>
+<!-- blog-edit-end:363d54a9ff587774:b4 -->
+
+<!-- blog-edit-start:363d54a9ff587774:b5 -->
+
 <h2 id="_1">举例</h2>
+<!-- blog-edit-end:363d54a9ff587774:b5 -->
+
+<!-- blog-edit-start:363d54a9ff587774:b6 -->
+
 <p>下面是用 ROP 执行 <code>system('/bin/sh')</code> 的例子。<br />
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="nf">rsp</span><span class="w"> </span><span class="err">→</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="err">0</span><span class="nf">x40123a</span><span class="w">        </span><span class="c1">; gadget: pop rdi; ret</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="err">0</span><span class="nf">x404050</span><span class="w">        </span><span class="c1">; &quot;/bin/sh&quot; 的地址</span>
 </span><span id="__span-2-4"><span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="err">0</span><span class="nf">x7ffff7e12340</span><span class="w">  </span><span class="c1">; system()</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:363d54a9ff587774:b6 -->
+
+<!-- blog-edit-start:363d54a9ff587774:b7 -->
+
 <ol>
 <li>跳到 <code>pop rdi</code> 的时候，<code>rsp</code> 指向的是 <code>0x404050</code>，所以 <code>rdi</code> 就是这个地址，<code>rdi</code> 通常用于表示第一个参数的地址。</li>
 <li>然后 <code>ret</code> 的时候，<code>rsp</code> 指向的是 <code>system</code> 的地址，所以指向了 <code>system(rdi)</code></li>
 </ol>
+<!-- blog-edit-end:363d54a9ff587774:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\03.rop\rop.md" data-text-edit-revision="a2af9fe0aee0f6dcfab29e4dc4075d9039171e00ead4945330a4d599a1b743f5" data-text-edit-marker="363d54a9ff587774" data-text-edit-schema="1"></div>
 
 
 
@@ -924,8 +957,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

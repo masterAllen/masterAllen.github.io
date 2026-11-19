@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -627,20 +627,50 @@
   
 
 
+<!-- blog-edit-start:0f29b436a15d03db:b0 -->
+
 <h1 id="vim">Vim 乱码问题</h1>
+<!-- blog-edit-end:0f29b436a15d03db:b0 -->
+
 <div class="file-actions" data-image-edit-revision="3ace03b4c0ad4f01445669a1d7e4747665ed8314d8234a62b436a454f1f6e6ff" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CVim%5Cvim_errorcode.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CVim" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\Vim\vim_errorcode.md">复制路径</span></div>
 
+<!-- blog-edit-start:0f29b436a15d03db:b1 -->
+
 <h2 id="m">去除 ^M 字符</h2>
+<!-- blog-edit-end:0f29b436a15d03db:b1 -->
+<!-- blog-edit-start:0f29b436a15d03db:b2 -->
+
 <p>原因: Windows 换行符为 <code>0xD 0xA</code>，Unix 换行符为 <code>0xA</code>，因此 <code>0xD</code> 就被显示出来，正好为 <code>^M</code></p>
+<!-- blog-edit-end:0f29b436a15d03db:b2 -->
+
+<!-- blog-edit-start:0f29b436a15d03db:b3 -->
+
 <p>解决: <code>%s/^M//g</code></p>
+<!-- blog-edit-end:0f29b436a15d03db:b3 -->
+
+<!-- blog-edit-start:0f29b436a15d03db:b4 -->
+
 <h2 id="_1">打印不可见字符</h2>
+<!-- blog-edit-end:0f29b436a15d03db:b4 -->
+<!-- blog-edit-start:0f29b436a15d03db:b5 -->
+
 <ol>
 <li>可以自己定义哪些不可见字符: <code>set listchars=eol:$,tab:&gt;</code></li>
 <li>设置显示不可见字符: <code>set list (反义:set nolist)</code></li>
 </ol>
+<!-- blog-edit-end:0f29b436a15d03db:b5 -->
+
+<!-- blog-edit-start:0f29b436a15d03db:b6 -->
+
 <h2 id="windows">打开 windows 文件乱码</h2>
+<!-- blog-edit-end:0f29b436a15d03db:b6 -->
+<!-- blog-edit-start:0f29b436a15d03db:b7 -->
+
 <p>原因: 不是 vim 的问题，是 linux 和 windows 的编码集有问题<br />
 解决: <code>iconv -f gb18030 -t utf8 Chapter04.txt -o Chapter03.txt</code>（即把 Chapter04 变成 Chapter03，一般来说乱码的原码编码都是 gb18030）</p>
+<!-- blog-edit-end:0f29b436a15d03db:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\Vim\vim_errorcode.md" data-text-edit-revision="3ace03b4c0ad4f01445669a1d7e4747665ed8314d8234a62b436a454f1f6e6ff" data-text-edit-marker="0f29b436a15d03db" data-text-edit-schema="1"></div>
 
 
 
@@ -872,8 +902,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

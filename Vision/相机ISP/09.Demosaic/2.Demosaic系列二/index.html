@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,37 +655,154 @@
   
 
 
+<!-- blog-edit-start:a3e2313baff6bd68:b0 -->
+
 <h1 id="demosaic">Demosaic 系列二：自适应插值</h1>
+<!-- blog-edit-end:a3e2313baff6bd68:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0120e292fd4c0593e9faa32c9310fc6b48da5fa2c441a067e9df1d39b04a0e4f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic%5C2.Demosaic%E7%B3%BB%E5%88%97%E4%BA%8C.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\09.Demosaic\2.Demosaic系列二.md">复制路径</span></div>
 
+<!-- blog-edit-start:a3e2313baff6bd68:b1 -->
+
 <p>HA 算法用到了梯度，它的思想是根据梯度判断方向，按照方向来插值。但是方向可能会判错，以及其他的方向也可能有贡献。之后有了一些方法，根据梯度来自适应调整周围像素的权重，来进行加权平均。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b1 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b2 -->
+
 <h2 id="dlmmse">一、DLMMSE</h2>
+<!-- blog-edit-end:a3e2313baff6bd68:b2 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b3 -->
+
 <p><em>Color Demosaicking via Directional Linear Minimum Mean Square-Error Estimation，TIP 2005，Lei Zhang，McMaster University（加拿大一所公立大学）</em></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b3 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b4 -->
+
 <p>引用次数为 429（截至 2023/11）。作者是香港城市大学的张老师，在去马赛克领域比较有影响力，后续也有一些其他比较好的文章。这篇文章比以往的方法提升了 5 个 dB。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b4 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b5 -->
+
 <p>主要贡献在于融合了两个不同方向的预测，而不是以往的二选一（后续会提到）。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b5 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b6 -->
+
 <h2 id="gbtf">二、GBTF</h2>
+<!-- blog-edit-end:a3e2313baff6bd68:b6 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b7 -->
+
 <p><em>GRADIENT BASED THRESHOLD FREE COLOR FILTER ARRAY INTERPOLATION，ICIP 2010，Ibrahim，Georgia IT（佐治亚理工）</em></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b7 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b8 -->
+
 <p>引用次数位 110（2023.11），个人认为是相当不错的文章，效果拔群，运算量也还可以，不知道为啥引用这么低。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b8 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b9 -->
+
 <p>回顾 DLMMSE，两个部分：第一部分按照横和竖方向分别计算；第二部分根据方差结合。当然还有第零个部分，就是先拿双线性差值预测，然后计算 R-G 这个差值，之后对差值进行操作。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b9 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b10 -->
+
 <p>对于第一部分，DLMMSE 的计算很复杂，如下图公式，y 是高斯滤波后的结果，高斯滤波后还要进行花里胡哨的操作。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b10 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b11 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image1.png" style="width:3.16307in;height:1.00686in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b11 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b12 -->
+
 <p>而 GBTF 其实就是拿高斯滤波后的结果作为上图公式中的 x 了，也就是没必要还要计算 x 平均值、x 方差这些（DLMMSE 是计算高斯滤波后的 y 平均值和方差来等价这两个指标）。其实我当时看 DLMMSE 时就疑惑，既然你都假定 y 平均值和方差与 x 一样，那为什么还要拿 y 去计算新的 x。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b12 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b13 -->
+
 <p>下图就是 GBTF 第一部分的公式。第一，忽略几个 w，就当成 1 来看待；第二，只看 V 方向先不看 H 方向；第三，GBTF 中的 f 是均值滤波，不是高斯滤波。因此下面公式其实就是做一个大小为 9 的均值滤波。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b13 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b14 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image2.png" style="width:3.98025in;height:1.65128in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b14 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b15 -->
+
 <p>对于第二部分，DLMMSE 根据方差进行融合，如下图所示。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b15 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b16 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image3.png" style="width:5.24399in;height:1.26522in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b16 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b17 -->
+
 <p>上面这个公式有个麻烦地方是：明明是 H 的 w 系数，但是分子确实 V 方向的方差。其实只要转换为下面的式子就好了，这样其实我可以直接抛弃分母，最后除以各个 w 系数之和即可：</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b17 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b18 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image4.png" style="width:2.29573in;height:0.75898in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b18 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b19 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image5.png" style="width:5.11647in;height:0.8008in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b19 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b20 -->
+
 <p>知道这个转换后，理解 GBTF 的论文就轻松了。GBTF 无非就是利用梯度信息来替换 DLMMSE 的方差计算，如下图所示。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b20 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b21 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image6.png" style="width:2.30332in;height:1.25905in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b21 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b22 -->
+
 <h2 id="led">三、LED</h2>
+<!-- blog-edit-end:a3e2313baff6bd68:b22 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b23 -->
+
 <p><em>Low Cost Edge Sensing for High Quality Demosaicking, TIP 2019, Yan Niu, Jilin Unviersity</em></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b23 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b24 -->
+
 <p>引用次数 26（2023.11），非常简单，这也能发文章，TIP 是真水了。</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b24 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b25 -->
+
 <p>本质上就是把 HA 算法的 1 和 0 换成差异值。下图是 HA 算法的实际情况，要么横要么竖：</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b25 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b26 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image7.png" style="width:5.76806in;height:1.10347in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b26 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b27 -->
+
 <p>把 wh 替换成常见的这个 logistic 函数，然后没了：</p>
+<!-- blog-edit-end:a3e2313baff6bd68:b27 -->
+
+<!-- blog-edit-start:a3e2313baff6bd68:b28 -->
+
 <p><img src="../../../../../asset/image/b0bc5ea83b70f6d996d5a8cedccf1020/image8.png" style="width:5.76806in;height:1.64375in" /></p>
+<!-- blog-edit-end:a3e2313baff6bd68:b28 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\09.Demosaic\2.Demosaic系列二.md" data-text-edit-revision="0120e292fd4c0593e9faa32c9310fc6b48da5fa2c441a067e9df1d39b04a0e4f" data-text-edit-marker="a3e2313baff6bd68" data-text-edit-schema="1"></div>
 
 
 
@@ -917,8 +1034,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

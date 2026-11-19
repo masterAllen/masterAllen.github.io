@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -655,28 +655,75 @@
   
 
 
+<!-- blog-edit-start:699113265649126b:b0 -->
+
 <h1 id="linux-lightdm">Linux 桌面启动器 LightDM</h1>
+<!-- blog-edit-end:699113265649126b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="da94c3984c60c57e283fa44c8171455ffc0573d31909078cacbb7efdbc6b56bd" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Clightdm.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\lightdm.md">复制路径</span></div>
 
+<!-- blog-edit-start:699113265649126b:b1 -->
+
 <h2 id="lightdm">没有 LightDM 的时候</h2>
+<!-- blog-edit-end:699113265649126b:b1 -->
+<!-- blog-edit-start:699113265649126b:b2 -->
+
 <p>没有 <code>lightdm</code> 的时候，桌面一上来就是那种黑乎乎的终端。此时需要执行 <code>starx</code> 指令，那么就会启动 X 桌面管理，在这个过程中我们 <code>.xintrc</code> 也会被执行。</p>
+<!-- blog-edit-end:699113265649126b:b2 -->
+
+<!-- blog-edit-start:699113265649126b:b3 -->
+
 <h2 id="lightdm_1">LightDM 的作用</h2>
+<!-- blog-edit-end:699113265649126b:b3 -->
+<!-- blog-edit-start:699113265649126b:b4 -->
+
 <p>那么很明显了，<code>lightdm</code> 可以让我们不需要那么麻烦，每次都要手动执行命令。它就是那种给我们初始化好，然后给出登录界面，用户输入密码回车之后，它就会做相应的事情了，最终将我们选择的界面给出来。</p>
+<!-- blog-edit-end:699113265649126b:b4 -->
+
+<!-- blog-edit-start:699113265649126b:b5 -->
+
 <h2 id="lightdm_2">LightDM 的流程</h2>
+<!-- blog-edit-end:699113265649126b:b5 -->
+<!-- blog-edit-start:699113265649126b:b6 -->
+
 <p>主要分以下流程，注意其实很不严谨。</p>
+<!-- blog-edit-end:699113265649126b:b6 -->
+<!-- blog-edit-start:699113265649126b:b7 -->
+
 <h3 id="_1">给出登录界面</h3>
+<!-- blog-edit-end:699113265649126b:b7 -->
+<!-- blog-edit-start:699113265649126b:b8 -->
+
 <p>这里就是初始化相关东西，然后给出登录界面。其中登录界面中我们可以选择要登录哪个平台(如<code>i3</code>, <code>gnome</code>)。涉及到的文件如下。</p>
+<!-- blog-edit-end:699113265649126b:b8 -->
+
+<!-- blog-edit-start:699113265649126b:b9 -->
+
 <ul>
 <li><code>/etc/lightdm/lightdm.conf</code>: 这里面涉及选择绘制登录界面的轮子</li>
 <li><code>/usr/share/lightdm-webkit</code>: 这是我用的轮子所涉及的文件路径，里面要存放我拷贝别人写好的主题</li>
 <li><code>/usr/share/Xsessions/xxx.desktop</code>: 这里面就是登录界面可以选择登录哪个图形窗口</li>
 </ul>
+<!-- blog-edit-end:699113265649126b:b9 -->
+
+<!-- blog-edit-start:699113265649126b:b10 -->
+
 <h3 id="_2">进入登录界面</h3>
+<!-- blog-edit-end:699113265649126b:b10 -->
+<!-- blog-edit-start:699113265649126b:b11 -->
+
 <p>当用户输入密码，可以进入图形环境时，<code>lightdm</code> 会帮我们执行一些文件，就像 <code>startx</code> 会执行 <code>.xinitrc</code> 一样。  </p>
+<!-- blog-edit-end:699113265649126b:b11 -->
+
+<!-- blog-edit-start:699113265649126b:b12 -->
+
 <ul>
 <li><code>/etc/lightdm/xsession</code>: 这里面就是会执行的脚本，会自动帮我们执行的文件有: <code>.Xresources</code>, <code>.Xmodmap</code>, <code>.xprofile</code>, <code>.profile</code></li>
 <li><code>$HOME/.config/i3/config</code>: 假设我们选择 <code>i3wm</code> 这个图形环境，<code>lightdm</code> 根据之前所说的 <code>xxx.desktop</code> 文件(上面第三个)，执行 <code>i3</code> 并加载 <code>i3</code> 的配置文件</li>
 </ul>
+<!-- blog-edit-end:699113265649126b:b12 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\lightdm.md" data-text-edit-revision="da94c3984c60c57e283fa44c8171455ffc0573d31909078cacbb7efdbc6b56bd" data-text-edit-marker="699113265649126b" data-text-edit-schema="1"></div>
 
 
 
@@ -908,8 +955,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

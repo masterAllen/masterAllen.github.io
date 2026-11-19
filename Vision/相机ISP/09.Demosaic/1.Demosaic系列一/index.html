@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -666,18 +666,48 @@
   
 
 
+<!-- blog-edit-start:ab2d128162f3d440:b0 -->
+
 <h1 id="demosaic">Demosaic 系列一：简单插值法</h1>
+<!-- blog-edit-end:ab2d128162f3d440:b0 -->
+
 <div class="file-actions" data-image-edit-revision="d1c4f05ea8b4e6e104da1af617ecd0c20416fa95e2ce5a91de7528559aa32589" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic%5C1.Demosaic%E7%B3%BB%E5%88%97%E4%B8%80.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E7%9B%B8%E6%9C%BAISP%5C09.Demosaic" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\相机ISP\09.Demosaic\1.Demosaic系列一.md">复制路径</span></div>
 
+<!-- blog-edit-start:ab2d128162f3d440:b1 -->
+
 <p>从今天起，开始总结去马赛克的算法。去马赛克是 ISP 流程中最为重要、最为热门的几个模块之一，这几个月的重点也一直在这方面。下面对所看的内容进行记录。</p>
+<!-- blog-edit-end:ab2d128162f3d440:b1 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b2 -->
+
 <h2 id="_1">双线性插值</h2>
+<!-- blog-edit-end:ab2d128162f3d440:b2 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b3 -->
+
 <p>太简单了，就是从上下左右取值。如果上下没有，就只算左右；反之亦然。</p>
+<!-- blog-edit-end:ab2d128162f3d440:b3 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b4 -->
+
 <h2 id="_2">色差法</h2>
+<!-- blog-edit-end:ab2d128162f3d440:b4 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b5 -->
+
 <p>引入了一个很重要的原理：一个完整的 RGB 三通道图像中，两个相邻像素间对应通道的像素差近似相等。即加入 P1 和 P2 是相邻像素，可以认为：</p>
+<!-- blog-edit-end:ab2d128162f3d440:b5 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b6 -->
+
 <div class="arithmatex">\[
 \mathrm{P}_1\left( \mathrm{G} \right) =\mathrm{P}_1\left( \mathrm{R} \right) =\mathrm{P}_2\left( \mathrm{G} \right) -\mathrm{P}_2\left( \mathrm{R} \right) \\
 \mathrm{P}_1\left( \mathrm{G} \right) =\mathrm{P}_1\left( \mathrm{B} \right) =\mathrm{P}_2\left( \mathrm{G} \right) -\mathrm{P}_2\left( \mathrm{B} \right)
 \]</div>
+<!-- blog-edit-end:ab2d128162f3d440:b6 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b7 -->
+
 <ol>
 <li>
 <p>先用普通的双线性插值预测 G：G=&frac14;*(G1+G2+G3+G4)</p>
@@ -725,6 +755,10 @@
 <p>在 G 中补充 R</p>
 </li>
 </ol>
+<!-- blog-edit-end:ab2d128162f3d440:b11 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b12 -->
+
 <table>
 <thead>
 <tr>
@@ -739,10 +773,30 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:ab2d128162f3d440:b12 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b13 -->
+
 <h2 id="ha">HA 算法</h2>
+<!-- blog-edit-end:ab2d128162f3d440:b13 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b14 -->
+
 <p>引入了另一个重要思想：<strong>利用梯度判断边缘</strong>。梯度小的地方被认为是纹理方向，因此使用这个方向的色差进行插值。</p>
+<!-- blog-edit-end:ab2d128162f3d440:b14 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b15 -->
+
 <p>这个方法还有一个前提，属于是<mark class="term-highlight">色差相似</mark>的扩展：<mark class="term-highlight">一个小范围内的点</mark>与<mark class="term-highlight">小范围平均下来的值</mark>也满足条件。</p>
+<!-- blog-edit-end:ab2d128162f3d440:b15 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b16 -->
+
 <p><img src="../../../../../asset/image/ff2e97f3ca30073fb521c52e23f2a434/image8.PNG" style="width:5.19872in;height:2.11992in" /></p>
+<!-- blog-edit-end:ab2d128162f3d440:b16 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b17 -->
+
 <ol>
 <li>
 <p>预测 G（色差法是根据双线性插值预测）：通过梯度来判断预测。计算出横向竖向梯度，然后比较大小，根据小的梯度的方向进行插值。</p>
@@ -777,18 +831,62 @@
 <p>G 中补充 R：这一步就不用管太多了，直接计算。两种情况，G 左右都是 R，左右都是 B。如果左右都是 R：那就利用原理给的 1*5 的横向矩阵，计算得出 R 值，就是最终的 R 值，然后再利用 1x5 的纵向矩阵，计算 B 值。左右都是 B 同理。</p>
 </li>
 </ol>
+<!-- blog-edit-end:ab2d128162f3d440:b21 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b22 -->
+
 <p><img src="../../../../../asset/image/ff2e97f3ca30073fb521c52e23f2a434/image8.PNG" style="width:4.7803in;height:1.9493in" /></p>
+<!-- blog-edit-end:ab2d128162f3d440:b22 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b23 -->
+
 <blockquote>
 <p>PS：这一步感觉还是随意了，因为边界处还是不太遵守这个理论。因此在边界处使用这个，可能还是会有问题。</p>
 </blockquote>
+<!-- blog-edit-end:ab2d128162f3d440:b23 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b24 -->
+
 <h2 id="malvar-he">Malvar-He 算法</h2>
+<!-- blog-edit-end:ab2d128162f3d440:b24 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b25 -->
+
 <p>一篇简单，但是绝对很有用的文章，我一开始也是觉得就这啊，为啥斯坦福大学的课会强调这个方法呢，直到自己设计的时候，面对 FPGA 工程师反复强调的节约资源要求，我才发现：嗯，线性插值，真香！</p>
+<!-- blog-edit-end:ab2d128162f3d440:b25 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b26 -->
+
 <p>方法很简单，就是用色差法，直接看下面一段话：</p>
+<!-- blog-edit-end:ab2d128162f3d440:b26 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b27 -->
+
 <p><img src="../../../../../asset/image/ff2e97f3ca30073fb521c52e23f2a434/image12.png" style="width:4.35504in;height:1.81259in" /></p>
+<!-- blog-edit-end:ab2d128162f3d440:b27 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b28 -->
+
 <p>其他颜色也是同理，只不过系数分别是 beta 和 gamma。之后通过一系列图片进行训练，求出 alpha 取什么值，均值最小；beta 和 gamma 同理。</p>
+<!-- blog-edit-end:ab2d128162f3d440:b28 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b29 -->
+
 <p>最后作者为了加快速度，还把这三个变量修改一下，这样速度快一点。结果分别是 &frac12;、&#8541;、&frac34;，最终带回到公式，比如 alpha=&frac12; 就是代入公式 2 中，得出预测 G 值，周围像素的权重，速度非常非常快：</p>
+<!-- blog-edit-end:ab2d128162f3d440:b29 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b30 -->
+
 <p><img src="../../../../../asset/image/ff2e97f3ca30073fb521c52e23f2a434/image13.PNG" style="width:3.46271in;height:4.12349in" /></p>
+<!-- blog-edit-end:ab2d128162f3d440:b30 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b31 -->
+
 <p>个人感觉有以下几点可以修改：</p>
+<!-- blog-edit-end:ab2d128162f3d440:b31 -->
+
+<!-- blog-edit-start:ab2d128162f3d440:b32 -->
+
 <ol>
 <li>
 <p>修改成类似 &#8540; 这种很完美的数字可以根据 FPGA 的情况进一步逼近，比如算出原始权重是 0.38，乘以一个 4096，得到 1556，即 1556/4096，这个比 &#8540; 更好，看 FPGA 的资源情况吧。</p>
@@ -797,6 +895,9 @@
 <p>可以一窝蜂的直接用 5*5 的窗口去算各个周围的权重，即不像上图 5*5 的像素中有些是 0，而是直接 5*5 即 25 个像素打入到全连接网络算就完事了。</p>
 </li>
 </ol>
+<!-- blog-edit-end:ab2d128162f3d440:b32 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\相机ISP\09.Demosaic\1.Demosaic系列一.md" data-text-edit-revision="d1c4f05ea8b4e6e104da1af617ecd0c20416fa95e2ce5a91de7528559aa32589" data-text-edit-marker="ab2d128162f3d440" data-text-edit-schema="1"></div>
 
 
 
@@ -1028,8 +1129,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

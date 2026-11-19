@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -693,40 +693,150 @@
   
 
 
+<!-- blog-edit-start:d8a811febf299e3c:b0 -->
+
 <h1 id="gdbserver-bug">gdbserver 失灵？长达半个月的 BUG 寻找</h1>
+<!-- blog-edit-end:d8a811febf299e3c:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b29c065287a630cc7a009dbb7ba150debd5ecd37654643633abae349222c10c1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug%5Cdebug_008.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Debug\debug_008.md">复制路径</span></div>
 
+<!-- blog-edit-start:d8a811febf299e3c:b1 -->
+
 <h2 id="_1">总结反思</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b1 -->
+<!-- blog-edit-start:d8a811febf299e3c:b2 -->
+
 <p>先写总结，总体看下来，推测的还是比较顺风顺水的，但是仍然消耗了大量时间，主要有以下不足。<br />
 1. 首先应该在 <code>pwntools</code> 下面提交 issue，主动出击<br />
 2. 应该试一下不同版本，不同系统，不同内核，然后再去怀疑别的包，不然就如同大海捞针。<br />
 3. 看来是要定期备份系统了~</p>
+<!-- blog-edit-end:d8a811febf299e3c:b2 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b3 -->
+
 <h2 id="_2">故事的开始</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b3 -->
+<!-- blog-edit-start:d8a811febf299e3c:b4 -->
+
 <p>和往常一样，组会结束后的两天，继续开始我的不务正业——<code>pwnable.kr</code>刷题。然而<code>arch</code>你懂的，麻烦总是不经意间出现。就是这么平常的日子里，我发现<code>pwntools</code>里面的<code>gdb.debug</code>不能用了，故事就这样开始了。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b4 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b5 -->
+
 <h2 id="pwntools">嫌疑犯一: pwntools</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b5 -->
+<!-- blog-edit-start:d8a811febf299e3c:b6 -->
+
 <p>因为我是个正常人，肯定首先就会觉得是<code>pwntools</code>自身的问题啦，应该有人已经发现这个问题了吧。于是上<code>pwntools</code>的<code>github</code>官方库中看了一下，竟然没有相关的<code>issues</code>，两种可能：要么我是第一个受害者，要么我错怪<code>pwntools</code>了。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b6 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b7 -->
+
 <p>人类总是懒惰的，我是人类，所以我也是懒惰的。面对这两种可能，我选择了做一个等等党，看看最近几天应该会有人提交<code>issue</code>吧。可等了好些天，没有任何变化。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b7 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b8 -->
+
 <p>那就不是他的问题，可除了它还会是谁呢？在这上面花费了不少时间，但比较幸运的是，我之前几天正好做过<code>pwnable.kr</code>的<code>tiny_easy</code>，知道了<code>pwntools.debug</code>原理是使用<code>gdbserver</code>，所以顺理成章地，我开始怀疑起了<code>gdbserver</code>。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b8 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b9 -->
+
 <h2 id="gdbserver">嫌疑犯二: gdbserver</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b9 -->
+<!-- blog-edit-start:d8a811febf299e3c:b10 -->
+
 <p>我试了一下<code>gdbserver</code>，果然出了问题，卡在了<code>&lt;init_cache&gt;</code>这个函数上。我去了 gdb 官网查看它的 bug，然而没有一点关于这个的踪影，所以我可能还是第一个受害者。这次我选择了主动出击，开始分析卡主的原因，但<code>&lt;init_cache&gt;</code>函数我完全不了解啊。不过这也是奇妙之处，通过自己的各方面联系将自己本不了解的东西逐步推理出来，非常 cool ~</p>
+<!-- blog-edit-end:d8a811febf299e3c:b10 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b11 -->
+
 <p>首先我发现了对于 64 bit 的程序，是可以正常运行的。换句话说，出错的都是 32 bit 的程序！但我测试了一下，最简单的 32 bit 程序是可以正常在 gdbserver 上使用的！但是我又看到之前函数卡住的地方，是和 gs 寄存器有关系的！所以我就立马想到：是不是出错程序都是有 canary 的 32 bits 程序呢？</p>
+<!-- blog-edit-end:d8a811febf299e3c:b11 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b12 -->
+
 <p>自己写了非常简单的带有 canary 的 32 bits 程序，果然出了问题！！那么应该就是 gdb 的问题了，于是我去它的官网上提交了一个 bug，感觉自己酷酷的。说起来，那天正在参加导师组织的一个会议，我还是最主要的打杂者，负责接待，发水果，哈哈，当然大部分时间都是坐在那里干自己事情，当时基本就是花了这一个白天时间找到了这个 bug，然后提交。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b12 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b13 -->
+
 <p>果然，到了晚上，收到了官方作者的回信，作者可以复现这个 bug，但他也不知道原因。超级开心自己竟然提交了 gdb 的 bug，不过我自己解决不了，所以需要继续等一等官方解决咯。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b13 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b14 -->
+
 <h2 id="gdb">嫌疑犯三: gdb</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b14 -->
+<!-- blog-edit-start:d8a811febf299e3c:b15 -->
+
 <p>可是从那之后的五天时间，就没有一点消息了。于是，我开始尝试自己去解决这个问题。首先明确了一点，gdbserver 就是 gdb 套件的一个工具，所以 gdbserver 出了问题，那应该是 gdb 这个套件出了问题。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b15 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b16 -->
+
 <p>首先我更新了 gdb，然而还是会出错。不过这里有个小插曲，Arch 发布 gdb_10.1 的时候，竟然没有 gdbserver，好在之后更新里面加入了 gdbserver，也不知道什么原因。当时我还查了一下，gdb 10.1 之后确实取消了 gdbserver 对某些架构的支持，但 x86_64 肯定是有的啊，浪费了我两个多小时时间。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b16 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b17 -->
+
 <p>然后我去我的另一个许久没更新的 arch 上看了一下，发现是不会出错的，但是我更新完成后，带有 canary 的 32bit 程序竟然就不能在 gdbserver 上运行了。所以很明显，一定是某个安装包更新出了问题！</p>
+<!-- blog-edit-end:d8a811febf299e3c:b17 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b18 -->
+
 <p>很明显是和 gdb 有关的安装包，但是我都降级了，很遗憾，还是出错！此外我还手动安装了 gdb 的低版本，发现还是出错！</p>
+<!-- blog-edit-end:d8a811febf299e3c:b18 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b19 -->
+
 <h2 id="glibc">嫌疑犯四: glibc</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b19 -->
+<!-- blog-edit-start:d8a811febf299e3c:b20 -->
+
 <p>于是我想到，是不是 glibc 的问题？可是我试着将程序链接到低版本 glibc，还是出错。</p>
+<!-- blog-edit-end:d8a811febf299e3c:b20 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b21 -->
+
 <h2 id="ubuntu-2004">救星: Ubuntu 20.04</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b21 -->
+<!-- blog-edit-start:d8a811febf299e3c:b22 -->
+
 <p>没招了，怎么办呢？这个时候就要想到：在别的系统上面，会不会也是同样的问题呢？！</p>
+<!-- blog-edit-end:d8a811febf299e3c:b22 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b23 -->
+
 <p>一共试了两个，第一个是在实验室的服务器上，很老的 Ubuntu 版本了，gdb 版本大概是 7 点几，试了一下，gdbserver 可以运行带 canary 的 32bit 程序。但是这个太老了，这个要不能成功我就怀疑人生了。所以我下载了 Ubuntu 20.04，试了一下，竟然成功了！</p>
+<!-- blog-edit-end:d8a811febf299e3c:b23 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b24 -->
+
 <p>查看对应的版本：glibc 2.31 &amp;&amp; gdb 9.2。OK，那么就在我的 Arch 系统上也用同样的版本，看看行不行！！试了一下，不可以，所以那就系统的问题？！</p>
+<!-- blog-edit-end:d8a811febf299e3c:b24 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b25 -->
+
 <h2 id="kernel">嫌疑犯五: kernel</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b25 -->
+<!-- blog-edit-start:d8a811febf299e3c:b26 -->
+
 <p>查看了 Ubuntu 20.04 的内核，好像是 5.8.0，而我 arch 内核版本为 5.9.4 ！</p>
+<!-- blog-edit-end:d8a811febf299e3c:b26 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b27 -->
+
 <p>那么，降级！降到了 5.8.14，重启运行！竟然通过了！！那么就是内核的问题了！！</p>
+<!-- blog-edit-end:d8a811febf299e3c:b27 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b28 -->
+
 <h2 id="_3">附录</h2>
+<!-- blog-edit-end:d8a811febf299e3c:b28 -->
+
+<!-- blog-edit-start:d8a811febf299e3c:b29 -->
+
 <ul>
 <li>
 <p>使用 GDBSERVER<br />
@@ -750,6 +860,9 @@
 </span></code></pre></div></p>
 </li>
 </ul>
+<!-- blog-edit-end:d8a811febf299e3c:b29 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Debug\debug_008.md" data-text-edit-revision="b29c065287a630cc7a009dbb7ba150debd5ecd37654643633abae349222c10c1" data-text-edit-marker="d8a811febf299e3c" data-text-edit-schema="1"></div>
 
 
 
@@ -981,8 +1094,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

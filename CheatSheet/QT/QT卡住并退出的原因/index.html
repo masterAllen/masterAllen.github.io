@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -616,18 +616,47 @@
   
 
 
+<!-- blog-edit-start:c6d30fb8e8e60145:b0 -->
+
 <h1 id="qt">QT 程序卡住并退出的原因</h1>
+<!-- blog-edit-end:c6d30fb8e8e60145:b0 -->
+
 <div class="file-actions" data-image-edit-revision="223395291cc700d91d7f1ba662d381a973a3e25323879a80df52345e195dd1c3" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT%5CQT%E5%8D%A1%E4%BD%8F%E5%B9%B6%E9%80%80%E5%87%BA%E7%9A%84%E5%8E%9F%E5%9B%A0.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CQT" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\QT\QT卡住并退出的原因.md">复制路径</span></div>
 
+<!-- blog-edit-start:c6d30fb8e8e60145:b1 -->
+
 <p>总结一下写QT时候程序卡住退出的原因。</p>
+<!-- blog-edit-end:c6d30fb8e8e60145:b1 -->
+
+<!-- blog-edit-start:c6d30fb8e8e60145:b2 -->
+
 <h2 id="_1">没有用多线程</h2>
+<!-- blog-edit-end:c6d30fb8e8e60145:b2 -->
+
+<!-- blog-edit-start:c6d30fb8e8e60145:b3 -->
+
 <p>这种是最常见的。也就是有一个比较耗时的操作，阻塞了GUI的渲染，改成多线程就好。</p>
+<!-- blog-edit-end:c6d30fb8e8e60145:b3 -->
+
+<!-- blog-edit-start:c6d30fb8e8e60145:b4 -->
+
 <h2 id="pywinauto">和 Pywinauto 冲突</h2>
+<!-- blog-edit-end:c6d30fb8e8e60145:b4 -->
+
+<!-- blog-edit-start:c6d30fb8e8e60145:b5 -->
+
 <p>这个是一个坑点。如果有使用 pywinauto，需要增加如下的代码，具体原因直接问AI即可：</p>
+<!-- blog-edit-end:c6d30fb8e8e60145:b5 -->
+
+<!-- blog-edit-start:c6d30fb8e8e60145:b6 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="c1">#! 只有设置成这样 Pywinauto 才不会阻塞 QT 主线程</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="n">sys</span><span class="o">.</span><span class="n">coinit_flags</span> <span class="o">=</span> <span class="mi">2</span>
 </span></code></pre></div>
+<!-- blog-edit-end:c6d30fb8e8e60145:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\QT\QT卡住并退出的原因.md" data-text-edit-revision="223395291cc700d91d7f1ba662d381a973a3e25323879a80df52345e195dd1c3" data-text-edit-marker="c6d30fb8e8e60145" data-text-edit-schema="1"></div>
 
 
 
@@ -859,8 +888,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

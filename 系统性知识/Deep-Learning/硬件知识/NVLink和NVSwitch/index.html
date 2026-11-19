@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -645,34 +645,131 @@
   
 
 
+<!-- blog-edit-start:1efbb851d208914d:b0 -->
+
 <h1 id="nvlink-nvswitch">硬件学习：NVLink 和 NVSwitch</h1>
+<!-- blog-edit-end:1efbb851d208914d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f05ec43f1a2ab43442783ac4f2c51b539f999fe5afac977b0c3bbc52792b9ea3" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86%5CNVLink%E5%92%8CNVSwitch.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E7%A1%AC%E4%BB%B6%E7%9F%A5%E8%AF%86" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\硬件知识\NVLink和NVSwitch.md">复制路径</span></div>
+
+<!-- blog-edit-start:1efbb851d208914d:b1 -->
 
 <blockquote>
 <p>极好的一篇文章：<a href="https://zhuanlan.zhihu.com/p/1908145978072084897">https://zhuanlan.zhihu.com/p/1908145978072084897</a> </p>
 </blockquote>
+<!-- blog-edit-end:1efbb851d208914d:b1 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b2 -->
+
 <h2 id="pcie-nvlink">从 PCIE 到 NVLink</h2>
+<!-- blog-edit-end:1efbb851d208914d:b2 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b3 -->
+
 <p>PCIE 想必不用多说，英特尔牵头设计，许多硬件都是插在 PCIE 插槽上，然后进行通信的。但是他有一个严重的问题：</p>
+<!-- blog-edit-end:1efbb851d208914d:b3 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b4 -->
+
 <p>GPU 显存的速度快但容量小，CPU 内存的速度慢但容量大。因为内存系统的差异，加速的计算应用一般先把数据从网络或磁盘移至 CPU 内存，然后再复制到 GPU 显存，数据才可以被 GPU 处理。</p>
+<!-- blog-edit-end:1efbb851d208914d:b4 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b5 -->
+
 <p>GPU 需要通过 PCIe 接口连接至CPU，但 PCIe 接口太落后，限制了GPU存取CPU系统内存的能力，对比CPU内存系统要慢4-5倍。</p>
+<!-- blog-edit-end:1efbb851d208914d:b5 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b6 -->
+
 <p><img alt="" src="../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512172123.png" /></p>
+<!-- blog-edit-end:1efbb851d208914d:b6 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b7 -->
+
 <p>所以英伟达就自行设计了 NVLink 技术，有了NVLink之后，NVLink接口可以和一般CPU内存系统的带宽相匹配，让GPU以全带宽的速度存取CPU内存，解决了CPU和GPU之间的互联带宽问题，从而大幅提升系统性能。</p>
+<!-- blog-edit-end:1efbb851d208914d:b7 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b8 -->
+
 <h2 id="nvlink">NVLink 为什么快</h2>
+<!-- blog-edit-end:1efbb851d208914d:b8 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b9 -->
+
 <p>具体的细节不谈了，看最开始推荐的文章。总之NVLink是一种基于高速差分信号线的串行通信技术。</p>
+<!-- blog-edit-end:1efbb851d208914d:b9 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b10 -->
+
 <p>很显然，连接肯定是需要专门的硬件，PICe 要 PICE 卡槽，那 NVLink 则是 NVLink Bridge</p>
+<!-- blog-edit-end:1efbb851d208914d:b10 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b11 -->
+
 <p><img alt="" src="../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512172422.png" /></p>
+<!-- blog-edit-end:1efbb851d208914d:b11 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b12 -->
+
 <p>两张卡和四张卡都可以两两相连。八张卡则有点区别，在HGX-1系统中实现了一种 “hybrid cube mesh” 8 GPU互联结构。如下图所示：</p>
+<!-- blog-edit-end:1efbb851d208914d:b12 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b13 -->
+
 <p><img alt="" src="../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512172501.png" /></p>
+<!-- blog-edit-end:1efbb851d208914d:b13 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b14 -->
+
 <p>每一块GPU都巧妙利用了其6条NVLink，与其他4块GPU相连。8块GPU以有限的NVLink数量，实现了整体系统的最佳性能。</p>
+<!-- blog-edit-end:1efbb851d208914d:b14 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b15 -->
+
 <p>这个图看上去有点奇怪。实际上，如果把它以立体的方式呈现，就很清晰了：</p>
+<!-- blog-edit-end:1efbb851d208914d:b15 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b16 -->
+
 <p><img alt="" src="../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512172530.png" /></p>
+<!-- blog-edit-end:1efbb851d208914d:b16 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b17 -->
+
 <h2 id="nvswitch">NVSwitch</h2>
+<!-- blog-edit-end:1efbb851d208914d:b17 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b18 -->
+
 <p>2018年，为了实现8颗GPU之间的all-to-all互连，英伟达发布了NVSwitch 1.0。</p>
+<!-- blog-edit-end:1efbb851d208914d:b18 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b19 -->
+
 <p>NVSwitch，说白了就是“交换芯片”。它拥有18个端口，每个端口的带宽是50GB/s，双向总带宽900GB/s。用6个NVSWitch，可以实现8颗V100的all-to-all连接。</p>
+<!-- blog-edit-end:1efbb851d208914d:b19 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b20 -->
+
 <p>引入NVSwitch的DGX-2，相比此前的DGX-1，提升了2.4倍的性能。</p>
+<!-- blog-edit-end:1efbb851d208914d:b20 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b21 -->
+
 <p>到NVLink 4.0的时候，DGX的内部拓扑结构增加了NVSwitch对所有GPU的全向直连，DGX内部的互联结构得到简化。</p>
+<!-- blog-edit-end:1efbb851d208914d:b21 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b22 -->
+
 <p><img alt="" src="../../../../asset/image/2e9789b9838fe398e1c60c7d2bc92afb/20260512172615.png" /></p>
+<!-- blog-edit-end:1efbb851d208914d:b22 -->
+
+<!-- blog-edit-start:1efbb851d208914d:b23 -->
+
 <p>之后英伟达还再不断更新，不断推出新的通信技术。这里就不讲了。</p>
+<!-- blog-edit-end:1efbb851d208914d:b23 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\硬件知识\NVLink和NVSwitch.md" data-text-edit-revision="f05ec43f1a2ab43442783ac4f2c51b539f999fe5afac977b0c3bbc52792b9ea3" data-text-edit-marker="1efbb851d208914d" data-text-edit-schema="1"></div>
 
 
 
@@ -904,8 +1001,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

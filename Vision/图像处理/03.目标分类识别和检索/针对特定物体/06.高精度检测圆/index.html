@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -692,22 +692,79 @@
   
 
 
+<!-- blog-edit-start:997246cfd2249fb5:b0 -->
+
 <h1 id="_1">高精度检测圆形的几个方法</h1>
+<!-- blog-edit-end:997246cfd2249fb5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="df923139b0301c69319a0daba7714011bf5f84a78ac8b870755b5bcb4dcd2878" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93%5C06.%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%A3%80%E6%B5%8B%E5%9C%86.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E9%92%88%E5%AF%B9%E7%89%B9%E5%AE%9A%E7%89%A9%E4%BD%93" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\针对特定物体\06.高精度检测圆.md">复制路径</span></div>
 
+<!-- blog-edit-start:997246cfd2249fb5:b1 -->
+
 <p>工作中遇到一个小任务，尽量高精度地检测圆形。霍尔变换检测圆虽然方便，但其中的参数不好控制，有的时候圆大一点、歪一点，总有检测不出来的，而且误差感觉也挺大的。搜索资料后发现有如下方法：</p>
+<!-- blog-edit-end:997246cfd2249fb5:b1 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b2 -->
+
 <h2 id="_2">模板匹配</h2>
+<!-- blog-edit-end:997246cfd2249fb5:b2 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b3 -->
+
 <p>如果有一些预先采集的图片，可以用模板匹配来解决，感觉很巧妙。模板匹配总体而言精度还是很高的，这个方法缺点就是需要圆大小、形状固定一些，不然模板里面找不到。</p>
+<!-- blog-edit-end:997246cfd2249fb5:b3 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b4 -->
+
 <h2 id="_3">质心</h2>
+<!-- blog-edit-end:997246cfd2249fb5:b4 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b5 -->
+
 <p>这个是我在<a href="https://www.mathworks.com/matlabcentral/fileexchange/37388-fast-2d-peak-finder">某个 matlab 脚本</a>上看到的，也是一个很普遍的做法。</p>
+<!-- blog-edit-end:997246cfd2249fb5:b5 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b6 -->
+
 <p>先用阈值筛选得到一个二维图片，可以用一些滤波处理减小噪声影响，但不做对于我的那个任务感觉也还行。假设说我们现在得到了圆形的掩膜图片，即我们知道哪些点是在圆上面，然后就可以用加权求质心的方法了。这个好处就是我们的掩膜图片中可以有漏选或者多选几个点，与之对比的是，用轮廓求中心，就很有可能因为多选、少选几个点，导致结果有不小的偏差。</p>
+<!-- blog-edit-end:997246cfd2249fb5:b6 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b7 -->
+
 <p><img alt="test" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250707001.png" /></p>
+<!-- blog-edit-end:997246cfd2249fb5:b7 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b8 -->
+
 <h2 id="_4">最小二乘法求解</h2>
+<!-- blog-edit-end:997246cfd2249fb5:b8 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b9 -->
+
 <p>在上面质心方法中，提到用轮廓求解中心点时误差会有点大，其实本质上而言就是抗噪声能力差。质心方法之所以较好，也是因为相当于用了许多的点的数据，类似于做了平滑滤波。所以顺着这个思路，我们可以改进用轮廓求中心。</p>
+<!-- blog-edit-end:997246cfd2249fb5:b9 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b10 -->
+
 <p>方法就是用轮廓上的点去拟合圆，而不是直接单纯认为轮廓上的点一定就是实际轮廓的点。具体做法自行搜索。</p>
+<!-- blog-edit-end:997246cfd2249fb5:b10 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b11 -->
+
 <p><img alt="test" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20250707194318.png" /></p>
+<!-- blog-edit-end:997246cfd2249fb5:b11 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b12 -->
+
 <h2 id="_5">识别后</h2>
+<!-- blog-edit-end:997246cfd2249fb5:b12 -->
+
+<!-- blog-edit-start:997246cfd2249fb5:b13 -->
+
 <p>识别之后也可以用圆率、面积等等进行再一次检查筛选，确保正确性。</p>
+<!-- blog-edit-end:997246cfd2249fb5:b13 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\针对特定物体\06.高精度检测圆.md" data-text-edit-revision="df923139b0301c69319a0daba7714011bf5f84a78ac8b870755b5bcb4dcd2878" data-text-edit-marker="997246cfd2249fb5" data-text-edit-schema="1"></div>
 
 
 
@@ -939,8 +996,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

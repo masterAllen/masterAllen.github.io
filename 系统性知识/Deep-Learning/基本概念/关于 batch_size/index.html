@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -634,10 +634,20 @@
   
 
 
+<!-- blog-edit-start:0b86ebebc693adbf:b0 -->
+
 <h1 id="batch_size">关于 batch_size</h1>
+<!-- blog-edit-end:0b86ebebc693adbf:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0b86ebebc693adbf270617e0e3df72c9abcc9b4705e029cc84eab9e6c73475e2" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%5C%E5%85%B3%E4%BA%8E+batch_size.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\基本概念\关于 batch_size.md">复制路径</span></div>
 
+<!-- blog-edit-start:0b86ebebc693adbf:b1 -->
+
 <h2 id="batch_size_1">batch_size 大小对训练的影响</h2>
+<!-- blog-edit-end:0b86ebebc693adbf:b1 -->
+
+<!-- blog-edit-start:0b86ebebc693adbf:b2 -->
+
 <ul>
 <li>
 <p>batch_size 变大的优点：</p>
@@ -654,8 +664,20 @@
 </ul>
 </li>
 </ul>
+<!-- blog-edit-end:0b86ebebc693adbf:b2 -->
+
+<!-- blog-edit-start:0b86ebebc693adbf:b3 -->
+
 <p>综合上面来看，其实就是对速度和精度的影响。中庸思想，选择合理的 batch size 对速度精度都有好处。</p>
+<!-- blog-edit-end:0b86ebebc693adbf:b3 -->
+
+<!-- blog-edit-start:0b86ebebc693adbf:b4 -->
+
 <h2 id="batch_size_2">batch_size 调参</h2>
+<!-- blog-edit-end:0b86ebebc693adbf:b4 -->
+
+<!-- blog-edit-start:0b86ebebc693adbf:b5 -->
+
 <ol>
 <li>DataLoader 中的 pin_memory 改成 False：虽然网上说要设置为 True，这样直接 GPU 和 CPU 内存映射，免去数据搬运时间。但当数据量过大时，会非常消耗内存，反而限制了速度。</li>
 <li>DataLoader 中的 num_workers 根据 CPU 核数调成合适的数目：这一步的目的是设置多线程数据搬运，为了加快后续调参速度。直接根据硬件条件来设，如对于 CPU 16 核，那么设成 8 比较合适。</li>
@@ -663,6 +685,9 @@
 <li>调整 DataLoader 的 pin_memory：第一步中设为了 False，因为该参数可能会压制 batchsize 较大时的运行速度。这一步打开后，看看速度变化情况，判断是否需要打开。</li>
 <li>调整 DataLoader 的 num_workers：之前只是简单的根据硬件设了一个数，现在 batchsize 已经设好了，那就把 num_workers 变大变小，看看时间变化。</li>
 </ol>
+<!-- blog-edit-end:0b86ebebc693adbf:b5 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\基本概念\关于 batch_size.md" data-text-edit-revision="0b86ebebc693adbf270617e0e3df72c9abcc9b4705e029cc84eab9e6c73475e2" data-text-edit-marker="0b86ebebc693adbf" data-text-edit-schema="1"></div>
 
 
 
@@ -894,8 +919,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

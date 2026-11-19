@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -900,13 +900,35 @@
   
 
 
+<!-- blog-edit-start:cc6a77d059fa55d2:b0 -->
+
 <h1 id="c">C++ 临时对象与引用绑定问题</h1>
+<!-- blog-edit-end:cc6a77d059fa55d2:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2ad47decf52cc1967ceeadb60e740b1793cb64a55669201366c2956960a659c1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP%5C%E4%B8%B4%E6%97%B6%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%BC%95%E7%94%A8%E7%BB%91%E5%AE%9A.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\CPP\临时对象与引用绑定.md">复制路径</span></div>
 
+<!-- blog-edit-start:cc6a77d059fa55d2:b1 -->
+
 <h2 id="_1">问题背景</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b1 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b2 -->
+
 <p>在 C++ 中，当尝试将临时对象传递给接受非 const 引用的函数时，会遇到编译错误。这是 C++ 语言的一个重要特性，理解其原理对于编写正确的 C++ 代码至关重要。</p>
+<!-- blog-edit-end:cc6a77d059fa55d2:b2 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b3 -->
+
 <h2 id="_2">问题示例</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b3 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b4 -->
+
 <h3 id="_3">原始错误代码</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b4 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// Vec3::add() 原本接受非 const 引用</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
@@ -920,48 +942,118 @@
 </span><span id="__span-0-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">meanY</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Ys</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">  </span><span class="c1">// ❌ 编译错误！</span>
 </span><span id="__span-0-12"><span class="linenos" data-linenos="12 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b5 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b6 -->
+
 <p><strong>错误信息</strong>：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>Non-const lvalue reference to type &#39;Vec3&#39; cannot bind to a value of unrelated type &#39;std::array&lt;double, 3&gt;&#39;
 </span></code></pre></div></p>
+<!-- blog-edit-end:cc6a77d059fa55d2:b6 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b7 -->
+
 <h2 id="_4">核心概念</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b7 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b8 -->
+
 <h3 id="1-rvalue">1. 临时对象（rvalue / 右值）</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b8 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b9 -->
+
 <p>临时对象是在表达式中创建、使用后立即销毁的无名对象：</p>
+<!-- blog-edit-end:cc6a77d059fa55d2:b9 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b10 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w">          </span><span class="c1">// 临时对象：调用构造函数创建无名对象</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span><span class="n">meanY</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">meanX</span><span class="w">        </span><span class="c1">// 临时对象：operator- 返回的无名对象</span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span><span class="n">func</span><span class="p">()</span><span class="w">               </span><span class="c1">// 临时对象：函数返回的无名对象</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b10 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b11 -->
+
 <p><strong>特点</strong>：</p>
 <ul>
 <li>没有名字</li>
 <li>生命周期短暂（表达式结束后立即销毁）</li>
 <li>不能取地址（除非使用特殊技巧）</li>
 </ul>
+<!-- blog-edit-end:cc6a77d059fa55d2:b11 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b12 -->
+
 <h3 id="2-lvalue">2. 命名对象（lvalue / 左值）</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b12 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b13 -->
+
 <p>命名对象是有名字、可以取地址的对象：</p>
+<!-- blog-edit-end:cc6a77d059fa55d2:b13 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b14 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="w"> </span><span class="nf">v</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w">     </span><span class="c1">// 命名对象：v 有名字</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span><span class="n">meanX</span><span class="w">                </span><span class="c1">// 命名对象：meanX 有名字</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b14 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b15 -->
+
 <p><strong>特点</strong>：</p>
 <ul>
 <li>有名字或标识符</li>
 <li>生命周期由其作用域决定</li>
 <li>可以取地址</li>
 </ul>
+<!-- blog-edit-end:cc6a77d059fa55d2:b15 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b16 -->
+
 <h3 id="3">3. 引用类型</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b16 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b17 -->
+
 <h4 id="const-t">非 const 引用（<code>T&amp;</code>）</h4>
+<!-- blog-edit-end:cc6a77d059fa55d2:b17 -->
+<!-- blog-edit-start:cc6a77d059fa55d2:b18 -->
+
 <ul>
 <li>表示可以修改的对象</li>
 <li>只能绑定到可修改的左值（命名对象）</li>
 <li><strong>不能绑定到临时对象</strong></li>
 </ul>
+<!-- blog-edit-end:cc6a77d059fa55d2:b18 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b19 -->
+
 <h4 id="const-const-t">const 引用（<code>const T&amp;</code>）</h4>
+<!-- blog-edit-end:cc6a77d059fa55d2:b19 -->
+<!-- blog-edit-start:cc6a77d059fa55d2:b20 -->
+
 <ul>
 <li>表示只读的对象</li>
 <li>可以绑定到左值和右值（命名对象和临时对象）</li>
 <li>保证不会修改对象</li>
 </ul>
+<!-- blog-edit-end:cc6a77d059fa55d2:b20 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b21 -->
+
 <h2 id="const">为什么临时对象不能绑定到非 const 引用？</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b21 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b22 -->
+
 <h3 id="_5">核心原因：语义不一致</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b22 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b23 -->
+
 <ol>
 <li>
 <p><strong>临时对象生命周期短</strong></p>
@@ -993,22 +1085,54 @@
 </ul>
 </li>
 </ol>
+<!-- blog-edit-end:cc6a77d059fa55d2:b23 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b24 -->
+
 <h3 id="_6">设计哲学</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b24 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b25 -->
+
 <p>C++ 的设计哲学是"不允许没有意义的操作"。修改一个临时对象就是没有意义的操作，因此被禁止。</p>
+<!-- blog-edit-end:cc6a77d059fa55d2:b25 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b26 -->
+
 <h2 id="const_1">为什么可以绑定到 const 引用？</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b26 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b27 -->
+
 <h3 id="_7">核心原因：语义一致</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b27 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b28 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// const 引用</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="w">  </span><span class="c1">// 只读取 other，不修改它</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="c1">// other 是只读的，保证不会修改</span>
 </span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b28 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b29 -->
+
 <p><strong>为什么允许</strong>：</p>
 <ol>
 <li><strong>const 保证只读</strong>：<code>const Vec3&amp;</code> 保证不会修改对象</li>
 <li><strong>临时对象可以安全读取</strong>：读取临时对象的值是有意义的</li>
 <li><strong>语义一致</strong>：读取一个即将销毁的对象的值是合理的</li>
 </ol>
+<!-- blog-edit-end:cc6a77d059fa55d2:b29 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b30 -->
+
 <h2 id="_8">对比表格</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b30 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b31 -->
+
 <table>
 <thead>
 <tr>
@@ -1033,21 +1157,57 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:cc6a77d059fa55d2:b31 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b32 -->
+
 <h2 id="_9">实际代码示例</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b32 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b33 -->
+
 <h3 id="1-const">情况 1：命名对象 + 非 const 引用</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b33 -->
+<!-- blog-edit-start:cc6a77d059fa55d2:b34 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="n">Vec3</span><span class="w"> </span><span class="nf">v</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="n">meanX</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w">  </span><span class="c1">// ✅ 可以，v 是命名对象</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b34 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b35 -->
+
 <h3 id="2-const">情况 2：临时对象 + 非 const 引用</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b35 -->
+<!-- blog-edit-start:cc6a77d059fa55d2:b36 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="n">meanX</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Vec3</span><span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span><span class="w">  </span><span class="c1">// ❌ 编译错误！临时对象不能绑定到非 const 引用</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b36 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b37 -->
+
 <h3 id="3-const">情况 3：临时对象 + const 引用</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b37 -->
+<!-- blog-edit-start:cc6a77d059fa55d2:b38 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="n">meanX</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Vec3</span><span class="p">(</span><span class="n">Xs</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span><span class="w">  </span><span class="c1">// ✅ 可以！临时对象可以绑定到 const 引用</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b38 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b39 -->
+
 <h2 id="_10">解决方案</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b39 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b40 -->
+
 <h3 id="_11">修改前</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b40 -->
+<!-- blog-edit-start:cc6a77d059fa55d2:b41 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// vec3.h</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">auto</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// 非 const 引用</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
@@ -1061,7 +1221,14 @@
 </span><span id="__span-9-11"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">meanY</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Ys</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span><span class="w">  </span><span class="c1">// ❌ 编译错误</span>
 </span><span id="__span-9-12"><span class="linenos" data-linenos="12 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b41 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b42 -->
+
 <h3 id="_12">修改后</h3>
+<!-- blog-edit-end:cc6a77d059fa55d2:b42 -->
+<!-- blog-edit-start:cc6a77d059fa55d2:b43 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// vec3.h</span>
 </span><span id="__span-10-2"><span class="linenos" data-linenos=" 2 "></span><span class="k">auto</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vec3</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// const 引用</span>
 </span><span id="__span-10-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
@@ -1078,7 +1245,15 @@
 </span><span id="__span-10-14"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">meanY</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">Vec3</span><span class="p">(</span><span class="n">Ys</span><span class="p">[</span><span class="n">i</span><span class="p">]));</span><span class="w">  </span><span class="c1">// ✅ 可以编译</span>
 </span><span id="__span-10-15"><span class="linenos" data-linenos="15 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:cc6a77d059fa55d2:b43 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b44 -->
+
 <h2 id="_13">最佳实践</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b44 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b45 -->
+
 <ol>
 <li>
 <p><strong>对于只读参数，使用 const 引用</strong><br />
@@ -1097,13 +1272,25 @@
 </span></code></pre></div></p>
 </li>
 </ol>
+<!-- blog-edit-end:cc6a77d059fa55d2:b45 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b46 -->
+
 <h2 id="_14">总结</h2>
+<!-- blog-edit-end:cc6a77d059fa55d2:b46 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b47 -->
+
 <ul>
 <li><strong>临时对象（rvalue）</strong>：表达式中创建的无名对象，使用后立即销毁</li>
 <li><strong>非 const 引用</strong>：只能绑定到可修改的命名对象，不能绑定临时对象</li>
 <li><strong>const 引用</strong>：可以绑定到命名对象和临时对象，但保证只读</li>
 <li><strong>设计原则</strong>：C++ 不允许修改临时对象，因为这是没有意义的操作</li>
 </ul>
+<!-- blog-edit-end:cc6a77d059fa55d2:b47 -->
+
+<!-- blog-edit-start:cc6a77d059fa55d2:b48 -->
+
 <p>理解这个概念有助于：</p>
 <ul>
 <li>编写更灵活的 API（接受临时对象）</li>
@@ -1111,6 +1298,9 @@
 <li>理解 C++ 的值语义和引用语义</li>
 <li>为后续学习移动语义（C++11）打下基础</li>
 </ul>
+<!-- blog-edit-end:cc6a77d059fa55d2:b48 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\CPP\临时对象与引用绑定.md" data-text-edit-revision="2ad47decf52cc1967ceeadb60e740b1793cb64a55669201366c2956960a659c1" data-text-edit-marker="cc6a77d059fa55d2" data-text-edit-schema="1"></div>
 
 
 
@@ -1342,8 +1532,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

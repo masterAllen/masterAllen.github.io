@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -620,36 +620,130 @@
   
 
 
+<!-- blog-edit-start:3c23b01c938c9b8e:b0 -->
+
 <h1 id="_1">蓝牙重放攻击记录</h1>
+<!-- blog-edit-end:3c23b01c938c9b8e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="443b6b1a1202934466b45451af9bc4cb9aee696807d825a81222eae9b9afa11f" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5C%E8%93%9D%E7%89%99%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB%E8%AE%B0%E5%BD%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\蓝牙重放攻击记录.md">复制路径</span></div>
 
+<!-- blog-edit-start:3c23b01c938c9b8e:b1 -->
+
 <p>买了一台蓝牙设备，想要电脑写一些不同的逻辑控制它，于是有了这篇文章。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b1 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b2 -->
+
 <h2 id="_2">步骤一：手机抓包</h2>
+<!-- blog-edit-end:3c23b01c938c9b8e:b2 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b3 -->
+
 <p>参考：<a href="https://www.cnblogs.com/eezhijun/p/17629196.html">https://www.cnblogs.com/eezhijun/p/17629196.html</a></p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b3 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b4 -->
+
 <p>用的小米手机：</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b4 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b5 -->
+
 <ul>
 <li>开发者选项中打开<mark class="term-highlight">蓝牙数据包日志</mark></li>
 <li>在开发者选项中打开<mark class="term-highlight">蓝牙调试日志</mark>（没有的请忽略此步骤）</li>
 <li>拨号键输入 <code>*#*#5959#*#*</code> 开启抓取</li>
 <li>拨号键再次输入 <code>*#*#5959#*#*</code> 结束抓取</li>
 </ul>
+<!-- blog-edit-end:3c23b01c938c9b8e:b5 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b6 -->
+
 <h2 id="wireshark">步骤二：Wireshark 分析</h2>
+<!-- blog-edit-end:3c23b01c938c9b8e:b6 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b7 -->
+
 <p>参考：<a href="https://zhuanlan.zhihu.com/p/45717775">https://zhuanlan.zhihu.com/p/45717775</a></p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b7 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b8 -->
+
 <p>用 wireshark 打开后发现有各种各样的包，但我们要找 Sent Write，可以在 info 列中排序以此来快速找到。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b8 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b9 -->
+
 <p><img alt="" src="../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240509001.PNG" /></p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b9 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b10 -->
+
 <p>上图中有两种 write，0x25和0x29，由于下面全是 0x29，所以 0x29 才是我们发送的命令，而数据包中的 value 就是我们需要重放的数据。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b10 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b11 -->
+
 <h2 id="gatttool">步骤三：GattTool 复现</h2>
+<!-- blog-edit-end:3c23b01c938c9b8e:b11 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b12 -->
+
 <p>参考：<a href="https://zhuanlan.zhihu.com/p/45717775">https://zhuanlan.zhihu.com/p/45717775</a></p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b12 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b13 -->
+
 <p>第三步，使用 gattTool 工具尝试重放工具，这个只有 Linux 才有。没有 Linux 的话，最简单的就是用 U盘制作一个 Ubuntu 启动盘，启动的时候选择<mark class="term-highlight">尝试 Ubuntu</mark>，这样也是可以使用终端的。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b13 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b14 -->
+
 <p>1. 寻找设备的地址，这个其实在 Wireshark 里面就可以找到，参考文章使用的另一种方法。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b14 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b15 -->
+
 <p><img alt="" src="../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240509002.PNG" /></p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b15 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b16 -->
+
 <p>2. 输入命令 <code>gatttool -b 94:a9:a8:2a:89:fc -I</code> 使用interactive方式连接设备，先 connect，然后 char-write-req 发送我们要重放的数据即可。没错很神奇，不需要配对密钥。下图是参考文章里的图，一目了然。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b16 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b17 -->
+
 <p><img alt="" src="../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240509003.webp" /></p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b17 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b18 -->
+
 <p>3. 寻找对应的 UUID，这一步对于后续第四大步骤很重要，如参考文章的图所示，根据 handle 去找到对应的 UUID，并且记录下来。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b18 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b19 -->
+
 <p><img alt="" src="../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20240509004.webp" /></p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b19 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b20 -->
+
 <h2 id="pythonbleak">步骤四：Python+Bleak复现</h2>
+<!-- blog-edit-end:3c23b01c938c9b8e:b20 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b21 -->
+
 <p>经过前三个步骤，我们现在有：第二步中找到的命令的 handle、命令的 value；第三步中找到的 UUID。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b21 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b22 -->
+
 <p>但这种命令行发送肯定不是最终想要的效果。第四步就是使用 python 的 bleak 包来完成，很棒的包，比其他蓝牙包要好很多。还有一个好处是在 windows 下也能重放攻击了。使用 bleak 的 write_gatt_char 可以达到步骤三中的效果，直接给一个样例代码。</p>
+<!-- blog-edit-end:3c23b01c938c9b8e:b22 -->
+
+<!-- blog-edit-start:3c23b01c938c9b8e:b23 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="kn">from</span><span class="w"> </span><span class="nn">bleak</span><span class="w"> </span><span class="kn">import</span> <span class="n">BleakScanner</span><span class="p">,</span> <span class="n">BleakClient</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">keyboard</span>
@@ -694,6 +788,9 @@
 </span><span id="__span-0-42"><span class="linenos" data-linenos="42 "></span>
 </span><span id="__span-0-43"><span class="linenos" data-linenos="43 "></span><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </span></code></pre></div>
+<!-- blog-edit-end:3c23b01c938c9b8e:b23 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\蓝牙重放攻击记录.md" data-text-edit-revision="443b6b1a1202934466b45451af9bc4cb9aee696807d825a81222eae9b9afa11f" data-text-edit-marker="3c23b01c938c9b8e" data-text-edit-schema="1"></div>
 
 
 
@@ -925,8 +1022,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -700,68 +700,209 @@
   
 
 
+<!-- blog-edit-start:ada88a5ae9ac8319:b0 -->
+
 <h1 id="criminisi-telea">Criminisi 和 Telea 图像修复算法记录</h1>
+<!-- blog-edit-end:ada88a5ae9ac8319:b0 -->
+
 <div class="file-actions" data-image-edit-revision="f857dc6a28abf6ac895ae872085dd14245eb13bd97f957fc2244cb8c3b1aad76" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C16.%E5%9B%BE%E5%83%8F%E8%A1%A5%E5%85%A8%5C01.Criminisi%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D%E7%AE%97%E6%B3%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C16.%E5%9B%BE%E5%83%8F%E8%A1%A5%E5%85%A8" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\16.图像补全\01.Criminisi图像修复算法.md">复制路径</span></div>
 
+<!-- blog-edit-start:ada88a5ae9ac8319:b1 -->
+
 <h2 id="criminisi">Criminisi 算法</h2>
+<!-- blog-edit-end:ada88a5ae9ac8319:b1 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b2 -->
+
 <blockquote>
 <p>2003 年的老论文：Region Filling and Object Removal by Exemplar-Based Image Inpainting</p>
 </blockquote>
+<!-- blog-edit-end:ada88a5ae9ac8319:b2 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b3 -->
+
 <h3 id="_1">填充方法</h3>
+<!-- blog-edit-end:ada88a5ae9ac8319:b3 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b4 -->
+
 <p>其实就是 patch-based 方法，这种在 NLM 去噪、纹理合成、图像配准等等都类似，看下图就马上明白了，就是找相似块：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b4 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b5 -->
+
 <p><img alt="" src="../../../../asset/image/218cbb5a4b4d2086624057e99c37d1f5/20250126094419.png" /></p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b5 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b6 -->
+
 <p>块中的内容是直接全体复制过去的，这样加快点速度，不然要一个像素一个像素做，实在太慢。</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b6 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b7 -->
+
 <h3 id="_2">填充顺序</h3>
+<!-- blog-edit-end:ada88a5ae9ac8319:b7 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b8 -->
+
 <p>填充的顺序对于图像修复的算法也很关键，Criminisi 算法是按照自己定义的优先级去找点的：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b8 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b9 -->
+
 <p><img alt="" src="../../../../asset/image/218cbb5a4b4d2086624057e99c37d1f5/20250126094739.png" /></p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b9 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b10 -->
+
 <p>其中 <span class="arithmatex">\(n_p\)</span> 表示当前边界的垂直方向，<span class="arithmatex">\(\nabla I_p\)</span> 表示梯度转 90 度，如下图所示：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b10 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b11 -->
+
 <p><img alt="" src="../../../../asset/image/218cbb5a4b4d2086624057e99c37d1f5/20250126094843.png" /></p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b11 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b12 -->
+
 <p>回看这个公式，对于 <span class="arithmatex">\(C(p)\)</span> 很好理解，这个类似权重项，每个已知或者已经补充过的点，都是一个权重值。但其实这里的 <span class="arithmatex">\(D(p)\)</span> 我没有很理解这样做的意图，原文的话如下，只能说不用过分纠结细节吧：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b12 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b13 -->
+
 <blockquote>
 <p>The data term <span class="arithmatex">\(D(p)\)</span> is a function of the strength of isophotes hitting the front <span class="arithmatex">\(\Omega\)</span> at each iteration. This term boosts the priority of a patch that an isophote "flows" into. This factor is of fundamental importance in our algorithm because it encourages linear structures to be synthesized first, and therefore propagated securely into the target region. Broken lines tend to connect, thus realizing the "Connectivity Principle" of vision psychology. </p>
 <p>数据项 <span class="arithmatex">\(D(p)\)</span> 是每次迭代中撞击前沿区域 <span class="arithmatex">\(\Omega\)</span> 的等照度线强度的函数。该术语会提升被等照度线"流入"的补丁块的优先级。这一因素在我们的算法中至关重要，因为它促使线性结构被优先合成，从而能够安全地传播到目标区域。断开的线条倾向于相互连接，这实现了视觉心理学的"连通性原则"。</p>
 </blockquote>
+<!-- blog-edit-end:ada88a5ae9ac8319:b13 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b14 -->
+
 <p>当补充完之后，会当前块中原来未知像素的 <span class="arithmatex">\(C(x)\)</span> 值，文章就简单地赋值为当前块的中心点（即 p 点）的 <span class="arithmatex">\(C(p)\)</span> 值。</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b14 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b15 -->
+
 <h2 id="telea">Telea 算法</h2>
+<!-- blog-edit-end:ada88a5ae9ac8319:b15 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b16 -->
+
 <blockquote>
 <p>2004 年的老论文：An Image Inpainting Technique Based on the Fast Marching Method</p>
 </blockquote>
+<!-- blog-edit-end:ada88a5ae9ac8319:b16 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b17 -->
+
 <h3 id="_3">填充方法</h3>
+<!-- blog-edit-end:ada88a5ae9ac8319:b17 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b18 -->
+
 <p>Telea 算法的补充和 Criminisi 完全不同，用的是叫做 FMM 的方法：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b18 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b19 -->
+
 <p><img alt="" src="../../../../asset/image/218cbb5a4b4d2086624057e99c37d1f5/20250126100730.jpg" /></p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b19 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b20 -->
+
 <p>如上图所示，假如我们打算利用 <span class="arithmatex">\(q\)</span> 点来补充 <span class="arithmatex">\(p\)</span> 点，那么补充方法如下：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b20 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b21 -->
+
 <div class="arithmatex">\[
 I_q(p) = I(q) + \nabla I(q) \cdot (p - q)
 \]</div>
+<!-- blog-edit-end:ada88a5ae9ac8319:b21 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b22 -->
+
 <p>那么，对于一个要补充的像素点而言，就根据周围已知的点进行补充，最后求个加权平均：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b22 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b23 -->
+
 <div class="arithmatex">\[
 I(p) = \frac{\sum_{q \in B_{\epsilon}(p)} w(p, q) [I_q(p) + \nabla I_q(p) \cdot (p - q)]}{\sum_{q \in B_{\epsilon}(p)} w(p, q)}
 \]</div>
+<!-- blog-edit-end:ada88a5ae9ac8319:b23 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b24 -->
+
 <p>其中 <span class="arithmatex">\(w\)</span> 表示权重，它的计算方式也挺复杂的... 所以其实这也是作者强行设计的一个方式，不需要过分纠结：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b24 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b25 -->
+
 <div class="arithmatex">\[
 w(p, q) = dir(p, q) \cdot dst(p, q) \cdot lev(p, q)
 \]</div>
+<!-- blog-edit-end:ada88a5ae9ac8319:b25 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b26 -->
+
 <p>各个条目如下：</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b26 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b27 -->
+
 <div class="arithmatex">\[
 dir(p, q) = \frac{p - q}{||p - q||} \cdot N(p)
 \]</div>
+<!-- blog-edit-end:ada88a5ae9ac8319:b27 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b28 -->
+
 <blockquote>
 <p>方向因子 <span class="arithmatex">\(dir(p,q)\)</span> 保证了越靠近法线方向 N=∇T 的像素点对 p 点的贡献最大。前面第一项表示 p 连接 q 的单位向量。</p>
 </blockquote>
+<!-- blog-edit-end:ada88a5ae9ac8319:b28 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b29 -->
+
 <div class="arithmatex">\[
 dst(p, q) = \frac{d_0^2}{||p - q||^2}
 \]</div>
+<!-- blog-edit-end:ada88a5ae9ac8319:b29 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b30 -->
+
 <blockquote>
 <p>几何距离因子 <span class="arithmatex">\(dst(p,q)\)</span> 保证了离 p 点越近的像素点对 p 点贡献越大。<span class="arithmatex">\(d_0\)</span> 是自己定义的值，一般取值为 1。</p>
 </blockquote>
+<!-- blog-edit-end:ada88a5ae9ac8319:b30 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b31 -->
+
 <div class="arithmatex">\[
 lev(p, q) = \frac{T_0}{1 + |T(p) - T(q)|}
 \]</div>
+<!-- blog-edit-end:ada88a5ae9ac8319:b31 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b32 -->
+
 <blockquote>
 <p>水平集距离因子 <span class="arithmatex">\(lev(p,q)\)</span> 保证了离经过点 p 的待修复区域的轮廓线越近的已知像素点对点 p 的贡献越大。<span class="arithmatex">\(T_0\)</span> 是自己定义的值，一般取值为 1。<span class="arithmatex">\(T(p)\)</span> 表示 p 点到边界的距离。</p>
 </blockquote>
+<!-- blog-edit-end:ada88a5ae9ac8319:b32 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b33 -->
+
 <h3 id="_4">填充顺序</h3>
+<!-- blog-edit-end:ada88a5ae9ac8319:b33 -->
+
+<!-- blog-edit-start:ada88a5ae9ac8319:b34 -->
+
 <p>Telea 算法的填充顺序就是从外到内一层一层开始。这个就叫做快速行进算法，Fast Marching Method(FMM)，很扯，专有名词总是唬人。</p>
+<!-- blog-edit-end:ada88a5ae9ac8319:b34 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\16.图像补全\01.Criminisi图像修复算法.md" data-text-edit-revision="f857dc6a28abf6ac895ae872085dd14245eb13bd97f957fc2244cb8c3b1aad76" data-text-edit-marker="ada88a5ae9ac8319" data-text-edit-schema="1"></div>
 
 
 
@@ -993,8 +1134,6 @@ lev(p, q) = \frac{T_0}{1 + |T(p) - T(q)|}
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -702,24 +702,81 @@
   
 
 
+<!-- blog-edit-start:5a46a8e4067b9b35:b0 -->
+
 <h1 id="nas-bypt">通过 NAS 实现 BYPT 的做种</h1>
+<!-- blog-edit-end:5a46a8e4067b9b35:b0 -->
+
 <div class="file-actions" data-image-edit-revision="80399e7e1963aebf44b7ae1f090f83670f2e0818c4b8d943768ad503c40c9167" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CP2P%5C%E4%BD%BF%E7%94%A8%E7%BE%A4%E6%99%96%E5%AF%B9BYPT%E5%81%9A%E7%A7%8D.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CComputer-Network%5C05.Application_Layer%5CP2P" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\P2P\使用群晖对BYPT做种.md">复制路径</span></div>
 
+<!-- blog-edit-start:5a46a8e4067b9b35:b1 -->
+
 <p>折腾了一下午, 终于可以在 NAS 上做北邮人的种子了, 开心. 参考<a href="https://www.liups.site/tutorial/2021/08/%E7%BE%A4%E6%99%96-%E6%9C%80%E6%96%B0%E5%A5%97%E4%BB%B6%E7%89%88qbittorrent-%E5%AE%89%E8%A3%85%E5%81%9A%E7%A7%8D%E4%BF%9D%E7%A7%8D%E6%95%99%E7%A8%8B.html">这篇文章</a></p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b1 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b2 -->
+
 <h2 id="ipv6">设置 IPv6 地址</h2>
+<!-- blog-edit-end:5a46a8e4067b9b35:b2 -->
+<!-- blog-edit-start:5a46a8e4067b9b35:b3 -->
+
 <p>1. 设置路由器为桥接模式, 这样连接该路由器的每个设备都有一个单独的 v6 地址<br />
 2. 通过 ssh 进入到 nas 之后, 看一下能否访问校园网的 v6 网站, 以此来判断是否需要认证. 我这边就是需要认证的, 不过学校有通过别的电脑网页待认证来实现, 不算很麻烦.</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b3 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b4 -->
+
 <p>PS: 设置 ssh 登录 → 打开群晖的「控制面板」，在「终端机和SNMP」中勾选「启动SSH功能」</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b4 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b5 -->
+
 <h2 id="qbittorrent">安装 qBittorrent</h2>
+<!-- blog-edit-end:5a46a8e4067b9b35:b5 -->
+<!-- blog-edit-start:5a46a8e4067b9b35:b6 -->
+
 <p>1. 以管理员身份登录群晖，打开「套件中心」，点击右上角「设置」，在「套件来源」选项卡，「新增」一个来源，「名称」任意，「位置」需要考虑版本, 如果是 DSM6.x, 输入「<a href="https://spk.imnks.com/">https://spk.imnks.com/</a>」, 如果是更高的, 输入「<a href="https://spk7.imnks.com/">https://spk7.imnks.com/</a>」，然后「确定」即可。这是「我不是矿神」的spk套件源，常用软件很多。</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b6 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b7 -->
+
 <p>2. 现在回到「套件中心」的主页面，点击左侧的「社群」，再点击工具栏的刷新按钮，然后在搜索栏输入「qBittorrent」，回车搜索，然后安装即可。</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b7 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b8 -->
+
 <p>3. 在浏览器输入http://群晖IP:8085/，看看能不能访问。8085是默认端口，如果无法访问，检查程序是否启动。如果你启用了群晖的防火墙，记得放行端口。</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b8 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b9 -->
+
 <p>4. 输入默认账号「admin」，默认密码「adminadmin」登录，现在你进入了qBittorrent的默认Web UI界面，下一步开始配置。</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b9 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b10 -->
+
 <h2 id="qbittorrent_1">配置 qBittorrent</h2>
+<!-- blog-edit-end:5a46a8e4067b9b35:b10 -->
+<!-- blog-edit-start:5a46a8e4067b9b35:b11 -->
+
 <h3 id="web-ui">修改Web UI访问密码</h3>
+<!-- blog-edit-end:5a46a8e4067b9b35:b11 -->
+<!-- blog-edit-start:5a46a8e4067b9b35:b12 -->
+
 <p>在Web UI界面，点击工具栏的齿轮进入设置，在「Web UI」选项卡下可以修改密码。修改完成后，翻到最下面点击「保存」</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b12 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b13 -->
+
 <h3 id="tracker">自动添加Tracker</h3>
+<!-- blog-edit-end:5a46a8e4067b9b35:b13 -->
+<!-- blog-edit-start:5a46a8e4067b9b35:b14 -->
+
 <p>在Web UI界面，点击工具栏的齿轮进入设置，切换到「BitTorrent」选项卡。</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b14 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b15 -->
+
 <ul>
 <li>勾选「自动添加以下 tracker 到新的 torrent」，然后输入你要添加的Tracker即可。</li>
 <li>
@@ -734,8 +791,18 @@
 <p>添加完后点击「保存」。</p>
 </li>
 </ul>
+<!-- blog-edit-end:5a46a8e4067b9b35:b15 -->
+
+<!-- blog-edit-start:5a46a8e4067b9b35:b16 -->
+
 <h2 id="_1">上传种子测试</h2>
+<!-- blog-edit-end:5a46a8e4067b9b35:b16 -->
+<!-- blog-edit-start:5a46a8e4067b9b35:b17 -->
+
 <p>之后就可以上传种子测试了, 不过要记住, 北邮人不可以一个种子同时多台机器下载, 也不可以一个种子一台上传另一台下载.</p>
+<!-- blog-edit-end:5a46a8e4067b9b35:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\P2P\使用群晖对BYPT做种.md" data-text-edit-revision="80399e7e1963aebf44b7ae1f090f83670f2e0818c4b8d943768ad503c40c9167" data-text-edit-marker="5a46a8e4067b9b35" data-text-edit-schema="1"></div>
 
 
 
@@ -967,8 +1034,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

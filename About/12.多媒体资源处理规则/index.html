@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-9-623cc78a2f1a.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-9-eeec361aae32.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-9-623cc78a2f1a.html"
+         data-shared-navigation-target="../../navigation/shared/group-9-eeec361aae32.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -826,17 +826,55 @@
   
 
 
+<!-- blog-edit-start:d6b3a46b01ee0a24:b0 -->
+
 <h1 id="_1">多媒体处理规则</h1>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a79035acacf03b25a3bcf7f488d332766d13a72de0fcbc6475e386ef4781e617" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CAbout%5C12.%E5%A4%9A%E5%AA%92%E4%BD%93%E8%B5%84%E6%BA%90%E5%A4%84%E7%90%86%E8%A7%84%E5%88%99.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CAbout" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\About\12.多媒体资源处理规则.md">复制路径</span></div>
 
+<!-- blog-edit-start:d6b3a46b01ee0a24:b1 -->
+
 <h2 id="pdf">PDF</h2>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b1 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b2 -->
+
 <p>这个直接在网页上挂载即可。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b2 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b3 -->
+
 <h3 id="_2">页面展示</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b3 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b4 -->
+
 <p>如下图所示：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b4 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b5 -->
+
 <p><img alt="" src="../../asset/image/46f05c202369a3182a6170171ddfaef0/20261018103015.png" /></p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b5 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b6 -->
+
 <h3 id="_3">原理</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b6 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b7 -->
+
 <p>其实核心是用 <strong>PDF.js 把 PDF 的当前页画到网页上</strong>，再由我们自己的控件管理翻页、缩放和高度。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b7 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b8 -->
+
 <p>具体分为几步：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b8 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b9 -->
+
 <ol>
 <li>
 <p><strong>转换脚本生成 PDF 入口</strong><br />
@@ -855,43 +893,151 @@
    按规定好的比例，把整页放进阅读框。</p>
 </li>
 </ol>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b9 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b10 -->
+
 <p>布局由 <code>extra.css</code> 控制。窗口尺寸变化时，<code>ResizeObserver</code> 会触发重新计算和绘制；翻页时则保留当前高度和缩放比例。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b10 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b11 -->
+
 <h2 id="pptword">PPT/Word</h2>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b11 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b12 -->
+
 <p>在 <code>UpdateBlog</code> 的时候，就把 PPT/Word 转为同目录下的 PDF 文件，也就是在<strong>原始目录</strong>里会有同名的 PDF 文件（一开始我有强迫症，没这么做，但想想没必要吹毛求疵）。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b12 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b13 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>done/系统性知识/Operating-System/操作系统概述.docx
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>done/系统性知识/Operating-System/操作系统概述.pdf
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b13 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b14 -->
+
 <h3 id="_4">页面展示</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b14 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b15 -->
+
 <p>只展示 PDF 即可，显示效果和上文的 PDF 一样。其实还有一个小细节：我在本地服务站点上有本地编辑功能，它指向原始资源文件。这个细节琐碎，但很简单。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b15 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b16 -->
+
 <h3 id="_5">持续维护方式</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b16 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b17 -->
+
 <p>需要维护一个字典，方便原始文件被修改后重新转换为 PDF，也用来防止重复转换。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b17 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b18 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>Key: 原始文件名
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>Value: 原始文件修改时间
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b18 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b19 -->
+
 <p>一种情况：如果添加了某个文件，旁边已经有对应的 PDF，而这个文件不在字典里，脚本会报错。脚本另外提供 <code>--overwrite</code> 选项。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b19 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b20 -->
+
 <h3 id="_6">对原始文件的要求</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b20 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b21 -->
+
 <p><a href="#r">这种资源对操作原始文件有要求！</a></p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b21 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b22 -->
+
 <ol>
 <li>添加这种新的资源文件时，尽量避免添加自行转换的 PDF 文件。</li>
 <li>删除原始资源文件的时候，把对应的 PDF 文件也删掉。</li>
 </ol>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b22 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b23 -->
+
 <h2 id="images">Images</h2>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b23 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b24 -->
+
 <h3 id="_7">页面展示</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b24 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b25 -->
+
 <p>一般情况下，页面上就是显示一张图片。比较特殊的是，在本地服务站点里，我可以点击图片调整大小。此时会弹出一个窗口，让我选择比例。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b25 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b26 -->
+
 <p><img alt="" src="../../asset/image/46f05c202369a3182a6170171ddfaef0/20261018103700.png" /></p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b26 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b27 -->
+
 <h3 id="_8">持续维护方式</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b27 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b28 -->
+
 <p>如果不涉及图片大小调整，那么没有任何脚本维护，直接显示图片即可。下面讨论涉及图片大小调整的情况。这个功能要分两种讨论。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b28 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b29 -->
+
 <p><strong>第一种</strong>是 Markdown 文件中引用图片。此时有一个自定义标记 <code>#wXX</code>，表示宽度为正文的 <code>XX%</code>：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b29 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b30 -->
+
 <div class="language-markdown highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>![<span class="nt">图片描述</span>](<span class="na">test.png#w50</span>)
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b30 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b31 -->
+
 <p>如果没有这个标记，图片就按默认方式显示，宽度不超过正文。因此缩放之后，按这个格式改原文里的这个标记即可。核心是网页上调整之后，怎样把修改写回原文。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b31 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b32 -->
+
 <p>思路是直接在原文里搜索图片路径，并记下是第几次出现，因为一篇文章可能多次引用同一张图片。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b32 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b33 -->
+
 <p><strong>第二种</strong>是原始文件就是图片。这种文件能在网页上显示，是因为先转成了 Markdown，再用 mkdocs 转成 HTML：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b33 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b34 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span># 图片标题
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos="3 "></span>![图片标题](test.png)
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b34 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b35 -->
+
 <p>改显示比例的方式和上面一样，但重点是缩放值记在哪里。第一种不用另记，因为比例已经写进原始 Markdown。第二种写进的是转换后的 Markdown，所以要另维护一份 <code>image_display.json</code>，记录每张图片的缩放值。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b35 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b36 -->
+
 <div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nt">&quot;系统性知识/computer-network/02.datalink_layer/02.以太网/04_以太网csmacd-说明.png&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nt">&quot;hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dd7912f36b4651d5cdd1ca2787d75f91515542096364dce6d9d216e2326cc572&quot;</span><span class="p">,</span>
@@ -900,7 +1046,15 @@
 </span><span id="__span-4-6"><span class="linenos" data-linenos="6 "></span><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-4-7"><span class="linenos" data-linenos="7 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b36 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b37 -->
+
 <p><strong>为什么要这样？</strong> 有如下情况：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b37 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b38 -->
+
 <ol>
 <li>
 <p>假设图片被修改了，但是路径没动。此时发现 <code>hash</code> 不一致，就更新 <code>hash</code> 和 <code>mtime_ns</code>，<code>width_percent</code> 保留。</p>
@@ -915,12 +1069,40 @@
 <p>最后还要遍历登记表，看看路径是否还存在。不存在就删掉这条记录。</p>
 </li>
 </ol>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b38 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b39 -->
+
 <p>其实说实话，上面的维护方式太复杂了。最简单的方式就是存储路径和缩放比例的映射。如果改名或者路径修改了，无所谓，因为缩放比例并不是特别关键的信息。但毕竟都已经实现了，就按照这样的方式维护吧。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b39 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b40 -->
+
 <h2 id="html">HTML</h2>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b40 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b41 -->
+
 <h2 id="videos">Videos</h2>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b41 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b42 -->
+
 <p>当前方案为 <strong>ArtPlayer 5.4.0 + 浏览器原生 video 解码 + 独立 SRT + 按需生成的 VTT</strong>。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b42 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b43 -->
+
 <h3 id="_9">字幕</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b43 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b44 -->
+
 <p>以下为示例结构。<code>&lt;任务ID&gt;</code> 和 <code>&lt;内容Hash&gt;</code> 表示计算所得的目录或文件名，后面会详细解释：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b44 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b45 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos=" 1 "></span>D:\Blog\
 </span><span id="__span-5-2"><span class="linenos" data-linenos=" 2 "></span>├─ done\
 </span><span id="__span-5-3"><span class="linenos" data-linenos=" 3 "></span>│  └─ 课程\
@@ -944,39 +1126,127 @@
 </span><span id="__span-5-21"><span class="linenos" data-linenos="21 "></span>   └─ video-subtitles\
 </span><span id="__span-5-22"><span class="linenos" data-linenos="22 "></span>      └─ &lt;内容Hash&gt;.vtt
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b45 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b46 -->
+
 <h4 id="srt">srt</h4>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b46 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b47 -->
+
 <p>字幕生成用的是<strong>独立的项目</strong>，其实很简单，就是提取音频，然后云端处理，用的是阿里千问。但更关键的是下面几个设计：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b47 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b48 -->
+
 <p>字幕生成时机：博客采用手动点击生成，而不是自动生成。也就是在对应视频的网页上，有一个选择生成字幕的按钮。想法是没必要给所有视频自动生成，真正需要某个视频时再生成即可。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b48 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b49 -->
+
 <p>字幕位置：字幕放在 <code>subtitles</code> 子目录下，这样更清晰。但 PotPlayer 等本地播放器一般加载的是同目录字幕，所以可以在播放器设置里把字幕搜索路径加上 <code>subtitles</code> 目录，这样应该也能自动加载。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b49 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b50 -->
+
 <p>一个持久化风险：视频改名后，如果 srt 没有一起改名，就找不到了。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b50 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b51 -->
+
 <h4 id="vtt">vtt</h4>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b51 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b52 -->
+
 <p>VTT 是网页播放器需要的字幕格式。从 srt 转到 vtt 的具体规则就不说了，让 AI 几秒的事情。重点在于怎样维护 VTT。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b52 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b53 -->
+
 <p>答案是<strong>不维护</strong>。VTT 直接用 SRT <strong>内容</strong> 的 HASH 来命名：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b53 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b54 -->
+
 <div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="c1"># 视频 → 按命名找到 SRT → 读取 SRT 字节 → SHA-256 → 对应缓存 VTT</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span><span class="n">data</span> <span class="o">=</span> <span class="n">choices</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span><span class="n">revision</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 </span><span id="__span-6-4"><span class="linenos" data-linenos="4 "></span><span class="n">cache</span> <span class="o">=</span> <span class="n">blog_root</span> <span class="o">/</span> <span class="s1">&#39;.cache&#39;</span> <span class="o">/</span> <span class="s1">&#39;video-subtitles&#39;</span> <span class="o">/</span> <span class="p">(</span><span class="n">revision</span> <span class="o">+</span> <span class="s1">&#39;.vtt&#39;</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b54 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b55 -->
+
 <p>因为按内容命名，srt 一改，vtt 也会更新。路径放在 <code>.cache/video-subtitles/</code> 目录下，这样方便管理。而且可以直接删，真正宝贵的是 <code>srt</code>（其实也不宝贵）。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b55 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b56 -->
+
 <h4 id="jobs">jobs</h4>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b56 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b57 -->
+
 <p>这个任务 ID 是本地算出来的，放在 <code>.local/video-subtitle-jobs/</code> 目录下，便于以后万一用到。云端返回的信息记在该目录的 <code>task.json</code> 里。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b57 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b58 -->
+
 <p>计算规则如下。这些 jobs 留着只是为了万一以后用到，所以没有专门再弄一个文件来维护这个 ID。实在需要的话，按下面的规则重新生成即可：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b58 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b59 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>视频绝对路径 + 文件大小 + 纳秒修改时间
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>                 ↓
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>        JSON 序列化后计算 SHA-256
 </span><span id="__span-7-4"><span class="linenos" data-linenos="4 "></span>                 ↓
 </span><span id="__span-7-5"><span class="linenos" data-linenos="5 "></span>        取前 24 位作为任务目录名
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b59 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b60 -->
+
 <p>你要硬说万一改名了怎么办，那我也没辙，反正这玩意大不了重新生成。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b60 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b61 -->
+
 <h4 id="_10">持续维护方式</h4>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b61 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b62 -->
+
 <p>正如上面所说，<strong>不维护</strong>，直接用 SRT <strong>内容</strong> 的 HASH 来命名。原因有两点：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b62 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b63 -->
+
 <ol>
 <li>字幕不是什么宝贵的东西，大不了重新生成。</li>
 <li>字幕不是什么大文件，可以快速地读完内容再计算 HASH。</li>
 </ol>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b63 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b64 -->
+
 <p>这里体现了软件设计的魅力，没有必要吹毛求疵。不同重要程度的资源，维护方式也不一样。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b64 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b65 -->
+
 <h3 id="_11">速度控制</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b65 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b66 -->
+
 <p>其实用的都是 ArtPlayer 支持的特性。比如把倍速步长改成 0.1（默认是 1.0、1.25、1.5），设置如下：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b66 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b67 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">html</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;播放速度&quot;</span><span class="p">,</span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">tooltip</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1.0×&quot;</span><span class="p">,</span>
@@ -987,17 +1257,48 @@
 </span><span id="__span-8-8"><span class="linenos" data-linenos="8 "></span><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-8-9"><span class="linenos" data-linenos="9 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b67 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b68 -->
+
 <p><code>range</code> 四个值依次是当前值、最小值、最大值和步长。可以选择 1.1、1.2、1.3 等速度，范围目前固定为 0.5～3.0。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b68 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b69 -->
+
 <p>还有一个比较好的设计：长按方向键就会 3 倍加速。按下后加上一个定时器，松开后再按按住的时间处理。整个过程都在前端，不需要请求后端。改播放速度就是修改 <code>playbackRate</code>。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b69 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b70 -->
+
 <h3 id="_12">浏览器硬件加速</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b70 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b71 -->
+
 <p>刚开始遇到 Edge 视频卡顿，最后发现要打开硬解。当时也 Debug 了一会儿，特此记录：</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b71 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b72 -->
+
 <ol>
 <li>打开 <code>edge://flags/#use-angle</code>，将 <strong>Choose ANGLE graphics backend</strong> 改为 <strong>Default</strong></li>
 <li>点击重启，重新播放同一视频</li>
 <li>复查 <code>edge://gpu</code> 的 <code>GL_RENDERER</code> 是否恢复真实显卡，以及 <code>edge://media-internals</code> 是否使用 <code>D3D11VideoDecoder</code> 等硬解路径；同时比较卡顿是否消失</li>
 </ol>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b72 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b73 -->
+
 <h3 id="_13">笔记</h3>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b73 -->
+
+<!-- blog-edit-start:d6b3a46b01ee0a24:b74 -->
+
 <p>直接看 <a href=".././13.给视频添加笔记展示/">视频时间点笔记功能实现总结</a>。</p>
+<!-- blog-edit-end:d6b3a46b01ee0a24:b74 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\About\12.多媒体资源处理规则.md" data-text-edit-revision="a79035acacf03b25a3bcf7f488d332766d13a72de0fcbc6475e386ef4781e617" data-text-edit-marker="d6b3a46b01ee0a24" data-text-edit-schema="1"></div>
 
 
 
@@ -1229,8 +1530,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

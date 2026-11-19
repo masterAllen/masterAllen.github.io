@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -698,10 +698,20 @@
   
 
 
+<!-- blog-edit-start:0fe413d279a2b818:b0 -->
+
 <h1 id="mha-mqa-gqa">MHA 和 MQA 和 GQA</h1>
+<!-- blog-edit-end:0fe413d279a2b818:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0fe413d279a2b818cf65e719568abd78af4437cf43fdb2885bbfaed171e21833" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5CMHA%E5%92%8CMQA%E5%92%8CGQA.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\MHA和MQA和GQA.md">复制路径</span></div>
 
+<!-- blog-edit-start:0fe413d279a2b818:b1 -->
+
 <h2 id="_1">前提知识</h2>
+<!-- blog-edit-end:0fe413d279a2b818:b1 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b2 -->
+
 <ol>
 <li><span class="blog-resource">
   
@@ -709,13 +719,37 @@
   
 </span></li>
 </ol>
+<!-- blog-edit-end:0fe413d279a2b818:b2 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b3 -->
+
 <h2 id="standard-attention">Standard Attention</h2>
+<!-- blog-edit-end:0fe413d279a2b818:b3 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b4 -->
+
 <p>传统的 Attention 如下，就是 QKV 的矩阵乘法，其中 <span class="arithmatex">\(Q = W_Q X\)</span>，其他类似。</p>
+<!-- blog-edit-end:0fe413d279a2b818:b4 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b5 -->
+
 <div class="arithmatex">\[
 Attention(Q, k, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V
 \]</div>
+<!-- blog-edit-end:0fe413d279a2b818:b5 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b6 -->
+
 <h2 id="mha">MHA</h2>
+<!-- blog-edit-end:0fe413d279a2b818:b6 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b7 -->
+
 <p>本质上是把原来的 Attention 计算拆分成多个小份的 Attention 计算，然后并行计算，最后再合回原来的维度。</p>
+<!-- blog-edit-end:0fe413d279a2b818:b7 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b8 -->
+
 <div class="arithmatex">\[
 \begin{aligned}
 head_i = Attention(Q_i, K_i, V_i) \\
@@ -723,14 +757,50 @@ H = concat(head_1, head_2, ..., head_h) \\
 MHA(Q, K, V) = H W^O
 \end{aligned}
 \]</div>
+<!-- blog-edit-end:0fe413d279a2b818:b8 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b9 -->
+
 <p>之所以这样，是希望能够理解输入不同部分之间的关系。因此切分成不同的头，每个头独立学习不同关系，比如第一个头学习的是主语和宾语之间的关系，第二个头学习的是谓语和宾语之间的关系，以此类推。</p>
+<!-- blog-edit-end:0fe413d279a2b818:b9 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b10 -->
+
 <h2 id="mqa">MQA</h2>
+<!-- blog-edit-end:0fe413d279a2b818:b10 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b11 -->
+
 <p>MQA 是为了节省显存用的，其本质就是计算各个 <span class="arithmatex">\(head_i\)</span> 的时候，共享同样的一份 K 和 V 矩阵，只让 Q 保留了原始多头的性质。</p>
+<!-- blog-edit-end:0fe413d279a2b818:b11 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b12 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260517181339.png" /></p>
+<!-- blog-edit-end:0fe413d279a2b818:b12 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b13 -->
+
 <p>原来是 <span class="arithmatex">\(K = W^K X\)</span>，然后拆分成 <span class="arithmatex">\(K_1, K_2, ...\)</span>；现在这里的 <span class="arithmatex">\(W_K\)</span> 维度变小了，相当于最后算出的 <span class="arithmatex">\(K\)</span> 就和原来的 <span class="arithmatex">\(K_1\)</span> 一样大小，<span class="arithmatex">\(V\)</span> 也是同理。</p>
+<!-- blog-edit-end:0fe413d279a2b818:b13 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b14 -->
+
 <p>关键点就是 <span class="arithmatex">\(W_K\)</span> 的维度变小，显存占用也变小了。</p>
+<!-- blog-edit-end:0fe413d279a2b818:b14 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b15 -->
+
 <h2 id="gqa">GQA</h2>
+<!-- blog-edit-end:0fe413d279a2b818:b15 -->
+
+<!-- blog-edit-start:0fe413d279a2b818:b16 -->
+
 <p>GQA 其实就是 MQA 的扩展，MQA 太粗暴了，直接共享一套。那 GQA 就是共享 n 套呗，没啥可说的。</p>
+<!-- blog-edit-end:0fe413d279a2b818:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\MHA和MQA和GQA.md" data-text-edit-revision="0fe413d279a2b818cf65e719568abd78af4437cf43fdb2885bbfaed171e21833" data-text-edit-marker="0fe413d279a2b818" data-text-edit-schema="1"></div>
+
                         
 
                         
@@ -962,8 +1032,6 @@ MHA(Q, K, V) = H W^O
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

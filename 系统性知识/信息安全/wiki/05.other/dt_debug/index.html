@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -625,11 +625,25 @@
   
 
 
+<!-- blog-edit-start:b154dd173842aa95:b0 -->
+
 <h1 id="dt_debug">通过DT_DEBUG来获得各个库的基址</h1>
+<!-- blog-edit-end:b154dd173842aa95:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b154dd173842aa95fe956d97c122382e3a64a78cee5b9a48803014c4bcaec9df" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other%5Cdt_debug.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C05.other" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\05.other\dt_debug.md">复制路径</span></div>
 
+<!-- blog-edit-start:b154dd173842aa95:b1 -->
+
 <p>原文链接: <a href="https://rk700.github.io/2015/04/09/dt_debug-read/">https://rk700.github.io/2015/04/09/dt_debug-read/</a></p>
+<!-- blog-edit-end:b154dd173842aa95:b1 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b2 -->
+
 <p>最近，在学习BCTF和0CTF的writeup时，注意到了一种通过<code>DT_DEBUG</code>来获得库的基址的方式：BCTF里的pattern用这一方法来获得ld-linux.so的地址，0CTF里的sandbox用这一方法来获得sandbox.so的基址。之前面对ASLR，我只知道可以通过GOT来获取libc.so的地址，而其他库的地址还不清楚应该怎样取得。于是，我稍微研究了下，在此记录。</p>
+<!-- blog-edit-end:b154dd173842aa95:b2 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b3 -->
+
 <p>首先，通过<code>readelf -d</code>，可以得到<code>.dynamic</code>的信息。而有些二进制文件里的<code>.dynamic</code>里包含<code>DT_DEBUG</code>：<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>Dynamic section at offset 0x7c8 contains 20 entries:
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>  Tag        Type                         Name/Value
@@ -637,7 +651,15 @@
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>  0x0000000000000015 (DEBUG)              0x0
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>  ...
 </span></code></pre></div></p>
+<!-- blog-edit-end:b154dd173842aa95:b3 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b4 -->
+
 <p>这里<code>DT_DEBUG</code>的值是0。在实际运行时，<code>DT_DEBUG</code>的值是指向<code>struct r_debug</code>的指针。其定义如下：</p>
+<!-- blog-edit-end:b154dd173842aa95:b4 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b5 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/* Rendezvous structure used by the run-time dynamic linker to communicate details of shared object loading to the debugger. If the executable&#39;s dynamic section has a DT_DEBUG element, the run-time linker sets that element&#39;s value to the address where this structure can be found. */</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-1-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">r_debug</span>
@@ -659,7 +681,15 @@
 </span><span id="__span-1-19"><span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="n">ElfW</span><span class="p">(</span><span class="n">Addr</span><span class="p">)</span><span class="w"> </span><span class="n">r_ldbase</span><span class="p">;</span><span class="w">        </span><span class="cm">/* Base address the linker is loaded at. */</span>
 </span><span id="__span-1-20"><span class="linenos" data-linenos="20 "></span><span class="w">  </span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b5 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b6 -->
+
 <p>可以看到，其第二个元素是指向<code>struct link_map</code>的指针。其定义如下：</p>
+<!-- blog-edit-end:b154dd173842aa95:b6 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b7 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">/* Structure describing a loaded shared object. The `l_next&#39; and `l_prev&#39; members form a chain of all the shared objects loaded at startup. These data structures exist in space used by the run-time dynamic linker; modifying them may have disastrous results. */</span>
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-2-3"><span class="linenos" data-linenos=" 3 "></span><span class="k">struct</span><span class="w"> </span><span class="nc">link_map</span>
@@ -672,8 +702,20 @@
 </span><span id="__span-2-10"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">link_map</span><span class="w"> </span><span class="o">*</span><span class="n">l_next</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">l_prev</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Chain of loaded objects. */</span>
 </span><span id="__span-2-11"><span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="p">};</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b7 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b8 -->
+
 <p>于是，遍历link_map，对比<code>l_name</code>，找到目标之后，就可以通过<code>l_addr</code>获得那个库的基址。</p>
+<!-- blog-edit-end:b154dd173842aa95:b8 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b9 -->
+
 <p>实例如下，比如说我们要找ld-linux.so的基址。首先，检查<code>.dynamic</code>的内容：</p>
+<!-- blog-edit-end:b154dd173842aa95:b9 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b10 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span>gdb-peda$<span class="w"> </span>x/20gx<span class="w"> </span>0x6007c8
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span>0x6007c8:<span class="w">       </span>0x0000000000000001<span class="w">      </span>0x0000000000000010
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>0x6007d8:<span class="w">       </span>0x000000000000000c<span class="w">      </span>0x0000000000400400
@@ -686,13 +728,29 @@
 </span><span id="__span-3-10"><span class="linenos" data-linenos="10 "></span>0x600848:<span class="w">       </span>0x0000000000000015<span class="w">      </span>0x00007f38cd4bd140
 </span><span id="__span-3-11"><span class="linenos" data-linenos="11 "></span>0x600858:<span class="w">       </span>0x0000000000000003<span class="w">      </span>0x0000000000600960
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b10 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b11 -->
+
 <p><code>DT_DEBUG</code>是0x15，所以<code>0x600848</code>那里就是<code>DT_DEBUG</code>的条目，其值是<code>0x00007f38cd4bd140</code>，即<code>struct r_debug</code>的地址。</p>
+<!-- blog-edit-end:b154dd173842aa95:b11 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b12 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>gdb-peda$<span class="w"> </span>x/6x<span class="w"> </span>0x00007f38cd4bd140
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>0x7f38cd4bd140<span class="w"> </span>&lt;_r_debug&gt;:<span class="w">      </span>0x0000000000000001<span class="w">      </span>0x00007f38cd4bd168
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>0x7f38cd4bd150<span class="w"> </span>&lt;_r_debug+16&gt;:<span class="w">   </span>0x00007f38cd2aba90<span class="w">      </span>0x0000000000000000
 </span><span id="__span-4-4"><span class="linenos" data-linenos="4 "></span>0x7f38cd4bd160<span class="w"> </span>&lt;_r_debug+32&gt;:<span class="w">   </span>0x00007f38cd29c000<span class="w">      </span>0x0000000000000000
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b12 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b13 -->
+
 <p>对照定义，我们知道第二个元素，<code>0x00007f38cd4bd168</code>是link_map链表的第一个元素的地址。</p>
+<!-- blog-edit-end:b154dd173842aa95:b13 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b14 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>gdb-peda$<span class="w"> </span>x/6x<span class="w"> </span>0x00007f38cd4bd168
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>0x7f38cd4bd168:<span class="w"> </span>0x0000000000000000<span class="w">      </span>0x00007f38cd2b69fb
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>0x7f38cd4bd178:<span class="w"> </span>0x00000000006007c8<span class="w">      </span>0x00007f38cd4bd700
@@ -700,7 +758,15 @@
 </span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span>gdb-peda$<span class="w"> </span>x/s<span class="w"> </span>0x00007f38cd2b69fb
 </span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span>0x7f38cd2b69fb:<span class="w"> </span><span class="s2">&quot;&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b14 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b15 -->
+
 <p>而这里第二个元素<code>l_name</code>是空，不是我们要找的库。于是通过第四个元素<code>l_next</code>，即<code>0x00007f38cd4bd700</code>，来看下一个</p>
+<!-- blog-edit-end:b154dd173842aa95:b15 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b16 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>gdb-peda$<span class="w"> </span>x/6x<span class="w"> </span>0x00007f38cd4bd700
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>0x7f38cd4bd700:<span class="w"> </span>0x00007fff09fe9000<span class="w">      </span>0x00007f38cd2b69fb
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>0x7f38cd4bd710:<span class="w"> </span>0x00007fff09fe9318<span class="w">      </span>0x00007f38cd4ba658
@@ -708,7 +774,15 @@
 </span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span>gdb-peda$<span class="w"> </span>x/s<span class="w"> </span>0x00007f38cd2b69fb
 </span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span>0x7f38cd2b69fb:<span class="w"> </span><span class="s2">&quot;&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b16 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b17 -->
+
 <p>同理，这里也不是。继续看下一个<code>0x00007f38cd4ba658</code></p>
+<!-- blog-edit-end:b154dd173842aa95:b17 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b18 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>gdb-peda$<span class="w"> </span>x/6x<span class="w"> </span>0x00007f38cd4ba658
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span>0x7f38cd4ba658:<span class="w"> </span>0x00007f38ccede000<span class="w">      </span>0x00007f38cd4ba640
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>0x7f38cd4ba668:<span class="w"> </span>0x00007f38cd294b40<span class="w">      </span>0x00007f38cd4bc998
@@ -716,7 +790,15 @@
 </span><span id="__span-7-5"><span class="linenos" data-linenos="5 "></span>gdb-peda$<span class="w"> </span>x/s<span class="w"> </span>0x00007f38cd4ba640
 </span><span id="__span-7-6"><span class="linenos" data-linenos="6 "></span>0x7f38cd4ba640:<span class="w"> </span><span class="s2">&quot;/lib64/libc.so.6&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b18 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b19 -->
+
 <p>这里是libc.so，那么我们继续看下一个<code>0x00007f38cd4bc998</code></p>
+<!-- blog-edit-end:b154dd173842aa95:b19 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b20 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>gdb-peda$<span class="w"> </span>x/6x<span class="w"> </span>0x00007f38cd4bc998
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>0x7f38cd4bc998<span class="w"> </span>&lt;_rtld_local+2456&gt;:<span class="w">      </span>0x00007f38cd29c000<span class="w">      </span>0x0000000000400200
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span>0x7f38cd4bc9a8<span class="w"> </span>&lt;_rtld_local+2472&gt;:<span class="w">      </span>0x00007f38cd4bbe10<span class="w">      </span>0x0000000000000000
@@ -724,7 +806,15 @@
 </span><span id="__span-8-5"><span class="linenos" data-linenos="5 "></span>gdb-peda$<span class="w"> </span>x/s<span class="w"> </span>0x0000000000400200
 </span><span id="__span-8-6"><span class="linenos" data-linenos="6 "></span>0x400200:<span class="w">       </span><span class="s2">&quot;/lib64/ld-linux-x86-64.so.2&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b20 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b21 -->
+
 <p>OK，这里就是ld-linux.so了。<code>l_addr</code>的值是<code>0x00007f38cd29c000</code>，我这里开了ASLR，而ld-linux.so的基址就正好是<code>0x00007f38cd29c000</code></p>
+<!-- blog-edit-end:b154dd173842aa95:b21 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b22 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span>gdb-peda$<span class="w"> </span>vmmap
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span>Start<span class="w">              </span>End<span class="w">                </span>Perm<span class="w">      </span>Name
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span>0x00400000<span class="w">         </span>0x00401000<span class="w">         </span>r-xp<span class="w">      </span>/root/heap.out
@@ -745,8 +835,19 @@
 </span><span id="__span-9-18"><span class="linenos" data-linenos="18 "></span>0x00007fff09fe9000<span class="w"> </span>0x00007fff09feb000<span class="w"> </span>r-xp<span class="w">      </span><span class="o">[</span>vdso<span class="o">]</span>
 </span><span id="__span-9-19"><span class="linenos" data-linenos="19 "></span>0xffffffffff600000<span class="w"> </span>0xffffffffff601000<span class="w"> </span>r-xp<span class="w">      </span><span class="o">[</span>vsyscall<span class="o">]</span>
 </span></code></pre></div>
+<!-- blog-edit-end:b154dd173842aa95:b22 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b23 -->
+
 <p>由此，我们得到了ld-linux.so的地址。同样的道理，我们通过遍历link_map，就可以得到所有库的地址。当然，前提是二进制文件需要有<code>DT_DEBUG</code>。</p>
+<!-- blog-edit-end:b154dd173842aa95:b23 -->
+
+<!-- blog-edit-start:b154dd173842aa95:b24 -->
+
 <p><strong>Edit</strong>: 最近研究才意识到，不一定需要从<code>DT_DEBUG</code>去获得<code>link_map</code>的地址。事实上，<code>.got.plt</code>的前3项，分别是<code>.dynamic</code>的地址，<code>link_map</code>的地址和<code>_dl_runtime_resolve</code>的地址。在解析函数地址时，<code>link_map</code>会被作为参数推到栈上传递给<code>_dl_runtime_resolve</code>。关于这一过程及利用方式，详情可见http://rk700.github.io/article/2015/08/09/return-to-dl-resolve</p>
+<!-- blog-edit-end:b154dd173842aa95:b24 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\05.other\dt_debug.md" data-text-edit-revision="b154dd173842aa95fe956d97c122382e3a64a78cee5b9a48803014c4bcaec9df" data-text-edit-marker="b154dd173842aa95" data-text-edit-schema="1"></div>
 
 
 
@@ -978,8 +1079,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

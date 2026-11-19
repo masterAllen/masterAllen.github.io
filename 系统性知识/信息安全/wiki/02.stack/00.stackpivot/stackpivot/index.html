@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -728,39 +728,153 @@
   
 
 
+<!-- blog-edit-start:693f6cbb22162cdc:b0 -->
+
 <h1 id="_1">栈迁移</h1>
+<!-- blog-edit-end:693f6cbb22162cdc:b0 -->
+
 <div class="file-actions" data-image-edit-revision="034847fedc67b7c345b970fa71b79d32a052e3954f93e13ff820055fce0cf72e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C00.stackpivot%5Cstackpivot.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cwiki%5C02.stack%5C00.stackpivot" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\00.stackpivot\stackpivot.md">复制路径</span></div>
 
+<!-- blog-edit-start:693f6cbb22162cdc:b1 -->
+
 <p>主要参考这个文章，图片也是这个文章里面的：<a href="https://cloud.tencent.com/developer/article/2384874">https://cloud.tencent.com/developer/article/2384874</a></p>
+<!-- blog-edit-end:693f6cbb22162cdc:b1 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b2 -->
+
 <h2 id="_2">目标</h2>
+<!-- blog-edit-end:693f6cbb22162cdc:b2 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b3 -->
+
 <p>栈迁移就是把控制栈的指针（<code>esp</code>和<code>ebp</code>）控制到某个内存区域上，比如 <code>bss</code> 段某处，这样由于我们能控制这片内存，所以迁移之后我们能控制栈的内容了。</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b3 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b4 -->
+
 <p>栈迁移通常是一些攻击手段的第一步，比如 <code>ret2dlresolve</code>，先控制栈，然后在栈上伪造内容后，触发某个函数去读取。</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b4 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b5 -->
+
 <h2 id="_3">具体细节</h2>
+<!-- blog-edit-end:693f6cbb22162cdc:b5 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b6 -->
+
 <p>主要是用 <code>leave; ret</code> 这段组合，其中 <code>leave</code> 就是 <code>mov esp, ebp; pop ebp</code>，具体步骤如下：</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b6 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b7 -->
+
 <h3 id="_4">步骤一，栈溢出构造内容</h3>
+<!-- blog-edit-end:693f6cbb22162cdc:b7 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b8 -->
+
 <p>现在有一个程序，存在栈溢出漏洞，我们把内容覆盖成了下面这个样子，当然此时 bss 段或者 data 段还没有内容，待会通过 read 函数输入</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b8 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b9 -->
+
 <p><img alt="" src="../../../../../../asset/image/dc807206df0cd881b529fe0b14cc18ed/20260102082535.png" /></p>
+<!-- blog-edit-end:693f6cbb22162cdc:b9 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b10 -->
+
 <h3 id="_5">步骤二，正常函数结束</h3>
+<!-- blog-edit-end:693f6cbb22162cdc:b10 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b11 -->
+
 <p>正常的函数结束，由于函数结束通常是如下的代码段（<code>leave</code> 被展开成前两个），即恢复现场。下面我们来看一下依次的逻辑。</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b11 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b12 -->
+
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="nf">mov</span><span class="w"> </span><span class="no">esp</span><span class="p">,</span><span class="no">ebp</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span><span class="nf">pop</span><span class="w"> </span><span class="no">ebp</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span><span class="nf">ret</span>
 </span></code></pre></div>
+<!-- blog-edit-end:693f6cbb22162cdc:b12 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b13 -->
+
 <p><strong>2.1</strong>，首先是 <code>leave</code>，即前两个指令执行完以后变成了这个样子：</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b13 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b14 -->
+
 <p><img alt="" src="../../../../../../asset/image/dc807206df0cd881b529fe0b14cc18ed/20260102082932.png" /></p>
+<!-- blog-edit-end:693f6cbb22162cdc:b14 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b15 -->
+
 <p><strong>2.2</strong>，然后是 <code>ret</code> 了，我们可以通过 read 函数来把内容输入到 fake ebp1 的地址处</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b15 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b16 -->
+
 <p><img alt="" src="../../../../../../asset/image/dc807206df0cd881b529fe0b14cc18ed/20260102083220.png" /></p>
+<!-- blog-edit-end:693f6cbb22162cdc:b16 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b17 -->
+
 <h3 id="read">步骤三，执行 read 函数</h3>
+<!-- blog-edit-end:693f6cbb22162cdc:b17 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b18 -->
+
 <p>跳转到 <code>read</code> 之后，由于栈的结构是 <code>[used for new function] [old ebp] [return addr] [old function parameters]</code>。观察我们的结构，此时 <code>return addr = leave_ret</code>，<code>old paramters = (0, fake_ebp1, 0x100)</code>。</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b18 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b19 -->
+
 <p>所以我们相当于执行 <code>read(0, fake_ebp1, 0x100)</code>，所以我们可以向 <code>fake_ebp1</code> 中写入数据：</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b19 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b20 -->
+
 <p><img alt="" src="../../../../../../asset/image/dc807206df0cd881b529fe0b14cc18ed/20260102083020.png" /></p>
+<!-- blog-edit-end:693f6cbb22162cdc:b20 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b21 -->
+
 <h3 id="read_1">步骤四，read 函数结束</h3>
+<!-- blog-edit-end:693f6cbb22162cdc:b21 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b22 -->
+
 <p>然后 <code>read</code> 结束，依然有 <code>leave; ret</code> 这样的片段，我们继续看栈的变化。</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b22 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b23 -->
+
 <p><strong>3.1</strong>，首先是 <code>move esp; ebp</code>，结果如下：</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b23 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b24 -->
+
 <p><img alt="" src="../../../../../../asset/image/dc807206df0cd881b529fe0b14cc18ed/20260102084259.png" /></p>
+<!-- blog-edit-end:693f6cbb22162cdc:b24 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b25 -->
+
 <p><strong>3.2</strong>，然后是 <code>pop ebp</code>，结果如下：</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b25 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b26 -->
+
 <p><img alt="" src="../../../../../../asset/image/dc807206df0cd881b529fe0b14cc18ed/20260102084324.png" /></p>
+<!-- blog-edit-end:693f6cbb22162cdc:b26 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b27 -->
+
 <p><strong>3.3</strong>，最后是 <code>ret</code>，此时成功跳转到 <code>system</code> 地址了。</p>
+<!-- blog-edit-end:693f6cbb22162cdc:b27 -->
+
+<!-- blog-edit-start:693f6cbb22162cdc:b28 -->
+
 <ol>
 <li>
 <p>要注意这里举例用的是 <code>system</code>，但栈迁移的关键点是，此时我们可以随心所欲控制栈的内容了。比如我们可以不断地调用 <code>read</code> 继续往右边的伪造栈中写入数据。举例来说，可以伪造堆里面 fast bin 的结构，然后 <code>free(fake_ebp+offset)</code> 即可。</p>
@@ -769,6 +883,9 @@
 <p>步骤二中，我们执行了 <code>read(0, fake_ebp1, 0x100)</code>，这不是已经可以往 fake 栈中写内容了吗？为什么还要多次一举呢（即返回地址是 <code>leave_ret</code>）？因为左边的栈溢出是程序上的漏洞，我们可能溢出的不会很多，比如我们只能进行一次的 <code>read</code>，局限很大；而转到右边的栈，我们想怎么构造就怎么构造，可以做多个函数的执行链。</p>
 </li>
 </ol>
+<!-- blog-edit-end:693f6cbb22162cdc:b28 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\wiki\02.stack\00.stackpivot\stackpivot.md" data-text-edit-revision="034847fedc67b7c345b970fa71b79d32a052e3954f93e13ff820055fce0cf72e" data-text-edit-marker="693f6cbb22162cdc" data-text-edit-schema="1"></div>
 
 
 
@@ -1000,8 +1117,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

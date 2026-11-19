@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../../" aria-busy="true">
   <a href="../../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../../"
          data-navigation-hidden="false">
       
@@ -643,8 +643,14 @@
   
 
 
+<!-- blog-edit-start:9b49da8fdde3b00b:b0 -->
+
 <h1 id="pwnable-tw-bookwriter">pwnable tw bookwriter</h1>
+<!-- blog-edit-end:9b49da8fdde3b00b:b0 -->
+
 <div class="file-actions" data-image-edit-revision="9b49da8fdde3b00bb89cfbba68848e0d598c46c48720688a12f3d652d29cec30" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C21_bookwriter%5Cbookwriter.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_tw%5Cnote%5C21_bookwriter" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\21_bookwriter\bookwriter.md">复制路径</span></div>
+
+<!-- blog-edit-start:9b49da8fdde3b00b:b1 -->
 
 <ol>
 <li>
@@ -686,15 +692,38 @@
 ---- 原因就是_IO_list_all→_chain，如果上面步骤一切正常，就是指向small_bin[4]</p>
 </li>
 </ol>
+<!-- blog-edit-end:9b49da8fdde3b00b:b3 -->
+
+<!-- blog-edit-start:9b49da8fdde3b00b:b4 -->
+
 <p>---- 这个地方又是一个很神奇的点。在我们修改Unsorted bin 唯一一块的bk 为 _IO_list_all-0x10 时，同时修改他的size = 0x61<br />
 ---- (TODO，这里要调试一遍，为什么这一块就会被放在small_bin[4]上面呢??)</p>
+<!-- blog-edit-end:9b49da8fdde3b00b:b4 -->
+
+<!-- blog-edit-start:9b49da8fdde3b00b:b5 -->
+
 <p>---- 修改small_bin[4] 内容，这地方就是相当于伪造一个vtable，这个之后具体看吧</p>
+<!-- blog-edit-end:9b49da8fdde3b00b:b5 -->
+
+<!-- blog-edit-start:9b49da8fdde3b00b:b6 -->
+
 <p>_解释一下FSOP，原理就是修改一些东西之后，触发 _IO_flush_all_lockp，这个函数会对系统所有IO 进行fflush</p>
+<!-- blog-edit-end:9b49da8fdde3b00b:b6 -->
+
+<!-- blog-edit-start:9b49da8fdde3b00b:b7 -->
+
 <p>对于本题<br />
 对所有IO 进行fflush，怎么找呢，首先就通过_IO_list_all 找到系统中的IO 链表。<br />
 然后chain 字段是每个IO 结构体都有的，可以理解为每个IO 结构体在链表中的下一个IO 结构体<br />
 所以会根据_IO_list_all→chain，然后开始fflush，然后再通过_IO_list_all→chain→chain，再开始fflush...</p>
+<!-- blog-edit-end:9b49da8fdde3b00b:b7 -->
+
+<!-- blog-edit-start:9b49da8fdde3b00b:b8 -->
+
 <p>本题还有新的解法： <a href="https://0xffff.one/d/469">https://0xffff.one/d/469</a></p>
+<!-- blog-edit-end:9b49da8fdde3b00b:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_tw\note\21_bookwriter\bookwriter.md" data-text-edit-revision="9b49da8fdde3b00bb89cfbba68848e0d598c46c48720688a12f3d652d29cec30" data-text-edit-marker="9b49da8fdde3b00b" data-text-edit-schema="1"></div>
 
 
 
@@ -926,8 +955,6 @@
         <script src="../../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

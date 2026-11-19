@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -716,31 +716,117 @@
   
 
 
+<!-- blog-edit-start:c7827b15a20d93e6:b0 -->
+
 <h1 id="cp">并行优化二：CP</h1>
+<!-- blog-edit-end:c7827b15a20d93e6:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c7827b15a20d93e6125e5da4afe84a1c7aca0b9209a2aa8abda9263bc4e4ccd5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM%5C%E5%B9%B6%E8%A1%8C%E4%BC%98%E5%8C%96%E4%BA%8C.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5CDeep-Learning%5C%E8%A7%86%E9%A2%91%E6%95%B4%E7%90%86%5C11.LLM" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\并行优化二.md">复制路径</span></div>
+
+<!-- blog-edit-start:c7827b15a20d93e6:b1 -->
 
 <blockquote>
 <p>参考文章：<a href="https://zhuanlan.zhihu.com/p/698447429">https://zhuanlan.zhihu.com/p/698447429</a></p>
 </blockquote>
+<!-- blog-edit-end:c7827b15a20d93e6:b1 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b2 -->
+
 <p><strong>CP</strong>（Context Parallelism）：其实就是 <strong>SP</strong> 序列并行的细节实现。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b2 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b3 -->
+
 <h2 id="sp-">SP - 序列并行</h2>
+<!-- blog-edit-end:c7827b15a20d93e6:b3 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b4 -->
+
 <p>先把 SP 的说明拿到这里来：</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b4 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b5 -->
+
 <p>单条序列太长，导致中间激活值太大，单张 GPU 放不下。所以可以切分序列，放在不同显卡中。如果大白话理解，就是原来训练的时候用到 <code>hello, world</code>，现在切成 <code>hello</code> 和 <code>world</code> 分别放在不同显卡中。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b5 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b6 -->
+
 <h3 id="_1">为什么切序列不会有问题</h3>
+<!-- blog-edit-end:c7827b15a20d93e6:b6 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b7 -->
+
 <p>第一次看这个感觉很奇怪，序列居然可以切分到不同设备。但其实，对于线性层而言，序列中各个单词是独立的，因为线性层就是每个向量自己乘上一个矩阵而已。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b7 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b8 -->
+
 <p>序列中的单词唯一需要通信的地方是计算 K/V，其实这个时候进行通信即可。此时 K/V 要在 GPU 之间交换，最简单的做法就还是各自广播（<code>AllGather</code> 通信），当然还有一些流水线通信做法，比如分为好几轮，第一轮是 <code>0-&gt;1, 1-&gt;2, 2-&gt;0</code>，第二轮是 <code>0-&gt;2, 1-&gt;0, 2-&gt;1</code>，这样可以流水线并行。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b8 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b9 -->
+
 <p>除了这个，最后要计算 softmax，即 <code>softmax(QK^T)</code>，这个时候上面的流水线就不一定能有作用。不过也有对应的方法，叫 <strong>online softmax</strong>，不是先算完整 <span class="arithmatex">\(QK^T\)</span> 再 softmax，而是一边收到 K/V 块，一边增量更新 softmax。这个就比较细节了，不谈了。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b9 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b10 -->
+
 <p>总之，序列并行中，通信只需要在计算 K/V 的时候进行即可。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b10 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b11 -->
+
 <h2 id="cp-">CP - 细节说明</h2>
+<!-- blog-edit-end:c7827b15a20d93e6:b11 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b12 -->
+
 <p>所以 CP 就是讲的上面所说的：Attention 计算的时候要通信，具体怎么通信。就是在解释上面说的流水线并行是啥意思而已。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b12 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b13 -->
+
 <p><strong>第一步：各自计算</strong>：如下所示，每个 GPU 自己有 Q/K/V，然后能计算出一个输出。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b13 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b14 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260523174824.png" /></p>
+<!-- blog-edit-end:c7827b15a20d93e6:b14 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b15 -->
+
 <p><strong>第二步：通信</strong>：就像上面章节说的，流水线并行，多轮进行两两通信。比如第一轮之间 <code>0-&gt;1, 1-&gt;2, 2-&gt;0</code>，得到之后，去计算新的输出。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b15 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b16 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260523174946.png" /></p>
+<!-- blog-edit-end:c7827b15a20d93e6:b16 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b17 -->
+
 <p><strong>第三步：修正和输出</strong>：几轮交换之后，每个 GPU 都得到了分批次的输出，要进行修正（具体细节看下面），最后得到输出。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b17 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b18 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260523175056.png" /></p>
+<!-- blog-edit-end:c7827b15a20d93e6:b18 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b19 -->
+
 <h3 id="causal-mask">Causal Mask</h3>
+<!-- blog-edit-end:c7827b15a20d93e6:b19 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b20 -->
+
 <p>正常的 Transformer 中要用到因果掩码，即每个 token 只能看到自己及之前的 token。所以这里切分之后，也要保证这样的情况。比如下图，按照三等分为例。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b20 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b21 -->
+
 <ol>
 <li>
 <p>将 Q 和 K 沿 sequence 维度等分成 <code>3×2</code> 份，这样 Q 和 K 都有 6 份，序号 [0, 1, 2, 3, 4, 5]；</p>
@@ -752,14 +838,49 @@
 <p>由于要与计算数据映射，mask 需要切成 <code>3×2 × 3×2</code> 的形状，当不同子块 Q 与不同的子块 K 进行计算后要掩膜操作时，拿取的 mask 块是根据 idx 进行寻找，比如 Q0 与 K1 的 sub mask，需要的子块 mask：01、51、04、54。mask 子块的 idx 是 Q 与 K 的数据 idx 两两组合得到。</p>
 </li>
 </ol>
+<!-- blog-edit-end:c7827b15a20d93e6:b21 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b22 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260523175410.png" /></p>
+<!-- blog-edit-end:c7827b15a20d93e6:b22 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b23 -->
+
 <p>当然这里还有很多的细节，很繁琐，具体看文章开头给的参考链接。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b23 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b24 -->
+
 <h3 id="_2">修正输出</h3>
+<!-- blog-edit-end:c7827b15a20d93e6:b24 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b25 -->
+
 <p>这里是要知道 <strong>Flash Attention</strong> 的原理，核心是需要知道：计算 softmax 时会用到 <code>max</code> 操作，反正知道是要用到某个最大值就行。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b25 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b26 -->
+
 <p>所以如果分块的话，数据交换前几轮用到的 max 很可能是错的，要修正，这里就不谈了，太细节了，用到的时候自行搜索。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b26 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b27 -->
+
 <p><img alt="" src="../../../../../asset/image/6e99f771d847e968180e48aca7c22b31/20260523175724.png" /></p>
+<!-- blog-edit-end:c7827b15a20d93e6:b27 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b28 -->
+
 <h2 id="_3">总结</h2>
+<!-- blog-edit-end:c7827b15a20d93e6:b28 -->
+
+<!-- blog-edit-start:c7827b15a20d93e6:b29 -->
+
 <p>所以 CP 没什么好说的，就是 SP 在 Attention 计算时的细节实现。这里写得很泛，只是了解初步的原理。</p>
+<!-- blog-edit-end:c7827b15a20d93e6:b29 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Deep-Learning\视频整理\11.LLM\并行优化二.md" data-text-edit-revision="c7827b15a20d93e6125e5da4afe84a1c7aca0b9209a2aa8abda9263bc4e4ccd5" data-text-edit-marker="c7827b15a20d93e6" data-text-edit-schema="1"></div>
 
 
 
@@ -991,8 +1112,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

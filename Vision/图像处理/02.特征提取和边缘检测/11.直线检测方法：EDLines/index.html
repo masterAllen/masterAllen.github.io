@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -694,31 +694,113 @@
   
 
 
+<!-- blog-edit-start:9862a38fe46d1887:b0 -->
+
 <h1 id="edlines">边缘检测方法：EDLines</h1>
+<!-- blog-edit-end:9862a38fe46d1887:b0 -->
+
 <div class="file-actions" data-image-edit-revision="c33b1c744106c871a34b38a1b1c3ee010462665eb5e347cb14a06724b0a357e1" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B%5C11.%E7%9B%B4%E7%BA%BF%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95%EF%BC%9AEDLines.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C02.%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E5%92%8C%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\11.直线检测方法：EDLines.md">复制路径</span></div>
 
+<!-- blog-edit-start:9862a38fe46d1887:b1 -->
+
 <p>介绍一种边缘检测方法：EDLines，来自以下文章，它可以在 OpenCV 中使用，具体用法在<a href=".././07.特别的特征：直线特征/">另一篇笔记</a>中。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b1 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b2 -->
+
 <ul>
 <li>Edge drawing: a combined real-time edge and segment detector</li>
 <li>EDLines: A real-time line segment detector with a false detection control</li>
 </ul>
+<!-- blog-edit-end:9862a38fe46d1887:b2 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b3 -->
+
 <p>之所以有两篇，是 EDLines 前面用的就是 Edge drawing，其实都是一个作者写的。 Edge drawing 的详细记录在 <a href=".././10.边缘检测方法：EdgeDrawing/">另一篇笔记</a> 中。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b3 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b4 -->
+
 <h2 id="_1">总体流程</h2>
+<!-- blog-edit-end:9862a38fe46d1887:b4 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b5 -->
+
 <p>流程一：先用 Edge Drawing 得到了一些连接的像素链； 流程二：对每个像素链进行分解，得到各个线段； 流程三：对线段进行验证，不符要求就丢弃。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b5 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b6 -->
+
 <h2 id="edge-drawing">流程一：使用 Edge Drawing 初步检测</h2>
+<!-- blog-edit-end:9862a38fe46d1887:b6 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b7 -->
+
 <p>Edge Drawing 的详细介绍在 <a href=".././10.边缘检测方法：EdgeDrawing/">另一篇笔记</a> 中。下图是 Edge Drawing 各个步骤的临时结果，Edge Drawging 更侧重于边缘检测，他不会考虑直线的问题，以这张图为例，最后 Edge Drawing 会得到四条连接的像素链，即每个矩形对应一个。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b7 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b8 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250111112652.png" /></p>
+<!-- blog-edit-end:9862a38fe46d1887:b8 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b9 -->
+
 <h3 id="_2">参数说明</h3>
+<!-- blog-edit-end:9862a38fe46d1887:b9 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b10 -->
+
 <p>这里和 Edge Drawing 计算方式或默认值有轻微不同。首先梯度的大小计算方式不同，方向计算也不同，ED 用的 Sobel，EDLines 这里简化一些：</p>
+<!-- blog-edit-end:9862a38fe46d1887:b10 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b11 -->
+
 <p><img alt="" src="../../../../asset/image/437163d49a5204a62dd3d7318482de44/20250111120005.png" /></p>
+<!-- blog-edit-end:9862a38fe46d1887:b11 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b12 -->
+
 <p>ED 有一个梯度阈值 <code>gradient_thresh</code>，小于该阈值的点不考虑：ED 使用 36，EDLines 使用 <span class="arithmatex">\(2/\sin(22.5) = 5.22\)</span>，这里差这么多也是因为梯度计算方式有点不同。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b12 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b13 -->
+
 <p>ED 求解锚点（具体看 <a href=".././10.边缘检测方法：EdgeDrawing/">ED 方法</a>），有一个 <code>anchor_thresh</code> 参数，表示某个点梯度值比周围点的梯度大多少才可以。这是一个经验参数，ED 用的 4，EDLines 论文中说实验结果显示 3 最好。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b13 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b14 -->
+
 <p>ED 求解锚点（具体看 <a href=".././10.边缘检测方法：EdgeDrawing/">ED 方法</a>），还有一个 <code>anchor_interval</code> 参数，表示找锚点时遍历行列的步长，即决定了找锚点的扫描细节程度。ED 用的 4，EDLines 用的 1，即遍历所有的点。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b14 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b15 -->
+
 <h2 id="_3">流程二：对像素链进行拆解</h2>
+<!-- blog-edit-end:9862a38fe46d1887:b15 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b16 -->
+
 <p>下面就要开始对像素链拆分了，比如上面的图，一个矩形对应一个像素链，这条像素链会被拆为四条边。其流程如下：</p>
+<!-- blog-edit-end:9862a38fe46d1887:b16 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b17 -->
+
 <p>1. 首先假设遍历到点 <span class="arithmatex">\(p\)</span>，检测以它为起点的一个最小长度的链条，用最小二乘法拟合直线，然后检测链条和直线之间的误差是否符合要求。如果不符合，说明后面再加多少点都没用了，点 <span class="arithmatex">\(p\)</span> 应该被丢了，去看看点 <span class="arithmatex">\(p+1\)</span> 开始行不行。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b17 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b18 -->
+
 <p>2. 如果点 <span class="arithmatex">\(p\)</span> 符合要求，那么就继续增加点，即尝试延升，同样用最小二乘法拟合，直到失败为止。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b18 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b19 -->
+
 <p>经过实验，链条和最小二乘法拟合的直线的误差选择为一个像素。下面是代码展示，来自于<a href="https://www.cnblogs.com/eleanor/p/16167058.html">该博客</a>，感谢作者。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b19 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b20 -->
+
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="n">LineFit</span><span class="p">(</span><span class="n">Pixel</span><span class="w"> </span><span class="o">*</span><span class="n">pixelChain</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">noPixels</span><span class="p">){</span>
 </span><span id="__span-0-2"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">lineFitError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INFINITY</span><span class="p">;</span><span class="w"> </span><span class="c1">// 目前的直线拟合误差</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">LineEquation</span><span class="w"> </span><span class="n">lineEquation</span><span class="p">;</span><span class="w"> </span><span class="c1">// y = ax + b 或者 x = ay + b</span>
@@ -749,22 +831,72 @@
 </span><span id="__span-0-28"><span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="n">LineFit</span><span class="p">(</span><span class="n">pixelChain</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lineLen</span><span class="p">,</span><span class="w"> </span><span class="n">noPixels</span><span class="o">-</span><span class="n">lineLen</span><span class="p">);</span>
 </span><span id="__span-0-29"><span class="linenos" data-linenos="29 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:9862a38fe46d1887:b20 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b21 -->
+
 <h2 id="_4">流程三：判断线段是否可以作为最终直线</h2>
+<!-- blog-edit-end:9862a38fe46d1887:b21 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b22 -->
+
 <p>作者用了一个叫做 <strong>NFA</strong> 的指标。NFA(the Number of False Alarms)，假阳性率，这个指标在另一个方法 <a href=".././09.直线检测方法：LSD/">LSD</a> 中也用到。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b22 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b23 -->
+
 <p>但两个方法有点区别，LSD 的公式是这样的</p>
+<!-- blog-edit-end:9862a38fe46d1887:b23 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b24 -->
+
 <div class="arithmatex">\[
 NFA(r) = (NM)^{5/2} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}
 \]</div>
+<!-- blog-edit-end:9862a38fe46d1887:b24 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b25 -->
+
 <p>但 EDLines 的公式是这样的</p>
+<!-- blog-edit-end:9862a38fe46d1887:b25 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b26 -->
+
 <div class="arithmatex">\[
 NFA(r) = (N)^{4} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}
 \]</div>
+<!-- blog-edit-end:9862a38fe46d1887:b26 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b27 -->
+
 <p>其中 <span class="arithmatex">\(N\)</span> 和 <span class="arithmatex">\(M\)</span> 是<strong>图片</strong>的大小，<span class="arithmatex">\(n\)</span> 是当前矩形的像素数量，<span class="arithmatex">\(p\)</span> 叫做精确度，两个方法的默认值都设为 &#8539;，<span class="arithmatex">\(k\)</span> 是符合条件的像素点数量，而这个条件阈值就是 <span class="arithmatex">\(p\pi\)</span>。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b27 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b28 -->
+
 <p>多说一下精确度 <span class="arithmatex">\(p\)</span>，其最后决定了方向的误差。比如论文中 <span class="arithmatex">\(p = \pi/8\)</span>，说明此时检查像素是否符合条件时，检测该像素的梯度方向和拟合直线的方向差不能超过 <span class="arithmatex">\(\pi/8\)</span>。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b28 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b29 -->
+
 <p>比较两个公式，其实就是前面第一项不同，EDLines 假设了 <span class="arithmatex">\(M = N\)</span>，但指数一个是 5 一个是 4，很奇怪，暂时不细究了。EDLines 论文说这一项代表图像潜在线段的个数，但 LSD 论文中没有提到。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b29 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b30 -->
+
 <p>最终判断 <span class="arithmatex">\(NFA(r) &lt; \epsilon\)</span>，如果满足则认为当前线段是直线，论文中选择 <span class="arithmatex">\(\epsilon = 1\)</span>，LSD 也是如此，所以其实这两个方法判断直线的方式基本一样的。</p>
+<!-- blog-edit-end:9862a38fe46d1887:b30 -->
+
+<!-- blog-edit-start:9862a38fe46d1887:b31 -->
+
 <h2 id="_5">参考</h2>
+<!-- blog-edit-end:9862a38fe46d1887:b31 -->
+<!-- blog-edit-start:9862a38fe46d1887:b32 -->
+
 <p>1. <a href="https://www.cnblogs.com/eleanor/p/16167058.html">https://www.cnblogs.com/eleanor/p/16167058.html</a></p>
+<!-- blog-edit-end:9862a38fe46d1887:b32 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\02.特征提取和边缘检测\11.直线检测方法：EDLines.md" data-text-edit-revision="c33b1c744106c871a34b38a1b1c3ee010462665eb5e347cb14a06724b0a357e1" data-text-edit-marker="9862a38fe46d1887" data-text-edit-schema="1"></div>
 
 
 
@@ -996,8 +1128,6 @@ NFA(r) = (N)^{4} \sum_{i=k}^{n} \binom{n}{i} p^i (1-p)^{n-i}
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -659,8 +659,14 @@
   
 
 
+<!-- blog-edit-start:d161a97d722bf4e1:b0 -->
+
 <h1 id="bow">数据学习的提升：BoW 词袋模型</h1>
+<!-- blog-edit-end:d161a97d722bf4e1:b0 -->
+
 <div class="file-actions" data-image-edit-revision="b40b623736856356002a4a9c6cb9a88f163ff93ef9e7110ae63bb5206078680b" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%5C02.%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%8F%90%E5%8D%87%EF%BC%9ABoW+%E8%AF%8D%E8%A2%8B%E6%A8%A1%E5%9E%8B.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C03.%E7%9B%AE%E6%A0%87%E5%88%86%E7%B1%BB%E8%AF%86%E5%88%AB%E5%92%8C%E6%A3%80%E7%B4%A2%5C%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\02.数据学习的提升：BoW 词袋模型.md">复制路径</span></div>
+
+<!-- blog-edit-start:d161a97d722bf4e1:b1 -->
 
 <blockquote>
 <p>来自本人笔记: <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.4.md">https://github.com/masterAllen/LearnOpenCV/blob/main/docs/3.4.md</a></p>
@@ -668,14 +674,50 @@
 <ul>
 <li><a href="https://machinelearningmastery.com/opencv_object_detection">https://machinelearningmastery.com/opencv_object_detection</a></li>
 </ul>
+<!-- blog-edit-end:d161a97d722bf4e1:b1 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b2 -->
+
 <p>词袋模型（Bag of Words, BoW），在深度学习时代前是很不错很主流的做法。思想从 NLP 那边借鉴而来，NLP 概念 引入到 CV 中，那就是将<mark class="term-highlight">一副图像</mark>作为<mark class="term-highlight">文本</mark>，图像中的不同特征可以看成不同词汇。这样就可以使用图像特征在图像中出现的频率，使用一个一维的向量来描述图像。</p>
+<!-- blog-edit-end:d161a97d722bf4e1:b2 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b3 -->
+
 <p>那么如人的眼睛、自行车座是怎么提取出的？特征点呗，通常用 SIFT 特征点。<strong>仔细想想这不就是<mark class="term-highlight">特征点+SVM</mark>的方法吗，求图片特征点，然后训练。</strong></p>
+<!-- blog-edit-end:d161a97d722bf4e1:b3 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b4 -->
+
 <p>而 BoW 优化在哪里呢？<strong>其实就是加了聚类和直方图统计</strong>：如果只用特征点，那么一副图片由很多的特征点，更不用说多张图片了，这样导致比较一副图片的特征点特征时效率会很慢、存储空间大。而加了聚类步骤，把特征点分类，分成合适数量的类；而且还不是把他们拼接起来，而是采用直方图统计的方式。这样处理新的图片时，提取特征点，找到各个特征点对应的类，计算出各个类出现的次数，这样特征点组成的向量就会少很多。</p>
+<!-- blog-edit-end:d161a97d722bf4e1:b4 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b5 -->
+
 <p>因此，BOW 词袋模型本质上在传统 SVM 基础上增加了聚类+直方图的步骤。速度和吞吐肯定更好，准确度不知。</p>
+<!-- blog-edit-end:d161a97d722bf4e1:b5 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b6 -->
+
 <p>词袋模型的步骤：提取特征点（通常是SIFT）；特征点聚类，分成几个类；对于一张图片，统计各个类出现的频率，如图所示：</p>
+<!-- blog-edit-end:d161a97d722bf4e1:b6 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b7 -->
+
 <p><img alt="1721742837866" src="../../../../../asset/image/29c1dfdfebd56906c9a50d51f2ec7203/1721742837866.png" /></p>
+<!-- blog-edit-end:d161a97d722bf4e1:b7 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b8 -->
+
 <h3 id="_1">代码实现</h3>
+<!-- blog-edit-end:d161a97d722bf4e1:b8 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b9 -->
+
 <p>下面讲解 用了 BoW 的代码实现，通常而言都用 SIFT 特征，参考了这篇<a href="https://www.cnblogs.com/wangguchangqing/p/9435269.html">文章</a>和这个 <a href="https://github.com/gurkandemir/Bag-of-Visual-Words">Github仓库</a>，整体代码在 <a href="https://github.com/masterAllen/LearnOpenCV/blob/main/code/test_bow.ipynb">test_bow_sift.ipynb</a> 中。</p>
+<!-- blog-edit-end:d161a97d722bf4e1:b9 -->
+
+<!-- blog-edit-start:d161a97d722bf4e1:b10 -->
+
 <ol>
 <li>处理训练集，获取所有特征</li>
 </ol>
@@ -742,6 +784,9 @@
 </span><span id="__span-3-15"><span class="linenos" data-linenos="15 "></span><span class="n">predict_labels</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_features</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 </span><span id="__span-3-16"><span class="linenos" data-linenos="16 "></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test Wrong rate:&#39;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">predict_labels</span> <span class="o">!=</span> <span class="n">test_labels</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">test_features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d161a97d722bf4e1:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\03.目标分类识别和检索\基于数据学习\02.数据学习的提升：BoW 词袋模型.md" data-text-edit-revision="b40b623736856356002a4a9c6cb9a88f163ff93ef9e7110ae63bb5206078680b" data-text-edit-marker="d161a97d722bf4e1" data-text-edit-schema="1"></div>
 
 
 
@@ -973,8 +1018,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

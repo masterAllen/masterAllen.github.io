@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -623,13 +623,35 @@
   
 
 
+<!-- blog-edit-start:b1d06e486916a93e:b0 -->
+
 <h1 id="python-">Python 打包心得-内部使用</h1>
+<!-- blog-edit-end:b1d06e486916a93e:b0 -->
+
 <div class="file-actions" data-image-edit-revision="55fa387cd8cf24662cf747c3d443c43dfc406a7146c38f29c30e7e8bd2057db3" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E6%89%93%E5%8C%85%5CPython%E6%89%93%E5%8C%85%E5%BF%83%E5%BE%97-%E7%95%AA%E5%A4%96.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CPython%5Cpython%E6%89%93%E5%8C%85" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\Python\python打包\Python打包心得-番外.md">复制路径</span></div>
 
+<!-- blog-edit-start:b1d06e486916a93e:b1 -->
+
 <p>其实如果是内部使用，就直接用源代码就好。其实哪怕不是内部使用，如果不用 Nuitka 打包，那最后和源码基本没什么两样，反编译一下就能得到个大概了。</p>
+<!-- blog-edit-end:b1d06e486916a93e:b1 -->
+
+<!-- blog-edit-start:b1d06e486916a93e:b2 -->
+
 <p>不要有技术洁癖，最终效果才是我们的目标，使用源代码最后迁移起来相当方便。</p>
+<!-- blog-edit-end:b1d06e486916a93e:b2 -->
+
+<!-- blog-edit-start:b1d06e486916a93e:b3 -->
+
 <h2 id="_1">具体做法</h2>
+<!-- blog-edit-end:b1d06e486916a93e:b3 -->
+
+<!-- blog-edit-start:b1d06e486916a93e:b4 -->
+
 <p>去官网下载嵌入式 Python 的安装包，解压后得到一个 <code>python</code> 文件夹，这个文件夹就是我们要用的 Python 环境。</p>
+<!-- blog-edit-end:b1d06e486916a93e:b4 -->
+
+<!-- blog-edit-start:b1d06e486916a93e:b5 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>project/
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span> ├─ python/
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span> │   ├─ python.exe
@@ -639,10 +661,25 @@
 </span><span id="__span-0-7"><span class="linenos" data-linenos="7 "></span> ├─ src/
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span> └─ run.bat
 </span></code></pre></div>
+<!-- blog-edit-end:b1d06e486916a93e:b5 -->
+
+<!-- blog-edit-start:b1d06e486916a93e:b6 -->
+
 <p><code>run.bat</code> 内容如下：</p>
+<!-- blog-edit-end:b1d06e486916a93e:b6 -->
+
+<!-- blog-edit-start:b1d06e486916a93e:b7 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>python<span class="se">\p</span>ython.exe<span class="w"> </span>main.py
 </span></code></pre></div>
+<!-- blog-edit-end:b1d06e486916a93e:b7 -->
+
+<!-- blog-edit-start:b1d06e486916a93e:b8 -->
+
 <p>最后直接复制文件夹就能快速迁移了。</p>
+<!-- blog-edit-end:b1d06e486916a93e:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\Python\python打包\Python打包心得-番外.md" data-text-edit-revision="55fa387cd8cf24662cf747c3d443c43dfc406a7146c38f29c30e7e8bd2057db3" data-text-edit-marker="b1d06e486916a93e" data-text-edit-schema="1"></div>
 
 
 
@@ -874,8 +911,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

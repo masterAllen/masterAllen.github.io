@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-5-75800d376e0b.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-5-bbec942204d1.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-5-75800d376e0b.html"
+         data-shared-navigation-target="../../../navigation/shared/group-5-bbec942204d1.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,19 +581,48 @@
   
 
 
+<!-- blog-edit-start:9d95ec0991fc8f80:b0 -->
+
 <h1 id="ffmpeg">FFmpeg 如何快速精准切割文件</h1>
+<!-- blog-edit-end:9d95ec0991fc8f80:b0 -->
+
 <div class="file-actions" data-image-edit-revision="2e90514a4f1ff2a2d4eaf2d335da26215f0b0fa2db9c9fea9602352624264ecb" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CFFmpeg%5Cffmpeg%E7%B2%BE%E5%87%86%E5%88%87%E5%89%B2%E6%96%87%E4%BB%B6.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CCheatSheet%5CFFmpeg" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\CheatSheet\FFmpeg\ffmpeg精准切割文件.md">复制路径</span></div>
 
+<!-- blog-edit-start:9d95ec0991fc8f80:b1 -->
+
 <p>参考：<a href="https://www.v2ex.com/t/818943">https://www.v2ex.com/t/818943</a></p>
+<!-- blog-edit-end:9d95ec0991fc8f80:b1 -->
+
+<!-- blog-edit-start:9d95ec0991fc8f80:b2 -->
+
 <p>常见的 ffmpeg 切割命令如下：<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>a.mp4<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:00:05<span class="w"> </span>-to<span class="w"> </span><span class="m">00</span>:00:07<span class="w"> </span>-c<span class="w"> </span>copy<span class="w"> </span>-o<span class="w"> </span>out.mp4
 </span></code></pre></div></p>
+<!-- blog-edit-end:9d95ec0991fc8f80:b2 -->
+
+<!-- blog-edit-start:9d95ec0991fc8f80:b3 -->
+
 <p>但其实这不是精准切割，FFmpeg 会自动寻找首尾附近的关键帧，并从关键帧的位置去切割，导致视频最终的时间可能是00:00:04 ~ 00:00:06这种</p>
+<!-- blog-edit-end:9d95ec0991fc8f80:b3 -->
+
+<!-- blog-edit-start:9d95ec0991fc8f80:b4 -->
+
 <p>如果要精准切割，那就意味着必须重编码。这是躲不掉的：<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>ffmpeg<span class="w"> </span>-i<span class="w"> </span>a.mp4<span class="w"> </span>-ss<span class="w"> </span><span class="m">00</span>:00:05<span class="w"> </span>-to<span class="w"> </span><span class="m">00</span>:00:07<span class="w"> </span>-o<span class="w"> </span>out.mp4
 </span></code></pre></div></p>
+<!-- blog-edit-end:9d95ec0991fc8f80:b4 -->
+
+<!-- blog-edit-start:9d95ec0991fc8f80:b5 -->
+
 <p>但是如果几个 G 的视频文件只需要一小段内容，重编码大大浪费时间。<strong>但请记住，如果精准切割，重编码就是躲不掉！没有什么其他技巧。</strong></p>
+<!-- blog-edit-end:9d95ec0991fc8f80:b5 -->
+
+<!-- blog-edit-start:9d95ec0991fc8f80:b6 -->
+
 <p>在上方的参考链接中，有人给了一个好方法：<strong>先粗切割，然后再精准切割。</strong></p>
+<!-- blog-edit-end:9d95ec0991fc8f80:b6 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\CheatSheet\FFmpeg\ffmpeg精准切割文件.md" data-text-edit-revision="2e90514a4f1ff2a2d4eaf2d335da26215f0b0fa2db9c9fea9602352624264ecb" data-text-edit-marker="9d95ec0991fc8f80" data-text-edit-schema="1"></div>
 
 
 
@@ -825,8 +854,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

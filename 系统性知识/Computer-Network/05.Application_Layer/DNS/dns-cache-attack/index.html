@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -690,14 +690,31 @@
 
 <hr />
 <h2 id="title-dns-dns-dns-cache-attacking">title: DNS 学习二：DNS 缓存攻击(DNS Cache Attacking)</h2>
+<!-- blog-edit-start:51060ea6b6b75bb1:b0 -->
+
 <p>本学期有一门课程我所在的小组所做的是 DNS 综述，在找文献的过程中，意外看到了一篇很不错的博客文章，特此记录一下。<br />
 正如名字所属，利用了 DNS 缓存进行的攻击。主要参考了 <a href="http://unixwiz.net/techtips/iguide-kaminsky-dns-vuln.html">http://unixwiz.net/techtips/iguide-kaminsky-dns-vuln.html</a></p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b0 -->
+
 <!--more-->
 
+<!-- blog-edit-start:51060ea6b6b75bb1:b1 -->
+
 <h2 id="dns">什么是 DNS 缓存</h2>
+<!-- blog-edit-end:51060ea6b6b75bb1:b1 -->
+<!-- blog-edit-start:51060ea6b6b75bb1:b2 -->
+
 <p>首先要知道什么是 DNS 缓存，很简单明了，比如第一次访问百度，DNS 服务器查询到它的 IP 地址，会记录，等到下次就会一下子就知道这个地址了。<br />
 但是这只是抽象说一说，现在一个问题: DNS 服务器难道一直存储这个地址吗？空间不够，地址也可能更改。所以 DNS 缓存每条记录都是有对应的存储时间的。来看下面这样一张图。</p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b2 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b3 -->
+
 <p><img alt="dns-cache" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20210418001.gif" /></p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b3 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b4 -->
+
 <p>这是一个回应包，就是 DNS 服务器进行递归查询时，某个域名服务器发回给我们本地 DNS 服务器的报文。重点关注最后几项内容，现在我们以这个域名服务器(也就是这个报文的发送方)的角度来看问题。</p>
 <ol>
 <li>第一个是 Qu，这个意思是这个为你之前问我的问题，我这次顺带把这个问题再复述一遍，以免我答非所问了。</li>
@@ -705,8 +722,19 @@
 <li>第四个第五个是 Ad，这两项意思是我刚才说你去问问这两个地址，所以这两个地址分别是 xxx。然后因为这两个地址是我告诉你的，所以我来决定这两个地址可以在你这里缓存多久，这也就是后面的 1hr 的意思，在你那里缓存 1 小时。<br />
 所以 DNS 缓存的时间不是自己决定的，是别人来发我的时候告诉我的。</li>
 </ol>
+<!-- blog-edit-end:51060ea6b6b75bb1:b4 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b5 -->
+
 <h2 id="dns_1">污染 DNS 缓存的要求</h2>
+<!-- blog-edit-end:51060ea6b6b75bb1:b5 -->
+<!-- blog-edit-start:51060ea6b6b75bb1:b6 -->
+
 <p>什么是 DNS 缓存污染呢，就是如果 DNS 服务器事先没有存储网站 A 的 IP，它会请求上层服务器对吧。此时<strong>攻击者伪造上层的服务器</strong>发一个假的消息给 DNS 服务器，告诉它网站 A 的 IP 是 xxx (某个恶意地址)。这个 DNS 服务器将这个恶意地址和网站 A 对应关系缓存起来，以后如果有人像这个 DNS 服务器请求网站 A，通过 DNS 缓存就受害了。</p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b6 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b7 -->
+
 <p>DNS 服务器发送一个包给上层 DNS 服务器，那么上层 DNS 服务器返回的包肯定某些地方要保持一致，让它确保这个消息来自上层 DNS 服务器，具体是哪些地方要求一样呢？</p>
 <ol>
 <li>UDP port 需要一样，DNS 服务器通过 X 端口发给上层服务器的 53 端口(53 端口是 DNS 接收请求的固定端口)，那么上层服务器就要从 53 端口返回给 DNS 服务器 X 端口</li>
@@ -727,7 +755,14 @@
 <li>Question: 这个知道问了什么问题就可以人工构造的，没什么难点。</li>
 <li>Query ID: 有一些 DNS 服务器的 Query id 是递增增加的，每进行一个来回的发收环节后就进行加一，所以我们只要窃听上一次的 Query id，然后加一就行了。</li>
 </ol>
+<!-- blog-edit-end:51060ea6b6b75bb1:b9 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b10 -->
+
 <h2 id="dns_2">DNS 缓存污染版本一</h2>
+<!-- blog-edit-end:51060ea6b6b75bb1:b10 -->
+<!-- blog-edit-start:51060ea6b6b75bb1:b11 -->
+
 <ol>
 <li>首先攻击者发送一个询问请求，请求的网址是一个合法的地址</li>
 <li>该步有两个事件。2b 是正常的，就是 DNS 服务器向根服务器发送请求。2a 是攻击者采取的行动，攻击者发送大量的伪造包，伪造宣称子域名服务器的 IP 地址。其中 Query id 从之前方法观测到的 query_id 不断递增，只要距离上一次窃听很近，那么就很有可能碰撞到正确的。</li>
@@ -736,14 +771,40 @@
 <li>2<sup>nd</sup> 域名服务器返回消息。但是<strong>如果第二步攻击者伪造的包比这个消息更早到，那么 DNS 服务器就会认为伪造的信息了而丢掉现在 2<sup>nd</sup> 域名服务器回复的消息</strong>。</li>
 <li>所以，DNS 服务器就会认为: 请求的网站 == 伪造包所宣称的 IP 地址。</li>
 </ol>
+<!-- blog-edit-end:51060ea6b6b75bb1:b11 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b12 -->
+
 <p><img alt="dns-cache-attack-01" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20210418002.gif" /></p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b12 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b13 -->
+
 <h2 id="dns_3">DNS 缓存污染版本二</h2>
+<!-- blog-edit-end:51060ea6b6b75bb1:b13 -->
+<!-- blog-edit-start:51060ea6b6b75bb1:b14 -->
+
 <p>之前的版本很不错，但是每次只能污染一个具体的网址，Dan Kaminsky 想到了一个方法，可以污染一整个子域名。</p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b14 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b15 -->
+
 <p><strong>2021/05/18 更新: 不久前 Dan Kaminsky 去世了，祝安息</strong></p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b15 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b16 -->
+
 <p>方法特别简单，就是之前伪造的包是宣称某个具体网址是个恶意地址，现在就改成宣称: <strong>不知道具体地址，但是可以去 xxx 地址(某个恶意地址)中去查。</strong><br />
 可以看到图中访问 xxx.bankOfsteve.com，最终要去问 ns1.bankOfsteve.com，但它被污染为恶意地址。以后只要查询 xxx.bankOfsteve.com，那么就会去问 ns1.bankOfsteve.com，那么就访问了恶意地址。<br />
 另外细节之处就是，询问网址的时候使用 <a href="http://www.12345678.bankOfsteve.com">www.12345678.bankOfsteve.com</a> 这种明显不可能存在的网址，这样一定会从根服务器中去找，免得我们查的网址之前就存在缓冲了。</p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b16 -->
+
+<!-- blog-edit-start:51060ea6b6b75bb1:b17 -->
+
 <p><img alt="dns-cache-attack-04" src="../../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20210418004.gif" /></p>
+<!-- blog-edit-end:51060ea6b6b75bb1:b17 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\05.Application_Layer\DNS\dns-cache-attack.md" data-text-edit-revision="51060ea6b6b75bb1dda7f5df4c29dca286bae426bc5afae72770f1cfec259145" data-text-edit-marker="51060ea6b6b75bb1" data-text-edit-schema="1"></div>
 
 
 
@@ -975,8 +1036,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

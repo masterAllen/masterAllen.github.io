@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -649,30 +649,96 @@
   
 
 
+<!-- blog-edit-start:45bf1f2f006c4b1d:b0 -->
+
 <h1 id="linux-qt">Linux 编译免安装 Qt 程序</h1>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b0 -->
+
 <div class="file-actions" data-image-edit-revision="72cc59ad94d3cadd00f8b5900a717bb05374db1f2091f489eb46f224dcacea2a" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5CLinux%E7%BC%96%E8%AF%91%E5%85%8D%E5%AE%89%E8%A3%85qt%E7%A8%8B%E5%BA%8F.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\Linux编译免安装qt程序.md">复制路径</span></div>
 
+<!-- blog-edit-start:45bf1f2f006c4b1d:b1 -->
+
 <h2 id="_1">需求说明</h2>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b1 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b2 -->
+
 <p>需要给客户编译一个 Linux 程序，主要有以下的特点：</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b2 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b3 -->
+
 <ol>
 <li>因为工业上的客户一般不是太懂技术，所以需要一个免安装的程序，不需要额外安装 Qt 环境。</li>
 <li>本身程序又依赖一些其他的库，所以需要把这些依赖库也打包进去。</li>
 </ol>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b3 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b4 -->
+
 <p>本来以为很快，给自己预定时间是两个小时，结果周五晚上开始，周六一天都在做，周日简单想了一会，到了周一又搞了一下，才终于搞完。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b4 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b5 -->
+
 <p>期间问豆包实在把我问郁闷了，然后又是 Deepseek，结果还是一直原地打转，一点进展也没有。后来周日想了一会，才算梳理了思路，用了 Deepseek 专业版，总算好了。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b5 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b6 -->
+
 <h2 id="glibc_238-not-found">第一个问题：GLIBC_2.38 NOT FOUND</h2>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b6 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b7 -->
+
 <p>遇到的第一个问题，如上所述。原因是编译的机器比较新，所以相当于编译出来的程序是依赖于比较新的 glibc 的。而用的机器比较老，所以导致找不到高版本 glibc 的符号。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b7 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b8 -->
+
 <p>所以就是用旧的电脑去编译就行了，我之前是担心会不会这种旧是无止境的，比如即使我用了 Ubuntu 20.04，万一客户用的电脑是 Ubuntu 18.04，那怎么办？但是想想还是算了，就先这样吧，<strong>不要钻牛角尖，不要奢求完美</strong>。AI 也说了，Ubuntu 20.04 就够了，没有必要考虑的太远。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b8 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b9 -->
+
 <h2 id="lib">第二个问题：寻找依赖的 lib</h2>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b9 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b10 -->
+
 <p>依赖的 lib 主要是 Qt 的 lib，以及一些其他的 lib。一开始豆包给我的脚本，就只是把 Qt 的一些 lib 拷贝进去，结果很明显，到新的机器上运行的时候会报错。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b10 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b11 -->
+
 <p>于是就是想着用 ldd 命令来寻找依赖的 lib，但是发现这种方法很难完美：</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b11 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b12 -->
+
 <ol>
 <li><strong>有些库是不应该打包进去的（比如 libc.so）</strong>，但我又不知道哪些库是这样的，所以全部打包。然后就出问题了，因为新的机器上运行就应该依赖它自己系统的 libc，否则会有问题。</li>
 <li>有些第三方库没有办法通过 ldd 命令找到，可以用循环的方式，但这就麻烦了。</li>
 </ol>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b12 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b13 -->
+
 <h2 id="linuxqtdeploy">使用 linuxqtdeploy 打包</h2>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b13 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b14 -->
+
 <p>周六就一直折腾这个，而且当时用的 Deepseek 又很傻，它最后验证是否成功拷贝 lib 的时候，总是认为没成功，实际上我看目录里面是有这些 lib 的，折腾这个都折腾好久，后来我就干脆不让他最后验证有没有拷贝成功了。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b14 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b15 -->
+
 <p>后来发现 linuxqtdeploy 这个工具，可以很方便的打包 Qt 程序，更重要的是可以很方便的打包依赖的 lib，他会搜索依赖的 lib 并打包进去。最后得到的目录结构是：</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b15 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b16 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>MyAPP/
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>    bin/
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>        MyAPP
@@ -683,15 +749,39 @@
 </span><span id="__span-0-8"><span class="linenos" data-linenos="8 "></span>    translations/
 </span><span id="__span-0-9"><span class="linenos" data-linenos="9 "></span>    APPRun
 </span></code></pre></div>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b16 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b17 -->
+
 <p>其中 <code>share</code> 目录一般是 docs 一些资源数据，我是直接删除；<code>plugins</code> 目录是 Qt 用到的东西，必须要有；<code>translations</code> 目录是 Qt 中如语言切换用的文件，我不需要所以直接删除。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b17 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b18 -->
+
 <p>而 <code>APPRun</code> 是用来运行程序的脚本，但是我不需要，我是希望越直观越好，我更希望直接把 <code>MyAPP</code> 提出来，这样更直观。此时用 <code>ldd</code> 命令查看 <code>MyAPP</code>，可以看到他里面的依赖的 lib 都已经换成了当前目录的 lib 了，比如：</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b18 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b19 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>ldd MyAPP
 </span><span id="__span-1-2"><span class="linenos" data-linenos="2 "></span>libQt5Core.so.5 =&gt; /home/allen/MyAPP/bin/../lib/libQt5Core.so.5 (0x00007f0a01b00000)
 </span></code></pre></div>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b19 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b20 -->
+
 <p>如果直接提出来会有问题，所以其实正确做法更简单了：<strong>把编译出来的二进制文件 <code>MyAPP</code> 直接放在当前目录就可以了</strong>。然后写一个运行脚本：</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b20 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b21 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>./lib
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>./MyAPP
 </span></code></pre></div>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b21 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b22 -->
+
 <p>现在的目录结构如下，以后只要替换 <code>MyAPP</code> 文件，就可以运行了。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>MyAPP/
 </span><span id="__span-3-2"><span class="linenos" data-linenos="2 "></span>    lib/
@@ -699,20 +789,52 @@
 </span><span id="__span-3-4"><span class="linenos" data-linenos="4 "></span>    MyAPP
 </span><span id="__span-3-5"><span class="linenos" data-linenos="5 "></span>    run.sh
 </span></code></pre></div></p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b22 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b23 -->
+
 <h2 id="qt">第三个问题：qt 依赖</h2>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b23 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b24 -->
+
 <p>但拿到下一个机器的时候，会报 Qt 的错误：</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b24 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b25 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span>qt.qpa.plugin: Could not find the Qt platform plugin &quot;xcb&quot; in &quot;&quot;
 </span><span id="__span-4-3"><span class="linenos" data-linenos="3 "></span>This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
 </span></code></pre></div>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b25 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b26 -->
+
 <p>这个 AI 就回答的很好了：你遇到的错误原因是：<strong>Qt 找不到平台插件</strong>，即使你把插件目录放在了正确的位置，Qt 默认也不会自动去那里找。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b26 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b27 -->
+
 <p>方法是新建一个 <code>qt.conf</code> 文件，内容如下，总之就是告诉 Qt 插件和库都在哪个位置。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b27 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b28 -->
+
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="k">[Paths]</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span><span class="na">Prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">.</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span><span class="na">Plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">plugins</span>
 </span><span id="__span-5-4"><span class="linenos" data-linenos="4 "></span><span class="na">Libraries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">lib</span>
 </span></code></pre></div>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b28 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b29 -->
+
 <p>最后的目录结构，以后只需要每次编译完，替换 <code>MyAPP</code> 文件，就可以运行了。</p>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b29 -->
+
+<!-- blog-edit-start:45bf1f2f006c4b1d:b30 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span>MyAPP/
 </span><span id="__span-6-2"><span class="linenos" data-linenos="2 "></span>    lib/
 </span><span id="__span-6-3"><span class="linenos" data-linenos="3 "></span>    plugins/
@@ -720,6 +842,9 @@
 </span><span id="__span-6-5"><span class="linenos" data-linenos="5 "></span>    qt.conf
 </span><span id="__span-6-6"><span class="linenos" data-linenos="6 "></span>    run.sh
 </span></code></pre></div>
+<!-- blog-edit-end:45bf1f2f006c4b1d:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\Linux编译免安装qt程序.md" data-text-edit-revision="72cc59ad94d3cadd00f8b5900a717bb05374db1f2091f489eb46f224dcacea2a" data-text-edit-marker="45bf1f2f006c4b1d" data-text-edit-schema="1"></div>
 
 
 
@@ -951,8 +1076,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

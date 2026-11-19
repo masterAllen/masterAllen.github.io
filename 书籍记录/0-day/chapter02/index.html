@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-3-6d1ecbca4997.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-3-526753eb258e.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-3-6d1ecbca4997.html"
+         data-shared-navigation-target="../../../navigation/shared/group-3-526753eb258e.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,25 +581,58 @@
   
 
 
+<!-- blog-edit-start:a4f9146036e48da7:b0 -->
+
 <h1 id="_1">第二章: 栈溢出</h1>
+<!-- blog-edit-end:a4f9146036e48da7:b0 -->
+
 <div class="file-actions" data-image-edit-revision="a4f9146036e48da7c84be33bf8b856d144b85009865511ef0192588d96067700" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C0-day%5Cchapter02.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E4%B9%A6%E7%B1%8D%E8%AE%B0%E5%BD%95%5C0-day" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\书籍记录\0-day\chapter02.md">复制路径</span></div>
 
+<!-- blog-edit-start:a4f9146036e48da7:b1 -->
+
 <p>这一章，主要是在返回地址上面插入代码，这个时候的返回地址是静态的</p>
+<!-- blog-edit-end:a4f9146036e48da7:b1 -->
+
+<!-- blog-edit-start:a4f9146036e48da7:b2 -->
+
 <p>1. 定位 (shellcode) 的位置 → <code>jmp esp</code></p>
+<!-- blog-edit-end:a4f9146036e48da7:b2 -->
+
+<!-- blog-edit-start:a4f9146036e48da7:b3 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 怎么做：查找当前某个 dll 的 (jmp esp)，返回地址改成跳转到那边的地址
 <span class="linenos" data-linenos="2 "></span>- 为什么：返回地址弹出之后，(esp) 正好指向返回地址下面第一个，所以 (jmp esp) 之后，就开始指向返回地址下面的代码
 </code></pre></div>
+<!-- blog-edit-end:a4f9146036e48da7:b3 -->
+
+<!-- blog-edit-start:a4f9146036e48da7:b4 -->
+
 <p>2. 两种方式---返回地址上面插入，返回地址下面插入</p>
+<!-- blog-edit-end:a4f9146036e48da7:b4 -->
+
+<!-- blog-edit-start:a4f9146036e48da7:b5 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 如果在返回地址下面插入，好办，那就直接在进行插入 (shellcode) 就行
 <span class="linenos" data-linenos="2 "></span>- 如果在上面，需要在返回地址下面第一个在插入(jmp xxx)指令
 </code></pre></div>
+<!-- blog-edit-end:a4f9146036e48da7:b5 -->
+
+<!-- blog-edit-start:a4f9146036e48da7:b6 -->
+
 <p>3. 注意点</p>
+<!-- blog-edit-end:a4f9146036e48da7:b6 -->
+
+<!-- blog-edit-start:a4f9146036e48da7:b7 -->
+
 <div class="language-text highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 抬高栈顶: 防止 shellcode 中的 push 指令破坏 shellcode
 <span class="linenos" data-linenos="2 "></span>- 提高成功率
 <span class="linenos" data-linenos="3 "></span>
 <span class="linenos" data-linenos="4 "></span>    - ret 不用非得指向 shellcode，可以更高
 <span class="linenos" data-linenos="5 "></span>    - ret 不用非得就一个，可以在 ret 附近都设置为 ret
 </code></pre></div>
+<!-- blog-edit-end:a4f9146036e48da7:b7 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\书籍记录\0-day\chapter02.md" data-text-edit-revision="a4f9146036e48da7c84be33bf8b856d144b85009865511ef0192588d96067700" data-text-edit-marker="a4f9146036e48da7" data-text-edit-schema="1"></div>
 
 
 
@@ -831,8 +864,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

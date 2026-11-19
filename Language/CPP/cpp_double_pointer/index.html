@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-6-a6bb64cb6a25.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-6-2f40b4423a28.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-6-a6bb64cb6a25.html"
+         data-shared-navigation-target="../../../navigation/shared/group-6-2f40b4423a28.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -581,13 +581,26 @@
   
 
 
+<!-- blog-edit-start:d1eb9e92bd0518bf:b0 -->
+
 <h1 id="cpp">CPP 中一个关于双重指针的语句</h1>
+<!-- blog-edit-end:d1eb9e92bd0518bf:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0fe131f7f7712d16a0655a1ad4d3690648ebbae3de79d5ec606e6e4ed2a6ff9e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP%5Ccpp_double_pointer.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CLanguage%5CCPP" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Language\CPP\cpp_double_pointer.md">复制路径</span></div>
+
+<!-- blog-edit-start:d1eb9e92bd0518bf:b1 -->
 
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mh">0x10u</span><span class="p">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:d1eb9e92bd0518bf:b1 -->
+
+<!-- blog-edit-start:d1eb9e92bd0518bf:b2 -->
+
 <p>不用管这些花里胡哨的，现在就这样想，反正 <code>malloc(0x10u)</code> 就是一个地址，假设是 A，那么test = A<br />
 只不过如果把 A 这个地址变成 <code>char **</code>，因此 A[0], A[1] 也就是 <code>char*</code>，因此接下来就可以这样做: A[0] = malloc(0x04), A[1] = malloc(0x04). </p>
+<!-- blog-edit-end:d1eb9e92bd0518bf:b2 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Language\CPP\cpp_double_pointer.md" data-text-edit-revision="0fe131f7f7712d16a0655a1ad4d3690648ebbae3de79d5ec606e6e4ed2a6ff9e" data-text-edit-marker="d1eb9e92bd0518bf" data-text-edit-schema="1"></div>
 
 
 
@@ -819,8 +832,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -677,56 +677,186 @@
   
 
 
+<!-- blog-edit-start:69426b3e9c130ea4:b0 -->
+
 <h1 id="linux-asix">Linux 下安装 ASIX 网卡驱动</h1>
+<!-- blog-edit-end:69426b3e9c130ea4:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0d4ddb8e9e23f6dc6198941ec369f933188786debdbd735c103a81a1970a3c39" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Cinstall_network_driver.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\install_network_driver.md">复制路径</span></div>
 
+<!-- blog-edit-start:69426b3e9c130ea4:b1 -->
+
 <h2 id="_1">安装驱动</h2>
+<!-- blog-edit-end:69426b3e9c130ea4:b1 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b2 -->
+
 <p>先在 USB 网卡厂商网站下载对应的网卡驱动。以绿联 USB 网卡为例，下载地址为：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b2 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b3 -->
+
 <ul>
 <li><a href="https://www.lulian.cn/download/4-cn.html">https://www.lulian.cn/download/4-cn.html</a></li>
 </ul>
+<!-- blog-edit-end:69426b3e9c130ea4:b3 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b4 -->
+
 <p>解压后进入对应的安装目录，依次执行以下命令（其实安装目录里面的 <code>Readme</code> 文件中也有说明）：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b4 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b5 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>make
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>make<span class="w"> </span>install
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>modprobe<span class="w"> </span>ax_usb_nic
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b5 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b6 -->
+
 <h2 id="_2">绑定驱动</h2>
+<!-- blog-edit-end:69426b3e9c130ea4:b6 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b7 -->
+
 <h3 id="_3">解除当前驱动</h3>
+<!-- blog-edit-end:69426b3e9c130ea4:b7 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b8 -->
+
 <p>执行以下命令，其中 <code>enx207bd2afd867</code> 需替换为实际网卡名，先看一下驱动：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b8 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b9 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>ethtool<span class="w"> </span>-i<span class="w"> </span>enx207bd2afd867
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b9 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b10 -->
+
 <p>一般没绑定驱动的时候，用的是系统默认的 <code>cdc_ncm</code>，虽然可以通信但是效率比较低。</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b10 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b11 -->
+
 <p>检查网卡的接口名称：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b11 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b12 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>basename<span class="w"> </span><span class="k">$(</span>readlink<span class="w"> </span>-f<span class="w"> </span>/sys/class/net/enx207bd2afd867/device<span class="k">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b12 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b13 -->
+
 <p>输出结果通常为 <code>2-9:2.0</code> 这种格式。执行如下命令，其中 <code>2-9:2.0</code> 替换为上一条命令的实际输出：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b13 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b14 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2-9:2.0&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/sys/bus/usb/drivers/cdc_ncm/unbind
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b14 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b15 -->
+
 <h3 id="_4">关键步骤</h3>
+<!-- blog-edit-end:69426b3e9c130ea4:b15 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b16 -->
+
 <p><strong>等待一段时间后</strong>，执行如下命令检查网卡是否存在：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b16 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b17 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span>show
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b17 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b18 -->
+
 <p>之所以解绑之后要等一段时间，不能立刻绑定，是因为 ASIX 系统里有 2 个逻辑接口，如果没绑定，一开始默认用的是辅助接口，即 <code>2-9:2.0</code>；解绑之后才会切换到另一个接口。</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b18 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b19 -->
+
 <blockquote>
 <p><strong>重要</strong>：如果超过两分钟后，执行上面的命令仍未看到之前的网卡名（如 <code>enx207bd2afd867</code>），则重新插拔 USB 网卡，跳到第三步（说明没有自动切换）。</p>
 </blockquote>
+<!-- blog-edit-end:69426b3e9c130ea4:b19 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b20 -->
+
 <p>如果可以看到网卡，执行下面的命令（<strong>这一步一定要执行</strong>）：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b20 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b21 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span>basename<span class="w"> </span><span class="k">$(</span>readlink<span class="w"> </span>-f<span class="w"> </span>/sys/class/net/enx207bd2afd867/device<span class="k">)</span>
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b21 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b22 -->
+
 <p>输出结果通常为 <code>2-9:1.0</code> 这种格式。</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b22 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b23 -->
+
 <h3 id="_5">绑定新驱动</h3>
+<!-- blog-edit-end:69426b3e9c130ea4:b23 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b24 -->
+
 <p>执行如下命令，其中 <code>2-9:1.0</code> 替换为上一条命令的实际输出：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b24 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b25 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos="1 "></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;2-9:1.0&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/sys/bus/usb/drivers/ax_usb_nic/bind
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b25 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b26 -->
+
 <p>检查驱动：<br />
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span>ethtool<span class="w"> </span>-i<span class="w"> </span>enx207bd2afd867
 </span></code></pre></div></p>
+<!-- blog-edit-end:69426b3e9c130ea4:b26 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b27 -->
+
 <h2 id="_6">强行绑定</h2>
+<!-- blog-edit-end:69426b3e9c130ea4:b27 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b28 -->
+
 <p>到这一步，是因为上面解绑的时候，ASIX 一直没有自动切回到主接口，所以我们选择上电时候就强制使用。</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b28 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b29 -->
+
 <p>选择 ASIX 网卡，并检查网卡名</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b29 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b30 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span>lsusb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ASIX
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b30 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b31 -->
+
 <p>一般都是：<code>0b95:1790</code>，创建 udev 规则，这个是 USB 设备查找的一个规则：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b31 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b32 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/udev/rules.d/99-asix-ax88179.rules<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos="2 "></span><span class="s"># ASIX AX88179 强制使用 Config 1 + ax_usb_nic</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos="3 "></span><span class="s">ACTION==&quot;add&quot;, SUBSYSTEM==&quot;usb&quot;, ATTRS{idVendor}==&quot;0b95&quot;, ATTRS{idProduct}==&quot;1790&quot;, \</span>
@@ -737,18 +867,50 @@
 </span><span id="__span-9-8"><span class="linenos" data-linenos="8 "></span><span class="s">  RUN+=&quot;/bin/sh -c &#39;echo $kernel &gt; /sys/bus/usb/drivers/ax_usb_nic/bind&#39;&quot;</span>
 </span><span id="__span-9-9"><span class="linenos" data-linenos="9 "></span><span class="s">EOF</span>
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b32 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b33 -->
+
 <p>上面命令很关键的是第一句话，这个是强制让 ASIX 使用著接口，或许使用这个指令在上一步就可以了，但是我没尝试。<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span>  RUN+=&quot;/bin/sh -c &#39;echo 1 &gt; /sys/$devpath/bConfigurationValue&#39;&quot;
 </span></code></pre></div></p>
+<!-- blog-edit-end:69426b3e9c130ea4:b33 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b34 -->
+
 <p>使用如下命令加载：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b34 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b35 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span>sudo<span class="w"> </span>udevadm<span class="w"> </span>control<span class="w"> </span>--reload-rules
 </span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span>sudo<span class="w"> </span>update-initramfs<span class="w"> </span>-u
 </span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span>sudo<span class="w"> </span>reboot
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b35 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b36 -->
+
 <p>启动后，重启使用 <code>ethtool -i</code> 来查看驱动，顺利的话，应该就是 <code>asix_usb_nic</code> 了。</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b36 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b37 -->
+
 <h2 id="cdc_ncm">切回 cdc_ncm</h2>
+<!-- blog-edit-end:69426b3e9c130ea4:b37 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b38 -->
+
 <p>这个是我当时为了给客户写自动脚本，所以想重新切回 <code>cdc_ncm</code> 然后执行上面操作看看稳定性的，结果一直切不回去。</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b38 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b39 -->
+
 <p>经过对各个 AI 的反复鞭打，终于找到了最终生效的命令，经过测试，百分百可以：</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b39 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b40 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1"># 删除 udev 规则</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos=" 2 "></span>rm<span class="w"> </span>/etc/udev/rules.d/99-asix-ax88179.rules
 </span><span id="__span-12-3"><span class="linenos" data-linenos=" 3 "></span><span class="c1"># 强行卸载专用驱动</span>
@@ -761,10 +923,21 @@
 </span><span id="__span-12-10"><span class="linenos" data-linenos="10 "></span><span class="c1"># 强制 USB 重新上电</span>
 </span><span id="__span-12-11"><span class="linenos" data-linenos="11 "></span>udevadm<span class="w"> </span>trigger<span class="w"> </span>--subsystem-match<span class="o">=</span>usb<span class="w"> </span>--action<span class="o">=</span>add
 </span></code></pre></div>
+<!-- blog-edit-end:69426b3e9c130ea4:b40 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b41 -->
+
 <p>不需要重启，直接重新插拔即可。</p>
+<!-- blog-edit-end:69426b3e9c130ea4:b41 -->
+
+<!-- blog-edit-start:69426b3e9c130ea4:b42 -->
+
 <blockquote>
 <p>但是有一次默认驱动变成 ax88179_178a，不知道为什么执行上面命令后，插拔没有起到作用，必须重启才可以。</p>
 </blockquote>
+<!-- blog-edit-end:69426b3e9c130ea4:b42 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\install_network_driver.md" data-text-edit-revision="0d4ddb8e9e23f6dc6198941ec369f933188786debdbd735c103a81a1970a3c39" data-text-edit-marker="69426b3e9c130ea4" data-text-edit-schema="1"></div>
 
 
 
@@ -996,8 +1169,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

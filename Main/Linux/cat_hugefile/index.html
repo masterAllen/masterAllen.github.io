@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -616,23 +616,61 @@
   
 
 
+<!-- blog-edit-start:c480dca651f26a50:b0 -->
+
 <h1 id="linux">Linux 输出大文件的一小段</h1>
+<!-- blog-edit-end:c480dca651f26a50:b0 -->
+
 <div class="file-actions" data-image-edit-revision="0130cd0faa2ae4b701ab43c70b9da0040c66ee08643056b5ac12bb55fdd1210e" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux%5Ccat_hugefile.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CLinux" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Linux\cat_hugefile.md">复制路径</span></div>
 
+<!-- blog-edit-start:c480dca651f26a50:b1 -->
+
 <p>一个大文件输出其中的小部分行，在网上找到了解决方案， 发现有好几种， 记录一下自己的看法。<strong>重点在后面的理解</strong>。</p>
+<!-- blog-edit-end:c480dca651f26a50:b1 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b2 -->
+
 <blockquote>
 <p>参考: <a href="https://unix.stackexchange.com/questions/47407/cat-line-x-to-line-y-on-a-huge-file">https://unix.stackexchange.com/questions/47407/cat-line-x-to-line-y-on-a-huge-file</a></p>
 </blockquote>
+<!-- blog-edit-end:c480dca651f26a50:b2 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b3 -->
+
 <h2 id="_1">解决方案</h2>
+<!-- blog-edit-end:c480dca651f26a50:b3 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b4 -->
+
 <p>假如输出 X 到 Y 行， 有这几种方式</p>
+<!-- blog-edit-end:c480dca651f26a50:b4 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b5 -->
+
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>awk<span class="w"> </span><span class="s2">&quot;NR &gt;= X &amp;&amp; NR &lt;= Y&quot;</span><span class="w"> </span>/path/to/file
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>tail<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;+</span><span class="nv">$X</span><span class="s2">&quot;</span><span class="w"> </span>/path/to/file<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="k">$((</span><span class="nv">Y</span><span class="o">-</span><span class="nv">X</span><span class="o">+</span><span class="m">1</span><span class="k">))</span><span class="s2">&quot;</span>
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>head<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;+</span><span class="nv">$Y</span><span class="s2">&quot;</span><span class="w"> </span>/path/to/file<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="k">$((</span><span class="nv">X</span><span class="k">))</span><span class="s2">&quot;</span>
 </span><span id="__span-0-4"><span class="linenos" data-linenos="4 "></span>sed<span class="w"> </span>-n<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;X，Y p&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;Y q&#39;</span><span class="w"> </span>/tmp/a
 </span></code></pre></div>
+<!-- blog-edit-end:c480dca651f26a50:b5 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b6 -->
+
 <h2 id="_2">思考</h2>
+<!-- blog-edit-end:c480dca651f26a50:b6 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b7 -->
+
 <p>上面的网站说第二种是最快的，这个让我感到很困惑，第二或者三种方法按理来说 <code>tail</code> 前的所有内容都会传入到 <code>head</code> 中，应该很浪费时间， 而第四种方法中利用了 <code>sed</code> 的指定特定行的特点，不应该很快吗。</p>
+<!-- blog-edit-end:c480dca651f26a50:b7 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b8 -->
+
 <p>解释如下：</p>
+<!-- blog-edit-end:c480dca651f26a50:b8 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b9 -->
+
 <ol>
 <li>
 <p><strong>找到文件的某一行没有专门的方法， 只有遍历文件通过有多少 '\n' 来实现。</strong> 以前在汇编和 C 语言中有文件指针偏移，但是那个是偏移字节数，偏移行数确实是无法立刻完成的。所以即使使用 <code>sed</code> 中的指定行其实也是需要遍历的。</p>
@@ -647,7 +685,14 @@
 <p>第四种方法中 <code>sed</code> 就会一直往后扫， 内容是从 Y 往前的行数。</p>
 </li>
 </ol>
+<!-- blog-edit-end:c480dca651f26a50:b9 -->
+
+<!-- blog-edit-start:c480dca651f26a50:b10 -->
+
 <p>对比一下，如果 X 比较靠后了，那么第二种方法会比第四种方法要更快。如果 Y 比较靠前，那么第四种 <code>sed</code> 应该更快。</p>
+<!-- blog-edit-end:c480dca651f26a50:b10 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Linux\cat_hugefile.md" data-text-edit-revision="0130cd0faa2ae4b701ab43c70b9da0040c66ee08643056b5ac12bb55fdd1210e" data-text-edit-marker="c480dca651f26a50" data-text-edit-schema="1"></div>
 
 
 
@@ -879,8 +924,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

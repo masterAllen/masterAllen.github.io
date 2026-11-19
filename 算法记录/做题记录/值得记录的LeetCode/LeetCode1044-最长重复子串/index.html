@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-4-e908694ea116.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-4-45dd03b1ec10.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-4-e908694ea116.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-4-45dd03b1ec10.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -662,22 +662,59 @@
   
 
 
+<!-- blog-edit-start:d4522cf4e3764eff:b0 -->
+
 <h1 id="leetcode-1044-">LeetCode 1044 - 最长重复子串</h1>
+<!-- blog-edit-end:d4522cf4e3764eff:b0 -->
+
 <div class="file-actions" data-image-edit-revision="533fa8bab6492333247edeef495f22b6ada8c1d61b4a3ac9e462e2bc59cbca46" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%80%BC%E5%BE%97%E8%AE%B0%E5%BD%95%E7%9A%84LeetCode%5CLeetCode1044-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E4%B8%B2.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%AE%97%E6%B3%95%E8%AE%B0%E5%BD%95%5C%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95%5C%E5%80%BC%E5%BE%97%E8%AE%B0%E5%BD%95%E7%9A%84LeetCode" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\算法记录\做题记录\值得记录的LeetCode\LeetCode1044-最长重复子串.md">复制路径</span></div>
 
+<!-- blog-edit-start:d4522cf4e3764eff:b1 -->
+
 <h2 id="_1">题目描述</h2>
+<!-- blog-edit-end:d4522cf4e3764eff:b1 -->
+
+<!-- blog-edit-start:d4522cf4e3764eff:b2 -->
+
 <p>给你一个字符串 s ，考虑其所有重复子串：即 s 的（连续）子串，在 s 中出现 2 次或更多次。这些出现之间可能存在重叠。返回任意一个可能具有最长长度的重复子串。</p>
+<!-- blog-edit-end:d4522cf4e3764eff:b2 -->
+
+<!-- blog-edit-start:d4522cf4e3764eff:b3 -->
+
 <h2 id="_2">解题思路</h2>
+<!-- blog-edit-end:d4522cf4e3764eff:b3 -->
+
+<!-- blog-edit-start:d4522cf4e3764eff:b4 -->
+
 <p>这题也是不能用动态规划做的子串问题。实际还是要通过遍历来做，利用了如果存在某个长度为 <code>M</code> 的重复子串，那么一定有长度为 <code>N(N&lt;M)</code> 的子串这样的思想。</p>
+<!-- blog-edit-end:d4522cf4e3764eff:b4 -->
+
+<!-- blog-edit-start:d4522cf4e3764eff:b5 -->
+
 <h3 id="_3">具体实现方法</h3>
+<!-- blog-edit-end:d4522cf4e3764eff:b5 -->
+
+<!-- blog-edit-start:d4522cf4e3764eff:b6 -->
+
 <ol>
 <li>每次指定一个子串的长度，然后从开头开始，去检查所有该长度的子串</li>
 <li>比如这次检查是否有长度为 10 的重复子串，然后从开头开始去检查所有的长度为 10 的子串</li>
 <li>每次都计算出 HASH 值，然后判断是否 HASH 值存在过</li>
 <li>由于是滑动窗口，即左边出去右边进来，这样就可以用旧的 HASH 值很快的计算新的 HASH 值</li>
 </ol>
+<!-- blog-edit-end:d4522cf4e3764eff:b6 -->
+
+<!-- blog-edit-start:d4522cf4e3764eff:b7 -->
+
 <h3 id="_4">优化方法</h3>
+<!-- blog-edit-end:d4522cf4e3764eff:b7 -->
+
+<!-- blog-edit-start:d4522cf4e3764eff:b8 -->
+
 <p>遍历就是遍历指定长度。相当于每次指定一个长度，如果存在，那么就去指定一个更长的长度。所以用二分比较好。</p>
+<!-- blog-edit-end:d4522cf4e3764eff:b8 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\算法记录\做题记录\值得记录的LeetCode\LeetCode1044-最长重复子串.md" data-text-edit-revision="533fa8bab6492333247edeef495f22b6ada8c1d61b4a3ac9e462e2bc59cbca46" data-text-edit-marker="d4522cf4e3764eff" data-text-edit-schema="1"></div>
 
 
 
@@ -909,8 +946,6 @@
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

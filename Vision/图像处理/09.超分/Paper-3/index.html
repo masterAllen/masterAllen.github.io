@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../navigation/shared/group-7-31e3ab0d4244.html" data-site-root="../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../navigation/shared/group-7-58e63b58c9c7.html" data-site-root="../../../../" aria-busy="true">
   <a href="../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../navigation/shared/group-7-31e3ab0d4244.html"
+         data-shared-navigation-target="../../../../navigation/shared/group-7-58e63b58c9c7.html"
          data-site-root="../../../../"
          data-navigation-hidden="false">
       
@@ -655,62 +655,187 @@
   
 
 
+<!-- blog-edit-start:c6c885193212e059:b0 -->
+
 <h1 id="image-super-resolution-as-sparse-representation-of-raw-image-patches">超分文章三：Image Super-Resolution as Sparse Representation of Raw Image Patches</h1>
+<!-- blog-edit-end:c6c885193212e059:b0 -->
+
 <div class="file-actions" data-image-edit-revision="8c5f0f2ef1be730924ee7df2c9ece41dddb7c2a7ca28c5887b6ed091b4c8f9ea" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C09.%E8%B6%85%E5%88%86%5CPaper-3.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CVision%5C%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%5C09.%E8%B6%85%E5%88%86" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Vision\图像处理\09.超分\Paper-3.md">复制路径</span></div>
+
+<!-- blog-edit-start:c6c885193212e059:b1 -->
 
 <ul>
 <li>Image Super-Resolution as Sparse Representation of Raw Image Patches</li>
 <li>ICCV 2008, Jianchao Yang, UIUC</li>
 </ul>
+<!-- blog-edit-end:c6c885193212e059:b1 -->
+
+<!-- blog-edit-start:c6c885193212e059:b2 -->
+
 <p>先说一下作者，你会看到作者列表中有一个人叫做 Thomas Huang（黄煦涛），第一作者是他的学生，Huang 是超分领域的开山泰斗。</p>
+<!-- blog-edit-end:c6c885193212e059:b2 -->
+
+<!-- blog-edit-start:c6c885193212e059:b3 -->
+
 <p>我个人见解：本篇文章主要贡献就是引入字典解决超分（看这篇文章之前需要知道稀疏字典的知识）。</p>
+<!-- blog-edit-end:c6c885193212e059:b3 -->
+
+<!-- blog-edit-start:c6c885193212e059:b4 -->
+
 <p>首先同样根据一些自然图像构建低清字典和高清字典，怎么构建的，这个先不管。反正我们现在有了可以表示各个低清块和高清快的两个字典，分别设为 <span class="arithmatex">\(D_l\)</span> 和 <span class="arithmatex">\(D_h\)</span>。有字典之后，输入低清块 <span class="arithmatex">\(y\)</span>，我们求系数 <span class="arithmatex">\(\alpha\)</span>： <span class="arithmatex">\(D_l * \alpha \approx y\)</span>；然后输出高清块 <span class="arithmatex">\(x\)</span>，我们认为 <span class="arithmatex">\(D_h * \alpha \approx x\)</span>。</p>
+<!-- blog-edit-end:c6c885193212e059:b4 -->
+
+<!-- blog-edit-start:c6c885193212e059:b5 -->
+
 <h2 id="alpha"><span class="arithmatex">\(\alpha\)</span> 的求解</h2>
+<!-- blog-edit-end:c6c885193212e059:b5 -->
+
+<!-- blog-edit-start:c6c885193212e059:b6 -->
+
 <p>关键点就是，求 <span class="arithmatex">\(\alpha\)</span> 时候 <span class="arithmatex">\(D_l * \alpha \approx y\)</span> 是怎样地约等于，是用最小均方误差？还是什么？本篇的方式是认为能有最稀疏的表示：</p>
+<!-- blog-edit-end:c6c885193212e059:b6 -->
+
+<!-- blog-edit-start:c6c885193212e059:b7 -->
+
 <div class="arithmatex">\[
 min \ ||\alpha||_0 \quad \text{where} \ ||F(D_l * \alpha) - F(y)||^2_2 &lt; \epsilon
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b7 -->
+
+<!-- blog-edit-start:c6c885193212e059:b8 -->
+
 <p>其中 <span class="arithmatex">\(F\)</span> 表示提取特征，这个在之前的论文里也看到过，比如就使用像素值作为特征，比如用一阶二阶微分作为特征。回到这个式子，这个怎么解呢，不好解，是 NP-Hard 问题。但是有文献表明，如果 <span class="arithmatex">\(\alpha\)</span> 很稀疏，那么就可以变成：</p>
+<!-- blog-edit-end:c6c885193212e059:b8 -->
+
+<!-- blog-edit-start:c6c885193212e059:b9 -->
+
 <div class="arithmatex">\[
 min \ ||\alpha||_1 \quad \text{where} \ ||F(D_l * \alpha) - F(y)||^2_2 &lt; \epsilon  \tag{1}\label{1}
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b9 -->
+
+<!-- blog-edit-start:c6c885193212e059:b10 -->
+
 <p>这个就好解决，用拉格朗日乘子法：</p>
+<!-- blog-edit-end:c6c885193212e059:b10 -->
+
+<!-- blog-edit-start:c6c885193212e059:b11 -->
+
 <div class="arithmatex">\[
 min \ \lambda||\alpha||_1 + \frac{1}{2} \ ||F(D_l * \alpha) - F(y)||^2_2
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b11 -->
+
+<!-- blog-edit-start:c6c885193212e059:b12 -->
+
 <p>但是真就这样解决了吗？不！我们还可以利用块与块的重叠，比如低清块大小是 3*3，我们每次预测的时候移动两个单位，那么有的部分是重叠的，如下图所示：</p>
+<!-- blog-edit-end:c6c885193212e059:b12 -->
+
+<!-- blog-edit-start:c6c885193212e059:b13 -->
+
 <p><img alt="" src="../../../../asset/image/61ff4cedaa2a92c493f6df9f35af75ad/20231025002.PNG" /></p>
+<!-- blog-edit-end:c6c885193212e059:b13 -->
+
+<!-- blog-edit-start:c6c885193212e059:b14 -->
+
 <p>假如我们是处理右下角这个虚线框时候，高清块重叠部分有图中的蓝色部分，这些蓝色部分可以为我们所用。因此我们修改条件 <span class="arithmatex">\(\eqref{1}\)</span> 如下：</p>
+<!-- blog-edit-end:c6c885193212e059:b14 -->
+
+<!-- blog-edit-start:c6c885193212e059:b15 -->
+
 <div class="arithmatex">\[
 min \ ||\alpha||_1 \quad \text{where} \ ||F(D_l * \alpha) - F(y)||^2_2 &lt; \epsilon_1 \\ \qquad \qquad\text{and} \ ||P(D_h*a) - w||^2_2 &lt; \epsilon_2
 \tag{2}\label{2}
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b15 -->
+
+<!-- blog-edit-start:c6c885193212e059:b16 -->
+
 <p>其中，P 表示提取重叠块，w 表示与之前已经预测好的高清块重叠的区域，其实这两就是示例图片的蓝色部分。此时拉格朗日乘子法为：</p>
+<!-- blog-edit-end:c6c885193212e059:b16 -->
+
+<!-- blog-edit-start:c6c885193212e059:b17 -->
+
 <div class="arithmatex">\[
 min \ \lambda||\alpha||_1 + \frac{1}{2} \ ||\widetilde{D} * \alpha - \widetilde{y}||^2_2 \\
 \text{where} 
 \quad \widetilde{D} =  \left [ \begin{matrix} F(D_l) \\ \beta P(D_h) \end{matrix} \right ]
 \quad \widetilde{y} =  \left [ \begin{matrix} F(y) \\ \beta w \end{matrix} \right ]
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b17 -->
+
+<!-- blog-edit-start:c6c885193212e059:b18 -->
+
 <p>其中 <span class="arithmatex">\(\beta\)</span> 是自己设置的超参数，用于平衡两个限制条件。以上就是求解 <span class="arithmatex">\(\alpha\)</span> 的最终方式，最后预测 <span class="arithmatex">\(x = D_h * \alpha\)</span>。</p>
+<!-- blog-edit-end:c6c885193212e059:b18 -->
+
+<!-- blog-edit-start:c6c885193212e059:b19 -->
+
 <h2 id="_1">求解后的优化</h2>
+<!-- blog-edit-end:c6c885193212e059:b19 -->
+
+<!-- blog-edit-start:c6c885193212e059:b20 -->
+
 <p>对一个个块进行求解后，最终得到一整张图片。但是作者还不满足，因为要明白我们认为 <span class="arithmatex">\(D_h * \alpha \approx x\)</span>，这是约等于，所以还是有误差，所以尝试用整体来优化。</p>
+<!-- blog-edit-end:c6c885193212e059:b20 -->
+
+<!-- blog-edit-start:c6c885193212e059:b21 -->
+
 <p>设整体的图片，低清图片是 <span class="arithmatex">\(Y\)</span>，高清图片是 <span class="arithmatex">\(X\)</span>。在超分领域中，我们有如下公认的道理，其中 <strong>D</strong> 是下采样，<strong>H</strong> 是用于模糊的滤波。：</p>
+<!-- blog-edit-end:c6c885193212e059:b21 -->
+
+<!-- blog-edit-start:c6c885193212e059:b22 -->
+
 <div class="arithmatex">\[
 Y = \mathbf{D}(\mathbf{H}(X))
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b22 -->
+
+<!-- blog-edit-start:c6c885193212e059:b23 -->
+
 <p>假设 <span class="arithmatex">\(X_0\)</span> 是实际的高清图片，现在我们的目标为：</p>
+<!-- blog-edit-end:c6c885193212e059:b23 -->
+
+<!-- blog-edit-start:c6c885193212e059:b24 -->
+
 <div class="arithmatex">\[
 X^* = \text{arg} \mathop{\min}_{C} || X - X_0 || \quad \text{where} \ \ \mathbf{D}(\mathbf{H}(X)) = Y
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b24 -->
+
+<!-- blog-edit-start:c6c885193212e059:b25 -->
+
 <p>作者使用了 back-projection 方法解决，其中 <span class="arithmatex">\(\uparrow s\)</span> 是上采样，<span class="arithmatex">\(p\)</span> 是一个 back-projection 滤波器，都是自己设置的方式：</p>
+<!-- blog-edit-end:c6c885193212e059:b25 -->
+
+<!-- blog-edit-start:c6c885193212e059:b26 -->
+
 <div class="arithmatex">\[
 X_{t+1} = X_{t} + ((Y - \mathbf{D}(\mathbf{H}(X)) \uparrow s) * p
 \]</div>
+<!-- blog-edit-end:c6c885193212e059:b26 -->
+
+<!-- blog-edit-start:c6c885193212e059:b27 -->
+
 <p>其实这里 back-projection 我也不太会，反正只要知道这是不断迭代的方式，反正知道上一步通过不断拿一个小块去推测对应的高清块，直到预测完一个高清图片后，就根据上面公式进行迭代就行，迭代这一步就和之前每次取小块预测无关了。</p>
+<!-- blog-edit-end:c6c885193212e059:b27 -->
+
+<!-- blog-edit-start:c6c885193212e059:b28 -->
+
 <h2 id="_2">字典的选取</h2>
+<!-- blog-edit-end:c6c885193212e059:b28 -->
+
+<!-- blog-edit-start:c6c885193212e059:b29 -->
+
 <p>想要有一个最佳的过完备字典非常困难。作者直接通过对训练集的图片进行随机采样，采了大概 100,000 个块作为基向量。实验发现结果挺不错的，而且作者还提供了两个模式，一个是对花朵图片采样，一个是对动物图片采样（恢复带毛的纹理的图片效果更好）。</p>
+<!-- blog-edit-end:c6c885193212e059:b29 -->
+
+<!-- blog-edit-start:c6c885193212e059:b30 -->
+
 <p><strong>个人见解：本篇文章实际上就是用字典替代之前的 K-means 聚类，从暴力搜索到KMeans聚类再到字典，可以说这个发展脉络还是清晰的。另外就是在低清块上求解系数的时候，也做了一些改进，主要是因为字典，用上了系数比较稀疏这一特点。</strong></p>
+<!-- blog-edit-end:c6c885193212e059:b30 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Vision\图像处理\09.超分\Paper-3.md" data-text-edit-revision="8c5f0f2ef1be730924ee7df2c9ece41dddb7c2a7ca28c5887b6ed091b4c8f9ea" data-text-edit-marker="c6c885193212e059" data-text-edit-schema="1"></div>
 
 
 
@@ -942,8 +1067,6 @@ X_{t+1} = X_{t} + ((Y - \mathbf{D}(\mathbf{H}(X)) \uparrow s) * p
         <script src="../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

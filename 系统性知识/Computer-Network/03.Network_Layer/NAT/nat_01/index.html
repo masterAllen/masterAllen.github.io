@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -740,32 +740,101 @@
 
 <hr />
 <h2 id="title-nat-nat-nat">title: NAT 四种模式，NAT 穿透以及虚拟机的 NAT</h2>
+<!-- blog-edit-start:9be50cebf0f7b598:b0 -->
+
 <p>搞虚拟机涉及到宿主机和虚拟机之间的通信，因此研究了一下 NAT，概念我就不说了，这篇文章主要记录一下学到的 NAT 有四种类型，并且记录虚拟机属于哪种类型。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b0 -->
+
 <!--more-->
+<!-- blog-edit-start:9be50cebf0f7b598:b1 -->
+
 <h2 id="_1">专有名词</h2>
+<!-- blog-edit-end:9be50cebf0f7b598:b1 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b2 -->
+
 <p>这个有必要了解，便于之后好写内容。</p>
 <ul>
 <li>内部 Tuple: 内部主机的私有地址和端口号所构成的二元组，即发送方的(私有 IP, 虚构端口)</li>
 <li>外部 Tuple: 外部主机收到经 NAT 转换之后的报文时看到的该报文的源地址和源端口，即发送方的(公用 IP, 真正端口)</li>
 <li>目标 Tuple: 指外部主机的地址、端口所构成的二元组，即接收方的(IP, 端口)</li>
 </ul>
+<!-- blog-edit-end:9be50cebf0f7b598:b2 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b3 -->
+
 <p>实际上就是 <mark class="term-highlight">内部 Tuple X</mark> 经过 NAT 转换变成 <mark class="term-highlight">外部 Tuple Y</mark>，发送给<mark class="term-highlight">目标 Tuple Z</mark>。记住这个 XYZ，后面就用这三个字母代表。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b3 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b4 -->
+
 <h2 id="_2">四种模式</h2>
+<!-- blog-edit-end:9be50cebf0f7b598:b4 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b5 -->
+
 <h3 id="full-cone-nat">Full Cone NAT</h3>
+<!-- blog-edit-end:9be50cebf0f7b598:b5 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b6 -->
+
 <p>一个 X 对应一个 Y。这种方式很简单，但是此时如果发送方没有发送消息给接收方，接收方还是可以发报文给发送方的 Y，当然相当于发给 X。这样会不太安全，至于为什么，我也不知道...</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b6 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b7 -->
+
 <h3 id="restricted-cone-nat">Restricted Cone NAT</h3>
+<!-- blog-edit-end:9be50cebf0f7b598:b7 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b8 -->
+
 <p>这个对上一个进行了限制。区别在于只有当发送方的 X 曾经发报文给接收方 Z，接收方此时向 Y 发报文才能被接受，当然相当于发送给了 X。这样就避免处理一个没发过消息的主机发来的信息。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b8 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b9 -->
+
 <h3 id="port-restricted-cone-nat">Port Restricted Cone NAT</h3>
+<!-- blog-edit-end:9be50cebf0f7b598:b9 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b10 -->
+
 <p>这个进一步进行了限制。只有当 X 发报文给 Z 后，接收方才能以 Z 为源地址，Y 为目标地址发报文给原来的发送方。其实区别就在于之前不管你端口是什么，但是现在你原来接收方(现在的发送方)的端口必须要是之前的，不能变。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b10 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b11 -->
+
 <h3 id="symmetric-nat">Symmetric NAT</h3>
+<!-- blog-edit-end:9be50cebf0f7b598:b11 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b12 -->
+
 <p>中文译作<mark class="term-highlight">对称 NAT</mark>。上面的三个，都是 X-Y 一一对应，但是对称 NAT 将对应关系涉及到了 Z。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b12 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b13 -->
+
 <p>简单一句话就是 X-Y-Z 都是一一对应的。比如 X 发送给 (Z_ip_1, Z_port_1)，那么分配到 (Y_ip, Y_port_1)；此时 X 发送给 (Z_ip_1, Z_port_2)/(Z_ip_2, Z_port_1)/(Z_ip_2, Z_port_2)，那么按照之前 X 和 Y 是对应的就会分配给 (Y_ip, Y_port_1)，但是现在不是了，现在发现你这是 Z 不一样了，那么就分配给 (Y_ip, Y_port_2)。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b13 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b14 -->
+
 <h2 id="nat">虚拟机的 NAT</h2>
+<!-- blog-edit-end:9be50cebf0f7b598:b14 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b15 -->
+
 <p>那么虚拟机的 NAT 是属于上面的哪种呢？做实验即可。从虚拟机的一个固定端口发送消息给不同的目标地址，看看外部的端口转换是否固定即可。最后发现，虚拟机的 NAT 属于 Symmetric NAT。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b15 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b16 -->
+
 <h2 id="nat_1">NAT 穿透</h2>
+<!-- blog-edit-end:9be50cebf0f7b598:b16 -->
+<!-- blog-edit-start:9be50cebf0f7b598:b17 -->
+
 <p>NAT 穿透英文名称叫做 "NAT Traversal"(别像我一样看到这个以为叫 NAT 传输...)，就是解决 NAT 之前的通信问题，具体的也不懂..记住这个中英文名词就好。</p>
+<!-- blog-edit-end:9be50cebf0f7b598:b17 -->
+
+<!-- blog-edit-start:9be50cebf0f7b598:b18 -->
+
 <p>[1] 四种模式解释: <a href="https://www.jianshu.com/p/e3ad67821e03">https://www.jianshu.com/p/e3ad67821e03</a><br />
 [2] 虚拟机的 NAT : <a href="https://cosx.me/p/265.html">https://cosx.me/p/265.html</a></p>
+<!-- blog-edit-end:9be50cebf0f7b598:b18 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\Computer-Network\03.Network_Layer\NAT\nat_01.md" data-text-edit-revision="9be50cebf0f7b59847723595195f2c6970845aaabda19c9105e35737d73a8344" data-text-edit-marker="9be50cebf0f7b598" data-text-edit-schema="1"></div>
 
 
 
@@ -997,8 +1066,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

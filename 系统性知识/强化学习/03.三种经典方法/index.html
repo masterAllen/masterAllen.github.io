@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -749,29 +749,83 @@
   
 
 
+<!-- blog-edit-start:e5c72aa0b1d4d516:b0 -->
+
 <h1 id="_1">三种经典方法</h1>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b0 -->
+
 <div class="file-actions" data-image-edit-revision="20d7dbe9162440c1533035538a07f524856a2964cd54487a446562ad42a9f94c" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%5C03.%E4%B8%89%E7%A7%8D%E7%BB%8F%E5%85%B8%E6%96%B9%E6%B3%95.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\强化学习\03.三种经典方法.md">复制路径</span></div>
 
+<!-- blog-edit-start:e5c72aa0b1d4d516:b1 -->
+
 <p>我们的目标，让价值最大，回顾其贝尔曼方程：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b1 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b2 -->
+
 <div class="arithmatex">\[
   V_{\pi}(s)=\sum_{a \in A} \pi(a \mid s)\left(R(s, a)+\gamma \sum_{s^{\prime} \in S} p\left(s^{\prime} \mid s, a\right) V_{\pi}\left(s^{\prime}\right)\right)
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b2 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b3 -->
+
 <blockquote>
 <p>上面的式子看起来复杂，其实很简单，就是当前状态的价值等于当前状态的奖励加上未来状态价值的折扣总和。其实就是从一个简单方程推来的，在第一章的时候推导过。</p>
 </blockquote>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b3 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b4 -->
+
 <p>要理解好上面的式子，需要先理解好 <span class="arithmatex">\(\pi(a \mid s)\)</span> 和 <span class="arithmatex">\(p(s' \mid s,a)\)</span> 的区别，如果不行则<a href=".././02.策略迭代和价值迭代/">前面章节</a>没有掌握好。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b4 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b5 -->
+
 <p><strong>这一章节看代码更好理解。</strong></p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b5 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b6 -->
+
 <h2 id="_2">动态规划</h2>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b6 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b7 -->
+
 <p>其实他就是迭代更新，如下所示：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b7 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b8 -->
+
 <div class="arithmatex">\[
   V_{\bold{k+1}}(s)=\sum_{a \in A} \pi(a \mid s)\left(R(s, a)+\gamma \sum_{s^{\prime} \in S} p\left(s^{\prime} \mid s, a\right) V_{\bold{k}}\left(s^{\prime}\right)\right)
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b8 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b9 -->
+
 <p>其中 <span class="arithmatex">\(V_{k}\)</span> 是第 k 次迭代时状态 s 的价值函数估计，所以只是把 <span class="arithmatex">\(V\)</span> 的下标给改了。这么说也可以，但意义其实发生了很大的变化。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b9 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b10 -->
+
 <p>这样不断迭代，直到最终收敛。有严格证明这样是能收敛的，但是太过学术和数学化，这里不展开讨论，可以去下方链接的最后查看：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b10 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b11 -->
+
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/18263187766">https://zhuanlan.zhihu.com/p/18263187766</a></li>
 </ul>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b11 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b12 -->
+
 <p>看代码：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b12 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b13 -->
+
 <details class="note">
 <summary>动态规划</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="  1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1002,53 +1056,181 @@
 </span><span id="__span-0-226"><span class="linenos" data-linenos="226 "></span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Episode finished!&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b13 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b14 -->
+
 <h2 id="_3">重要说明</h2>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b14 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b15 -->
+
 <details class="note" open="open">
 <summary>这一段话很重要</summary>
 <p>下面的话很重要，一定要先看这段话才能继续看其他两种方法。</p>
 </details>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b15 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b16 -->
+
 <p>看起来动态规划就很好了。但从上面公式看出，我们需要掌握研究问题的许多本质，包括状态转移概率和奖励函数。<strong>在实际问题中，环境模型通常是未知的或者计算量过大。</strong></p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b16 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b17 -->
+
 <p>更详细解释上面的话。动态规划每更新一次 <span class="arithmatex">\(V(s)\)</span>，都要<strong>对所有可能的下一状态求和</strong>。这不是“去环境里试一次”，而是“对照模型把每种后果都算一遍”。没有 <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(R\)</span>，这个求和写不出来。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b17 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b18 -->
+
 <p>代码用的迷宫例子：格子、墙、终点都已知，所以代码里能写 <code>step_in_model</code>：向右走、撞墙或者到终点，下一格和奖励都能直接算，实际问题里常见两种卡死：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b18 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b19 -->
+
 <p><strong>1. 环境模型未知</strong></p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b19 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b20 -->
+
 <p>你只能交互，看不到内部规律。例如：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b20 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b21 -->
+
 <ul>
 <li>下棋：对手下一步怎么走，没有一张完整的 <span class="arithmatex">\(p(s'\mid s,a)\)</span> 表  </li>
 <li>机器人走路：地面摩擦、关节误差，没有精确的下一状态公式  </li>
 </ul>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b21 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b22 -->
+
 <p>这时你只能 <code>step</code> 一次，拿到一个 <span class="arithmatex">\((s', r)\)</span>，不能对所有 <span class="arithmatex">\(s'\)</span> 求和。所以后面才有蒙特卡洛：当盲盒，多试、用回报的平均值去估 <span class="arithmatex">\(V\)</span>。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b22 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b23 -->
+
 <p><strong>2. 就算模型已知，计算量也过大</strong></p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b23 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b24 -->
+
 <p>围棋、自动驾驶的状态空间极大，状态数是百万、亿级时，扫一遍都不现实。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b24 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b25 -->
+
 <p>所以这是后面两种方法的意义：我们能否在盲盒的情况下，找到最佳策略？这里还是把开头所写的贝尔曼方程放过来，此时 <span class="arithmatex">\(\pi\)</span> 和 <span class="arithmatex">\(p\)</span> 都不太好知道：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b25 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b26 -->
+
 <div class="arithmatex">\[
   V_{\pi}(s)=\sum_{a \in A} \pi(a \mid s)\left(R(s, a)+\gamma \sum_{s^{\prime} \in S} p\left(s^{\prime} \mid s, a\right) V_{\pi}\left(s^{\prime}\right)\right)
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b26 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b27 -->
+
 <h2 id="mc">蒙特卡洛方法(MC)</h2>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b27 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b28 -->
+
 <p>很纯粹的思想，蒙特卡洛，也就是大量试验，然后计算每一条序列的总奖励（即回报），最后取平均值，来近似估计价值函数。每次得到一个轨迹，计算状态 s 的回报 <span class="arithmatex">\(G_t\)</span>，最终：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b28 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b29 -->
+
 <div class="arithmatex">\[
 V_\pi(s) = \frac{1}{N} \sum_{i=1}^{N} G_t^{i}
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b29 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b30 -->
+
 <h3 id="_4">增量更新</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b30 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b31 -->
+
 <p>实际中不是等全部的尝试都结束了，才计算价值函数，通常使用增量更新，看下面方程就理解了：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b31 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b32 -->
+
 <div class="arithmatex">\[
 V_\pi(s) \leftarrow V_\pi(s) + \eta (G_t - V_\pi(s))
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b32 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b33 -->
+
 <p>其中 <span class="arithmatex">\(\eta\)</span> 是学习率，控制了我们对新信息的信任程度。如果很大（比如接近 1），那么价值函数的更新会比较激进，每次都大幅度地向着新的回报值靠拢。反之，如果很小，那么价值函数的更新会比较保守，每次都只稍微调整一点。而 <span class="arithmatex">\(G_t - V_\pi(s)\)</span> 是误差项。这个公式代表了一个朴素的直觉：一次采样的回报如果大于当前价值函数的估计值，那么很可能说明，我们的估计值偏低了，需要变高一点；反则反之。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b33 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b34 -->
+
 <h3 id="q">实际学习 Q</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b34 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b35 -->
+
 <p>实际情况不是 <span class="arithmatex">\(V(s)\)</span>，其实我们计算的是 <span class="arithmatex">\(Q(s, a)\)</span>，在进行策略采样时，我们从状态 s 出发时，必须强制执行动作 a，然后算出 <span class="arithmatex">\(G_t\)</span>：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b35 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b36 -->
+
 <div class="arithmatex">\[
 Q_\pi(s, a) \leftarrow Q_\pi(s, a) + \eta (G_t - Q_\pi(s, a))
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b36 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b37 -->
+
 <p><strong>这一段有点抽象，建议看代码理解。</strong></p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b37 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b38 -->
+
 <h3 id="-greedy">使用 ε-greedy 方法</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b38 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b39 -->
+
 <p>有了 Q，我们就可以用「贪婪化」的方式进行策略改进了：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b39 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b40 -->
+
 <div class="arithmatex">\[
 a^* = \argmax_{a} Q(s, a)
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b40 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b41 -->
+
 <p>但是，仅仅使用「贪婪化」的方式存在收敛性的问题。我们通过模拟轨迹来估计价值函数，如果仅仅是按照当前已知的最优策略（即「利用」）进行采样，那么智能体可能会一直困在它已经知道的状态空间中，无法发现新的、可能更好的状态和动作。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b41 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b42 -->
+
 <p>为了保证算法的收敛性，我们常使用 ε-greedy 策略在探索和利用之间做一个平衡。这意味着在大多数情况下（概率为 1- <span class="arithmatex">\(\epsilon\)</span>），我们会选择当前最优的动作，但在少数情况下（概率为 <span class="arithmatex">\(\epsilon\)</span>），我们会随机选择一个动作，从而保证探索的充分性。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b42 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b43 -->
+
 <p><strong>这一段有点抽象，建议看代码理解。</strong></p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b43 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b44 -->
+
 <h3 id="_5">代码</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b44 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b45 -->
+
 <details class="note">
 <summary>蒙特卡洛方法</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="  1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">gym</span>
@@ -1247,25 +1429,81 @@ a^* = \argmax_{a} Q(s, a)
 </span><span id="__span-1-194"><span class="linenos" data-linenos="194 "></span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;智能体未能到达目标。&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b45 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b46 -->
+
 <h2 id="td">时间差分方法(TD)</h2>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b46 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b47 -->
+
 <p>蒙特卡洛缺点：通过「采样」来进行「策略评估」，进而进行策略控制，得到我们想要的策略。但这样意味着: 需要等到一个完整的回合（episode）结束，才能计算出每个状态的真实收益（return），然后用这个收益去更新价值函数。学习效率比较低。对于持续性的任务（continuous task），或者步骤很长的回合制任务（episodic task），这种方法就不适合了。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b47 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b48 -->
+
 <p>回忆一下蒙特卡洛方法的原理，它的更新公式是：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b48 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b49 -->
+
 <div class="arithmatex">\[
 Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \eta (G_t - Q(s_t, a_t))
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b49 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b50 -->
+
 <p>这个公式中的 <span class="arithmatex">\(G_t\)</span> 是采样的时候，整个回合结束之后计算得到的。而时间差分方法中，使用：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b50 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b51 -->
+
 <div class="arithmatex">\[
 Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \eta (r_{t} + \gamma Q(s_{t+1}, a_{t+1}) - Q(s_t, a_t))
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b51 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b52 -->
+
 <p>其中 <span class="arithmatex">\(r_{t}\)</span> 就是当前操作的奖励。用一个估计值来更新另一个估计值么，左脚踩右脚，这种方法就是自举（bootstrapping），之前动态规划也讲过。时间差分方法实际是把蒙特卡洛方法的采样和动态规划的自举结合起来。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b52 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b53 -->
+
 <p><strong>现在有困惑正常，继续看。</strong></p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b53 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b54 -->
+
 <h3 id="saras">SARAS</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b54 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b55 -->
+
 <p>第一种时间差分方法叫 SARAS，它的方程：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b55 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b56 -->
+
 <div class="arithmatex">\[
 Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t))
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b56 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b57 -->
+
 <p>和上面的公式好像一样，只是加了下标，表示策略的一致性。其中，<span class="arithmatex">\(a_{t+1}\)</span> 是遵循策略 <span class="arithmatex">\(\pi\)</span> 采样出来的。SARSA 算法的策略不能是「纯贪婪」，同样会采用 <span class="arithmatex">\(\epsilon\)</span>-greedy 进行折中。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b57 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b58 -->
+
 <p>还是看代码更直接啊：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b58 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b59 -->
+
 <details class="note">
 <summary>SARSA 代码</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="  1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1452,13 +1690,37 @@ Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma Q_\pi(s_{t+1},
 </span><span id="__span-2-182"><span class="linenos" data-linenos="182 "></span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;测试结束，步数: </span><span class="si">{</span><span class="n">step_count</span><span class="si">}</span><span class="s2">, 总奖励: </span><span class="si">{</span><span class="n">total_reward</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </details>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b59 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b60 -->
+
 <h3 id="q-learning">Q-Learning</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b60 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b61 -->
+
 <p>Q-learning 的核心思想是通过以下公式更新 Q 值：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b61 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b62 -->
+
 <div class="arithmatex">\[
 Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\pi(s_{t+1}, a_{t+1}) - Q_\pi(s_t, a_t))
 \]</div>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b62 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b63 -->
+
 <p>多了一个 max 操作，也就是这里的 <span class="arithmatex">\(a_{t+1}\)</span> 是下一个状态 <span class="arithmatex">\(s_{t+1}\)</span> 下，价值最大的动作。而不是完全找当前策略 <span class="arithmatex">\(\pi\)</span> 而得出。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b63 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b64 -->
+
 <p>还是看代码更直观：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b64 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b65 -->
+
 <details class="note">
 <summary>Q-Learning</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="  1 "></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
@@ -1573,16 +1835,51 @@ Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\p
 </span><span id="__span-3-110"><span class="linenos" data-linenos="110 "></span>            <span class="k">break</span>
 </span></code></pre></div>
 </details>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b65 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b66 -->
+
 <h3 id="_6">两种方法的比较</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b66 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b67 -->
+
 <p>SARSA和Q学习都采用了TD的思想，但由于策略的不同，它们的行为和学习方式也不同。Q学习的策略更新更加激进，因为它直接更新的是最优的Q值；而SARSA的策略更新更加保守，因为它只更新实际执行的Q值。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b67 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b68 -->
+
 <p>SARSA就像一个「跟班」，它只学习自己实际走过的路线。它在学习的过程中，既要探索新的路线，也要根据实际走过的路线更新自己的经验。而Q-Learning就像一个「梦想家」，它总是在想象如果选择最优路线会怎么样。它在学习的过程中，既要探索新的路线，也总是按照想象中的最优路线更新自己的经验。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b68 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b69 -->
+
 <h3 id="td_1">TD(λ)</h3>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b69 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b70 -->
+
 <p>很显然，TD 是走了一步，那肯定有多走几步方法呗，即走了 n 步的方法，这个就不细讲了。直接看如下链接就好，不过我感觉这个太细节了，如果是掌握轮廓似乎不需要知道这个：</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b70 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b71 -->
+
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/18918326533">https://zhuanlan.zhihu.com/p/18918326533</a></li>
 </ul>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b71 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b72 -->
+
 <h2 id="_7">总结</h2>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b72 -->
+
+<!-- blog-edit-start:e5c72aa0b1d4d516:b73 -->
+
 <p>这一章主要是讲了三种经典方法，通过这几种方法，可以算出每个 <span class="arithmatex">\(Q(s, a)\)</span> 的值，这样我们可以从 <span class="arithmatex">\(s_0\)</span> 开始找最优动作 <span class="arithmatex">\(a_0\)</span>，进入状态 <span class="arithmatex">\(s_1\)</span>，然后再去执行 <span class="arithmatex">\(a_1\)</span>，最终完成任务。</p>
+<!-- blog-edit-end:e5c72aa0b1d4d516:b73 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\强化学习\03.三种经典方法.md" data-text-edit-revision="20d7dbe9162440c1533035538a07f524856a2964cd54487a446562ad42a9f94c" data-text-edit-marker="e5c72aa0b1d4d516" data-text-edit-schema="1"></div>
 
 
 
@@ -1814,8 +2111,6 @@ Q_\pi(s_t, a_t) \leftarrow Q_\pi(s_t, a_t) + \eta (r_{t} + \gamma \max_{a'} Q_\p
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

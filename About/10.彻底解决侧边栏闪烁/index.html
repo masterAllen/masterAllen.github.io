@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../navigation/shared/group-9-623cc78a2f1a.html" data-site-root="../../" aria-busy="true">
+<div data-shared-navigation="../../navigation/shared/group-9-eeec361aae32.html" data-site-root="../../" aria-busy="true">
   <a href="../..">加载栏目目录…</a>
 </div>
 <script src="../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../navigation/shared/group-9-623cc78a2f1a.html"
+         data-shared-navigation-target="../../navigation/shared/group-9-eeec361aae32.html"
          data-site-root="../../"
          data-navigation-hidden="false">
       
@@ -748,19 +748,65 @@
   
 
 
+<!-- blog-edit-start:f7e7434570ea53c5:b0 -->
+
 <h1 id="_1">彻底解决侧边栏闪烁</h1>
+<!-- blog-edit-end:f7e7434570ea53c5:b0 -->
+
 <div class="file-actions" data-image-edit-revision="03a046c485dd19f14a5c4dea2ac42ec1337ba713ac2e25f4fa896cc2b256a0b5" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CAbout%5C10.%E5%BD%BB%E5%BA%95%E8%A7%A3%E5%86%B3%E4%BE%A7%E8%BE%B9%E6%A0%8F%E9%97%AA%E7%83%81.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CAbout" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\About\10.彻底解决侧边栏闪烁.md">复制路径</span></div>
 
+<!-- blog-edit-start:f7e7434570ea53c5:b1 -->
+
 <p>AKA. 共享侧边栏与局部导航机制</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b1 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b2 -->
+
 <h2 id="1">1. 目标与结论</h2>
+<!-- blog-edit-end:f7e7434570ea53c5:b2 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b3 -->
+
 <p>之前对侧边栏的更新已经有过一些<a href=".././08.优化侧边栏闪烁/">优化记录</a>，但是发现侧边栏还是会闪烁。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b3 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b4 -->
+
 <p>总而言之，最终修改的逻辑是：同一顶部栏目内切换文章时，左侧栏和目录树应继续使用原来的 DOM 节点，只更新当前文章高亮，并展开所需的祖先目录。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b4 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b5 -->
+
 <p>最终效果：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b5 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b6 -->
+
 <p><img alt="最终效果" src="../../asset/image/46f05c202369a3182a6170171ddfaef0/PixPin_2026-10-19_10-59-26.gif" /></p>
+<!-- blog-edit-end:f7e7434570ea53c5:b6 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b7 -->
+
 <h2 id="2-sessionstorage">2. 以前有 sessionStorage，侧边栏仍会闪烁</h2>
+<!-- blog-edit-end:f7e7434570ea53c5:b7 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b8 -->
+
 <p>原因：即使命中缓存，只要重新创建了 DOM，仍然可能看到闪烁。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b8 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b9 -->
+
 <h3 id="21-html-dom">2.1 缓存 HTML 与保留 DOM 是两件事</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b9 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b10 -->
+
 <p>旧流程：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b10 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b11 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>点击另一篇文章
 </span><span id="__span-0-2"><span class="linenos" data-linenos="2 "></span>  → 浏览器加载新文档，卸载旧文档
 </span><span id="__span-0-3"><span class="linenos" data-linenos="3 "></span>  → 新文档出现侧栏占位内容
@@ -768,11 +814,31 @@
 </span><span id="__span-0-5"><span class="linenos" data-linenos="5 "></span>  → innerHTML 创建一套新的目录节点
 </span><span id="__span-0-6"><span class="linenos" data-linenos="6 "></span>  → 设置高亮、展开目录、恢复滚动位置
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b11 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b12 -->
+
 <p><strong>缓存能够减少目录文件的网络请求，但旧节点已经随着文档卸载而消失。浏览器仍需要解析 HTML、创建节点、绑定事件、计算布局和绘制；恢复宽度、展开状态或滚动位置的时机也可能晚于第一帧。</strong></p>
+<!-- blog-edit-end:f7e7434570ea53c5:b12 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b13 -->
+
 <p>即使不刷新整个文档，在一个已有容器里再次执行下面的语句，也会替换其原有子节点：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b13 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b14 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cached</span><span class="p">.</span><span class="nx">html</span><span class="p">;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b14 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b15 -->
+
 <h3 id="22">2.2 当前正常切换流程</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b15 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b16 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>点击另一篇文章
 </span><span id="__span-2-2"><span class="linenos" data-linenos="2 "></span>  → 主题拦截符合条件的站内链接
 </span><span id="__span-2-3"><span class="linenos" data-linenos="3 "></span>  → 获取并解析目标页面
@@ -781,9 +847,25 @@
 </span><span id="__span-2-6"><span class="linenos" data-linenos="6 "></span>  → 读取新页面要求的共享目录地址
 </span><span id="__span-2-7"><span class="linenos" data-linenos="7 "></span>  → 地址相同：保留目录节点，只调整高亮和必要的展开状态
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b16 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b17 -->
+
 <p>左侧栏不需要先消失，再从缓存中恢复。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b17 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b18 -->
+
 <h2 id="3">3. 页面结构：左侧栏在外，文章容器在内</h2>
+<!-- blog-edit-end:f7e7434570ea53c5:b18 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b19 -->
+
 <p>源码 <code>base.html</code> 的页面结构简化后如下，省略了头部、部分嵌套容器和其他主题元素：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b19 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b20 -->
+
 <div class="language-html highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos=" 1 "></span><span class="cm">&lt;!-- 独立存在的左侧栏 --&gt;</span>
 </span><span id="__span-3-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;custom-sidebar-shell custom-page-shell md-grid&quot;</span><span class="p">&gt;</span>
 </span><span id="__span-3-3"><span class="linenos" data-linenos=" 3 "></span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;md-sidebar md-sidebar--primary&quot;</span> <span class="na">data-md-type</span><span class="o">=</span><span class="s">&quot;navigation&quot;</span><span class="p">&gt;</span>
@@ -806,11 +888,35 @@
 </span><span id="__span-3-20"><span class="linenos" data-linenos="20 "></span>  <span class="cm">&lt;!-- 顶部栏目、正文、右侧目录、页脚等 --&gt;</span>
 </span><span id="__span-3-21"><span class="linenos" data-linenos="21 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b20 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b21 -->
+
 <p>左侧栏不再是 <code>[data-md-component="container"]</code> 的后代。因此，主题替换目标页面容器时，不会连同左侧栏一起替换。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b21 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b22 -->
+
 <p>左侧栏也去掉了原先的 <code>data-md-component="sidebar"</code>，不再参加主题对这类组件的每页重新初始化。主题原有侧栏初始化会设置尺寸、位置，并尝试滚动到当前文章；本项目已经用自己的固定布局和共享导航脚本管理左栏。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b22 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b23 -->
+
 <p>右侧文章目录仍然属于可替换区域，并由主题管理，因为它需要随文章变化。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b23 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b24 -->
+
 <h2 id="4">4. 浏览器运行阶段：如何判断目录是否相同</h2>
+<!-- blog-edit-end:f7e7434570ea53c5:b24 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b25 -->
+
 <p>主要由 <code>shared-navigation.js</code> 实现，核心判断依据有三个属性：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b25 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b26 -->
+
 <table>
 <thead>
 <tr>
@@ -833,13 +939,37 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:f7e7434570ea53c5:b26 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b27 -->
+
 <p>假设 A 是 <code>/Main/one/</code>，B 是 <code>/Main/Nested/two/</code>，下面说明打开 A 和 B 的过程。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b27 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b28 -->
+
 <h3 id="41-a">4.1 打开文章 A</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b28 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b29 -->
+
 <p>此时浏览器地址栏是：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b29 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b30 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><span class="linenos" data-linenos="1 "></span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
 </span><span id="__span-4-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// &quot;http://127.0.0.1:8000/Main/one/&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b30 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b31 -->
+
 <p>A 页面 HTML 中的属性是：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b31 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b32 -->
+
 <div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><span class="linenos" data-linenos="1 "></span><span class="p">&lt;</span><span class="nt">div</span>
 </span><span id="__span-5-2"><span class="linenos" data-linenos="2 "></span>  <span class="na">data-md-component</span><span class="o">=</span><span class="s">&quot;container&quot;</span>
 </span><span id="__span-5-3"><span class="linenos" data-linenos="3 "></span>  <span class="na">data-shared-navigation-target</span><span class="o">=</span><span class="s">&quot;../../navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
@@ -847,7 +977,15 @@
 </span><span id="__span-5-5"><span class="linenos" data-linenos="5 "></span>  <span class="cm">&lt;!-- 文章 A --&gt;</span>
 </span><span id="__span-5-6"><span class="linenos" data-linenos="6 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b32 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b33 -->
+
 <p>脚本读取属性并计算完整地址：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b33 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b34 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-6-1"><span class="linenos" data-linenos=" 1 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[data-shared-navigation-target]&#39;</span><span class="p">);</span>
 </span><span id="__span-6-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-6-3"><span class="linenos" data-linenos=" 3 "></span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">sharedNavigationTarget</span>
@@ -867,21 +1005,49 @@
 </span><span id="__span-6-17"><span class="linenos" data-linenos="17 "></span><span class="c1">// 结果：</span>
 </span><span id="__span-6-18"><span class="linenos" data-linenos="18 "></span><span class="c1">// &quot;http://127.0.0.1:8000/navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b34 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b35 -->
+
 <p>首次加载时，目录容器还没有记录加载地址：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b35 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b36 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-7-1"><span class="linenos" data-linenos="1 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span>
 </span><span id="__span-7-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// undefined</span>
 </span><span id="__span-7-3"><span class="linenos" data-linenos="3 "></span>
 </span><span id="__span-7-4"><span class="linenos" data-linenos="4 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">url</span>
 </span><span id="__span-7-5"><span class="linenos" data-linenos="5 "></span><span class="c1">// false</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b36 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b37 -->
+
 <p>因此需要加载目录。加载成功后执行 <code>render()</code>，装入左侧目录：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b37 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b38 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-8-1"><span class="linenos" data-linenos="1 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">html</span><span class="p">;</span>
 </span><span id="__span-8-2"><span class="linenos" data-linenos="2 "></span>
 </span><span id="__span-8-3"><span class="linenos" data-linenos="3 "></span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">url</span><span class="p">;</span>
 </span><span id="__span-8-4"><span class="linenos" data-linenos="4 "></span><span class="c1">// &quot;http://127.0.0.1:8000/navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b38 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b39 -->
+
 <h3 id="42-b">4.2 切换文章 B 时文章区域先被替换</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b39 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b40 -->
+
 <p>设置中开启了 <code>navigation.instant</code> 后，此时主题会先获取新页面 HTML，找到其中的页面容器并替换，最后会通过 <code>document$</code> 发出页面更新通知。简化后的代码如下：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b40 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b41 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-9-1"><span class="linenos" data-linenos=" 1 "></span><span class="c1">// 获取 B 的完整页面 HTML</span>
 </span><span id="__span-9-2"><span class="linenos" data-linenos=" 2 "></span><span class="kd">const</span><span class="w"> </span><span class="nx">html</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="nx">B的地址</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">());</span>
 </span><span id="__span-9-3"><span class="linenos" data-linenos=" 3 "></span>
@@ -901,11 +1067,31 @@
 </span><span id="__span-9-17"><span class="linenos" data-linenos="17 "></span><span class="c1">// 用 B 的整个容器替换 A 的容器</span>
 </span><span id="__span-9-18"><span class="linenos" data-linenos="18 "></span><span class="nx">oldContainer</span><span class="p">.</span><span class="nx">replaceWith</span><span class="p">(</span><span class="nx">newContainer</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b41 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b42 -->
+
 <p>替换后，主题接着通过 <code>document$</code> 发出页面更新通知。我们的脚本已经订阅了它：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b42 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b43 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-10-1"><span class="linenos" data-linenos="1 "></span><span class="nb">document</span><span class="nx">$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">init</span><span class="p">);</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b43 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b44 -->
+
 <p>PS: <code>document$</code> 是<strong>主题提供的“页面更新通知流”</strong>，技术上叫 RxJS Observable。它不是 JavaScript 或浏览器自带的对象。我们通过 <code>subscribe()</code> 告诉主题：“页面更新后，运行这个函数。” 名字末尾的 <code>$</code> 只是常见命名习惯，表示“这是一个通知流”，没有特殊语法含义。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b44 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b45 -->
+
 <p>于是此时运行目录的 <code>init()</code>：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b45 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b46 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-11-1"><span class="linenos" data-linenos="1 "></span><span class="kd">function</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-11-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="c1">// 此时读到的已经是 B 的容器</span>
 </span><span id="__span-11-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span>
@@ -915,13 +1101,37 @@
 </span><span id="__span-11-7"><span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="c1">// 后面是目录的加载逻辑</span>
 </span><span id="__span-11-8"><span class="linenos" data-linenos="8 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b46 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b47 -->
+
 <p>外面的 <code>custom-sidebar-shell</code> 没被碰到，原目录仍留在页面上。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b47 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b48 -->
+
 <h3 id="43-b">4.3 切换文章 B 后目录的加载逻辑</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b48 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b49 -->
+
 <p>地址变成：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b49 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b50 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-12-1"><span class="linenos" data-linenos="1 "></span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span>
 </span><span id="__span-12-2"><span class="linenos" data-linenos="2 "></span><span class="c1">// &quot;http://127.0.0.1:8000/Main/Nested/two/&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b50 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b51 -->
+
 <p>文章区域被替换为 B 的 HTML，其属性也随之更新：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b51 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b52 -->
+
 <div class="language-html highlight"><pre><span></span><code><span id="__span-13-1"><span class="linenos" data-linenos="1 "></span><span class="p">&lt;</span><span class="nt">div</span>
 </span><span id="__span-13-2"><span class="linenos" data-linenos="2 "></span>  <span class="na">data-md-component</span><span class="o">=</span><span class="s">&quot;container&quot;</span>
 </span><span id="__span-13-3"><span class="linenos" data-linenos="3 "></span>  <span class="na">data-shared-navigation-target</span><span class="o">=</span><span class="s">&quot;../../../navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
@@ -929,7 +1139,15 @@
 </span><span id="__span-13-5"><span class="linenos" data-linenos="5 "></span>  <span class="cm">&lt;!-- 文章 B --&gt;</span>
 </span><span id="__span-13-6"><span class="linenos" data-linenos="6 "></span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b52 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b53 -->
+
 <p>和 4.1 一样，脚本会计算目标目录的完整地址：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b53 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b54 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-14-1"><span class="linenos" data-linenos=" 1 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;[data-shared-navigation-target]&#39;</span><span class="p">);</span>
 </span><span id="__span-14-2"><span class="linenos" data-linenos=" 2 "></span>
 </span><span id="__span-14-3"><span class="linenos" data-linenos=" 3 "></span><span class="kd">var</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span>
@@ -946,15 +1164,35 @@
 </span><span id="__span-14-14"><span class="linenos" data-linenos="14 "></span><span class="c1">// 结果仍然是：</span>
 </span><span id="__span-14-15"><span class="linenos" data-linenos="15 "></span><span class="c1">// &quot;http://127.0.0.1:8000/navigation/shared/group-1-a1b2c3d4e5f6.html&quot;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b54 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b55 -->
+
 <p><strong>左侧目录容器没有被替换，所以还记着打开 A 时写入的值：</strong></p>
+<!-- blog-edit-end:f7e7434570ea53c5:b55 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b56 -->
+
 <div class="language-javascript highlight"><pre><span></span><code><span id="__span-15-1"><span class="linenos" data-linenos="1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoaded</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">url</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-15-2"><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="ow">delete</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">navigationLoading</span><span class="p">;</span>
 </span><span id="__span-15-3"><span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">activate</span><span class="p">(</span><span class="nx">container</span><span class="p">,</span><span class="w"> </span><span class="nx">root</span><span class="p">);</span><span class="w"> </span><span class="c1">// 高亮从 A 移到 B，展开 B 的祖先目录</span>
 </span><span id="__span-15-4"><span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="k">return</span><span class="p">;</span><span class="w">                   </span><span class="c1">// 跳过目录加载与 innerHTML 替换</span>
 </span><span id="__span-15-5"><span class="linenos" data-linenos="5 "></span><span class="p">}</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b56 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b57 -->
+
 <h3 id="44">4.4 讨论</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b57 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b58 -->
+
 <p>一共三种状态：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b58 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b59 -->
+
 <table>
 <thead>
 <tr>
@@ -977,7 +1215,15 @@
 </tr>
 </tbody>
 </table>
+<!-- blog-edit-end:f7e7434570ea53c5:b59 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b60 -->
+
 <p><code>activate()</code> 的主要工作是：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b60 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b61 -->
+
 <ol>
 <li>将目录中的链接和图片地址相对于站点根路径解析为绝对地址。</li>
 <li>清除旧的 <code>.md-nav__link--active</code>、<code>.md-nav__item--active</code> 和对应的 <code>aria-current</code>。</li>
@@ -986,34 +1232,109 @@
 <li>沿祖先导航项向上设置活动状态，并勾选尚未展开的祖先开关。</li>
 <li>对程序修改的展开开关触发 <code>change</code>，同步展开按钮和导航的辅助属性。</li>
 </ol>
+<!-- blog-edit-end:f7e7434570ea53c5:b61 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b62 -->
+
 <p>页面路径匹配会进行 URL 解码、把末尾 <code>/index.html</code> 视为目录首页，并忽略末尾多余斜杠。当前实现按路径匹配，不把查询参数和文章锚点作为独立目录项。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b62 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b63 -->
+
 <h2 id="5">5. 其他繁琐细节</h2>
+<!-- blog-edit-end:f7e7434570ea53c5:b63 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b64 -->
+
 <h3 id="51">5.1 同栏目滚动位置主要靠节点保留</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b64 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b65 -->
+
 <p>同栏目切换时，<code>.md-sidebar__scrollwrap</code> 没有被替换，<code>scrollTop</code> 随同一个元素继续存在，无需先归零再从缓存恢复。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b65 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b66 -->
+
 <p>这不意味着数值在所有操作下绝对不变。例如浏览器为了把被点击的链接滚动到可见区域，或者某个目录展开后内容高度改变，都可能调整滚动位置。验收重点是避免切页额外引入一次重建和重置。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b66 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b67 -->
+
 <h3 id="52">5.2 整页加载时仍有滚动恢复脚本</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b67 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b68 -->
+
 <p><code>sidebar-scroll-position.js</code> 使用 <code>CUSTOM_SIDEBAR_SCROLL_TOP</code>：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b68 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b69 -->
+
 <ul>
 <li>在 <code>pagehide</code> 保存滚动位置。</li>
 <li>首次执行及 <code>shared-navigation-ready</code> 后尝试恢复。</li>
 <li>在 <code>DOMContentLoaded</code> 后通过两次动画帧再次恢复，以等待初始布局。</li>
 </ul>
+<!-- blog-edit-end:f7e7434570ea53c5:b69 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b70 -->
+
 <p>这是整页加载或目录重建时的补充。当前保存的是一个位置值，没有按栏目分别保存滚动历史；普通同栏目局部切换也不会触发 <code>pagehide</code>。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b70 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b71 -->
+
 <h3 id="53">5.3 未转义的 <code>&amp;</code> 导致策略失效</h3>
+<!-- blog-edit-end:f7e7434570ea53c5:b71 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b72 -->
+
 <p>有一个目录是 <code>code&amp;report/</code>，结果这个目录导致上面整个策略失效了。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b72 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b73 -->
+
 <p>因为 <strong>XML 把 <code>&amp;</code> 当作特殊引用的开头</strong>，比如 <code>&amp;lt;</code> 表示 <code>&lt;</code>，比如 <code>&amp;amp;</code> 表示 <code>&amp;</code>。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b73 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b74 -->
+
 <p>主题会先把所有站内地址解析到 <code>sitemap.xml</code> 中，如果不做特殊处理，那这个目录对应的地址是：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b74 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b75 -->
+
 <div class="language-xml highlight"><pre><span></span><code><span id="__span-16-1"><span class="linenos" data-linenos="1 "></span><span class="nt">&lt;loc&gt;</span>https://masterallen.github.io/.../code<span class="err">&amp;</span>report/<span class="nt">&lt;/loc&gt;</span>
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b75 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b76 -->
+
 <p>XML 解析器读到 <code>&amp;</code> 时，会尝试把后面的内容识别为 <code>&amp;名称;</code> 这样的引用。但 <code>&amp;report/</code> 不是合法引用，因此报语法错误。</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b76 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b77 -->
+
 <p>一旦有错误，那整个站点地图解析失败，得到一张空表。最终影响整个网站导航，因为主题需要先解析完整的站点地图：</p>
+<!-- blog-edit-end:f7e7434570ea53c5:b77 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b78 -->
+
 <div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><span class="linenos" data-linenos="1 "></span>sitemap.xml
 </span><span id="__span-17-2"><span class="linenos" data-linenos="2 "></span>  → XML 解析
 </span><span id="__span-17-3"><span class="linenos" data-linenos="3 "></span>  → 获得所有站内页面的 URL 清单 → 解析失败，得到空表
 </span><span id="__span-17-4"><span class="linenos" data-linenos="4 "></span>  → 点击链接时，判断它是否在清单中
 </span><span id="__span-17-5"><span class="linenos" data-linenos="5 "></span>  → 在清单中才使用局部导航
 </span></code></pre></div>
+<!-- blog-edit-end:f7e7434570ea53c5:b78 -->
+
+<!-- blog-edit-start:f7e7434570ea53c5:b79 -->
+
 <p>所以最终用一个新的 <code>overrides/sitemap.xml</code> 来解决这个问题，<strong>新的 XML 文件里写的是 <code>&amp;amp;</code>，对应 <code>&amp;</code> 的转义。</strong></p>
+<!-- blog-edit-end:f7e7434570ea53c5:b79 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\About\10.彻底解决侧边栏闪烁.md" data-text-edit-revision="03a046c485dd19f14a5c4dea2ac42ec1337ba713ac2e25f4fa896cc2b256a0b5" data-text-edit-marker="f7e7434570ea53c5" data-text-edit-schema="1"></div>
 
 
 
@@ -1245,8 +1566,6 @@
         <script src="../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

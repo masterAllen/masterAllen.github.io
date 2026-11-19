@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../navigation/shared/group-1-66396d319cf3.html" data-site-root="../../../" aria-busy="true">
+<div data-shared-navigation="../../../navigation/shared/group-1-3a3f87565006.html" data-site-root="../../../" aria-busy="true">
   <a href="../../..">加载栏目目录…</a>
 </div>
 <script src="../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../navigation/shared/group-1-66396d319cf3.html"
+         data-shared-navigation-target="../../../navigation/shared/group-1-3a3f87565006.html"
          data-site-root="../../../"
          data-navigation-hidden="false">
       
@@ -671,44 +671,138 @@
   
 
 
+<!-- blog-edit-start:7e349bf261582420:b0 -->
+
 <h1 id="linux">Linux 设置打印机遇到问题</h1>
+<!-- blog-edit-end:7e349bf261582420:b0 -->
+
 <div class="file-actions" data-image-edit-revision="dee001be8934b83384d16d5da01f0b03f0d622e6da47bc02566565965b2b7d95" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug%5Cdebug_005.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5CMain%5CDebug" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\Main\Debug\debug_005.md">复制路径</span></div>
 
+<!-- blog-edit-start:7e349bf261582420:b1 -->
+
 <h2 id="_1">阶段一</h2>
+<!-- blog-edit-end:7e349bf261582420:b1 -->
+<!-- blog-edit-start:7e349bf261582420:b2 -->
+
 <p>查阅资料，发现使用 CUPS 就可以了，网上教程也一大堆。比较好的链接在下面，但好像有些问题，后来按惠普官网的信息，进行配置，一步一步配置就可以了</p>
+<!-- blog-edit-end:7e349bf261582420:b2 -->
+
+<!-- blog-edit-start:7e349bf261582420:b3 -->
+
 <p>1. <a href="https://blog.csdn.net/soslinken/article/details/89024451">https://blog.csdn.net/soslinken/article/details/89024451</a><br />
 2. <a href="https://developers.hp.com/hp-linux-imaging-and-printing/install/step4/cups/local">https://developers.hp.com/hp-linux-imaging-and-printing/install/step4/cups/local</a></p>
+<!-- blog-edit-end:7e349bf261582420:b3 -->
+
+<!-- blog-edit-start:7e349bf261582420:b4 -->
+
 <h2 id="_2">阶段二</h2>
+<!-- blog-edit-end:7e349bf261582420:b4 -->
+<!-- blog-edit-start:7e349bf261582420:b5 -->
+
 <p>发现打印机有错误: Filter failed，查阅，发现错误信息在(/var/log/cups/error_log)，错误信息如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos="1 "></span>pnm2ppa command not found
 </span></code></pre></div></p>
+<!-- blog-edit-end:7e349bf261582420:b5 -->
+
+<!-- blog-edit-start:7e349bf261582420:b6 -->
+
 <p>所以需要安装相关包，稀里糊涂地安装了叫 pnm2ppa-xxx，结果 yay 出问题了，错误信息如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos="1 "></span>Error: Could not find all required packages : AAA
 </span></code></pre></div></p>
+<!-- blog-edit-end:7e349bf261582420:b6 -->
+
+<!-- blog-edit-start:7e349bf261582420:b7 -->
+
 <p>所以尝试安装 AAA，但 yay 又报错<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos="1 "></span>ssl3_read_n:unexpected eof while reading
 </span></code></pre></div></p>
+<!-- blog-edit-end:7e349bf261582420:b7 -->
+
+<!-- blog-edit-start:7e349bf261582420:b8 -->
+
 <h2 id="_3">阶段三</h2>
+<!-- blog-edit-end:7e349bf261582420:b8 -->
+<!-- blog-edit-start:7e349bf261582420:b9 -->
+
 <p>查阅搜索，在 GITHUB 发现这是个新问题，是 OPENSSL 版本更新后的BUG(也不能说是BUG，貌似是为了安全)，那就 OPENSSL 降级，再次安装，又出问题，错误信息如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><span class="linenos" data-linenos="1 "></span>fatal: unable to access &#39;https://aur.tuna.tsinghua.edu.cn/foomatic-filters-lprng.git/&#39;: OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to aur.tuna.tsinghua.edu.cn:443
 </span></code></pre></div></p>
+<!-- blog-edit-end:7e349bf261582420:b9 -->
+
+<!-- blog-edit-start:7e349bf261582420:b10 -->
+
 <p>首先尝试去访问这个网站，使用 <code>git clone https://aur.tuna.xxx.git</code>，发现同样的错误！那就是地址解析的问题了，以前遇到过同样的问题，在 <code>.gitconfig</code> 中 <code>socks5</code> 换成 <code>socks5h</code>，结果还是不行。</p>
+<!-- blog-edit-end:7e349bf261582420:b10 -->
+
+<!-- blog-edit-start:7e349bf261582420:b11 -->
+
 <p>突然意识到，清华大学网站不是国内网站吗，那就说明可能和以前连接 gitee 同样的错误，那就是外网访问不了内网，浏览器试了一下果然不行，所以把gitconfig中那个proxy先注释掉，然后安装，果然成功。</p>
+<!-- blog-edit-end:7e349bf261582420:b11 -->
+
+<!-- blog-edit-start:7e349bf261582420:b12 -->
+
 <h2 id="_4">阶段四</h2>
+<!-- blog-edit-end:7e349bf261582420:b12 -->
+<!-- blog-edit-start:7e349bf261582420:b13 -->
+
 <p>网络问题解决，回到了安装 AAA 这个包，安装再次失败，因为这个包和另一个重要包(CUPS)冲突。</p>
+<!-- blog-edit-end:7e349bf261582420:b13 -->
+
+<!-- blog-edit-start:7e349bf261582420:b14 -->
+
 <p>所以我为什么要安装 AAA 这个包呢？我就是为了 pnm2ppa 指令，查阅一下，pnm2ppa 依赖 footmatic-filter，但是我下载的是 footmatic-filter-lprng！</p>
+<!-- blog-edit-end:7e349bf261582420:b14 -->
+
+<!-- blog-edit-start:7e349bf261582420:b15 -->
+
 <p>于是在 AUR 那个 Package Details 看看，发现 footmatic-filter-lprng 没有 footmatic-filter！然后在 pnm2ppa-xxx 的 Package Details 看看，发现下面有评论，说了这个问题！</p>
+<!-- blog-edit-end:7e349bf261582420:b15 -->
+
+<!-- blog-edit-start:7e349bf261582420:b16 -->
+
 <p>也给出了解决方法，其实也就是下载源码安装。于是单独找了pnm2ppa的源码，进行手动安装: <a href="http://pnm2ppa.sourceforge.net/">http://pnm2ppa.sourceforge.net/</a></p>
+<!-- blog-edit-end:7e349bf261582420:b16 -->
+
+<!-- blog-edit-start:7e349bf261582420:b17 -->
+
 <h2 id="_5">阶段五</h2>
+<!-- blog-edit-end:7e349bf261582420:b17 -->
+<!-- blog-edit-start:7e349bf261582420:b18 -->
+
 <p>安装是成功了，但是打印机还是没法用。最后用来惠普的配套工具hplip，然后照着官网的教程，终于好了。</p>
+<!-- blog-edit-end:7e349bf261582420:b18 -->
+
+<!-- blog-edit-start:7e349bf261582420:b19 -->
+
 <p><a href="https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup">https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup</a></p>
+<!-- blog-edit-end:7e349bf261582420:b19 -->
+
+<!-- blog-edit-start:7e349bf261582420:b20 -->
+
 <h2 id="_6">阶段六</h2>
+<!-- blog-edit-end:7e349bf261582420:b20 -->
+<!-- blog-edit-start:7e349bf261582420:b21 -->
+
 <p>最后的最后啊，发现是我眼花，使用 CUPS 选择打印机 Model 选错了、网上下错了 PPD 文件...靠...</p>
+<!-- blog-edit-end:7e349bf261582420:b21 -->
+
+<!-- blog-edit-start:7e349bf261582420:b22 -->
+
 <h2 id="_7">总结</h2>
+<!-- blog-edit-end:7e349bf261582420:b22 -->
+<!-- blog-edit-start:7e349bf261582420:b23 -->
+
 <p>来自 2020 年 3 月的文章，现在是 2021 年 8 月的，哈哈哈哈，感觉那个时候有好多时间啊..</p>
+<!-- blog-edit-end:7e349bf261582420:b23 -->
+
+<!-- blog-edit-start:7e349bf261582420:b24 -->
+
 <p>1. 网络问题，不要把代理忘掉。比如这次就是国内网站使用代理访问不了。<br />
 2. 多到官方包里看看。<br />
 3. 不要钻牛角尖，尝试官方的工具 (这次就是惠普的 hplip) 不香吗。</p>
+<!-- blog-edit-end:7e349bf261582420:b24 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\Main\Debug\debug_005.md" data-text-edit-revision="dee001be8934b83384d16d5da01f0b03f0d622e6da47bc02566565965b2b7d95" data-text-edit-marker="7e349bf261582420" data-text-edit-schema="1"></div>
 
 
 
@@ -940,8 +1034,6 @@
         <script src="../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

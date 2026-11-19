@@ -1,7 +1,7 @@
 
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-local-preview="false">
   <head>
     
       <meta charset="utf-8">
@@ -213,7 +213,7 @@
 
   
 
-<div data-shared-navigation="../../../../../navigation/shared/group-2-d7abe878c55d.html" data-site-root="../../../../../" aria-busy="true">
+<div data-shared-navigation="../../../../../navigation/shared/group-2-311df939f8c9.html" data-site-root="../../../../../" aria-busy="true">
   <a href="../../../../..">加载栏目目录…</a>
 </div>
 <script src="../../../../../javascripts/shared-navigation.js"></script>
@@ -250,7 +250,7 @@
       
     
     <div class="md-container" data-md-component="container"
-         data-shared-navigation-target="../../../../../navigation/shared/group-2-d7abe878c55d.html"
+         data-shared-navigation-target="../../../../../navigation/shared/group-2-311df939f8c9.html"
          data-site-root="../../../../../"
          data-navigation-hidden="false">
       
@@ -693,13 +693,29 @@
   
 
 
+<!-- blog-edit-start:3c660583932a1657:b0 -->
+
 <h1 id="pwnable-kr-maze">pwnable kr maze</h1>
+<!-- blog-edit-end:3c660583932a1657:b0 -->
+
 <div class="file-actions" data-image-edit-revision="fbf34f0b1b44304dafc1d4e5ffb27c5b91699b169cd0bf691d5384998851a100" data-title-link="true"><a href="blog-edit://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote%5C43.maze.md" class="file-action-link" title="使用本地应用打开源文件">本地编辑</a> | <a href="blog-folder://open?path=D%3A%5CBlog%5Cdone%5C%E7%B3%BB%E7%BB%9F%E6%80%A7%E7%9F%A5%E8%AF%86%5C%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%5Cpwnable_kr%5Cnote" class="file-action-link" title="使用文件资源管理器打开源文件所在目录">打开本地目录</a> | <span class="file-action-link" style="cursor: pointer;" data-copy="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\43.maze.md">复制路径</span></div>
 
+<!-- blog-edit-start:3c660583932a1657:b1 -->
+
 <h2 id="_1">前言</h2>
+<!-- blog-edit-end:3c660583932a1657:b1 -->
+<!-- blog-edit-start:3c660583932a1657:b2 -->
+
 <p>主要的参考: [<a href="https://shayete.tistory.com/entry/Grotesque-maze">https://shayete.tistory.com/entry/Grotesque-maze</a>]<br />
 超级感谢这个博主，让我终于有了些思路，否则就对 pwnable kr 做题绝望了。感觉还是应该要分享，排名真的无所谓，可惜现在网上的 writeup 全是加密。</p>
+<!-- blog-edit-end:3c660583932a1657:b2 -->
+
+<!-- blog-edit-start:3c660583932a1657:b3 -->
+
 <h2 id="_2">程序分析</h2>
+<!-- blog-edit-end:3c660583932a1657:b3 -->
+<!-- blog-edit-start:3c660583932a1657:b4 -->
+
 <p><code>main</code> 函数如下，就是走迷宫，每次迷宫通过后都会增加一个敌人，通过二十关后就可以记录姓名。<br />
 <code>record_name</code> 函数有一个明显的 Stack Overflow.<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><span class="linenos" data-linenos=" 1 "></span><span class="kt">int</span><span class="w"> </span><span class="kr">__fastcall</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kr">__int64</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">a3</span><span class="p">)</span>
@@ -728,8 +744,19 @@
 </span><span id="__span-0-24"><span class="linenos" data-linenos="24 "></span><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">fclose</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
 </span><span id="__span-0-25"><span class="linenos" data-linenos="25 "></span><span class="p">}</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3c660583932a1657:b4 -->
+
+<!-- blog-edit-start:3c660583932a1657:b5 -->
+
 <p>实际上通过第五关就非常难了，所以肯定不是直接 DFS 来通过完。</p>
+<!-- blog-edit-end:3c660583932a1657:b5 -->
+
+<!-- blog-edit-start:3c660583932a1657:b6 -->
+
 <h2 id="_3">奇怪的代码</h2>
+<!-- blog-edit-end:3c660583932a1657:b6 -->
+<!-- blog-edit-start:3c660583932a1657:b7 -->
+
 <p><code>one_level</code> 函数就是使用 <code>while</code> 处理用户输入直到满足条件退出循环，但是这里面有一段特别奇怪的代码。<br />
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><span class="linenos" data-linenos=" 1 "></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">dword_6020C0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">user_choice</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="sc">&#39;O&#39;</span><span class="w"> </span><span class="p">)</span>
 </span><span id="__span-1-2"><span class="linenos" data-linenos=" 2 "></span><span class="p">{</span>
@@ -758,6 +785,10 @@
 </span><span id="__span-1-25"><span class="linenos" data-linenos="25 "></span><span class="p">}</span><span class="w"> </span><span class="k">else</span>
 </span><span id="__span-1-26"><span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="n">dword_6020C0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </span></code></pre></div></p>
+<!-- blog-edit-end:3c660583932a1657:b7 -->
+
+<!-- blog-edit-start:3c660583932a1657:b8 -->
+
 <p>这段代码真的很奇怪，而且 <code>dword_6020C0</code> 这个变量对我们程序没有作用，所以我一开始以为这就是用来迷惑人的，然而大错特错。<br />
 可以试着这样逆着分析代码</p>
 <ol>
@@ -779,12 +810,27 @@
 <li>第二次我需要 <code>dword_6020C0 = 2</code>，所以不能执行 <code>dword_6020C0 != 1 || user_choice != 'P'</code>，所以第二次输入是 P</li>
 <li>一直这样下去，最后发现只要顺着顺序输入 OPEN... 就可到达最里面的 <code>if-else</code></li>
 </ol>
+<!-- blog-edit-end:3c660583932a1657:b9 -->
+
+<!-- blog-edit-start:3c660583932a1657:b10 -->
+
 <h2 id="_4">程序漏洞</h2>
+<!-- blog-edit-end:3c660583932a1657:b10 -->
+<!-- blog-edit-start:3c660583932a1657:b11 -->
+
 <p>漏洞就是在于上面的这段代码，当时做的时候太粗心没注意最里面的 <code>else</code> 是这样的语句: <code>byte_602218 = 48</code>。<br />
 <code>byte_602218</code> 可是我们的迷宫数据啊，所以这样会把迷宫给改掉，ascii 为 48 的字符是 '0'。<br />
 对于我们的迷宫程序，它认为 '0' 表示这里可以走，所以如果我们让 <code>byte_602218 = 48</code>，迷宫有个墙变成了 '0'。</p>
+<!-- blog-edit-end:3c660583932a1657:b11 -->
+
+<!-- blog-edit-start:3c660583932a1657:b12 -->
+
 <p>这个有什么用处？这里也想了很久，终于想出了，不容易。<br />
 此时可以让角色移动到迷宫之外了！因为迷宫的字符是以一个 <code>maze_table[]</code> 这样的形式存储，每次角色移动会赋值 <code>maze_table[role_x * 24 + role_y] = 'X'</code>，所以当角色移动到迷宫之外那么就会造成溢出。</p>
+<!-- blog-edit-end:3c660583932a1657:b12 -->
+
+<!-- blog-edit-start:3c660583932a1657:b13 -->
+
 <p>数据存储格式如下<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><span class="linenos" data-linenos=" 1 "></span>.bss:0000000000602120     maze_char       db 0F0h dup(?)
 </span><span id="__span-2-2"><span class="linenos" data-linenos=" 2 "></span>.bss:0000000000602210                     db    ? ;
@@ -803,12 +849,26 @@
 </span><span id="__span-2-15"><span class="linenos" data-linenos="15 "></span>...
 </span><span id="__span-2-16"><span class="linenos" data-linenos="16 "></span>.bss:0000000000602244     level           dd ?          
 </span></code></pre></div></p>
+<!-- blog-edit-end:3c660583932a1657:b13 -->
+
+<!-- blog-edit-start:3c660583932a1657:b14 -->
+
 <p>所以可以修改 <code>level</code> 大于 20，然后让用户从范围外回到迷宫并到达终点，此时就会直接执行 <code>record_name</code> 函数，从而进行简单的栈溢出即可。</p>
+<!-- blog-edit-end:3c660583932a1657:b14 -->
+
+<!-- blog-edit-start:3c660583932a1657:b15 -->
+
 <h2 id="_5">总结</h2>
+<!-- blog-edit-end:3c660583932a1657:b15 -->
+<!-- blog-edit-start:3c660583932a1657:b16 -->
+
 <ol>
 <li>那个比较复杂的 <code>if-else</code> 嵌套指的反复分析</li>
 <li>让用户移到迷宫外从而造成溢出这一想法，当时想了不少时间</li>
 </ol>
+<!-- blog-edit-end:3c660583932a1657:b16 -->
+
+<div hidden data-text-edit-source="D:\Blog\done\系统性知识\信息安全\pwnable_kr\note\43.maze.md" data-text-edit-revision="fbf34f0b1b44304dafc1d4e5ffb27c5b91699b169cd0bf691d5384998851a100" data-text-edit-marker="3c660583932a1657" data-text-edit-schema="1"></div>
 
 
 
@@ -1040,8 +1100,6 @@
         <script src="../../../../../javascripts/resizable-sidebar.js"></script>
       
         <script src="../../../../../javascripts/sidebar-toggle-buttons.js"></script>
-      
-        <script src="../../../../../javascripts/review-tracker.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
